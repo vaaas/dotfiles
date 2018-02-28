@@ -1,0 +1,13 @@
+TAB: menu-complete
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+"\e[1;3C": forward-word
+"\e[1;3D": backward-word
+"\e[1;2C": forward-word
+"\e[1;2D": backward-word
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+"\C-w": backward-kill-word
+
+set show-all-if-ambiguous on
+set bind-tty-special-chars off

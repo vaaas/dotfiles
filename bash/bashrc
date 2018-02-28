@@ -1,0 +1,76 @@
+echo -e -n "\x1b[\x35 q"
+PS1='> '
+IFS='
+'
+eval $(dircolors -b)
+
+set -o noclobber
+shopt -s histappend
+shopt -s histverify
+
+#aliases
+#safety
+alias cp='cp -vri --'
+alias mv='mv -nvi --'
+alias rm='gvfs-trash --'
+alias rmdir='rmdir -v --'
+alias ln='ln -i --'
+alias lns='\ln -is --'
+alias e='file-roller -h --'
+alias ncdu='ncdu -rx'
+
+#nice colours & formatting
+alias diff='colordiff'
+alias ls='ls --color=auto --group-directories-first'
+alias df='df -h'
+alias du='du -ch'
+alias chmod='chmod -c'
+alias chown='chown -c'
+alias chgrp='chgrp -c'
+alias ed='ed -vp:'
+alias saidar='saidar -c'
+alias top='htop'
+alias uptime='uptime -p'
+alias nmcli='nmcli -f in-use,ssid,bssid,signal,bars'
+
+#convenience & shortcuts
+alias ..='cd ..'
+alias ,='cd $OLDPWD'
+alias linkgrep='grep -oP "http(s?):\/\/[^\"\(\)\<\>]*"'
+alias mkdir='mkdir -pv'
+alias bb='systemctl poweroff'
+alias brb='systemctl reboot'
+alias s='find -maxdepth 1 | grep -Fi'
+alias ss='find | grep -Fi'
+alias i='sxiv -of -- `find -type f | sort`'
+alias q='exit'
+alias clipin='xclip -selection clipboard'
+alias clipout='xclip -selection clipboard -o'
+alias clipsync='xclip -selection primary -o | xclip -selection clipboard'
+alias v='mplayer -ass -fs -cache 1000000 -lavdopts threads=4'
+alias hdmi='xrandr --output HDMI1 --auto --output LVDS1 --off'
+alias lvds='xrandr --auto'
+alias ldir='find . -maxdepth 1 -type d'
+alias allfiles='find -type f'
+alias powersave='sudo cpupower frequency-set -g powersave'
+alias performance='sudo cpupower frequency-set -g performance'
+alias serve='unhorribad_serve.js'
+alias ymddate='date +%Y-%m-%d'
+alias pkgin='sudo aptitude install'
+alias pkgrm='sudo aptitude remove'
+alias pkgf='aptitude search'
+alias bc='bc -l'
+alias update='sudo sh -c "aptitude update && aptitude full-upgrade"'
+alias zz='systemctl suspend'
+alias mg='mg -n --'
+alias aspell='aspell -x'
+
+#functions
+
+# the hibernate script
+function zzz {
+	sudo bash -c "echo 4293914624 > /sys/power/image_size" &&
+	sudo sync &&
+	sudo bash -c "echo 3 > /proc/sys/vm/drop_caches" &&
+	systemctl hibernate
+}

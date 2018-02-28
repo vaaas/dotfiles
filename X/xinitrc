@@ -1,0 +1,8 @@
+#!/bin/sh
+emacs --daemon
+feh --bg-fill ~/wallpaper
+compton &
+setxkbmap us,gr -option grp:win_space_toggle,compose:menu
+pulseaudio -D &
+xfce4-panel &
+dbus-launch openbox

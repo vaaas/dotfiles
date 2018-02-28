@@ -1,0 +1,1 @@
+grep --color=always -C 10 -RFi -- "$@" | less -R

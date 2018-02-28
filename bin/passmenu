@@ -1,0 +1,9 @@
+#!/bin/sh
+
+IFS='
+'
+pass=$(find ~/Passwords -type f | dmenu)
+echo $pass
+pass="$(gpg -d -- $pass)"
+echo -n "$pass" | xclip -selection primary
+echo -n "$pass" | xclip -selection clipboard

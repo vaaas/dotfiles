@@ -1,0 +1,3 @@
+#!/bin/sh
+
+unix2dos < /dev/stdin | iconv -f 'utf-8' -t 'utf-16'
