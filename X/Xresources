@@ -1,12 +1,5 @@
-XTerm*locale: true
-xterm*metaSendsEscape: true
-
 !looks
-xterm*faceName: Monospace
-xterm*faceNameDoublesize: Unifont
 xterm*borderWidth: 0
-XTerm*scaleHeight: 0.9
-
 !colors
 *background: #0f0f0f
 *foreground: #c8c8c8
@@ -34,3 +27,11 @@ XTerm*scaleHeight: 0.9
 !white
 *color7:  #efefef
 *color15: #efefef
+XTerm*scrollttyoutput: false
+XTerm*ScrollTTYKeypress: true
+XTerm.vt100.metaSendsEscape: true
+XTerm.vt100.locale: true
+XTerm.vt100.backarrowKey: false
+XTerm.ttyModes: erase ^?
+XTerm.vt100.saveLines: 4096
+XTerm.vt100.faceName: Monospace:size=12

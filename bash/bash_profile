@@ -1,9 +1,10 @@
-export PATH=~/Binaries:$PATH
 export HISTCONTROL=ignoreboth:erasedups
 export BROWSER=firefox
-export EDITOR=gvimf
-export SUDO_EDITOR=emacsc
+export EDITOR=emacsc
+export SUDO_EDITOR=$EDITOR
 export PAGER=less
+export PATH=~/Binaries:$PATH
+export GDK_CORE_DEVICE_EVENTS=1
 
 if test -z "$DISPLAY" && test -n "$XDG_VTNR" && test "$XDG_VTNR" -eq 1
 then

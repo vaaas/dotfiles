@@ -1,8 +1,17 @@
 #!/bin/sh
 emacs --daemon
-feh --bg-fill ~/wallpaper
 compton &
 setxkbmap us,gr -option grp:win_space_toggle,compose:menu
-pulseaudio -D &
+xset -dpms s off
+set m 1 0
+hsetroot -cover wallpaper
+if test -e ~/.Xresources
+then
+	xrdb -merge ~/.Xresources
+fi
+dunst &
 xfce4-panel &
-dbus-launch openbox
+ibus-daemon -d &
+pulseaudio -D
+
+exec dbus-launch openbox

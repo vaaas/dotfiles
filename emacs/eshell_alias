@@ -1,9 +1,9 @@
-alias rm gvfs-trash -- $*
-alias update sudo sh -c "apt update && apt full-upgrade"
-alias zzz systemctl hibernate
-alias zz systemctl suspend
-alias emacs find-file $1
-alias brb systemctl restart
-alias bb systemctl poweroff
-alias powersave sudo cpupower frequency-set -g powersave
+alias brb systemctl reboot
 alias performance sudo cpupower frequency-set -g performance
+alias powersave sudo cpupower frequency-set -g powersave
+alias bb systemctl poweroff
+alias emacs find-file $1
+alias zz systemctl suspend
+alias zzz systemctl hibernate
+alias update sudo sh -c "apt update && apt full-upgrade"
+alias rm gvfs-trash -- $*

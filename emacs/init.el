@@ -1,7 +1,5 @@
-(setq package-archives
-	'(
-		 ("gnu" . "https://elpa.gnu.org/packages/")
-		 ("melpa" . "https://melpa.org/packages/")))
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+			 ("melpa" . "https://melpa.org/packages/")))
 
 (defconst monospace-font "Monospace:pixelsize=18")
 (defconst sans-serif-font "Roboto Condensed:pixelsize=18")
@@ -72,7 +70,9 @@
 (global-set-key (kbd "<escape>") 'keyboard-quit)
 (global-unset-key (kbd "<f1>"))
 (global-unset-key (kbd "<f2>"))
+(global-set-key (kbd "M-D") 'backward-kill-word)
 (global-unset-key (kbd "C-z"))
+(global-set-key (kbd "<f8>") 'count-words)
 
 (defvar frame-width-wide t)
 (defvar cached-mode-line nil)

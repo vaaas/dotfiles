@@ -54,8 +54,12 @@ nnoremap <Leader>tn :tabn<CR>
 nnoremap <Leader>ls :call ListDir()<CR>
 nnoremap <Leader>e :exe 'edit!' getline(".")<CR>
 nnoremap <Leader>v "+P
-"nnoremap C-j gj
-"nnoremap C-k gk
+nnoremap <Leader>b :b<space>
+nnoremap <Leader>cd :cd `zenity --file-selection --directory --separator=$'\n' -- filename='~'`<CR>
+nnoremap <C-j> gj
+nnoremap <C-k> gk
+nnoremap <C-h> g^
+nnoremap <C-l> g$
 
 "functions
 
