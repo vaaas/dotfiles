@@ -20,3 +20,5 @@ bin/set_time	~/Binaries/set_time
 bin/winconv	~/Binaries/winconv
 bin/word-frequency	~/Binaries/word-frequency
 bin/emacsc	~/Binaries/emacsc
+bin/thanks	~/Binaries/thanks
+bin/hdmi	~/Binaries/hdmi
