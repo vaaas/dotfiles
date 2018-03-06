@@ -1,8 +1,10 @@
-(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-			 ("melpa" . "https://melpa.org/packages/")))
+(setq package-archives
+	'(
+		 ("gnu" . "https://elpa.gnu.org/packages/")
+		 ("melpa" . "https://melpa.org/packages/")))
 
 (defconst monospace-font "Monospace:pixelsize=18")
-(defconst sans-serif-font "Roboto Condensed:pixelsize=18")
+(defconst sans-serif-font "Sans:pixelsize=16")
 (add-to-list 'default-frame-alist (cons 'font monospace-font))
 (add-to-list 'default-frame-alist '(width . 80))
 (add-to-list 'default-frame-alist '(height . 20))
