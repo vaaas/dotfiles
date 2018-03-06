@@ -11,7 +11,7 @@ then
 fi
 dunst &
 xfce4-panel &
-ibus-daemon -d &
+#ibus-daemon -d &
 pulseaudio -D
 
 exec dbus-launch openbox
