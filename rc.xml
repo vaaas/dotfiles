@@ -338,11 +338,12 @@
         <command>emacsclient -c -e '(term "bash")'</command>
       </action>
     </keybind>
+	<!--
 	<keybind key="W-space">
 		<action name="Execute">
 			<command>imeswitch</command>
 		</action>
-	</keybind>
+	</keybind>-->
 	<keybind key="W-p">
 	  <action name="Execute">
 	    <command>passmenu</command>

@@ -12,8 +12,7 @@
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (global-visual-line-mode 1)
-(load "~/.emacs.d/color-theme-molokai.el")
-(color-theme-molokai)
+(load "~/.emacs.d/vas-theme.el")
 
 (setq-default inhibit-startup-screen t)
 (setq-default make-backup-files nil)
@@ -75,6 +74,7 @@
 (global-set-key (kbd "M-D") 'backward-kill-word)
 (global-unset-key (kbd "C-z"))
 (global-set-key (kbd "<f8>") 'count-words)
+(global-set-key (kbd "<C-tab>") 'indent-region)
 
 (defvar frame-width-wide t)
 (defvar cached-mode-line nil)
