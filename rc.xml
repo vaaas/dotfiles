@@ -325,7 +325,7 @@
     </keybind>
     <keybind key="W-F2">
       <action name="Execute">
-        <command>emacsclient -c -e '(dired "~/")'</command>
+        <command>nautilus</command>
       </action>
     </keybind>
     <keybind key="W-F3">

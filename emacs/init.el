@@ -97,7 +97,8 @@
 
 ;dired
 (eval-after-load "dired" '(progn
-	(define-key dired-mode-map (kbd "<C-return>") 'dired-xdg-open-file)))
+	(define-key dired-mode-map (kbd "<C-return>") 'dired-xdg-open-file)
+	(define-key dired-mode-map (kbd "C-z i") 'dired-sxiv-marked)))
 
 
 (defvar writing-p nil)
@@ -138,3 +139,10 @@
 	(interactive)
 	(let* ((file (dired-get-filename)))
 		(call-process "xdg-open" nil 0 nil file)))
+
+(defun dired-sxiv-marked ()
+	"In dired, open all marked files with xdg-open"
+	(interactive)
+	(apply 'call-process "sxiv" nil 0 nil (dired-get-marked-files)))
+
+(put 'dired-find-alternate-file 'disabled nil)
