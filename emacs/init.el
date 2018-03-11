@@ -11,6 +11,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
+(electric-indent-mode -1)
 (global-visual-line-mode 1)
 (load "~/.emacs.d/vas-theme.el")
 
@@ -20,27 +21,30 @@
 (setq-default cursor-type 'bar)
 (setq-default fringes-outside-margins t)
 (setq-default indent-tabs-mode t)
-(setq-default tab-width 8)
 (setq-default lisp-indent-offset 0)
+(setq-default delete-by-moving-to-trash t)
 
-(defvaralias 'c-basic-offset 'tab-width)
-(defvaralias 'css-indent-offset 'tab-width)
-(defvaralias 'lisp-indent-offset 'tab-width)
-(defvaralias 'python-indent-offset 'tab-width)
-(defvaralias 'sgml-basic-offset 'tab-width)
-(defvaralias 'sh-basic-offset 'tab-width)
-(defvaralias 'js-indent-level 'tab-width)
+(setq-default tab-width 8)
+(setq-default c-basic-offset tab-width)
+(setq-default css-indent-offset tab-width)
+(setq-default python-indent-offset tab-width)
+(setq-default sgml-basic-offset tab-width)
+(setq-default sh-basic-offset tab-width)
+(setq-default js-indent-level tab-width)
 
-(add-hook 'lisp-mode-hook 'sensible-indentation)
-(add-hook 'python-mode-hook 'sensible-indentation)
-(add-hook 'javascript-mode-hook 'sensible-indentation)
-(add-hook 'css-mode-hook 'sensible-indentation)
 (add-hook 'term-mode-hook (lambda ()
 	(define-key term-raw-map (kbd "M-]") 'next-buffer)
-	(define-key term-raw-map (kbd "<f1>") 'term-line-mode)
+	(define-key term-raw-map (kbd "S-<f1>") 'execute-extended-command)
+  	(define-key term-raw-map (kbd "<f1>") 'term-line-mode)
+	(define-key term-raw-map (kbd "C-c") 'term-send-raw)
 	(local-set-key (kbd "<f2>") 'term-char-mode)))
 (add-hook 'shell-mode-hook 'shell-hooks-function)
 (add-hook 'eshell-mode-hook 'shell-hooks-function)
+(add-hook 'markdown-mode-hook (lambda ()
+	(local-unset-key (kbd "C-x"))
+	(local-unset-key (kbd "C-c"))))
+(add-hook 'nxml-mode-hook (lambda ()
+	(local-unset-key (kbd "M-h"))))
 
 (global-set-key "\t" 'tab-to-tab-stop)
 (global-set-key (kbd "M-1") 'delete-other-windows)
@@ -61,56 +65,63 @@
 (global-set-key (kbd "C-M-l") 'forward-word)
 (global-set-key (kbd "C-M-j") 'scroll-up-command)
 (global-set-key (kbd "C-M-k") 'scroll-down-command)
-(global-set-key (kbd "C-v") 'yank)
 (global-set-key (kbd "M-[") 'previous-buffer)
 (global-set-key (kbd "M-]") 'next-buffer)
-(global-set-key (kbd "<f12>") 'toggle-frame-width)
-(global-set-key (kbd "<f11>") 'toggle-frame-fullscreen)
-(global-set-key (kbd "<f10>") 'toggle-frame-font)
-(global-set-key (kbd "<f9>") 'rename-buffer)
 (global-set-key (kbd "<escape>") 'keyboard-quit)
 (global-unset-key (kbd "<f1>"))
 (global-unset-key (kbd "<f2>"))
 (global-set-key (kbd "M-D") 'backward-kill-word)
-(global-unset-key (kbd "C-z"))
-(global-set-key (kbd "<f8>") 'count-words)
 (global-set-key (kbd "<C-tab>") 'indent-region)
+(global-set-key (kbd "<RET>") 'newline-and-indent)
+(global-set-key (kbd "<backspace>") 'backward-delete-char)
+(global-set-key (kbd "M-e") 'execute-extended-command)
+; leader
+(global-unset-key (kbd "C-z"))
+(global-set-key (kbd "C-z w c") 'count-words)
+(global-set-key (kbd "C-z r n") 'rename-buffer)
+(global-set-key (kbd "C-z w m") 'toggle-writing)
+(global-set-key (kbd "C-z q") 'save-buffers-kill-terminal)
+(global-set-key (kbd "C-z k b") 'kill-buffer)
+(global-set-key (kbd "C-z l b") 'list-buffers)
+; typical keys
+(global-set-key (kbd "C-v") 'yank)
+(global-set-key (kbd "C-a") 'mark-whole-buffer)
+(global-set-key (kbd "C-x") 'kill-region)
+(global-set-key (kbd "C-c") 'kill-ring-save)
+(global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "C-f") 'isearch-forward)
+(global-set-key (kbd "C-S-f") 'isearch-backward)
+(define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
+(define-key isearch-mode-map (kbd "C-S-f") 'isearch-repeat-backward)
+(global-set-key (kbd "C-o") 'find-file)
 
-(defvar frame-width-wide t)
+;dired
+(eval-after-load "dired" '(progn
+	(define-key dired-mode-map (kbd "<C-return>") 'dired-xdg-open-file)))
+
+
+(defvar writing-p nil)
 (defvar cached-mode-line nil)
-(defun toggle-frame-width()
-	"toggle frame width"
+(defun toggle-writing()
+	"writing mode"
 	(interactive)
-	(if frame-width-wide
-		(progn
-			(set-window-fringes nil 0 0)
-			(defconst x (/ (- (frame-width) 80) 2))
-			(set-window-margins nil x x)
-			(setq cached-mode-line mode-line-format mode-line-format nil)
-			(setq frame-width-wide nil))
+	(if writing-p
 		(progn
 			(set-window-fringes nil 11 11)
 			(set-window-margins nil 0 0)
 			(setq mode-line-format cached-mode-line cached-mode-line nil)
-			(setq frame-width-wide t))))
-
-
-(defvar frame-font-proportional nil)
-(defun toggle-frame-font()
-	"toggle between sans serif and monospace font"
-	(interactive)
-	(if frame-font-proportional
-		(progn
 			(set-frame-font monospace-font)
-			(setq frame-font-proportional nil))
+			(toggle-frame-fullscreen)
+			(setq writing-p nil))
 		(progn
 			(set-frame-font sans-serif-font)
-			(setq frame-font-proportional t))))
-
-(defun sensible-indentation()
-	"sensible indentation"
-	(setq indent-tabs-mode t)
-	(setq tab-width 8))
+			(toggle-frame-fullscreen)
+			(sleep-for 0.5)
+			(set-window-fringes nil 0 0)
+			(defconst x (/ (- (frame-width) 80) 2))
+			(set-window-margins nil x x)
+			(setq cached-mode-line mode-line-format mode-line-format nil)
+			(setq writing-p t))))
 
 (defun shell-hooks-function()
 	"unset some bad bindings"
@@ -121,3 +132,9 @@
 	(let ((inhibit-read-only t))
 		(erase-buffer)
 		(eshell-send-input)))
+
+(defun dired-xdg-open-file ()
+	"In dired, open the file with xdg-open"
+	(interactive)
+	(let* ((file (dired-get-filename)))
+		(call-process "xdg-open" nil 0 nil file)))

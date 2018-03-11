@@ -325,12 +325,17 @@
     </keybind>
     <keybind key="W-F2">
       <action name="Execute">
-        <command>nautilus</command>
+        <command>emacsclient -c -e '(dired "~/")'</command>
       </action>
     </keybind>
     <keybind key="W-F3">
       <action name="Execute">
         <command>emacsclient -c</command>
+      </action>
+    </keybind>
+    <keybind key="W-F4">
+      <action name="Execute">
+        <command>emacsclient -c -e '(term "python3")'</command>
       </action>
     </keybind>
     <keybind key="W-grave">
