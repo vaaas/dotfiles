@@ -13,7 +13,6 @@
 (menu-bar-mode -1)
 (electric-indent-mode -1)
 (global-visual-line-mode 1)
-(load "~/.emacs.d/vas-theme.el")
 
 (setq-default inhibit-startup-screen t)
 (setq-default make-backup-files nil)
@@ -32,6 +31,19 @@
 (setq-default sh-basic-offset tab-width)
 (setq-default js-indent-level tab-width)
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(italic ((t (:foreground "lime green" :slant italic)))))
+
 (add-hook 'term-mode-hook (lambda ()
 	(define-key term-raw-map (kbd "M-]") 'next-buffer)
 	(define-key term-raw-map (kbd "S-<f1>") 'execute-extended-command)
@@ -42,7 +54,11 @@
 (add-hook 'eshell-mode-hook 'shell-hooks-function)
 (add-hook 'markdown-mode-hook (lambda ()
 	(local-unset-key (kbd "C-x"))
-	(local-unset-key (kbd "C-c"))))
+	(local-unset-key (kbd "C-c"))
+	(local-set-key (kbd "C-z m a") 'markdown-insert-link)
+	(local-set-key (kbd "C-z m i") 'markdown-insert-image)
+	(local-set-key (kbd "C-z m e") 'markdown-insert-italic)
+	(local-set-key (kbd "C-z m s") 'markdown-insert-bold)))
 (add-hook 'nxml-mode-hook (lambda ()
 	(local-unset-key (kbd "M-h"))))
 
@@ -83,6 +99,9 @@
 (global-set-key (kbd "C-z q") 'save-buffers-kill-terminal)
 (global-set-key (kbd "C-z k b") 'kill-buffer)
 (global-set-key (kbd "C-z l b") 'list-buffers)
+(global-set-key (kbd "C-z f i") 'find-name-dired)
+(global-set-key (kbd "C-z w t") 'firefox-open-thesaurus)
+(global-set-key (kbd "C-z w d") 'firefox-open-dictionary)
 ; typical keys
 (global-set-key (kbd "C-v") 'yank)
 (global-set-key (kbd "C-a") 'mark-whole-buffer)
@@ -144,5 +163,19 @@
 	"In dired, open all marked files with xdg-open"
 	(interactive)
 	(apply 'call-process "sxiv" nil 0 nil (dired-get-marked-files)))
+
+(defun firefox-open-new-window (url)
+	"open url in a new firefox window"
+	(call-process "firefox" nil 0 nil "--new-window" url))
+
+(defun firefox-open-thesaurus ()
+	"open thesaurus.com definition in firefox"
+	(interactive)
+	(firefox-open-new-window (concat "http://www.thesaurus.com/browse/" (read-string "word: "))))
+
+(defun firefox-open-dictionary ()
+	"open dictionary.com definition in firefox"
+	(interactive)
+	(firefox-open-new-window (concat "http://www.dictionary.com/browse/" (read-string "word: "))))
 
 (put 'dired-find-alternate-file 'disabled nil)
