@@ -102,6 +102,7 @@
 (global-set-key (kbd "C-z f i") 'find-name-dired)
 (global-set-key (kbd "C-z w t") 'firefox-open-thesaurus)
 (global-set-key (kbd "C-z w d") 'firefox-open-dictionary)
+(global-set-key (kbd "C-z <RET>") 'espeak-line)
 ; typical keys
 (global-set-key (kbd "C-v") 'yank)
 (global-set-key (kbd "C-a") 'mark-whole-buffer)
@@ -177,5 +178,18 @@
 	"open dictionary.com definition in firefox"
 	(interactive)
 	(firefox-open-new-window (concat "http://www.dictionary.com/browse/" (read-string "word: "))))
+
+(defun espeak-line ()
+	"espeak line"
+	(interactive)
+	(call-process "espeak-ng" nil 0 nil (thing-at-point 'line t)))
+
+(defun frame-sans-serif-font()
+	(interactive)
+	(set-frame-font sans-serif-font))
+
+(defun frame-monospace-font()
+	(interactive)
+	(set-frame-font monospace-font))
 
 (put 'dired-find-alternate-file 'disabled nil)
