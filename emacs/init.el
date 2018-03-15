@@ -103,6 +103,7 @@
 (global-set-key (kbd "C-z w t") 'firefox-open-thesaurus)
 (global-set-key (kbd "C-z w d") 'firefox-open-dictionary)
 (global-set-key (kbd "C-z <RET>") 'espeak-line)
+(global-set-key (kbd "C-z m a") 'woman)
 ; typical keys
 (global-set-key (kbd "C-v") 'yank)
 (global-set-key (kbd "C-a") 'mark-whole-buffer)
