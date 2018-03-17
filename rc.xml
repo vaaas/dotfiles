@@ -340,7 +340,7 @@
     </keybind>
     <keybind key="W-grave">
       <action name="Execute">
-        <command>emacsclient -c -e '(term "bash")'</command>
+        <command>xterm</command>
       </action>
     </keybind>
 	<!--

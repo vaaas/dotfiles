@@ -22,7 +22,6 @@
 (setq-default indent-tabs-mode t)
 (setq-default lisp-indent-offset 0)
 (setq-default delete-by-moving-to-trash t)
-
 (setq-default tab-width 8)
 (setq-default c-basic-offset tab-width)
 (setq-default css-indent-offset tab-width)
@@ -30,97 +29,108 @@
 (setq-default sgml-basic-offset tab-width)
 (setq-default sh-basic-offset tab-width)
 (setq-default js-indent-level tab-width)
+(setq-default vc-follow-symlinks t)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(custom-set-variables)
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(italic ((t (:foreground "lime green" :slant italic)))))
+	'(italic ((t (:foreground "lime green" :slant italic)))))
 
-(add-hook 'term-mode-hook (lambda ()
-	(define-key term-raw-map (kbd "M-]") 'next-buffer)
-	(define-key term-raw-map (kbd "S-<f1>") 'execute-extended-command)
-  	(define-key term-raw-map (kbd "<f1>") 'term-line-mode)
-	(define-key term-raw-map (kbd "C-c") 'term-send-raw)
-	(local-set-key (kbd "<f2>") 'term-char-mode)))
-(add-hook 'shell-mode-hook 'shell-hooks-function)
-(add-hook 'eshell-mode-hook 'shell-hooks-function)
-(add-hook 'markdown-mode-hook (lambda ()
-	(local-unset-key (kbd "C-x"))
-	(local-unset-key (kbd "C-c"))
-	(local-set-key (kbd "C-z m a") 'markdown-insert-link)
-	(local-set-key (kbd "C-z m i") 'markdown-insert-image)
-	(local-set-key (kbd "C-z m e") 'markdown-insert-italic)
-	(local-set-key (kbd "C-z m s") 'markdown-insert-bold)))
-(add-hook 'nxml-mode-hook (lambda ()
-	(local-unset-key (kbd "M-h"))))
+(defvar my-keys-minor-mode-map (make-sparse-keymap)
+	"Keymap for my-keys-minor-mode")
 
-(global-set-key "\t" 'tab-to-tab-stop)
-(global-set-key (kbd "M-1") 'delete-other-windows)
-(global-set-key (kbd "M-2") 'split-window-below)
-(global-set-key (kbd "M-3") 'split-window-right)
-(global-set-key (kbd "M-0") 'delete-window)
-(global-set-key (kbd "M-o") 'other-window)
-(global-set-key (kbd "M-n") 'make-frame-command)
-(global-set-key (kbd "M-j") 'next-line)
-(global-set-key (kbd "M-k") 'previous-line)
-(global-set-key (kbd "M-h") 'backward-char)
-(global-set-key (kbd "M-l") 'forward-char)
-(global-set-key (kbd "M-H") 'beginning-of-line)
-(global-set-key (kbd "M-L") 'end-of-line)
-(global-set-key (kbd "M-J") 'forward-paragraph)
-(global-set-key (kbd "M-K") 'backward-paragraph)
-(global-set-key (kbd "C-M-h") 'backward-word)
-(global-set-key (kbd "C-M-l") 'forward-word)
-(global-set-key (kbd "C-M-j") 'scroll-up-command)
-(global-set-key (kbd "C-M-k") 'scroll-down-command)
-(global-set-key (kbd "M-[") 'previous-buffer)
-(global-set-key (kbd "M-]") 'next-buffer)
-(global-set-key (kbd "<escape>") 'keyboard-quit)
-(global-unset-key (kbd "<f1>"))
-(global-unset-key (kbd "<f2>"))
-(global-set-key (kbd "M-D") 'backward-kill-word)
-(global-set-key (kbd "<C-tab>") 'indent-region)
-(global-set-key (kbd "<RET>") 'newline-and-indent)
-(global-set-key (kbd "<backspace>") 'backward-delete-char)
-(global-set-key (kbd "M-e") 'execute-extended-command)
+(define-minor-mode my-keys-minor-mode
+	"Override major mode keys"
+	:init-value t
+	:lighter " my keys"
+	:keymap my-keys-minor-mode-map)
+
+(my-keys-minor-mode 1)
+
+(define-key my-keys-minor-mode-map (kbd "M-1") 'delete-other-windows)
+(define-key my-keys-minor-mode-map (kbd "M-2") 'split-window-below)
+(define-key my-keys-minor-mode-map (kbd "M-3") 'split-window-right)
+(define-key my-keys-minor-mode-map (kbd "M-0") 'delete-window)
+(define-key my-keys-minor-mode-map (kbd "M-o") 'other-window)
+(define-key my-keys-minor-mode-map (kbd "M-n") 'make-frame-command)
+(define-key my-keys-minor-mode-map (kbd "M-j") 'next-line)
+(define-key my-keys-minor-mode-map (kbd "M-k") 'previous-line)
+(define-key my-keys-minor-mode-map (kbd "M-h") 'backward-char)
+(define-key my-keys-minor-mode-map (kbd "M-l") 'forward-char)
+(define-key my-keys-minor-mode-map (kbd "M-H") 'beginning-of-line)
+(define-key my-keys-minor-mode-map (kbd "M-L") 'end-of-line)
+(define-key my-keys-minor-mode-map (kbd "M-J") 'forward-paragraph)
+(define-key my-keys-minor-mode-map (kbd "M-K") 'backward-paragraph)
+(define-key my-keys-minor-mode-map (kbd "C-M-h") 'backward-word)
+(define-key my-keys-minor-mode-map (kbd "C-M-l") 'forward-word)
+(define-key my-keys-minor-mode-map (kbd "C-M-j") 'scroll-up-command)
+(define-key my-keys-minor-mode-map (kbd "C-M-k") 'scroll-down-command)
+(define-key my-keys-minor-mode-map (kbd "M-[") 'previous-buffer)
+(define-key my-keys-minor-mode-map (kbd "M-]") 'next-buffer)
+(define-key my-keys-minor-mode-map (kbd "<escape>") 'keyboard-quit)
+(define-key my-keys-minor-mode-map (kbd "M-D") 'backward-kill-word)
+(define-key my-keys-minor-mode-map (kbd "<C-tab>") 'indent-region)
+(define-key my-keys-minor-mode-map (kbd "M-e") 'execute-extended-command)
+
 ; leader
-(global-unset-key (kbd "C-z"))
-(global-set-key (kbd "C-z w c") 'count-words)
-(global-set-key (kbd "C-z r n") 'rename-buffer)
-(global-set-key (kbd "C-z w m") 'toggle-writing)
-(global-set-key (kbd "C-z q") 'save-buffers-kill-terminal)
-(global-set-key (kbd "C-z k b") 'kill-buffer)
-(global-set-key (kbd "C-z l b") 'list-buffers)
-(global-set-key (kbd "C-z f i") 'find-name-dired)
-(global-set-key (kbd "C-z w t") 'firefox-open-thesaurus)
-(global-set-key (kbd "C-z w d") 'firefox-open-dictionary)
-(global-set-key (kbd "C-z <RET>") 'espeak-line)
-(global-set-key (kbd "C-z m a") 'woman)
+(define-key my-keys-minor-mode-map (kbd "C-z") nil)
+(define-key my-keys-minor-mode-map (kbd "C-z w c") 'count-words)
+(define-key my-keys-minor-mode-map (kbd "C-z r n") 'rename-buffer)
+(define-key my-keys-minor-mode-map (kbd "C-z w m") 'toggle-writing)
+(define-key my-keys-minor-mode-map (kbd "C-z q") 'save-buffers-kill-terminal)
+(define-key my-keys-minor-mode-map (kbd "C-z k b") 'kill-buffer)
+(define-key my-keys-minor-mode-map (kbd "C-z l b") 'list-buffers)
+(define-key my-keys-minor-mode-map (kbd "C-z f i") 'find-name-dired)
+(define-key my-keys-minor-mode-map (kbd "C-z w t") 'firefox-open-thesaurus)
+(define-key my-keys-minor-mode-map (kbd "C-z w d") 'firefox-open-dictionary)
+(define-key my-keys-minor-mode-map (kbd "C-z <RET>") 'espeak-line)
+(define-key my-keys-minor-mode-map (kbd "C-z m a") 'woman)
+(define-key my-keys-minor-mode-map (kbd "C-z x t") 'xterm-here)
+(define-key my-keys-minor-mode-map (kbd "C-z t e") (lambda()
+	(interactive)
+	(term "/bin/bash")))
+(define-key my-keys-minor-mode-map (kbd "C-z c d") 'cd)
+(define-key my-keys-minor-mode-map (kbd "C-z g r") 'rgrep)
+
 ; typical keys
-(global-set-key (kbd "C-v") 'yank)
-(global-set-key (kbd "C-a") 'mark-whole-buffer)
-(global-set-key (kbd "C-x") 'kill-region)
-(global-set-key (kbd "C-c") 'kill-ring-save)
-(global-set-key (kbd "C-s") 'save-buffer)
-(global-set-key (kbd "C-f") 'isearch-forward)
-(global-set-key (kbd "C-S-f") 'isearch-backward)
+(define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
+(define-key my-keys-minor-mode-map (kbd "C-a") 'mark-whole-buffer)
+(define-key my-keys-minor-mode-map (kbd "C-x") 'kill-region)
+(define-key my-keys-minor-mode-map (kbd "C-c") 'kill-ring-save)
+(define-key my-keys-minor-mode-map (kbd "C-s") 'save-buffer)
+(define-key my-keys-minor-mode-map (kbd "C-f") 'isearch-forward)
+(define-key my-keys-minor-mode-map (kbd "C-S-f") 'isearch-backward)
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "C-S-f") 'isearch-repeat-backward)
-(global-set-key (kbd "C-o") 'find-file)
+(define-key my-keys-minor-mode-map (kbd "C-o") 'find-file)
+
+;apropos mode
+(with-eval-after-load "apropos"
+	(define-key apropos-mode-map (kbd "j") 'forward-button)
+	(define-key apropos-mode-map (kbd "k") 'backward-button))
+
+;help mode
+(with-eval-after-load "help-mode"
+	(define-key help-mode-map (kbd "j") 'forward-button)
+	(define-key help-mode-map (kbd "k") 'backward-button))
+
+;compilation mode
+(with-eval-after-load "compile"
+	(define-key compilation-mode-map (kbd "j") 'compilation-next-error)
+	(define-key compilation-mode-map (kbd "k") 'compilation-previous-error)
+	(define-key compilation-mode-map (kbd "J") 'compilation-next-file)
+	(define-key compilation-mode-map (kbd "K") 'compilation-previous-file))
+
+;markdown
+(with-eval-after-load "markdown-mode"
+	(define-key markdown-mode-map (kbd "C-z m a") 'markdown-insert-link)
+	(define-key markdown-mode-map (kbd "C-z m i") 'markdown-insert-image)
+	(define-key markdown-mode-map (kbd "C-z m e") 'markdown-insert-italic)
+	(define-key markdown-mode-map (kbd "C-z m s") 'markdown-insert-bold))
 
 ;dired
-(eval-after-load "dired" '(progn
+(with-eval-after-load "dired"
 	(define-key dired-mode-map (kbd "<C-return>") 'dired-xdg-open-file)
-	(define-key dired-mode-map (kbd "C-z i") 'dired-sxiv-marked)))
-
+	(define-key dired-mode-map (kbd "C-z i") 'dired-sxiv-marked))
 
 (defvar writing-p nil)
 (defvar cached-mode-line nil)
@@ -129,25 +139,15 @@
 	(interactive)
 	(if writing-p
 		(progn
-			(set-window-fringes nil 11 11)
-			(set-window-margins nil 0 0)
 			(setq mode-line-format cached-mode-line cached-mode-line nil)
 			(set-frame-font monospace-font)
-			(toggle-frame-fullscreen)
 			(setq writing-p nil))
 		(progn
 			(set-frame-font sans-serif-font)
-			(toggle-frame-fullscreen)
-			(sleep-for 0.5)
-			(set-window-fringes nil 0 0)
-			(defconst x (/ (- (frame-width) 80) 2))
-			(set-window-margins nil x x)
 			(setq cached-mode-line mode-line-format mode-line-format nil)
+			(sleep-for 0.5)
+			(set-frame-width (selected-frame) 80)
 			(setq writing-p t))))
-
-(defun shell-hooks-function()
-	"unset some bad bindings"
-	(local-unset-key (kbd "C-M-l")))
 
 (defun eshell/clear ()
 	"Clear the eshell buffer."
@@ -192,5 +192,9 @@
 (defun frame-monospace-font()
 	(interactive)
 	(set-frame-font monospace-font))
+
+(defun xterm-here()
+	(interactive)
+	(call-process "xterm" nil 0 nil "-e" (concat "cd " default-directory " && bash")))
 
 (put 'dired-find-alternate-file 'disabled nil)
