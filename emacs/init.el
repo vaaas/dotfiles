@@ -95,7 +95,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
 (define-key my-keys-minor-mode-map (kbd "C-a") 'mark-whole-buffer)
 (define-key my-keys-minor-mode-map (kbd "C-x") 'kill-region)
-(define-key my-keys-minor-mode-map (kbd "C-c") 'kill-ring-save)
+(define-key my-keys-minor-mode-map (kbd "C-X") 'kill-ring-save)
 (define-key my-keys-minor-mode-map (kbd "C-s") 'save-buffer)
 (define-key my-keys-minor-mode-map (kbd "C-f") 'isearch-forward)
 (define-key my-keys-minor-mode-map (kbd "C-S-f") 'isearch-backward)
