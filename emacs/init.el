@@ -90,6 +90,7 @@
 	(term "/bin/bash")))
 (define-key my-keys-minor-mode-map (kbd "C-z c d") 'cd)
 (define-key my-keys-minor-mode-map (kbd "C-z g r") 'rgrep)
+(define-key my-keys-minor-mode-map (kbd "C-z e b") 'eval-buffer)
 
 ; typical keys
 (define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
@@ -111,14 +112,17 @@
 ;help mode
 (with-eval-after-load "help-mode"
 	(define-key help-mode-map (kbd "j") 'forward-button)
-	(define-key help-mode-map (kbd "k") 'backward-button))
+	(define-key help-mode-map (kbd "k") 'backward-button)
+	(define-key help-mode-map (kbd "h") 'help-go-back)
+	(define-key help-mode-map (kbd "l") 'help-go-forward)
+	(define-key help-mode-map (kbd "?") 'describe-mode))
 
-;compilation mode
-(with-eval-after-load "compile"
-	(define-key compilation-mode-map (kbd "j") 'compilation-next-error)
-	(define-key compilation-mode-map (kbd "k") 'compilation-previous-error)
-	(define-key compilation-mode-map (kbd "J") 'compilation-next-file)
-	(define-key compilation-mode-map (kbd "K") 'compilation-previous-file))
+;grep mode
+(with-eval-after-load "grep"
+	(define-key grep-mode-map (kbd "j") 'compilation-next-error)
+	(define-key grep-mode-map (kbd "k") 'compilation-previous-error)
+	(define-key grep-mode-map (kbd "J") 'compilation-next-file)
+	(define-key grep-mode-map (kbd "K") 'compilation-previous-file))
 
 ;markdown
 (with-eval-after-load "markdown-mode"
