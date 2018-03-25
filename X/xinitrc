@@ -1,13 +1,13 @@
 #!/bin/sh
-emacs --daemon
+emacs --daemon &
 compton &
 setxkbmap us,gr -option grp:win_space_toggle,compose:menu
 xset -dpms s off
 set m 1 0
-hsetroot -cover wallpaper
+hsetroot -cover wallpaper &
 if test -e ~/.Xresources
 then
-	xrdb -merge ~/.Xresources
+	xrdb -merge ~/.Xresources &
 fi
 dunst &
 xfce4-panel &

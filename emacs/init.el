@@ -1,3 +1,10 @@
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setq package-archives
 	'(
 		 ("gnu" . "https://elpa.gnu.org/packages/")
@@ -8,7 +15,6 @@
 (add-to-list 'default-frame-alist (cons 'font monospace-font))
 (add-to-list 'default-frame-alist '(width . 80))
 (add-to-list 'default-frame-alist '(height . 20))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
@@ -31,8 +37,6 @@
 (setq-default sh-basic-offset tab-width)
 (setq-default js-indent-level tab-width)
 (setq-default vc-follow-symlinks t)
-(setq-default js2-strict-missing-semi-warning nil)
-(setq-default js2-missing-semi-one-line-override nil)
 
 (custom-set-variables)
 (custom-set-faces
@@ -73,6 +77,8 @@
 (define-key my-keys-minor-mode-map (kbd "M-D") 'backward-kill-word)
 (define-key my-keys-minor-mode-map (kbd "<C-tab>") 'indent-region)
 (define-key my-keys-minor-mode-map (kbd "M-e") 'execute-extended-command)
+(define-key my-keys-minor-mode-map (kbd "C-M-<backspace>") 'kill-whole-line)
+(define-key text-mode-map (kbd "<tab>") 'tab-to-tab-stop)
 
 ; leader
 (define-key my-keys-minor-mode-map (kbd "C-z") nil)

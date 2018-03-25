@@ -12,7 +12,7 @@ then
 elif (test -n "$XDG_VTNR" && test "$XDG_VTNR" -eq 2) ||
      (test -n "$SSH_CLIENT" || test -n "$SSH_TTY")
 then
-	screen -xRR VAS
+	exec screen -xRR VAS
 else
 	source ~/.bashrc
 fi
