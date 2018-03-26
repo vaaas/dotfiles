@@ -104,6 +104,9 @@
 (define-key my-keys-minor-mode-map (kbd "C-z e b") 'eval-buffer)
 (define-key my-keys-minor-mode-map (kbd "C-z v p") 'variable-pitch-mode)
 (define-key my-keys-minor-mode-map (kbd "C-z w m") 'centre-window-margins)
+(define-key my-keys-minor-mode-map (kbd "C-z r u n") 'async-shell-command)
+(define-key my-keys-minor-mode-map (kbd "C-z p i p e") 'shell-command-on-region)
+(define-key my-keys-minor-mode-map (kbd "C-z s h") 'eshell-mode)
 
 ; typical keys
 (define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
@@ -112,6 +115,8 @@
 (define-key my-keys-minor-mode-map (kbd "S-C-x") 'kill-ring-save)
 (define-key my-keys-minor-mode-map (kbd "C-s") 'save-buffer)
 (define-key my-keys-minor-mode-map (kbd "C-f") 'isearch-forward)
+(define-key my-keys-minor-mode-map (kbd "C-r") 'query-replace)
+(define-key my-keys-minor-mode-map (kbd "C-S-r") 'query-replace-regexp)
 (define-key my-keys-minor-mode-map (kbd "S-C-f") 'isearch-backward)
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "C-S-f") 'isearch-repeat-backward)

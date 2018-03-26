@@ -12,5 +12,6 @@ fi
 dunst &
 #ibus-daemon -d &
 pulseaudio -D
+bar &
 
 exec dbus-launch dwm
