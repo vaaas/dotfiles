@@ -79,6 +79,7 @@ static const char *firefoxcmd[] = { "firefox", NULL };
 static const char *nautiluscmd[] = { "nautilus", NULL };
 static const char *emacscmd[] = { "emacsclient", "-c", NULL };
 static const char *lockcmd[] = { "xtrlock", "-f", "-b", NULL };
+static const char *passcmd[] = { "passmenu", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -88,6 +89,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F2,     spawn,          {.v = nautiluscmd } },
         { MODKEY,                       XK_F3,     spawn,          {.v = emacscmd } },
 	{ MODKEY|ControlMask,           XK_l,      spawn,          {.v = lockcmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = passcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
