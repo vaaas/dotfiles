@@ -103,6 +103,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-z g r") 'rgrep)
 (define-key my-keys-minor-mode-map (kbd "C-z e b") 'eval-buffer)
 (define-key my-keys-minor-mode-map (kbd "C-z v p") 'variable-pitch-mode)
+(define-key my-keys-minor-mode-map (kbd "C-z w m") 'centre-window-margins)
 
 ; typical keys
 (define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
@@ -195,5 +196,10 @@
 (defun xterm-here()
 	(interactive)
 	(call-process "xterm" nil 0 nil "-e" (concat "cd " default-directory " && bash")))
+
+(defun centre-window-margins()
+	(interactive)
+	(defconst x (/ (- (frame-width) 80) 2))
+	(set-window-margins nil x x))
 
 (put 'dired-find-alternate-file 'disabled nil)
