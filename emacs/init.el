@@ -1,8 +1,3 @@
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
 (package-initialize)
 
 (setq package-archives
@@ -10,8 +5,6 @@
 		 ("gnu" . "https://elpa.gnu.org/packages/")
 		 ("melpa" . "https://melpa.org/packages/")))
 
-(defconst monospace-font "Monospace:pixelsize=18")
-(defconst sans-serif-font "Sans:pixelsize=16")
 (add-to-list 'default-frame-alist (cons 'font monospace-font))
 (add-to-list 'default-frame-alist '(width . 80))
 (add-to-list 'default-frame-alist '(height . 20))
@@ -38,9 +31,20 @@
 (setq-default js-indent-level tab-width)
 (setq-default vc-follow-symlinks t)
 
-(custom-set-variables)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 (custom-set-faces
-	'(italic ((t (:foreground "lime green" :slant italic)))))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:foreground "#ffffff"))))
+ '(italic ((t (:foreground "lime green" :slant italic))))
+ '(variable-pitch ((t (:height 120 :family "Sans Serif")))))
 
 (defvar my-keys-minor-mode-map (make-sparse-keymap)
 	"Keymap for my-keys-minor-mode")
@@ -84,7 +88,6 @@
 (define-key my-keys-minor-mode-map (kbd "C-z") nil)
 (define-key my-keys-minor-mode-map (kbd "C-z w c") 'count-words)
 (define-key my-keys-minor-mode-map (kbd "C-z r n") 'rename-buffer)
-(define-key my-keys-minor-mode-map (kbd "C-z w m") 'toggle-writing)
 (define-key my-keys-minor-mode-map (kbd "C-z q") 'save-buffers-kill-terminal)
 (define-key my-keys-minor-mode-map (kbd "C-z k b") 'kill-buffer)
 (define-key my-keys-minor-mode-map (kbd "C-z l b") 'list-buffers)
@@ -100,6 +103,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-z c d") 'cd)
 (define-key my-keys-minor-mode-map (kbd "C-z g r") 'rgrep)
 (define-key my-keys-minor-mode-map (kbd "C-z e b") 'eval-buffer)
+(define-key my-keys-minor-mode-map (kbd "C-z v p") 'variable-pitch-mode)
 
 ; typical keys
 (define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
@@ -144,23 +148,6 @@
 (with-eval-after-load "dired"
 	(define-key dired-mode-map (kbd "<C-return>") 'dired-xdg-open-file)
 	(define-key dired-mode-map (kbd "C-z i") 'dired-sxiv-marked))
-
-(defvar writing-p nil)
-(defvar cached-mode-line nil)
-(defun toggle-writing()
-	"writing mode"
-	(interactive)
-	(if writing-p
-		(progn
-			(setq mode-line-format cached-mode-line cached-mode-line nil)
-			(set-frame-font monospace-font)
-			(setq writing-p nil))
-		(progn
-			(set-frame-font sans-serif-font)
-			(setq cached-mode-line mode-line-format mode-line-format nil)
-			(sleep-for 0.5)
-			(set-frame-width (selected-frame) 80)
-			(setq writing-p t))))
 
 (defun eshell/clear ()
 	"Clear the eshell buffer."

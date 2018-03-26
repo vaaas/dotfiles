@@ -10,8 +10,7 @@ then
 	xrdb -merge ~/.Xresources &
 fi
 dunst &
-xfce4-panel &
 #ibus-daemon -d &
 pulseaudio -D
 
-exec dbus-launch openbox
+exec dbus-launch dwm
