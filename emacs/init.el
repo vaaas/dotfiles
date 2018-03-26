@@ -42,7 +42,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:foreground "#ffffff"))))
+ '(default ((t (:background "#0f0f0f" :foreground "#ffffff" :family "Dina"))))
  '(italic ((t (:foreground "lime green" :slant italic))))
  '(variable-pitch ((t (:height 120 :family "Sans Serif")))))
 
