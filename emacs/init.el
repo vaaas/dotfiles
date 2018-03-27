@@ -42,7 +42,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "#0f0f0f" :foreground "#ffffff" :family "Dina"))))
- '(italic ((t (:foreground "lime green" :slant italic))))
+ '(markdown-hr-face ((t (:inherit markdown-markup-face :height 2.0))))
+ '(markdown-italic-face ((t (:foreground "lime green" :slant italic))))
+ '(markdown-markup-face ((t (:foreground "goldenrod1"))))
  '(variable-pitch ((t (:height 120 :family "Sans Serif")))))
 
 (defvar my-keys-minor-mode-map (make-sparse-keymap)
