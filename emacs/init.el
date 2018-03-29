@@ -108,7 +108,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-z w m") 'centre-window-margins)
 (define-key my-keys-minor-mode-map (kbd "C-z r u n") 'async-shell-command)
 (define-key my-keys-minor-mode-map (kbd "C-z p i p e") 'shell-command-on-region)
-(define-key my-keys-minor-mode-map (kbd "C-z s h") 'eshell-mode)
+(define-key my-keys-minor-mode-map (kbd "C-z s h") 'eshell)
 
 ; typical keys
 (define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
@@ -154,7 +154,9 @@
 ;dired
 (with-eval-after-load "dired"
 	(define-key dired-mode-map (kbd "<C-return>") 'dired-xdg-open-file)
-	(define-key dired-mode-map (kbd "C-z i") 'dired-sxiv-marked))
+	(define-key dired-mode-map (kbd "C-z i") 'dired-sxiv-marked)
+	(define-key dired-mode-map (kbd "j") 'dired-next-line)
+	(define-key dired-mode-map (kbd "k") 'dired-previous-line))
 
 (defun eshell/clear ()
 	"Clear the eshell buffer."
