@@ -1,7 +1,10 @@
 #!/bin/sh
 
+IFS='
+'
+
 while true
 do
-	xsetroot -name $(date "+%H:%M")
+	xsetroot -name $(date "+%Y-%m-%d %H:%M")
 	sleep 1m
 done

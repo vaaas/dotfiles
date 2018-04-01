@@ -156,7 +156,12 @@
 	(define-key dired-mode-map (kbd "<C-return>") 'dired-xdg-open-file)
 	(define-key dired-mode-map (kbd "C-z i") 'dired-sxiv-marked)
 	(define-key dired-mode-map (kbd "j") 'dired-next-line)
-	(define-key dired-mode-map (kbd "k") 'dired-previous-line))
+	(define-key dired-mode-map (kbd "k") 'dired-previous-line)
+	(put 'dired-find-alternate-file 'disabled nil)
+	(define-key dired-mode-map (kbd "h") (lambda() (interactive) (find-alternate-file "..")))
+	(define-key dired-mode-map (kbd "l") 'dired-find-alternate-file)
+	(define-key dired-mode-map (kbd "J") 'forward-page)
+	(define-key dired-mode-map (kbd "K") 'backward-page))
 
 (defun eshell/clear ()
 	"Clear the eshell buffer."
