@@ -120,9 +120,15 @@
 (define-key my-keys-minor-mode-map (kbd "C-r") 'query-replace)
 (define-key my-keys-minor-mode-map (kbd "C-S-r") 'query-replace-regexp)
 (define-key my-keys-minor-mode-map (kbd "S-C-f") 'isearch-backward)
+(define-key my-keys-minor-mode-map (kbd "C-o") 'find-file)
+
+;search mode
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "C-S-f") 'isearch-repeat-backward)
-(define-key my-keys-minor-mode-map (kbd "C-o") 'find-file)
+
+;buffer mode
+(define-key Buffer-menu-mode-map (kbd "j") 'next-line)
+(define-key Buffer-menu-mode-map (kbd "k") 'previous-line)
 
 ;apropos mode
 (with-eval-after-load "apropos"
