@@ -29,6 +29,7 @@
 (setq-default sh-basic-offset tab-width)
 (setq-default js-indent-level tab-width)
 (setq-default vc-follow-symlinks t)
+(setq-default backward-delete-char-untabify-method nil)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -68,7 +69,7 @@
 (define-key my-keys-minor-mode-map (kbd "M-k") 'previous-line)
 (define-key my-keys-minor-mode-map (kbd "M-h") 'backward-char)
 (define-key my-keys-minor-mode-map (kbd "M-l") 'forward-char)
-(define-key my-keys-minor-mode-map (kbd "M-H") 'beginning-of-line)
+(define-key my-keys-minor-mode-map (kbd "M-H") 'beginning-of-line-text)
 (define-key my-keys-minor-mode-map (kbd "M-L") 'end-of-line)
 (define-key my-keys-minor-mode-map (kbd "M-J") 'forward-paragraph)
 (define-key my-keys-minor-mode-map (kbd "M-K") 'backward-paragraph)
@@ -80,10 +81,10 @@
 (define-key my-keys-minor-mode-map (kbd "M-]") 'next-buffer)
 (define-key my-keys-minor-mode-map (kbd "<escape>") 'keyboard-quit)
 (define-key my-keys-minor-mode-map (kbd "M-D") 'backward-kill-word)
-(define-key my-keys-minor-mode-map (kbd "<C-tab>") 'indent-region)
+(define-key my-keys-minor-mode-map (kbd "<C-tab>") 'indent-rigidly-right-to-tab-stop)
+(define-key my-keys-minor-mode-map (kbd "<S-C-tab>") 'indent-rigidly-left-to-tab-stop)
 (define-key my-keys-minor-mode-map (kbd "M-e") 'execute-extended-command)
 (define-key my-keys-minor-mode-map (kbd "C-M-<backspace>") 'kill-whole-line)
-(define-key text-mode-map (kbd "<tab>") 'tab-to-tab-stop)
 
 ; leader
 (define-key my-keys-minor-mode-map (kbd "C-z") nil)
@@ -109,6 +110,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-z r u n") 'async-shell-command)
 (define-key my-keys-minor-mode-map (kbd "C-z p i p e") 'shell-command-on-region)
 (define-key my-keys-minor-mode-map (kbd "C-z s h") 'eshell)
+(define-key my-keys-minor-mode-map (kbd "C-z d i r") 'dired)
 
 ; typical keys
 (define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
@@ -121,6 +123,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-S-r") 'query-replace-regexp)
 (define-key my-keys-minor-mode-map (kbd "S-C-f") 'isearch-backward)
 (define-key my-keys-minor-mode-map (kbd "C-o") 'find-file)
+(define-key prog-mode-map (kbd "<return>") 'newline-and-indent)
 
 ;search mode
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
@@ -129,6 +132,15 @@
 ;buffer mode
 (define-key Buffer-menu-mode-map (kbd "j") 'next-line)
 (define-key Buffer-menu-mode-map (kbd "k") 'previous-line)
+
+(dolist (hook '(
+	'emacs-lisp-mode-hook
+	'js-mode-hook
+	'c-mode-hook
+	'html-mode-hook
+	'css-mode-hook
+	'shell-script-mode-hook))
+	(add-hook 'hook 'sensible-defaults))
 
 ;apropos mode
 (with-eval-after-load "apropos"
@@ -168,12 +180,6 @@
 	(define-key dired-mode-map (kbd "l") 'dired-find-alternate-file)
 	(define-key dired-mode-map (kbd "J") 'forward-page)
 	(define-key dired-mode-map (kbd "K") 'backward-page))
-
-(defun eshell/clear ()
-	"Clear the eshell buffer."
-	(let ((inhibit-read-only t))
-		(erase-buffer)
-		(eshell-send-input)))
 
 (defun dired-xdg-open-file ()
 	"In dired, open the file with xdg-open"
@@ -221,5 +227,8 @@
 	(interactive)
 	(defconst x (/ (- (frame-width) 80) 2))
 	(set-window-margins nil x x))
+
+(defun sensible-defaults()
+	(setq indent-line-function 'indent-relative))
 
 (put 'dired-find-alternate-file 'disabled nil)
