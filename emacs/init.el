@@ -77,6 +77,8 @@
 (define-key my-keys-minor-mode-map (kbd "C-M-l") 'forward-word)
 (define-key my-keys-minor-mode-map (kbd "C-M-j") 'scroll-up-command)
 (define-key my-keys-minor-mode-map (kbd "C-M-k") 'scroll-down-command)
+(define-key my-keys-minor-mode-map (kbd "M-+") 'enlarge-window-horizontally)
+(define-key my-keys-minor-mode-map (kbd "M-_") 'shrink-window-horizontally)
 (define-key my-keys-minor-mode-map (kbd "M-[") 'previous-buffer)
 (define-key my-keys-minor-mode-map (kbd "M-]") 'next-buffer)
 (define-key my-keys-minor-mode-map (kbd "<escape>") 'keyboard-quit)
