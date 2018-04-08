@@ -80,6 +80,7 @@ static const char *nautiluscmd[] = { "nautilus", NULL };
 static const char *emacscmd[] = { "emacsclient", "-c", NULL };
 static const char *lockcmd[] = { "xtrlock", "-f", "-b", NULL };
 static const char *passcmd[] = { "passmenu", NULL };
+static const char *clipruncmd[] = { "clip_run", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -90,6 +91,7 @@ static Key keys[] = {
         { MODKEY,                       XK_F3,     spawn,          {.v = emacscmd } },
 	{ MODKEY|ControlMask,           XK_l,      spawn,          {.v = lockcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = passcmd } },
+	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = clipruncmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
