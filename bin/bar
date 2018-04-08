@@ -5,6 +5,6 @@ IFS='
 
 while true
 do
-	xsetroot -name $(date "+%Y-%m-%d %H:%M")
+	xsetroot -name "⚡ $(cat /sys/class/power_supply/BAT1/capacity)% | $(date "+%Y-%m-%d | %H:%M")"
 	sleep 1m
 done
