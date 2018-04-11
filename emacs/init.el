@@ -40,7 +40,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background "#0f0f0f" :foreground "#ffffff" :family "Dina"))))
+ '(default ((t (:background "#0f0f0f" :foreground "#ffffff" :family "Monospace" :height 110))))
  '(markdown-hr-face ((t (:inherit markdown-markup-face :height 2.0))))
  '(markdown-italic-face ((t (:foreground "lime green" :slant italic))))
  '(markdown-markup-face ((t (:foreground "goldenrod1"))))
@@ -82,7 +82,7 @@
 (define-key my-keys-minor-mode-map (kbd "<escape>") 'keyboard-quit)
 (define-key my-keys-minor-mode-map (kbd "M-D") 'backward-kill-word)
 (define-key my-keys-minor-mode-map (kbd "<C-tab>") 'indent-rigidly-right-to-tab-stop)
-(define-key my-keys-minor-mode-map (kbd "<S-C-tab>") 'indent-rigidly-left-to-tab-stop)
+(define-key my-keys-minor-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
 (define-key my-keys-minor-mode-map (kbd "M-e") 'execute-extended-command)
 (define-key my-keys-minor-mode-map (kbd "C-M-<backspace>") 'kill-whole-line)
 
