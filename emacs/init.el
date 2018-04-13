@@ -28,6 +28,7 @@
 (setq-default js-indent-level tab-width)
 (setq-default vc-follow-symlinks t)
 (setq-default backward-delete-char-untabify-method nil)
+(setq-default line-spacing 0.25)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
