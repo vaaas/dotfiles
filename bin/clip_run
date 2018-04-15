@@ -2,9 +2,9 @@
 
 IFS='
 '
-stuff='mpv -fs
-firefox
-emacs'
+stuff='mpv -fs --ytdl-format="best[height<=720]" --
+firefox --
+emacs --'
 
 clip=$(xclip -selection clipboard -o)
 cmd=$(echo "$stuff" | dmenu -p "$clip")

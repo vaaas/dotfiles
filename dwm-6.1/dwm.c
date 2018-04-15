@@ -61,7 +61,7 @@
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
 enum { SchemeNorm, SchemeSel, SchemeLast }; /* color schemes */
-enum { NetSupported, NetWMName, NetWMState,
+enum { NetSupported, NetWMName, NetWMState, NetSupportingWMCheck,
        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
 enum { WMProtocols, WMDelete, WMState, WMTakeFocus, WMLast }; /* default atoms */
@@ -516,6 +516,7 @@ cleanup(void)
 	XSync(dpy, False);
 	XSetInputFocus(dpy, PointerRoot, RevertToPointerRoot, CurrentTime);
 	XDeleteProperty(dpy, root, netatom[NetActiveWindow]);
+	XDeleteProperty(dpy, root, netatom[NetSupportingWMCheck]);
 }
 
 void
@@ -1633,6 +1634,7 @@ setup(void)
 	wmatom[WMTakeFocus] = XInternAtom(dpy, "WM_TAKE_FOCUS", False);
 	netatom[NetActiveWindow] = XInternAtom(dpy, "_NET_ACTIVE_WINDOW", False);
 	netatom[NetSupported] = XInternAtom(dpy, "_NET_SUPPORTED", False);
+	netatom[NetSupportingWMCheck] = XInternAtom(dpy, "_NET_SUPPORTING_WM_CHECK", False);
 	netatom[NetWMName] = XInternAtom(dpy, "_NET_WM_NAME", False);
 	netatom[NetWMState] = XInternAtom(dpy, "_NET_WM_STATE", False);
 	netatom[NetWMFullscreen] = XInternAtom(dpy, "_NET_WM_STATE_FULLSCREEN", False);
@@ -1657,6 +1659,14 @@ setup(void)
 	XChangeProperty(dpy, root, netatom[NetSupported], XA_ATOM, 32,
 			PropModeReplace, (unsigned char *) netatom, NetLast);
 	XDeleteProperty(dpy, root, netatom[NetClientList]);
+	/* EWMH support for _NET_SUPPORTING_WM_CHECK */
+	XChangeProperty(dpy, root, netatom[NetSupportingWMCheck], XA_WINDOW,
+	                32, PropModeReplace, (unsigned char *)&mons->barwin, 1);
+	XChangeProperty(dpy, mons->barwin, netatom[NetSupportingWMCheck], XA_WINDOW,
+	                32, PropModeReplace, (unsigned char *)&mons->barwin, 1);
+	XChangeProperty(dpy, mons->barwin, netatom[NetWMName],
+	                XInternAtom(dpy, "UTF8_STRING", False), 8,
+	                PropModeReplace, (unsigned char *)"dwm", strlen("dwm"));
 	/* select for events */
 	wa.cursor = cursor[CurNormal]->cursor;
 	wa.event_mask = SubstructureRedirectMask|SubstructureNotifyMask|ButtonPressMask|PointerMotionMask

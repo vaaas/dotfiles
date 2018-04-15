@@ -2,8 +2,8 @@
 
 IFS='
 '
-pass=$(find ~/Passwords -type f | dmenu)
+pass=$(cd ~/Passwords && find . -type f -printf '%P\n' | dmenu)
 echo $pass
-pass="$(gpg -d -- $pass)"
+pass="$(gpg -d -- ~/Passwords/$pass)"
 echo -n "$pass" | xclip -selection primary
 echo -n "$pass" | xclip -selection clipboard

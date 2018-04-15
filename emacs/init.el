@@ -35,7 +35,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(package-selected-packages (quote (bbcode-mode markdown-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -112,6 +112,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-z p i p e") 'shell-command-on-region)
 (define-key my-keys-minor-mode-map (kbd "C-z s h") 'eshell)
 (define-key my-keys-minor-mode-map (kbd "C-z d i r") 'dired)
+(define-key my-keys-minor-mode-map (kbd "C-z t m p") (lambda() (interactive) (find-file "~/scratchpad")))
 
 ; typical keys
 (define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
