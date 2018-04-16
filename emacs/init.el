@@ -45,7 +45,7 @@
  '(markdown-hr-face ((t (:inherit markdown-markup-face :height 2.0))))
  '(markdown-italic-face ((t (:foreground "lime green" :slant italic))))
  '(markdown-markup-face ((t (:foreground "goldenrod1"))))
- '(variable-pitch ((t (:height 140 :family "sans")))))
+ '(variable-pitch ((t (:height 130 :family "sans")))))
 
 (defvar my-keys-minor-mode-map (make-sparse-keymap)
 	"Keymap for my-keys-minor-mode")
