@@ -34,4 +34,4 @@ XTerm.vt100.locale: true
 XTerm.vt100.backarrowKey: false
 XTerm.ttyModes: erase ^?
 XTerm.vt100.saveLines: 4096
-XTerm.vt100.faceName: Dina:size=12
+XTerm.vt100.faceName: Monospace:size=12

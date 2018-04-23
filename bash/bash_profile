@@ -6,6 +6,15 @@ export PAGER=less
 export PATH=~/Binaries:$PATH
 export GDK_CORE_DEVICE_EVENTS=1
 
+if ! (ps -Af | grep -q emacs --daemon)
+then
+	emacs --daemon &
+fi
+if ! (ps -A | grep pulseaudio)
+then
+	pulseaudio -D &
+fi
+
 if test -z "$DISPLAY" && test -n "$XDG_VTNR" && test "$XDG_VTNR" -eq 1
 then
 	exec startx
