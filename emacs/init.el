@@ -136,10 +136,6 @@
 (define-key Buffer-menu-mode-map (kbd "j") 'next-line)
 (define-key Buffer-menu-mode-map (kbd "k") 'previous-line)
 
-;ibuffer mode
-(define-key ibuffer-mode-map (kbd "j") 'ibuffer-forward-line)
-(define-key ibuffer-mode-map (kbd "k") 'ibuffer-backward-line)
-
 (add-hook 'emacs-lisp-mode-hook 'sensible-defaults)
 (add-hook 'js-mode-hook 'sensible-defaults)
 (add-hook 'c-mode-hook 'sensible-defaults)
@@ -185,6 +181,12 @@
 	(define-key dired-mode-map (kbd "l") 'dired-find-alternate-file)
 	(define-key dired-mode-map (kbd "J") 'forward-page)
 	(define-key dired-mode-map (kbd "K") 'backward-page))
+
+;ibuffer
+(with-eval-after-load "ibuffer"
+	(define-key ibuffer-mode-map (kbd "j") 'ibuffer-forward-line)
+	(define-key ibuffer-mode-map (kbd "k") 'ibuffer-backward-line))
+
 
 (defun dired-xdg-open-file ()
 	"In dired, open the file with xdg-open"
