@@ -7,4 +7,7 @@ xrdb -merge ~/.Xresources &
 dunst &
 bar &
 
+#(ps -Af | grep -q 'emacs --daemon') || emacs --daemon &
+emacs --daemon &
+
 exec dbus-launch dwm

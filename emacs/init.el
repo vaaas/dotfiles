@@ -228,7 +228,7 @@
 
 (defun xterm-here()
 	(interactive)
-	(call-process "xterm" nil 0 nil "-e" (concat "cd " default-directory " && bash")))
+	(call-process "stterm" nil 0 nil "-f" "Monospace:pixelsize=14"))
 
 (defun centre-window-margins()
 	(interactive)

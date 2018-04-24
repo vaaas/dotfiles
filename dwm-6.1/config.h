@@ -74,7 +74,7 @@ shiftview(const Arg *arg) {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "xterm", NULL };
+static const char *termcmd[]  = { "stterm", "-f", "Monospace:pixelsize=14", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
 static const char *nautiluscmd[] = { "nautilus", NULL };
 static const char *emacscmd[] = { "emacsclient", "-c", NULL };
