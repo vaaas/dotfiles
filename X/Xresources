@@ -1,3 +1,12 @@
+XTerm*termName: xterm-256color
+XTerm*scrollttyoutput: false
+XTerm*ScrollTTYKeypress: true
+XTerm.vt100.metaSendsEscape: true
+XTerm.vt100.locale: true
+XTerm.vt100.backarrowKey: false
+XTerm.ttyModes: erase ^?
+XTerm.vt100.saveLines: 4096
+
 !looks
 xterm*borderWidth: 0
 !colors
@@ -27,11 +36,6 @@ xterm*borderWidth: 0
 !white
 *color7:  #efefef
 *color15: #efefef
-XTerm*scrollttyoutput: false
-XTerm*ScrollTTYKeypress: true
-XTerm.vt100.metaSendsEscape: true
-XTerm.vt100.locale: true
-XTerm.vt100.backarrowKey: false
-XTerm.ttyModes: erase ^?
-XTerm.vt100.saveLines: 4096
+
 XTerm.vt100.faceName: Monospace:size=10
+XTerm.vt100.faceNameDoublesize: Monospace:size=10

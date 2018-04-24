@@ -3,9 +3,13 @@ TAB: menu-complete
 set show-all-if-ambiguous on
 set bind-tty-special-chars off
 
-"\C-\M-h": backward-word
-"\C-\M-l": forward-word
-"\M-h": backward-char
-"\M-l": forward-char
-"\M-j": history-search-forward
-"\M-k": history-search-backward
+"\e\C-H": backward-word
+"\e\C-L": forward-word
+"\eH": beginning-of-line
+"\eL": end-of-line
+"\ed": kill-word
+"\eD": backward-kill-word
+"\eh": backward-char
+"\el": forward-char
+"\ej": history-search-forward
+"\ek": history-search-backward

@@ -1,4 +1,3 @@
-echo -e -n "\x1b[\x35 q"
 PS1='> '
 IFS='
 '
