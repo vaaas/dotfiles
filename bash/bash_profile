@@ -6,7 +6,7 @@ export PAGER=less
 export PATH=~/Binaries:$PATH
 export GDK_CORE_DEVICE_EVENTS=1
 
-if ! (ps -Af | grep -q emacs --daemon)
+if ! (ps -Af | grep -q 'emacs --daemon')
 then
 	emacs --daemon &
 fi
