@@ -93,7 +93,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-z r n") 'rename-buffer)
 (define-key my-keys-minor-mode-map (kbd "C-z q") 'save-buffers-kill-terminal)
 (define-key my-keys-minor-mode-map (kbd "C-z k b") 'kill-buffer)
-(define-key my-keys-minor-mode-map (kbd "C-z l b") 'list-buffers)
+(define-key my-keys-minor-mode-map (kbd "C-z l b") 'ibuffer)
 (define-key my-keys-minor-mode-map (kbd "C-z f i") 'find-name-dired)
 (define-key my-keys-minor-mode-map (kbd "C-z w t") 'firefox-open-thesaurus)
 (define-key my-keys-minor-mode-map (kbd "C-z w d") 'firefox-open-dictionary)
@@ -113,6 +113,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-z s h") 'eshell)
 (define-key my-keys-minor-mode-map (kbd "C-z d i r") 'dired)
 (define-key my-keys-minor-mode-map (kbd "C-z t m p") (lambda() (interactive) (find-file "~/scratchpad")))
+(define-key my-keys-minor-mode-map (kbd "C-z w n") 'wordnut-search)
 
 ; typical keys
 (define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
@@ -135,14 +136,16 @@
 (define-key Buffer-menu-mode-map (kbd "j") 'next-line)
 (define-key Buffer-menu-mode-map (kbd "k") 'previous-line)
 
-(dolist (hook '(
-	'emacs-lisp-mode-hook
-	'js-mode-hook
-	'c-mode-hook
-	'html-mode-hook
-	'css-mode-hook
-	'shell-script-mode-hook))
-	(add-hook 'hook 'sensible-defaults))
+;ibuffer mode
+(define-key ibuffer-mode-map (kbd "j") 'ibuffer-forward-line)
+(define-key ibuffer-mode-map (kbd "k") 'ibuffer-backward-line)
+
+(add-hook 'emacs-lisp-mode-hook 'sensible-defaults)
+(add-hook 'js-mode-hook 'sensible-defaults)
+(add-hook 'c-mode-hook 'sensible-defaults)
+(add-hook 'html-mode-hook 'sensible-defaults)
+(add-hook 'css-mode-hook 'sensible-defaults)
+(add-hook 'shell-script-mode-hook 'sensible-defaults)
 
 ;apropos mode
 (with-eval-after-load "apropos"
@@ -231,6 +234,6 @@
 	(set-window-margins nil x x))
 
 (defun sensible-defaults()
-	(setq indent-line-function 'indent-relative))
+	(setq-local indent-line-function 'indent-relative))
 
 (put 'dired-find-alternate-file 'disabled nil)
