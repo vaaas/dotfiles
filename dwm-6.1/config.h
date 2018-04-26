@@ -4,13 +4,13 @@
 static const char *fonts[] = {
 	"sans:size=10"
 };
-static const char dmenufont[]       = "monospace:size=10";
-static const char normbordercolor[] = "#444444";
-static const char normbgcolor[]     = "#222222";
-static const char normfgcolor[]     = "#bbbbbb";
-static const char selbordercolor[]  = "#005577";
-static const char selbgcolor[]      = "#005577";
-static const char selfgcolor[]      = "#eeeeee";
+static const char dmenufont[]       = "sans:size=10";
+static const char normbordercolor[] = "#140601";
+static const char normbgcolor[]     = "#140601";
+static const char normfgcolor[]     = "#ffffff";
+static const char selbordercolor[]  = "#33691E";
+static const char selbgcolor[]      = "#33691E";
+static const char selfgcolor[]      = "#ffffff";
 static const unsigned int borderpx  = 4;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -81,6 +81,9 @@ static const char *emacscmd[] = { "emacsclient", "-c", NULL };
 static const char *lockcmd[] = { "xtrlock", "-f", "-b", NULL };
 static const char *passcmd[] = { "passmenu", NULL };
 static const char *clipruncmd[] = { "clip_run", NULL };
+static const char *audiolowercmd[] = { "pactl", "set-sink-volume", "0", "-10%", NULL};
+static const char *audioraisecmd[] = { "pactl", "set-sink-volume", "0", "+10%", NULL};
+static const char *audiomutecmd[] = { "pactl", "set-sink-mute", "0", "toggle", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -92,6 +95,9 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_l,      spawn,          {.v = lockcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = passcmd } },
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = clipruncmd } },
+	{ 0,                            XF86XK_AudioLowerVolume, spawn, { .v = audiolowercmd } },
+	{ 0,                            XF86XK_AudioRaiseVolume, spawn, { .v = audioraisecmd } },
+	{ 0,                            XF86XK_AudioMute, spawn, { .v = audiomutecmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
