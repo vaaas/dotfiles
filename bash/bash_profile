@@ -1,6 +1,6 @@
 export HISTCONTROL=ignoreboth:erasedups
 export BROWSER=firefox
-export EDITOR=emacsc
+export EDITOR=emacsclient
 export SUDO_EDITOR=$EDITOR
 export PAGER=less
 export PATH=~/Binaries:$PATH
