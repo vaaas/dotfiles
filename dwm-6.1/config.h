@@ -4,7 +4,7 @@
 static const char *fonts[] = {
 	"sans:size=10"
 };
-static const char normbordercolor[] = "#140601";
+static const char normbordercolor[] = "#0c1a07";
 static const char normbgcolor[]     = "#140601";
 static const char normfgcolor[]     = "#ffffff";
 static const char selbordercolor[]  = "#33691E";
@@ -73,7 +73,7 @@ shiftview(const Arg *arg) {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
-static const char *termcmd[]  = { "stterm", "-f", "Monospace:pixelsize=14", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
 static const char *nautiluscmd[] = { "nautilus", NULL };
 static const char *emacscmd[] = { "emacsclient", "-c", NULL };

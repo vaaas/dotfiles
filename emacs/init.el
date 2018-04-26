@@ -226,7 +226,7 @@
 
 (defun xterm-here()
 	(interactive)
-	(call-process "stterm" nil 0 nil "-f" "Monospace:pixelsize=14"))
+	(call-process "st" nil 0 nil))
 
 (defun centre-window-margins()
 	(interactive)
