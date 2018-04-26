@@ -1,5 +1,4 @@
 (package-initialize)
-
 (setq package-archives
 	'(
 		 ("gnu" . "https://elpa.gnu.org/packages/")
@@ -16,13 +15,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background "#0f0f0f" :foreground "#ffffff" :family "Monospace" :height 140))))
+ '(default ((t (:background "#140601" :foreground "white" :family "Monospace" :height 100))))
+ '(fringe ((t (:background "#3E2723"))))
  '(markdown-hr-face ((t (:inherit markdown-markup-face :height 2.0))))
- '(markdown-italic-face ((t (:foreground "lime green" :slant italic))))
- '(markdown-markup-face ((t (:foreground "goldenrod1"))))
- '(mode-line ((t (:background "forest green" :foreground "black"))))
- '(mode-line-inactive ((t (:background "gray20" :foreground "light gray"))))
- '(variable-pitch ((t (:height 150 :family "sans")))))
+ '(markdown-italic-face ((t (:foreground "#009688" :slant italic))))
+ '(markdown-markup-face ((t (:foreground "#FFC107"))))
+ '(mode-line ((t (:background "#33691E" :foreground "white"))))
+ '(mode-line-inactive ((t (:background "#212121" :foreground "#E0E0E0"))))
+ '(variable-pitch ((t (:height 110 :family "sans")))))
 
 ;variables
 (setq-default inhibit-startup-screen t)
@@ -35,7 +35,6 @@
 (setq-default delete-by-moving-to-trash t)
 (setq-default vc-follow-symlinks t)
 (setq-default backward-delete-char-untabify-method nil)
-;(setq-default line-spacing 0.25)
 (put 'dired-find-alternate-file 'disabled nil)
 
 ;indentation
@@ -53,7 +52,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (bbcode-mode markdown-mode))))
+ '(package-selected-packages (quote (bbcode-mode markdown-mode wordnut))))
 
 ;keys
 (defvar my-keys-minor-mode-map (make-sparse-keymap)
@@ -112,9 +111,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-z <RET>") 'espeak-line)
 (define-key my-keys-minor-mode-map (kbd "C-z m a") 'woman)
 (define-key my-keys-minor-mode-map (kbd "C-z x t") 'xterm-here)
-(define-key my-keys-minor-mode-map (kbd "C-z t e") (lambda()
-	(interactive)
-	(term "/bin/bash")))
+(define-key my-keys-minor-mode-map (kbd "C-z t e") (lambda() (interactive) (term "/bin/bash")))
 (define-key my-keys-minor-mode-map (kbd "C-z c d") 'cd)
 (define-key my-keys-minor-mode-map (kbd "C-z g r") 'rgrep)
 (define-key my-keys-minor-mode-map (kbd "C-z e b") 'eval-buffer)

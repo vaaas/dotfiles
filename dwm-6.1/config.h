@@ -4,13 +4,13 @@
 static const char *fonts[] = {
 	"sans:size=10"
 };
-static const char dmenufont[]       = "monospace:size=10";
-static const char normbordercolor[] = "#444444";
-static const char normbgcolor[]     = "#222222";
-static const char normfgcolor[]     = "#bbbbbb";
-static const char selbordercolor[]  = "#228B22";
-static const char selbgcolor[]      = "#228B22";
-static const char selfgcolor[]      = "#000000";
+static const char dmenufont[]       = "sans:size=10";
+static const char normbordercolor[] = "#140601";
+static const char normbgcolor[]     = "#140601";
+static const char normfgcolor[]     = "#ffffff";
+static const char selbordercolor[]  = "#33691E";
+static const char selbgcolor[]      = "#33691E";
+static const char selfgcolor[]      = "#ffffff";
 static const unsigned int borderpx  = 4;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
