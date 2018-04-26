@@ -11,8 +11,8 @@ emacs/eshell_alias	~/.emacs.d/eshell/alias
 X/Xresources	~/.Xresources
 X/XCompose	~/.XCompose
 X/xinitrc	~/.xinitrc
-gtk/gtk.css	~/.config/gtk/gtk.css
-gtk/settings.ini	~/.config/gtk/settings.ini
+gtk/gtk.css	~/.config/gtk-3.0/gtk.css
+gtk/settings.ini	~/.config/gtk-3.0/settings.ini
 gtk/gtkrc-2.0	~/.gtkrc-2.0
 bin/emv	~/Binaries/emv
 bin/lgrep	~/Binaries/lgrep
