@@ -80,9 +80,9 @@ static const char *emacscmd[] = { "emacsclient", "-c", NULL };
 static const char *lockcmd[] = { "xtrlock", "-f", "-b", NULL };
 static const char *passcmd[] = { "passmenu", NULL };
 static const char *clipruncmd[] = { "clip_run", NULL };
-static const char *audiolowercmd[] = { "pactl", "set-sink-volume", "0", "-10%", NULL};
-static const char *audioraisecmd[] = { "pactl", "set-sink-volume", "0", "+10%", NULL};
-static const char *audiomutecmd[] = { "pactl", "set-sink-mute", "0", "toggle", NULL};
+static const char *audiolowercmd[] = { "amixer", "sset", "Master", "10%-", NULL};
+static const char *audioraisecmd[] = { "amixer", "sset", "Master", "10%+", NULL};
+static const char *audiomutecmd[] = { "amixer", "sset", "Master", "toggle", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
