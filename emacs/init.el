@@ -81,11 +81,8 @@
 (define-key my-keys-minor-mode-map (kbd "C-M-k") 'scroll-down-command)
 
 ;window/buffer management
-(define-key my-keys-minor-mode-map (kbd "M-1") 'delete-other-windows)
-(define-key my-keys-minor-mode-map (kbd "M-2") 'split-window-below)
-(define-key my-keys-minor-mode-map (kbd "M-3") 'split-window-right)
-(define-key my-keys-minor-mode-map (kbd "M-0") 'delete-window)
 (define-key my-keys-minor-mode-map (kbd "M-o") 'other-window)
+(define-key my-keys-minor-mode-map (kbd "M-O") 'delete-window)
 (define-key my-keys-minor-mode-map (kbd "M-n") 'make-frame-command)
 (define-key my-keys-minor-mode-map (kbd "M-+") 'enlarge-window-horizontally)
 (define-key my-keys-minor-mode-map (kbd "M-_") 'shrink-window-horizontally)
@@ -127,6 +124,8 @@
 (define-key my-keys-minor-mode-map (kbd "C-z t m p") (lambda() (interactive) (find-file "~/scratchpad")))
 (define-key my-keys-minor-mode-map (kbd "C-z w n") 'wordnut-search)
 (define-key my-keys-minor-mode-map (kbd "C-z g i t") 'git-status)
+(define-key my-keys-minor-mode-map (kbd "C-z s v") 'split-window-below)
+(define-key my-keys-minor-mode-map (kbd "C-z s h") 'split-window-right)
 
 ; typical keys
 (define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
