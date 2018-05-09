@@ -2,7 +2,7 @@
 
 IFS='
 '
-pass=$(cd ~/Passwords && find . -type f -printf '%P\n' | dmenu)
+pass=$(cd ~/Passwords && find . -type f -printf '%P\n' | dmenu -p "Select password")
 echo $pass
 pass="$(gpg -d -- ~/Passwords/$pass)"
 echo -n "$pass" | xclip -selection primary

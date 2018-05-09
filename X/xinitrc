@@ -1,6 +1,9 @@
 #!/bin/sh
+
+mpv ~/Music/xp_startup.ogg &
+setxkbmap us -option compose:menu
+uim-xim &
 compton &
-setxkbmap us,gr -option grp:win_space_toggle,compose:menu
 set m 1 0
 hsetroot -cover wallpaper &
 xrdb -merge ~/.Xresources &

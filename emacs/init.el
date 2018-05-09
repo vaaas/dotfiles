@@ -48,8 +48,8 @@
 (setq-default smie-indent-basic tab-width)
 
 ;; Add parsing of jshint output in compilation mode
-(add-to-list 'compilation-error-regexp-alist-alist '(jshint "^\\(.*\\): line \\([0-9]+\\), col \\([0-9]+\\), " 1 2 3))
-(add-to-list 'compilation-error-regexp-alist 'jshint)
+;(add-to-list 'compilation-error-regexp-alist-alist '(jshint "^\\(.*\\): line \\([0-9]+\\), col \\([0-9]+\\), " 1 2 3))
+;(add-to-list 'compilation-error-regexp-alist 'jshint)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
