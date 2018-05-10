@@ -1,6 +1,5 @@
 #!/bin/sh
 
-mpv ~/Music/xp_startup.ogg &
 setxkbmap us -option compose:menu
 uim-xim &
 compton &
