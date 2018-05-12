@@ -99,6 +99,7 @@
 (define-key my-keys-minor-mode-map (kbd "<C-tab>") 'indent-rigidly-right-to-tab-stop)
 (define-key my-keys-minor-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
 (define-key my-keys-minor-mode-map (kbd "M-e") 'execute-extended-command)
+(define-key my-keys-minor-mode-map (kbd "M-E") 'eval-expression)
 (define-key my-keys-minor-mode-map (kbd "C-M-<backspace>") 'kill-whole-line)
 
 ; leader
@@ -128,8 +129,8 @@
 (define-key my-keys-minor-mode-map (kbd "C-z t m p") (lambda() (interactive) (find-file "~/scratchpad")))
 (define-key my-keys-minor-mode-map (kbd "C-z w n") 'wordnut-search)
 (define-key my-keys-minor-mode-map (kbd "C-z g i t") 'git-status)
-(define-key my-keys-minor-mode-map (kbd "C-z s v") 'split-window-below)
-(define-key my-keys-minor-mode-map (kbd "C-z s h") 'split-window-right)
+(define-key my-keys-minor-mode-map (kbd "C-z s h") 'split-window-below)
+(define-key my-keys-minor-mode-map (kbd "C-z s v") 'split-window-right)
 
 ; typical keys
 (define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
@@ -197,10 +198,9 @@
 	(define-key ibuffer-mode-map (kbd "j") 'ibuffer-forward-line)
 	(define-key ibuffer-mode-map (kbd "k") 'ibuffer-backward-line))
 
-;git
-(with-eval-after-load "git"
-	(define-key git-status-mode-map (kbd "j") 'git-next-file)
-	(define-key git-status-mode-map (kbd "k") 'git-prev-file))
+;uim
+(with-eval-after-load "uim.el"
+	(uim-mode))
 
 (defun dired-xdg-open-file ()
 	"In dired, open the file with xdg-open"

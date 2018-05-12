@@ -1,11 +1,9 @@
 #!/bin/sh
 
 setxkbmap us -option compose:menu
-uim-xim &
 compton &
 set m 1 0
 hsetroot -cover wallpaper &
-xrdb -merge ~/.Xresources &
 dunst &
 bar &
 
