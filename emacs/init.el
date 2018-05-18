@@ -35,6 +35,7 @@
 (setq-default delete-by-moving-to-trash t)
 (setq-default vc-follow-symlinks t)
 (setq-default backward-delete-char-untabify-method nil)
+(setq-default find-name-arg "-iname")
 (put 'dired-find-alternate-file 'disabled nil)
 
 ;indentation
@@ -109,7 +110,12 @@
 (define-key my-keys-minor-mode-map (kbd "C-z q") 'save-buffers-kill-terminal)
 (define-key my-keys-minor-mode-map (kbd "C-z k b") 'kill-buffer)
 (define-key my-keys-minor-mode-map (kbd "C-z l b") 'ibuffer)
-(define-key my-keys-minor-mode-map (kbd "C-z f i") 'find-name-dired)
+(define-key my-keys-minor-mode-map (kbd "C-z f i") (lambda ()
+	(interactive)
+	(find-name-dired "."
+		(concat "*"
+			(read-from-minibuffer "File name: ")
+			"*"))))
 (define-key my-keys-minor-mode-map (kbd "C-z <RET>") 'espeak-line)
 (define-key my-keys-minor-mode-map (kbd "C-z m a") 'woman)
 (define-key my-keys-minor-mode-map (kbd "C-z x t") 'xterm-here)
