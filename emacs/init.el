@@ -214,7 +214,10 @@
 (add-hook 'html-mode-hook 'sensible-defaults)
 (add-hook 'css-mode-hook 'sensible-defaults)
 (add-hook 'shell-script-mode-hook 'sensible-defaults)
-(add-hook 'prog-mode-hook (lambda () (interactive) (auto-complete-mode)))
+(add-hook 'prog-mode-hook (lambda ()
+	(interactive)
+	(auto-complete-mode)
+	(electric-pair-mode)))
 
 ;functions
 (defun dired-sxiv-marked ()
