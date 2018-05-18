@@ -56,7 +56,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (bbcode-mode markdown-mode wordnut))))
+ '(package-selected-packages (quote (auto-complete bbcode-mode markdown-mode wordnut))))
 
 ;keys
 (defvar my-keys-minor-mode-map (make-sparse-keymap)
@@ -198,9 +198,8 @@
 	(define-key ibuffer-mode-map (kbd "j") 'ibuffer-forward-line)
 	(define-key ibuffer-mode-map (kbd "k") 'ibuffer-backward-line))
 
-;uim
-(with-eval-after-load "uim.el"
-	(uim-mode))
+(with-eval-after-load "auto-complete"
+	(setq ac-sources '(ac-source-words-in-all-buffer)))
 
 (defun dired-xdg-open-file ()
 	"In dired, open the file with xdg-open"
@@ -215,6 +214,7 @@
 (add-hook 'html-mode-hook 'sensible-defaults)
 (add-hook 'css-mode-hook 'sensible-defaults)
 (add-hook 'shell-script-mode-hook 'sensible-defaults)
+(add-hook 'prog-mode-hook (lambda () (interactive) (auto-complete-mode)))
 
 ;functions
 (defun dired-sxiv-marked ()
