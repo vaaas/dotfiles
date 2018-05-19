@@ -15,7 +15,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background "#140601" :foreground "white" :family "Monospace" :height 100))))
+ '(default ((t (:background "#140601" :foreground "white" :family "Monospace" :height 105))))
  '(fringe ((t (:background "#3E2723"))))
  '(markdown-hr-face ((t (:inherit markdown-markup-face :height 2.0))))
  '(markdown-italic-face ((t (:foreground "#009688" :slant italic))))
@@ -66,7 +66,6 @@
 (define-minor-mode my-keys-minor-mode
 	"Override major mode keys"
 	:init-value t
-	:lighter " my keys"
 	:keymap my-keys-minor-mode-map)
 
 (my-keys-minor-mode 1)
