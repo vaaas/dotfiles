@@ -101,6 +101,7 @@
 (define-key my-keys-minor-mode-map (kbd "M-e") 'execute-extended-command)
 (define-key my-keys-minor-mode-map (kbd "M-E") 'eval-expression)
 (define-key my-keys-minor-mode-map (kbd "C-M-<backspace>") 'kill-whole-line)
+(define-key my-keys-minor-mode-map (kbd "C-w") 'universal-argument)
 
 ; leader
 (define-key my-keys-minor-mode-map (kbd "C-z") nil)
@@ -123,9 +124,9 @@
 (define-key my-keys-minor-mode-map (kbd "C-z g r") 'rgrep)
 (define-key my-keys-minor-mode-map (kbd "C-z e b") 'eval-buffer)
 (define-key my-keys-minor-mode-map (kbd "C-z v p") 'variable-pitch-mode)
-(define-key my-keys-minor-mode-map (kbd "C-z f +") (lambda() (interactive) (text-scale-adjust 1)))
-(define-key my-keys-minor-mode-map (kbd "C-z f -") (lambda() (interactive) (text-scale-adjust -1)))
-(define-key my-keys-minor-mode-map (kbd "C-z f 0") (lambda() (interactive) (text-scale-adjust 0)))
+(define-key my-keys-minor-mode-map (kbd "C-z f +") (lambda() (interactive) (text-scale-set 2)))
+(define-key my-keys-minor-mode-map (kbd "C-z f =") (lambda() (interactive) (text-scale-set 0)))
+(define-key my-keys-minor-mode-map (kbd "C-z f s") (lambda(arg) (interactive "P") (text-scale-set arg)))
 (define-key my-keys-minor-mode-map (kbd "C-z w m") 'centre-window-margins)
 (define-key my-keys-minor-mode-map (kbd "C-z r u n") 'async-shell-command)
 (define-key my-keys-minor-mode-map (kbd "C-z p i p e") 'shell-command-on-region)

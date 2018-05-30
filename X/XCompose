@@ -101,3 +101,5 @@
 <Multi_key> <x> <x>: "×"
 <Multi_key> <period> <space>: "·"
 <Multi_key> <less> <3>: "❤"
+<Multi_key> <c> <s>: "ç"
+<Multi_key> <C> <S>: "Ç"
