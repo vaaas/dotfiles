@@ -1,8 +1,32 @@
 (package-initialize)
-(setq package-archives
-	'(
-		 ("gnu" . "https://elpa.gnu.org/packages/")
-		 ("melpa" . "https://melpa.org/packages/")))
+
+;variables
+(setq-default
+	package-archives '(
+		("gnu" . "https://elpa.gnu.org/packages/")
+		("melpa" . "https://melpa.org/packages/"))
+	package-selected-packages (quote (
+		(auto-complete bbcode-mode markdown-mode wordnut)))
+	inhibit-startup-screen t
+	make-backup-files nil
+	major-mode 'text-mode
+	cursor-type 'bar
+	fringes-outside-margins t
+	indent-tabs-mode t
+	lisp-indent-offset 0
+	delete-by-moving-to-trash t
+	vc-follow-symlinks t
+	backward-delete-char-untabify-method nil
+	find-name-arg "-iname"
+	tab-width 8
+	c-basic-offset tab-width
+	css-indent-offset tab-width
+	python-indent-offset tab-width
+	sgml-basic-offset tab-width
+	sh-basic-offset tab-width
+	js-indent-level tab-width
+	smie-indent-basic tab-width)
+(put 'dired-find-alternate-file 'disabled nil)
 
 ;looks
 (tool-bar-mode -1)
@@ -24,40 +48,9 @@
  '(mode-line-inactive ((t (:background "#212121" :foreground "#E0E0E0"))))
  '(variable-pitch ((t (:height 110 :family "sans")))))
 
-;variables
-(setq-default inhibit-startup-screen t)
-(setq-default make-backup-files nil)
-(setq-default major-mode 'text-mode)
-(setq-default cursor-type 'bar)
-(setq-default fringes-outside-margins t)
-(setq-default indent-tabs-mode t)
-(setq-default lisp-indent-offset 0)
-(setq-default delete-by-moving-to-trash t)
-(setq-default vc-follow-symlinks t)
-(setq-default backward-delete-char-untabify-method nil)
-(setq-default find-name-arg "-iname")
-(put 'dired-find-alternate-file 'disabled nil)
-
-;indentation
-(setq-default tab-width 8)
-(setq-default c-basic-offset tab-width)
-(setq-default css-indent-offset tab-width)
-(setq-default python-indent-offset tab-width)
-(setq-default sgml-basic-offset tab-width)
-(setq-default sh-basic-offset tab-width)
-(setq-default js-indent-level tab-width)
-(setq-default smie-indent-basic tab-width)
-
 ;; Add parsing of jshint output in compilation mode
 ;(add-to-list 'compilation-error-regexp-alist-alist '(jshint "^\\(.*\\): line \\([0-9]+\\), col \\([0-9]+\\), " 1 2 3))
 ;(add-to-list 'compilation-error-regexp-alist 'jshint)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (auto-complete bbcode-mode markdown-mode wordnut))))
 
 ;keys
 (defvar my-keys-minor-mode-map (make-sparse-keymap)
@@ -117,12 +110,12 @@
 (define-key my-keys-minor-mode-map (kbd "C-z f i") (lambda ()
 	(interactive)
 	(find-name-dired "."
-		(concat "*"
-			(read-from-minibuffer "File name: ")
-			"*"))))
-(define-key my-keys-minor-mode-map (kbd "C-z <RET>") 'espeak-line)
+		(concat "*" (read-from-minibuffer "File name: ") "*"))))
+(define-key my-keys-minor-mode-map (kbd "C-z <RET>") (lambda()
+	(interactive)
+	(call-process "espeak-ng" nil 0 nil (thing-at-point 'line t))))
 (define-key my-keys-minor-mode-map (kbd "C-z m a") 'woman)
-(define-key my-keys-minor-mode-map (kbd "C-z x t") 'xterm-here)
+(define-key my-keys-minor-mode-map (kbd "C-z x t") (lambda() (interactive) (call-process "st" nil 0 nil)))
 (define-key my-keys-minor-mode-map (kbd "C-z t e") (lambda() (interactive) (term "/bin/bash")))
 (define-key my-keys-minor-mode-map (kbd "C-z c d") 'cd)
 (define-key my-keys-minor-mode-map (kbd "C-z g r") 'rgrep)
@@ -131,7 +124,10 @@
 (define-key my-keys-minor-mode-map (kbd "C-z f +") (lambda() (interactive) (text-scale-set 2)))
 (define-key my-keys-minor-mode-map (kbd "C-z f =") (lambda() (interactive) (text-scale-set 0)))
 (define-key my-keys-minor-mode-map (kbd "C-z f s") (lambda(arg) (interactive "P") (text-scale-set arg)))
-(define-key my-keys-minor-mode-map (kbd "C-z w m") 'centre-window-margins)
+(define-key my-keys-minor-mode-map (kbd "C-z w m") (lambda()
+	(interactive)
+	(defconst x (/ (- (frame-width) 80) 2))
+	(set-window-margins nil x x)))
 (define-key my-keys-minor-mode-map (kbd "C-z r u n") 'async-shell-command)
 (define-key my-keys-minor-mode-map (kbd "C-z p i p e") 'shell-command-on-region)
 (define-key my-keys-minor-mode-map (kbd "C-z s h") 'eshell)
@@ -194,7 +190,9 @@
 ;dired
 (with-eval-after-load "dired"
 	(define-key dired-mode-map (kbd "<C-return>") 'dired-xdg-open-file)
-	(define-key dired-mode-map (kbd "C-z i") 'dired-sxiv-marked)
+	(define-key dired-mode-map (kbd "C-z i") (lambda()
+		(interactive)
+		(apply 'call-process "sxiv" nil 0 nil (dired-get-marked-files))))
 	(define-key dired-mode-map (kbd "j") 'dired-next-line)
 	(define-key dired-mode-map (kbd "k") 'dired-previous-line)
 	(put 'dired-find-alternate-file 'disabled nil)
@@ -212,12 +210,6 @@
 (with-eval-after-load "auto-complete"
 	(setq ac-sources '(ac-source-words-in-all-buffer)))
 
-(defun dired-xdg-open-file ()
-	"In dired, open the file with xdg-open"
-	(interactive)
-	(let* ((file (dired-get-filename)))
-		(call-process "xdg-open" nil 0 nil file)))
-
 ;hooks
 (add-hook 'emacs-lisp-mode-hook 'sensible-defaults)
 (add-hook 'js-mode-hook 'sensible-defaults)
@@ -226,29 +218,15 @@
 (add-hook 'css-mode-hook 'sensible-defaults)
 (add-hook 'shell-script-mode-hook 'sensible-defaults)
 (add-hook 'prog-mode-hook (lambda ()
-	(interactive)
 	(auto-complete-mode)
 	(electric-pair-mode)))
 
 ;functions
-(defun dired-sxiv-marked ()
-	"In dired, open all marked files with xdg-open"
-	(interactive)
-	(apply 'call-process "sxiv" nil 0 nil (dired-get-marked-files)))
-
-(defun espeak-line ()
-	"espeak line"
-	(interactive)
-	(call-process "espeak-ng" nil 0 nil (thing-at-point 'line t)))
-
-(defun xterm-here()
-	(interactive)
-	(call-process "st" nil 0 nil))
-
-(defun centre-window-margins()
-	(interactive)
-	(defconst x (/ (- (frame-width) 80) 2))
-	(set-window-margins nil x x))
-
 (defun sensible-defaults()
 	(setq-default indent-line-function 'indent-relative))
+
+(defun dired-xdg-open-file ()
+	"In dired, open the file with xdg-open"
+	(interactive)
+	(let* ((file (dired-get-filename)))
+		(call-process "xdg-open" nil 0 nil file)))
