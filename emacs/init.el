@@ -83,10 +83,12 @@
 (define-key my-keys-minor-mode-map (kbd "C-M-l") 'forward-word)
 (define-key my-keys-minor-mode-map (kbd "C-M-j") 'scroll-up-command)
 (define-key my-keys-minor-mode-map (kbd "C-M-k") 'scroll-down-command)
+(define-key my-keys-minor-mode-map (kbd "C-'") 'quoted-insert)
 
 ;window/buffer management
 (define-key my-keys-minor-mode-map (kbd "M-o") 'other-window)
 (define-key my-keys-minor-mode-map (kbd "M-O") 'delete-window)
+(define-key my-keys-minor-mode-map (kbd "C-M-o") 'delete-other-windows)
 (define-key my-keys-minor-mode-map (kbd "C-n") 'make-frame-command)
 (define-key my-keys-minor-mode-map (kbd "M-+") 'enlarge-window-horizontally)
 (define-key my-keys-minor-mode-map (kbd "M-_") 'shrink-window-horizontally)
@@ -102,6 +104,8 @@
 (define-key my-keys-minor-mode-map (kbd "M-E") 'eval-expression)
 (define-key my-keys-minor-mode-map (kbd "C-M-<backspace>") 'kill-whole-line)
 (define-key my-keys-minor-mode-map (kbd "C-w") 'universal-argument)
+(define-key my-keys-minor-mode-map (kbd "C-q") 'kmacro-start-macro-or-insert-counter)
+(define-key my-keys-minor-mode-map (kbd "C-S-q") 'kmacro-end-or-call-macro)
 
 ; leader
 (define-key my-keys-minor-mode-map (kbd "C-z") nil)
@@ -137,6 +141,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-z g i t") 'git-status)
 (define-key my-keys-minor-mode-map (kbd "C-z s h") 'split-window-below)
 (define-key my-keys-minor-mode-map (kbd "C-z s v") 'split-window-right)
+(define-key my-keys-minor-mode-map (kbd "C-z r e f") (lambda() (interactive) (async-shell-command "sxiv -b -- ref/*")))
 
 ; typical keys
 (define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
