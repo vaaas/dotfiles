@@ -98,7 +98,8 @@ class MainWindow(Gtk.Window):
 
         def print_marked(self):
                 for child in self.listbox.get_children():
-                        if child.selected: print(child.text)
+                        if child.selected:
+                                print(child.text)
 
         def print_and_exit(self):
                 self.print_marked()

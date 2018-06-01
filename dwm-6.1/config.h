@@ -83,6 +83,8 @@ static const char *clipruncmd[] = { "clip_run", NULL };
 static const char *audiolowercmd[] = { "amixer", "sset", "Master", "10%-", NULL};
 static const char *audioraisecmd[] = { "amixer", "sset", "Master", "10%+", NULL};
 static const char *audiomutecmd[] = { "amixer", "sset", "Master", "toggle", NULL};
+static const char *radiocmd[] = { "internet_radio", NULL };
+static const char *sleepcmd[] = { "systemctl" "suspend", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -90,10 +92,12 @@ static Key keys[] = {
 	{ MODKEY,                       XK_grave,  spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_F1,     spawn,          {.v = firefoxcmd } },
 	{ MODKEY,                       XK_F2,     spawn,          {.v = nautiluscmd } },
-        { MODKEY,                       XK_F3,     spawn,          {.v = emacscmd } },
+	{ MODKEY,                       XK_F3,     spawn,          {.v = emacscmd } },
+	{ MODKEY,                       XK_F3,     spawn,          {.v = radiocmd } },
 	{ MODKEY|ControlMask,           XK_l,      spawn,          {.v = lockcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = passcmd } },
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = clipruncmd } },
+	{ MODKEY,                       XK_End,    spawn,          {.v = sleepcmd } },
 	{ 0,                            XF86XK_AudioLowerVolume, spawn, { .v = audiolowercmd } },
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn, { .v = audioraisecmd } },
 	{ 0,                            XF86XK_AudioMute, spawn, { .v = audiomutecmd } },
@@ -104,8 +108,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_k,      incnmaster,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|Mod1Mask,             XK_h,      setmfact,       {.f = -0.01} },
-	{ MODKEY|Mod1Mask,             XK_l,      setmfact,       {.f = +0.01} },
+	{ MODKEY|Mod1Mask,              XK_h,      setmfact,       {.f = -0.01} },
+	{ MODKEY|Mod1Mask,              XK_l,      setmfact,       {.f = +0.01} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },

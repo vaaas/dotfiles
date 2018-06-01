@@ -1,0 +1,7 @@
+#!/bin/sh
+
+IFS='
+'
+cd ~/Music/radio
+file=$(ls -1 | dmenu)
+exec mpv --force-window=yes -- "$file"
