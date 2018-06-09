@@ -41,6 +41,7 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "#140601" :foreground "white" :family "Monospace" :height 105))))
  '(fringe ((t (:background "#3E2723"))))
+ '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.25))))
  '(markdown-hr-face ((t (:inherit markdown-markup-face :height 2.0))))
  '(markdown-italic-face ((t (:foreground "#009688" :slant italic))))
  '(markdown-markup-face ((t (:foreground "#FFC107"))))
@@ -70,7 +71,7 @@
 (define-key my-keys-minor-mode-map (kbd "M-l") 'forward-char)
 (define-key my-keys-minor-mode-map (kbd "M-m") 'beginning-of-line-text)
 (define-key my-keys-minor-mode-map (kbd "M-n") 'end-of-line)
-(define-key my-keys-minor-mode-map (kbd "C-M-n") 'forward-paragraph)
+(define-key my-keys-minor-mode-map (kbd "C-M-n") (lambda() (interactive) (forward-paragraph) (next-line)))
 (define-key my-keys-minor-mode-map (kbd "C-M-m") 'backward-paragraph)
 (define-key my-keys-minor-mode-map (kbd "C-M-h") 'backward-word)
 (define-key my-keys-minor-mode-map (kbd "C-M-l") 'forward-word)
@@ -111,9 +112,9 @@
 	(interactive)
 	(find-name-dired "."
 		(concat "*" (read-from-minibuffer "File name: ") "*"))))
-(define-key my-keys-minor-mode-map (kbd "C-z <RET>") (lambda()
+(define-key my-keys-minor-mode-map (kbd "C-<return>") (lambda()
 	(interactive)
-	(call-process "espeak-ng" nil 0 nil (thing-at-point 'line t))))
+	(call-process "espeak-ng" nil 0 nil "-s" "250" (thing-at-point 'line t))))
 (define-key my-keys-minor-mode-map (kbd "C-z m a") 'woman)
 (define-key my-keys-minor-mode-map (kbd "C-z x t") (lambda() (interactive) (call-process "st" nil 0 nil)))
 (define-key my-keys-minor-mode-map (kbd "C-z t e") (lambda() (interactive) (term "/bin/bash")))
@@ -230,3 +231,9 @@
 	(interactive)
 	(let* ((file (dired-get-filename)))
 		(call-process "xdg-open" nil 0 nil file)))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
