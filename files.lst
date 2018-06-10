@@ -28,7 +28,7 @@ bin/hdmi	~/Binaries/hdmi
 bin/bar	~/Binaries/bar
 bin/clip_run	~/Binaries/clip_run
 bin/gtkfilter	~/Binaries/gtkfilter
-bin/internet_radio ~/Binaries/internet_radio
+bin/internet_radio	~/Binaries/internet_radio
 bin/pm	~/Binaries/pm
 nautilus/scripts-accels	~/.config/nautilus/scripts-accels
 nautilus/st-here	~/.local/share/nautilus/scripts/st-here
