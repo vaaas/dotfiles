@@ -219,8 +219,7 @@
 (add-hook 'css-mode-hook 'sensible-defaults)
 (add-hook 'shell-script-mode-hook 'sensible-defaults)
 (add-hook 'prog-mode-hook (lambda ()
-	(auto-complete-mode)
-	(electric-pair-mode)))
+	(auto-complete-mode)))
 
 ;functions
 (defun sensible-defaults()
