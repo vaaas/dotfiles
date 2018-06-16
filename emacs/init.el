@@ -139,6 +139,9 @@
 (define-key my-keys-minor-mode-map (kbd "C-z s h") 'split-window-below)
 (define-key my-keys-minor-mode-map (kbd "C-z s v") 'split-window-right)
 (define-key my-keys-minor-mode-map (kbd "C-z r e f") (lambda() (interactive) (async-shell-command "sxiv -b -- ref/*")))
+(define-key my-keys-minor-mode-map (kbd "C-z y m d") (lambda() (interactive) (insert (format-time-string "%Y-%m-%d"))))
+(define-key my-keys-minor-mode-map (kbd "C-z s e c") (lambda() (interactive) (insert (format-time-string "%s"))))
+(define-key my-keys-minor-mode-map (kbd "C-z i n s") (lambda() (interactive) (insert-file-contents (read-file-name "File: "))))
 
 ; typical keys
 (define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
