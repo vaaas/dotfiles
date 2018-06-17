@@ -130,7 +130,7 @@
 	(defconst x (/ (- (frame-width) 80) 2))
 	(set-window-margins nil x x)))
 (define-key my-keys-minor-mode-map (kbd "C-z r u n") 'async-shell-command)
-(define-key my-keys-minor-mode-map (kbd "C-z p i p e") 'shell-command-on-region)
+(define-key my-keys-minor-mode-map (kbd "C-z |") 'shell-command-on-region)
 (define-key my-keys-minor-mode-map (kbd "C-z s h") 'eshell)
 (define-key my-keys-minor-mode-map (kbd "C-z d i r") 'dired)
 (define-key my-keys-minor-mode-map (kbd "C-z t m p") (lambda() (interactive) (find-file "~/scratchpad")))
@@ -139,6 +139,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-z s h") 'split-window-below)
 (define-key my-keys-minor-mode-map (kbd "C-z s v") 'split-window-right)
 (define-key my-keys-minor-mode-map (kbd "C-z r e f") (lambda() (interactive) (async-shell-command "sxiv -b -- ref/*")))
+(define-key my-keys-minor-mode-map (kbd "C-z c m") (lambda() (interactive) (shell-command-on-buffer "cmark --smart" t)))
 
 ; typical keys
 (define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
@@ -225,14 +226,11 @@
 (defun sensible-defaults()
 	(setq-default indent-line-function 'indent-relative))
 
-(defun dired-xdg-open-file ()
+(defun dired-xdg-open-file()
 	"In dired, open the file with xdg-open"
 	(interactive)
 	(let* ((file (dired-get-filename)))
 		(call-process "xdg-open" nil 0 nil file)))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+(defun shell-command-on-buffer(command replace)
+	(shell-command-on-region 1 (point-max) command "*shell-output*" replace))
