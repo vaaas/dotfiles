@@ -11,10 +11,6 @@ export GDK_CORE_DEVICE_EVENTS=1
 if test -z "$DISPLAY" && test -n "$XDG_VTNR" && test "$XDG_VTNR" -eq 1
 then
 	exec startx
-elif (test -n "$XDG_VTNR" && test "$XDG_VTNR" -eq 2) ||
-     (test -n "$SSH_CLIENT" || test -n "$SSH_TTY")
-then
-	exec screen -xRR VAS
 else
 	source ~/.bashrc
 fi
