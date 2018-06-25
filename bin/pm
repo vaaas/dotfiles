@@ -1,2 +1,3 @@
 #!/bin/sh
+xtrlock -f -b
 systemctl $1
