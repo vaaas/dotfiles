@@ -61,6 +61,7 @@ alias bc='bc -l'
 alias update='sudo sh -c "apt update && apt full-upgrade"'
 alias zz='systemctl suspend'
 alias emacs='emacsclient -nc'
+alias less='less -I'
 
 #functions
 
