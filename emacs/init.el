@@ -100,6 +100,8 @@
 (define-key my-keys-minor-mode-map (kbd "C-w") 'universal-argument)
 (define-key my-keys-minor-mode-map (kbd "C-q") 'kmacro-start-macro-or-insert-counter)
 (define-key my-keys-minor-mode-map (kbd "C-S-q") 'kmacro-end-or-call-macro)
+(define-key my-keys-minor-mode-map (kbd "<M-tab>") 'ibuffer)
+
 
 ; leader
 (define-key my-keys-minor-mode-map (kbd "C-z") nil)
@@ -107,7 +109,6 @@
 (define-key my-keys-minor-mode-map (kbd "C-z r n") 'rename-buffer)
 (define-key my-keys-minor-mode-map (kbd "C-z q") 'save-buffers-kill-terminal)
 (define-key my-keys-minor-mode-map (kbd "C-z k b") 'kill-buffer)
-(define-key my-keys-minor-mode-map (kbd "C-z l b") 'ibuffer)
 (define-key my-keys-minor-mode-map (kbd "C-z f i") (lambda ()
 	(interactive)
 	(find-name-dired "."
