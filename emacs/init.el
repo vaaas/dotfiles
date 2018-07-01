@@ -41,6 +41,7 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "#140601" :foreground "white" :family "Monospace" :height 105))))
  '(fringe ((t (:background "#3E2723"))))
+ '(italic ((t (:slant italic))))
  '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.25))))
  '(markdown-hr-face ((t (:inherit markdown-markup-face :height 2.0))))
  '(markdown-italic-face ((t (:foreground "#009688" :slant italic))))
@@ -239,3 +240,9 @@
 
 (defun shell-command-on-buffer(command replace)
 	(shell-command-on-region 1 (point-max) command "*shell-output*" replace))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
