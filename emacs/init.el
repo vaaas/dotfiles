@@ -218,6 +218,12 @@
 (with-eval-after-load "auto-complete"
 	(setq ac-sources '(ac-source-words-in-all-buffer)))
 
+(with-eval-after-load "sgml-mode"
+	(define-key html-mode-map (kbd "C-z C-b") (lambda() (interactive) (insert "<strong></strong>") (backward-word) (backward-char) (backward-char)))
+	(define-key html-mode-map (kbd "C-z C-i") (lambda() (interactive) (insert "<em></em>") (backward-word) (backward-char) (backward-char)))
+	(define-key html-mode-map (kbd "C-z C-a") (lambda() (interactive) (insert "<article></article>") (backward-word)(backward-char) (backward-char)))
+	(define-key html-mode-map (kbd "C-z S-C-i") (lambda() (interactive) (insert (concat "<img src=\"" (read-from-minibuffer "src: ") "\"/>")))))
+
 ;hooks
 (add-hook 'emacs-lisp-mode-hook 'sensible-defaults)
 (add-hook 'js-mode-hook 'sensible-defaults)
