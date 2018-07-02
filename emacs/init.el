@@ -27,6 +27,8 @@
 	js-indent-level tab-width
 	smie-indent-basic tab-width)
 (put 'dired-find-alternate-file 'disabled nil)
+(setq snippets '(
+	("initial-viewport" . "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">")))
 
 ;looks
 (tool-bar-mode -1)
@@ -114,9 +116,6 @@
 	(interactive)
 	(find-name-dired "."
 		(concat "*" (read-from-minibuffer "File name: ") "*"))))
-(define-key my-keys-minor-mode-map (kbd "C-<return>") (lambda()
-	(interactive)
-	(call-process "espeak-ng" nil 0 nil "-s" "250" (thing-at-point 'line t))))
 (define-key my-keys-minor-mode-map (kbd "C-z m a") 'woman)
 (define-key my-keys-minor-mode-map (kbd "C-z x t") (lambda() (interactive) (call-process "st" nil 0 nil)))
 (define-key my-keys-minor-mode-map (kbd "C-z t e") (lambda() (interactive) (term "/bin/bash")))
@@ -146,6 +145,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-z s e c") (lambda() (interactive) (insert (format-time-string "%s"))))
 (define-key my-keys-minor-mode-map (kbd "C-z i n s") (lambda() (interactive) (insert-file-contents (read-file-name "File: "))))
 (define-key my-keys-minor-mode-map (kbd "C-z m m") (lambda() (interactive) (markdown-mode)))
+(define-key my-keys-minor-mode-map (kbd "C-z s n") (lambda() (interactive) (insert (cdr (assoc (completing-read "snippet: " snippets) snippets)))))
 
 ; typical keys
 (define-key my-keys-minor-mode-map (kbd "C-v") 'yank)
@@ -190,10 +190,13 @@
 
 ;markdown
 (with-eval-after-load "markdown-mode"
-	(define-key markdown-mode-map (kbd "C-z m a") 'markdown-insert-link)
-	(define-key markdown-mode-map (kbd "C-z m i") 'markdown-insert-image)
-	(define-key markdown-mode-map (kbd "C-z m e") 'markdown-insert-italic)
-	(define-key markdown-mode-map (kbd "C-z m s") 'markdown-insert-bold))
+	(define-key markdown-mode-map (kbd "C-<return>") (lambda()
+		(interactive)
+		(call-process "espeak-ng" nil 0 nil "-s" "250" (thing-at-point 'line t))))
+	(define-key markdown-mode-map (kbd "C-z C-l") 'markdown-insert-link)
+	(define-key markdown-mode-map (kbd "C-z S-C-i") 'markdown-insert-image)
+	(define-key markdown-mode-map (kbd "C-z C-i") 'markdown-insert-italic)
+	(define-key markdown-mode-map (kbd "C-z C-b") 'markdown-insert-bold))
 
 ;dired
 (with-eval-after-load "dired"
@@ -219,9 +222,18 @@
 	(setq ac-sources '(ac-source-words-in-all-buffer)))
 
 (with-eval-after-load "sgml-mode"
-	(define-key html-mode-map (kbd "C-z C-b") (lambda() (interactive) (insert "<strong></strong>") (backward-word) (backward-char) (backward-char)))
-	(define-key html-mode-map (kbd "C-z C-i") (lambda() (interactive) (insert "<em></em>") (backward-word) (backward-char) (backward-char)))
-	(define-key html-mode-map (kbd "C-z C-a") (lambda() (interactive) (insert "<article></article>") (backward-word)(backward-char) (backward-char)))
+	(define-key html-mode-map (kbd "C-z C-b") (lambda(start end) (interactive "r") (wrap-or-insert "<strong>" "</strong>" start end)))
+	(define-key html-mode-map (kbd "C-z C-i") (lambda(start end) (interactive "r") (wrap-or-insert "<em>" "</em>" start end)))
+	(define-key html-mode-map (kbd "C-z C-a") (lambda(start end) (interactive "r") (wrap-or-insert "<article>" "</article>" start end)))
+	(define-key html-mode-map (kbd "C-z C-1") (lambda(start end) (interactive "r") (wrap-or-insert "<h1>" "</h1>" start end)))
+	(define-key html-mode-map (kbd "C-z C-2") (lambda(start end) (interactive "r") (wrap-or-insert "<h2>" "</h2>" start end)))
+	(define-key html-mode-map (kbd "C-z C-3") (lambda(start end) (interactive "r") (wrap-or-insert "<h3>" "</h3>" start end)))
+	(define-key html-mode-map (kbd "C-z C-4") (lambda(start end) (interactive "r") (wrap-or-insert "<h4>" "</h4>" start end)))
+	(define-key html-mode-map (kbd "C-z C-5") (lambda(start end) (interactive "r") (wrap-or-insert "<h5>" "</h5>" start end)))
+	(define-key html-mode-map (kbd "C-z C-6") (lambda(start end) (interactive "r") (wrap-or-insert "<h6>" "</h6>" start end)))
+	(define-key html-mode-map (kbd "C-z C-l") (lambda(start end) (interactive "r") (wrap-or-insert (concat "<a href=\"" (read-from-minibuffer "href: ") "\">") "</a>" start end)))
+	(define-key html-mode-map (kbd "C-<return>") (lambda() (interactive) (end-of-line) (newline-and-indent) (wrap-or-insert "<p>" "</p>")))
+	(define-key html-mode-map (kbd "C-z C-;") 'comment-region)
 	(define-key html-mode-map (kbd "C-z S-C-i") (lambda() (interactive) (insert (concat "<img src=\"" (read-from-minibuffer "src: ") "\"/>")))))
 
 ;hooks
@@ -246,9 +258,14 @@
 
 (defun shell-command-on-buffer(command replace)
 	(shell-command-on-region 1 (point-max) command "*shell-output*" replace))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+(defun wrap-or-insert (s1 s2 &optional start end)
+	(cond ((and start end) (setq
+		a start
+		b end))
+	(t (setq a (point) b (point))))
+	(goto-char b)
+	(insert s2)
+	(goto-char a)
+	(insert s1)
+	(goto-char (+ a (length s1))))
