@@ -80,16 +80,18 @@ static const char *emacscmd[] = { "emacsclient", "-c", NULL };
 static const char *lockcmd[] = { "xtrlock", "-f", "-b", NULL };
 static const char *passcmd[] = { "passmenu", NULL };
 static const char *clipruncmd[] = { "clip_run", NULL };
-static const char *audiolowercmd[] = { "amixer", "sset", "Master", "10%-", NULL};
-static const char *audioraisecmd[] = { "amixer", "sset", "Master", "10%+", NULL};
-static const char *audiomutecmd[] = { "amixer", "sset", "Master", "toggle", NULL};
+static const char *audiolowercmd[] = { "amixer", "sset", "Master", "10%-", NULL };
+static const char *audioraisecmd[] = { "amixer", "sset", "Master", "10%+", NULL };
+static const char *audiomutecmd[] = { "amixer", "sset", "Master", "toggle", NULL };
 static const char *radiocmd[] = { "internet_radio", NULL };
 static const char *sleepcmd[] = { "pm", "suspend", NULL };
+static const char *eshellcmd[] = { "emacsclient", "-cne", "(eshell)", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_e,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_grave,  spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_grave,  spawn,          {.v = eshellcmd } },
+	{ MODKEY|ShiftMask,             XK_grave,  spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_F1,     spawn,          {.v = firefoxcmd } },
 	{ MODKEY,                       XK_F2,     spawn,          {.v = nautiluscmd } },
 	{ MODKEY,                       XK_F3,     spawn,          {.v = emacscmd } },

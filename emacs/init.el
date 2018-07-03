@@ -99,7 +99,7 @@
 (define-key my-keys-minor-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
 (define-key my-keys-minor-mode-map (kbd "M-e") 'execute-extended-command)
 (define-key my-keys-minor-mode-map (kbd "M-E") 'eval-expression)
-(define-key my-keys-minor-mode-map (kbd "C-M-<backspace>") 'kill-whole-line)
+(define-key my-keys-minor-mode-map (kbd "C-k") 'kill-whole-line)
 (define-key my-keys-minor-mode-map (kbd "C-w") 'universal-argument)
 (define-key my-keys-minor-mode-map (kbd "C-q") 'kmacro-start-macro-or-insert-counter)
 (define-key my-keys-minor-mode-map (kbd "C-S-q") 'kmacro-end-or-call-macro)
@@ -245,6 +245,9 @@
 (add-hook 'shell-script-mode-hook 'sensible-defaults)
 (add-hook 'prog-mode-hook (lambda ()
 	(auto-complete-mode)))
+(add-hook 'eshell-mode-hook (lambda()
+	(setenv "PAGER" "cat")
+	(setenv "TERM" "eshell"))
 
 ;functions
 (defun sensible-defaults()
