@@ -244,6 +244,7 @@
 	(define-key eshell-mode-map (kbd "M-K") 'eshell-previous-prompt)
 	(define-key eshell-mode-map (kbd "M-J") 'eshell-next-prompt)
 	(define-key eshell-mode-map (kbd "<return>") 'eshell-send-input)
+	(define-key eshell-mode-map (kbd "C-k") 'eshell-kill-input)
 	(setenv "PAGER" "cat")
 	(setenv "TERM" "eshell")))
 
