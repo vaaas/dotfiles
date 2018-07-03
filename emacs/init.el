@@ -149,6 +149,7 @@
 (global-set-key (kbd "C-S-r") 'query-replace-regexp)
 (global-set-key (kbd "S-C-f") 'isearch-backward)
 (global-set-key (kbd "C-o") 'find-file)
+(define-key prog-mode-map (kbd "<tab>") 'tab-to-tab-stop)
 (define-key prog-mode-map (kbd "<return>") 'copy-whitespace-above-and-indent)
 (define-key text-mode-map (kbd "<return>") 'copy-whitespace-above-and-indent)
 
@@ -245,6 +246,9 @@
 	(define-key eshell-mode-map (kbd "M-J") 'eshell-next-prompt)
 	(define-key eshell-mode-map (kbd "<return>") 'eshell-send-input)
 	(define-key eshell-mode-map (kbd "C-k") 'eshell-kill-input)
+	(define-key eshell-mode-map (kbd "M-<tab>") nil)
+	(define-key eshell-mode-map (kbd "C-c") 'eshell-interrupt-process)
+	(define-key eshell-mode-map (kbd "C-d") 'eshell-send-eof-to-process)
 	(setenv "PAGER" "cat")
 	(setenv "TERM" "eshell")))
 
