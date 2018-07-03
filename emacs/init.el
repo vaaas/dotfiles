@@ -137,6 +137,7 @@
 (global-set-key (kbd "C-z i n s") (lambda() (interactive) (insert-file-contents (read-file-name "File: "))))
 (global-set-key (kbd "C-z m m") (lambda() (interactive) (markdown-mode)))
 (global-set-key (kbd "C-z s n") (lambda() (interactive) (insert (cdr (assoc (completing-read "snippet: " snippets) snippets)))))
+(global-set-key (kbd "C-z f m") (lambda() (interactive) (call-process "nautilus" nil 0 nil default-directory)))
 
 ; typical keys
 (global-set-key (kbd "C-v") 'yank)
