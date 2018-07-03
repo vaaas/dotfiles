@@ -89,6 +89,7 @@
 (global-set-key (kbd "M-e") 'execute-extended-command)
 (global-set-key (kbd "M-E") 'eval-expression)
 (global-set-key (kbd "C-k") 'kill-whole-line)
+(global-set-key (kbd "C-S-k") 'delete-indentation)
 (global-set-key (kbd "C-w") 'universal-argument)
 (global-set-key (kbd "C-q") 'kmacro-start-macro-or-insert-counter)
 (global-set-key (kbd "C-S-q") 'kmacro-end-or-call-macro)
@@ -147,7 +148,7 @@
 (global-set-key (kbd "C-S-r") 'query-replace-regexp)
 (global-set-key (kbd "S-C-f") 'isearch-backward)
 (global-set-key (kbd "C-o") 'find-file)
-(define-key prog-mode-map (kbd "<return>") 'newline-and-indent)
+(define-key prog-mode-map (kbd "<return>") 'copy-whitespace-above-and-indent)
 
 ;search mode
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
@@ -265,3 +266,15 @@
 	(goto-char a)
 	(insert s1)
 	(goto-char (+ a (length s1))))
+
+(defun copy-whitespace-above-and-indent()
+	(interactive)
+	(setq old-point (point))
+	(previous-line)
+	(beginning-of-line)
+	(setq start (point))
+	(beginning-of-line-text)
+	(setq end (point))
+	(goto-char old-point)
+	(newline)
+	(insert (buffer-substring start end)))
