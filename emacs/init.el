@@ -25,6 +25,7 @@
 	sgml-basic-offset tab-width
 	sh-basic-offset tab-width
 	js-indent-level tab-width
+	line-spacing 0.3
 	smie-indent-basic tab-width)
 (put 'dired-find-alternate-file 'disabled nil)
 (setq snippets '(
@@ -41,7 +42,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background "#140601" :foreground "white" :family "Monospace" :height 105))))
+ '(default ((t (:background "#140601" :foreground "white" :height 110 :family "monospace"))))
  '(fringe ((t (:background "#3E2723"))))
  '(italic ((t (:slant italic))))
  '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.25))))
@@ -50,7 +51,7 @@
  '(markdown-markup-face ((t (:foreground "#FFC107"))))
  '(mode-line ((t (:background "#33691E" :foreground "white"))))
  '(mode-line-inactive ((t (:background "#212121" :foreground "#E0E0E0"))))
- '(variable-pitch ((t (:height 110 :family "sans")))))
+ '(variable-pitch ((t (:height 150 :family "sans")))))
 
 ;; Add parsing of jshint output in compilation mode
 ;(add-to-list 'compilation-error-regexp-alist-alist '(jshint "^\\(.*\\): line \\([0-9]+\\), col \\([0-9]+\\), " 1 2 3))
@@ -149,6 +150,7 @@
 (global-set-key (kbd "S-C-f") 'isearch-backward)
 (global-set-key (kbd "C-o") 'find-file)
 (define-key prog-mode-map (kbd "<return>") 'copy-whitespace-above-and-indent)
+(define-key text-mode-map (kbd "<return>") 'copy-whitespace-above-and-indent)
 
 ;search mode
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
@@ -233,6 +235,7 @@
 (add-hook 'html-mode-hook 'sensible-defaults)
 (add-hook 'css-mode-hook 'sensible-defaults)
 (add-hook 'shell-script-mode-hook 'sensible-defaults)
+(add-hook 'nxml-mode-hook 'sensible-defaults)
 (add-hook 'prog-mode-hook (lambda ()
 	(auto-complete-mode)))
 (add-hook 'eshell-mode-hook (lambda()
@@ -240,6 +243,7 @@
 	(define-key eshell-mode-map (kbd "M-j") 'eshell-next-matching-input-from-input)
 	(define-key eshell-mode-map (kbd "M-K") 'eshell-previous-prompt)
 	(define-key eshell-mode-map (kbd "M-J") 'eshell-next-prompt)
+	(define-key eshell-mode-map (kbd "<return>") 'eshell-send-input)
 	(setenv "PAGER" "cat")
 	(setenv "TERM" "eshell")))
 
@@ -270,7 +274,6 @@
 (defun copy-whitespace-above-and-indent()
 	(interactive)
 	(setq old-point (point))
-	(previous-line)
 	(beginning-of-line)
 	(setq start (point))
 	(beginning-of-line-text)
