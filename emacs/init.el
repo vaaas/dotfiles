@@ -25,7 +25,6 @@
 	sgml-basic-offset tab-width
 	sh-basic-offset tab-width
 	js-indent-level tab-width
-	line-spacing 0.3
 	smie-indent-basic tab-width)
 (put 'dired-find-alternate-file 'disabled nil)
 (setq snippets '(
@@ -37,21 +36,18 @@
 (menu-bar-mode -1)
 (electric-indent-mode -1)
 (global-visual-line-mode 1)
+(column-number-mode)
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:background "#140601" :foreground "white" :height 110 :family "monospace"))))
- '(fringe ((t (:background "#3E2723"))))
- '(italic ((t (:slant italic))))
- '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.25))))
- '(markdown-hr-face ((t (:inherit markdown-markup-face :height 2.0))))
- '(markdown-italic-face ((t (:foreground "#009688" :slant italic))))
- '(markdown-markup-face ((t (:foreground "#FFC107"))))
- '(mode-line ((t (:background "#33691E" :foreground "white"))))
- '(mode-line-inactive ((t (:background "#212121" :foreground "#E0E0E0"))))
- '(variable-pitch ((t (:height 150 :family "sans")))))
+	'(default ((t (:background "#140601" :foreground "white" :height 100 :family "Dina"))))
+	'(fringe ((t (:background "#3E2723"))))
+	'(italic ((t (:slant italic))))
+	'(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.25))))
+	'(markdown-hr-face ((t (:inherit markdown-markup-face :height 2.0))))
+	'(markdown-italic-face ((t (:foreground "#009688" :slant italic))))
+	'(markdown-markup-face ((t (:foreground "#FFC107"))))
+	'(mode-line ((t (:background "#33691E" :foreground "white"))))
+	'(mode-line-inactive ((t (:background "#212121" :foreground "#E0E0E0"))))
+	'(variable-pitch ((t (:height 150 :family "sans")))))
 
 ;; Add parsing of jshint output in compilation mode
 ;(add-to-list 'compilation-error-regexp-alist-alist '(jshint "^\\(.*\\): line \\([0-9]+\\), col \\([0-9]+\\), " 1 2 3))
@@ -85,8 +81,8 @@
 ;etc
 (global-set-key (kbd "<escape>") 'keyboard-quit)
 (global-set-key (kbd "M-D") 'backward-kill-word)
-(global-set-key (kbd "C-<") 'indent-rigidly-right-to-tab-stop)
-(global-set-key (kbd "C->") 'indent-rigidly-left-to-tab-stop)
+(global-set-key (kbd "C-<") 'indent-rigidly-left-to-tab-stop)
+(global-set-key (kbd "C->") 'indent-rigidly-right-to-tab-stop)
 (global-set-key (kbd "M-e") 'execute-extended-command)
 (global-set-key (kbd "M-E") 'eval-expression)
 (global-set-key (kbd "C-k") 'kill-whole-line)
@@ -270,10 +266,9 @@
 	(shell-command-on-region 1 (point-max) command "*shell-output*" replace))
 
 (defun wrap-or-insert (s1 s2 &optional start end)
-	(cond ((and start end) (setq
-		a start
-		b end))
-	(t (setq a (point) b (point))))
+	(cond (
+		(and start end) (setq a start b end))
+		(t (setq a (point) b (point))))
 	(goto-char b)
 	(insert s2)
 	(goto-char a)
