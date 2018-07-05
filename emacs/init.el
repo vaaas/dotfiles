@@ -5,8 +5,8 @@
 	package-archives '(
 		("gnu" . "https://elpa.gnu.org/packages/")
 		("melpa" . "https://melpa.org/packages/"))
-	package-selected-packages (quote (
-		(auto-complete bbcode-mode markdown-mode wordnut)))
+	package-selected-packages
+		'(auto-complete bbcode-mode markdown-mode wordnut)
 	inhibit-startup-screen t
 	make-backup-files nil
 	major-mode 'text-mode
@@ -85,8 +85,8 @@
 ;etc
 (global-set-key (kbd "<escape>") 'keyboard-quit)
 (global-set-key (kbd "M-D") 'backward-kill-word)
-(global-set-key (kbd "<C-tab>") 'indent-rigidly-right-to-tab-stop)
-(global-set-key (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
+(global-set-key (kbd "C-<") 'indent-rigidly-right-to-tab-stop)
+(global-set-key (kbd "C->") 'indent-rigidly-left-to-tab-stop)
 (global-set-key (kbd "M-e") 'execute-extended-command)
 (global-set-key (kbd "M-E") 'eval-expression)
 (global-set-key (kbd "C-k") 'kill-whole-line)
@@ -95,7 +95,6 @@
 (global-set-key (kbd "C-q") 'kmacro-start-macro-or-insert-counter)
 (global-set-key (kbd "C-S-q") 'kmacro-end-or-call-macro)
 (global-set-key (kbd "<M-tab>") 'ibuffer)
-
 
 ; leader
 (global-set-key (kbd "C-z") nil)
@@ -151,8 +150,6 @@
 (global-set-key (kbd "S-C-f") 'isearch-backward)
 (global-set-key (kbd "C-o") 'find-file)
 (define-key prog-mode-map (kbd "<tab>") 'tab-to-tab-stop)
-(define-key prog-mode-map (kbd "<return>") 'copy-whitespace-above-and-indent)
-(define-key text-mode-map (kbd "<return>") 'copy-whitespace-above-and-indent)
 
 ;search mode
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
@@ -192,7 +189,7 @@
 	(define-key markdown-mode-map (kbd "C-z C-i") 'markdown-insert-italic)
 	(define-key markdown-mode-map (kbd "C-z C-b") 'markdown-insert-bold))
 
-;dired
+;Dired
 (with-eval-after-load "dired"
 	(define-key dired-mode-map (kbd "<C-return>") 'dired-xdg-open-file)
 	(define-key dired-mode-map (kbd "C-z i") (lambda()
@@ -213,6 +210,12 @@
 	(define-key ibuffer-mode-map (kbd "k") 'ibuffer-backward-line))
 
 (with-eval-after-load "auto-complete"
+	(define-key ac-completing-map (kbd "<return>") 'ac-expand)
+	(define-key ac-completing-map (kbd "M-j") 'ac-next)
+	(define-key ac-completing-map (kbd "M-k") 'ac-previous)
+	(define-key ac-completing-map (kbd "M-i") 'ac-next)
+	(define-key ac-completing-map (kbd "M-I") 'ac-previous)
+	(define-key ac-mode-map (kbd "M-i") 'auto-complete)
 	(setq ac-sources '(ac-source-words-in-all-buffer)))
 
 (with-eval-after-load "sgml-mode"
@@ -255,7 +258,7 @@
 
 ;functions
 (defun sensible-defaults()
-	(setq-default indent-line-function 'indent-relative))
+	(setq-default indent-line-function 'indent-relative-maybe))
 
 (defun dired-xdg-open-file()
 	"In dired, open the file with xdg-open"
@@ -276,14 +279,3 @@
 	(goto-char a)
 	(insert s1)
 	(goto-char (+ a (length s1))))
-
-(defun copy-whitespace-above-and-indent()
-	(interactive)
-	(setq old-point (point))
-	(beginning-of-line)
-	(setq start (point))
-	(beginning-of-line-text)
-	(setq end (point))
-	(goto-char old-point)
-	(newline)
-	(insert (buffer-substring start end)))
