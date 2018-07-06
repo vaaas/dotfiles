@@ -38,7 +38,7 @@
 (global-visual-line-mode 1)
 (column-number-mode)
 (custom-set-faces
-	'(default ((t (:background "#140601" :foreground "white" :height 100 :family "Dina"))))
+	'(default ((t (:background "#140601" :foreground "white" :height 100 :family "monospace"))))
 	'(fringe ((t (:background "#3E2723"))))
 	'(italic ((t (:slant italic))))
 	'(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.25))))
@@ -146,6 +146,8 @@
 (global-set-key (kbd "S-C-f") 'isearch-backward)
 (global-set-key (kbd "C-o") 'find-file)
 (define-key prog-mode-map (kbd "<tab>") 'tab-to-tab-stop)
+(define-key text-mode-map (kbd "<return>") 'newline-and-indent-relative-maybe)
+(define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative-maybe)
 
 ;search mode
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
@@ -230,13 +232,6 @@
 	(define-key html-mode-map (kbd "C-z S-C-i") (lambda() (interactive) (insert (concat "<img src=\"" (read-from-minibuffer "src: ") "\"/>")))))
 
 ;hooks
-(add-hook 'emacs-lisp-mode-hook 'sensible-defaults)
-(add-hook 'js-mode-hook 'sensible-defaults)
-(add-hook 'c-mode-hook 'sensible-defaults)
-(add-hook 'html-mode-hook 'sensible-defaults)
-(add-hook 'css-mode-hook 'sensible-defaults)
-(add-hook 'shell-script-mode-hook 'sensible-defaults)
-(add-hook 'nxml-mode-hook 'sensible-defaults)
 (add-hook 'prog-mode-hook (lambda ()
 	(auto-complete-mode)))
 (add-hook 'eshell-mode-hook (lambda()
@@ -251,10 +246,6 @@
 	(define-key eshell-mode-map (kbd "C-d") 'eshell-send-eof-to-process)
 	(setenv "PAGER" "cat")
 	(setenv "TERM" "eshell")))
-
-;functions
-(defun sensible-defaults()
-	(setq-default indent-line-function 'indent-relative-maybe))
 
 (defun dired-xdg-open-file()
 	"In dired, open the file with xdg-open"
@@ -274,3 +265,8 @@
 	(goto-char a)
 	(insert s1)
 	(goto-char (+ a (length s1))))
+
+(defun newline-and-indent-relative-maybe()
+	(interactive)
+	(newline)
+	(indent-relative-maybe))

@@ -4,4 +4,4 @@ IFS='
 '
 cd ~/Music/radio
 file=$(ls -1 | dmenu)
-exec mpv --force-window=yes -- "$file"
+exec mpv --loop=inf --force-window=yes -- "$file"
