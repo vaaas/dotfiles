@@ -2,7 +2,7 @@
 
 /* appearance */
 static const char *fonts[] = {
-	"sans:size=10"
+	"sans:pixelsize=16"
 };
 static const char normbordercolor[] = "#0c1a07";
 static const char normbgcolor[]     = "#140601";

@@ -38,7 +38,7 @@
 (global-visual-line-mode 1)
 (column-number-mode)
 (custom-set-faces
-	'(default ((t (:background "#140601" :foreground "white" :height 100 :family "monospace"))))
+	'(default ((t (:background "#140601" :foreground "white" :height 160 :family "monospace"))))
 	'(fringe ((t (:background "#3E2723"))))
 	'(italic ((t (:slant italic))))
 	'(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.25))))
@@ -47,7 +47,7 @@
 	'(markdown-markup-face ((t (:foreground "#FFC107"))))
 	'(mode-line ((t (:background "#33691E" :foreground "white"))))
 	'(mode-line-inactive ((t (:background "#212121" :foreground "#E0E0E0"))))
-	'(variable-pitch ((t (:height 150 :family "sans")))))
+	'(variable-pitch ((t (:height 160 :family "sans")))))
 
 ;; Add parsing of jshint output in compilation mode
 ;(add-to-list 'compilation-error-regexp-alist-alist '(jshint "^\\(.*\\): line \\([0-9]+\\), col \\([0-9]+\\), " 1 2 3))
@@ -230,6 +230,12 @@
 	(define-key html-mode-map (kbd "C-<return>") (lambda() (interactive) (end-of-line) (newline-and-indent) (wrap-or-insert "<p>" "</p>")))
 	(define-key html-mode-map (kbd "C-z C-;") 'comment-region)
 	(define-key html-mode-map (kbd "C-z S-C-i") (lambda() (interactive) (insert (concat "<img src=\"" (read-from-minibuffer "src: ") "\"/>")))))
+	
+(with-eval-after-load "cc-mode"
+	(define-key c-mode-map (kbd "C-M-h") nil))
+
+(with-eval-after-load "nxml-mode"
+	(define-key nxml-mode-map (kbd "M-h") nil))
 
 ;hooks
 (add-hook 'prog-mode-hook (lambda ()

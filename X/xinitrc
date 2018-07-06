@@ -6,6 +6,7 @@ set m 1 0
 hsetroot -cover wallpaper &
 dunst &
 bar &
+xrdb -merge ~/.Xresources
 
 #(ps -Af | grep -q 'emacs --daemon') || emacs --daemon &
 emacs --daemon &
