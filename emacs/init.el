@@ -250,6 +250,7 @@
 	(define-key eshell-mode-map (kbd "M-<tab>") nil)
 	(define-key eshell-mode-map (kbd "C-c") 'eshell-interrupt-process)
 	(define-key eshell-mode-map (kbd "C-d") 'eshell-send-eof-to-process)
+	(define-key eshell-mode-map (kbd "C-r") 'eshell-isearch-backward)
 	(setenv "PAGER" "cat")
 	(setenv "TERM" "eshell")))
 
