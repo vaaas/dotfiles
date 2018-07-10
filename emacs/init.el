@@ -185,7 +185,9 @@
 	(define-key markdown-mode-map (kbd "C-z C-l") 'markdown-insert-link)
 	(define-key markdown-mode-map (kbd "C-z S-C-i") 'markdown-insert-image)
 	(define-key markdown-mode-map (kbd "C-z C-i") 'markdown-insert-italic)
-	(define-key markdown-mode-map (kbd "C-z C-b") 'markdown-insert-bold))
+	(define-key markdown-mode-map (kbd "C-z C-b") 'markdown-insert-bold)
+	(define-key markdown-mode-map (kbd "C-x") nil)
+	(define-key markdown-mode-map (kbd "C-S-x") nil))
 
 ;Dired
 (with-eval-after-load "dired"
