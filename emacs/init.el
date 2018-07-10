@@ -38,7 +38,7 @@
 (global-visual-line-mode 1)
 (column-number-mode)
 (custom-set-faces
-	'(default ((t (:background "#140601" :foreground "white" :height 160 :family "monospace"))))
+	'(default ((t (:background "#140601" :foreground "white" :height 140 :family "monospace"))))
 	'(fringe ((t (:background "#3E2723"))))
 	'(italic ((t (:slant italic))))
 	'(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.25))))
