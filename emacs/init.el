@@ -19,6 +19,7 @@
 	backward-delete-char-untabify-method nil
 	find-name-arg "-iname"
 	tab-width 8
+	line-spacing 0.25
 	c-basic-offset tab-width
 	css-indent-offset tab-width
 	python-indent-offset tab-width
@@ -37,8 +38,9 @@
 (electric-indent-mode -1)
 (global-visual-line-mode 1)
 (column-number-mode)
+(ido-mode t)
 (custom-set-faces
-	'(default ((t (:background "#140601" :foreground "white" :height 140 :family "monospace"))))
+	'(default ((t (:background "#140601" :foreground "white" :height 130 :family "monospace"))))
 	'(fringe ((t (:background "#3E2723"))))
 	'(italic ((t (:slant italic))))
 	'(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.25))))
@@ -90,7 +92,8 @@
 (global-set-key (kbd "C-w") 'universal-argument)
 (global-set-key (kbd "C-q") 'kmacro-start-macro-or-insert-counter)
 (global-set-key (kbd "C-S-q") 'kmacro-end-or-call-macro)
-(global-set-key (kbd "<M-tab>") 'ibuffer)
+(global-set-key (kbd "<M-tab>") 'ido-switch-buffer)
+(global-set-key (kbd "<M-S-tab>") 'ibuffer)
 
 ; leader
 (global-set-key (kbd "C-z") nil)
@@ -145,6 +148,7 @@
 (global-set-key (kbd "C-S-r") 'query-replace-regexp)
 (global-set-key (kbd "S-C-f") 'isearch-backward)
 (global-set-key (kbd "C-o") 'find-file)
+(define-key text-mode-map (kbd "<tab>") 'tab-to-tab-stop)
 (define-key prog-mode-map (kbd "<tab>") 'tab-to-tab-stop)
 (define-key text-mode-map (kbd "<return>") 'newline-and-indent-relative-maybe)
 (define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative-maybe)
@@ -253,6 +257,8 @@
 	(define-key eshell-mode-map (kbd "C-c") 'eshell-interrupt-process)
 	(define-key eshell-mode-map (kbd "C-d") 'eshell-send-eof-to-process)
 	(define-key eshell-mode-map (kbd "C-r") 'eshell-isearch-backward)
+	(define-key eshell-mode-map (kbd "C-M-l") nil)
+	(define-key eshell-mode-map (kbd "C-l") 'eshell/clear)
 	(setenv "PAGER" "cat")
 	(setenv "TERM" "eshell")))
 
