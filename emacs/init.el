@@ -26,7 +26,8 @@
 	sgml-basic-offset tab-width
 	sh-basic-offset tab-width
 	js-indent-level tab-width
-	smie-indent-basic tab-width)
+	smie-indent-basic tab-width
+	markdown-list-indent-width)
 (put 'dired-find-alternate-file 'disabled nil)
 (setq snippets '(
 	("initial-viewport" . "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">")))
@@ -93,7 +94,6 @@
 (global-set-key (kbd "C-q") 'kmacro-start-macro-or-insert-counter)
 (global-set-key (kbd "C-S-q") 'kmacro-end-or-call-macro)
 (global-set-key (kbd "<M-tab>") 'ido-switch-buffer)
-(global-set-key (kbd "<M-S-tab>") 'ibuffer)
 
 ; leader
 (global-set-key (kbd "C-z") nil)
@@ -128,7 +128,7 @@
 (global-set-key (kbd "C-z g i t") 'git-status)
 (global-set-key (kbd "C-z s h") 'split-window-below)
 (global-set-key (kbd "C-z s v") 'split-window-right)
-(global-set-key (kbd "C-z r e f") (lambda() (interactive) (async-shell-command "sxiv -b -- ref/*")))
+(global-set-key (kbd "C-z r e f") (lambda() (interactive) (start-process-shell-command "sxiv(ref)" nil "sxiv -b -- ref/*")))
 (global-set-key (kbd "C-z c m") (lambda() (interactive) (shell-command-on-buffer "cmark --smart" t)))
 (global-set-key (kbd "C-z y m d") (lambda() (interactive) (insert (format-time-string "%Y-%m-%d"))))
 (global-set-key (kbd "C-z s e c") (lambda() (interactive) (insert (format-time-string "%s"))))
@@ -136,6 +136,7 @@
 (global-set-key (kbd "C-z m m") (lambda() (interactive) (markdown-mode)))
 (global-set-key (kbd "C-z s n") (lambda() (interactive) (insert (cdr (assoc (completing-read "snippet: " snippets) snippets)))))
 (global-set-key (kbd "C-z f m") (lambda() (interactive) (call-process "nautilus" nil 0 nil default-directory)))
+(global-set-key (kbd "C-z l b") 'ibuffer)
 
 ; typical keys
 (global-set-key (kbd "C-v") 'yank)
@@ -152,6 +153,8 @@
 (define-key prog-mode-map (kbd "<tab>") 'tab-to-tab-stop)
 (define-key text-mode-map (kbd "<return>") 'newline-and-indent-relative-maybe)
 (define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative-maybe)
+(define-key text-mode-map (kbd "<backspace>") 'backward-delete-char)
+(define-key prog-mode-map (kbd "<backspace>") 'backward-delete-char)
 
 ;search mode
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
@@ -222,6 +225,7 @@
 	(define-key ac-mode-map (kbd "M-i") 'auto-complete)
 	(setq ac-sources '(ac-source-words-in-all-buffer)))
 
+;sgml-mode
 (with-eval-after-load "sgml-mode"
 	(define-key html-mode-map (kbd "C-z C-b") (lambda(start end) (interactive "r") (wrap-or-insert "<strong>" "</strong>" start end)))
 	(define-key html-mode-map (kbd "C-z C-i") (lambda(start end) (interactive "r") (wrap-or-insert "<em>" "</em>" start end)))
@@ -236,16 +240,20 @@
 	(define-key html-mode-map (kbd "C-<return>") (lambda() (interactive) (end-of-line) (newline-and-indent) (wrap-or-insert "<p>" "</p>")))
 	(define-key html-mode-map (kbd "C-z C-;") 'comment-region)
 	(define-key html-mode-map (kbd "C-z S-C-i") (lambda() (interactive) (insert (concat "<img src=\"" (read-from-minibuffer "src: ") "\"/>")))))
-	
+
+;c/c++ mode	
 (with-eval-after-load "cc-mode"
 	(define-key c-mode-map (kbd "C-M-h") nil))
 
+;nxmml-mode
 (with-eval-after-load "nxml-mode"
 	(define-key nxml-mode-map (kbd "M-h") nil))
 
 ;hooks
 (add-hook 'prog-mode-hook (lambda ()
 	(auto-complete-mode)))
+
+;eshell bindings must be through this hook, otherwise they don't work
 (add-hook 'eshell-mode-hook (lambda()
 	(define-key eshell-mode-map (kbd "M-k") 'eshell-previous-matching-input-from-input)
 	(define-key eshell-mode-map (kbd "M-j") 'eshell-next-matching-input-from-input)
@@ -261,6 +269,14 @@
 	(define-key eshell-mode-map (kbd "C-l") 'eshell/clear)
 	(setenv "PAGER" "cat")
 	(setenv "TERM" "eshell")))
+
+;ido bindings must be through this hook, otherwise they don't work
+(add-hook 'ido-setup-hook (lambda()
+	(define-key ido-completion-map (kbd "M-l") 'ido-next-match)
+	(define-key ido-completion-map (kbd "M-h") 'ido-prev-match)))
+
+(add-hook 'markdown-mode-hook (lambda()
+	(setq tab-width 8)))
 
 (defun dired-xdg-open-file()
 	"In dired, open the file with xdg-open"
