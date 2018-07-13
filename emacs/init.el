@@ -36,10 +36,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
-(electric-indent-mode -1)
 (global-visual-line-mode 1)
-(column-number-mode)
-(ido-mode t)
 (custom-set-faces
 	'(default ((t (:background "#140601" :foreground "white" :height 130 :family "monospace"))))
 	'(fringe ((t (:background "#3E2723"))))
@@ -51,6 +48,11 @@
 	'(mode-line ((t (:background "#33691E" :foreground "white"))))
 	'(mode-line-inactive ((t (:background "#212121" :foreground "#E0E0E0"))))
 	'(variable-pitch ((t (:height 160 :family "sans")))))
+
+;etc
+(column-number-mode t)
+(ido-mode t)
+(electric-indent-mode -1)
 
 ;; Add parsing of jshint output in compilation mode
 ;(add-to-list 'compilation-error-regexp-alist-alist '(jshint "^\\(.*\\): line \\([0-9]+\\), col \\([0-9]+\\), " 1 2 3))
@@ -69,7 +71,6 @@
 (global-set-key (kbd "C-M-l") 'forward-word)
 (global-set-key (kbd "C-M-j") 'scroll-up-command)
 (global-set-key (kbd "C-M-k") 'scroll-down-command)
-(global-set-key (kbd "C-'") 'quoted-insert)
 
 ;window/buffer management
 (global-set-key (kbd "M-o") 'other-window)
@@ -80,6 +81,7 @@
 (global-set-key (kbd "M-_") 'shrink-window-horizontally)
 (global-set-key (kbd "M-[") 'previous-buffer)
 (global-set-key (kbd "M-]") 'next-buffer)
+(global-set-key (kbd "<M-tab>") 'ido-switch-buffer)
 
 ;etc
 (global-set-key (kbd "<escape>") 'keyboard-quit)
@@ -93,7 +95,7 @@
 (global-set-key (kbd "C-w") 'universal-argument)
 (global-set-key (kbd "C-q") 'kmacro-start-macro-or-insert-counter)
 (global-set-key (kbd "C-S-q") 'kmacro-end-or-call-macro)
-(global-set-key (kbd "<M-tab>") 'ido-switch-buffer)
+(global-set-key (kbd "C-'") 'quoted-insert)
 
 ; leader
 (global-set-key (kbd "C-z") nil)
