@@ -275,7 +275,9 @@
 ;ido bindings must be through this hook, otherwise they don't work
 (add-hook 'ido-setup-hook (lambda()
 	(define-key ido-completion-map (kbd "M-l") 'ido-next-match)
-	(define-key ido-completion-map (kbd "M-h") 'ido-prev-match)))
+	(define-key ido-completion-map (kbd "M-h") 'ido-prev-match)
+	(define-key ido-completion-map (kbd "<return>") 'ido-select-text)
+	(define-key ido-completion-map (kbd "<tab>") 'ido-exit-minibuffer)))
 
 (add-hook 'markdown-mode-hook (lambda()
 	(setq tab-width 8)))
