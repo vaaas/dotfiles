@@ -40,6 +40,7 @@
 (custom-set-faces
 	'(default ((t (:background "#140601" :foreground "white" :height 130 :family "monospace"))))
 	'(fringe ((t (:background "#3E2723"))))
+	'(hl-line ((t (:background "black"))))
 	'(italic ((t (:slant italic))))
 	'(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.25))))
 	'(markdown-hr-face ((t (:inherit markdown-markup-face :height 2.0))))
