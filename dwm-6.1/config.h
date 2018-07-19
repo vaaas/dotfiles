@@ -86,6 +86,7 @@ static const char *audiomutecmd[] = { "amixer", "sset", "Master", "toggle", NULL
 static const char *radiocmd[] = { "internet_radio", NULL };
 static const char *sleepcmd[] = { "pm", "suspend", NULL };
 static const char *eshellcmd[] = { "emacsclient", "-cne", "(eshell)", NULL };
+static const char *scratchpadcmd[] = { "emacsclient", "-c", "scratchpad", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -96,6 +97,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F2,     spawn,          {.v = nautiluscmd } },
 	{ MODKEY,                       XK_F3,     spawn,          {.v = emacscmd } },
 	{ MODKEY,                       XK_F4,     spawn,          {.v = radiocmd } },
+	{ MODKEY,                       XK_F5,     spawn,          {.v = scratchpadcmd } },
 	{ MODKEY|ControlMask,           XK_l,      spawn,          {.v = lockcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = passcmd } },
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = clipruncmd } },

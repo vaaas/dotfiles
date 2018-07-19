@@ -48,7 +48,7 @@
 	'(markdown-markup-face ((t (:foreground "#FFC107"))))
 	'(mode-line ((t (:background "#33691E" :foreground "white"))))
 	'(mode-line-inactive ((t (:background "#212121" :foreground "#E0E0E0"))))
-	'(variable-pitch ((t (:height 160 :family "sans")))))
+	'(variable-pitch ((t (:height 160 :family "Source Serif Pro")))))
 
 ;etc
 (column-number-mode t)
@@ -109,7 +109,7 @@
 	(find-name-dired "."
 		(concat "*" (read-from-minibuffer "File name: ") "*"))))
 (global-set-key (kbd "C-z m a") 'woman)
-(global-set-key (kbd "C-z x t") (lambda() (interactive) (call-process "st" nil 0 nil)))
+(global-set-key (kbd "C-z x t") (lambda() (interactive) (call-process "gnome-terminal" nil 0 nil)))
 (global-set-key (kbd "C-z t e") (lambda() (interactive) (term "/bin/bash")))
 (global-set-key (kbd "C-z c d") 'cd)
 (global-set-key (kbd "C-z g r") 'rgrep)
