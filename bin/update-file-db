@@ -1,0 +1,14 @@
+#!/bin/sh
+
+IFS='
+'
+DIRS="$HOME/Projects/fc-pregmod
+$HOME/Projects/working
+$HOME/Projects/dotfiles"
+file="$HOME/filedb.xz"
+rm -v $file
+for dir in $DIRS
+do
+	find $dir -type f | sort | xz >> $file
+done
+echo "updated $file"
