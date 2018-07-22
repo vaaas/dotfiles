@@ -87,6 +87,7 @@ static const char *radiocmd[] = { "internet_radio", NULL };
 static const char *sleepcmd[] = { "pm", "suspend", NULL };
 static const char *eshellcmd[] = { "emacsclient", "-cne", "(eshell)", NULL };
 static const char *scratchpadcmd[] = { "emacsclient", "-c", "scratchpad", NULL };
+static const char *openfilecmd[] = { "filedb-and-open", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -102,6 +103,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = passcmd } },
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = clipruncmd } },
 	{ MODKEY,                       XK_End,    spawn,          {.v = sleepcmd } },
+	{ MODKEY,                       XK_o,      spawn,          {.v = openfilecmd } },
 	{ 0,                            XF86XK_AudioLowerVolume, spawn, { .v = audiolowercmd } },
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn, { .v = audioraisecmd } },
 	{ 0,                            XF86XK_AudioMute, spawn, { .v = audiomutecmd } },
