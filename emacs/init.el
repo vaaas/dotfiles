@@ -137,7 +137,7 @@
 (global-set-key (kbd "C-z s e c") (lambda() (interactive) (insert (format-time-string "%s"))))
 (global-set-key (kbd "C-z i n s") (lambda() (interactive) (insert-file-contents (read-file-name "File: "))))
 (global-set-key (kbd "C-z m m") (lambda() (interactive) (markdown-mode)))
-(global-set-key (kbd "C-z s n") (lambda() (interactive) (insert (cdr (assoc (completing-read "snippet: " snippets) snippets)))))
+(global-set-key (kbd "C-z s n") (lambda() (interactive) (insert (cdr (assoc (ido-completing-read "snippet: " snippets) snippets)))))
 (global-set-key (kbd "C-z f m") (lambda() (interactive) (call-process "nautilus" nil 0 nil default-directory)))
 (global-set-key (kbd "C-z l b") 'ibuffer)
 
@@ -152,6 +152,7 @@
 (global-set-key (kbd "C-S-r") 'query-replace-regexp)
 (global-set-key (kbd "S-C-f") 'isearch-backward)
 (global-set-key (kbd "C-o") 'find-file)
+(global-set-key (kbd "S-C-o") (lambda() (interactive) (find-file (ido-completing-read "find file: " (split-string (shell-command-to-string "xzcat ~/filedb.xz") "\n")))))
 (define-key text-mode-map (kbd "<tab>") 'tab-to-tab-stop)
 (define-key prog-mode-map (kbd "<tab>") 'tab-to-tab-stop)
 (define-key text-mode-map (kbd "<return>") 'newline-and-indent-relative-maybe)

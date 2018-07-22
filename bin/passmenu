@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 IFS='
 '
 pass=$(cd ~/Passwords && find . -type f -printf '%P\n' | dmenu -p "Select password")

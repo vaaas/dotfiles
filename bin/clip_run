@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 IFS='
 '
 stuff='mpv -fs --ytdl-format="best[height<=720]" --
