@@ -281,6 +281,8 @@
 	(define-key ido-completion-map (kbd "<C-return>") 'ido-select-text)))
 
 (add-hook 'markdown-mode-hook (lambda()
+	(variable-pitch-mode)
+	(text-scale-set 2)
 	(setq tab-width 8)))
 
 (defun dired-xdg-open-file()
