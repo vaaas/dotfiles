@@ -19,7 +19,6 @@
 	backward-delete-char-untabify-method nil
 	find-name-arg "-iname"
 	tab-width 8
-	line-spacing 4
 	c-basic-offset tab-width
 	css-indent-offset tab-width
 	python-indent-offset tab-width
@@ -48,7 +47,7 @@
 	'(markdown-markup-face ((t (:foreground "#FFC107"))))
 	'(mode-line ((t (:background "#33691E" :foreground "white"))))
 	'(mode-line-inactive ((t (:background "#212121" :foreground "#E0E0E0"))))
-	'(variable-pitch ((t (:height 160 :family "sans")))))
+	'(variable-pitch ((t (:height 160 :family "serif")))))
 
 ;etc
 (column-number-mode t)
@@ -285,7 +284,6 @@
 	(define-key ido-completion-map (kbd "<C-return>") 'ido-select-text)))
 
 (add-hook 'markdown-mode-hook (lambda()
-	(setq-local line-spacing 10)
 	(variable-pitch-mode)
 	(text-scale-set 2)
 	(setq tab-width 8)))
