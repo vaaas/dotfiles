@@ -72,6 +72,8 @@
 (global-set-key (kbd "C-M-l") 'forward-word)
 (global-set-key (kbd "C-M-j") 'scroll-up-command)
 (global-set-key (kbd "C-M-k") 'scroll-down-command)
+(global-set-key (kbd "C-.") 'repeat)
+(global-set-key (kbd "S-C-.") 'repeat)
 
 ;window/buffer management
 (global-set-key (kbd "M-o") 'other-window)
@@ -140,6 +142,7 @@
 (global-set-key (kbd "C-z s n") (lambda() (interactive) (insert (cdr (assoc (ido-completing-read "snippet: " snippets) snippets)))))
 (global-set-key (kbd "C-z f m") (lambda() (interactive) (call-process "nautilus" nil 0 nil default-directory)))
 (global-set-key (kbd "C-z l b") 'ibuffer)
+(global-set-key (kbd "C-z t i") 'toggle-tick)
 
 ; typical keys
 (global-set-key (kbd "C-v") 'yank)
@@ -308,3 +311,10 @@
 	(interactive)
 	(newline)
 	(indent-relative-maybe))
+
+(defun toggle-tick()
+	(interactive)
+	(beginning-of-line-text)
+	(if (char-equal (char-after) ?✔)
+		(delete-forward-char 2)
+		(insert "✔ ")))	
