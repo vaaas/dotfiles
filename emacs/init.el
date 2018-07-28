@@ -19,7 +19,7 @@
 	backward-delete-char-untabify-method nil
 	find-name-arg "-iname"
 	tab-width 8
-	line-spacing 0.25
+	line-spacing 4
 	c-basic-offset tab-width
 	css-indent-offset tab-width
 	python-indent-offset tab-width
@@ -38,7 +38,7 @@
 (menu-bar-mode -1)
 (global-visual-line-mode 1)
 (custom-set-faces
-	'(default ((t (:background "#140601" :foreground "white" :height 160 :family "monospace"))))
+	'(default ((t (:background "#140601" :foreground "white" :height 130 :family "monospace"))))
 	'(fringe ((t (:background "#3E2723"))))
 	'(hl-line ((t (:background "black"))))
 	'(italic ((t (:slant italic))))
@@ -48,7 +48,7 @@
 	'(markdown-markup-face ((t (:foreground "#FFC107"))))
 	'(mode-line ((t (:background "#33691E" :foreground "white"))))
 	'(mode-line-inactive ((t (:background "#212121" :foreground "#E0E0E0"))))
-	'(variable-pitch ((t (:height 160 :family "Source Serif Pro")))))
+	'(variable-pitch ((t (:height 160 :family "sans")))))
 
 ;etc
 (column-number-mode t)
@@ -285,6 +285,7 @@
 	(define-key ido-completion-map (kbd "<C-return>") 'ido-select-text)))
 
 (add-hook 'markdown-mode-hook (lambda()
+	(setq-local line-spacing 10)
 	(variable-pitch-mode)
 	(text-scale-set 2)
 	(setq tab-width 8)))
