@@ -38,7 +38,7 @@
 (menu-bar-mode -1)
 (global-visual-line-mode 1)
 (custom-set-faces
-	'(default ((t (:background "#140601" :foreground "white" :height 130 :family "monospace"))))
+	'(default ((t (:background "#140601" :foreground "white" :height 160 :family "monospace"))))
 	'(fringe ((t (:background "#3E2723"))))
 	'(hl-line ((t (:background "black"))))
 	'(italic ((t (:slant italic))))
@@ -143,6 +143,7 @@
 (global-set-key (kbd "C-z f m") (lambda() (interactive) (call-process "nautilus" nil 0 nil default-directory)))
 (global-set-key (kbd "C-z l b") 'ibuffer)
 (global-set-key (kbd "C-z t i") 'toggle-tick)
+(global-set-key (kbd "C-z g c") (lambda() (interactive) (async-shell-command "git commit -a")))
 
 ; typical keys
 (global-set-key (kbd "C-v") 'yank)
