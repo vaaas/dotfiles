@@ -299,7 +299,7 @@
 
 (defun wrap-or-insert (s1 s2 &optional start end)
 	(cond (
-		(and start end) (setq a start b end))
+		(and (use-region-p) start end) (setq a start b end))
 		(t (setq a (point) b (point))))
 	(goto-char b)
 	(insert s2)
@@ -317,4 +317,4 @@
 	(beginning-of-line-text)
 	(if (char-equal (char-after) ?✔)
 		(delete-forward-char 2)
-		(insert "✔ ")))	
+		(insert "✔ ")))
