@@ -15,3 +15,5 @@ set bind-tty-special-chars off
 "\ek": history-search-backward
 "\e[P": delete-char
 "\C-k": kill-whole-line
+"\C-f": reverse-search-history
+"\C-F": forward-search-history
