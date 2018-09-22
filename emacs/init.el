@@ -6,7 +6,7 @@
 		("gnu" . "https://elpa.gnu.org/packages/")
 		("melpa" . "https://melpa.org/packages/"))
 	package-selected-packages
-		'(auto-complete bbcode-mode markdown-mode wordnut)
+		'(bbcode-mode markdown-mode wordnut)
 	inhibit-startup-screen t
 	make-backup-files nil
 	major-mode 'text-mode
@@ -203,7 +203,8 @@
 	(define-key markdown-mode-map (kbd "C-z C-i") 'markdown-insert-italic)
 	(define-key markdown-mode-map (kbd "C-z C-b") 'markdown-insert-bold)
 	(define-key markdown-mode-map (kbd "C-x") nil)
-	(define-key markdown-mode-map (kbd "C-S-x") nil))
+	(define-key markdown-mode-map (kbd "C-S-x") nil)
+	(define-key markdwon-mode-map (kbd "C-i") nil)
 
 ;Dired
 (with-eval-after-load "dired"
