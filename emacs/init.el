@@ -204,7 +204,7 @@
 	(define-key markdown-mode-map (kbd "C-z C-b") 'markdown-insert-bold)
 	(define-key markdown-mode-map (kbd "C-x") nil)
 	(define-key markdown-mode-map (kbd "C-S-x") nil)
-	(define-key markdwon-mode-map (kbd "C-i") nil)
+	(define-key markdown-mode-map (kbd "C-i") nil))
 
 ;Dired
 (with-eval-after-load "dired"
