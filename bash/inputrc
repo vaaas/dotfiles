@@ -8,7 +8,7 @@ set bind-tty-special-chars off
 "\eH": beginning-of-line
 "\eL": end-of-line
 "\ed": kill-word
-"\eD": backward-kill-word
+"\C-D": backward-kill-word
 "\eh": backward-char
 "\el": forward-char
 "\ej": history-search-forward

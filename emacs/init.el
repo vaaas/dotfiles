@@ -65,8 +65,8 @@
 (global-set-key (kbd "M-l") 'forward-char)
 (global-set-key (kbd "M-H") 'beginning-of-line-text)
 (global-set-key (kbd "M-L") 'end-of-line)
-(global-set-key (kbd "M-J") (lambda() (interactive) (forward-paragraph) (next-line)))
-(global-set-key (kbd "M-K") (lambda() (interactive) (backward-paragraph) (backward-paragraph) (next-line)))
+(global-set-key (kbd "M-J") 'forward-sentence)
+(global-set-key (kbd "M-K") 'backward-sentence)
 (global-set-key (kbd "C-M-h") 'backward-word)
 (global-set-key (kbd "C-M-l") 'forward-word)
 (global-set-key (kbd "C-M-j") 'scroll-up-command)
@@ -87,7 +87,8 @@
 
 ;etc
 (global-set-key (kbd "<escape>") 'keyboard-quit)
-(global-set-key (kbd "M-D") 'backward-kill-word)
+(global-set-key (kbd "C-D") 'backward-kill-word)
+(global-set-key (kbd "C-d") 'kill-word)
 (global-set-key (kbd "C-<") 'indent-rigidly-left-to-tab-stop)
 (global-set-key (kbd "C->") 'indent-rigidly-right-to-tab-stop)
 (global-set-key (kbd "M-e") 'execute-extended-command)
@@ -98,6 +99,7 @@
 (global-set-key (kbd "C-q") 'kmacro-start-macro-or-insert-counter)
 (global-set-key (kbd "C-S-q") 'kmacro-end-or-call-macro)
 (global-set-key (kbd "C-'") 'quoted-insert)
+(global-set-key (kbd "C-i") 'dabbrev-expand)
 
 ; leader
 (global-set-key (kbd "C-z") nil)
@@ -142,7 +144,7 @@
 (global-set-key (kbd "C-z f m") (lambda() (interactive) (call-process "nautilus" nil 0 nil default-directory)))
 (global-set-key (kbd "C-z l b") 'ibuffer)
 (global-set-key (kbd "C-z t i") 'toggle-tick)
-(global-set-key (kbd "C-z g c") (lambda() (interactive) (async-shell-command "git commit -a")))
+(global-set-key (kbd "C-z g c") (lambda() (interactive) (call-process "git" nil 0 nil "commit" "-am" (read-from-minibuffer "commit message: "))))
 
 ; typical keys
 (global-set-key (kbd "C-v") 'yank)
