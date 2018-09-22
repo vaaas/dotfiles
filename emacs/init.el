@@ -143,7 +143,13 @@
 (global-set-key (kbd "C-z s n") (lambda() (interactive) (insert (cdr (assoc (ido-completing-read "snippet: " snippets) snippets)))))
 (global-set-key (kbd "C-z f m") (lambda() (interactive) (call-process "nautilus" nil 0 nil default-directory)))
 (global-set-key (kbd "C-z l b") 'ibuffer)
-(global-set-key (kbd "C-z t i") 'toggle-tick)
+(global-set-key (kbd "C-z t i") (lambda()
+	(interactive)
+	(beginning-of-line-text)
+	(if (char-equal (char-after) ?✔)
+		(delete-forward-char 2)
+		(insert "✔ "))))
+
 (global-set-key (kbd "C-z g c") (lambda() (interactive) (call-process "git" nil 0 nil "commit" "-am" (read-from-minibuffer "commit message: "))))
 
 ; typical keys
@@ -208,7 +214,10 @@
 
 ;Dired
 (with-eval-after-load "dired"
-	(define-key dired-mode-map (kbd "<C-return>") 'dired-xdg-open-file)
+	(define-key dired-mode-map (kbd "<C-return>") (lambda()
+		(interactive)
+		(let* ((file (dired-get-filename)))
+			(call-process "xdg-open" nil 0 nil file))))
 	(define-key dired-mode-map (kbd "C-z i") (lambda()
 		(interactive)
 		(apply 'call-process "sxiv" nil 0 nil (dired-get-marked-files))))
@@ -291,12 +300,6 @@
 	(text-scale-set 2)
 	(setq tab-width 8)))
 
-(defun dired-xdg-open-file()
-	"In dired, open the file with xdg-open"
-	(interactive)
-	(let* ((file (dired-get-filename)))
-		(call-process "xdg-open" nil 0 nil file)))
-
 (defun shell-command-on-buffer(command replace)
 	(shell-command-on-region 1 (point-max) command "*shell-output*" replace))
 
@@ -314,10 +317,3 @@
 	(interactive)
 	(newline)
 	(indent-relative-maybe))
-
-(defun toggle-tick()
-	(interactive)
-	(beginning-of-line-text)
-	(if (char-equal (char-after) ?✔)
-		(delete-forward-char 2)
-		(insert "✔ ")))
