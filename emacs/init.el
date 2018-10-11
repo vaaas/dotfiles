@@ -19,14 +19,15 @@
 	backward-delete-char-untabify-method nil
 	find-name-arg "-iname"
 	tab-width 8
-	c-basic-offset tab-width
-	css-indent-offset tab-width
-	python-indent-offset tab-width
-	sgml-basic-offset tab-width
-	sh-basic-offset tab-width
-	js-indent-level tab-width
-	smie-indent-basic tab-width
-	markdown-list-indent-width)
+	c-basic-offset 8
+	css-indent-offset 8
+	python-indent-offset 8
+	sgml-basic-offset 8
+	sh-basic-offset 8
+	js-indent-level 8
+	smie-indent-basic 8
+	markdown-list-indent-width 8
+	scroll-conservatively 101)
 (put 'dired-find-alternate-file 'disabled nil)
 (setq snippets '(
 	("initial-viewport" . "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">")))
@@ -87,7 +88,7 @@
 
 ;etc
 (global-set-key (kbd "<escape>") 'keyboard-quit)
-(global-set-key (kbd "C-D") 'backward-kill-word)
+(global-set-key (kbd "S-C-D") 'backward-kill-word)
 (global-set-key (kbd "C-d") 'kill-word)
 (global-set-key (kbd "C-<") 'indent-rigidly-left-to-tab-stop)
 (global-set-key (kbd "C->") 'indent-rigidly-right-to-tab-stop)
@@ -100,6 +101,8 @@
 (global-set-key (kbd "C-S-q") 'kmacro-end-or-call-macro)
 (global-set-key (kbd "C-'") 'quoted-insert)
 (global-set-key (kbd "C-i") 'dabbrev-expand)
+(global-set-key (kbd "C-l") (lambda() (interactive) (recenter 0)))
+(global-set-key (kbd "S-C-L") 'reposition-window)
 
 ; leader
 (global-set-key (kbd "C-z") nil)
@@ -267,10 +270,6 @@
 ;nxmml-mode
 (with-eval-after-load "nxml-mode"
 	(define-key nxml-mode-map (kbd "M-h") nil))
-
-;hooks
-(add-hook 'prog-mode-hook (lambda ()
-	(auto-complete-mode)))
 
 ;eshell bindings must be through this hook, otherwise they don't work
 (add-hook 'eshell-mode-hook (lambda()
