@@ -66,19 +66,18 @@
     <number>10</number>
     <firstdesk>1</firstdesk>
     <names>
-		<name>α</name>
-		<name>β</name>
-		<name>γ</name>
-		<name>δ</name>
-		<name>ε</name>
-		<name>ζ</name>
-		<name>η</name>
-		<name>θ</name>
-		<name>ι</name>
-		<name>κ</name>
-		<name>λ</name>
+		<name>1</name>
+		<name>2</name>
+		<name>3</name>
+		<name>4</name>
+		<name>5</name>
+		<name>6</name>
+		<name>7</name>
+		<name>8</name>
+		<name>9</name>
+		<name>0</name>
     </names>
-    <popupTime>875</popupTime>
+    <popupTime>500</popupTime>
   </desktops>
   <resize>
     <drawContents>yes</drawContents>
@@ -109,25 +108,20 @@
   </dock>
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
-    <keybind key="W-bracketleft">
+    <keybind key="W-h">
       <action name="GoToDesktop">
         <to>previous</to>
       </action>
     </keybind>
-    <keybind key="W-bracketright">
+    <keybind key="W-l">
       <action name="GoToDesktop">
         <to>next</to>
       </action>
     </keybind>
-    <keybind key="W-S-bracketleft">
-      <action name="SendToDesktop">
-        <to>previous</to>
-      </action>
-    </keybind>
-    <keybind key="W-S-bracketright">
-      <action name="SendToDesktop">
-        <to>next</to>
-      </action>
+    <keybind key="W-Tab">
+    	<action name="GoToDesktop">
+		<to>last</to>
+	</action>
     </keybind>
     <keybind key="W-S-1">
       <action name="SendToDesktop">
@@ -259,53 +253,26 @@
         <command>scrot -s</command>
       </action>
     </keybind>
-    <keybind key="W-Tab">
+    <keybind key="W-j">
       <action name="NextWindow">
+	<raise>yes</raise>
+	<linear>yes</linear>
         <finalactions>
           <action name="Focus"/>
           <action name="Raise"/>
           <action name="Unshade"/>
         </finalactions>
-      </action>
-    </keybind>
-    <keybind key="W-S-Tab">
-      <action name="PreviousWindow">
-        <finalactions>
-          <action name="Focus"/>
-          <action name="Raise"/>
-          <action name="Unshade"/>
-        </finalactions>
-      </action>
-    </keybind>
-    <keybind key="W-C-Tab">
-      <action name="NextWindow">
-        <panels>yes</panels>
-        <desktop>yes</desktop>
-        <finalactions>
-          <action name="Focus"/>
-          <action name="Raise"/>
-          <action name="Unshade"/>
-        </finalactions>
-      </action>
-    </keybind>
-    <keybind key="W-l">
-      <action name="DirectionalCycleWindows">
-        <direction>right</direction>
-      </action>
-    </keybind>
-    <keybind key="W-h">
-      <action name="DirectionalCycleWindows">
-        <direction>left</direction>
       </action>
     </keybind>
     <keybind key="W-k">
-      <action name="DirectionalCycleWindows">
-        <direction>up</direction>
-      </action>
-    </keybind>
-    <keybind key="W-j">
-      <action name="DirectionalCycleWindows">
-        <direction>down</direction>
+      <action name="PreviousWindow">
+	<raise>yes</raise>
+	<linear>yes</linear>
+        <finalactions>
+          <action name="Focus"/>
+          <action name="Raise"/>
+          <action name="Unshade"/>
+        </finalactions>
       </action>
     </keybind>
     <keybind key="W-e">
@@ -313,10 +280,23 @@
         <command>dmenu_run</command>
       </action>
     </keybind>
-	<keybind key="W-C-l">
+	<keybind key="C-A-Delete">
 		<action name="Execute">
 			<command>xtrlock -f -b</command>
 		</action>
+	</keybind>
+	<keybind key="W-S-e">
+		<action name="Execute">
+			<command>clip_run</command>
+		</action>
+	</keybind>
+	<keybind key="W-o">
+		<action name="Execute">
+			<command>filedb-and-open</command>
+		</action>
+	</keybind>
+	<keybind key="W-Return">
+		<action name="GrowToFill"/>
 	</keybind>
     <keybind key="W-F1">
       <action name="Execute">
@@ -335,20 +315,14 @@
     </keybind>
     <keybind key="W-F4">
       <action name="Execute">
-        <command>emacsclient -c -e '(term "python3")'</command>
+        <command>internet_radio</command>
       </action>
     </keybind>
     <keybind key="W-grave">
       <action name="Execute">
-        <command>xterm</command>
+        <command>gnome-terminal</command>
       </action>
     </keybind>
-	<!--
-	<keybind key="W-space">
-		<action name="Execute">
-			<command>imeswitch</command>
-		</action>
-	</keybind>-->
 	<keybind key="W-p">
 	  <action name="Execute">
 	    <command>passmenu</command>
@@ -417,6 +391,46 @@
 	</keybind>
     <keybind key="W-w">
       <action name="Move"/>
+    </keybind>
+    <keybind key="W-C-h">
+    	<action name="MoveToEdge">
+		<direction>west</direction>
+	</action>
+    </keybind>
+    <keybind key="W-C-j">
+    	<action name="MoveToEdge">
+		<direction>south</direction>
+	</action>
+    </keybind>
+    <keybind key="W-C-k">
+    	<action name="MoveToEdge">
+		<direction>north</direction>
+	</action>
+    </keybind>
+    <keybind key="W-C-l">
+    	<action name="MoveToEdge">
+		<direction>east</direction>
+	</action>
+    </keybind>
+    <keybind key="W-S-h">
+    	<action name="ResizeRelative">
+		<right>-200</right>
+	</action>
+    </keybind>
+    <keybind key="W-S-j">
+    	<action name="ResizeRelative">
+		<down>200</down>
+	</action>
+    </keybind>
+    <keybind key="W-S-k">
+    	<action name="ResizeRelative">
+		<down>-200</down>
+	</action>
+    </keybind>
+    <keybind key="W-S-l">
+    	<action name="ResizeRelative">
+		<right>200</right>
+	</action>
     </keybind>
   </keyboard>
   <mouse>
@@ -758,9 +772,6 @@
   </menu>
   <applications>
     <application class="Firefox">
-      <decor>no</decor>
-    </application>
-    <application class="Gvim">
       <decor>no</decor>
     </application>
     <application class="Emacs">

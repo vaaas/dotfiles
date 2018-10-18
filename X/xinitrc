@@ -11,4 +11,4 @@ xrdb -merge ~/.Xresources
 #(ps -Af | grep -q 'emacs --daemon') || emacs --daemon &
 emacs --daemon &
 
-exec dbus-launch dwm
+exec dbus-launch openbox

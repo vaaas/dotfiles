@@ -167,8 +167,8 @@
 (global-set-key (kbd "S-C-f") 'isearch-backward)
 (global-set-key (kbd "C-o") 'find-file)
 (global-set-key (kbd "S-C-o") (lambda() (interactive) (find-file (ido-completing-read "find file: " (split-string (shell-command-to-string "xzcat ~/filedb.xz") "\n")))))
-(define-key text-mode-map (kbd "<tab>") 'tab-to-tab-stop)
-(define-key prog-mode-map (kbd "<tab>") 'tab-to-tab-stop)
+(define-key text-mode-map (kbd "<tab>") 'insert-tab)
+(define-key prog-mode-map (kbd "<tab>") 'insert-tab)
 (define-key text-mode-map (kbd "<return>") 'newline-and-indent-relative-maybe)
 (define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative-maybe)
 (define-key text-mode-map (kbd "<backspace>") 'backward-delete-char)
@@ -316,3 +316,7 @@
 	(interactive)
 	(newline)
 	(indent-relative-maybe))
+
+(defun insert-tab()
+	(interactive)
+	(insert-char 9))	
