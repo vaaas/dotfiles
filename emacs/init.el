@@ -141,6 +141,7 @@
 (global-set-key (kbd "C-z c m") (lambda() (interactive) (shell-command-on-buffer "cmark --smart" t)))
 (global-set-key (kbd "C-z y m d") (lambda() (interactive) (insert (format-time-string "%Y-%m-%d"))))
 (global-set-key (kbd "C-z s e c") (lambda() (interactive) (insert (format-time-string "%s"))))
+(global-set-key (kbd "C-z d a t") (lambda() (interactive) (insert (format-time-string "%a, %d %b %H:%M:%S %Z %Y"))))
 (global-set-key (kbd "C-z i n s") (lambda() (interactive) (insert-file-contents (read-file-name "File: "))))
 (global-set-key (kbd "C-z m m") (lambda() (interactive) (markdown-mode)))
 (global-set-key (kbd "C-z s n") (lambda() (interactive) (insert (cdr (assoc (ido-completing-read "snippet: " snippets) snippets)))))

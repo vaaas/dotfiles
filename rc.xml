@@ -16,9 +16,9 @@
   </focus>
   <placement>
     <policy>Smart</policy>
-    <center>yes</center>
-    <monitor>Primary</monitor>
-    <primaryMonitor>1</primaryMonitor>
+    <center>no</center>
+    <monitor>Mouse</monitor>
+    <primaryMonitor>Mouse</primaryMonitor>
   </placement>
   <theme>
     <name>Bear2</name>
@@ -27,37 +27,37 @@
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
       <name>sans</name>
-      <size>8</size>
+      <size>12</size>
       <weight>bold</weight>
       <slant>normal</slant>
     </font>
     <font place="InactiveWindow">
       <name>sans</name>
-      <size>8</size>
+      <size>12</size>
       <weight>bold</weight>
       <slant>normal</slant>
     </font>
     <font place="MenuHeader">
       <name>Sans</name>
-      <size>8</size>
+      <size>12</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="MenuItem">
       <name>Sans</name>
-      <size>8</size>
+      <size>12</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="ActiveOnScreenDisplay">
       <name>Sans</name>
-      <size>8</size>
+      <size>12</size>
       <weight>Bold</weight>
       <slant>Normal</slant>
     </font>
     <font place="InactiveOnScreenDisplay">
       <name>Sans</name>
-      <size>8</size>
+      <size>12</size>
       <weight>Bold</weight>
       <slant>Normal</slant>
     </font>

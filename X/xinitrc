@@ -5,8 +5,8 @@ compton &
 set m 1 0
 hsetroot -cover wallpaper &
 dunst &
-bar &
 xrdb -merge ~/.Xresources
+tint2 &
 
 #(ps -Af | grep -q 'emacs --daemon') || emacs --daemon &
 emacs --daemon &
