@@ -45,7 +45,7 @@ class MainWindow(Gtk.Window):
                         "q": self.cancel_and_exit,
                         "\r": self.print_and_exit
                 }
-                
+                self.set_default_size(400, 400)
                 style_provider = Gtk.CssProvider()
                 style_provider.load_from_data(css)
                 Gtk.StyleContext.add_provider_for_screen(

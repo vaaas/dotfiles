@@ -54,6 +54,7 @@
 (column-number-mode t)
 (ido-mode t)
 (electric-indent-mode -1)
+(read-abbrev-file abbrev-file-name)
 
 ;; Add parsing of jshint output in compilation mode
 ;(add-to-list 'compilation-error-regexp-alist-alist '(jshint "^\\(.*\\): line \\([0-9]+\\), col \\([0-9]+\\), " 1 2 3))
@@ -103,6 +104,7 @@
 (global-set-key (kbd "C-i") 'dabbrev-expand)
 (global-set-key (kbd "C-l") (lambda() (interactive) (recenter 0)))
 (global-set-key (kbd "S-C-L") 'reposition-window)
+(global-set-key (kbd "<C-SPC>") (lambda() (interactive) (insert-string " ")))
 
 ; leader
 (global-set-key (kbd "C-z") nil)
@@ -147,6 +149,8 @@
 (global-set-key (kbd "C-z s n") (lambda() (interactive) (insert (cdr (assoc (ido-completing-read "snippet: " snippets) snippets)))))
 (global-set-key (kbd "C-z f m") (lambda() (interactive) (call-process "nautilus" nil 0 nil default-directory)))
 (global-set-key (kbd "C-z l b") 'ibuffer)
+(global-set-key (kbd "C-z l a") 'list-abbrevs)
+(global-set-key (kbd "C-z e a") 'edit-abbrevs)
 (global-set-key (kbd "C-z t i") (lambda()
 	(interactive)
 	(beginning-of-line-text)
@@ -174,6 +178,7 @@
 (define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative-maybe)
 (define-key text-mode-map (kbd "<backspace>") 'backward-delete-char)
 (define-key prog-mode-map (kbd "<backspace>") 'backward-delete-char)
+(define-key text-mode-map (kbd "<M-SPC>") 'unexpand-abbrev)
 
 ;search mode
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
@@ -271,6 +276,10 @@
 ;nxmml-mode
 (with-eval-after-load "nxml-mode"
 	(define-key nxml-mode-map (kbd "M-h") nil))
+	
+(add-hook 'edit-abbrevs-mode-hook (lambda()
+	(define-key edit-abbrevs-map (kbd "C-c") 'edit-abbrevs-redefine)
+	(define-key edit-abbrevs-map (kbd "C-s") 'abbrev-edit-save-buffer)))
 
 ;eshell bindings must be through this hook, otherwise they don't work
 (add-hook 'eshell-mode-hook (lambda()
@@ -299,6 +308,8 @@
 	(variable-pitch-mode)
 	(text-scale-set 2)
 	(setq tab-width 8)))
+
+(add-hook 'text-mode-hook (lambda() (abbrev-mode 1)))
 
 (defun shell-command-on-buffer(command replace)
 	(shell-command-on-region 1 (point-max) command "*shell-output*" replace))
