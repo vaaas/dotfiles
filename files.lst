@@ -8,6 +8,7 @@ bash/bash_profile	~/.bash_profile
 bash/inputrc	~/.inputrc
 emacs/init.el	~/.emacs.d/init.el
 emacs/eshell_alias	~/.emacs.d/eshell/alias
+emacs/abbrev_defs	~/.emacs.d/abbrev_defs
 X/Xresources	~/.Xresources
 X/XCompose	~/.XCompose
 X/xinitrc	~/.xinitrc
