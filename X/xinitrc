@@ -1,6 +1,6 @@
 #!/bin/sh
 
-setxkbmap us -option compose:menu
+setxkbmap us -option compose:rctrl
 compton &
 set m 1 0
 hsetroot -cover wallpaper &
