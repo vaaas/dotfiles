@@ -102,6 +102,7 @@
 (global-set-key (kbd "C-S-q") 'kmacro-end-or-call-macro)
 (global-set-key (kbd "C-'") 'quoted-insert)
 (global-set-key (kbd "C-i") 'dabbrev-expand)
+(global-set-key (kbd "C-p") 'expand-abbrev)
 (global-set-key (kbd "C-l") (lambda() (interactive) (recenter 0)))
 (global-set-key (kbd "S-C-L") 'reposition-window)
 (global-set-key (kbd "<C-SPC>") (lambda() (interactive) (insert-string " ")))
@@ -243,15 +244,6 @@
 (with-eval-after-load "ibuffer"
 	(define-key ibuffer-mode-map (kbd "j") 'ibuffer-forward-line)
 	(define-key ibuffer-mode-map (kbd "k") 'ibuffer-backward-line))
-
-(with-eval-after-load "auto-complete"
-	(define-key ac-completing-map (kbd "<return>") 'ac-expand)
-	(define-key ac-completing-map (kbd "M-j") 'ac-next)
-	(define-key ac-completing-map (kbd "M-k") 'ac-previous)
-	(define-key ac-completing-map (kbd "M-i") 'ac-next)
-	(define-key ac-completing-map (kbd "M-I") 'ac-previous)
-	(define-key ac-mode-map (kbd "M-i") 'auto-complete)
-	(setq ac-sources '(ac-source-words-in-all-buffer)))
 
 ;sgml-mode
 (with-eval-after-load "sgml-mode"
