@@ -4,7 +4,7 @@ set -e
 
 IFS='
 '
-pass=$(cd ~/Passwords && find . -type f -printf '%P\n' | dmenu -p "Select password")
+pass=$(cd ~/Passwords && find . -type f -printf '%P\n' | rofi -dmenu -i -p "select password: ")
 echo $pass
 pass="$(zenity --password | gpg --batch -d --passphrase-fd 0 -- ~/Passwords/$pass)"
 xdotool type "$pass"

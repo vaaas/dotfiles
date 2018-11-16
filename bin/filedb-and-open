@@ -4,4 +4,4 @@ set -e
 
 IFS='
 '
-gvfs-open $(xzcat ~/filedb.xz | dmenu -p "select file")
+gvfs-open $(xzcat ~/filedb.xz | rofi -dmenu -i -p "select file: ")

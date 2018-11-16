@@ -5,5 +5,5 @@ set -e
 IFS='
 '
 cd ~/Music/radio
-file=$(ls -1 | dmenu)
+file=$(ls -1 | rofi -dmenu -i)
 exec mpv --loop=inf --force-window=yes -- "$file"
