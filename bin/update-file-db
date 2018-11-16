@@ -2,9 +2,9 @@
 
 IFS='
 '
-DIRS="$HOME/Projects/fc-pregmod
-$HOME/Projects/working
-$HOME/Projects/dotfiles"
+DIRS="$HOME/Projects/working
+$HOME/Projects/code
+$HOME/Projects/website"
 file="$HOME/filedb.xz"
 rm -v $file
 for dir in $DIRS
