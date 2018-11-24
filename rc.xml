@@ -277,7 +277,7 @@
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <command>rofi -dmenu -i</command>
+        <command>rofi -show run</command>
       </action>
     </keybind>
 	<keybind key="C-A-Delete">
@@ -361,6 +361,9 @@
         <direction>both</direction>
       </action>
     </keybind>
+    <keybind key="W-n">
+    	<action name="Iconify"/>
+    </keybind>
     <keybind key="W-u">
       <action name="ToggleMaximize">
         <direction>vertical</direction>
@@ -371,7 +374,7 @@
         <direction>horizontal</direction>
       </action>
     </keybind>
-	<keybind key="W-Right">
+	<keybind key="W-S-l">
 		<action name="Unmaximise"/>
 		<action name="MoveResizeTo">
 			<x>-0</x>
@@ -380,7 +383,7 @@
 			<height>100%</height>
 		</action>
 	</keybind>
-	<keybind key="W-Left">
+	<keybind key="W-S-h">
 		<action name="Unmaximise"/>
 		<action name="MoveResizeTo">
 			<x>0</x>
@@ -412,24 +415,16 @@
 		<direction>east</direction>
 	</action>
     </keybind>
-    <keybind key="W-S-h">
-    	<action name="ResizeRelative">
-		<right>-200</right>
-	</action>
-    </keybind>
     <keybind key="W-S-j">
     	<action name="ResizeRelative">
-		<down>200</down>
+		<down>128</down>
+		<right>128</right>
 	</action>
     </keybind>
     <keybind key="W-S-k">
     	<action name="ResizeRelative">
-		<down>-200</down>
-	</action>
-    </keybind>
-    <keybind key="W-S-l">
-    	<action name="ResizeRelative">
-		<right>200</right>
+		<right>-128</right>
+		<down>-128</down>
 	</action>
     </keybind>
   </keyboard>

@@ -27,7 +27,8 @@
 	js-indent-level 8
 	smie-indent-basic 8
 	markdown-list-indent-width 8
-	scroll-conservatively 101)
+	scroll-conservatively 101
+	shift-select-mode nil)
 (put 'dired-find-alternate-file 'disabled nil)
 (setq snippets '(
 	("initial-viewport" . "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">")))
@@ -73,8 +74,10 @@
 (global-set-key (kbd "C-M-l") 'forward-word)
 (global-set-key (kbd "C-M-j") 'scroll-up-command)
 (global-set-key (kbd "C-M-k") 'scroll-down-command)
+(global-set-key (kbd "C-M-S-J") 'end-of-buffer)
+(global-set-key (kbd "C-M-S-K") 'beginning-of-buffer)
 (global-set-key (kbd "C-.") 'repeat)
-(global-set-key (kbd "M-v") 'set-mark-command)
+(global-set-key (kbd "M-a") 'set-mark-command)
 
 ;window/buffer management
 (global-set-key (kbd "M-o") 'other-window)
@@ -89,22 +92,22 @@
 
 ;etc
 (global-set-key (kbd "<escape>") 'keyboard-quit)
-(global-set-key (kbd "S-C-D") 'backward-kill-word)
+(global-set-key (kbd "C-S-D") 'backward-kill-word)
 (global-set-key (kbd "C-d") 'kill-word)
 (global-set-key (kbd "C-<") 'indent-rigidly-left-to-tab-stop)
 (global-set-key (kbd "C->") 'indent-rigidly-right-to-tab-stop)
 (global-set-key (kbd "M-e") 'execute-extended-command)
 (global-set-key (kbd "M-E") 'eval-expression)
 (global-set-key (kbd "C-k") 'kill-whole-line)
-(global-set-key (kbd "C-S-k") 'delete-indentation)
+(global-set-key (kbd "C-S-K") 'delete-indentation)
 (global-set-key (kbd "C-w") 'universal-argument)
 (global-set-key (kbd "C-q") 'kmacro-start-macro-or-insert-counter)
-(global-set-key (kbd "C-S-q") 'kmacro-end-or-call-macro)
+(global-set-key (kbd "C-S-Q") 'kmacro-end-or-call-macro)
 (global-set-key (kbd "C-'") 'quoted-insert)
 (global-set-key (kbd "C-i") 'dabbrev-expand)
 (global-set-key (kbd "C-p") 'expand-abbrev)
 (global-set-key (kbd "C-l") (lambda() (interactive) (recenter 0)))
-(global-set-key (kbd "S-C-L") 'reposition-window)
+(global-set-key (kbd "C-S-L") 'reposition-window)
 (global-set-key (kbd "<C-SPC>") (lambda() (interactive) (insert-string " ")))
 
 ; leader
@@ -165,14 +168,14 @@
 (global-set-key (kbd "C-v") 'yank)
 (global-set-key (kbd "C-a") 'mark-whole-buffer)
 (global-set-key (kbd "C-x") 'kill-region)
-(global-set-key (kbd "S-C-x") 'kill-ring-save)
+(global-set-key (kbd "C-S-X") 'kill-ring-save)
 (global-set-key (kbd "C-s") 'save-buffer)
 (global-set-key (kbd "C-f") 'isearch-forward)
 (global-set-key (kbd "C-r") 'query-replace)
-(global-set-key (kbd "C-S-r") 'query-replace-regexp)
-(global-set-key (kbd "S-C-f") 'isearch-backward)
+(global-set-key (kbd "C-S-R") 'query-replace-regexp)
+(global-set-key (kbd "C-S-F") 'isearch-backward)
 (global-set-key (kbd "C-o") 'find-file)
-(global-set-key (kbd "S-C-o") (lambda() (interactive) (find-file (ido-completing-read "find file: " (split-string (shell-command-to-string "xzcat ~/filedb.xz") "\n")))))
+(global-set-key (kbd "C-S-O") (lambda() (interactive) (find-file (ido-completing-read "find file: " (split-string (shell-command-to-string "xzcat ~/filedb.xz") "\n")))))
 (define-key text-mode-map (kbd "<tab>") 'insert-tab)
 (define-key prog-mode-map (kbd "<tab>") 'insert-tab)
 (define-key text-mode-map (kbd "<return>") 'newline-and-indent-relative-maybe)
@@ -183,7 +186,7 @@
 
 ;search mode
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
-(define-key isearch-mode-map (kbd "C-S-f") 'isearch-repeat-backward)
+(define-key isearch-mode-map (kbd "C-S-F") 'isearch-repeat-backward)
 
 ;buffer mode
 (define-key Buffer-menu-mode-map (kbd "j") 'next-line)
@@ -215,7 +218,7 @@
 		(interactive)
 		(call-process "espeak-ng" nil 0 nil "-s" "250" (thing-at-point 'line t))))
 	(define-key markdown-mode-map (kbd "C-z C-l") 'markdown-insert-link)
-	(define-key markdown-mode-map (kbd "C-z S-C-i") 'markdown-insert-image)
+	(define-key markdown-mode-map (kbd "C-z C-S-I") 'markdown-insert-image)
 	(define-key markdown-mode-map (kbd "C-z C-i") 'markdown-insert-italic)
 	(define-key markdown-mode-map (kbd "C-z C-b") 'markdown-insert-bold)
 	(define-key markdown-mode-map (kbd "C-x") nil)

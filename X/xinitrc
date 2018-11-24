@@ -1,6 +1,6 @@
 #!/bin/sh
 
-setxkbmap us -option compose:rctrl
+setxkbmap us -option compose:caps,shift:both_capslock
 compton &
 set m 1 0
 hsetroot -cover wallpaper &
