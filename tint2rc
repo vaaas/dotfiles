@@ -22,7 +22,7 @@ time2_format = %M
 time2_font = sans bold 10
 clock_font_color = #FFFFFF 100
 clock_background_id = 1
-clock_padding = 8 0
+clock_padding = 0 0
 
 # Mouse
 mouse_middle = none

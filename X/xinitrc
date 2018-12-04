@@ -1,14 +1,15 @@
 #!/bin/sh
 
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+
+xrdb -merge ~/.Xresources
 setxkbmap us -option compose:caps,shift:both_capslock
 compton &
-set m 1 0
 hsetroot -cover wallpaper &
 dunst &
-xrdb -merge ~/.Xresources
 tint2 &
-
-#(ps -Af | grep -q 'emacs --daemon') || emacs --daemon &
-emacs --daemon &
+ibus-daemon -d
 
 exec dbus-launch openbox

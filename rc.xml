@@ -305,17 +305,17 @@
     </keybind>
     <keybind key="W-F2">
       <action name="Execute">
-        <command>nautilus</command>
+        <command>Thunar</command>
       </action>
     </keybind>
     <keybind key="W-F3">
       <action name="Execute">
-        <command>emacsclient -c</command>
+        <command>atom</command>
       </action>
     </keybind>
     <keybind key="W-F4">
       <action name="Execute">
-        <command>internet_radio</command>
+        <command>gnome-terminal -- internet_radio</command>
       </action>
     </keybind>
     <keybind key="W-grave">
@@ -766,11 +766,14 @@
     <manageDesktops>yes</manageDesktops>
   </menu>
   <applications>
-    <application class="Firefox">
+    <application class="Firefox-esr">
       <decor>no</decor>
     </application>
     <application class="Emacs">
       <decor>no</decor>
+    </application>
+    <application class="Atom">
+    	<decor>no</decor>
     </application>
   </applications>
 </openbox_config>
