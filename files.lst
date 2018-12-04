@@ -28,7 +28,7 @@ bin/thanks	~/Binaries/thanks
 bin/hdmi	~/Binaries/hdmi
 bin/bar	~/Binaries/bar
 bin/clip_run	~/Binaries/clip_run
-bin/gtkfilter	~/Binaries/gtkfilter
+bin/pytkfilter	~/Binaries/pytkfilter
 bin/internet_radio	~/Binaries/internet_radio
 bin/pm	~/Binaries/pm
 bin/filedb-and-open	~/Binaries/filedb-and-open
