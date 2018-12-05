@@ -149,7 +149,7 @@
 (global-set-key (kbd "C-z i n s") (lambda() (interactive) (insert-file-contents (read-file-name "File: "))))
 (global-set-key (kbd "C-z m m") (lambda() (interactive) (markdown-mode)))
 (global-set-key (kbd "C-z s n") (lambda() (interactive) (insert (cdr (assoc (ido-completing-read "snippet: " snippets) snippets)))))
-(global-set-key (kbd "C-z f m") (lambda() (interactive) (call-process "nautilus" nil 0 nil default-directory)))
+(global-set-key (kbd "C-z f m") (lambda() (interactive) (call-process "Thunar" nil 0 nil default-directory)))
 (global-set-key (kbd "C-z l b") 'ibuffer)
 (global-set-key (kbd "C-z l a") 'list-abbrevs)
 (global-set-key (kbd "C-z e a") 'edit-abbrevs)
@@ -161,7 +161,11 @@
 		(insert "✔ "))))
 (global-set-key (kbd "C-z g c") (lambda() (interactive) (call-process "git" nil 0 nil "commit" "-am" (read-from-minibuffer "commit message: "))))
 (global-set-key (kbd "C-z G") 'end-of-buffer)
-(global-set-key (kbd "C-z g") 'beginning-of-buffer)
+(global-set-key (kbd "C-z g g") 'beginning-of-buffer)
+(global-set-key (kbd "C-z g d o") (lambda()
+	(interactive)
+	(call-process "highlight" nil '(:file "/tmp/highlight.html") nil "--inline-css" "-s" "github" (buffer-file-name))
+	(call-process "firefox" nil 0 nil "/tmp/highlight.html")))
 
 
 ; typical keys
