@@ -310,7 +310,7 @@
     </keybind>
     <keybind key="W-F3">
       <action name="Execute">
-        <command>atom</command>
+        <command>emacsclient -nc</command>
       </action>
     </keybind>
     <keybind key="W-F4">

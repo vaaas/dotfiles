@@ -11,7 +11,7 @@ shopt -s histverify
 #safety
 alias cp='cp -vri --'
 alias mv='mv -nvi --'
-alias rm='gvfs-trash --'
+alias rm='gio trash --'
 alias rmdir='rmdir -v --'
 alias ln='ln -i --'
 alias lns='\ln -is --'

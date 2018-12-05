@@ -74,8 +74,6 @@
 (global-set-key (kbd "C-M-l") 'forward-word)
 (global-set-key (kbd "C-M-j") 'scroll-up-command)
 (global-set-key (kbd "C-M-k") 'scroll-down-command)
-(global-set-key (kbd "C-M-S-J") 'end-of-buffer)
-(global-set-key (kbd "C-M-S-K") 'beginning-of-buffer)
 (global-set-key (kbd "C-.") 'repeat)
 (global-set-key (kbd "M-a") 'set-mark-command)
 
@@ -100,7 +98,7 @@
 (global-set-key (kbd "M-E") 'eval-expression)
 (global-set-key (kbd "C-k") 'kill-whole-line)
 (global-set-key (kbd "C-S-K") 'delete-indentation)
-(global-set-key (kbd "C-w") 'universal-argument)
+(global-set-key (kbd "C-w") 'kill-this-buffer)
 (global-set-key (kbd "C-q") 'kmacro-start-macro-or-insert-counter)
 (global-set-key (kbd "C-S-Q") 'kmacro-end-or-call-macro)
 (global-set-key (kbd "C-'") 'quoted-insert)
@@ -161,8 +159,10 @@
 	(if (char-equal (char-after) ?✔)
 		(delete-forward-char 2)
 		(insert "✔ "))))
-
 (global-set-key (kbd "C-z g c") (lambda() (interactive) (call-process "git" nil 0 nil "commit" "-am" (read-from-minibuffer "commit message: "))))
+(global-set-key (kbd "C-z G") 'end-of-buffer)
+(global-set-key (kbd "C-z g") 'beginning-of-buffer)
+
 
 ; typical keys
 (global-set-key (kbd "C-v") 'yank)
@@ -268,10 +268,9 @@
 (with-eval-after-load "cc-mode"
 	(define-key c-mode-map (kbd "C-M-h") nil))
 
-;nxmml-mode
 (with-eval-after-load "nxml-mode"
 	(define-key nxml-mode-map (kbd "M-h") nil))
-	
+
 (add-hook 'edit-abbrevs-mode-hook (lambda()
 	(define-key edit-abbrevs-map (kbd "C-c") 'edit-abbrevs-redefine)
 	(define-key edit-abbrevs-map (kbd "C-s") 'abbrev-edit-save-buffer)))

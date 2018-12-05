@@ -11,5 +11,6 @@ hsetroot -cover wallpaper &
 dunst &
 tint2 &
 ibus-daemon -d
+emacs --daemon
 
 exec dbus-launch openbox
