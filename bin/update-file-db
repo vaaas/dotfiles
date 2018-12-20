@@ -10,6 +10,6 @@ file="$HOME/filedb.xz"
 rm -v $file
 for dir in $DIRS
 do
-	fd -c never -- . $dir | sort | xz >> $file
+	fdfind -c never -- . $dir | sort | xz >> $file
 done
 echo "updated $file"

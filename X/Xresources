@@ -1,1 +1,25 @@
 Xft.dpi: 72
+
+XTerm.vt100.faceName: Monospace
+XTerm.vt100.faceSize: 16
+
+*color0: #1d1f21
+*color1: #282a2e
+*color2: #373b41
+*color3: #969896
+*color4: #b4b7b4
+*color5: #c5c8c6
+*color6: #e0e0e0
+*color7: #ffffff
+*color8: #cc6666
+*color9: #de935f
+*color10: #f0c674
+*color11: #b5bd68
+*color12: #8abeb7
+*color13: #81a2be
+*color14: #b294bb
+*color15: #a3685a
+
+*foreground:   #ffffff
+*background:   #000000
+*cursorColor:  #ffffff

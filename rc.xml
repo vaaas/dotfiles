@@ -305,12 +305,12 @@
     </keybind>
     <keybind key="W-F2">
       <action name="Execute">
-        <command>Thunar</command>
+        <command>nautilus</command>
       </action>
     </keybind>
     <keybind key="W-F3">
       <action name="Execute">
-        <command>emacsclient -nc</command>
+        <command>emacsclient -cn</command>
       </action>
     </keybind>
     <keybind key="W-F4">

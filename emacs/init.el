@@ -13,6 +13,7 @@
 	cursor-type 'bar
 	fringes-outside-margins t
 	indent-tabs-mode t
+	py-indent-tabs-mode t
 	lisp-indent-offset 0
 	delete-by-moving-to-trash t
 	vc-follow-symlinks t
@@ -28,7 +29,8 @@
 	smie-indent-basic 8
 	markdown-list-indent-width 8
 	scroll-conservatively 101
-	shift-select-mode nil)
+	shift-select-mode nil
+	mode-line-format nil)
 (put 'dired-find-alternate-file 'disabled nil)
 (setq snippets '(
 	("initial-viewport" . "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">")))
@@ -56,10 +58,6 @@
 (ido-mode t)
 (electric-indent-mode -1)
 (read-abbrev-file abbrev-file-name)
-
-;; Add parsing of jshint output in compilation mode
-;(add-to-list 'compilation-error-regexp-alist-alist '(jshint "^\\(.*\\): line \\([0-9]+\\), col \\([0-9]+\\), " 1 2 3))
-;(add-to-list 'compilation-error-regexp-alist 'jshint)
 
 ;kind of vi keybindings
 (global-set-key (kbd "M-j") 'next-line)
@@ -272,6 +270,7 @@
 (with-eval-after-load "cc-mode"
 	(define-key c-mode-map (kbd "C-M-h") nil))
 
+;nxml mode
 (with-eval-after-load "nxml-mode"
 	(define-key nxml-mode-map (kbd "M-h") nil))
 
