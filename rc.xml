@@ -21,7 +21,7 @@
     <primaryMonitor>Mouse</primaryMonitor>
   </placement>
   <theme>
-    <name>Bear2</name>
+    <name>Nightmare-03</name>
     <titleLayout>NLIMC</titleLayout>
     <keepBorder>yes</keepBorder>
     <animateIconify>yes</animateIconify>
@@ -66,16 +66,16 @@
     <number>10</number>
     <firstdesk>1</firstdesk>
     <names>
-		<name>1</name>
-		<name>2</name>
-		<name>3</name>
-		<name>4</name>
-		<name>5</name>
-		<name>6</name>
-		<name>7</name>
-		<name>8</name>
-		<name>9</name>
-		<name>0</name>
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
+      <name>5</name>
+      <name>6</name>
+      <name>7</name>
+      <name>8</name>
+      <name>9</name>
+      <name>0</name>
     </names>
     <popupTime>500</popupTime>
   </desktops>
@@ -119,38 +119,38 @@
       </action>
     </keybind>
     <keybind key="W-Tab">
-    	<action name="GoToDesktop">
-		<to>last</to>
-	</action>
+      <action name="GoToDesktop">
+        <to>last</to>
+      </action>
     </keybind>
     <keybind key="W-S-1">
       <action name="SendToDesktop">
         <to>1</to>
-	<follow>no</follow>
+        <follow>no</follow>
       </action>
     </keybind>
     <keybind key="W-S-2">
       <action name="SendToDesktop">
         <to>2</to>
-	<follow>no</follow>
+        <follow>no</follow>
       </action>
     </keybind>
     <keybind key="W-S-3">
       <action name="SendToDesktop">
         <to>3</to>
-	<follow>no</follow>
+        <follow>no</follow>
       </action>
     </keybind>
     <keybind key="W-S-4">
       <action name="SendToDesktop">
         <to>4</to>
-	<follow>no</follow>
+        <follow>no</follow>
       </action>
     </keybind>
     <keybind key="W-S-5">
       <action name="SendToDesktop">
         <to>5</to>
-	<follow>no</follow>
+        <follow>no</follow>
       </action>
     </keybind>
     <keybind key="W-S-6">
@@ -161,25 +161,25 @@
     <keybind key="W-S-7">
       <action name="SendToDesktop">
         <to>7</to>
-	<follow>no</follow>
+        <follow>no</follow>
       </action>
     </keybind>
     <keybind key="W-S-8">
       <action name="SendToDesktop">
         <to>8</to>
-	<follow>no</follow>
+        <follow>no</follow>
       </action>
     </keybind>
     <keybind key="W-S-9">
       <action name="SendToDesktop">
         <to>9</to>
-	<follow>no</follow>
+        <follow>no</follow>
       </action>
     </keybind>
     <keybind key="W-S-0">
       <action name="SendToDesktop">
         <to>10</to>
-	<follow>no</follow>
+        <follow>no</follow>
       </action>
     </keybind>
     <keybind key="W-1">
@@ -255,8 +255,8 @@
     </keybind>
     <keybind key="W-j">
       <action name="NextWindow">
-	<raise>yes</raise>
-	<linear>yes</linear>
+        <raise>yes</raise>
+        <linear>yes</linear>
         <finalactions>
           <action name="Focus"/>
           <action name="Raise"/>
@@ -266,8 +266,8 @@
     </keybind>
     <keybind key="W-k">
       <action name="PreviousWindow">
-	<raise>yes</raise>
-	<linear>yes</linear>
+        <raise>yes</raise>
+        <linear>yes</linear>
         <finalactions>
           <action name="Focus"/>
           <action name="Raise"/>
@@ -280,24 +280,24 @@
         <command>rofi -show run</command>
       </action>
     </keybind>
-	<keybind key="C-A-Delete">
-		<action name="Execute">
-			<command>xtrlock -f -b</command>
-		</action>
-	</keybind>
-	<keybind key="W-S-e">
-		<action name="Execute">
-			<command>clip_run</command>
-		</action>
-	</keybind>
-	<keybind key="W-o">
-		<action name="Execute">
-			<command>filedb-and-open</command>
-		</action>
-	</keybind>
-	<keybind key="W-Return">
-		<action name="GrowToFill"/>
-	</keybind>
+    <keybind key="C-A-Delete">
+      <action name="Execute">
+        <command>xtrlock -f -b</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-e">
+      <action name="Execute">
+        <command>clip_run</command>
+      </action>
+    </keybind>
+    <keybind key="W-o">
+      <action name="Execute">
+        <command>filedb-and-open</command>
+      </action>
+    </keybind>
+    <keybind key="W-Return">
+      <action name="GrowToFill"/>
+    </keybind>
     <keybind key="W-F1">
       <action name="Execute">
         <command>firefox</command>
@@ -323,11 +323,11 @@
         <command>gnome-terminal</command>
       </action>
     </keybind>
-	<keybind key="W-p">
-	  <action name="Execute">
-	    <command>passmenu</command>
-	  </action>
-	</keybind>
+    <keybind key="W-p">
+      <action name="Execute">
+        <command>passmenu</command>
+      </action>
+    </keybind>
     <!-- Launch scrot when Print is pressed -->
     <keybind key="Print">
       <action name="Execute">
@@ -362,7 +362,7 @@
       </action>
     </keybind>
     <keybind key="W-n">
-    	<action name="Iconify"/>
+      <action name="Iconify"/>
     </keybind>
     <keybind key="W-u">
       <action name="ToggleMaximize">
@@ -374,58 +374,58 @@
         <direction>horizontal</direction>
       </action>
     </keybind>
-	<keybind key="W-S-l">
-		<action name="Unmaximise"/>
-		<action name="MoveResizeTo">
-			<x>-0</x>
-			<y>0</y>
-			<width>50%</width>
-			<height>100%</height>
-		</action>
-	</keybind>
-	<keybind key="W-S-h">
-		<action name="Unmaximise"/>
-		<action name="MoveResizeTo">
-			<x>0</x>
-			<y>0</y>
-			<width>50%</width>
-			<height>100%</height>
-		</action>
-	</keybind>
+    <keybind key="W-S-l">
+      <action name="Unmaximise"/>
+      <action name="MoveResizeTo">
+        <x>-0</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>100%</height>
+      </action>
+    </keybind>
+    <keybind key="W-S-h">
+      <action name="Unmaximise"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>100%</height>
+      </action>
+    </keybind>
     <keybind key="W-w">
       <action name="Move"/>
     </keybind>
     <keybind key="W-C-h">
-    	<action name="MoveToEdge">
-		<direction>west</direction>
-	</action>
+      <action name="MoveToEdge">
+        <direction>west</direction>
+      </action>
     </keybind>
     <keybind key="W-C-j">
-    	<action name="MoveToEdge">
-		<direction>south</direction>
-	</action>
+      <action name="MoveToEdge">
+        <direction>south</direction>
+      </action>
     </keybind>
     <keybind key="W-C-k">
-    	<action name="MoveToEdge">
-		<direction>north</direction>
-	</action>
+      <action name="MoveToEdge">
+        <direction>north</direction>
+      </action>
     </keybind>
     <keybind key="W-C-l">
-    	<action name="MoveToEdge">
-		<direction>east</direction>
-	</action>
+      <action name="MoveToEdge">
+        <direction>east</direction>
+      </action>
     </keybind>
     <keybind key="W-S-j">
-    	<action name="ResizeRelative">
-		<down>128</down>
-		<right>128</right>
-	</action>
+      <action name="ResizeRelative">
+        <down>128</down>
+        <right>128</right>
+      </action>
     </keybind>
     <keybind key="W-S-k">
-    	<action name="ResizeRelative">
-		<right>-128</right>
-		<down>-128</down>
-	</action>
+      <action name="ResizeRelative">
+        <right>-128</right>
+        <down>-128</down>
+      </action>
     </keybind>
   </keyboard>
   <mouse>
@@ -773,7 +773,7 @@
       <decor>no</decor>
     </application>
     <application class="Atom">
-    	<decor>no</decor>
+      <decor>no</decor>
     </application>
   </applications>
 </openbox_config>

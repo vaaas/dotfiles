@@ -44,13 +44,10 @@
 	'(default ((t (:background "#140601" :foreground "white" :height 130 :family "Monospace"))))
 	'(fringe ((t (:background "#3E2723"))))
 	'(hl-line ((t (:background "black"))))
-	'(italic ((t (:slant italic))))
 	'(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.5))))
 	'(markdown-hr-face ((t (:inherit markdown-markup-face :height 2.0))))
 	'(markdown-italic-face ((t (:foreground "#009688" :slant italic))))
 	'(markdown-markup-face ((t (:foreground "#FFC107"))))
-	'(mode-line ((t (:background "#33691E" :foreground "white"))))
-	'(mode-line-inactive ((t (:background "#212121" :foreground "#E0E0E0"))))
 	'(variable-pitch ((t (:height 160 :family "Source Serif Pro")))))
 
 ;etc

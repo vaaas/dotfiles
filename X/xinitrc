@@ -3,6 +3,7 @@
 export GTK_IM_MODULE=ibus
 #export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
+#export $(dbus-launch)
 
 xrdb -merge ~/.Xresources
 setxkbmap us -option compose:caps,shift:both_capslock
@@ -13,4 +14,4 @@ tint2 &
 ibus-daemon -d
 emacs --daemon
 
-exec openbox
+exec dbus-launch openbox

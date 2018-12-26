@@ -6,5 +6,5 @@ IFS='
 '
 pass=$(cd ~/Passwords && find . -type f -printf '%P\n' | rofi -dmenu -i -p "select password")
 echo $pass
-pass="$(zenity --password | gpg --batch -d --passphrase-fd 0 -- ~/Passwords/$pass)"
+pass="$(gpg --pinentry-mode ask -d --ignore-mdc-error -- ~/Passwords/$pass)"
 xdotool type "$pass"
