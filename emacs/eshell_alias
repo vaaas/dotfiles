@@ -6,4 +6,4 @@ alias emacs find-file $1
 alias zz systemctl suspend
 alias zzz systemctl hibernate
 alias update sudo sh -c "apt update && apt full-upgrade"
-alias rm gvfs-trash -- $*
+alias rm gio trash -- $*

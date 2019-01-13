@@ -1,7 +1,7 @@
 syntax on
 set background=dark
 if has("gui_running")
-	colors srcery-drk
+	colors jellybeans
 	set columns=86
 	set guioptions=-m
 	set guioptions=-e
@@ -39,27 +39,34 @@ set title
 set foldmethod=indent
 set cc=81
 set numberwidth=5
-let loaded_netrwPlugin = 1 "fuck netrw
+let loaded_netrwPlugin = 1
 
 " keyboard mappings
-nnoremap <Space> :
-" gtk3 file selector!
-nnoremap <Leader>o :e `zenity --file-selection --separator=$'\n' --filename=%`<CR>
-nnoremap <Leader>w :exe '!firefox %'<CR>
-" switching buffers
-nnoremap <Leader>n :bn<CR>
-nnoremap <Leader>p :bp<CR>
-nnoremap <Leader>tp :tabp<CR>
-nnoremap <Leader>tn :tabn<CR>
-nnoremap <Leader>ls :call ListDir()<CR>
-nnoremap <Leader>e :exe 'edit!' getline(".")<CR>
-nnoremap <Leader>v "+P
-nnoremap <Leader>b :b<space>
-nnoremap <Leader>cd :cd `zenity --file-selection --directory --separator=$'\n' -- filename='~'`<CR>
-nnoremap <C-j> gj
-nnoremap <C-k> gk
-nnoremap <C-h> g^
-nnoremap <C-l> g$
+noremap <Space> :
+noremap j gj
+noremap k gk
+noremap L $
+noremap H ^
+noremap J <C-f>
+noremap K <C-b>
+noremap <A-j> }
+noremap <A-k> {
+noremap <A-h> B
+noremap <A-l> W
+noremap <A-o> <C-w>w
+noremap <A-O> <C-w>q
+inoremap <C-g> <Esc>
+noremap <Leader>o :e `zenity --file-selection --separator=$'\n' --filename=%`<CR>
+noremap <Leader>w :exe '!firefox %'<CR>
+noremap <Leader>n :bn<CR>
+noremap <Leader>p :bp<CR>
+noremap <Leader>tp :tabp<CR>
+noremap <Leader>tn :tabn<CR>
+noremap <Leader>ls :call ListDir()<CR>
+noremap <Leader>e :exe 'edit!' getline(".")<CR>
+noremap <Leader>v "+P
+noremap <Leader>b :b<space>
+noremap <Leader>cd :cd `zenity --file-selection --directory --separator=$'\n' -- filename='~'`<CR>
 
 "functions
 

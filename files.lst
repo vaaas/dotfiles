@@ -39,3 +39,5 @@ nautilus/st-here	~/.local/share/nautilus/scripts/st-here
 nautilus/dmenu-selection	~/.local/share/nautilus/scripts/dmenu-selection
 ime/config1.db	~/.mozc/config1.db
 tint2rc	~/.config/tint2/tint2rc
+vimrc	~/.vimrc
+

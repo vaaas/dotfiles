@@ -310,17 +310,17 @@
     </keybind>
     <keybind key="W-F3">
       <action name="Execute">
-        <command>emacsclient -cn</command>
+        <command>gvim</command>
       </action>
     </keybind>
     <keybind key="W-F4">
       <action name="Execute">
-        <command>gnome-terminal -- internet_radio</command>
+        <command>dbus-launch gnome-terminal -- internet_radio</command>
       </action>
     </keybind>
     <keybind key="W-grave">
       <action name="Execute">
-        <command>gnome-terminal</command>
+        <command>dbus-launch gnome-terminal</command>
       </action>
     </keybind>
     <keybind key="W-p">
@@ -766,7 +766,7 @@
     <manageDesktops>yes</manageDesktops>
   </menu>
   <applications>
-    <application class="Firefox-esr">
+    <application class="Firefox">
       <decor>no</decor>
     </application>
     <application class="Emacs">
@@ -774,6 +774,9 @@
     </application>
     <application class="Atom">
       <decor>no</decor>
+    </application>
+    <application class="Gvim">
+    	<decor>no</decor>
     </application>
   </applications>
 </openbox_config>

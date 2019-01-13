@@ -7,10 +7,10 @@ export QT_IM_MODULE=ibus
 xrdb -merge ~/.Xresources
 setxkbmap us -option compose:caps,shift:both_capslock
 compton &
-hsetroot -cover wallpaper &
+feh --bg-fill wallpaper &
 dunst &
 tint2 &
 ibus-daemon -d
 emacs --daemon
 
-exec dbus-launch --exit-with-session openbox
+openbox
