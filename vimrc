@@ -1,14 +1,14 @@
 syntax on
 set background=dark
-if has("gui_running")
-	colors jellybeans
+if exists("g:GuiLoaded")
+	"colors jellybeans
 	set columns=86
 	set guioptions=-m
 	set guioptions=-e
 	set guioptions=-M
 	set guioptions=-T
 	set guioptions=-R
-	set guifont=Monospace\ 15px
+	set guifont=Unifont\ 16px
 endif
 set nocompatible
 set backspace=indent,eol,start
@@ -39,6 +39,7 @@ set title
 set foldmethod=indent
 set cc=81
 set numberwidth=5
+set display=lastline
 let loaded_netrwPlugin = 1
 
 " keyboard mappings
@@ -49,28 +50,36 @@ noremap L $
 noremap H ^
 noremap J <C-f>
 noremap K <C-b>
+noremap z za
+noremap Z zA
 noremap <A-j> }
 noremap <A-k> {
 noremap <A-h> B
 noremap <A-l> W
 noremap <A-o> <C-w>w
 noremap <A-O> <C-w>q
-inoremap <C-g> <Esc>
+noremap <C-A-o> :only<CR>
+noremap ] :bn<CR>
+noremap [ :bp<CR>
+noremap <A-[> :tabp<CR>
+noremap <A-]> :tabn<CR>
+noremap w W
+noremap W w
+noremap e }
+noremap E {
+noremap b B
+noremap B b
+noremap x J
+noremap <C-l> zt
 noremap <Leader>o :e `zenity --file-selection --separator=$'\n' --filename=%`<CR>
-noremap <Leader>w :exe '!firefox %'<CR>
-noremap <Leader>n :bn<CR>
-noremap <Leader>p :bp<CR>
-noremap <Leader>tp :tabp<CR>
-noremap <Leader>tn :tabn<CR>
-noremap <Leader>ls :call ListDir()<CR>
-noremap <Leader>e :exe 'edit!' getline(".")<CR>
+noremap <Leader>o :e `zenity --file-selection --separator=$'\n' --filename=%`<CR>
 noremap <Leader>v "+P
+noremap <Leader>c "+y
 noremap <Leader>b :b<space>
 noremap <Leader>cd :cd `zenity --file-selection --directory --separator=$'\n' -- filename='~'`<CR>
+noremap <Leader>wm :set guifont=Monospace\ 24px<CR>:set nonumber<CR>:set cc=0<CR>
+noremap <Leader>ref :silent !sxiv -b -- '%:p:h/ref/' &<CR>
+noremap <Leader>wc g<C-g>
+noremap <Leader>ok ^i✔<Esc>
 
-"functions
-
-function! ListDir()
-	:enew
-	:read !find -type f
-endfunction
+autocmd FileType markdown normal \wm

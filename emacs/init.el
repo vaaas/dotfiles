@@ -48,7 +48,7 @@
 	'(markdown-hr-face ((t (:inherit markdown-markup-face :height 2.0))))
 	'(markdown-italic-face ((t (:foreground "#009688" :slant italic))))
 	'(markdown-markup-face ((t (:foreground "#FFC107"))))
-	'(variable-pitch ((t (:height 160 :family "Source Serif Pro")))))
+	'(variable-pitch ((t (:height 160 :family "Sans")))))
 
 ;etc
 (column-number-mode t)

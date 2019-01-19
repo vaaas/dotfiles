@@ -277,7 +277,7 @@
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <command>rofi -show run</command>
+        <command>dmenu_run</command>
       </action>
     </keybind>
     <keybind key="C-A-Delete">
@@ -315,12 +315,12 @@
     </keybind>
     <keybind key="W-F4">
       <action name="Execute">
-        <command>dbus-launch gnome-terminal -- internet_radio</command>
+        <command>gnome-terminal -- bash internet_radio</command>
       </action>
     </keybind>
     <keybind key="W-grave">
       <action name="Execute">
-        <command>dbus-launch gnome-terminal</command>
+        <command>gnome-terminal</command>
       </action>
     </keybind>
     <keybind key="W-p">

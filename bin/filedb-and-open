@@ -1,7 +1,4 @@
 #!/bin/sh
 
-set -e
-
-IFS='
-'
-gio open $(xzcat ~/filedb.xz | rofi -dmenu -i -p "select file")
+thefile="$(xzcat ~/filedb.xz | dmenu)" &&
+gio open "$thefile"
