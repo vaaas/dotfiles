@@ -41,14 +41,14 @@
 (menu-bar-mode -1)
 (global-visual-line-mode 1)
 (custom-set-faces
-	'(default ((t (:background "#140601" :foreground "white" :height 130 :family "Monospace"))))
+	'(default ((t (:background "#140601" :foreground "white" :height 160 :family "Monospace"))))
 	'(fringe ((t (:background "#3E2723"))))
 	'(hl-line ((t (:background "black"))))
 	'(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.5))))
 	'(markdown-hr-face ((t (:inherit markdown-markup-face :height 2.0))))
 	'(markdown-italic-face ((t (:foreground "#009688" :slant italic))))
 	'(markdown-markup-face ((t (:foreground "#FFC107"))))
-	'(variable-pitch ((t (:height 160 :family "Sans")))))
+	'(variable-pitch ((t (:height 160 :family "Serif")))))
 
 ;etc
 (column-number-mode t)
@@ -102,6 +102,8 @@
 (global-set-key (kbd "C-l") (lambda() (interactive) (recenter 0)))
 (global-set-key (kbd "C-S-L") 'reposition-window)
 (global-set-key (kbd "<C-SPC>") (lambda() (interactive) (insert-string " ")))
+(global-set-key (kbd "C-j") (lambda() (interactive) (end-of-line) (newline-and-indent-relative-maybe)))
+(global-set-key (kbd "C-S-J") (lambda() (interactive) (beginning-of-line-text) (split-line)))
 
 ; leader
 (global-set-key (kbd "C-z") nil)
@@ -301,6 +303,7 @@
 (add-hook 'markdown-mode-hook (lambda()
 	(variable-pitch-mode)
 	(text-scale-set 2)
+	(setq line-spacing 0.3)
 	(setq tab-width 8)))
 
 (add-hook 'text-mode-hook (lambda() (abbrev-mode 1)))
