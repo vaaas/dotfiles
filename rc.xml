@@ -315,12 +315,12 @@
     </keybind>
     <keybind key="W-F4">
       <action name="Execute">
-        <command>gnome-terminal -- bash internet_radio</command>
+        <command>xterm internet_radio</command>
       </action>
     </keybind>
     <keybind key="W-grave">
       <action name="Execute">
-        <command>gnome-terminal</command>
+        <command>xterm</command>
       </action>
     </keybind>
     <keybind key="W-p">

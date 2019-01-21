@@ -1,7 +1,7 @@
 syntax on
 set background=dark
-if exists("g:GuiLoaded")
-	"colors jellybeans
+colors delek
+if has("gui_running")
 	set columns=86
 	set guioptions=-m
 	set guioptions=-e
@@ -32,7 +32,6 @@ set listchars=tab:··
 set autoindent
 set scrolljump=10
 set lazyredraw
-set cursorline
 set ignorecase
 set smartcase
 set title

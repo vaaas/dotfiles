@@ -30,6 +30,7 @@
 	markdown-list-indent-width 8
 	scroll-conservatively 101
 	shift-select-mode nil
+	line-spacing 0.2
 	mode-line-format nil)
 (put 'dired-find-alternate-file 'disabled nil)
 (setq snippets '(
@@ -48,7 +49,7 @@
 	'(markdown-hr-face ((t (:inherit markdown-markup-face :height 2.0))))
 	'(markdown-italic-face ((t (:foreground "#009688" :slant italic))))
 	'(markdown-markup-face ((t (:foreground "#FFC107"))))
-	'(variable-pitch ((t (:height 160 :family "Serif")))))
+	'(variable-pitch ((t (:height 160 :family "Dejavu Serif")))))
 
 ;etc
 (column-number-mode t)
@@ -116,7 +117,7 @@
 	(find-name-dired "."
 		(concat "*" (read-from-minibuffer "File name: ") "*"))))
 (global-set-key (kbd "C-z m a") 'woman)
-(global-set-key (kbd "C-z x t") (lambda() (interactive) (call-process "gnome-terminal" nil 0 nil)))
+(global-set-key (kbd "C-z x t") (lambda() (interactive) (call-process "xterm" nil 0 nil)))
 (global-set-key (kbd "C-z t e") (lambda() (interactive) (term "/bin/bash")))
 (global-set-key (kbd "C-z c d") 'cd)
 (global-set-key (kbd "C-z g r") 'rgrep)
@@ -303,7 +304,6 @@
 (add-hook 'markdown-mode-hook (lambda()
 	(variable-pitch-mode)
 	(text-scale-set 2)
-	(setq line-spacing 0.3)
 	(setq tab-width 8)))
 
 (add-hook 'text-mode-hook (lambda() (abbrev-mode 1)))
