@@ -6,7 +6,7 @@
 		("gnu" . "https://elpa.gnu.org/packages/")
 		("melpa" . "https://melpa.org/packages/"))
 	package-selected-packages
-		'(bbcode-mode markdown-mode wordnut)
+		'(zig-mode bbcode-mode markdown-mode wordnut)
 	inhibit-startup-screen t
 	make-backup-files nil
 	major-mode 'text-mode
@@ -42,14 +42,18 @@
 (menu-bar-mode -1)
 (global-visual-line-mode 1)
 (custom-set-faces
-	'(default ((t (:background "#140601" :foreground "white" :height 160 :family "Monospace"))))
-	'(fringe ((t (:background "#3E2723"))))
-	'(hl-line ((t (:background "black"))))
-	'(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.5))))
-	'(markdown-hr-face ((t (:inherit markdown-markup-face :height 2.0))))
-	'(markdown-italic-face ((t (:foreground "#009688" :slant italic))))
-	'(markdown-markup-face ((t (:foreground "#FFC107"))))
-	'(variable-pitch ((t (:height 160 :family "Dejavu Serif")))))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:background "#140601" :foreground "white" :height 160 :family "Monospace"))))
+ '(fringe ((t (:background "#3E2723"))))
+ '(hl-line ((t (:background "black"))))
+ '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.5))))
+ '(markdown-hr-face ((t (:inherit markdown-markup-face :height 2.0))))
+ '(markdown-italic-face ((t (:foreground "#009688" :slant italic))))
+ '(markdown-markup-face ((t (:foreground "#FFC107"))))
+ '(variable-pitch ((t (:height 160 :family "Sans")))))
 
 ;etc
 (column-number-mode t)
@@ -274,6 +278,9 @@
 (with-eval-after-load "nxml-mode"
 	(define-key nxml-mode-map (kbd "M-h") nil))
 
+(with-eval-after-load "zig-mode"
+	(define-key zig-mode-map (kbd "<tab>") 'soft-tab))
+
 (add-hook 'edit-abbrevs-mode-hook (lambda()
 	(define-key edit-abbrevs-map (kbd "C-c") 'edit-abbrevs-redefine)
 	(define-key edit-abbrevs-map (kbd "C-s") 'abbrev-edit-save-buffer)))
@@ -329,3 +336,6 @@
 (defun insert-tab()
 	(interactive)
 	(insert-char 9))	
+
+(defun soft-tab()
+	(insert (make-string tab-width ? )))
