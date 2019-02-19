@@ -1,3 +1,13 @@
+xterm*termName: xterm-16color
+Xft.dpi: 72
+XTerm*faceName: Monospace
+XTerm*faceSize: 16
+
+! special
+*.foreground:   #ffffff
+*.background:   #000000
+*.cursorColor:  #ffffff
+
 ! black
 *.color0:       #002b36
 *.color8:       #657b83
@@ -30,12 +40,3 @@
 *.color7:       #93a1a1
 *.color15:      #fdf6e3
 
-
-Xft.dpi: 72
-
-XTerm.vt100.faceName: Monospace
-XTerm.vt100.faceSize: 16
-
-*foreground:   #ffffff
-*background:   #000000
-*cursorColor:  #ffffff

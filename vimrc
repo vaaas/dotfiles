@@ -1,6 +1,6 @@
 syntax on
 set background=dark
-colors delek
+set t_Co=16
 if has("gui_running")
 	set columns=86
 	set guioptions=-m

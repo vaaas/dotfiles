@@ -6,7 +6,7 @@
 		("gnu" . "https://elpa.gnu.org/packages/")
 		("melpa" . "https://melpa.org/packages/"))
 	package-selected-packages
-		'(zig-mode bbcode-mode markdown-mode wordnut)
+		'(bbcode-mode markdown-mode wordnut)
 	inhibit-startup-screen t
 	make-backup-files nil
 	major-mode 'text-mode
@@ -17,7 +17,7 @@
 	lisp-indent-offset 0
 	delete-by-moving-to-trash t
 	vc-follow-symlinks t
-	backward-delete-char-untabify-method nil
+	;backward-delete-char-untabify-method "hungry"
 	find-name-arg "-iname"
 	tab-width 8
 	c-basic-offset 8
@@ -278,9 +278,6 @@
 (with-eval-after-load "nxml-mode"
 	(define-key nxml-mode-map (kbd "M-h") nil))
 
-(with-eval-after-load "zig-mode"
-	(define-key zig-mode-map (kbd "<tab>") 'soft-tab))
-
 (add-hook 'edit-abbrevs-mode-hook (lambda()
 	(define-key edit-abbrevs-map (kbd "C-c") 'edit-abbrevs-redefine)
 	(define-key edit-abbrevs-map (kbd "C-s") 'abbrev-edit-save-buffer)))
@@ -319,9 +316,9 @@
 	(shell-command-on-region 1 (point-max) command "*shell-output*" replace))
 
 (defun wrap-or-insert (s1 s2 &optional start end)
-	(cond (
-		(and (use-region-p) start end) (setq a start b end))
-		(t (setq a (point) b (point))))
+	(if (and (use-region-p) start end)
+		(setq a start b end)
+		(setq a (point) b (point)))
 	(goto-char b)
 	(insert s2)
 	(goto-char a)
@@ -338,4 +335,13 @@
 	(insert-char 9))	
 
 (defun soft-tab()
+	(interactive)
 	(insert (make-string tab-width ? )))
+
+(defun backward-delete-char-or-tab()
+	(interactive)
+	(if (string=
+		(buffer-substring (point) (- (point) tab-width))
+		(make-string tab-width ? ))
+			(backward-delete-char tab-width)
+		(backward-delete-char 1)))

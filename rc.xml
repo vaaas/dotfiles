@@ -778,5 +778,8 @@
     <application class="Gvim">
     	<decor>no</decor>
     </application>
+    <application class="XTerm">
+    	<decor>no</decor>
+    </application>
   </applications>
 </openbox_config>
