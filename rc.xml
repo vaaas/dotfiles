@@ -315,12 +315,12 @@
     </keybind>
     <keybind key="W-F4">
       <action name="Execute">
-        <command>xterm internet_radio</command>
+        <command>gnome-terminal -- internet_radio</command>
       </action>
     </keybind>
     <keybind key="W-grave">
       <action name="Execute">
-        <command>xterm</command>
+        <command>gnome-terminal</command>
       </action>
     </keybind>
     <keybind key="W-p">
@@ -766,20 +766,8 @@
     <manageDesktops>yes</manageDesktops>
   </menu>
   <applications>
-    <application class="Firefox">
+    <application class="*">
       <decor>no</decor>
-    </application>
-    <application class="Emacs">
-      <decor>no</decor>
-    </application>
-    <application class="Atom">
-      <decor>no</decor>
-    </application>
-    <application class="Gvim">
-    	<decor>no</decor>
-    </application>
-    <application class="XTerm">
-    	<decor>no</decor>
     </application>
   </applications>
 </openbox_config>

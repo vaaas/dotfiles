@@ -76,7 +76,7 @@ noremap <Leader>v "+P
 noremap <Leader>c "+y
 noremap <Leader>b :b<space>
 noremap <Leader>cd :cd `zenity --file-selection --directory --separator=$'\n' -- filename='~'`<CR>
-noremap <Leader>wm :set guifont=Monospace\ 24px<CR>:set nonumber<CR>:set cc=0<CR>
+noremap <Leader>wm :set nonumber<CR>:set cc=0<CR>
 noremap <Leader>ref :silent !sxiv -b -- '%:p:h/ref/' &<CR>
 noremap <Leader>wc g<C-g>
 noremap <Leader>ok ^i✔<Esc>

@@ -13,11 +13,9 @@
 	cursor-type 'bar
 	fringes-outside-margins t
 	indent-tabs-mode t
-	py-indent-tabs-mode t
 	lisp-indent-offset 0
 	delete-by-moving-to-trash t
 	vc-follow-symlinks t
-	;backward-delete-char-untabify-method "hungry"
 	find-name-arg "-iname"
 	tab-width 8
 	c-basic-offset 8
@@ -108,7 +106,7 @@
 (global-set-key (kbd "C-S-L") 'reposition-window)
 (global-set-key (kbd "<C-SPC>") (lambda() (interactive) (insert-string " ")))
 (global-set-key (kbd "C-j") (lambda() (interactive) (end-of-line) (newline-and-indent-relative-maybe)))
-(global-set-key (kbd "C-S-J") (lambda() (interactive) (beginning-of-line-text) (split-line)))
+(global-set-key (kbd "C-S-J") (lambda() (interactive) (beginning-of-line) (split-line)))
 
 ; leader
 (global-set-key (kbd "C-z") nil)
@@ -121,7 +119,7 @@
 	(find-name-dired "."
 		(concat "*" (read-from-minibuffer "File name: ") "*"))))
 (global-set-key (kbd "C-z m a") 'woman)
-(global-set-key (kbd "C-z x t") (lambda() (interactive) (call-process "xterm" nil 0 nil)))
+(global-set-key (kbd "C-z x t") (lambda() (interactive) (call-process "gnome-terminal" nil 0 nil)))
 (global-set-key (kbd "C-z t e") (lambda() (interactive) (term "/bin/bash")))
 (global-set-key (kbd "C-z c d") 'cd)
 (global-set-key (kbd "C-z g r") 'rgrep)
@@ -311,6 +309,8 @@
 	(setq tab-width 8)))
 
 (add-hook 'text-mode-hook (lambda() (abbrev-mode 1)))
+
+(add-hook 'python-mode-hook (lambda() (setq indent-tabs-mode t)))
 
 (defun shell-command-on-buffer(command replace)
 	(shell-command-on-region 1 (point-max) command "*shell-output*" replace))

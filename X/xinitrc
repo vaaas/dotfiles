@@ -5,7 +5,7 @@ export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=xim
 
 xrdb -merge ~/.Xresources
-setxkbmap us -option compose:caps,shift:both_capslock
+setxkbmap us -option compose:caps,shift:both_capslock_cancel
 #compton &
 feh --bg-fill wallpaper &
 dunst &
