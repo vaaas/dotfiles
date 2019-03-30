@@ -44,20 +44,18 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background "#140601" :foreground "white" :height 160 :family "Monospace"))))
+ '(default ((t (:background "#140601" :foreground "white" :height 200 :family "Noto Sans Condensed"))))
  '(fringe ((t (:background "#3E2723"))))
  '(hl-line ((t (:background "black"))))
  '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.5))))
  '(markdown-hr-face ((t (:inherit markdown-markup-face :height 2.0))))
  '(markdown-italic-face ((t (:foreground "#009688" :slant italic))))
  '(markdown-markup-face ((t (:foreground "#FFC107"))))
- '(variable-pitch ((t (:height 160 :family "Sans")))))
+ '(variable-pitch ((t (:height 200 :family "Noto Sans Condensed")))))
 
 ;etc
-(column-number-mode t)
 (ido-mode t)
 (electric-indent-mode -1)
-(read-abbrev-file abbrev-file-name)
 
 ;kind of vi keybindings
 (global-set-key (kbd "M-j") 'next-line)
@@ -304,11 +302,9 @@
 	(define-key ido-completion-map (kbd "<C-return>") 'ido-select-text)))
 
 (add-hook 'markdown-mode-hook (lambda()
-	(variable-pitch-mode)
+	(variable-pitch-mode t)
 	(text-scale-set 2)
 	(setq tab-width 8)))
-
-(add-hook 'text-mode-hook (lambda() (abbrev-mode 1)))
 
 (add-hook 'python-mode-hook (lambda() (setq indent-tabs-mode t)))
 
