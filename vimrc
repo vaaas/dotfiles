@@ -2,6 +2,7 @@ syntax on
 set background=dark
 set t_Co=16
 if has("gui_running")
+	colors solarized
 	set columns=86
 	set guioptions=-m
 	set guioptions=-e
@@ -9,6 +10,8 @@ if has("gui_running")
 	set guioptions=-T
 	set guioptions=-R
 	set guifont=Unifont\ 16px
+
+	highlight Normal guifg=#ffffff
 endif
 set nocompatible
 set backspace=indent,eol,start
@@ -47,6 +50,8 @@ highlight NonText ctermfg=8
 highlight SpecialKey ctermfg=8
 highlight LineNr ctermfg=8
 highlight cursorLineNr term=bold ctermfg=4
+highlight ColorColumn ctermbg=0
+highlight Folded ctermbg=0 ctermfg=7
 highlight clear CursorLine
 
 " keyboard mappings
@@ -79,12 +84,11 @@ noremap B b
 noremap x J
 noremap <C-l> zt
 noremap <Leader>o :e `zenity --file-selection --separator=$'\n' --filename=%`<CR>
-noremap <Leader>o :e `zenity --file-selection --separator=$'\n' --filename=%`<CR>
 noremap <Leader>v "+P
 noremap <Leader>c "+y
 noremap <Leader>b :b<space>
 noremap <Leader>cd :cd `zenity --file-selection --directory --separator=$'\n' -- filename='~'`<CR>
-noremap <Leader>wm :set nonumber<CR>:set cc=0<CR>
+noremap <Leader>wm :set nonumber<CR>:set cc=0<CR>:set guifont=Monospace\ 22px<CR>
 noremap <Leader>ref :silent !eog -- '%:p:h/ref/' &<CR>
 noremap <Leader>wc g<C-g>
 noremap <Leader>ok ^i✔<Esc>
