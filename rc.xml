@@ -310,7 +310,7 @@
     </keybind>
     <keybind key="W-F3">
       <action name="Execute">
-        <command>emacsclient -cn</command>
+        <command>gnome-terminal -- vim</command>
       </action>
     </keybind>
     <keybind key="W-F4">

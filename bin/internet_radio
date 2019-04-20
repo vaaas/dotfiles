@@ -1,6 +1,5 @@
 #!/bin/sh
 
 cd ~/Music/radio &&
-echo 'select a radio station' &&
-file="$(ls -1 | fzf)" &&
-exec mpv --loop=inf -- "$file"
+file="$(ls -1 | dmenu)" &&
+exec gnome-mpv -- "$file"
