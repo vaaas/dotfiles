@@ -2,7 +2,7 @@ syntax on
 set background=dark
 set t_Co=16
 if has("gui_running")
-	colors solarized
+	colors monokai
 	set columns=86
 	set guioptions=-m
 	set guioptions=-e

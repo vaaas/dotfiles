@@ -310,12 +310,12 @@
     </keybind>
     <keybind key="W-F3">
       <action name="Execute">
-        <command>gnome-terminal -- vim</command>
+        <command>gvim</command>
       </action>
     </keybind>
     <keybind key="W-F4">
       <action name="Execute">
-        <command>gnome-terminal -- internet_radio</command>
+        <command>internet_radio</command>
       </action>
     </keybind>
     <keybind key="W-grave">
