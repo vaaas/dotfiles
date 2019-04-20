@@ -28,7 +28,7 @@ set breakindent
 set tabstop=4
 set shiftwidth=4
 set list
-set listchars=tab:··
+set listchars=tab:¦\ 
 set autoindent
 set scrolljump=10
 set lazyredraw
@@ -39,7 +39,15 @@ set foldmethod=indent
 set cc=81
 set numberwidth=5
 set display=lastline
+set cursorline
 let loaded_netrwPlugin = 1
+
+"theme adjustments
+highlight NonText ctermfg=8
+highlight SpecialKey ctermfg=8
+highlight LineNr ctermfg=8
+highlight cursorLineNr term=bold ctermfg=4
+highlight clear CursorLine
 
 " keyboard mappings
 noremap <Space> :
@@ -77,7 +85,7 @@ noremap <Leader>c "+y
 noremap <Leader>b :b<space>
 noremap <Leader>cd :cd `zenity --file-selection --directory --separator=$'\n' -- filename='~'`<CR>
 noremap <Leader>wm :set nonumber<CR>:set cc=0<CR>
-noremap <Leader>ref :silent !sxiv -b -- '%:p:h/ref/' &<CR>
+noremap <Leader>ref :silent !eog -- '%:p:h/ref/' &<CR>
 noremap <Leader>wc g<C-g>
 noremap <Leader>ok ^i✔<Esc>
 

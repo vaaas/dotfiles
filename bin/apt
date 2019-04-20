@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+arg="$1"
+shift 1
+
+case "$arg" in
+	search)
+		pacman -Ss --color auto "$@"
+		;;
+	install)
+		pacman -S --color auto "$@"
+		;;
+	remove)
+		pacman -Rns --color auto "$@"
+		;;
+	update)
+		pacman -Sy --color auto
+		;;
+	upgrade)
+		pacman -Su --color auto
+		;;
+	info)
+		pacman -Sii --color auto "$@"
+		;;
+	depends)
+		pacman -Sii --color auto "$@" | grep 'Depends On'
+		;;
+	clean)
+		pacman -Scc --color auto
+		;;
+	file-search)
+		pacman -Fs --color auto "$@"
+		;;
+	installed)
+		pacman -Qe --color auto
+esac

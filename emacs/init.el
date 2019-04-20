@@ -139,7 +139,7 @@
 (global-set-key (kbd "C-z g i t") 'git-status)
 (global-set-key (kbd "C-z s h") 'split-window-below)
 (global-set-key (kbd "C-z s v") 'split-window-right)
-(global-set-key (kbd "C-z r e f") (lambda() (interactive) (start-process-shell-command "sxiv(ref)" nil "sxiv -b -- ref/*")))
+(global-set-key (kbd "C-z r e f") (lambda() (interactive) (start-process-shell-command "eog(ref)" nil "eog -- ref/*")))
 (global-set-key (kbd "C-z c m") (lambda() (interactive) (shell-command-on-buffer "cmark --smart" t)))
 (global-set-key (kbd "C-z y m d") (lambda() (interactive) (insert (format-time-string "%Y-%m-%d"))))
 (global-set-key (kbd "C-z s e c") (lambda() (interactive) (insert (format-time-string "%s"))))

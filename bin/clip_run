@@ -9,7 +9,7 @@ firefox --
 emacs --'
 
 clip=$(xclip -selection clipboard -o)
-cmd=$(echo "$stuff" | rofi -i -dmenu "Run clipboard on...")
+cmd=$(echo "$stuff" | dmenu -p "Run clipboard on...")
 if test -z $cmd
 then
 	exit 1
