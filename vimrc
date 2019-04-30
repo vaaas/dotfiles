@@ -9,7 +9,7 @@ if has("gui_running")
 	set guioptions=-M
 	set guioptions=-T
 	set guioptions=-R
-	set guifont=Unifont\ 16px
+	set guifont=ttyp0\ 16px
 
 	highlight Normal guifg=#ffffff
 endif

@@ -36,6 +36,7 @@ bin/update-file-db	~/Binaries/update-file-db
 bin/vas_transcode	~/Binaries/vas_transcode
 bin/sha3_rename	~/Binaries/sha3_rename
 bin/apt	~/Binaries/apt
+bin/jocr	~/Binaries/jocr
 nautilus/scripts-accels	~/.config/nautilus/scripts-accels
 nautilus/st-here	~/.local/share/nautilus/scripts/st-here
 nautilus/dmenu-selection	~/.local/share/nautilus/scripts/dmenu-selection
