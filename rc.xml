@@ -318,6 +318,11 @@
         <command>internet_radio</command>
       </action>
     </keybind>
+	<keybind key="W-F5">
+		<action name="Execute">
+			<command>jocr</command>
+		</action>
+	</keybind>
     <keybind key="W-grave">
       <action name="Execute">
         <command>gnome-terminal</command>
