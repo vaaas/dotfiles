@@ -1,4 +1,4 @@
 #!/bin/sh
 IFS='
 '
-$(rofi -show run) $NAUTILUS_SCRIPT_SELECTED_FILE_PATHS
+$(dmenu_run) $NAUTILUS_SCRIPT_SELECTED_FILE_PATHS

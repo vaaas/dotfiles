@@ -33,4 +33,8 @@ case "$arg" in
 		;;
 	installed)
 		pacman -Qe --color auto
+		;;
+	size)
+		pacman -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}'
+		;;
 esac

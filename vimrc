@@ -84,8 +84,6 @@ noremap B b
 noremap x J
 noremap <C-l> zt
 noremap <Leader>o :e `zenity --file-selection --separator=$'\n' --filename=%`<CR>
-noremap <Leader>v "+P
-noremap <Leader>c "+y
 noremap <Leader>b :b<space>
 noremap <Leader>cd :cd `zenity --file-selection --directory --separator=$'\n' -- filename='~'`<CR>
 noremap <Leader>wm :set nonumber<CR>:set cc=0<CR>:set guifont=Monospace\ 22px<CR>

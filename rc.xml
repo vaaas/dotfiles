@@ -277,7 +277,7 @@
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <command>dmenu_run</command>
+        <command>dmenu_run -i</command>
       </action>
     </keybind>
     <keybind key="C-A-Delete">
