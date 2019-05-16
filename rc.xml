@@ -323,6 +323,11 @@
 			<command>jocr</command>
 		</action>
 	</keybind>
+	<keybind key="W-F6">
+		<action name="Execute">
+			<command>word_count_selection</command>
+		</action>
+	</keybind>
     <keybind key="W-grave">
       <action name="Execute">
         <command>gnome-terminal</command>
@@ -379,7 +384,7 @@
         <direction>horizontal</direction>
       </action>
     </keybind>
-    <keybind key="W-S-l">
+    <keybind key="W-bracketright">
       <action name="Unmaximise"/>
       <action name="MoveResizeTo">
         <x>-0</x>
@@ -388,13 +393,31 @@
         <height>100%</height>
       </action>
     </keybind>
-    <keybind key="W-S-h">
+    <keybind key="W-bracketleft">
       <action name="Unmaximise"/>
       <action name="MoveResizeTo">
         <x>0</x>
         <y>0</y>
         <width>50%</width>
         <height>100%</height>
+      </action>
+    </keybind>
+    <keybind key="W-S-bracketright">
+      <action name="Unmaximise"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>-0</y>
+        <width>100%</width>
+        <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="W-S-bracketleft">
+      <action name="Unmaximise"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>100%</width>
+        <height>50%</height>
       </action>
     </keybind>
     <keybind key="W-w">

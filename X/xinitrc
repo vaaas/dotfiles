@@ -10,4 +10,6 @@ feh --bg-fill wallpaper &
 dunst &
 tint2 &
 ibus-daemon -xd
+unclutter --timeout 1 &
+lowlight
 dbus-launch openbox

@@ -10,7 +10,7 @@ if has("gui_running")
 	set guioptions=-T
 	set guioptions=-R
 	set guifont=ttyp0\ 16px
-
+	set guicursor=a:hor10-Cursor
 	highlight Normal guifg=#ffffff
 endif
 set nocompatible
@@ -86,7 +86,7 @@ noremap <C-l> zt
 noremap <Leader>o :e `zenity --file-selection --separator=$'\n' --filename=%`<CR>
 noremap <Leader>b :b<space>
 noremap <Leader>cd :cd `zenity --file-selection --directory --separator=$'\n' -- filename='~'`<CR>
-noremap <Leader>wm :set nonumber<CR>:set cc=0<CR>:set guifont=Monospace\ 22px<CR>
+noremap <Leader>wm :set nonumber<CR>:set cc=0<CR>:set guifont=Monospace\ 20px<CR>
 noremap <Leader>ref :silent !eog -- '%:p:h/ref/' &<CR>
 noremap <Leader>wc g<C-g>
 noremap <Leader>ok ^i✔<Esc>
