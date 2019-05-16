@@ -2,7 +2,6 @@ compton.conf	~/.config/compton.conf
 fonts.conf	~/.config/fontconfig/fonts.conf
 rc.xml	~/.config/openbox/rc.xml
 screenrc	~/.screenrc
-vimrc	~/.vimrc
 bash/bashrc	~/.bashrc
 bash/bash_profile	~/.bash_profile
 bash/inputrc	~/.inputrc
@@ -38,4 +37,4 @@ nautilus/scripts-accels	~/.config/nautilus/scripts-accels
 nautilus/st-here	~/.local/share/nautilus/scripts/st-here
 nautilus/dmenu-selection	~/.local/share/nautilus/scripts/dmenu-selection
 tint2rc	~/.config/tint2/tint2rc
-vimrc	~/.vimrc
+
