@@ -1,9 +1,0 @@
-alias brb systemctl reboot
-alias performance sudo cpupower frequency-set -g performance
-alias powersave sudo cpupower frequency-set -g powersave
-alias bb systemctl poweroff
-alias emacs find-file $1
-alias zz systemctl suspend
-alias zzz systemctl hibernate
-alias update sudo sh -c "apt update && apt full-upgrade"
-alias rm gio trash -- $*
