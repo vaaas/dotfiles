@@ -90,3 +90,7 @@
 <Multi_key> <p> <1>: "′"
 <Multi_key> <p> <2>: "″"
 <Multi_key> <n> <o>: "№"
+<Multi_key> <d> <d>: "°"
+<Multi_key> <d> <c>: "℃"
+<Multi_key> <d> <f>: "℉"
+

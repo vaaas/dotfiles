@@ -1,15 +1,25 @@
 #!/bin/sh
 
+xrdb -merge ~/.Xresources
+
+# keyboard configuration
 export GTK_IM_MODULE=xim
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=xim
-
-xrdb -merge ~/.Xresources
-setxkbmap us -option compose:caps,shift:both_capslock_cancel
-feh --bg-fill wallpaper &
-dunst &
-tint2 &
 ibus-daemon -xd
+setxkbmap us -option compose:caps,shift:both_capslock_cancel
+
+# redshift
+local d=$(date '+%H')
+if test "$d" -ge 19 -o "$d" -le 7
+then
+	systemctl --user start redshift_on.service
+fi
+systemctl --user start redshift_on.timer
+systemctl --user start redshift_off.timer
+
+dunst -font "Sans 16" &
+feh --bg-fill wallpaper &
+tint2 &
 unclutter --timeout 1 &
-lowlight
 dbus-launch openbox

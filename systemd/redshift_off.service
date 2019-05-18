@@ -1,0 +1,10 @@
+[Unit]
+Description=Deactivate redshift
+
+[Service]
+Type=oneshot
+Environment=DISPLAY=:0
+ExecStart=redshift -x
+
+[Install]
+WantedBy=multi-user.target

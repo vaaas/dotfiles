@@ -107,7 +107,29 @@
     <moveButton>Middle</moveButton>
   </dock>
   <keyboard>
-    <chainQuitKey>C-g</chainQuitKey>
+    <chainQuitKey>Escape</chainQuitKey>
+    <keybind key="W-z">
+      <keybind key="w">
+        <action name="Execute">
+          <command>word_count_selection</command>
+        </action>
+      </keybind>
+      <keybind key="j">
+        <action name="Execute">
+          <command>jocr</command>
+        </action>
+      </keybind>
+      <keybind key="s">
+        <action name="Execute">
+          <command>scrot -s</command>
+        </action>
+      </keybind>
+      <keybind key="l">
+        <action name="Execute">
+          <command>xtrlock -f -b</command>
+        </action>
+      </keybind>
+    </keybind>
     <keybind key="W-h">
       <action name="GoToDesktop">
         <to>previous</to>
@@ -242,17 +264,6 @@
     <keybind key="W-b">
       <action name="ToggleDecorations"/>
     </keybind>
-    <keybind key="W-Escape">
-      <action name="Lower"/>
-      <action name="FocusToBottom"/>
-      <action name="Unfocus"/>
-    </keybind>
-    <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
-    <keybind key="W-Print">
-      <action name="Execute">
-        <command>scrot -s</command>
-      </action>
-    </keybind>
     <keybind key="W-j">
       <action name="NextWindow">
         <raise>yes</raise>
@@ -265,26 +276,16 @@
       </action>
     </keybind>
     <keybind key="W-k">
-      <action name="PreviousWindow">
-        <raise>yes</raise>
-        <linear>no</linear>
-        <finalactions>
-          <action name="Focus"/>
-          <action name="Raise"/>
-          <action name="Unshade"/>
-        </finalactions>
-      </action>
+      <action name="Lower"/>
+      <action name="FocusToBottom"/>
+      <action name="Unfocus"/>
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
         <command>dmenu_run -i</command>
       </action>
     </keybind>
-    <keybind key="C-A-Delete">
-      <action name="Execute">
-        <command>xtrlock -f -b</command>
-      </action>
-    </keybind>
+    
     <keybind key="W-S-e">
       <action name="Execute">
         <command>clip_run</command>
@@ -318,16 +319,6 @@
         <command>internet_radio</command>
       </action>
     </keybind>
-	<keybind key="W-F5">
-		<action name="Execute">
-			<command>jocr</command>
-		</action>
-	</keybind>
-	<keybind key="W-F6">
-		<action name="Execute">
-			<command>word_count_selection</command>
-		</action>
-	</keybind>
     <keybind key="W-grave">
       <action name="Execute">
         <command>gnome-terminal</command>
@@ -336,12 +327,6 @@
     <keybind key="W-p">
       <action name="Execute">
         <command>passmenu</command>
-      </action>
-    </keybind>
-    <!-- Launch scrot when Print is pressed -->
-    <keybind key="Print">
-      <action name="Execute">
-        <command>scrot</command>
       </action>
     </keybind>
     <!-- audio hotkeys -->
@@ -385,7 +370,7 @@
       </action>
     </keybind>
     <keybind key="W-bracketright">
-      <action name="Unmaximise"/>
+      <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>-0</x>
         <y>0</y>
@@ -394,7 +379,7 @@
       </action>
     </keybind>
     <keybind key="W-bracketleft">
-      <action name="Unmaximise"/>
+      <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>0</x>
         <y>0</y>
@@ -403,7 +388,7 @@
       </action>
     </keybind>
     <keybind key="W-S-bracketright">
-      <action name="Unmaximise"/>
+      <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>0</x>
         <y>-0</y>
@@ -412,12 +397,19 @@
       </action>
     </keybind>
     <keybind key="W-S-bracketleft">
-      <action name="Unmaximise"/>
+      <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>0</x>
         <y>0</y>
         <width>100%</width>
         <height>50%</height>
+      </action>
+    </keybind>
+    <keybind key="W-backslash">
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <width>15%</width>
+        <height>15%</height>
       </action>
     </keybind>
     <keybind key="W-w">
@@ -441,18 +433,6 @@
     <keybind key="W-C-l">
       <action name="MoveToEdge">
         <direction>east</direction>
-      </action>
-    </keybind>
-    <keybind key="W-S-j">
-      <action name="ResizeRelative">
-        <down>128</down>
-        <right>128</right>
-      </action>
-    </keybind>
-    <keybind key="W-S-k">
-      <action name="ResizeRelative">
-        <right>-128</right>
-        <down>-128</down>
       </action>
     </keybind>
   </keyboard>

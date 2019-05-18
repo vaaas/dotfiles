@@ -1,0 +1,10 @@
+[Unit]
+Description=Deactivate redshift on 8:00 or later
+
+[Timer]
+OnCalendar=*-*-* 8:00:00
+Persistent=true
+Unit=redshift_off.service
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Activate redshift
+
+[Service]
+Type=oneshot
+Environment=DISPLAY=:0
+ExecStart=redshift -O 3000K
+
+[Install]
+WantedBy=multi-user.target

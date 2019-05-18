@@ -37,4 +37,8 @@ nautilus/scripts-accels	~/.config/nautilus/scripts-accels
 nautilus/st-here	~/.local/share/nautilus/scripts/st-here
 nautilus/dmenu-selection	~/.local/share/nautilus/scripts/dmenu-selection
 tint2rc	~/.config/tint2/tint2rc
+systemd/redshift_on.service	~/.config/systemd/user/redshift_on.service
+systemd/redshift_off.service	~/.config/systemd/user/redshift_off.service
+systemd/redshift_on.timer	~/.config/systemd/user/redshift_on.timer
+systemd/redshift_off.timer	~/.config/systemd/user/redshift_off.timer
 
