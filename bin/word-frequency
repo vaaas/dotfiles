@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 #prints how often each individual word appears in a file
 tr '[:upper:]' '[:lower:]' |
 tr -d '[:punct:]' |

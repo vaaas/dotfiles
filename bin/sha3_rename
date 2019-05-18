@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/dash
 file="$(basename "$1")"
 if ! test -f "$file"
 then

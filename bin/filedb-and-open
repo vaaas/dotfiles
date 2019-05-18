@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 
 thefile="$(xzcat ~/filedb.xz | dmenu)" &&
 gio open "$thefile"

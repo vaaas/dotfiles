@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 
 cd ~/Music/radio &&
 file="$(ls -1 | dmenu -i -p 'select a radio')" &&

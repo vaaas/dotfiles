@@ -1,0 +1,2 @@
+#!/bin/dash
+notify-send "$(xclip -o -selection primary | wc -w )"

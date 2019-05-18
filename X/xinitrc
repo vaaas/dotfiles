@@ -9,15 +9,7 @@ export QT_IM_MODULE=xim
 ibus-daemon -xd
 setxkbmap us -option compose:caps,shift:both_capslock_cancel
 
-# redshift
-local d=$(date '+%H')
-if test "$d" -ge 19 -o "$d" -le 7
-then
-	systemctl --user start redshift_on.service
-fi
-systemctl --user start redshift_on.timer
-systemctl --user start redshift_off.timer
-
+redshift_service &
 dunst -font "Sans 16" &
 feh --bg-fill wallpaper &
 tint2 &
