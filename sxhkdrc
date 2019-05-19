@@ -8,7 +8,10 @@ super + z ; s
 	scrot -s
 
 super + z ; l
-	xtrlock -f -b
+	slock
+
+super + c
+	notify-send "$(date '+%H:%M')"
 
 super + e
 	dmenu_run -i
@@ -29,10 +32,17 @@ super + F3
 	gedit
 
 super + F4
-	cd ~/Music/radio && file="$(ls -1 | dmenu -i -p 'select a radio')" && exec gnome-mpv -- "$file"
+	cd ~/Music/radio && file="$(ls -1 | dmenu -i -p 'select a radio')" && gnome-mpv -- "$file"
 
 super + grave
-	gnome-terminal
+	SHELL=bash dbus-launch gnome-terminal
 
 super + p
 	passmenu
+
+super + End
+	slock & systemctl sleep
+
+super + shift + End
+	zenity --question --text="Shut down?" && systemctl poweroff
+	

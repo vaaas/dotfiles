@@ -12,7 +12,6 @@ setxkbmap us -option compose:caps,shift:both_capslock_cancel
 redshift_service &
 dunst -font "Sans 16" &
 feh --bg-fill wallpaper &
-tint2 &
 unclutter --timeout 1 &
-SHELL=/bin/dash sxhkd &
+SHELL=/bin/dash dbus-launch sxhkd &
 dbus-launch openbox

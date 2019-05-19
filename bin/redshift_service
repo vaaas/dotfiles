@@ -10,7 +10,7 @@ then
 	reshift -O 3000K
 	sleep $((7-$d))h
 else
-	sleep $((19-$d))
+	sleep $((19-$d))h
 	redshift -O 3000K
 	sleep 12h
 fi

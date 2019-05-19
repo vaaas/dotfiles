@@ -352,7 +352,6 @@
     <keybind key="W-Return">
 		<action name="GrowToFill"/>
 	</keybind>
-
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
