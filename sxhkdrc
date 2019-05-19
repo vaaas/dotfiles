@@ -1,0 +1,38 @@
+super + z ; w
+	notify-send "$(xclip -o -selection primary | wc -w )"
+
+super + z ; j
+	scrot -s "/tmp/ocr.png" && tesseract -l jpn "/tmp/ocr.png" stdout | xclip -selection clipboard ; rm -- "/tmp/ocr"*
+
+super + z ; s
+	scrot -s
+
+super + z ; l
+	xtrlock -f -b
+
+super + e
+	dmenu_run -i
+
+super + shift + e
+	clip_run
+
+super + o
+	thefile="$(xzcat ~/filedb.xz | dmenu)" && gio open "$thefile"
+
+super + F1
+	firefox
+
+super + F2
+	nautilus
+
+super + F3
+	gedit
+
+super + F4
+	cd ~/Music/radio && file="$(ls -1 | dmenu -i -p 'select a radio')" && exec gnome-mpv -- "$file"
+
+super + grave
+	gnome-terminal
+
+super + p
+	passmenu

@@ -1,16 +1,16 @@
 #!/bin/dash
 
-local d=$(date '+%H')
+d=$(date '+%H')
 if test "$d" -ge 19
 then
 	redshift -O 3000K
-	sleep $((24-$d+7))
+	sleep $((24-$d+7))h
 elif test "$d" -le 7
 then
 	reshift -O 3000K
-	sleep $((7-$d))
+	sleep $((7-$d))h
 else
-	sleep $$(19-$d)
+	sleep $((19-$d))
 	redshift -O 3000K
 	sleep 12h
 fi

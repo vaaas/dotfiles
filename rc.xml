@@ -108,28 +108,6 @@
   </dock>
   <keyboard>
     <chainQuitKey>Escape</chainQuitKey>
-    <keybind key="W-z">
-      <keybind key="w">
-        <action name="Execute">
-          <command>word_count_selection</command>
-        </action>
-      </keybind>
-      <keybind key="j">
-        <action name="Execute">
-          <command>jocr</command>
-        </action>
-      </keybind>
-      <keybind key="s">
-        <action name="Execute">
-          <command>scrot -s</command>
-        </action>
-      </keybind>
-      <keybind key="l">
-        <action name="Execute">
-          <command>xtrlock -f -b</command>
-        </action>
-      </keybind>
-    </keybind>
     <keybind key="W-h">
       <action name="GoToDesktop">
         <to>previous</to>
@@ -280,71 +258,7 @@
       <action name="FocusToBottom"/>
       <action name="Unfocus"/>
     </keybind>
-    <keybind key="W-e">
-      <action name="Execute">
-        <command>dmenu_run -i</command>
-      </action>
-    </keybind>
-    
-    <keybind key="W-S-e">
-      <action name="Execute">
-        <command>clip_run</command>
-      </action>
-    </keybind>
-    <keybind key="W-o">
-      <action name="Execute">
-        <command>filedb-and-open</command>
-      </action>
-    </keybind>
-    <keybind key="W-Return">
-      <action name="GrowToFill"/>
-    </keybind>
-    <keybind key="W-F1">
-      <action name="Execute">
-        <command>firefox</command>
-      </action>
-    </keybind>
-    <keybind key="W-F2">
-      <action name="Execute">
-        <command>nautilus</command>
-      </action>
-    </keybind>
-    <keybind key="W-F3">
-      <action name="Execute">
-        <command>gvim</command>
-      </action>
-    </keybind>
-    <keybind key="W-F4">
-      <action name="Execute">
-        <command>internet_radio</command>
-      </action>
-    </keybind>
-    <keybind key="W-grave">
-      <action name="Execute">
-        <command>gnome-terminal</command>
-      </action>
-    </keybind>
-    <keybind key="W-p">
-      <action name="Execute">
-        <command>passmenu</command>
-      </action>
-    </keybind>
     <!-- audio hotkeys -->
-    <keybind key="XF86AudioRaiseVolume">
-      <action name="Execute">
-        <command>amixer sset Master 5%+</command>
-      </action>
-    </keybind>
-    <keybind key="XF86AudioLowerVolume">
-      <action name="Execute">
-        <command>amixer sset Master 5%-</command>
-      </action>
-    </keybind>
-    <keybind key="XF86AudioMute">
-      <action name="Execute">
-        <command>amixer sset Master toggle</command>
-      </action>
-    </keybind>
     <keybind key="W-r">
       <action name="Resize"/>
     </keybind>

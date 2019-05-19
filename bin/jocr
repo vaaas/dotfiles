@@ -1,5 +1,0 @@
-#!/bin/dash
-
-scrot -s "$XDG_RUNTIME_DIR/ocr.png" &&
-tesseract -l jpn "$XDG_RUNTIME_DIR/ocr.png" stdout | xclip -selection clipboard
-rm -- "$XDG_RUNTIME_DIR/ocr"*

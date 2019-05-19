@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 
 xrdb -merge ~/.Xresources
 
@@ -14,4 +14,5 @@ dunst -font "Sans 16" &
 feh --bg-fill wallpaper &
 tint2 &
 unclutter --timeout 1 &
+SHELL=/bin/dash sxhkd &
 dbus-launch openbox
