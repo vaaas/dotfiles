@@ -29,13 +29,16 @@ super + F2
 	nautilus
 
 super + F3
-	gedit
+	code
 
 super + F4
 	cd ~/Music/radio && file="$(ls -1 | dmenu -i -p 'select a radio')" && gnome-mpv -- "$file"
 
+super + F5
+	gnome-system-monitor
+
 super + grave
-	SHELL=bash dbus-launch gnome-terminal
+	dbus-launch gnome-terminal
 
 super + p
 	passmenu
@@ -45,4 +48,3 @@ super + End
 
 super + shift + End
 	zenity --question --text="Shut down?" && systemctl poweroff
-	
