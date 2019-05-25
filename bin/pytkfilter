@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/usr/bin/env python3
 
 import sys
 import os
@@ -35,7 +35,7 @@ class Application(tk.Frame):
 		if (self.active_row == None):
 			self.listbox.activate(0)
 			self.active_row = 0
-		elif (self.active_row < self.listbox.size()):
+		elif (self.active_row < self.listbox.size() - 1):
 			self.active_row += 1
 			self.listbox.activate(self.active_row)
 
@@ -75,9 +75,11 @@ class Application(tk.Frame):
 		for index in self.listbox.curselection():
 			print(self.listbox.get(index))
 		self.master.destroy()
+		exit(0)
 
 	def cancel(self, event):
 		self.master.destroy()
+		exit(1)
 
 root = tk.Tk()
 app = Application(master=root)
