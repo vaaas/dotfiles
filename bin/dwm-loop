@@ -1,0 +1,5 @@
+#!/bin/dash
+while true
+do
+	dwm
+done
