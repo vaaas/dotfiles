@@ -31,6 +31,7 @@ alias saidar='saidar -c'
 alias top='htop'
 alias uptime='uptime -p'
 alias nmcli='nmcli -f in-use,ssid,bssid,signal,bars'
+alias cmark='cmark --smart'
 
 #convenience & shortcuts
 alias ..='cd ..'
