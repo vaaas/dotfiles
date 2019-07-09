@@ -1,13 +1,13 @@
-super + z ; w
+super + backslash ; w
 	notify-send "$(xclip -o -selection primary | wc -w )"
 
-super + z ; j
+super + backslash ; j
 	scrot -s "/tmp/ocr.png" && tesseract -l jpn "/tmp/ocr.png" stdout | xclip -selection clipboard ; rm -- "/tmp/ocr"*
 
-super + z ; s
+super + backslash ; s
 	scrot -s
 
-super + z ; l
+super + backslash ; l
 	ibus engine xkb:us::eng && slock
 
 super + c
@@ -32,7 +32,7 @@ super + F2
 	thunar
 
 super + F3
-	code
+	atom
 
 super + F4
 	cd ~/Music/radio && file="$(ls -1 | sort | pytkfilter)" && gnome-mpv -- "$file"
