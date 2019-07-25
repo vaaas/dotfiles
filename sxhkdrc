@@ -2,13 +2,16 @@ super + backslash ; w
 	notify-send "$(xclip -o -selection primary | wc -w )"
 
 super + backslash ; j
-	scrot -s "/tmp/ocr.png" && tesseract -l jpn "/tmp/ocr.png" stdout | xclip -selection clipboard ; rm -- "/tmp/ocr"*
+	sleep 0.2s && scrot -s "/tmp/ocr.png" && tesseract -l jpn "/tmp/ocr.png" stdout | xclip -selection clipboard && rm -- "/tmp/ocr"*
 
 super + backslash ; s
 	scrot -s
 
 super + backslash ; l
 	ibus engine xkb:us::eng && slock
+
+super + backslash ; r
+	killall -r 'redshift_ser*' ; redshift -x ; redshift_service
 
 super + c
 	notify-send "$(date '+%H:%M')"
@@ -51,3 +54,10 @@ super + End
 
 super + shift + End
 	zenity --question --text="Shut down?" && systemctl poweroff
+
+XF86AudioLowerVolume
+	pactl set-sink-volume 0 -10%
+
+XF86AudioRaiseVolume
+	pactl set-sink-volume 0 +10%
+
