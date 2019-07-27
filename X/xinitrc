@@ -15,5 +15,4 @@ feh --bg-fill wallpaper &
 unclutter --timeout 1 &
 bar &
 dbus-launch sxhkd &
-#dbus-launch openbox
 dbus-launch dwm-loop

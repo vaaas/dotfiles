@@ -11,7 +11,10 @@ super + backslash ; l
 	ibus engine xkb:us::eng && slock
 
 super + backslash ; r
-	killall -r 'redshift_ser*' ; redshift -x ; redshift_service
+	redshift -x
+
+super + backslash ; shift + R
+	redshift -O 3000
 
 super + c
 	notify-send "$(date '+%H:%M')"
