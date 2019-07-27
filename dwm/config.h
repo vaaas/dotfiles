@@ -38,8 +38,11 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	//{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "|M|",      centeredmaster },
+	{ ">M>",      centeredfloatingmaster },
+	{ NULL,       NULL }
 };
 
 /* key definitions */
@@ -63,14 +66,15 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.04685} },
+	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.04685} },
+	{ MODKEY|ShiftMask,             XK_h,      setmfact,       {.f = -0.015625} },
+	{ MODKEY|ShiftMask,             XK_l,      setmfact,       {.f = +0.015625} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_i,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_u,      cyclelayout,    {.i = -1 } },
+	{ MODKEY,                       XK_i,      cyclelayout,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_f,      togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
@@ -106,4 +110,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
