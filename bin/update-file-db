@@ -2,10 +2,8 @@
 
 IFS='
 '
-DIRS="$HOME/Projects/working
-$HOME/Projects/code
-$HOME/Projects/website
-$HOME/Projects/writing"
+DIRS="$HOME/Desktop
+$HOME/Projects"
 file="$HOME/filedb.xz"
 rm -v $file
 for dir in $DIRS

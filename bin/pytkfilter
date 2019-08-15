@@ -27,7 +27,7 @@ class Application(tk.Frame):
 		self.listbox.bind("<Return>", self.print_and_exit)
 		self.listbox.bind("q", self.cancel)
 		for line in sys.stdin.readlines():
-			self.listbox.insert(0, line.strip())
+			self.listbox.insert(tk.END, line.strip())
 		self.listbox.pack(expand=1, fill="both")
 		self.listbox.focus_force()
 

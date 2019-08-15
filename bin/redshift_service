@@ -1,24 +1,27 @@
 #!/bin/dash
 
+alias start='redshift -O 2000K'
+alias stop='redshift -x'
+
 d=$(date '+%H')
 if test "$d" -ge 19
 then
-	redshift -O 3000K
+	start
 	sleep $((24-$d+7))h
 elif test "$d" -le 7
 then
-	redshift -O 3000K
+	start
 	sleep $((7-$d))h
 else
 	sleep $((19-$d))h
-	redshift -O 3000K
+	start
 	sleep 12h
 fi
 
 while true
 do
-	redshift -x
+	stop
 	sleep 12h
-	redshift -O 3000K
+	start
 	sleep 12h
 done
