@@ -25,6 +25,9 @@ case "$arg" in
 	depends)
 		pacman -Sii --color auto "$@" | grep 'Depends On'
 		;;
+	rdepends)
+		pacman -Sii --color auto "$@" | grep "Required By"
+		;;
 	clean)
 		pacman -Scc --color auto
 		;;

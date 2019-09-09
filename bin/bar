@@ -5,13 +5,7 @@ IFS='
 
 while true
 do
-	ip=$(hostname -I | cut -d' ' -f 1)
-	if test -z $ip
-	then
-		ip="no connection"
-	fi
-	bat=$(cat /sys/class/power_supply/BAT1/capacity)
 	clock=$(date "+%Y-%m-%d | %H:%M")
-	xsetroot -name "$ip | ⚡ $bat% | $clock"
+	xsetroot -name "$clock"
 	sleep 1m
 done

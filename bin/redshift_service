@@ -1,6 +1,6 @@
 #!/bin/dash
 
-alias start='redshift -O 2000K'
+alias start='redshift -O 2500K'
 alias stop='redshift -x'
 
 d=$(date '+%H')

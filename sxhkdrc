@@ -14,7 +14,10 @@ super + backslash ; r
 	redshift -x
 
 super + backslash ; shift + R
-	redshift -O 2000K
+	redshift -O 2500K
+
+super + blackslash ; f1
+	killall -s SIGUSR1 sxhkd
 
 super + c
 	notify-send "$(date '+%H:%M')"
@@ -38,7 +41,7 @@ super + F2
 	thunar
 
 super + F3
-	atom
+	emacsclient -nc
 
 super + F4
 	cd ~/Music/radio && file="$(ls -1 | sort | pytkfilter)" && gnome-mpv -- "$file"
@@ -59,10 +62,10 @@ super + shift + End
 	zenity --question --text="Shut down?" && systemctl poweroff
 
 XF86AudioLowerVolume
-	pactl set-sink-volume 1 -10%
+	pactl set-sink-volume 0 -10%
 
 XF86AudioRaiseVolume
-	pactl set-sink-volume 1 +10%
+	pactl set-sink-volume 0 +10%
 
 XF86AudioMute
-	pactl set-sink-mute 1 toggle
+	pactl set-sink-mute 0 toggle

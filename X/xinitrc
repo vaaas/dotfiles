@@ -9,6 +9,7 @@ export QT_IM_MODULE=xim
 ibus-daemon -xd
 setxkbmap us -option compose:caps,shift:both_capslock_cancel,ctrl:swap_rwin_rctl
 
+emacs --daemon
 redshift_service &
 dunst -font "Sans 16" &
 feh --bg-fill wallpaper &
