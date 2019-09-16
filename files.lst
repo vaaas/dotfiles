@@ -37,3 +37,4 @@ nautilus/dmenu-selection	~/.local/share/nautilus/scripts/dmenu-selection
 tint2rc	~/.config/tint2/tint2rc
 sxhkdrc	~/.config/sxhkd/sxhkdrc
 alacritty.yml	~/.config/alacritty/alacritty.ymml
+init.el	~/.emacs.d/init.el

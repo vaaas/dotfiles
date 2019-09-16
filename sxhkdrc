@@ -16,7 +16,7 @@ super + backslash ; r
 super + backslash ; shift + R
 	redshift -O 2500K
 
-super + blackslash ; f1
+super + blackslash ; F1
 	killall -s SIGUSR1 sxhkd
 
 super + c
@@ -38,7 +38,7 @@ super + shift + F1
 	firefox --private-window
 
 super + F2
-	thunar
+	nautilus
 
 super + F3
 	emacsclient -nc
