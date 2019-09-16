@@ -1,22 +1,22 @@
-super + backslash ; w
+super + z ; w
 	notify-send "$(xclip -o -selection primary | wc -w )"
 
-super + backslash ; j
+super + z ; j
 	sleep 0.2s && scrot -s "/tmp/ocr.png" && tesseract -l jpn "/tmp/ocr.png" stdout | xclip -selection clipboard && rm -- "/tmp/ocr"*
 
-super + backslash ; s
+super + z ; s
 	scrot -s
 
-super + backslash ; l
+super + z ; l
 	ibus engine xkb:us::eng && slock
 
-super + backslash ; r
+super + z ; r
 	redshift -x
 
-super + backslash ; shift + R
+super + z ; shift + R
 	redshift -O 2500K
 
-super + blackslash ; F1
+super + z ; F1
 	killall -s SIGUSR1 sxhkd
 
 super + c

@@ -98,12 +98,11 @@
 	(set-fringe-mode 0)))
 
 ; keys
-(define-key global-map (kbd "C-\\") nil)
+(define-key global-map (kbd "C-z") nil)
 
 (define-key global-map (kbd "C-s") 'save-buffer)
 (define-key global-map (kbd "C-w") 'backward-kill-word)
 (define-key global-map (kbd "C-S-P") 'execute-extended-command)
-(define-key global-map (kbd "C-z") 'undo)
 (define-key global-map (kbd "C-v") 'yank)
 (define-key global-map (kbd "C-x") 'kill-region)
 (define-key global-map (kbd "C-S-X") 'kill-ring-save)
@@ -133,13 +132,21 @@
 (define-key global-map (kbd "C-S-J") 'newline-above)
 (define-key global-map (kbd "M-q") 'kmacro-start-macro)
 (define-key global-map (kbd "M-Q") 'kmacro-end-or-call-macro)
+(define-key global-map (kbd "M-l") 'right-char)
+(define-key global-map (kbd "M-h") 'left-char)
+(define-key global-map (kbd "M-j") 'next-line)
+(define-key global-map (kbd "M-k") 'previous-line)
+(define-key global-map (kbd "C-M-h") 'left-word)
+(define-key global-map (kbd "C-M-l") 'right-word)
+(define-key global-map (kbd "M-H") 'beginning-of-line-text)
+(define-key global-map (kbd "M-L") 'end-of-line)
 
-(define-key global-map (kbd "C-\\ e b") 'eval-buffer)
-(define-key global-map (kbd "C-\\ r e f") 'sxiv-ref)
-(define-key global-map (kbd "C-\\ w c") 'count-words-region)
-(define-key global-map (kbd "C-\\ a") 'mark-whole-buffer)
-(define-key global-map (kbd "C-\\ v p") 'variable-pitch-mode)
-(define-key global-map (kbd "C-\\ f") 'text-scale-adjust)
+(define-key global-map (kbd "C-z e b") 'eval-buffer)
+(define-key global-map (kbd "C-z r e f") 'sxiv-ref)
+(define-key global-map (kbd "C-z w c") 'count-words-region)
+(define-key global-map (kbd "C-z a") 'mark-whole-buffer)
+(define-key global-map (kbd "C-z v p") 'variable-pitch-mode)
+(define-key global-map (kbd "C-z f") 'text-scale-adjust)
 
 (define-key prog-mode-map (kbd "<tab>") 'insert-tab-or-indent)
 (define-key text-mode-map (kbd "<tab>") 'insert-tab-or-indent)
@@ -161,11 +168,15 @@
 	(define-key company-active-map (kbd "M-p") nil)
 	(define-key company-active-map (kbd "C-j") 'company-select-next)
 	(define-key company-active-map (kbd "C-k") 'company-select-previous)
-	(define-key company-active-map (kbd "<tab>") 'company-complete)
+	(define-key company-active-map (kbd "<tab>") 'company-complete-selection)
 	(define-key company-active-map (kbd "<escape>") 'company-abort))
 
 (with-eval-after-load 'markdown-mode
-	(define-key markdown-mode-map	 (kbd "C-x") nil))
+	(define-key markdown-mode-map	(kbd "C-x") nil)
+	(define-key markdown-mode-map	(kbd "C-b") 'markdown-insert-bold)
+	(define-key markdown-mode-map	(kbd "C-i") 'markdown-insert-italic)
+	(define-key markdown-mode-map (kbd "C-z l") 'markdown-insert-link)
+	(define-key markdown-mode-map (kbd "C-z i") 'markdown-insert-image))
 
 (add-hook 'ido-setup-hook (lambda()
 	(define-key ido-completion-map (kbd "C-j") 'ido-next-match)
@@ -182,6 +193,7 @@
 (setq company-idle-delay 0.1)
 (setq vc-follow-symlinks t)
 (setq-default cursor-type 'bar)
+(setq-default require-final-newline nil)
 
 ; default modes
 (setq-default shift-select-mode nil)
