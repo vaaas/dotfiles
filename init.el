@@ -4,6 +4,10 @@
 		(indent-rigidly-right-to-tab-stop beg end)
 		(insert-tab)))
 
+(defun spawn(program &rest args)
+	(apply 'start-process
+		(append (list program program program) args)))
+
 (defun insert-tab() (interactive) (insert-char 09))
 
 (defun newline-and-indent-relative() (interactive)
@@ -11,7 +15,7 @@
 	(indent-relative-first-indent-point))
 
 (defun sxiv-ref() (interactive)
-	(start-process "sxiv" "sxiv" "sxiv" "ref/"))
+	(spawn "sxiv" "-b" "ref/"))
 
 (defun split-newlines(string)
 	(split-string string "\n"))
@@ -65,6 +69,12 @@
 	(newline-above)
 	(yank))
 
+(defun vi-change-to() (interactive)
+	(call-interactively 'zap-to-char)
+	(vi-mode -1))
+
+(defun vi-mode-on() (interactive) (vi-mode 1))
+
 (custom-set-variables
 	'(package-selected-packages '(company markdown-mode)))
 (custom-set-faces
@@ -102,16 +112,17 @@
 
 (define-key global-map (kbd "C-s") 'save-buffer)
 (define-key global-map (kbd "C-w") 'backward-kill-word)
-(define-key global-map (kbd "C-S-P") 'execute-extended-command)
+(define-key global-map (kbd "C-P") 'execute-extended-command)
+(define-key global-map (kbd "C-S-P") 'eval-expression)
 (define-key global-map (kbd "C-v") 'yank)
 (define-key global-map (kbd "C-x") 'kill-region)
 (define-key global-map (kbd "C-S-X") 'kill-ring-save)
 (define-key global-map (kbd "C-i") 'dabbrev-expand)
 (define-key global-map (kbd "C-o") 'find-file)
 (define-key global-map (kbd "C-S-O") 'filedb-open)
-(define-key global-map (kbd "<escape>") 'vi-mode)
+(define-key global-map (kbd "<escape>") 'vi-mode-on)
 (define-key global-map (kbd "C-f") 'isearch-forward)
-(define-key global-map (kbd "C-S-F") 'isearch-backward)
+(define-key global-map (kbd "C-F") 'isearch-backward)
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "C-S-F") 'isearch-repeat-forward)
 (define-key global-map (kbd "C-r") 'replace-string)
@@ -119,8 +130,8 @@
 (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit)
 (define-key global-map (kbd "M-o") 'other-window)
 (define-key global-map (kbd "M-C-O") 'delete-other-windows)
-(define-key global-map (kbd "M-[") 'previous-buffer)
-(define-key global-map (kbd "M-]") 'next-buffer)
+(define-key global-map (kbd "C-h") 'previous-buffer)
+(define-key global-map (kbd "C-l") 'next-buffer)
 (define-key global-map (kbd "C-<tab>") 'switch-to-buffer)
 (define-key global-map (kbd "M-<tab>") 'mode-line-other-buffer)
 (define-key global-map (kbd "M-a") 'set-mark-command)
@@ -140,6 +151,7 @@
 (define-key global-map (kbd "C-M-l") 'right-word)
 (define-key global-map (kbd "M-H") 'beginning-of-line-text)
 (define-key global-map (kbd "M-L") 'end-of-line)
+(define-key global-map (kbd "C-y") 'yank-this-line)
 
 (define-key global-map (kbd "C-z e b") 'eval-buffer)
 (define-key global-map (kbd "C-z r e f") 'sxiv-ref)
@@ -147,6 +159,8 @@
 (define-key global-map (kbd "C-z a") 'mark-whole-buffer)
 (define-key global-map (kbd "C-z v p") 'variable-pitch-mode)
 (define-key global-map (kbd "C-z f") 'text-scale-adjust)
+(define-key global-map (kbd "C-z i b") 'ibuffer)
+(define-key global-map (kbd "C-z h") 'help)
 
 (define-key prog-mode-map (kbd "<tab>") 'insert-tab-or-indent)
 (define-key text-mode-map (kbd "<tab>") 'insert-tab-or-indent)
@@ -182,6 +196,14 @@
 	(define-key ido-completion-map (kbd "C-j") 'ido-next-match)
 	(define-key ido-completion-map (kbd "C-k") 'ido-prev-match)))
 
+(with-eval-after-load 'ibuffer
+	(define-key ibuffer-mode-map (kbd "j") 'forward-line)
+	(define-key ibuffer-mode-map (kbd "k") 'previous-line))
+
+(add-hook 'eshell-mode-hook (lambda()
+	(define-key eshell-mode-map (kbd "C-`") 'mode-line-other-buffer)
+	(define-key eshell-mode-map (kbd "M-<tab>") nil)))
+
 ; variables
 (setq-default mode-line-format nil)
 (setq-default left-margin-width 1 right-margin-width 1)
@@ -208,6 +230,7 @@
 (add-hook 'js-mode-hook 'company-mode)
 (add-hook 'emacs-lisp-mode-hook 'company-mode)
 (add-hook 'markdown-mode-hook (lambda()
+	(setq require-final-newline nil)
 	(variable-pitch-mode)
 	(text-scale-increase 2)))
 (add-hook 'python-mode-hook (lambda()
@@ -253,6 +276,8 @@
 (define-key vi-mode-map (kbd "c w") 'vi-change-next-word)
 (define-key vi-mode-map (kbd "c w") 'vi-change-previous-word)
 (define-key vi-mode-map (kbd "y y") 'yank-this-line)
+(define-key vi-mode-map (kbd "d t") 'zap-to-char)
+(define-key vi-mode-map (kbd "c t") 'vi-change-to)
 (define-minor-mode vi-mode
 	"vi-like key bindings without modifier keys"
 	:keymap vi-mode-map)
