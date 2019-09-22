@@ -76,17 +76,26 @@
 (defun vi-mode-on() (interactive) (vi-mode 1))
 
 (custom-set-variables
-	'(package-selected-packages '(company markdown-mode)))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (company markdown-mode))))
 (custom-set-faces
-	'(error ((t (:foreground "#dc322f" :weight bold))))
-	'(font-lock-comment-face ((t (:foreground "#859900"))))
-	'(font-lock-constant-face ((t (:foreground "#6c71c4"))))
-	'(font-lock-function-name-face ((t (:foreground "#268bd2"))))
-	'(font-lock-keyword-face ((t (:foreground "#d33682"))))
-	'(font-lock-string-face ((t (:foreground "#cb4b16"))))
-	'(link ((t (:foreground "#2aa198" :underline t))))
-	'(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.5))))
-	'(shadow ((t (:foreground "#93a1a1")))))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(error ((t (:foreground "#dc322f" :weight bold))))
+ '(font-lock-comment-face ((t (:foreground "#859900"))))
+ '(font-lock-constant-face ((t (:foreground "#6c71c4"))))
+ '(font-lock-function-name-face ((t (:foreground "#268bd2"))))
+ '(font-lock-keyword-face ((t (:foreground "#d33682"))))
+ '(font-lock-string-face ((t (:foreground "#cb4b16"))))
+ '(italic ((t (:slant italic))))
+ '(link ((t (:foreground "#2aa198" :underline t))))
+ '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.5))))
+ '(shadow ((t (:foreground "#93a1a1")))))
 
 (require 'package)
 (add-to-list 'package-archives
@@ -108,6 +117,7 @@
 	(set-fringe-mode 0)))
 
 ; keys
+(define-key global-map (kbd "C-x") nil)
 (define-key global-map (kbd "C-z") nil)
 
 (define-key global-map (kbd "C-s") 'save-buffer)
@@ -117,7 +127,7 @@
 (define-key global-map (kbd "C-v") 'yank)
 (define-key global-map (kbd "C-x") 'kill-region)
 (define-key global-map (kbd "C-S-X") 'kill-ring-save)
-(define-key global-map (kbd "C-i") 'dabbrev-expand)
+(define-key global-map (kbd "C-e") 'dabbrev-expand)
 (define-key global-map (kbd "C-o") 'find-file)
 (define-key global-map (kbd "C-S-O") 'filedb-open)
 (define-key global-map (kbd "<escape>") 'vi-mode-on)
@@ -153,14 +163,15 @@
 (define-key global-map (kbd "M-L") 'end-of-line)
 (define-key global-map (kbd "C-y") 'yank-this-line)
 
-(define-key global-map (kbd "C-z e b") 'eval-buffer)
-(define-key global-map (kbd "C-z r e f") 'sxiv-ref)
-(define-key global-map (kbd "C-z w c") 'count-words-region)
-(define-key global-map (kbd "C-z a") 'mark-whole-buffer)
-(define-key global-map (kbd "C-z v p") 'variable-pitch-mode)
-(define-key global-map (kbd "C-z f") 'text-scale-adjust)
-(define-key global-map (kbd "C-z i b") 'ibuffer)
-(define-key global-map (kbd "C-z h") 'help)
+(define-key global-map (kbd "C-c e b") 'eval-buffer)
+(define-key global-map (kbd "C-c r e f") 'sxiv-ref)
+(define-key global-map (kbd "C-c w c") 'count-words-region)
+(define-key global-map (kbd "C-c a") 'mark-whole-buffer)
+(define-key global-map (kbd "C-c v p") 'variable-pitch-mode)
+(define-key global-map (kbd "C-c f") 'text-scale-adjust)
+(define-key global-map (kbd "C-c i b") 'ibuffer)
+(define-key global-map (kbd "C-c h") 'help)
+(define-key global-map (kbd "C-c m m") 'markdown-mode)
 
 (define-key prog-mode-map (kbd "<tab>") 'insert-tab-or-indent)
 (define-key text-mode-map (kbd "<tab>") 'insert-tab-or-indent)
@@ -189,8 +200,8 @@
 	(define-key markdown-mode-map	(kbd "C-x") nil)
 	(define-key markdown-mode-map	(kbd "C-b") 'markdown-insert-bold)
 	(define-key markdown-mode-map	(kbd "C-i") 'markdown-insert-italic)
-	(define-key markdown-mode-map (kbd "C-z l") 'markdown-insert-link)
-	(define-key markdown-mode-map (kbd "C-z i") 'markdown-insert-image))
+	(define-key markdown-mode-map (kbd "C-c l") 'markdown-insert-link)
+	(define-key markdown-mode-map (kbd "C-c i") 'markdown-insert-image))
 
 (add-hook 'ido-setup-hook (lambda()
 	(define-key ido-completion-map (kbd "C-j") 'ido-next-match)
@@ -216,12 +227,14 @@
 (setq vc-follow-symlinks t)
 (setq-default cursor-type 'bar)
 (setq-default require-final-newline nil)
+(setq save-abbrevs 'silently)
 
 ; default modes
 (setq-default shift-select-mode nil)
 (setq-default indent-tabs-mode t)
 (ido-mode t)
 (electric-indent-mode -1)
+(electric-pair-mode 1)
 (global-visual-line-mode t)
 (line-number-mode -1)
 (set-window-margins (selected-window) 1 1)
@@ -232,7 +245,8 @@
 (add-hook 'markdown-mode-hook (lambda()
 	(setq require-final-newline nil)
 	(variable-pitch-mode)
-	(text-scale-increase 2)))
+	(text-scale-increase 2)
+	(abbrev-mode)))
 (add-hook 'python-mode-hook (lambda()
 	(setq indent-tabs-mode t
 		tab-width 3
