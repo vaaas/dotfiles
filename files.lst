@@ -38,3 +38,4 @@ tint2rc	~/.config/tint2/tint2rc
 sxhkdrc	~/.config/sxhkd/sxhkdrc
 alacritty.yml	~/.config/alacritty/alacritty.ymml
 init.el	~/.emacs.d/init.el
+abbrev_defs	~/.emacs.d/abbrev_defs

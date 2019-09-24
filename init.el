@@ -1,4 +1,10 @@
 ; function definitions
+(defun recenter-top() (interactive) (recenter 0))
+
+(defun kill-active-region(beg end) (interactive "r")
+	(when (region-active-p)
+		(kill-region beg end)))
+
 (defun insert-tab-or-indent(beg end) (interactive "r")
 	(if (region-active-p)
 		(indent-rigidly-right-to-tab-stop beg end)
@@ -125,12 +131,13 @@
 (define-key global-map (kbd "C-P") 'execute-extended-command)
 (define-key global-map (kbd "C-S-P") 'eval-expression)
 (define-key global-map (kbd "C-v") 'yank)
-(define-key global-map (kbd "C-x") 'kill-region)
+(define-key global-map (kbd "C-x") 'kill-active-region)
 (define-key global-map (kbd "C-S-X") 'kill-ring-save)
 (define-key global-map (kbd "C-e") 'dabbrev-expand)
 (define-key global-map (kbd "C-o") 'find-file)
 (define-key global-map (kbd "C-S-O") 'filedb-open)
-(define-key global-map (kbd "<escape>") 'vi-mode-on)
+(define-key text-mode-map (kbd "<escape>") 'vi-mode-on)
+(define-key prog-mode-map (kbd "<escape>") 'vi-mode-on)
 (define-key global-map (kbd "C-f") 'isearch-forward)
 (define-key global-map (kbd "C-F") 'isearch-backward)
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
@@ -161,7 +168,10 @@
 (define-key global-map (kbd "C-M-l") 'right-word)
 (define-key global-map (kbd "M-H") 'beginning-of-line-text)
 (define-key global-map (kbd "M-L") 'end-of-line)
+(define-key global-map (kbd "M-K") 'backward-paragraph)
+(define-key global-map (kbd "M-J") 'forward-paragraph)
 (define-key global-map (kbd "C-y") 'yank-this-line)
+(define-key global-map (kbd "C-]") 'recenter-top)
 
 (define-key global-map (kbd "C-c e b") 'eval-buffer)
 (define-key global-map (kbd "C-c r e f") 'sxiv-ref)
@@ -187,6 +197,8 @@
 (define-key emacs-lisp-mode-map (kbd "<backspace>") 'backward-delete-char)
 
 (define-key text-mode-map (kbd "<return>") 'double-newline)
+
+(define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 
 (with-eval-after-load 'company
 	(define-key company-active-map (kbd "M-n") nil)
@@ -246,6 +258,7 @@
 	(setq require-final-newline nil)
 	(variable-pitch-mode)
 	(text-scale-increase 2)
+	(company-mode)
 	(abbrev-mode)))
 (add-hook 'python-mode-hook (lambda()
 	(setq indent-tabs-mode t

@@ -44,7 +44,7 @@ super + F3
 	emacsclient -nc
 
 super + F4
-	cd ~/Music/radio && file="$(ls -1 | sort | pytkfilter)" && gnome-mpv -- "$file"
+	cd ~/Music/radio && file="$(ls -1 | sort | pytkfilter)" && mpv --force-window=immediate -- "$file"
 
 super + F5
 	gnome-system-monitor
