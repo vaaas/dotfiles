@@ -258,7 +258,6 @@
 	(setq require-final-newline nil)
 	(variable-pitch-mode)
 	(text-scale-increase 2)
-	(company-mode)
 	(abbrev-mode)))
 (add-hook 'python-mode-hook (lambda()
 	(setq indent-tabs-mode t
