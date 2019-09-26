@@ -140,7 +140,7 @@
 (define-key text-mode-map (kbd "<escape>") 'vi-mode-on)
 (define-key prog-mode-map (kbd "<escape>") 'vi-mode-on)
 (define-key global-map (kbd "C-f") 'isearch-forward)
-(define-key global-map (kbd "C-F") 'isearch-backward)
+(define-key global-map (kbd "C-S-F") 'isearch-backward)
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "C-S-F") 'isearch-repeat-forward)
 (define-key global-map (kbd "C-r") 'replace-string)
