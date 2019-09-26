@@ -1,25 +1,25 @@
-super + z ; w
+super + c ; w
 	notify-send "$(xclip -o -selection primary | wc -w )"
 
-super + z ; j
+super + c ; j
 	sleep 0.2s && scrot -s "/tmp/ocr.png" && tesseract -l jpn "/tmp/ocr.png" stdout | xclip -selection clipboard && rm -- "/tmp/ocr"*
 
-super + z ; s
+super + c ; s
 	scrot -s
 
-super + z ; l
+super + c ; l
 	ibus engine xkb:us::eng && slock
 
-super + z ; r
+super + c ; r
 	redshift -x
 
-super + z ; shift + R
+super + c ; shift + R
 	redshift -O 2500K
 
-super + z ; F1
+super + c ; F1
 	killall -s SIGUSR1 sxhkd
 
-super + c
+super + c ; d
 	notify-send "$(date '+%H:%M')"
 
 super + e
