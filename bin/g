@@ -30,6 +30,7 @@ case "$arg" in
 		;;
 	wlast)
 		g wd HEAD^ HEAD
+		;;
 	ch)
 		git checkout "$@"
 		;;
