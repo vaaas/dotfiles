@@ -46,23 +46,23 @@
 
 (defun vi-open-above() (interactive)
 	(newline-above)
-	(vi-mode -1))
+	(vi-mode-off))
 
 (defun vi-open-below() (interactive)
 	(newline-below)
-	(vi-mode -1))
+	(vi-mode-off))
 
 (defun vi-change-line() (interactive)
 	(kill-whole-line)
-	(vi-mode -1))
+	(vi-mode-off))
 
 (defun vi-change-next-word() (interactive)
 	(kill-word)
-	(vi-mode -1))
+	(vi-mode-off))
 
 (defun vi-change-previous-word() (interactive)
 	(backward-kill-word)
-	(vi-mode -1))
+	(vi-mode-off))
 
 (defun yank-this-line() (interactive)
 	(kill-ring-save (line-beginning-position) (line-end-position)))
@@ -77,9 +77,15 @@
 
 (defun vi-change-to() (interactive)
 	(call-interactively 'zap-to-char)
-	(vi-mode -1))
+	(vi-mode-off))
 
-(defun vi-mode-on() (interactive) (vi-mode 1))
+(defun vi-mode-on() (interactive)
+	(setq-local cursor-type 'box)
+	(vi-mode 1))
+
+(defun vi-mode-off() (interactive)
+	(kill-local-variable 'cursor-type)
+	(vi-mode -1))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -273,7 +279,7 @@
 
 ; vi mode
 (setq vi-mode-map (make-sparse-keymap))
-(define-key vi-mode-map (kbd "i") 'vi-mode)
+(define-key vi-mode-map (kbd "i") 'vi-mode-off)
 (define-key vi-mode-map (kbd "h") 'left-char)
 (define-key vi-mode-map (kbd "l") 'right-char)
 (define-key vi-mode-map (kbd "k") 'previous-line)
