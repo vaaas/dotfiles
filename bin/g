@@ -1,0 +1,39 @@
+#!/bin/sh
+
+if test -z "$1"
+then
+	git status
+	exit
+fi
+
+arg="$1"
+shift 1
+
+case "$arg" in
+	d)
+		git diff --patience "$@"
+		;;
+	wd)
+		git diff --word-diff --patience "$@"
+		;;
+	ca)
+		git commit -am "$@"
+		;;
+	b)
+		git branch "$@" && g ch "$@"
+		;;
+	oops)
+		git reset HEAD^
+		;;
+	last)
+		g d HEAD^ HEAD
+		;;
+	wlast)
+		g wd HEAD^ HEAD
+	ch)
+		git checkout "$@"
+		;;
+	p)
+		git push "$@"
+		;;
+esac

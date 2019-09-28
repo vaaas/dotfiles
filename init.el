@@ -187,7 +187,6 @@
 (define-key prog-mode-map (kbd "<tab>") 'insert-tab-or-indent)
 (define-key text-mode-map (kbd "<tab>") 'insert-tab-or-indent)
 (define-key emacs-lisp-mode-map (kbd "<tab>") 'insert-tab-or-indent)
-(define-key js-mode-map (kbd "<tab>") 'insert-tab-or-indent)
 (define-key global-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
 
 (define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative)
@@ -201,6 +200,9 @@
 (define-key text-mode-map (kbd "<return>") 'double-newline)
 
 (define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
+
+(with-eval-after-load 'js
+	(define-key js-mode-map (kbd "<tab>") 'insert-tab-or-indent))
 
 (with-eval-after-load 'company
 	(define-key company-active-map (kbd "M-n") nil)
@@ -255,7 +257,9 @@
 (set-window-margins (selected-window) 1 1)
 
 ; hooks
-(add-hook 'js-mode-hook 'company-mode)
+(add-hook 'js-mode-hook (lambda()
+	(company-mode)
+	(abbrev-mode)))
 (add-hook 'emacs-lisp-mode-hook 'company-mode)
 (add-hook 'markdown-mode-hook (lambda()
 	(setq require-final-newline nil)
