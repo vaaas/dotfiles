@@ -187,6 +187,7 @@
 (define-key prog-mode-map (kbd "<tab>") 'insert-tab-or-indent)
 (define-key text-mode-map (kbd "<tab>") 'insert-tab-or-indent)
 (define-key emacs-lisp-mode-map (kbd "<tab>") 'insert-tab-or-indent)
+(define-key js-mode-map (kbd "<tab>") 'insert-tab-or-indent)
 (define-key global-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
 
 (define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative)
@@ -241,6 +242,7 @@
 (setq-default cursor-type 'bar)
 (setq-default require-final-newline nil)
 (setq save-abbrevs 'silently)
+(setq-default abbrev-all-caps t)
 
 ; default modes
 (setq-default shift-select-mode nil)
