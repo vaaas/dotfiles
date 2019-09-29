@@ -87,6 +87,16 @@
 	(kill-local-variable 'cursor-type)
 	(vi-mode -1))
 
+(defun okay-line() (interactive)
+	(beginning-of-line-text)
+	(insert "✔ ")
+	(next-line))
+
+(defun bad-line() (interactive)
+	(beginning-of-line-text)
+	(insert "✘ ")
+	(next-line))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -179,6 +189,7 @@
 (define-key global-map (kbd "M-J") 'forward-paragraph)
 (define-key global-map (kbd "C-y") 'yank-this-line)
 (define-key global-map (kbd "C-]") 'recenter-top)
+(define-key global-map (kbd "C-.") 'repeat)
 
 (define-key global-map (kbd "C-c e b") 'eval-buffer)
 (define-key global-map (kbd "C-c r e f") 'sxiv-ref)
@@ -189,6 +200,8 @@
 (define-key global-map (kbd "C-c i b") 'ibuffer)
 (define-key global-map (kbd "C-c h") 'help)
 (define-key global-map (kbd "C-c m m") 'markdown-mode)
+(define-key text-mode-map (kbd "C-c o k") 'okay-line)
+(define-key text-mode-map (kbd "C-c n o") 'bad-line)
 
 (define-key prog-mode-map (kbd "<tab>") 'insert-tab-or-indent)
 (define-key text-mode-map (kbd "<tab>") 'insert-tab-or-indent)
