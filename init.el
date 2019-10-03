@@ -1,4 +1,7 @@
 ; function definitions
+(defun backward-kill-line() (interactive)
+	(kill-line 0))
+
 (defun recenter-top() (interactive) (recenter 0))
 
 (defun kill-active-region(beg end) (interactive "r")
@@ -14,7 +17,9 @@
 	(apply 'start-process
 		(append (list program program program) args)))
 
-(defun insert-tab() (interactive) (insert-char 09))
+(defun insert-tab() (interactive) (insert-char 9))
+
+(defun insert-space() (interactive) (insert-char 32))
 
 (defun newline-and-indent-relative() (interactive)
 	(newline)
@@ -57,11 +62,11 @@
 	(vi-mode-off))
 
 (defun vi-change-next-word() (interactive)
-	(kill-word)
+	(kill-word 1)
 	(vi-mode-off))
 
 (defun vi-change-previous-word() (interactive)
-	(backward-kill-word)
+	(backward-kill-word 1)
 	(vi-mode-off))
 
 (defun yank-this-line() (interactive)
@@ -110,14 +115,28 @@
  ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "#d33682"))))
  '(error ((t (:foreground "#dc322f" :weight bold))))
- '(font-lock-comment-face ((t (:foreground "#859900"))))
- '(font-lock-constant-face ((t (:foreground "#6c71c4"))))
- '(font-lock-function-name-face ((t (:foreground "#268bd2"))))
- '(font-lock-keyword-face ((t (:foreground "#d33682"))))
- '(font-lock-string-face ((t (:foreground "#cb4b16"))))
+ '(font-lock-builtin-face ((t (:inherit font-lock-constant-face))))
+ '(font-lock-comment-face ((t (:foreground "#839496"))))
+ '(font-lock-constant-face ((t (:foreground "#586e75" :weight ultra-bold))))
+ '(font-lock-function-name-face ((t (:slant italic))))
+ '(font-lock-keyword-face ((t (:weight bold))))
+ '(font-lock-string-face ((t (:foreground "#b58900"))))
+ '(font-lock-type-face ((t (:foreground "#586e75" :underline t))))
+ '(font-lock-variable-name-face ((t (:inherit font-lock-function-name-face))))
+ '(highlight ((t (:inherit lazy-highlight))))
+ '(ido-first-match ((t (:inherit isearch))))
+ '(ido-only-match ((t (:inherit ido-first-match))))
+ '(isearch ((t (:background "#268bd2" :foreground "#fdf6e3"))))
+ '(isearch-fail ((t (:foreground "#dc322f"))))
  '(italic ((t (:slant italic))))
- '(link ((t (:foreground "#2aa198" :underline t))))
+ '(lazy-highlight ((t (:background "#93a1a1" :foreground "#fdf6e3"))))
+ '(link ((t (:underline t))))
+ '(markdown-bold-face ((t (:inherit bold :foreground "#586e75"))))
  '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.5))))
+ '(markdown-italic-face ((t (:inherit italic :foreground "#586e75"))))
+ '(markdown-markup-face ((t (:inherit shadow))))
+ '(minibuffer-prompt ((t (:foreground "#d33682"))))
+ '(region ((t (:inherit isearch))))
  '(shadow ((t (:foreground "#93a1a1")))))
 
 (require 'package)
@@ -218,7 +237,8 @@
 
 (define-key text-mode-map (kbd "<return>") 'double-newline)
 
-(define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
+(define-key global-map (kbd "C-SPC") 'insert-space)
+(define-key global-map (kbd "M-SPC") 'unexpand-abbrev)
 
 (with-eval-after-load 'js
 	(define-key js-mode-map (kbd "<tab>") 'insert-tab-or-indent))
@@ -326,9 +346,11 @@
 (define-key vi-mode-map (kbd "Q") 'kmacro-end-or-call-macro)
 (define-key vi-mode-map (kbd "c c") 'vi-change-line)
 (define-key vi-mode-map (kbd "c w") 'vi-change-next-word)
-(define-key vi-mode-map (kbd "c w") 'vi-change-previous-word)
+(define-key vi-mode-map (kbd "c b") 'vi-change-previous-word)
 (define-key vi-mode-map (kbd "y y") 'yank-this-line)
 (define-key vi-mode-map (kbd "d t") 'zap-to-char)
+(define-key vi-mode-map (kbd "d $") 'kill-line)
+(define-key vi-mode-map (kbd "d ^") 'backward-kill-line)
 (define-key vi-mode-map (kbd "c t") 'vi-change-to)
 (define-minor-mode vi-mode
 	"vi-like key bindings without modifier keys"
