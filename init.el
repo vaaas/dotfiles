@@ -1,4 +1,7 @@
 ; function definitions
+(defun capitalize-last-word() (interactive)
+	(capitalize-word -1))
+
 (defun backward-kill-line() (interactive)
 	(kill-line 0))
 
@@ -124,7 +127,7 @@
  '(font-lock-type-face ((t (:foreground "#586e75" :underline t))))
  '(font-lock-variable-name-face ((t (:inherit font-lock-function-name-face))))
  '(highlight ((t (:inherit lazy-highlight))))
- '(ido-first-match ((t (:inherit isearch))))
+ '(ido-first-match ((t (:foreground "#268bd2" :weight bold))))
  '(ido-only-match ((t (:inherit ido-first-match))))
  '(isearch ((t (:background "#268bd2" :foreground "#fdf6e3"))))
  '(isearch-fail ((t (:foreground "#dc322f"))))
@@ -177,7 +180,7 @@
 (define-key global-map (kbd "C-f") 'isearch-forward)
 (define-key global-map (kbd "C-S-F") 'isearch-backward)
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
-(define-key isearch-mode-map (kbd "C-S-F") 'isearch-repeat-forward)
+(define-key isearch-mode-map (kbd "C-S-F") 'isearch-repeat-backward)
 (define-key global-map (kbd "C-r") 'replace-string)
 (define-key global-map (kbd "C-S-R") 'replace-regexp)
 (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit)
@@ -192,8 +195,8 @@
 (define-key global-map (kbd "C-q") 'kill-this-buffer)
 (define-key global-map (kbd "C-d") 'kill-word)
 (define-key global-map (kbd "C-`") 'eshell)
-(define-key global-map (kbd "C-j") 'newline-below)
-(define-key global-map (kbd "C-S-J") 'newline-above)
+(define-key global-map (kbd "C-<return>") 'newline-below)
+(define-key global-map (kbd "S-<return>") 'newline-above)
 (define-key global-map (kbd "M-q") 'kmacro-start-macro)
 (define-key global-map (kbd "M-Q") 'kmacro-end-or-call-macro)
 (define-key global-map (kbd "M-l") 'right-char)
@@ -209,6 +212,7 @@
 (define-key global-map (kbd "C-y") 'yank-this-line)
 (define-key global-map (kbd "C-]") 'recenter-top)
 (define-key global-map (kbd "C-.") 'repeat)
+(define-key text-mode-map (kbd "S-SPC") 'capitalize-last-word)
 
 (define-key global-map (kbd "C-c e b") 'eval-buffer)
 (define-key global-map (kbd "C-c r e f") 'sxiv-ref)
@@ -221,6 +225,7 @@
 (define-key global-map (kbd "C-c m m") 'markdown-mode)
 (define-key text-mode-map (kbd "C-c o k") 'okay-line)
 (define-key text-mode-map (kbd "C-c n o") 'bad-line)
+(define-key global-map (kbd "C-c e a") 'edit-abbrevs)
 
 (define-key prog-mode-map (kbd "<tab>") 'insert-tab-or-indent)
 (define-key text-mode-map (kbd "<tab>") 'insert-tab-or-indent)
@@ -236,9 +241,7 @@
 (define-key emacs-lisp-mode-map (kbd "<backspace>") 'backward-delete-char)
 
 (define-key text-mode-map (kbd "<return>") 'double-newline)
-
-(define-key global-map (kbd "C-SPC") 'insert-space)
-(define-key global-map (kbd "M-SPC") 'unexpand-abbrev)
+(define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 
 (with-eval-after-load 'js
 	(define-key js-mode-map (kbd "<tab>") 'insert-tab-or-indent))
@@ -352,6 +355,8 @@
 (define-key vi-mode-map (kbd "d $") 'kill-line)
 (define-key vi-mode-map (kbd "d ^") 'backward-kill-line)
 (define-key vi-mode-map (kbd "c t") 'vi-change-to)
+(define-key vi-mode-map (kbd "n") 'isearch-repeat-forward)
+(define-key vi-mode-map (kbd "N") 'isearch-repeat-backward)
 (define-minor-mode vi-mode
 	"vi-like key bindings without modifier keys"
 	:keymap vi-mode-map)
