@@ -50,10 +50,10 @@ super + F5
 	gnome-system-monitor
 
 super + grave
-	emacsclient -nc -e "(eshell)"
+	alacritty
 
 super + shift + grave
-	alacritty
+	emacsclient -nc -e "(eshell)"
 
 super + p
 	passmenu

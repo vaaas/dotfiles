@@ -1,3 +1,4 @@
 #!/bin/dash
 
-echo "You're welcome! ♥"
+echo "AMAZIN'"
+mpv ~/Sundry/amazin.mp3 2>/dev/null >/dev/null
