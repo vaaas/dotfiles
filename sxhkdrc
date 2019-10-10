@@ -1,6 +1,9 @@
 super + c ; w
 	notify-send "$(xclip -o -selection primary | wc -w )"
 
+super + c ; m
+	xclip -o selection primary | cmark --smart | xclip -selection clipboard
+
 super + c ; j
 	sleep 0.2s && scrot -s "/tmp/ocr.png" && tesseract -l jpn "/tmp/ocr.png" stdout | xclip -selection clipboard && rm -- "/tmp/ocr"*
 

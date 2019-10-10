@@ -1,4 +1,7 @@
 ; function definitions
+(defun cmark-on-buffer() (interactive)
+	(shell-command-on-region (point-min) (point-max) "cmark --smart" (current-buffer)))
+
 (defun capitalize-last-word() (interactive)
 	(capitalize-word -1))
 
@@ -134,13 +137,14 @@
  '(italic ((t (:slant italic))))
  '(lazy-highlight ((t (:background "#93a1a1" :foreground "#fdf6e3"))))
  '(link ((t (:underline t))))
- '(markdown-bold-face ((t (:inherit bold :foreground "#586e75"))))
- '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :height 1.5))))
- '(markdown-italic-face ((t (:inherit italic :foreground "#586e75"))))
+ '(markdown-bold-face ((t (:inherit bold :foreground "#dc322f"))))
+ '(markdown-header-face ((t (:weight bold :height 1.5))))
+ '(markdown-italic-face ((t (:foreground "#dc322f"))))
  '(markdown-markup-face ((t (:inherit shadow))))
  '(minibuffer-prompt ((t (:foreground "#d33682"))))
  '(region ((t (:inherit isearch))))
- '(shadow ((t (:foreground "#93a1a1")))))
+ '(shadow ((t (:foreground "#93a1a1"))))
+ '(variable-pitch ((t (:family "IBM Plex Serif")))))
 
 (require 'package)
 (add-to-list 'package-archives
@@ -212,7 +216,7 @@
 (define-key global-map (kbd "C-y") 'yank-this-line)
 (define-key global-map (kbd "C-]") 'recenter-top)
 (define-key global-map (kbd "C-.") 'repeat)
-(define-key text-mode-map (kbd "S-SPC") 'capitalize-last-word)
+(define-key text-mode-map (kbd "C-j") 'capitalize-last-word)
 
 (define-key global-map (kbd "C-c e b") 'eval-buffer)
 (define-key global-map (kbd "C-c r e f") 'sxiv-ref)
@@ -256,10 +260,12 @@
 
 (with-eval-after-load 'markdown-mode
 	(define-key markdown-mode-map	(kbd "C-x") nil)
+	(define-key markdown-mode-map (kbd "M-<return>") nil)
 	(define-key markdown-mode-map	(kbd "C-b") 'markdown-insert-bold)
 	(define-key markdown-mode-map	(kbd "C-i") 'markdown-insert-italic)
 	(define-key markdown-mode-map (kbd "C-c l") 'markdown-insert-link)
-	(define-key markdown-mode-map (kbd "C-c i") 'markdown-insert-image))
+	(define-key markdown-mode-map (kbd "C-c i") 'markdown-insert-image)
+	(define-key markdown-mode-map (kbd "C-c c m") 'cmark-on-buffer))
 
 (add-hook 'ido-setup-hook (lambda()
 	(define-key ido-completion-map (kbd "C-j") 'ido-next-match)
@@ -304,7 +310,8 @@
 	(abbrev-mode)))
 (add-hook 'emacs-lisp-mode-hook 'company-mode)
 (add-hook 'markdown-mode-hook (lambda()
-	(setq require-final-newline nil)
+	(setq require-final-newline nil
+		line-spacing 0.3)
 	(variable-pitch-mode)
 	(text-scale-increase 2)
 	(abbrev-mode)))
@@ -330,6 +337,8 @@
 (define-key vi-mode-map (kbd "K") 'backward-paragraph)
 (define-key vi-mode-map (kbd "H") 'beginning-of-line-text)
 (define-key vi-mode-map (kbd "L") 'end-of-line)
+(define-key vi-mode-map (kbd "M-h") 'left-word)
+(define-key vi-mode-map (kbd "M-l") 'right-word)
 (define-key vi-mode-map (kbd "G") 'goto-line)
 (define-key vi-mode-map (kbd "v") 'set-mark-command)
 (define-key vi-mode-map (kbd "D") 'kill-ring)
