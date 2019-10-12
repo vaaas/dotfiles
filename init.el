@@ -144,7 +144,7 @@
  '(minibuffer-prompt ((t (:foreground "#d33682"))))
  '(region ((t (:inherit isearch))))
  '(shadow ((t (:foreground "#93a1a1"))))
- '(variable-pitch ((t (:family "IBM Plex Serif")))))
+ '(variable-pitch ((t (:family "CMU Serif")))))
 
 (require 'package)
 (add-to-list 'package-archives
