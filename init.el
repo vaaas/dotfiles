@@ -108,6 +108,10 @@
 	(insert "✘ ")
 	(next-line))
 
+(defun forward-paragraph-start() (interactive)
+	(forward-paragraph)
+	(forward-line))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -139,12 +143,12 @@
  '(link ((t (:underline t))))
  '(markdown-bold-face ((t (:inherit bold :foreground "#dc322f"))))
  '(markdown-header-face ((t (:weight bold :height 1.5))))
- '(markdown-italic-face ((t (:foreground "#dc322f"))))
+ '(markdown-italic-face ((t (:inherit italic :foreground "#dc322f"))))
  '(markdown-markup-face ((t (:inherit shadow))))
  '(minibuffer-prompt ((t (:foreground "#d33682"))))
  '(region ((t (:inherit isearch))))
  '(shadow ((t (:foreground "#93a1a1"))))
- '(variable-pitch ((t (:family "CMU Serif")))))
+ '(variable-pitch ((t (:family "Liberation Serif")))))
 
 (require 'package)
 (add-to-list 'package-archives
@@ -212,7 +216,7 @@
 (define-key global-map (kbd "M-H") 'beginning-of-line-text)
 (define-key global-map (kbd "M-L") 'end-of-line)
 (define-key global-map (kbd "M-K") 'backward-paragraph)
-(define-key global-map (kbd "M-J") 'forward-paragraph)
+(define-key global-map (kbd "M-J") 'forward-paragraph-start)
 (define-key global-map (kbd "C-y") 'yank-this-line)
 (define-key global-map (kbd "C-]") 'recenter-top)
 (define-key global-map (kbd "C-.") 'repeat)
@@ -302,7 +306,7 @@
 (electric-pair-mode 1)
 (global-visual-line-mode t)
 (line-number-mode -1)
-(set-window-margins (selected-window) 1 1)
+(delete-selection-mode 1)
 
 ; hooks
 (add-hook 'js-mode-hook (lambda()
@@ -331,9 +335,9 @@
 (define-key vi-mode-map (kbd "O") 'newline-above)
 (define-key vi-mode-map (kbd "w") 'right-word)
 (define-key vi-mode-map (kbd "b") 'left-word)
-(define-key vi-mode-map (kbd "}") 'forward-paragraph)
+(define-key vi-mode-map (kbd "}") 'forward-paragraph-start)
 (define-key vi-mode-map (kbd "{") 'backward-paragraph)
-(define-key vi-mode-map (kbd "J") 'forward-paragraph)
+(define-key vi-mode-map (kbd "J") 'forward-paragraph-start)
 (define-key vi-mode-map (kbd "K") 'backward-paragraph)
 (define-key vi-mode-map (kbd "H") 'beginning-of-line-text)
 (define-key vi-mode-map (kbd "L") 'end-of-line)

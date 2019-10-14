@@ -16,4 +16,5 @@ feh --bg-fill wallpaper &
 unclutter --timeout 1 &
 bar &
 dbus-launch sxhkd &
+slock
 dbus-launch dwm-loop
