@@ -4,16 +4,16 @@ alias start='redshift -O 2500K'
 alias stop='redshift -x'
 
 d=$(date '+%H')
-if test "$d" -ge 19
+if test "$d" -ge 18
 then
 	start
 	sleep $((24-$d+7))h
-elif test "$d" -le 7
+elif test "$d" -le 8
 then
 	start
-	sleep $((7-$d))h
+	sleep $((8-$d))h
 else
-	sleep $((19-$d))h
+	sleep $((18-$d))h
 	start
 	sleep 12h
 fi

@@ -14,9 +14,9 @@
 	(when (region-active-p)
 		(kill-region beg end)))
 
-(defun insert-tab-or-indent(beg end) (interactive "r")
+(defun insert-tab-or-indent(&optional beg end) (interactive)
 	(if (region-active-p)
-		(indent-rigidly-right-to-tab-stop beg end)
+		(indent-rigidly-right-to-tab-stop (region-beginning) (region-end))
 		(insert-tab)))
 
 (defun spawn(program &rest args)
@@ -297,6 +297,7 @@
 (setq-default require-final-newline nil)
 (setq save-abbrevs 'silently)
 (setq-default abbrev-all-caps t)
+(setq-default line-spacing 0.2)
 
 ; default modes
 (setq-default shift-select-mode nil)
