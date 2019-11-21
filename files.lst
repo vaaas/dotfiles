@@ -1,4 +1,4 @@
-compton.conf	~/.config/compton.conf
+picom.conf	~/.config/picom.conf
 fonts.conf	~/.config/fontconfig/fonts.conf
 rc.xml	~/.config/openbox/rc.xml
 screenrc	~/.screenrc

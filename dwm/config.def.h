@@ -5,7 +5,7 @@ static const unsigned int borderpx  = 4;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "sans:pixelsize=12" };
+static const char *fonts[]          = { "Nintendo DS BIOS Vasified:pixelsize=16" };
 static const char col_accnt[]       = "#cb4b16";
 static const char col_text[]        = "#586e75";
 static const char col_main[]        = "#fdf6e3";
