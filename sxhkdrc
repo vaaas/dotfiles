@@ -52,6 +52,12 @@ super + F4
 super + F5
 	gnome-system-monitor
 
+super + F6
+	pavucontrol
+
+super + F7
+	feedreader
+
 super + grave
 	alacritty
 

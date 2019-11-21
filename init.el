@@ -123,7 +123,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:background "#fdf6e3" :foreground "#073642" :slant normal :weight normal :height 160 :width normal :family "DinaRemaster"))))
  '(cursor ((t (:background "#d33682"))))
+ '(dired-directory ((t (:foreground "#268bd2" :weight bold))))
  '(error ((t (:foreground "#dc322f" :weight bold))))
  '(font-lock-builtin-face ((t (:inherit font-lock-constant-face))))
  '(font-lock-comment-face ((t (:foreground "#839496"))))
@@ -148,7 +150,7 @@
  '(minibuffer-prompt ((t (:foreground "#d33682"))))
  '(region ((t (:inherit isearch))))
  '(shadow ((t (:foreground "#93a1a1"))))
- '(variable-pitch ((t (:family "Liberation Serif")))))
+ '(variable-pitch ((t (:family "Nintendo DS BIOS")))))
 
 (require 'package)
 (add-to-list 'package-archives
@@ -156,12 +158,6 @@
 (package-initialize)
 
 (add-to-list 'write-file-functions 'delete-trailing-whitespace)
-
-; fonts, colors
-(setq default-frame-alist '(
-	(font . "Monospace 16")
-	(background-color . "#fdf6e3")
-	(foreground-color . "#073642")))
 
 (add-hook 'window-setup-hook (lambda()
 	(scroll-bar-mode -1)
@@ -241,7 +237,6 @@
 (define-key global-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
 
 (define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative)
-(define-key text-mode-map (kbd "<C-return>") 'newline-and-indent-relative)
 (define-key emacs-lisp-mode-map (kbd "<return>") 'newline-and-indent-relative)
 
 (define-key text-mode-map (kbd "<backspace>") 'backward-delete-char)
@@ -250,6 +245,7 @@
 
 (define-key text-mode-map (kbd "<return>") 'double-newline)
 (define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
+(define-key prog-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 
 (with-eval-after-load 'js
 	(define-key js-mode-map (kbd "<tab>") 'insert-tab-or-indent))
@@ -298,6 +294,7 @@
 (setq save-abbrevs 'silently)
 (setq-default abbrev-all-caps t)
 (setq-default line-spacing 0.2)
+(setq-default text-scale-mode-step 2.0)
 
 ; default modes
 (setq-default shift-select-mode nil)
@@ -318,7 +315,7 @@
 	(setq require-final-newline nil
 		line-spacing 0.3)
 	(variable-pitch-mode)
-	(text-scale-increase 2)
+	(text-scale-increase 1)
 	(abbrev-mode)))
 (add-hook 'python-mode-hook (lambda()
 	(setq indent-tabs-mode t
