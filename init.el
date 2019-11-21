@@ -150,7 +150,7 @@
  '(minibuffer-prompt ((t (:foreground "#d33682"))))
  '(region ((t (:inherit isearch))))
  '(shadow ((t (:foreground "#93a1a1"))))
- '(variable-pitch ((t (:family "Nintendo DS BIOS")))))
+ '(variable-pitch ((t (:family "Liberation Serif" :height 240)))))
 
 (require 'package)
 (add-to-list 'package-archives
@@ -312,10 +312,8 @@
 	(abbrev-mode)))
 (add-hook 'emacs-lisp-mode-hook 'company-mode)
 (add-hook 'markdown-mode-hook (lambda()
-	(setq require-final-newline nil
-		line-spacing 0.3)
+	(setq require-final-newline nil)
 	(variable-pitch-mode)
-	(text-scale-increase 1)
 	(abbrev-mode)))
 (add-hook 'python-mode-hook (lambda()
 	(setq indent-tabs-mode t
