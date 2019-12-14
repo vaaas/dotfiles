@@ -41,7 +41,7 @@
 	(find-file
 	(ido-completing-read "select a file > "
 	(split-newlines
-	(shell-command-to-string "xzcat ~/filedb.xz")))))
+	(shell-command-to-string "/usr/bin/xzcat ~/filedb.xz")))))
 
 (defun newline-above() (interactive)
 	(beginning-of-line)
@@ -112,6 +112,10 @@
 	(forward-paragraph)
 	(forward-line))
 
+(defface bitmap-variable-pitch '()
+	"Variable pitch face, with a bitmap font"
+	:group 'basic-faces)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -124,6 +128,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "#fdf6e3" :foreground "#073642" :slant normal :weight normal :height 160 :width normal :family "DinaRemaster"))))
+ '(bitmap-variable-pitch ((t (:family "Nintendo DS BIOS Vasified" :height 160))))
  '(cursor ((t (:background "#d33682"))))
  '(dired-directory ((t (:foreground "#268bd2" :weight bold))))
  '(error ((t (:foreground "#dc322f" :weight bold))))
@@ -199,6 +204,8 @@
 (define-key global-map (kbd "C-q") 'kill-this-buffer)
 (define-key global-map (kbd "C-d") 'kill-word)
 (define-key global-map (kbd "C-`") 'eshell)
+(define-key global-map (kbd "C-~") (lambda () (interactive) (spawn "alacritty")))
+
 (define-key global-map (kbd "C-<return>") 'newline-below)
 (define-key global-map (kbd "S-<return>") 'newline-above)
 (define-key global-map (kbd "M-q") 'kmacro-start-macro)
@@ -243,7 +250,6 @@
 (define-key prog-mode-map (kbd "<backspace>") 'backward-delete-char)
 (define-key emacs-lisp-mode-map (kbd "<backspace>") 'backward-delete-char)
 
-(define-key text-mode-map (kbd "<return>") 'double-newline)
 (define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 (define-key prog-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 
@@ -259,6 +265,7 @@
 	(define-key company-active-map (kbd "<escape>") 'company-abort))
 
 (with-eval-after-load 'markdown-mode
+	(define-key markdown-mode-map (kbd "<return>") 'double-newline)
 	(define-key markdown-mode-map	(kbd "C-x") nil)
 	(define-key markdown-mode-map (kbd "M-<return>") nil)
 	(define-key markdown-mode-map	(kbd "C-b") 'markdown-insert-bold)
@@ -313,8 +320,8 @@
 (add-hook 'emacs-lisp-mode-hook 'company-mode)
 (add-hook 'markdown-mode-hook (lambda()
 	(setq require-final-newline nil)
-	(variable-pitch-mode)
-	(abbrev-mode)))
+	(variable-pitch-mode)))
+	;(abbrev-mode)))
 (add-hook 'python-mode-hook (lambda()
 	(setq indent-tabs-mode t
 		tab-width 3

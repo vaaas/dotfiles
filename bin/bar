@@ -5,7 +5,7 @@ IFS='
 
 while true
 do
-	clock=$(date "+%Y-%m-%d | %H:%M")
+	clock=$(date "+%Y-%m-%d %H:%M")
 	xsetroot -name "$clock"
 	sleep 1m
 done

@@ -2,16 +2,15 @@
 
 set -e
 
-IFS='
-'
 stuff='mpv -fs --ytdl-format="best[height<=720]" --
+mpv --ytdl-format=worst --
 firefox --
 emacs --'
 
 clip=$(xclip -selection clipboard -o)
 cmd=$(echo "$stuff" | dmenu -p "Run clipboard on...")
-if test -z $cmd
+if test -z "$cmd"
 then
 	exit 1
 fi
-eval -- $cmd $clip
+$cmd $clip
