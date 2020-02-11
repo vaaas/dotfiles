@@ -75,6 +75,11 @@
 	(backward-kill-word 1)
 	(vi-mode-off))
 
+(defun vi-delete(beg end) (interactive "r")
+	(if (region-active-p)
+		(kill-region beg end)
+		(kill-whole-line)))
+
 (defun yank-this-line() (interactive)
 	(kill-ring-save (line-beginning-position) (line-end-position)))
 
@@ -128,7 +133,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "#fdf6e3" :foreground "#073642" :slant normal :weight normal :height 160 :width normal :family "DinaRemaster"))))
- '(bitmap-variable-pitch ((t (:family "Nintendo DS BIOS Vasified" :height 160))))
+ '(bitmap-variable-pitch ((t (:family "Nintendo DS BIOS Vasified" :height 160))) t)
  '(cursor ((t (:background "#d33682"))))
  '(dired-directory ((t (:foreground "#268bd2" :weight bold))))
  '(error ((t (:foreground "#dc322f" :weight bold))))
@@ -237,6 +242,7 @@
 (define-key text-mode-map (kbd "C-c o k") 'okay-line)
 (define-key text-mode-map (kbd "C-c n o") 'bad-line)
 (define-key global-map (kbd "C-c e a") 'edit-abbrevs)
+(define-key global-map (kbd "C-c b m") 'abbrev-mode)
 
 (define-key prog-mode-map (kbd "<tab>") 'insert-tab-or-indent)
 (define-key text-mode-map (kbd "<tab>") 'insert-tab-or-indent)
@@ -252,6 +258,18 @@
 
 (define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 (define-key prog-mode-map (kbd "C-SPC") 'unexpand-abbrev)
+
+;disable digit arguments
+(define-key global-map (kbd "M-1") nil)
+(define-key global-map (kbd "M-2") nil)
+(define-key global-map (kbd "M-3") nil)
+(define-key global-map (kbd "M-4") nil)
+(define-key global-map (kbd "M-5") nil)
+(define-key global-map (kbd "M-6") nil)
+(define-key global-map (kbd "M-7") nil)
+(define-key global-map (kbd "M-8") nil)
+(define-key global-map (kbd "M-9") nil)
+(define-key global-map (kbd "M-0") nil)
 
 (with-eval-after-load 'js
 	(define-key js-mode-map (kbd "<tab>") 'insert-tab-or-indent))
@@ -352,7 +370,7 @@
 (define-key vi-mode-map (kbd "Y") 'kill-ring-save)
 (define-key vi-mode-map (kbd "d w") 'kill-word)
 (define-key vi-mode-map (kbd "d b") 'backward-kill-word)
-(define-key vi-mode-map (kbd "d d") 'kill-whole-line)
+(define-key vi-mode-map (kbd "d d") 'vi-delete)
 (define-key vi-mode-map (kbd ".") 'repeat)
 (define-key vi-mode-map (kbd "u") 'undo)
 (define-key vi-mode-map (kbd "/") 'isearch-forward)

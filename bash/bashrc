@@ -62,6 +62,7 @@ alias update='sudo sh -c "apt update && apt upgrade"'
 alias zz='systemctl suspend'
 alias emacs='emacsclient -nc'
 alias less='less -I'
+alias sxiv='sxiv -o'
 
 #functions
 
@@ -72,4 +73,3 @@ function zzz {
 	sudo bash -c "echo 3 > /proc/sys/vm/drop_caches" &&
 	systemctl hibernate
 }
-

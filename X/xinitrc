@@ -12,7 +12,7 @@ setxkbmap us -option compose:caps,shift:both_capslock_cancel,ctrl:swap_rwin_rctl
 emacs --daemon
 redshift_service &
 dunst -font "Sans 16" &
-feh --bg-fill wallpaper &
+feh --bg-tile wallpaper &
 unclutter --timeout 1 &
 bar &
 dbus-launch sxhkd &
