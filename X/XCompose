@@ -19,8 +19,6 @@
 <Multi_key> <c> <dollar>: "¢"
 <Multi_key> <grave> <grave>: "“"
 <Multi_key> <grave> <space>: "‘"
-<Multi_key> <bracketleft>: "“"
-<Multi_key> <bracketright>: "”"
 <Multi_key> <apostrophe> <apostrophe>: "”"
 <Multi_key> <apostrophe> <space>: "’"
 <Multi_key> <minus> <minus> <minus>: "—"

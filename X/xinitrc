@@ -7,7 +7,7 @@ export GTK_IM_MODULE=xim
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=xim
 ibus-daemon -xd
-setxkbmap us -option compose:caps,shift:both_capslock_cancel,ctrl:swap_rwin_rctl
+setxkbmap vlatin
 
 emacs --daemon
 redshift_service &

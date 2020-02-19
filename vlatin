@@ -67,7 +67,7 @@ xkb_symbols "basic" {
 	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
 
 	// additional spaces
-	key <SPCE> {[ space, space, nobreakspace, nobreakspace ]};
+	key <SPCE> {[ space ]};
 
 	// two shifts = caps lock
 	key <LFSH> {[ Shift_L, Caps_Lock ]};

@@ -117,10 +117,6 @@
 	(forward-paragraph)
 	(forward-line))
 
-(defface bitmap-variable-pitch '()
-	"Variable pitch face, with a bitmap font"
-	:group 'basic-faces)
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -133,7 +129,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "#fdf6e3" :foreground "#073642" :slant normal :weight normal :height 160 :width normal :family "DinaRemaster"))))
- '(bitmap-variable-pitch ((t (:family "Nintendo DS BIOS Vasified" :height 160))) t)
  '(cursor ((t (:background "#d33682"))))
  '(dired-directory ((t (:foreground "#268bd2" :weight bold))))
  '(error ((t (:foreground "#dc322f" :weight bold))))
@@ -338,8 +333,8 @@
 (add-hook 'emacs-lisp-mode-hook 'company-mode)
 (add-hook 'markdown-mode-hook (lambda()
 	(setq require-final-newline nil)
-	(variable-pitch-mode)))
-	;(abbrev-mode)))
+	(variable-pitch-mode)
+	(abbrev-mode)))
 (add-hook 'python-mode-hook (lambda()
 	(setq indent-tabs-mode t
 		tab-width 3
@@ -366,7 +361,7 @@
 (define-key vi-mode-map (kbd "M-l") 'right-word)
 (define-key vi-mode-map (kbd "G") 'goto-line)
 (define-key vi-mode-map (kbd "v") 'set-mark-command)
-(define-key vi-mode-map (kbd "D") 'kill-ring)
+(define-key vi-mode-map (kbd "D") 'vi-delete)
 (define-key vi-mode-map (kbd "Y") 'kill-ring-save)
 (define-key vi-mode-map (kbd "d w") 'kill-word)
 (define-key vi-mode-map (kbd "d b") 'backward-kill-word)
