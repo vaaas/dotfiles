@@ -59,7 +59,7 @@ super + F7
 	feedreader
 
 super + grave
-	alacritty
+	gnome-terminal
 
 super + shift + grave
 	emacsclient -nc -e "(eshell)"

@@ -122,7 +122,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (company markdown-mode))))
+ '(package-selected-packages (quote (coffee-mode company markdown-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -204,7 +204,7 @@
 (define-key global-map (kbd "C-q") 'kill-this-buffer)
 (define-key global-map (kbd "C-d") 'kill-word)
 (define-key global-map (kbd "C-`") 'eshell)
-(define-key global-map (kbd "C-~") (lambda () (interactive) (spawn "alacritty")))
+(define-key global-map (kbd "C-~") (lambda () (interactive) (spawn "gnome-terminal")))
 
 (define-key global-map (kbd "C-<return>") 'newline-below)
 (define-key global-map (kbd "S-<return>") 'newline-above)

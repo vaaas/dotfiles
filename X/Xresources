@@ -1,1 +1,4 @@
 Xft.dpi: 72
+*background: #000000
+*foreground: #eeeeee
+*font: Monospace:16

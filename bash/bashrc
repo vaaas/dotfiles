@@ -63,6 +63,8 @@ alias zz='systemctl suspend'
 alias emacs='emacsclient -nc'
 alias less='less -I'
 alias sxiv='sxiv -o'
+alias pg='ping google.gr'
+alias sdr='sudo systemctl restart'
 
 #functions
 
