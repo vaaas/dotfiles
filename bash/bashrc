@@ -19,7 +19,7 @@ alias e='aunpack -e --'
 alias ncdu='ncdu -rx'
 
 #nice colours & formatting
-alias diff='colordiff'
+alias diff='git diff'
 alias ls='ls --color=auto --group-directories-first'
 alias df='df -h'
 alias du='du -ch'

@@ -1,6 +1,6 @@
 default partial alphanumeric_keys modifier_keys
 xkb_symbols "basic" {
-	name[Group1]= "Latin (Vas)";
+	name[Group1]= "English (Vas)";
 
 	key <TLDE> {[ grave, asciitilde ]};
 
@@ -41,8 +41,8 @@ xkb_symbols "basic" {
 	key <AC07> {[ j, J ]};
 	key <AC08> {[ k, K ]};
 	key <AC09> {[ l, L ]};
-	key <AC10> {[ semicolon, colon, U201C, U00AB ]};
-	key <AC11> {[ apostrophe, quotedbl, U201D, U00BB ]};
+	key <AC10> {[ semicolon, colon, guillemotleft ]};
+	key <AC11> {[ apostrophe, quotedbl, guillemotright ]};
 
 	key <AB01> {[ z, Z ]};
 	key <AB02> {[ x, X ]};
@@ -66,7 +66,6 @@ xkb_symbols "basic" {
 	// right alt is level 3
 	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
 
-	// additional spaces
 	key <SPCE> {[ space ]};
 
 	// two shifts = caps lock

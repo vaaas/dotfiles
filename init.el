@@ -155,7 +155,7 @@
  '(minibuffer-prompt ((t (:foreground "#d33682"))))
  '(region ((t (:inherit isearch))))
  '(shadow ((t (:foreground "#93a1a1"))))
- '(variable-pitch ((t (:family "Liberation Serif" :height 240)))))
+ '(variable-pitch ((t (:family "Liberation Sans" :height 240)))))
 
 (require 'package)
 (add-to-list 'package-archives
@@ -313,8 +313,8 @@
 (setq-default require-final-newline nil)
 (setq save-abbrevs 'silently)
 (setq-default abbrev-all-caps t)
-(setq-default line-spacing 0.2)
 (setq-default text-scale-mode-step 2.0)
+(setq-default line-spacing 8)
 
 ; default modes
 (setq-default shift-select-mode nil)
@@ -333,6 +333,7 @@
 (add-hook 'emacs-lisp-mode-hook 'company-mode)
 (add-hook 'markdown-mode-hook (lambda()
 	(setq require-final-newline nil)
+	(setq line-spacing 0.5)
 	(variable-pitch-mode)
 	(abbrev-mode)))
 (add-hook 'python-mode-hook (lambda()
