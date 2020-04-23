@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 
 if test -z "$1"
 then
@@ -31,7 +31,7 @@ case "$arg" in
 	wlast)
 		g wd HEAD^ HEAD
 		;;
-	ch)
+	c)
 		git checkout "$@"
 		;;
 	p)

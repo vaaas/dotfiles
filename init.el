@@ -128,7 +128,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background "#fdf6e3" :foreground "#073642" :slant normal :weight normal :height 160 :width normal :family "DinaRemaster"))))
+ '(default ((t (:background "#fdf6e3" :foreground "#073642" :slant normal :weight normal :height 120 :width normal :family "Monospace"))))
  '(cursor ((t (:background "#d33682"))))
  '(dired-directory ((t (:foreground "#268bd2" :weight bold))))
  '(error ((t (:foreground "#dc322f" :weight bold))))
@@ -153,6 +153,7 @@
  '(markdown-italic-face ((t (:inherit italic :foreground "#dc322f"))))
  '(markdown-markup-face ((t (:inherit shadow))))
  '(minibuffer-prompt ((t (:foreground "#d33682"))))
+ '(mode-line ((t (:background "#586e75" :foreground "#fdf6e3"))))
  '(region ((t (:inherit isearch))))
  '(shadow ((t (:foreground "#93a1a1"))))
  '(variable-pitch ((t (:family "Liberation Sans" :height 240)))))
@@ -314,7 +315,7 @@
 (setq save-abbrevs 'silently)
 (setq-default abbrev-all-caps t)
 (setq-default text-scale-mode-step 2.0)
-(setq-default line-spacing 8)
+(setq-default line-spacing 0)
 
 ; default modes
 (setq-default shift-select-mode nil)
@@ -370,7 +371,7 @@
 (define-key vi-mode-map (kbd ".") 'repeat)
 (define-key vi-mode-map (kbd "u") 'undo)
 (define-key vi-mode-map (kbd "/") 'isearch-forward)
-(define-key vi-mode-map (kbd "p") 'paste-below)
+(define-key vi-mode-map (kbd "p") 'yank)
 (define-key vi-mode-map (kbd "P") 'paste-above)
 (define-key vi-mode-map (kbd "SPC") 'execute-extended-command)
 (define-key vi-mode-map (kbd "o") 'vi-open-below)

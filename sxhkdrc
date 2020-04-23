@@ -19,8 +19,8 @@ super + c ; r
 super + c ; shift + R
 	redshift -O 2500K
 
-super + c ; F1
-	killall -s SIGUSR1 sxhkd
+super + Escape
+	pkill -USR1 -x sxhkd
 
 super + c ; d
 	notify-send "$(date '+%H:%M')"
@@ -47,7 +47,7 @@ super + F3
 	emacsclient -nc
 
 super + F4
-	cd ~/Music/radio && file="$(ls -1 | sort | pytkfilter)" && mpv --force-window=immediate -- "$file"
+	cd ~/Music/radio && file="$(ls -1 | sort | dmenu)" && mpv --force-window=immediate -- "$file"
 
 super + F5
 	gnome-system-monitor
