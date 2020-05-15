@@ -1,4 +1,14 @@
+;; -*- lexical-binding: t; -*-
+(setq gc-cons-threshold most-positive-fixnum
+	gc-cons-percentage 0.6)
+
+(let ((file-name-handler-alist nil))
+
 ; function definitions
+(defconst TAB 9)
+(defconst SPACE 32)
+(defconst PERIOD 46)
+
 (defun cmark-on-buffer() (interactive)
 	(shell-command-on-region (point-min) (point-max) "cmark --smart" (current-buffer)))
 
@@ -8,24 +18,41 @@
 (defun backward-kill-line() (interactive)
 	(kill-line 0))
 
-(defun recenter-top() (interactive) (recenter 0))
-
 (defun kill-active-region(beg end) (interactive "r")
-	(when (region-active-p)
-		(kill-region beg end)))
+	(when (region-active-p) (kill-region beg end)))
 
-(defun insert-tab-or-indent(&optional beg end) (interactive)
-	(if (region-active-p)
-		(indent-rigidly-right-to-tab-stop (region-beginning) (region-end))
-		(insert-tab)))
+(defun tab-expand-indent(&optional beg end) (interactive)
+	(cond
+		((region-active-p)
+			(indent-rigidly-right-to-tab-stop (region-beginning) (region-end)))
+		((or (= (current-column) 0) (= (preceding-char) TAB))
+			(insert-char TAB))
+		(t
+			(call-interactively 'dabbrev-expand))))
 
 (defun spawn(program &rest args)
 	(apply 'start-process
 		(append (list program program program) args)))
 
-(defun insert-tab() (interactive) (insert-char 9))
+(defun insert-space-or-period() (interactive)
+	(if (= (preceding-char) SPACE)
+		(progn (backward-delete-char 1) (insert-char PERIOD) (self-insert-command 1))
+		(self-insert-command 1)))
 
-(defun insert-space() (interactive) (insert-char 32))
+(defun comma-clean() (interactive)
+	(if (= (preceding-char) SPACE)
+		(progn (backward-delete-char 1) (self-insert-command 1) (insert-char SPACE))
+		(self-insert-command 1)))
+
+(defun period-clean() (interactive)
+	(if (= (preceding-char) SPACE)
+		(progn (backward-delete-char 1) (self-insert-command 1) (insert-char SPACE))
+		(self-insert-command 1)))
+
+(defun quote-clean() (interactive)
+	(if (= (preceding-char) SPACE)
+		(progn (backward-delete-char 1) (self-insert-command 1)
+		(self-insert-command 1))))
 
 (defun newline-and-indent-relative() (interactive)
 	(newline)
@@ -53,7 +80,10 @@
 	(newline))
 
 (defun double-newline() (interactive)
-	(newline) (newline))
+	(delete-horizontal-space t) (newline) (newline))
+
+(defun double-newline-and-recenter() (interactive)
+	(double-newline) (recenter))
 
 (defun vi-open-above() (interactive)
 	(newline-above)
@@ -95,6 +125,10 @@
 	(call-interactively 'zap-to-char)
 	(vi-mode-off))
 
+(defun vi-change-inside() (interactive)
+	(delete-inside)
+	(vi-mode-off))
+
 (defun vi-mode-on() (interactive)
 	(setq-local cursor-type 'box)
 	(vi-mode 1))
@@ -116,6 +150,29 @@
 (defun forward-paragraph-start() (interactive)
 	(forward-paragraph)
 	(forward-line))
+
+(defun delete-inside() (interactive)
+	(setq openings '(40 91 123 60 34))
+	(while (not (member (char-before) openings))
+		(left-char))
+	(setq open (char-before))
+	(setq close (match-char open))
+	(setq c 1)
+	(while (> c 0)
+		(setq n (char-after))
+		(message "%d" c)
+		(cond
+			((= n close) (setq c (- c 1)))
+			((= n open) (setq c (+ c 1))))
+		(when (> c 0) (delete-forward-char 1))))
+
+(defun match-char(x)
+	(cond
+		((= x 34) 34)
+		((= x 60) 62)
+		((= x 123) 125)
+		((= x 91) 93)
+		((= x 40) 41)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -202,6 +259,7 @@
 (define-key global-map (kbd "M-<tab>") 'mode-line-other-buffer)
 (define-key global-map (kbd "M-a") 'set-mark-command)
 (define-key global-map (kbd "C-k") 'kill-whole-line)
+(define-key global-map (kbd "C-S-K") 'join-line)
 (define-key global-map (kbd "C-q") 'kill-this-buffer)
 (define-key global-map (kbd "C-d") 'kill-word)
 (define-key global-map (kbd "C-`") 'eshell)
@@ -222,7 +280,7 @@
 (define-key global-map (kbd "M-K") 'backward-paragraph)
 (define-key global-map (kbd "M-J") 'forward-paragraph-start)
 (define-key global-map (kbd "C-y") 'yank-this-line)
-(define-key global-map (kbd "C-]") 'recenter-top)
+(define-key global-map (kbd "<f2>") 'recenter-top-bottom)
 (define-key global-map (kbd "C-.") 'repeat)
 (define-key text-mode-map (kbd "C-j") 'capitalize-last-word)
 
@@ -240,9 +298,9 @@
 (define-key global-map (kbd "C-c e a") 'edit-abbrevs)
 (define-key global-map (kbd "C-c b m") 'abbrev-mode)
 
-(define-key prog-mode-map (kbd "<tab>") 'insert-tab-or-indent)
-(define-key text-mode-map (kbd "<tab>") 'insert-tab-or-indent)
-(define-key emacs-lisp-mode-map (kbd "<tab>") 'insert-tab-or-indent)
+(define-key prog-mode-map (kbd "<tab>") 'tab-expand-indent)
+(define-key text-mode-map (kbd "<tab>") 'tab-expand-indent)
+(define-key emacs-lisp-mode-map (kbd "<tab>") 'tab-expand-indent)
 (define-key global-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
 
 (define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative)
@@ -254,6 +312,12 @@
 
 (define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 (define-key prog-mode-map (kbd "C-SPC") 'unexpand-abbrev)
+
+(define-key text-mode-map (kbd "SPC") 'insert-space-or-period)
+(define-key text-mode-map (kbd ",") 'comma-clean)
+(define-key text-mode-map (kbd ".") 'period-clean)
+
+(define-key global-map (kbd "C-i") 'delete-inside)
 
 ;disable digit arguments
 (define-key global-map (kbd "M-1") nil)
@@ -268,7 +332,7 @@
 (define-key global-map (kbd "M-0") nil)
 
 (with-eval-after-load 'js
-	(define-key js-mode-map (kbd "<tab>") 'insert-tab-or-indent))
+	(define-key js-mode-map (kbd "<tab>") 'tab-expand-indent))
 
 (with-eval-after-load 'company
 	(define-key company-active-map (kbd "M-n") nil)
@@ -279,7 +343,7 @@
 	(define-key company-active-map (kbd "<escape>") 'company-abort))
 
 (with-eval-after-load 'markdown-mode
-	(define-key markdown-mode-map (kbd "<return>") 'double-newline)
+	(define-key markdown-mode-map (kbd "<return>") 'double-newline-and-recenter)
 	(define-key markdown-mode-map	(kbd "C-x") nil)
 	(define-key markdown-mode-map (kbd "M-<return>") nil)
 	(define-key markdown-mode-map	(kbd "C-b") 'markdown-insert-bold)
@@ -322,12 +386,15 @@
 (setq-default indent-tabs-mode t)
 (ido-mode t)
 (electric-indent-mode -1)
-(electric-pair-mode 1)
+(electric-pair-mode -1)
 (global-visual-line-mode t)
 (line-number-mode -1)
 (delete-selection-mode 1)
 
 ; hooks
+(add-hook 'emacs-startup-hook (lambda()
+	(setq gc-cons-threshold 16777216
+		gc-cons-percentage 0.1)))
 (add-hook 'js-mode-hook (lambda()
 	(company-mode)
 	(abbrev-mode)))
@@ -386,8 +453,9 @@
 (define-key vi-mode-map (kbd "d $") 'kill-line)
 (define-key vi-mode-map (kbd "d ^") 'backward-kill-line)
 (define-key vi-mode-map (kbd "c t") 'vi-change-to)
+(define-key vi-mode-map (kbd "c i") 'vi-change-inside)
 (define-key vi-mode-map (kbd "n") 'isearch-repeat-forward)
 (define-key vi-mode-map (kbd "N") 'isearch-repeat-backward)
 (define-minor-mode vi-mode
 	"vi-like key bindings without modifier keys"
-	:keymap vi-mode-map)
+	:keymap vi-mode-map))
