@@ -67,12 +67,6 @@ super + shift + grave
 super + p
 	passmenu
 
-super + End
-	slock & systemctl sleep
-
-super + shift + End
-	zenity --question --text="Shut down?" && systemctl poweroff
-
 XF86AudioLowerVolume
 	pactl set-sink-volume @DEFAULT_SINK@ -10%
 

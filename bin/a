@@ -4,13 +4,13 @@ arg="$1"
 shift 1
 
 case "$arg" in
-	search)
+	s)
 		pacman -Ss --color auto "$@"
 		;;
-	install)
+	i)
 		pacman -S --color auto "$@"
 		;;
-	remove)
+	r)
 		pacman -Rns --color auto "$@"
 		;;
 	update)

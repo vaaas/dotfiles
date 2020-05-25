@@ -27,7 +27,7 @@ bin/pytkfilter	~/Binaries/pytkfilter
 bin/update-file-db	~/Binaries/update-file-db
 bin/vas_transcode	~/Binaries/vas_transcode
 bin/sha3_rename	~/Binaries/sha3_rename
-bin/apt	~/Binaries/apt
+bin/a	~/Binaries/a
 bin/redshift_service	~/Binaries/redshift_service
 bin/remove_if_same	~/Binaries/remove_if_same
 bin/dwm-loop	~/Binaries/dwm-loop
