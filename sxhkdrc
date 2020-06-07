@@ -11,7 +11,7 @@ super + c ; s
 	scrot -s
 
 super + c ; l
-	ibus engine xkb:us::eng && slock
+	ibus engine xkb:vlatin::eng && xset dpms force suspend && slock
 
 super + c ; r
 	redshift -x
@@ -44,7 +44,7 @@ super + F2
 	nautilus
 
 super + F3
-	emacsclient -nc
+	l3afpad
 
 super + F4
 	cd ~/Music/radio && file="$(ls -1 | sort | dmenu)" && mpv --force-window=immediate -- "$file"
@@ -53,13 +53,13 @@ super + F5
 	gnome-system-monitor
 
 super + F6
-	pavucontrol
+	xterm pulsemixer
 
 super + F7
 	feedreader
 
 super + grave
-	gnome-terminal
+	xterm
 
 super + shift + grave
 	emacsclient -nc -e "(eshell)"

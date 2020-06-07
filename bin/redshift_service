@@ -4,7 +4,7 @@ alias start='redshift -O 2500K'
 alias stop='redshift -x'
 
 d=$(date '+%H')
-night=20
+night=19
 day=$(($night-12))
 if test "$d" -ge $night
 then

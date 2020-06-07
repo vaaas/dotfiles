@@ -11,10 +11,9 @@ ibus-daemon -xd
 emacs --daemon
 redshift_service &
 dunst -font "Sans 16" &
-feh --bg-tile wallpaper &
+xwallpaper --tile wallpaper &
 unclutter --timeout 1 &
 bar &
 dbus-launch sxhkd &
 picom &
-slock
 dbus-launch dwm-loop

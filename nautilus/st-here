@@ -1,2 +1,2 @@
 #!/bin/dash
-exec gnome-terminal
+exec xterm
