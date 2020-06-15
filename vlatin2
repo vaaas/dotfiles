@@ -1,0 +1,74 @@
+default partial alphanumeric_keys modifier_keys
+xkb_symbols "basic" {
+	name[Group1]= "English (Vas)";
+
+	key <TLDE> {[ grave, asciitilde ]};
+
+	key <AE01> {[ 1, exclam ]};
+	key <AE02> {[ 2, at ]};
+	key <AE03> {[ 3, numbersign]};
+	key <AE04> {[ 4, dollar, sterling ]};
+	key <AE05> {[ 5, percent ]};
+	key <AE06> {[ 6, asciicircum ]};
+	key <AE07> {[ 7, ampersand ]};
+	key <AE08> {[ 8, asterisk ]};
+	key <AE09> {[ 9, parenleft ]};
+	key <AE10> {[ 0, parenright ]};
+	key <AE11> {[ minus, underscore, emdash, endash ]};
+	key <AE12> {[ equal, plus ]};
+
+	key <AD01> {[ q, Q ]};
+	key <AD02> {[ d, D ]};
+	key <AD03> {[ r, R, EuroSign ]};
+	key <AD04> {[ w, W ]};
+	key <AD05> {[ b, B ]};
+	key <AD06> {[ j, J, yen ]};
+	key <AD07> {[ f, F ]};
+	key <AD08> {[ u, U ]};
+	key <AD09> {[ p, P ]};
+	key <AD10> {[ semicolon, colon, ellipsis ]};
+
+	// all the bracket pairs: paren, bracket, brace, comparisons
+	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
+	key <AD12> {[ parenright, bracketright, braceright, greater ]};
+
+	key <AC01> {[ n, N ]};
+	key <AC02> {[ s, S ]};
+	key <AC03> {[ h, H ]};
+	key <AC04> {[ t, T ]};
+	key <AC05> {[ g, G ]};
+	key <AC06> {[ y, Y, yen ]};
+	key <AC07> {[ a, A ]};
+	key <AC08> {[ e, E, euro ]};
+	key <AC09> {[ o, O ]};
+	key <AC10> {[ i, I ]};
+	key <AC11> {[ apostrophe, quotedbl, guillemotright ]};
+
+	key <AB01> {[ z, Z ]};
+	key <AB02> {[ x, X ]};
+	key <AB03> {[ m, M ]};
+	key <AB04> {[ c, C ]};
+	key <AB05> {[ v, V ]};
+	key <AB06> {[ k, K ]};
+	key <AB07> {[ l, L ]};
+	key <AB08> {[ comma, less, guillemotleft ]};
+	key <AB09> {[ period, greater, guillemotright ]};
+	key <AB10> {[ slash, question ]};
+
+	key <BKSL> {[ backslash, bar ]};
+
+	// caps lock is compose
+	key <CAPS> {[ Multi_key ]};
+
+	// right control is level 5
+	key <RCTL> {[ ISO_Level5_Shift, ISO_Level5_Shift ]};
+
+	// right alt is level 3
+	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
+
+	key <SPCE> {[ space ]};
+
+	// two shifts = caps lock
+	key <LFSH> {[ Shift_L, Caps_Lock ]};
+	key <RTSH> {[ Shift_R, Caps_Lock ]};
+};
