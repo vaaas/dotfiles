@@ -25,6 +25,9 @@ super + Escape
 super + c ; d
 	notify-send "$(date '+%H:%M')"
 
+super + c ; v
+	xclip -selection clipboard -o | pr -Td | xclip -selection clipboard
+
 super + e
 	dmenu_run -i
 

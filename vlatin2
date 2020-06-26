@@ -18,14 +18,14 @@ xkb_symbols "basic" {
 	key <AE12> {[ equal, plus ]};
 
 	key <AD01> {[ q, Q ]};
-	key <AD02> {[ d, D ]};
-	key <AD03> {[ r, R, EuroSign ]};
-	key <AD04> {[ w, W ]};
-	key <AD05> {[ b, B ]};
-	key <AD06> {[ j, J, yen ]};
-	key <AD07> {[ f, F ]};
+	key <AD02> {[ c, C ]};
+	key <AD03> {[ d, D ]};
+	key <AD04> {[ m, M ]};
+	key <AD05> {[ v, V ]};
+	key <AD06> {[ j, J ]};
+	key <AD07> {[ w, W ]};
 	key <AD08> {[ u, U ]};
-	key <AD09> {[ p, P ]};
+	key <AD09> {[ k, K ]};
 	key <AD10> {[ semicolon, colon, ellipsis ]};
 
 	// all the bracket pairs: paren, bracket, brace, comparisons
@@ -34,23 +34,23 @@ xkb_symbols "basic" {
 
 	key <AC01> {[ n, N ]};
 	key <AC02> {[ s, S ]};
-	key <AC03> {[ h, H ]};
-	key <AC04> {[ t, T ]};
-	key <AC05> {[ g, G ]};
+	key <AC03> {[ t, T ]};
+	key <AC04> {[ r, R ]};
+	key <AC05> {[ h, H ]};
 	key <AC06> {[ y, Y, yen ]};
-	key <AC07> {[ a, A ]};
+	key <AC07> {[ i, I ]};
 	key <AC08> {[ e, E, euro ]};
 	key <AC09> {[ o, O ]};
-	key <AC10> {[ i, I ]};
+	key <AC10> {[ a, A ]};
 	key <AC11> {[ apostrophe, quotedbl, guillemotright ]};
 
 	key <AB01> {[ z, Z ]};
-	key <AB02> {[ x, X ]};
-	key <AB03> {[ m, M ]};
-	key <AB04> {[ c, C ]};
-	key <AB05> {[ v, V ]};
-	key <AB06> {[ k, K ]};
-	key <AB07> {[ l, L ]};
+	key <AB02> {[ f, F ]};
+	key <AB03> {[ g, G ]};
+	key <AB04> {[ l, L ]};
+	key <AB05> {[ x, X ]};
+	key <AB06> {[ b, B ]};
+	key <AB07> {[ p, P ]};
 	key <AB08> {[ comma, less, guillemotleft ]};
 	key <AB09> {[ period, greater, guillemotright ]};
 	key <AB10> {[ slash, question ]};
