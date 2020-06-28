@@ -7,7 +7,7 @@ export GDK_CORE_DEVICE_EVENTS=1
 
 umask 0026
 
-if test -z "$DISPLAY" && test -n "$XDG_VTNR" && test "$XDG_VTNR" -eq 1
+if test -z "$DISPLAY" && test -n "$XDG_VTNR" && test "$XDG_VTNR" -eq 2
 then
 	exec startx
 else

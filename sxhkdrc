@@ -31,6 +31,9 @@ super + c ; v
 super + e
 	dmenu_run -i
 
+alt + e
+	dmenu_run -i
+
 super + shift + e
 	clip_run
 

@@ -17,30 +17,30 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore, emdash, endash ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <AD01> {[ q, Q ]};
+	key <AD01> {[ q, Q, 1 ]};
 	key <AD02> {[ w, W ]};
-	key <AD03> {[ e, E, EuroSign ]};
+	key <AD03> {[ e, E, EuroSign, yen ]};
 	key <AD04> {[ r, R ]};
 	key <AD05> {[ t, T ]};
-	key <AD06> {[ y, Y, yen ]};
-	key <AD07> {[ u, U ]};
-	key <AD08> {[ i, I ]};
-	key <AD09> {[ o, O ]};
+	key <AD06> {[ y, Y, braceleft ]};
+	key <AD07> {[ u, U, braceright ]};
+	key <AD08> {[ i, I, less ]};
+	key <AD09> {[ o, O, greater ]};
 	key <AD10> {[ p, P ]};
 
 	// all the bracket pairs: paren, bracket, brace, comparisons
 	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
 	key <AD12> {[ parenright, bracketright, braceright, greater ]};
 
-	key <AC01> {[ a, A ]};
-	key <AC02> {[ s, S ]};
-	key <AC03> {[ d, D ]};
-	key <AC04> {[ f, F ]};
+	key <AC01> {[ a, A, dead_diaeresis ]};
+	key <AC02> {[ s, S, dead_macron ]};
+	key <AC03> {[ d, D, dead_acute ]};
+	key <AC04> {[ f, F, dead_grave ]};
 	key <AC05> {[ g, G ]};
-	key <AC06> {[ h, H ]};
-	key <AC07> {[ j, J ]};
-	key <AC08> {[ k, K ]};
-	key <AC09> {[ l, L ]};
+	key <AC06> {[ h, H, parenleft ]};
+	key <AC07> {[ j, J, parenright ]};
+	key <AC08> {[ k, K, bracketleft ]};
+	key <AC09> {[ l, L, bracketright ]};
 	key <AC10> {[ semicolon, colon, guillemotleft ]};
 	key <AC11> {[ apostrophe, quotedbl, guillemotright ]};
 
