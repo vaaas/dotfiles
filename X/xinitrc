@@ -7,6 +7,7 @@ export GTK_IM_MODULE=xim
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=xim
 ibus-daemon -xd
+xset r rate 180
 
 emacs --daemon
 redshift_service &
