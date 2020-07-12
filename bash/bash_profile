@@ -1,15 +1,15 @@
 export HISTCONTROL=ignoreboth:erasedups
 export BROWSER=firefox
-export EDITOR=l3afpad
+export EDITOR=vim
 export PAGER=less
 export PATH=~/Binaries:$PATH
 export GDK_CORE_DEVICE_EVENTS=1
 
 umask 0026
 
-if test -z "$DISPLAY" && test -n "$XDG_VTNR" && test "$XDG_VTNR" -eq 2
+if ps -A | grep Xorg
 then
-	exec startx
-else
 	source ~/.bashrc
+else
+	exec startx
 fi

@@ -2,6 +2,7 @@ XTerm.vt100.metaSendsEscape: true
 XTerm.termName: xterm-256color
 XTerm.vt100.backarrowKey: false
 XTerm.ttyModes: erase ^?
+XTerm*selectToClipboard: true
 
 Xft.dpi: 72
 *faceName: Monospace
