@@ -3,11 +3,12 @@
 xrdb -merge ~/.Xresources
 
 # keyboard configuration
-export GTK_IM_MODULE=xim
+export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=xim
+export QT_IM_MODULE=ibus
 ibus-daemon -xd
 xset r rate 180
+setxkbmap vlatin
 
 emacs --daemon
 redshift_service &

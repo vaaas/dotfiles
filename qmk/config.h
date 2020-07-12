@@ -1,1 +1,1 @@
-#define TAPPING_TERM 120
+#define NO_ACTION_ONESHOT

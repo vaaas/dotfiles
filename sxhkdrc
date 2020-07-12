@@ -11,7 +11,7 @@ super + c ; s
 	scrot -s
 
 super + c ; l
-	ibus engine xkb:vlatin::eng && xset dpms force suspend && slock
+	xset dpms force suspend && slock
 
 super + c ; r
 	redshift -x
@@ -79,5 +79,5 @@ XF86AudioRaiseVolume
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-XF86Tools
+Menu
 	kswitcher
