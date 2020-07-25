@@ -47,7 +47,7 @@ super + F2
 	nautilus
 
 super + F3
-	l3afpad
+	emacsclient -nc
 
 super + F4
 	cd ~/Music/radio && file="$(ls -1 | sort | dmenu)" && mpv --force-window=immediate -- "$file"
