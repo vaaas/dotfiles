@@ -51,6 +51,9 @@ xkb_symbols "basic" {
 	key <AB09> {[ period, greater, ellipsis ]};
 	key <AB10> {[ slash, question ]};
 
+	key <AD11> {[ bracketleft, braceleft ]};
+	key <AD12> {[ bracketright, braceright ]};
+
 	key <BKSL> {[ backslash, bar ]};
 
 	// caps lock is compose
