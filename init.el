@@ -213,7 +213,7 @@
  '(mode-line ((t (:background "#586e75" :foreground "#fdf6e3"))))
  '(region ((t (:inherit isearch))))
  '(shadow ((t (:foreground "#93a1a1"))))
- '(variable-pitch ((t (:family "Liberation Sans" :height 240)))))
+ '(variable-pitch ((t (:family "Linux Libertine" :height 220)))))
 
 (require 'package)
 (add-to-list 'package-archives

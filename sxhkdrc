@@ -11,7 +11,7 @@ super + c ; s
 	scrot -s
 
 super + c ; l
-	ibus engine xkb:vlatin::eng && xset dpms force suspend && slock
+	xset dpms force suspend && slock
 
 super + c ; r
 	redshift -x
@@ -47,7 +47,7 @@ super + F2
 	nautilus
 
 super + F3
-	l3afpad
+	emacsclient -nc
 
 super + F4
 	cd ~/Music/radio && file="$(ls -1 | sort | dmenu)" && mpv --force-window=immediate -- "$file"
@@ -78,6 +78,3 @@ XF86AudioRaiseVolume
 
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
-
-XF86Tools
-	kswitcher
