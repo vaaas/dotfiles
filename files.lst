@@ -42,3 +42,5 @@ sxhkdrc	~/.config/sxhkd/sxhkdrc
 alacritty.yml	~/.config/alacritty/alacritty.yml
 init.el	~/.emacs.d/init.el
 abbrev_defs	~/.emacs.d/abbrev_defs
+vscode/settings.json	~/.config/VSCodium/User/settings.json
+vscode/keybindings.json	~/.config/VSCodium/User/keybindings.json
