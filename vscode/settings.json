@@ -8,7 +8,7 @@
 	"debug.console.fontFamily": "editor",
 	"window.menuBarVisibility": "toggle",
 	"workbench.activityBar.visible": false,
-	"breadcrumbs.enabled": true,
+	"breadcrumbs.enabled": false,
 	"editor.renderWhitespace": "none",
 	"editor.fontSize": 16,
 	"editor.fontLigatures": true,
@@ -29,11 +29,11 @@
 		"sideBar.background": "#fff3e0",
 		"sideBar.border": "#ffa726",
 		"sideBarSectionHeader.background": "#ffe0b2",
-		"sideBarSectionHeader.foreground": "#000",
 		"list.inactiveSelectionBackground": "#ffe0b2",
 		"list.activeSelectionForeground": "#ffe0b2",
 		"list.hoverBackground": "#ffe0b2",
-		"editorCursor.foreground": "#f50057"
+		"editorCursor.foreground": "#f50057",
+		"editorGutter.modifiedBackground": "#0d47a1"
 	},
 	"editor.tokenColorCustomizations": {
 		"strings": "#00695c",
@@ -99,6 +99,10 @@
 			{
 				"scope": "variable.parameter",
 				"settings": { "fontStyle": "italic" }
+			},
+			{
+				"scope": "variable.other",
+				"settings": { "fontStyle": "", "foreground": "#000000"}
 			}
 		]
 	},
