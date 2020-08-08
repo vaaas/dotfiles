@@ -19,6 +19,12 @@ case "$arg" in
 	ca)
 		git commit -am "$@"
 		;;
+	co)
+		git commit -m "$@"
+		;;
+	a)
+		git add "$@"
+		;;
 	b)
 		git branch "$@" && g ch "$@"
 		;;
