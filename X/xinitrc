@@ -2,11 +2,12 @@
 
 xrdb -merge ~/.Xresources
 
+export GTK_USE_PORTAL=1
 # keyboard configuration
-export GTK_IM_MODULE=ibus
+export GTK_IM_MODULE=xim
 export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
-ibus-daemon -xd
+export QT_IM_MODULE=xim
+ibus-daemon -xdr
 xset r rate 180
 setxkbmap vlatin
 
