@@ -2,15 +2,12 @@ default partial alphanumeric_keys modifier_keys
 xkb_symbols "basic" {
 	name[Group1]= "English (Vas)";
 
-	key <AE11> {[ minus, underscore, emdash, endash ]};
-	key <AE12> {[ equal, plus ]};
-
 	key <AD01> {[ q, Q, 7, ampersand ]};
 	key <AD02> {[ w, W, 8, asterisk ]};
 	key <AD03> {[ e, E, 9, parenleft ]};
 	key <AD04> {[ r, R, grave, asciitilde ]};
-	key <AD05> {[ t, T ]};
-	key <AD06> {[ y, Y ]};
+	key <AD05> {[ t, T, dead_circumflex ]};
+	key <AD06> {[ y, Y, dead_tilde ]};
 	key <AD07> {[ u, U, bracketleft ]};
 	key <AD08> {[ i, I, bracketright ]};
 	key <AD09> {[ o, O ]};
@@ -20,8 +17,8 @@ xkb_symbols "basic" {
 	key <AC02> {[ s, S, 5, percent ]};
 	key <AC03> {[ d, D, 6, asciicircum ]};
 	key <AC04> {[ f, F, backslash, bar ]};
-	key <AC05> {[ g, G ]};
-	key <AC06> {[ h, H ]};
+	key <AC05> {[ g, G, dead_acute ]};
+	key <AC06> {[ h, H, dead_macron ]};
 	key <AC07> {[ j, J, parenleft ]};
 	key <AC08> {[ k, K, parenright ]};
 	key <AC09> {[ l, L ]};
@@ -32,27 +29,18 @@ xkb_symbols "basic" {
 	key <AB02> {[ x, X, 2, at ]};
 	key <AB03> {[ c, C, 3, numbersign ]};
 	key <AB04> {[ v, V, 0, parenright ]};
-	key <AB05> {[ b, B ]};
-	key <AB06> {[ n, N ]};
+	key <AB05> {[ b, B, dead_grave ]};
+	key <AB06> {[ n, N, dead_diaeresis ]};
 	key <AB07> {[ m, M, braceleft ]};
 	key <AB08> {[ comma, less, braceright ]};
 	key <AB09> {[ period, greater, ellipsis ]};
 	key <AB10> {[ slash, question ]};
 
-	key <AD11> {[ bracketleft, braceleft ]};
-	key <AD12> {[ bracketright, braceright ]};
+	key <AE11> {[ minus, underscore, emdash, endash ]};
+	key <AE12> {[ equal, plus ]};
 
-	key <TLDE> {[ grave, asciitilde ]};
-	key <BKSL> {[ backslash, bar ]};
-
-	// caps lock is compose
 	key <CAPS> {[ Multi_key ]};
-
-	// right alt is level 3
 	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
-
-	key <SPCE> {[ space ]};
-
 	key <RTRN> {[ Return, Return, BackSpace, BackSpace ]};
 	key <TAB> {[ Tab, Tab, Escape, Escape ]};
 };
