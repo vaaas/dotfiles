@@ -32,10 +32,10 @@ xkb_symbols "basic" {
 	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
 	key <AD12> {[ parenright, bracketright, braceright, greater ]};
 
-	key <AC01> {[ a, A, dead_diaeresis ]};
-	key <AC02> {[ s, S, dead_macron ]};
-	key <AC03> {[ d, D, dead_acute ]};
-	key <AC04> {[ f, F, dead_grave ]};
+	key <AC01> {[ a, A, dead_grave ]};
+	key <AC02> {[ s, S, dead_diaeresis ]};
+	key <AC03> {[ d, D, dead_macron ]};
+	key <AC04> {[ f, F, dead_acute ]};
 	key <AC05> {[ g, G ]};
 	key <AC06> {[ h, H, parenleft ]};
 	key <AC07> {[ j, J, parenright ]};
