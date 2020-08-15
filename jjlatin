@@ -39,8 +39,13 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore, emdash, endash ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <CAPS> {[ Multi_key ]};
 	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
 	key <RTRN> {[ Return, Return, BackSpace, BackSpace ]};
-	key <TAB> {[ Tab, Tab, Escape, Escape ]};
+	key <SPCE> {[ space, space, Tab, Tab ]};
+	key <CAPS> {[ Multi_key, Multi_key ]};
+
+	key <UP> {[ Up, Up, Prior, Prior ]};
+	key <DOWN> {[ Down, Down, Next, Next ]};
+	key <LEFT> {[ Left, Left, Home, Home ]};
+	key <RGHT> {[ Right, Right, End, End ]};
 };
