@@ -10,21 +10,21 @@
 	"workbench.activityBar.visible": false,
 	"breadcrumbs.enabled": false,
 	"editor.renderWhitespace": "none",
-	"editor.fontSize": 16,
 	"editor.fontLigatures": true,
 	"workbench.editor.showTabs": false,
 	"workbench.statusBar.visible": false,
 	"editor.autoIndent": "brackets",
 	"editor.wordWrap": "on",
 	"editor.tabCompletion": "on",
-	"editor.tabSize": 3,
-	"editor.insertSpaces": false,
 	"editor.lineNumbers": "off",
 	"editor.cursorSmoothCaretAnimation": true,
 	"editor.cursorStyle": "underline",
 	
 	"workbench.colorCustomizations": {
 		"editor.background": "#fff3e0",
+		"editorIndentGuide.background": "#ffcc80",
+		"editorIndentGuide.activeBackground": "#ff9100",
+		"editorWhitespace.foreground": "#ffcc80",
 		"editor.lineHighlightBackground": "#ffffff",
 		"sideBar.background": "#fff3e0",
 		"sideBar.border": "#ffa726",
@@ -33,7 +33,8 @@
 		"list.activeSelectionForeground": "#ffe0b2",
 		"list.hoverBackground": "#ffe0b2",
 		"editorCursor.foreground": "#f50057",
-		"editorGutter.modifiedBackground": "#0d47a1"
+		"editorGutter.modifiedBackground": "#0d47a1",
+		"tab.activeForeground": "#000000"
 	},
 	"editor.tokenColorCustomizations": {
 		"strings": "#00695c",
@@ -107,5 +108,9 @@
 		]
 	},
 	"editor.cursorBlinking": "solid",
-	"editor.smoothScrolling": true
+	"editor.smoothScrolling": true,
+	"editor.fontSize": 16,
+	"search.exclude": {
+		"**/public": true
+	},
 }

@@ -365,11 +365,15 @@
         "command": "-workbench.action.togglePanel"
     },
     {
-        "key": "shift+f1",
+        "key": "alt+f1",
         "command": "workbench.view.explorer"
     },
     {
-        "key": "ctrl+shift+e",
-        "command": "-workbench.view.explorer"
+        "key": "alt+f2",
+        "command": "workbench.view.search"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "insertSnippet"
     }
 ]
