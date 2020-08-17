@@ -2,72 +2,50 @@ default partial alphanumeric_keys modifier_keys
 xkb_symbols "basic" {
 	name[Group1]= "English (Vas)";
 
-	key <TLDE> {[ grave, asciitilde ]};
-
-	key <AE01> {[ 1, exclam ]};
-	key <AE02> {[ 2, at ]};
-	key <AE03> {[ 3, numbersign]};
-	key <AE04> {[ 4, dollar, sterling ]};
-	key <AE05> {[ 5, percent ]};
-	key <AE06> {[ 6, asciicircum ]};
-	key <AE07> {[ 7, ampersand ]};
-	key <AE08> {[ 8, asterisk ]};
-	key <AE09> {[ 9, parenleft ]};
-	key <AE10> {[ 0, parenright ]};
-	key <AE11> {[ minus, underscore, emdash, endash ]};
-	key <AE12> {[ equal, plus ]};
-
-	key <AD01> {[ q, Q ]};
-	key <AD02> {[ w, W ]};
-	key <AD03> {[ e, E, EuroSign, yen ]};
-	key <AD04> {[ r, R ]};
-	key <AD05> {[ t, T ]};
-	key <AD06> {[ y, Y ]};
-	key <AD07> {[ u, U ]};
-	key <AD08> {[ i, I ]};
+	key <AD01> {[ q, Q, 7, ampersand ]};
+	key <AD02> {[ w, W, 8, asterisk ]};
+	key <AD03> {[ e, E, 9, parenleft ]};
+	key <AD04> {[ r, R, grave, asciitilde ]};
+	key <AD05> {[ t, T, dead_circumflex ]};
+	key <AD06> {[ y, Y, dead_tilde ]};
+	key <AD07> {[ u, U, bracketleft ]};
+	key <AD08> {[ i, I, bracketright ]};
 	key <AD09> {[ o, O ]};
 	key <AD10> {[ p, P ]};
 
-	key <AC01> {[ a, A, dead_diaeresis ]};
-	key <AC02> {[ s, S, dead_macron ]};
-	key <AC03> {[ d, D, dead_acute ]};
-	key <AC04> {[ f, F, dead_grave ]};
-	key <AC05> {[ g, G ]};
-	key <AC06> {[ h, H ]};
-	key <AC07> {[ j, J ]};
-	key <AC08> {[ k, K ]};
+	key <AC01> {[ a, A, 4, dollar ]};
+	key <AC02> {[ s, S, 5, percent ]};
+	key <AC03> {[ d, D, 6, asciicircum ]};
+	key <AC04> {[ f, F, backslash, bar ]};
+	key <AC05> {[ g, G, dead_acute ]};
+	key <AC06> {[ h, H, dead_macron ]};
+	key <AC07> {[ j, J, parenleft ]};
+	key <AC08> {[ k, K, parenright ]};
 	key <AC09> {[ l, L ]};
 	key <AC10> {[ semicolon, colon, guillemotleft ]};
 	key <AC11> {[ apostrophe, quotedbl, guillemotright ]};
 
-	key <AB01> {[ z, Z ]};
-	key <AB02> {[ x, X ]};
-	key <AB03> {[ c, C ]};
-	key <AB04> {[ v, V ]};
-	key <AB05> {[ b, B ]};
-	key <AB06> {[ n, N ]};
-	key <AB07> {[ m, M ]};
-	key <AB08> {[ comma, less ]};
+	key <AB01> {[ z, Z, 1, exclam ]};
+	key <AB02> {[ x, X, 2, at ]};
+	key <AB03> {[ c, C, 3, numbersign ]};
+	key <AB04> {[ v, V, 0, parenright ]};
+	key <AB05> {[ b, B, dead_grave ]};
+	key <AB06> {[ n, N, dead_diaeresis ]};
+	key <AB07> {[ m, M, braceleft ]};
+	key <AB08> {[ comma, less, braceright ]};
 	key <AB09> {[ period, greater, ellipsis ]};
 	key <AB10> {[ slash, question ]};
 
-	key <AD11> {[ bracketleft, braceleft ]};
-	key <AD12> {[ bracketright, braceright ]};
+	key <AE11> {[ minus, underscore, emdash, endash ]};
+	key <AE12> {[ equal, plus ]};
 
-	key <BKSL> {[ backslash, bar ]};
-
-	// caps lock is compose
-	key <CAPS> {[ Multi_key ]};
-
-	// right control is level 5
-	key <RCTL> {[ ISO_Level5_Shift, ISO_Level5_Shift ]};
-
-	// right alt is level 3
 	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
+	key <RTRN> {[ Return, Return, BackSpace, BackSpace ]};
+	key <SPCE> {[ space, space, Tab, Tab ]};
+	key <CAPS> {[ Multi_key, Multi_key ]};
 
-	key <SPCE> {[ space ]};
-
-	// two shifts = caps lock
-	key <LFSH> {[ Shift_L, Caps_Lock ]};
-	key <RTSH> {[ Shift_R, Caps_Lock ]};
+	key <UP> {[ Up, Up, Prior, Prior ]};
+	key <DOWN> {[ Down, Down, Next, Next ]};
+	key <LEFT> {[ Left, Left, Home, Home ]};
+	key <RGHT> {[ Right, Right, End, End ]};
 };
