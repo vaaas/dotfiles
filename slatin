@@ -56,8 +56,8 @@ xkb_symbols "basic" {
 	key <AB10> {[ slash, question ]};
 	key <BKSL> {[ backslash, bar ]};
 
-	key <CAPS> {[ Control_L ]};
-	key <LCTL> {[ Multi_key ]};
+	key <LCTL> {[ Control_L ]};
+	key <CAPS> {[ Multi_key ]};
 	key <RCTL> {[ ISO_Level5_Shift, ISO_Level5_Shift ]};
 	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
 
