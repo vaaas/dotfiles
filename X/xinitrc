@@ -11,10 +11,11 @@ ibus-daemon -xdr
 xset r rate 180
 setxkbmap vlatin
 
+redshift_service &
 dunst -font "Sans 16" &
-feh --bg-scale wallpaper &
+xwallpaper --tile wallpaper &
+unclutter --timeout 1 &
 bar &
 dbus-launch sxhkd &
-xrandr -s 1920x1080
-VBoxClient --clipboard
+picom &
 dbus-launch dwm-loop
