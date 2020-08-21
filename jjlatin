@@ -17,8 +17,8 @@ xkb_symbols "basic" {
 	key <AC02> {[ s, S, 5, percent ]};
 	key <AC03> {[ d, D, 6, asciicircum ]};
 	key <AC04> {[ f, F, backslash, bar ]};
-	key <AC05> {[ g, G, dead_acute ]};
-	key <AC06> {[ h, H, dead_macron ]};
+	key <AC05> {[ g, G, dead_acute, EuroSign ]};
+	key <AC06> {[ h, H, dead_macron, yen ]};
 	key <AC07> {[ j, J, parenleft ]};
 	key <AC08> {[ k, K, parenright ]};
 	key <AC09> {[ l, L ]};
