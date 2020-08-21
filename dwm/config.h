@@ -53,20 +53,20 @@ static const Layout layouts[] = {
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.125} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.125} },
-	{ MODKEY|ShiftMask,             XK_h,      setmfact,       {.f = -0.015625} },
-	{ MODKEY|ShiftMask,             XK_l,      setmfact,       {.f = +0.015625} },
+	{ MODKEY,                       XK_e,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_o,      focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_i,      setmfact,       {.f = -0.125} },
+	{ MODKEY,                       XK_a,      setmfact,       {.f = +0.125} },
+	{ MODKEY|ShiftMask,             XK_i,      setmfact,       {.f = -0.015625} },
+	{ MODKEY|ShiftMask,             XK_a,      setmfact,       {.f = +0.015625} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_k,      cyclelayout,    {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_j,      cyclelayout,    {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_o,      cyclelayout,    {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_e,      cyclelayout,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_f,      togglefloating, {0} },
-	{ MODKEY|ControlMask,           XK_h,      view_adjacent,  {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_l,      view_adjacent,  {.i = +1 } },
+	{ MODKEY|ControlMask,           XK_i,      view_adjacent,  {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_a,      view_adjacent,  {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

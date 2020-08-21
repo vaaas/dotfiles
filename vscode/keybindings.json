@@ -37,7 +37,7 @@
         "command": "-workbench.action.nextEditor"
     },
     {
-        "key": "ctrl+w",
+        "key": "ctrl+c",
         "command": "deleteWordLeft",
         "when": "textInputFocus && !editorReadonly"
     },
@@ -65,7 +65,7 @@
         "command": "-workbench.action.closeActiveEditor"
     },
     {
-        "key": "alt+k",
+        "key": "alt+o",
         "command": "cursorUp",
         "when": "textInputFocus"
     },
@@ -75,7 +75,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "alt+j",
+        "key": "alt+e",
         "command": "cursorDown",
         "when": "textInputFocus"
     },
@@ -85,7 +85,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "alt+h",
+        "key": "alt+i",
         "command": "cursorLeft",
         "when": "textInputFocus"
     },
@@ -95,7 +95,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "alt+l",
+        "key": "alt+a",
         "command": "cursorRight",
         "when": "textInputFocus"
     },
@@ -105,7 +105,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "ctrl+alt+l",
+        "key": "ctrl+alt+a",
         "command": "cursorWordEndRight",
         "when": "textInputFocus"
     },
@@ -115,7 +115,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "ctrl+alt+h",
+        "key": "ctrl+alt+i",
         "command": "cursorWordStartLeft",
         "when": "textInputFocus"
     },
@@ -125,7 +125,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "shift+alt+k",
+        "key": "shift+alt+o",
         "command": "cursorUpSelect",
         "when": "textInputFocus"
     },
@@ -135,7 +135,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "shift+alt+j",
+        "key": "shift+alt+e",
         "command": "cursorDownSelect",
         "when": "textInputFocus"
     },
@@ -145,7 +145,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "shift+alt+h",
+        "key": "shift+alt+i",
         "command": "cursorColumnSelectLeft",
         "when": "editorColumnSelection && textInputFocus"
     },
@@ -155,7 +155,7 @@
         "when": "editorColumnSelection && textInputFocus"
     },
     {
-        "key": "shift+alt+l",
+        "key": "shift+alt+a",
         "command": "cursorColumnSelectRight",
         "when": "editorColumnSelection && textInputFocus"
     },
@@ -165,7 +165,7 @@
         "when": "editorColumnSelection && textInputFocus"
     },
     {
-        "key": "shift+alt+l",
+        "key": "shift+alt+a",
         "command": "cursorRightSelect",
         "when": "textInputFocus"
     },
@@ -175,7 +175,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "shift+alt+h",
+        "key": "shift+alt+i",
         "command": "cursorLeftSelect",
         "when": "textInputFocus"
     },
@@ -185,7 +185,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "ctrl+shift+alt+l",
+        "key": "ctrl+shift+alt+a",
         "command": "cursorWordEndRightSelect",
         "when": "textInputFocus"
     },
@@ -195,7 +195,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "ctrl+shift+alt+h",
+        "key": "ctrl+shift+alt+i",
         "command": "cursorWordStartLeftSelect",
         "when": "textInputFocus"
     },
@@ -205,7 +205,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "ctrl+e",
+        "key": "ctrl+t",
         "command": "editor.action.smartSelect.expand",
         "when": "editorTextFocus"
     },
@@ -225,7 +225,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "alt+i",
+        "key": "alt+k",
         "command": "cursorPageUp",
         "when": "textInputFocus"
     },
@@ -235,7 +235,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "alt+y",
+        "key": "alt+w",
         "command": "cursorHome",
         "when": "textInputFocus"
     },
@@ -245,7 +245,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "alt+o",
+        "key": "alt+;",
         "command": "cursorEnd",
         "when": "textInputFocus"
     },
@@ -255,7 +255,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "shift+alt+x",
+        "key": "shift+alt+f",
         "command": "workbench.action.quickOpen"
     },
     {
@@ -263,7 +263,7 @@
         "command": "-workbench.action.quickOpen"
     },
     {
-        "key": "alt+x",
+        "key": "alt+f",
         "command": "workbench.action.showCommands"
     },
     {
@@ -271,7 +271,7 @@
         "command": "-workbench.action.showCommands"
     },
     {
-        "key": "shift+alt+y",
+        "key": "shift+alt+w",
         "command": "cursorHomeSelect",
         "when": "textInputFocus"
     },
@@ -281,7 +281,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "shift+alt+o",
+        "key": "shift+alt+;",
         "command": "cursorEndSelect",
         "when": "textInputFocus"
     },
@@ -291,7 +291,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "ctrl+j",
+        "key": "ctrl+e",
         "command": "editor.action.insertLineAfter",
         "when": "editorTextFocus && !editorReadonly"
     },
@@ -301,7 +301,7 @@
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+k",
+        "key": "ctrl+o",
         "command": "editor.action.deleteLines",
         "when": "textInputFocus && !editorReadonly"
     },
@@ -311,7 +311,7 @@
         "when": "textInputFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+shift+j",
+        "key": "ctrl+shift+e",
         "command": "editor.action.insertLineBefore",
         "when": "editorTextFocus && !editorReadonly"
     },
@@ -321,7 +321,7 @@
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "alt+f",
+        "key": "alt+t",
         "command": "editor.toggleFold",
         "when": "editorTextFocus && foldingEnabled"
     },
@@ -375,5 +375,55 @@
     {
         "key": "ctrl+space",
         "command": "insertSnippet"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "settings.action.search",
+        "when": "inSettingsEditor"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "-settings.action.search",
+        "when": "inSettingsEditor"
+    },
+    {
+        "key": "ctrl+shift+f",
+        "command": "workbench.view.search.focus"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "workbench.explorer.fileView.focus"
+    },
+    {
+        "key": "ctrl+shift+x",
+        "command": "editor.action.clipboardCopyAction"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "-editor.action.clipboardCopyAction"
+    },
+    {
+        "key": "ctrl+shift+x",
+        "command": "-workbench.view.extensions"
+    },
+    {
+        "key": "ctrl+[BracketLeft]",
+        "command": "editor.action.outdentLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+[BracketLeft]",
+        "command": "-editor.action.outdentLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+[BracketRight]",
+        "command": "editor.action.indentLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+[BracketRight]",
+        "command": "-editor.action.indentLines",
+        "when": "editorTextFocus && !editorReadonly"
     }
 ]

@@ -113,4 +113,5 @@
 	"search.exclude": {
 		"**/public": true
 	},
+	"window.zoomLevel": 0,
 }
