@@ -37,7 +37,7 @@
         "command": "-workbench.action.nextEditor"
     },
     {
-        "key": "ctrl+c",
+        "key": "ctrl+w",
         "command": "deleteWordLeft",
         "when": "textInputFocus && !editorReadonly"
     },
@@ -225,7 +225,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "alt+k",
+        "key": "alt+j",
         "command": "cursorPageUp",
         "when": "textInputFocus"
     },
@@ -235,7 +235,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "alt+w",
+        "key": "alt+v",
         "command": "cursorHome",
         "when": "textInputFocus"
     },
@@ -255,7 +255,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "shift+alt+f",
+        "key": "shift+alt+b",
         "command": "workbench.action.quickOpen"
     },
     {
@@ -263,7 +263,7 @@
         "command": "-workbench.action.quickOpen"
     },
     {
-        "key": "alt+f",
+        "key": "alt+b",
         "command": "workbench.action.showCommands"
     },
     {
@@ -271,7 +271,7 @@
         "command": "-workbench.action.showCommands"
     },
     {
-        "key": "shift+alt+w",
+        "key": "shift+alt+v",
         "command": "cursorHomeSelect",
         "when": "textInputFocus"
     },
@@ -425,5 +425,5 @@
         "key": "ctrl+shift+[BracketRight]",
         "command": "-editor.action.indentLines",
         "when": "editorTextFocus && !editorReadonly"
-    }
+    },
 ]

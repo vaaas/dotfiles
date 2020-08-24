@@ -19,6 +19,15 @@
 	"editor.lineNumbers": "off",
 	"editor.cursorSmoothCaretAnimation": true,
 	"editor.cursorStyle": "underline",
+	"keyboard.dispatch": "keyCode",
+	"editor.cursorBlinking": "solid",
+	"editor.smoothScrolling": true,
+	"editor.fontSize": 16,
+	"search.exclude": {
+		"**/public": true
+	},
+	"window.zoomLevel": 0,
+	"modaledit.keybindings": { "i": "modaledit.toggle" },
 	
 	"workbench.colorCustomizations": {
 		"editor.background": "#fff3e0",
@@ -106,12 +115,5 @@
 				"settings": { "fontStyle": "", "foreground": "#000000"}
 			}
 		]
-	},
-	"editor.cursorBlinking": "solid",
-	"editor.smoothScrolling": true,
-	"editor.fontSize": 16,
-	"search.exclude": {
-		"**/public": true
-	},
-	"window.zoomLevel": 0,
+	}
 }
