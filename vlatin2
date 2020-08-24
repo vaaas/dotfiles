@@ -52,8 +52,8 @@ xkb_symbols "basic" {
 	key <AB06> {[ f, F ]};
 	key <AB07> {[ p, P, braceleft ]};
 	key <AB08> {[ comma, less, braceright ]};
-	key <AB09> {[ period, greater, guillemotright ]};
-	key <AB10> {[ slash, question ]};
+	key <AB09> {[ period, greater, guillemotleft, ellipsis ]};
+	key <AB10> {[ slash, question, guillemotright ]};
 
 	key <BKSL> {[ backslash, bar ]};
 
