@@ -17,16 +17,16 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore, emdash, endash ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <AD01> {[ x, X ]};
-	key <AD02> {[ c, C ]};
+	key <AD01> {[ x, X, less ]};
+	key <AD02> {[ c, C, greater ]};
 	key <AD03> {[ d, D, equal ]};
 	key <AD04> {[ m, M, plus ]};
 	key <AD05> {[ w, W ]};
 	key <AD06> {[ q, Q ]};
 	key <AD07> {[ v, V, parenleft ]};
 	key <AD08> {[ u, U, parenright ]};
-	key <AD09> {[ j, J, bracketleft, braceleft ]};
-	key <AD10> {[ semicolon, colon, bracketright, braceright ]};
+	key <AD09> {[ j, J, bracketleft ]};
+	key <AD10> {[ semicolon, colon, bracketright ]};
 
 	// all the bracket pairs: paren, bracket, brace, comparisons
 	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
@@ -39,9 +39,9 @@ xkb_symbols "basic" {
 	key <AC05> {[ h, H ]};
 	key <AC06> {[ y, Y ]};
 	key <AC07> {[ i, I, Return, Return ]};
-	key <AC08> {[ e, E, Tab ]};
-	key <AC09> {[ o, O ]};
-	key <AC10> {[ a, A, escape ]};
+	key <AC08> {[ e, E, Tab, Tab ]};
+	key <AC09> {[ o, O, BackSpace, BackSpacef ]};
+	key <AC10> {[ a, A, Escape, Escape ]};
 	key <AC11> {[ apostrophe, quotedbl ]};
 
 	key <AB01> {[ z, Z ]};
