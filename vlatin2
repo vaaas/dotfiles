@@ -33,14 +33,14 @@ xkb_symbols "basic" {
 	key <AD12> {[ parenright, bracketright, braceright, greater ]};
 
 	key <AC01> {[ r, R ]};
-	key <AC02> {[ s, S ]};
+	key <AC02> {[ s, S, dollar ]};
 	key <AC03> {[ t, T, underscore ]};
 	key <AC04> {[ n, N, minus ]};
 	key <AC05> {[ h, H ]};
 	key <AC06> {[ y, Y ]};
 	key <AC07> {[ i, I, Return, Return ]};
 	key <AC08> {[ e, E, Tab, Tab ]};
-	key <AC09> {[ o, O, BackSpace, BackSpacef ]};
+	key <AC09> {[ o, O, BackSpace, BackSpace ]};
 	key <AC10> {[ a, A, Escape, Escape ]};
 	key <AC11> {[ apostrophe, quotedbl ]};
 
