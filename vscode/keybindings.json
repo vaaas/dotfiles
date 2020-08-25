@@ -291,7 +291,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "ctrl+e",
+        "key": "ctrl+i",
         "command": "editor.action.insertLineAfter",
         "when": "editorTextFocus && !editorReadonly"
     },
@@ -301,7 +301,7 @@
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+o",
+        "key": "ctrl+e",
         "command": "editor.action.deleteLines",
         "when": "textInputFocus && !editorReadonly"
     },
@@ -311,7 +311,7 @@
         "when": "textInputFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+shift+e",
+        "key": "ctrl+shift+i",
         "command": "editor.action.insertLineBefore",
         "when": "editorTextFocus && !editorReadonly"
     },
