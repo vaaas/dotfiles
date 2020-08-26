@@ -17,15 +17,15 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore, emdash, endash ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <AD01> {[ x, X, less ]};
-	key <AD02> {[ c, C, greater ]};
+	key <AD01> {[ q, Q, less ]};
+	key <AD02> {[ k, K, greater ]};
 	key <AD03> {[ d, D, equal ]};
 	key <AD04> {[ m, M, plus ]};
-	key <AD05> {[ w, W ]};
-	key <AD06> {[ q, Q ]};
-	key <AD07> {[ v, V, parenleft ]};
+	key <AD05> {[ v, V ]};
+	key <AD06> {[ j, J ]};
+	key <AD07> {[ w, W, parenleft ]};
 	key <AD08> {[ u, U, parenright ]};
-	key <AD09> {[ j, J, bracketleft ]};
+	key <AD09> {[ c, C, bracketleft ]};
 	key <AD10> {[ semicolon, colon, bracketright ]};
 
 	// all the bracket pairs: paren, bracket, brace, comparisons
@@ -45,11 +45,11 @@ xkb_symbols "basic" {
 	key <AC11> {[ apostrophe, quotedbl ]};
 
 	key <AB01> {[ z, Z ]};
-	key <AB02> {[ b, B ]};
+	key <AB02> {[ f, F ]};
 	key <AB03> {[ g, G ]};
 	key <AB04> {[ l, L ]};
-	key <AB05> {[ k, K ]};
-	key <AB06> {[ f, F ]};
+	key <AB05> {[ x, X ]};
+	key <AB06> {[ b, B ]};
 	key <AB07> {[ p, P, braceleft ]};
 	key <AB08> {[ comma, less, braceright ]};
 	key <AB09> {[ period, greater, guillemotleft, ellipsis ]};
