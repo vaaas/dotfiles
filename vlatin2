@@ -17,11 +17,11 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore, emdash, endash ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <AD01> {[ b, B, less ]};
-	key <AD02> {[ k, K, greater ]};
+	key <AD01> {[ v, V, less ]};
+	key <AD02> {[ c, C, greater ]};
 	key <AD03> {[ d, D, equal ]};
 	key <AD04> {[ m, M, plus ]};
-	key <AD05> {[ v, V ]};
+	key <AD05> {[ k, K ]};
 	key <AD06> {[ j, J ]};
 	key <AD07> {[ w, W, parenleft ]};
 	key <AD08> {[ u, U, parenright ]};
@@ -49,7 +49,7 @@ xkb_symbols "basic" {
 	key <AB03> {[ g, G ]};
 	key <AB04> {[ l, L ]};
 	key <AB05> {[ x, X ]};
-	key <AB06> {[ c, C ]};
+	key <AB06> {[ b, B ]};
 	key <AB07> {[ p, P, braceleft ]};
 	key <AB08> {[ comma, less, braceright ]};
 	key <AB09> {[ period, greater, guillemotleft, ellipsis ]};
