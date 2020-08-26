@@ -17,58 +17,49 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore, emdash, endash ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <AD01> {[ q, Q ]};
-	key <AD02> {[ c, C ]};
-	key <AD03> {[ d, D ]};
-	key <AD04> {[ m, M ]};
+	key <AD01> {[ q, Q, less ]};
+	key <AD02> {[ k, K, greater ]};
+	key <AD03> {[ d, D, equal ]};
+	key <AD04> {[ m, M, plus ]};
 	key <AD05> {[ v, V ]};
 	key <AD06> {[ j, J ]};
-	key <AD07> {[ w, W ]};
-	key <AD08> {[ u, U ]};
-	key <AD09> {[ k, K ]};
-	key <AD10> {[ semicolon, colon, ellipsis ]};
+	key <AD07> {[ w, W, parenleft ]};
+	key <AD08> {[ u, U, parenright ]};
+	key <AD09> {[ b, B, bracketleft ]};
+	key <AD10> {[ semicolon, colon, bracketright ]};
 
 	// all the bracket pairs: paren, bracket, brace, comparisons
 	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
 	key <AD12> {[ parenright, bracketright, braceright, greater ]};
 
-	key <AC01> {[ n, N ]};
-	key <AC02> {[ s, S ]};
-	key <AC03> {[ t, T ]};
-	key <AC04> {[ r, R ]};
+	key <AC01> {[ r, R ]};
+	key <AC02> {[ s, S, dollar ]};
+	key <AC03> {[ t, T, underscore ]};
+	key <AC04> {[ n, N, minus ]};
 	key <AC05> {[ h, H ]};
-	key <AC06> {[ y, Y, yen ]};
-	key <AC07> {[ i, I ]};
-	key <AC08> {[ e, E, euro ]};
-	key <AC09> {[ o, O ]};
-	key <AC10> {[ a, A ]};
-	key <AC11> {[ apostrophe, quotedbl, guillemotright ]};
+	key <AC06> {[ y, Y ]};
+	key <AC07> {[ i, I, Return, Return ]};
+	key <AC08> {[ e, E, Tab, Tab ]};
+	key <AC09> {[ o, O, BackSpace, BackSpace ]};
+	key <AC10> {[ a, A, Escape, Escape ]};
+	key <AC11> {[ apostrophe, quotedbl ]};
 
 	key <AB01> {[ z, Z ]};
 	key <AB02> {[ f, F ]};
 	key <AB03> {[ g, G ]};
 	key <AB04> {[ l, L ]};
 	key <AB05> {[ x, X ]};
-	key <AB06> {[ b, B ]};
-	key <AB07> {[ p, P ]};
-	key <AB08> {[ comma, less, guillemotleft ]};
-	key <AB09> {[ period, greater, guillemotright ]};
-	key <AB10> {[ slash, question ]};
+	key <AB06> {[ c, C ]};
+	key <AB07> {[ p, P, braceleft ]};
+	key <AB08> {[ comma, less, braceright ]};
+	key <AB09> {[ period, greater, guillemotleft, ellipsis ]};
+	key <AB10> {[ slash, question, guillemotright ]};
 
 	key <BKSL> {[ backslash, bar ]};
 
-	// caps lock is compose
-	key <CAPS> {[ Multi_key ]};
-
-	// right control is level 5
-	key <RCTL> {[ ISO_Level5_Shift, ISO_Level5_Shift ]};
-
-	// right alt is level 3
-	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
-
-	key <SPCE> {[ space ]};
-
-	// two shifts = caps lock
-	key <LFSH> {[ Shift_L, Caps_Lock ]};
-	key <RTSH> {[ Shift_R, Caps_Lock ]};
+	key <CAPS> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
+	key <TAB> {[ Control_L, Control_L ]};
+	key <LCTL> {[ Caps_Lock, Caps_Lock ]};
+	//key <RTRN> {[ ISO_Level5_Shift, ISO_Level5_Shift ]};
+	key <SPCE> {[ space, space, BackSpace, BackSpace ]};
 };
