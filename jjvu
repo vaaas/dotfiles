@@ -2,15 +2,15 @@ default partial alphanumeric_keys modifier_keys
 xkb_symbols "basic" {
 	name[Group1]= "English (Vas)";
 
-	key <AD01> {[ x, X, 7, ampersand ]};
-	key <AD02> {[ c, C, 8, asterisk ]};
+	key <AD01> {[ q, Q, 7, ampersand ]};
+	key <AD02> {[ k, K, 8, asterisk ]};
 	key <AD03> {[ d, D, 9, parenleft ]};
 	key <AD04> {[ m, M, grave, asciitilde ]};
-	key <AD05> {[ w, W, dead_circumflex ]};
-	key <AD06> {[ q, Q, dead_tilde ]};
-	key <AD07> {[ v, V, bracketleft ]};
+	key <AD05> {[ v, V, dead_circumflex ]};
+	key <AD06> {[ j, J, dead_tilde ]};
+	key <AD07> {[ w, W, bracketleft ]};
 	key <AD08> {[ u, U, bracketright ]};
-	key <AD09> {[ j, J ]};
+	key <AD09> {[ c, C ]};
 	key <AD10> {[ semicolon, colon ]};
 
 	key <AC01> {[ r, R, 4, dollar ]};
@@ -26,11 +26,11 @@ xkb_symbols "basic" {
 	key <AC11> {[ apostrophe, quotedbl ]};
 
 	key <AB01> {[ z, Z, 1, exclam ]};
-	key <AB02> {[ b, B, 2, at ]};
+	key <AB02> {[ f, F, 2, at ]};
 	key <AB03> {[ g, G, 3, numbersign ]};
 	key <AB04> {[ l, L, 0, parenright ]};
-	key <AB05> {[ k, K, dead_grave ]};
-	key <AB06> {[ f, F, dead_diaeresis ]};
+	key <AB05> {[ x, X, dead_grave ]};
+	key <AB06> {[ b, B, dead_diaeresis ]};
 	key <AB07> {[ p, P, braceleft ]};
 	key <AB08> {[ comma, less, braceright ]};
 	key <AB09> {[ period, greater, ellipsis ]};
