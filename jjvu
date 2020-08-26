@@ -10,7 +10,7 @@ xkb_symbols "basic" {
 	key <AD06> {[ j, J, dead_tilde ]};
 	key <AD07> {[ w, W, bracketleft ]};
 	key <AD08> {[ u, U, bracketright ]};
-	key <AD09> {[ c, C ]};
+	key <AD09> {[ b, B ]};
 	key <AD10> {[ semicolon, colon ]};
 
 	key <AC01> {[ r, R, 4, dollar ]};
@@ -30,7 +30,7 @@ xkb_symbols "basic" {
 	key <AB03> {[ g, G, 3, numbersign ]};
 	key <AB04> {[ l, L, 0, parenright ]};
 	key <AB05> {[ x, X, dead_grave ]};
-	key <AB06> {[ b, B, dead_diaeresis ]};
+	key <AB06> {[ c, C, dead_diaeresis ]};
 	key <AB07> {[ p, P, braceleft ]};
 	key <AB08> {[ comma, less, braceright ]};
 	key <AB09> {[ period, greater, ellipsis ]};
