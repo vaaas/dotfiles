@@ -1,0 +1,51 @@
+default partial alphanumeric_keys modifier_keys
+xkb_symbols "basic" {
+	name[Group1]= "English (Vas)";
+
+	key <AD01> {[ q, Q, 7, ampersand ]};
+	key <AD02> {[ c, C, 8, asterisk ]};
+	key <AD03> {[ d, D, 9, parenleft ]};
+	key <AD04> {[ m, M, grave, asciitilde ]};
+	key <AD05> {[ k, K, dead_circumflex ]};
+	key <AD06> {[ j, J, dead_tilde ]};
+	key <AD07> {[ w, W, bracketleft ]};
+	key <AD08> {[ u, U, bracketright ]};
+	key <AD09> {[ v, V ]};
+	key <AD10> {[ semicolon, colon ]};
+
+	key <AC01> {[ r, R, 4, dollar ]};
+	key <AC02> {[ s, S, 5, percent ]};
+	key <AC03> {[ t, T, 6, asciicircum ]};
+	key <AC04> {[ n, N, backslash, bar ]};
+	key <AC05> {[ h, H, dead_acute, EuroSign ]};
+	key <AC06> {[ y, Y, dead_macron, yen ]};
+	key <AC07> {[ i, I, parenleft ]};
+	key <AC08> {[ e, E, parenright ]};
+	key <AC09> {[ o, O, guillemotleft ]};
+	key <AC10> {[ a, A, guillemotright ]};
+	key <AC11> {[ apostrophe, quotedbl ]};
+
+	key <AB01> {[ z, Z, 1, exclam ]};
+	key <AB02> {[ f, F, 2, at ]};
+	key <AB03> {[ g, G, 3, numbersign ]};
+	key <AB04> {[ l, L, 0, parenright ]};
+	key <AB05> {[ x, X, dead_grave ]};
+	key <AB06> {[ b, B, dead_diaeresis ]};
+	key <AB07> {[ p, P, braceleft ]};
+	key <AB08> {[ comma, less, braceright ]};
+	key <AB09> {[ period, greater, ellipsis ]};
+	key <AB10> {[ slash, question ]};
+
+	key <AE11> {[ minus, underscore, emdash, endash ]};
+	key <AE12> {[ equal, plus ]};
+
+	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
+	key <RTRN> {[ Return, Return, BackSpace, BackSpace ]};
+	key <SPCE> {[ space, space, Tab, Tab ]};
+	key <CAPS> {[ Multi_key, Multi_key ]};
+
+	key <UP> {[ Up, Up, Prior, Prior ]};
+	key <DOWN> {[ Down, Down, Next, Next ]};
+	key <LEFT> {[ Left, Left, Home, Home ]};
+	key <RGHT> {[ Right, Right, End, End ]};
+};

@@ -1,0 +1,69 @@
+default partial alphanumeric_keys modifier_keys
+xkb_symbols "basic" {
+	name[Group1]= "English (Vas)";
+
+	key <TLDE> {[ grave, asciitilde ]};
+
+	key <AE01> {[ 1, exclam ]};
+	key <AE02> {[ 2, at ]};
+	key <AE03> {[ 3, numbersign]};
+	key <AE04> {[ 4, dollar, sterling ]};
+	key <AE05> {[ 5, percent ]};
+	key <AE06> {[ 6, asciicircum ]};
+	key <AE07> {[ 7, ampersand ]};
+	key <AE08> {[ 8, asterisk ]};
+	key <AE09> {[ 9, parenleft ]};
+	key <AE10> {[ 0, parenright ]};
+	key <AE11> {[ minus, underscore, emdash, endash ]};
+	key <AE12> {[ equal, plus ]};
+
+	key <AD01> {[ q, Q ]};
+	key <AD02> {[ w, W ]};
+	key <AD03> {[ e, E, EuroSign, yen ]};
+	key <AD04> {[ r, R ]};
+	key <AD05> {[ t, T ]};
+	key <AD06> {[ y, Y, braceleft ]};
+	key <AD07> {[ u, U, braceright ]};
+	key <AD08> {[ i, I, less ]};
+	key <AD09> {[ o, O, greater ]};
+	key <AD10> {[ p, P ]};
+
+	// all the bracket pairs: paren, bracket, brace, comparisons
+	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
+	key <AD12> {[ parenright, bracketright, braceright, greater ]};
+
+	key <AC01> {[ a, A, dead_grave ]};
+	key <AC02> {[ s, S, dead_diaeresis ]};
+	key <AC03> {[ d, D, dead_macron ]};
+	key <AC04> {[ f, F, dead_acute ]};
+	key <AC05> {[ g, G ]};
+	key <AC06> {[ h, H, parenleft ]};
+	key <AC07> {[ j, J, parenright ]};
+	key <AC08> {[ k, K, bracketleft ]};
+	key <AC09> {[ l, L, bracketright ]};
+	key <AC10> {[ semicolon, colon, guillemotleft ]};
+	key <AC11> {[ apostrophe, quotedbl, guillemotright ]};
+
+	key <AB01> {[ z, Z ]};
+	key <AB02> {[ x, X ]};
+	key <AB03> {[ c, C ]};
+	key <AB04> {[ v, V ]};
+	key <AB05> {[ b, B ]};
+	key <AB06> {[ n, N ]};
+	key <AB07> {[ m, M ]};
+	key <AB08> {[ comma, less ]};
+	key <AB09> {[ period, greater, ellipsis ]};
+	key <AB10> {[ slash, question ]};
+	key <BKSL> {[ backslash, bar ]};
+
+	key <LCTL> {[ Control_L ]};
+	key <CAPS> {[ Multi_key ]};
+	key <RCTL> {[ ISO_Level5_Shift, ISO_Level5_Shift ]};
+	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
+
+	key <SPCE> {[ space ]};
+
+	// two shifts = caps lock
+	key <LFSH> {[ Shift_L, Caps_Lock ]};
+	key <RTSH> {[ Shift_R, Caps_Lock ]};
+};
