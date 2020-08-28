@@ -11,7 +11,7 @@ ibus-daemon -xdr
 xset r rate 180
 setxkbmap vlatin
 
-dunst -font "Sans 16" &
+dunst -font "Sans 18" &
 feh --bg-scale wallpaper &
 bar &
 dbus-launch sxhkd &
