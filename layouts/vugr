@@ -17,40 +17,40 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore, emdash, endash ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <AD01> {[ k, K, less ]};
-	key <AD02> {[ c, C, greater ]};
-	key <AD03> {[ d, D, equal ]};
-	key <AD04> {[ m, M, plus ]};
-	key <AD05> {[ j, J ]};
-	key <AD06> {[ q, Q ]};
-	key <AD07> {[ w, W, parenleft ]};
-	key <AD08> {[ u, U, parenright ]};
-	key <AD09> {[ v, V, bracketleft ]};
-	key <AD10> {[ semicolon, colon, bracketright ]};
+	key <AD01> {[ Greek_kappa, Greek_KAPPA, less ]};
+	key <AD02> {[ Greek_psi, Greek_PSI, greater ]};
+	key <AD03> {[ Greek_delta, Greek_DELTA, equal ]};
+	key <AD04> {[ Greek_mu, Greek_MU, plus ]};
+	key <AD05> {[ Greek_xi, Greek_XI ]};
+	key <AD06> {[ semicolon, colon ]};
+	key <AD07> {[ Greek_finalsmallsigma, Greek_SIGMA, parenleft ]};
+	key <AD08> {[ Greek_theta, Greek_THETA, parenright ]};
+	key <AD09> {[ Greek_omega, Greek_OMEGA, bracketleft ]};
+	key <AD10> {[ dead_acute, dead_diaeresis, bracketright ]};
 
 	// all the bracket pairs: paren, bracket, brace, comparisons
 	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
 	key <AD12> {[ parenright, bracketright, braceright, greater ]};
 
-	key <AC01> {[ r, R ]};
-	key <AC02> {[ s, S, dollar ]};
-	key <AC03> {[ t, T, underscore ]};
-	key <AC04> {[ n, N, minus ]};
-	key <AC05> {[ h, H ]};
-	key <AC06> {[ y, Y ]};
-	key <AC07> {[ i, I, Return, Return ]};
-	key <AC08> {[ e, E, Tab, Tab ]};
-	key <AC09> {[ o, O, BackSpace, BackSpace ]};
-	key <AC10> {[ a, A, Escape, Escape ]};
+	key <AC01> {[ Greek_rho, Greek_RHO ]};
+	key <AC02> {[ Greek_sigma, Greek_SIGMA, dollar ]};
+	key <AC03> {[ Greek_tau, Greek_TAU, underscore ]};
+	key <AC04> {[ Greek_nu, Greek_NU, minus ]};
+	key <AC05> {[ Greek_eta, Greek_ETA ]};
+	key <AC06> {[ Greek_upsilon, Greek_UPSILON ]};
+	key <AC07> {[ Greek_iota, Greek_IOTA, Return, Return ]};
+	key <AC08> {[ Greek_epsilon, Greek_EPSILON, Tab, Tab ]};
+	key <AC09> {[ Greek_omicron, Greek_OMICRON, BackSpace, BackSpace ]};
+	key <AC10> {[ Greek_alpha, Greek_ALPHA, Escape, Escape ]};
 	key <AC11> {[ apostrophe, quotedbl ]};
 
-	key <AB01> {[ z, Z ]};
-	key <AB02> {[ f, F ]};
-	key <AB03> {[ g, G ]};
-	key <AB04> {[ l, L ]};
-	key <AB05> {[ x, X ]};
-	key <AB06> {[ b, B ]};
-	key <AB07> {[ p, P, braceleft ]};
+	key <AB01> {[ Greek_zeta, Greek_ZETA ]};
+	key <AB02> {[ Greek_phi, Greek_PHI ]};
+	key <AB03> {[ Greek_gamma, Greek_GAMMA ]};
+	key <AB04> {[ Greek_lambda, Greek_LAMBDA ]};
+	key <AB05> {[ Greek_chi, Greek_CHI ]};
+	key <AB06> {[ Greek_beta, Greek_BETA ]};
+	key <AB07> {[ Greek_pi, Greek_PI, braceleft ]};
 	key <AB08> {[ comma, less, braceright ]};
 	key <AB09> {[ period, greater, guillemotleft, ellipsis ]};
 	key <AB10> {[ slash, question, guillemotright ]};
