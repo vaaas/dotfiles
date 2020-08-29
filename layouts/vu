@@ -17,12 +17,12 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore, emdash, endash ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <AD01> {[ q, Q, less ]};
+	key <AD01> {[ k, K, less ]};
 	key <AD02> {[ c, C, greater ]};
 	key <AD03> {[ d, D, equal ]};
 	key <AD04> {[ m, M, plus ]};
-	key <AD05> {[ k, K ]};
-	key <AD06> {[ j, J ]};
+	key <AD05> {[ j, J ]};
+	key <AD06> {[ q, Q ]};
 	key <AD07> {[ w, W, parenleft ]};
 	key <AD08> {[ u, U, parenright ]};
 	key <AD09> {[ v, V, bracketleft ]};
