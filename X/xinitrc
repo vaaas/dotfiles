@@ -18,5 +18,4 @@ unclutter --timeout 1 &
 bar &
 dbus-launch sxhkd &
 picom &
-unclutter --timeout 1 &
 dbus-launch dwm-loop
