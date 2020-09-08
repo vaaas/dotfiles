@@ -22,11 +22,11 @@ xkb_symbols "basic" {
 	key <AD03> {[ Greek_delta, Greek_DELTA, equal ], [d, D] };
 	key <AD04> {[ Greek_mu, Greek_MU, plus ], [m, m] };
 	key <AD05> {[ Greek_xi, Greek_XI ], [j, J] };
-	key <AD06> {[ semicolon, colon ], [q, Q] };
+	key <AD06> {[ Greek_theta, Greek_THETA ], [q, Q] };
 	key <AD07> {[ Greek_finalsmallsigma, Greek_SIGMA, parenleft ], [w, W] };
-	key <AD08> {[ Greek_theta, Greek_THETA, parenright ], [u, U] };
+	key <AD08> {[ dead_acute, dead_diaeresis, parenright ], [u, U] };
 	key <AD09> {[ Greek_omega, Greek_OMEGA, bracketleft ], [v, V] };
-	key <AD10> {[ dead_acute, dead_diaeresis, bracketright ], [semicolon, colon] };
+	key <AD10> {[ colon, semicolon, bracketright ] };
 
 	// all the bracket pairs: paren, bracket, brace, comparisons
 	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
