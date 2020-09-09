@@ -2,22 +2,22 @@ default partial alphanumeric_keys modifier_keys
 xkb_symbols "basic" {
 	name[Group1]= "English (Vas)";
 
-	key <AD01> {[ Greek_kappa, Greek_KAPPA, 7, ampersand ], [k, K]};
-	key <AD02> {[ Greek_psi, Greek_PSI, 8, asterisk ], [c, C]};
+	key <AD01> {[ Greek_theta, Greek_THETA, 7, ampersand ], [k, K]};
+	key <AD02> {[ Greek_kappa, Greek_KAPPA, 8, asterisk ], [c, C]};
 	key <AD03> {[ Greek_delta, Greek_DELTA, 9, parenleft ], [d, D]};
 	key <AD04> {[ Greek_mu, Greek_MU, grave, asciitilde ], [m, M]};
 	key <AD05> {[ Greek_xi, Greek_XI, dead_circumflex ], [j, J]};
-	key <AD06> {[ semicolon, colon, dead_tilde ], [q, Q]};
-	key <AD07> {[ Greek_finalsmallsigma, Greek_SIGMA, bracketleft ], [w, W]};
-	key <AD08> {[ Greek_theta, Greek_THETA, bracketright ], [u, U]};
+	key <AD06> {[ Greek_psi, Greek_PSI, dead_tilde ], [q, Q]};
+	key <AD07> {[ Greek_eta, Greek_ETA ], [w, W]};
+	key <AD08> {[ dead_acute, dead_diaeresis, bracketright ], [u, U]};
 	key <AD09> {[ Greek_omega, Greek_OMEGA ], [v, V]};
-	key <AD10> {[ dead_acute, dead_diaeresis ]};
+	key <AD10> {[ semicolon, colon ]};
 
 	key <AC01> {[ Greek_rho, Greek_RHO, 4, dollar ], [r, R]};
 	key <AC02> {[ Greek_sigma, Greek_SIGMA, 5, percent ], [s, S]};
 	key <AC03> {[ Greek_tau, Greek_TAU, 6, asciicircum ], [t, T]};
 	key <AC04> {[ Greek_nu, Greek_NU, backslash, bar ], [n, N]};
-	key <AC05> {[ Greek_eta, Greek_ETA, dead_acute, EuroSign ], [h, H]};
+	key <AC05> {[ Greek_finalsmallsigma, Greek_SIGMA, bracketleft, dead_acute, EuroSign ], [h, H]};
 	key <AC06> {[ Greek_upsilon, Greek_UPSILON, dead_macron, yen ], [y, Y]};
 	key <AC07> {[ Greek_iota, Greek_IOTA, parenleft ], [i, I]};
 	key <AC08> {[ Greek_epsilon, Greek_EPSILON, parenright ], [e, E]};
