@@ -17,16 +17,16 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore, emdash, endash ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <AD01> {[ Greek_kappa, Greek_KAPPA, less ], [k, K] };
-	key <AD02> {[ Greek_psi, Greek_PSI, greater ], [c, C] };
+	key <AD01> {[ Greek_theta, Greek_THETA, less ], [k, K] };
+	key <AD02> {[ Greek_kappa, Greek_KAPPA, greater ], [c, C] };
 	key <AD03> {[ Greek_delta, Greek_DELTA, equal ], [d, D] };
 	key <AD04> {[ Greek_mu, Greek_MU, plus ], [m, m] };
 	key <AD05> {[ Greek_xi, Greek_XI ], [j, J] };
-	key <AD06> {[ semicolon, colon ], [q, Q] };
-	key <AD07> {[ Greek_finalsmallsigma, Greek_SIGMA, parenleft ], [w, W] };
-	key <AD08> {[ Greek_theta, Greek_THETA, parenright ], [u, U] };
+	key <AD06> {[ Greek_psi, Greek_PSI ], [q, Q] };
+	key <AD07> {[ Greek_eta, Greek_ETA, parenleft ], [w, W] };
+	key <AD08> {[ dead_acute, dead_diaeresis, parenright ], [u, U] };
 	key <AD09> {[ Greek_omega, Greek_OMEGA, bracketleft ], [v, V] };
-	key <AD10> {[ dead_acute, dead_diaeresis, bracketright ], [semicolon, colon] };
+	key <AD10> {[ semicolon, colon, bracketright ] };
 
 	// all the bracket pairs: paren, bracket, brace, comparisons
 	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
@@ -36,7 +36,7 @@ xkb_symbols "basic" {
 	key <AC02> {[ Greek_sigma, Greek_SIGMA, dollar ], [s, S] };
 	key <AC03> {[ Greek_tau, Greek_TAU, underscore ], [t, T] };
 	key <AC04> {[ Greek_nu, Greek_NU, minus ], [n, N] };
-	key <AC05> {[ Greek_eta, Greek_ETA ], [h, H] };
+	key <AC05> {[ Greek_finalsmallsigma, Greek_SIGMA ], [h, H] };
 	key <AC06> {[ Greek_upsilon, Greek_UPSILON ], [y, Y] };
 	key <AC07> {[ Greek_iota, Greek_IOTA, Return, Return ], [i, I] };
 	key <AC08> {[ Greek_epsilon, Greek_EPSILON, Tab, Tab ], [e, E] };
