@@ -19,13 +19,13 @@ xkb_symbols "basic" {
 
 	key <AD01> {[ Greek_theta, Greek_THETA, less ], [k, K] };
 	key <AD02> {[ Greek_kappa, Greek_KAPPA, greater ], [c, C] };
-	key <AD03> {[ Greek_delta, Greek_DELTA, equal ], [d, D] };
+	key <AD03> {[ dead_acute, dead_diaeresis, equal ], [d, D] };
 	key <AD04> {[ Greek_mu, Greek_MU, plus ], [m, m] };
 	key <AD05> {[ Greek_xi, Greek_XI ], [j, J] };
 	key <AD06> {[ Greek_psi, Greek_PSI ], [q, Q] };
-	key <AD07> {[ Greek_eta, Greek_ETA, parenleft ], [w, W] };
-	key <AD08> {[ dead_acute, dead_diaeresis, parenright ], [u, U] };
-	key <AD09> {[ Greek_omega, Greek_OMEGA, bracketleft ], [v, V] };
+	key <AD07> {[ Greek_omega, Greek_OMEGA, parenleft ], [w, W] };
+	key <AD08> {[ Greek_eta, Greek_ETA, parenright ], [u, U] };
+	key <AD09> {[ Greek_delta, Greek_DELTA, bracketleft ], [v, V] };
 	key <AD10> {[ semicolon, colon, bracketright ] };
 
 	// all the bracket pairs: paren, bracket, brace, comparisons
