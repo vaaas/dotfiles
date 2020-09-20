@@ -56,7 +56,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_e,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_o,      focusstack,     {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_i,      setmfact,       {.f = -0.125} },
-	{ MODKEY|ControlMask,           XK_a,      setmfact,       {.f +0.125} },
+	{ MODKEY|ControlMask,           XK_a,      setmfact,       {.f = +0.125} },
 	{ MODKEY|ShiftMask,             XK_i,      setmfact,       {.f = -0.015625} },
 	{ MODKEY|ShiftMask,             XK_a,      setmfact,       {.f = +0.015625} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
