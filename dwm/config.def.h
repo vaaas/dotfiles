@@ -16,7 +16,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "w", "u", "v", ";", "-" };
+static const char *tags[] = { "wrk", "www", "cmd", "fun", "etc" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -34,11 +34,11 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
+	{ "T",      tile },    /* first entry is default */
 	//{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
-	{ "|M|",      centeredmaster },
-	{ ">M>",      centeredfloatingmaster },
+	{ "M",      monocle },
+	{ "C",      centeredmaster },
+	{ "CF",      centeredfloatingmaster },
 	{ NULL,       NULL }
 };
 
@@ -46,27 +46,27 @@ static const Layout layouts[] = {
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ MODKEY|Mod1Mask,              KEY,      toggleview,     {.ui = 1 << TAG} }, \
+	{ MODKEY|ControlMask,           KEY,      tag,            {.ui = 1 << TAG} }, \
+	{ MODKEY|ShiftMask,             KEY,      toggletag,      {.ui = 1 << TAG} },
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_e,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_o,      focusstack,     {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_e,      cyclelayout,    {.i = +1 } },
+	{ MODKEY|ControlMask,           XK_o,      cyclelayout,    {.i = -1 } },
+	{ MODKEY,                       XK_i,      view_adjacent,  {.i = -1 } },
+	{ MODKEY,                       XK_a,      view_adjacent,  {.i = +1 } },
 	{ MODKEY|ControlMask,           XK_i,      setmfact,       {.f = -0.125} },
 	{ MODKEY|ControlMask,           XK_a,      setmfact,       {.f = +0.125} },
-	{ MODKEY|ShiftMask,             XK_i,      setmfact,       {.f = -0.015625} },
-	{ MODKEY|ShiftMask,             XK_a,      setmfact,       {.f = +0.015625} },
+	{ MODKEY|Mod1Mask,              XK_i,      setmfact,       {.f = -0.015625} },
+	{ MODKEY|Mod1Mask,              XK_a,      setmfact,       {.f = +0.015625} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                   XK_apostrophe, view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_o,      cyclelayout,    {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_e,      cyclelayout,    {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_f,      togglefloating, {0} },
-	{ MODKEY,                       XK_i,      view_adjacent,  {.i = -1 } },
-	{ MODKEY,                       XK_a,      view_adjacent,  {.i = +1 } },
+	{ MODKEY|ControlMask,           XK_f,      togglefloating, {0} },
 	TAGKEYS(                        XK_w,                      0)
 	TAGKEYS(                        XK_u,                      1)
 	TAGKEYS(                        XK_v,                      2)
