@@ -2,12 +2,12 @@ default partial alphanumeric_keys modifier_keys
 xkb_symbols "basic" {
 	name[Group1]= "English (Vas)";
 
-	key <AD01> {[ q, Q, 7, ampersand ]};
+	key <AD01> {[ k, K, 7, ampersand ]};
 	key <AD02> {[ c, C, 8, asterisk ]};
 	key <AD03> {[ d, D, 9, parenleft ]};
 	key <AD04> {[ m, M, grave, asciitilde ]};
-	key <AD05> {[ k, K, dead_circumflex ]};
-	key <AD06> {[ j, J, dead_tilde ]};
+	key <AD05> {[ j, J, dead_circumflex ]};
+	key <AD06> {[ q, Q, dead_tilde ]};
 	key <AD07> {[ w, W, bracketleft ]};
 	key <AD08> {[ u, U, bracketright ]};
 	key <AD09> {[ v, V ]};
