@@ -16,7 +16,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "w", "u", "v", ";", "-" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -55,27 +55,23 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_e,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_o,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      setmfact,       {.f = -0.125} },
-	{ MODKEY,                       XK_a,      setmfact,       {.f = +0.125} },
+	{ MODKEY|ControlMask,           XK_i,      setmfact,       {.f = -0.125} },
+	{ MODKEY|ControlMask,           XK_a,      setmfact,       {.f +0.125} },
 	{ MODKEY|ShiftMask,             XK_i,      setmfact,       {.f = -0.015625} },
 	{ MODKEY|ShiftMask,             XK_a,      setmfact,       {.f = +0.015625} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY,                   XK_apostrophe, view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_o,      cyclelayout,    {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_e,      cyclelayout,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_f,      togglefloating, {0} },
-	{ MODKEY|ControlMask,           XK_i,      view_adjacent,  {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_a,      view_adjacent,  {.i = +1 } },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
+	{ MODKEY,                       XK_i,      view_adjacent,  {.i = -1 } },
+	{ MODKEY,                       XK_a,      view_adjacent,  {.i = +1 } },
+	TAGKEYS(                        XK_w,                      0)
+	TAGKEYS(                        XK_u,                      1)
+	TAGKEYS(                        XK_v,                      2)
+	TAGKEYS(                        XK_semicolon,              3)
+	TAGKEYS(                        XK_minus,                  4)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 

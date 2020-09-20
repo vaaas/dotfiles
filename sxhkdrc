@@ -28,13 +28,13 @@ super + c ; d
 super + c ; v
 	xclip -selection clipboard -o | pr -Td | xclip -selection clipboard
 
-super + e
+super + d
 	dmenu_run -i
 
-super + shift + e
+super + shift + d
 	clip_run
 
-super + o
+super + m
 	thefile="$(xzcat ~/filedb.xz | dmenu)" && gio open "$thefile"
 
 super + F1
@@ -64,13 +64,13 @@ super + F7
 super + F8
 	codium $(find code -maxdepth 1 -mindepth 1 | dmenu)
 
-super + a
+super + k
 	xterm
 
 super + shift + grave
 	emacsclient -nc -e "(eshell)"
 
-super + p
+super + j
 	passmenu
 
 XF86AudioLowerVolume
