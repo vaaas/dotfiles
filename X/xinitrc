@@ -14,7 +14,7 @@ setxkbmap vlatin
 dunst -font "Sans 18" &
 feh --bg-scale wallpaper &
 bar &
-dbus-launch sxhkd &
+dbus-launch sxhkd -m 1 &
 xrandr -s 1920x1080
 VBoxClient --clipboard
 dbus-launch dwm-loop
