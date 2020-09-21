@@ -26,7 +26,7 @@
 	"search.exclude": {
 		"**/public": true
 	},
-	"window.zoomLevel": 0,
+	"window.zoomLevel": 2,
 	"modaledit.keybindings": { "i": "modaledit.toggle" },
 	
 	"workbench.colorCustomizations": {

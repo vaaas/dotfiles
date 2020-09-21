@@ -15,6 +15,7 @@ dunst -font "Sans 18" &
 feh --bg-scale wallpaper &
 bar &
 dbus-launch sxhkd &
+unclutter &
 xrandr -s 1920x1080
 VBoxClient --clipboard
 dbus-launch dwm-loop
