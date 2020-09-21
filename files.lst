@@ -35,7 +35,7 @@ bin/g	~/Binaries/g
 bin/dmenu	~/Binaries/dmenu
 bin/kswitcher	~/Binaries/kswitcher
 nautilus/scripts-accels	~/.config/nautilus/scripts-accels
-nautilus/st-here	~/.local/share/nautilus/scripts/st-here
+nautilus/term-here	~/.local/share/nautilus/scripts/term-here
 nautilus/dmenu-selection	~/.local/share/nautilus/scripts/dmenu-selection
 tint2rc	~/.config/tint2/tint2rc
 sxhkdrc	~/.config/sxhkd/sxhkdrc
