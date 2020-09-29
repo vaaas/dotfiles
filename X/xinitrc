@@ -4,7 +4,7 @@ xrdb -merge ~/.Xresources
 
 export GTK_USE_PORTAL=1
 # keyboard configuration
-export GTK_IM_MODULE=xim
+export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=xim
 ibus-daemon -xdr
