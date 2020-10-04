@@ -30,8 +30,8 @@ xkb_symbols "basic" {
 	key <AC02> {[ s, S, dead_macron ]};
 	key <AC03> {[ t, T, dead_grave, dead_circumflex ]};
 	key <AC04> {[ n, N, dead_acute, dead_tilde ]};
-	key <AC05> {[ h, H, EuroSign ]};
-	key <AC06> {[ y, Y, yen ]};
+	key <AC05> {[ h, H, guillemotleft ]};
+	key <AC06> {[ y, Y, guillemotright ]};
 	key <AC07> {[ i, I, parenleft, bracketleft ]};
 	key <AC08> {[ e, E, parenright, bracketright ]};
 	key <AC09> {[ o, O, braceleft, less ]};
@@ -42,23 +42,23 @@ xkb_symbols "basic" {
 	key <AB02> {[ f, F ]};
 	key <AB03> {[ g, G ]};
 	key <AB04> {[ l, L ]};
-	key <AB05> {[ x, X, dead_grave ]};
-	key <AB06> {[ b, B, dead_diaeresis ]};
-	key <AB07> {[ p, P, braceleft ]};
-	key <AB08> {[ comma, guillemotleft ]};
-	key <AB09> {[ period, guillemotright, ellipsis ]};
+	key <AB05> {[ x, X ]};
+	key <AB06> {[ b, B ]};
+	key <AB07> {[ p, P]};
+	key <AB08> {[ comma, less, emdash, endash ]};
+	key <AB09> {[ period, greater, ellipsis ]};
 	key <AB10> {[ slash, question ]};
 
-	key <AE11> {[ minus, underscore, emdash, endash ]};
+	key <AE11> {[ minus, underscore ]};
 	key <AE12> {[ equal, plus ]};
 
 	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
-	key <RTRN> {[ Return, Return, BackSpace, BackSpace ]};
-	key <SPCE> {[ space, space, Tab, Tab ]};
+	key <RTRN> {[ Return, Return ]};
+	key <SPCE> {[ space, space ]};
 	key <CAPS> {[ Multi_key, Multi_key ]};
 
-	key <UP> {[ Up, Up, Prior, Prior ]};
-	key <DOWN> {[ Down, Down, Next, Next ]};
-	key <LEFT> {[ Left, Left, Home, Home ]};
-	key <RGHT> {[ Right, Right, End, End ]};
+	key <UP> {[ Up, Up ]};
+	key <DOWN> {[ Down, Down ]};
+	key <LEFT> {[ Left, Left ]};
+	key <RGHT> {[ Right, Right ]};
 };
