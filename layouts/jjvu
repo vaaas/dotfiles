@@ -1,6 +1,6 @@
 default partial alphanumeric_keys modifier_keys
 xkb_symbols "basic" {
-	name[Group1]= "English (Vas)";
+	name[Group1]= "English (jjvu)";
 
 	key <TLDE> {[ grave, asciitilde ]};
 
@@ -51,6 +51,9 @@ xkb_symbols "basic" {
 
 	key <AE11> {[ minus, underscore ]};
 	key <AE12> {[ equal, plus ]};
+
+	key <AD11> {[ bracketleft, braceleft ]};
+	key <AD12> {[ bracketright, braceright ]};
 
 	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
 	key <RTRN> {[ Return, Return ]};
