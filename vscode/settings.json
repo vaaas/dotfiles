@@ -120,5 +120,5 @@
 	"vetur.validation.template": false,
 	"vetur.validation.style": false,
 	"vetur.validation.script": false,
-	"vetur.validation.interpolation": false
+    "vetur.validation.interpolation": false
 }

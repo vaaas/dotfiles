@@ -9,13 +9,14 @@ export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=xim
 ibus-daemon -xdr
 xset r rate 180
-setxkbmap vlatin
+xkb:vu::eng
 
 dunst -font "Sans 18" &
 feh --bg-scale wallpaper &
 bar &
 unclutter &
-dbus-launch sxhkd -m 1 &
+dbus-launch sxhkd -m -1 &
+netbeans &
 xrandr -s 1920x1080
 VBoxClient --clipboard
 dbus-launch dwm-loop
