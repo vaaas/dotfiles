@@ -1,6 +1,5 @@
 picom.conf	~/.config/picom.conf
 fonts.conf	~/.config/fontconfig/fonts.conf
-rc.xml	~/.config/openbox/rc.xml
 screenrc	~/.screenrc
 bash/bashrc	~/.bashrc
 bash/bash_profile	~/.bash_profile
@@ -37,10 +36,5 @@ bin/kswitcher	~/Binaries/kswitcher
 nautilus/scripts-accels	~/.config/nautilus/scripts-accels
 nautilus/term-here	~/.local/share/nautilus/scripts/term-here
 nautilus/dmenu-selection	~/.local/share/nautilus/scripts/dmenu-selection
-tint2rc	~/.config/tint2/tint2rc
 sxhkdrc	~/.config/sxhkd/sxhkdrc
-alacritty.yml	~/.config/alacritty/alacritty.yml
-init.el	~/.emacs.d/init.el
 abbrev_defs	~/.emacs.d/abbrev_defs
-vscode/settings.json	~/.config/VSCodium/User/settings.json
-vscode/keybindings.json	~/.config/VSCodium/User/keybindings.json

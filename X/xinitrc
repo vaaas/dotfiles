@@ -11,8 +11,10 @@ ibus-daemon -xdr
 xset r rate 180
 xkb:vu::eng
 
-dunst -font "Sans 18" &
-feh --bg-scale wallpaper &
+redshift_service &
+dunst -font "Sans 16" &
+xwallpaper --tile wallpaper &
+unclutter --timeout 1 &
 bar &
 unclutter &
 dbus-launch sxhkd -m -1 &
