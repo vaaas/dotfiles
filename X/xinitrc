@@ -13,7 +13,7 @@ xkb:vu::eng
 
 redshift_service &
 dunst -font "Sans 16" &
-xwallpaper --tile wallpaper &
+feh --bg-fill wallpaper &
 unclutter --timeout 1 &
 bar &
 unclutter &
