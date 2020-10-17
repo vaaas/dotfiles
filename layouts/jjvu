@@ -26,16 +26,16 @@ xkb_symbols "basic" {
 	key <AD09> {[ v, V ]};
 	key <AD10> {[ semicolon, colon ]};
 
-	key <AC01> {[ r, R, dead_diaeresis ]};
-	key <AC02> {[ s, S, dead_macron ]};
-	key <AC03> {[ t, T, dead_grave, dead_circumflex ]};
-	key <AC04> {[ n, N, dead_acute, dead_tilde ]};
-	key <AC05> {[ h, H, guillemotleft ]};
-	key <AC06> {[ y, Y, guillemotright ]};
-	key <AC07> {[ i, I, parenleft, bracketleft ]};
-	key <AC08> {[ e, E, parenright, bracketright ]};
-	key <AC09> {[ o, O, braceleft, less ]};
-	key <AC10> {[ a, A, braceright, greater ]};
+	key <AC01> {[ r, R ]};
+	key <AC02> {[ s, S ]};
+	key <AC03> {[ t, T ]};
+	key <AC04> {[ n, N ]};
+	key <AC05> {[ h, H ]};
+	key <AC06> {[ y, Y ]};
+	key <AC07> {[ i, I ]};
+	key <AC08> {[ e, E ]};
+	key <AC09> {[ o, O ]};
+	key <AC10> {[ a, A ]};
 	key <AC11> {[ apostrophe, quotedbl ]};
 
 	key <AB01> {[ z, Z ]};
@@ -45,23 +45,17 @@ xkb_symbols "basic" {
 	key <AB05> {[ x, X ]};
 	key <AB06> {[ b, B ]};
 	key <AB07> {[ p, P]};
-	key <AB08> {[ comma, less, emdash, endash ]};
-	key <AB09> {[ period, greater, ellipsis ]};
+	key <AB08> {[ comma, less ]};
+	key <AB09> {[ period, greater ]};
 	key <AB10> {[ slash, question ]};
 
 	key <AE11> {[ minus, underscore ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <AD11> {[ bracketleft, braceleft ]};
-	key <AD12> {[ bracketright, braceright ]};
+	key <AD11> {[ parenleft, bracketleft, braceleft]};
+	key <AD12> {[ parenright, bracketright, braceright ]};
+	key <KP3> {[ braceleft, less ]};
+	key <KP4> {[ braceright, greater ]};
 
-	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
-	key <RTRN> {[ Return, Return ]};
-	key <SPCE> {[ space, space ]};
 	key <CAPS> {[ Multi_key, Multi_key ]};
-
-	key <UP> {[ Up, Up ]};
-	key <DOWN> {[ Down, Down ]};
-	key <LEFT> {[ Left, Left ]};
-	key <RGHT> {[ Right, Right ]};
 };
