@@ -45,23 +45,17 @@ xkb_symbols "basic" {
 	key <AB05> {[ Greek_chi, Greek_CHI ], [x, X]};
 	key <AB06> {[ Greek_beta, Greek_BETA ], [b, B]};
 	key <AB07> {[ Greek_pi, Greek_PI ], [p, P]};
-	key <AB08> {[ comma, less, emdash, endash ]};
-	key <AB09> {[ period, greater, ellipsis ]};
+	key <AB08> {[ comma, less ]};
+	key <AB09> {[ period, greater ]};
 	key <AB10> {[ slash, question ]};
 
 	key <AE11> {[ minus, underscore ]};
 	key <AE12> {[ equal, plus ]};
-	
-	key <AD11> {[ bracketleft, braceleft ]};
-	key <AD12> {[ bracketright, braceright ]};
 
-	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
-	key <RTRN> {[ Return, Return ]};
-	key <SPCE> {[ space, space ]};
+	key <AD11> {[ parenleft, bracketleft ]};
+	key <AD12> {[ parenright, bracketright ]};
+	key <KP3> {[ braceleft, less ]};
+	key <KP4> {[ braceright, greater ]};
+
 	key <CAPS> {[ Multi_key, Multi_key ]};
-
-	key <UP> {[ Up, Up ]};
-	key <DOWN> {[ Down, Down ]};
-	key <LEFT> {[ Left, Left ]};
-	key <RGHT> {[ Right, Right ]};
 };

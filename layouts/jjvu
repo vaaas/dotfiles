@@ -52,8 +52,8 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <AD11> {[ parenleft, bracketleft, braceleft]};
-	key <AD12> {[ parenright, bracketright, braceright ]};
+	key <AD11> {[ parenleft, bracketleft ]};
+	key <AD12> {[ parenright, bracketright ]};
 	key <KP3> {[ braceleft, less ]};
 	key <KP4> {[ braceright, greater ]};
 
