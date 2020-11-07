@@ -1,0 +1,135 @@
+#!/usr/bin/env python
+
+import sys
+import os
+import xml.dom.minidom as dom
+from subprocess import run
+
+class E:
+	def __init__(self, name):
+		self.name = name
+		self.props = dict()
+		self.children = []
+	
+	def set(self, k, v):
+		self.props[k] = v
+		return self
+	
+	def child(self, x):
+		self.children.append(x)
+		return self
+	
+	def serialise(self):
+		x = '<' + self.name
+		if (self.props):
+			x += ' ' + ' '.join([ '%s="%s"' % x for x in self.props.items() ])
+		if self.children:
+			x += '>' + ''.join([x.serialise() for x in self.children])
+			x += '</' + self.name + '>'
+		else:
+			x += '/>'
+		if self.name in ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'img']:
+			x += '\n\n'
+		return x
+
+class Text:
+	def __init__(self, text):
+		self.text = text
+		
+	def serialise(self):
+		return self.text
+
+def start(e):
+	for x in e.childNodes:
+		if x.tagName != 'office:body': continue
+		else: return body(x)
+
+def body(e):
+	for x in e.childNodes:
+		if x.tagName != 'office:text': continue
+		else: return text(x)
+
+def text(e):
+	body = E('body')
+	for x in e.childNodes:
+		elem = None
+		if isHeading(x):
+			elem = E('h'+outlineLevel(x))
+		elif isPara(x):
+			elem = E('p')
+		else: continue
+		inline(x, elem)
+		body.child(elem)
+	return body
+
+def inline(e, p):
+	for x in e.childNodes:
+		if isTextNode(x):
+			p.child(Text(x.nodeValue))
+		elif isSpan(x):
+			if isStrikethrough(x):
+				p.child(E('s').child(Text(innerText(x))))
+			elif isEmphasis(x):
+				p.child(E('em').child(Text(innerText(x))))
+		elif isLink(x):
+			p.child(E('a').set('href', href(x)).child(Text(innerText(x))))
+		elif isFrame(x):
+			frame(x, p)
+
+def frame(e, p):
+	for x in e.childNodes:
+		if isImage(x):
+			p.child(E('img').set('src', href(x)))
+
+def innerText(x):
+	return ' '.join([ x.nodeValue for x in x.childNodes if isTextNode(x) ])
+
+def isTextNode(x):
+	return x.nodeName == '#text'
+
+def outlineLevel(x):
+	return x.getAttribute('text:outline-level')	
+
+def isHeading(x):
+	return x.tagName == 'text:h'
+
+def isPara(x):
+	return x.tagName == 'text:p'
+
+def isSpan(x):
+	return x.tagName == 'text:span'
+
+def styleName(x):
+	return x.getAttribute('text:style-name')
+
+def isStrikethrough(x):
+	return styleName(x) == 'Strikethrough'
+
+def isEmphasis(x):
+	return styleName(x) == 'Emphasis'
+
+def isLink(x):
+	return x.tagName == 'text:a'
+
+def href(x):
+	return x.getAttribute('xlink:href')
+
+def isFrame(x):
+	return x.tagName == 'draw:frame'
+
+def isImage(x):
+	return x.tagName == 'draw:image'
+
+def main():
+	run(['unzip', '-d', '/tmp/loconvert', '--', sys.argv[1]])
+	os.chdir('/tmp/loconvert')
+	root = dom.parse(open('content.xml')).documentElement
+	body = start(root)
+	os.chdir('/tmp')
+	run(['mkdir', '/tmp/converted'])
+	run(['cp', '-vr', '/tmp/loconvert/Pictures', '/tmp/converted'])
+	open('/tmp/converted/document.html', 'w').write(
+		''.join([ x.serialise() for x in body.children ]).strip())
+	run(['rm', '-vfr', '--', '/tmp/loconvert'])
+
+main()
