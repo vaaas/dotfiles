@@ -33,6 +33,7 @@ bin/dwm-loop	~/Binaries/dwm-loop
 bin/g	~/Binaries/g
 bin/dmenu	~/Binaries/dmenu
 bin/kswitcher	~/Binaries/kswitcher
+bin/converter	~/Binaries/converter
 nautilus/scripts-accels	~/.config/nautilus/scripts-accels
 nautilus/term-here	~/.local/share/nautilus/scripts/term-here
 nautilus/dmenu-selection	~/.local/share/nautilus/scripts/dmenu-selection
