@@ -57,9 +57,8 @@ xkb_symbols "basic" {
 
 	key <BKSL> {[ backslash, bar ]};
 
-	key <CAPS> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
-	key <TAB> {[ Control_L, Control_L ]};
+	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
+	key <CAPS> {[ Control_L, Control_L ]};
 	key <LCTL> {[ Caps_Lock, Caps_Lock ]};
-	//key <RTRN> {[ ISO_Level5_Shift, ISO_Level5_Shift ]};
 	key <SPCE> {[ space, space, BackSpace, BackSpace ]};
 };
