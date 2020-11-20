@@ -65,6 +65,7 @@ alias less='less -I'
 alias sxiv='sxiv -o'
 alias pg='ping google.gr'
 alias sdr='sudo systemctl restart'
+alias windows='sudo grub-reboot Windows && sudo reboot'
 
 #functions
 
