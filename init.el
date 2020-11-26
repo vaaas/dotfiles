@@ -11,6 +11,9 @@
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
 (setq tab-stop-list '(4))
+(setq frame-resize-pixelwise t)
+(setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
+(setq vc-follow-symlinks t)
 
 (defun expand-or-tab()
     (interactive)
@@ -39,13 +42,23 @@
     (define-key map (kbd "e") 'next-line)
     (define-key map (kbd "o") 'previous-line)
     (define-key map (kbd "a") 'right-char)
-    (define-key map (kbd "I") 'beginning-of-line)
+    (define-key map (kbd "I") 'beginning-of-line-text)
     (define-key map (kbd "E") 'forward-paragraph)
     (define-key map (kbd "O") 'backward-paragraph)
     (define-key map (kbd "A") 'end-of-line)
     (define-key map (kbd "d d") 'kill-whole-line)
     (define-key map (kbd "l") (lambda() (interactive) (line-below) (vi-mode -1)))
     (define-key map (kbd "<escape>") 'do-nothing)
+    (define-key map (kbd "w") 'forward-word)
+    (define-key map (kbd "b") 'backward-word)
+    (define-key map (kbd "c w") (lambda() (interactive) (kill-word) (vi-mode -1)))
+    (define-key map (kbd "c b") (lambda() (interactive) (backward-kill-word) (vi-mode -1)))
+    (define-key map (kbd "c c") (lambda() (interactive) (beginning-of-line-text) (kill-line) (vi-mode -1)))
+    (define-key map (kbd "c t") (lambda() (interactive) (call-interactively 'zap-to-char) (vi-mode -1)))
+    (define-key map (kbd "d w") 'kill-word)
+    (define-key map (kbd "d b") 'backward-kill-word)
+    (define-key map (kbd ".") 'repeat)
+    (define-key map (kbd "\\ v p") 'variable-pitch-mode)
     map))
 
 (define-key global-map (kbd "C-s") 'save-buffer)
@@ -68,6 +81,7 @@
 (define-key global-map (kbd "<escape>") 'vi-mode)
 (define-key global-map (kbd "C-<tab>") 'ido-switch-buffer)
 (define-key global-map (kbd "C-f") 'isearch-forward)
+(define-key global-map (kbd "C-F") 'rgrep)
 
 (define-key prog-mode-map (kbd "<tab>") 'expand-or-tab)
 
@@ -75,7 +89,7 @@
 
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "<escape>") 'isearch-abort)
-(define-key isearch-mode-map (kbd "<return>") 'isearch-complete)
+(define-key isearch-mode-map (kbd "<return>") 'isearch-exit)
 
 (add-hook 'prog-mode-hook (lambda() (vi-mode 1)))
 (add-hook 'minibuffer-setup-hook (lambda() (vi-mode -1)))
@@ -85,7 +99,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (vue-mode php-mode))))
+ '(package-selected-packages (quote (markdown-mode vue-mode php-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -96,4 +110,10 @@
  '(font-lock-keyword-face ((t (:foreground "#a05"))))
  '(font-lock-string-face ((t (:foreground "#084"))))
  '(font-lock-type-face ((t (:foreground "#088"))))
- '(mmm-default-submode-face ((t nil))))
+ '(fringe ((t nil)))
+ '(isearch ((t (:background "#048" :foreground "#fff"))))
+ '(lazy-highlight ((t (:inherit highlight))))
+ '(minibuffer-prompt ((t (:foreground "#800"))))
+ '(mmm-default-submode-face ((t nil)))
+ '(mode-line ((t (:background "#aa8"))))
+ '(variable-pitch ((t (:height 240 :family "Sans Serif")))))
