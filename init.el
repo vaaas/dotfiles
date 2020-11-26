@@ -1,3 +1,12 @@
+;; -*- lexical-binding: t; -*-
+(setq
+    gc-cons-threshold most-positive-fixnum
+    gc-cons-percentage 0.6)
+
+(add-hook 'emacs-startup-hook (lambda () (setq
+    gc-cons-threshold 16777216
+    gc-cons-percentage 0.1)))
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
@@ -14,11 +23,13 @@
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 (setq tab-width 4)
-(setq tab-stop-list '(4))
+(setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40))
 (setq frame-resize-pixelwise t)
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 (setq vc-follow-symlinks t)
 (setq make-backup-files nil)
+
+(put 'dired-find-alternate-file 'disabled nil)
 
 (defun expand-or-tab()
     (interactive)
@@ -38,6 +49,8 @@
     (ido-completing-read "select file> "
     (split-string
     (shell-command-to-string "xzcat ~/filedb.xz") "\n"))))
+
+(defun dired-here() (interactive) (dired default-directory))
 
 (define-minor-mode vi-mode
     :lighter " vi"
@@ -64,6 +77,7 @@
         (define-key map (kbd "d b") 'backward-kill-word)
         (define-key map (kbd ".") 'repeat)
         (define-key map (kbd "\\ v p") 'variable-pitch-mode)
+        (define-key map (kbd "\\ e a") 'edit-abbrevs)
         (define-key map (kbd "j e") (lambda() (interactive) (next-line) (beginning-of-line-text) (delete-indentation)))
         map))
 
@@ -89,6 +103,7 @@
 (define-key global-map (kbd "C-f") 'isearch-forward)
 (define-key global-map (kbd "C-S-F") 'rgrep)
 (define-key global-map (kbd "M-`") 'eshell)
+(define-key global-map (kbd "<f2>") 'dired-here)
 
 (define-key prog-mode-map (kbd "<tab>") 'expand-or-tab)
 (define-key text-mode-map (kbd "<tab>") 'expand-or-tab)
@@ -105,12 +120,17 @@
 (add-hook 'eshell-mode-hook (lambda()
     (vi-mode -1)
     (define-key eshell-mode-map (kbd "M-`") 'kill-this-buffer)))
+(add-hook 'dired-mode-hook (lambda() (dired-hide-details-mode)))
 
 (with-eval-after-load 'markdown-mode
     (setq markdown-mode-map (make-sparse-keymap)))
 
 (with-eval-after-load 'php-mode
     (setq php-mode-map (make-sparse-keymap)))
+
+(with-eval-after-load 'dired
+    (define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file)
+    (define-key dired-mode-map (kbd "C-o") nil))
 
 (custom-set-variables
  '(package-selected-packages (quote (markdown-mode vue-mode php-mode))))
