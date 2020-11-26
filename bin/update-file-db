@@ -2,12 +2,11 @@
 
 IFS='
 '
-DIRS="$HOME/Desktop
-$HOME/Projects"
+
 file="$HOME/filedb.xz"
 rm -v $file
-for dir in $DIRS
+while read dir
 do
-	fd -c never -t f -- . $dir | sort | xz >> $file
-done
+        find $dir -type f | sort | xz >> $file
+done < ~/.filedbdirs
 echo "updated $file"

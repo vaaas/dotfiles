@@ -18,7 +18,6 @@ unclutter --timeout 1 &
 bar &
 unclutter &
 dbus-launch sxhkd -m -1 &
-netbeans &
 xrandr -s 1920x1080
 VBoxClient --clipboard
 dbus-launch dwm-loop

@@ -70,7 +70,7 @@ super + k
 super + shift + grave
 	emacsclient -nc -e "(eshell)"
 
-super + j
+super + p
 	passmenu
 
 XF86AudioLowerVolume
