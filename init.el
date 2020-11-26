@@ -19,15 +19,16 @@
 (global-visual-line-mode 1)
 (abbrev-mode 1)
 
-(setq-default indent-tabs-mode nil)
-(setq inhibit-splash-screen t)
-(setq inhibit-startup-message t)
-(setq tab-width 4)
-(setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40))
-(setq frame-resize-pixelwise t)
+(setq-default indent-tabs-mode nil
+    mode-line-format nil)
+(setq inhibit-splash-screen t
+    inhibit-startup-message t
+    tab-width 4
+    tab-stop-list '(4 8 12 16 20 24 28 32 36 40)
+    frame-resize-pixelwise t
+    vc-follow-symlinks t
+    make-backup-files nil)
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
-(setq vc-follow-symlinks t)
-(setq make-backup-files nil)
 
 (put 'dired-find-alternate-file 'disabled nil)
 
@@ -55,6 +56,8 @@
 (define-minor-mode vi-mode
     :lighter " vi"
     :keymap (let ((map (make-sparse-keymap)))
+        (define-key map (kbd "q") 'kmacro-start-macro)
+        (define-key map (kbd "Q") 'kmacro-end-or-call-macro)
         (define-key map (kbd "u") 'vi-mode)
         (define-key map (kbd "i") 'left-char)
         (define-key map (kbd "e") 'next-line)
@@ -73,6 +76,7 @@
         (define-key map (kbd "c b") (lambda() (interactive) (backward-kill-word 1) (vi-mode -1)))
         (define-key map (kbd "c c") (lambda() (interactive) (beginning-of-line-text) (kill-line) (vi-mode -1)))
         (define-key map (kbd "c t") (lambda() (interactive) (call-interactively 'zap-to-char) (vi-mode -1)))
+        (define-key map (kbd "d t") 'zap-to-char)
         (define-key map (kbd "d w") 'kill-word)
         (define-key map (kbd "d b") 'backward-kill-word)
         (define-key map (kbd ".") 'repeat)
