@@ -11,6 +11,8 @@
 (abbrev-mode 1)
 
 (setq-default indent-tabs-mode nil)
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
 (setq tab-width 4)
 (setq tab-stop-list '(4))
 (setq frame-resize-pixelwise t)
@@ -54,8 +56,8 @@
     (define-key map (kbd "<escape>") 'do-nothing)
     (define-key map (kbd "w") 'forward-word)
     (define-key map (kbd "b") 'backward-word)
-    (define-key map (kbd "c w") (lambda() (interactive) (kill-word) (vi-mode -1)))
-    (define-key map (kbd "c b") (lambda() (interactive) (backward-kill-word) (vi-mode -1)))
+    (define-key map (kbd "c w") (lambda() (interactive) (kill-word 1) (vi-mode -1)))
+    (define-key map (kbd "c b") (lambda() (interactive) (backward-kill-word 1) (vi-mode -1)))
     (define-key map (kbd "c c") (lambda() (interactive) (beginning-of-line-text) (kill-line) (vi-mode -1)))
     (define-key map (kbd "c t") (lambda() (interactive) (call-interactively 'zap-to-char) (vi-mode -1)))
     (define-key map (kbd "d w") 'kill-word)
@@ -85,6 +87,7 @@
 (define-key global-map (kbd "C-<tab>") 'ido-switch-buffer)
 (define-key global-map (kbd "C-f") 'isearch-forward)
 (define-key global-map (kbd "C-S-F") 'rgrep)
+(define-key global-map (kbd "M-`") 'eshell)
 
 (define-key prog-mode-map (kbd "<tab>") 'expand-or-tab)
 (define-key text-mode-map (kbd "<tab>") 'expand-or-tab)
@@ -98,21 +101,21 @@
 (add-hook 'prog-mode-hook (lambda() (vi-mode 1)))
 (add-hook 'minibuffer-setup-hook (lambda() (vi-mode -1)))
 (add-hook 'text-mode-hook (lambda() (abbrev-mode 1)))
+(add-hook 'eshell-mode-hook (lambda()
+    (vi-mode -1)
+    (define-key eshell-mode-map (kbd "M-`") 'kill-this-buffer)))
 
 (with-eval-after-load 'markdown-mode
-    (define-key markdown-mode-map (kbd "TAB") nil))
+    (define-key markdown-mode-map (kbd "<tab>") 'expand-or-tab))
+
+(with-eval-after-load 'php-mode
+    (define-key php-mode-map (kbd "<tab>") 'expand-or-tab)
+    (define-key php-mode-map (kbd "C-,") nil)
+    (define-key php-mode-map (kbd "C-.") nil))
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(package-selected-packages (quote (markdown-mode vue-mode php-mode))))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :extend nil :stipple nil :background "#fff3e0" :foreground "#303030" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "1ASC" :family "Liberation Mono"))))
  '(font-lock-function-name-face ((t (:foreground "#048"))))
  '(font-lock-keyword-face ((t (:foreground "#a05"))))
@@ -124,4 +127,6 @@
  '(minibuffer-prompt ((t (:foreground "#800"))))
  '(mmm-default-submode-face ((t nil)))
  '(mode-line ((t (:background "#aa8"))))
+ '(mode-line-inactive ((t nil)))
+ '(show-paren-match ((t (:inherit highlight))))
  '(variable-pitch ((t (:height 240 :family "Sans Serif")))))
