@@ -7,6 +7,8 @@
 (tool-bar-mode -1)
 (electric-indent-mode -1)
 (ido-mode 1)
+(global-visual-line-mode 1)
+(abbrev-mode 1)
 
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
@@ -14,6 +16,7 @@
 (setq frame-resize-pixelwise t)
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 (setq vc-follow-symlinks t)
+(setq make-backup-files nil)
 
 (defun expand-or-tab()
     (interactive)
@@ -81,9 +84,10 @@
 (define-key global-map (kbd "<escape>") 'vi-mode)
 (define-key global-map (kbd "C-<tab>") 'ido-switch-buffer)
 (define-key global-map (kbd "C-f") 'isearch-forward)
-(define-key global-map (kbd "C-F") 'rgrep)
+(define-key global-map (kbd "C-S-F") 'rgrep)
 
 (define-key prog-mode-map (kbd "<tab>") 'expand-or-tab)
+(define-key text-mode-map (kbd "<tab>") 'expand-or-tab)
 
 (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit)
 
@@ -93,6 +97,10 @@
 
 (add-hook 'prog-mode-hook (lambda() (vi-mode 1)))
 (add-hook 'minibuffer-setup-hook (lambda() (vi-mode -1)))
+(add-hook 'text-mode-hook (lambda() (abbrev-mode 1)))
+
+(with-eval-after-load 'markdown-mode
+    (define-key markdown-mode-map (kbd "TAB") nil))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
