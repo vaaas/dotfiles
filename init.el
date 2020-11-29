@@ -20,7 +20,8 @@
 (abbrev-mode 1)
 
 (setq-default indent-tabs-mode nil
-    mode-line-format nil)
+    ;mode-line-format nil
+    line-spacing 0.3)
 (setq inhibit-splash-screen t
     inhibit-startup-message t
     tab-width 4
@@ -41,6 +42,8 @@
 (defun line-below()
     (interactive)
     (end-of-line) (open-line 1) (next-line))
+
+(defun newline-and-indent-relative() (interactive) (newline) (indent-relative))
 
 (defun do-nothing() (interactive))
 
@@ -73,19 +76,33 @@
 (define-key vi-mode-map (kbd "d d") 'kill-whole-line)
 (define-key vi-mode-map (kbd "l") (lambda() (interactive) (line-below) (vi-mode -1)))
 (define-key vi-mode-map (kbd "<escape>") 'do-nothing)
-(define-key vi-mode-map (kbd "w") 'forward-word)
+(define-key vi-mode-map (kbd "w") 'forward-whitespace)
 (define-key vi-mode-map (kbd "b") 'backward-word)
 (define-key vi-mode-map (kbd "c w") (lambda() (interactive) (kill-word 1) (vi-mode -1)))
 (define-key vi-mode-map (kbd "c b") (lambda() (interactive) (backward-kill-word 1) (vi-mode -1)))
 (define-key vi-mode-map (kbd "c c") (lambda() (interactive) (beginning-of-line-text) (kill-line) (vi-mode -1)))
-(define-key vi-mode-map (kbd "c t") (lambda() (interactive) (call-interactively 'zap-to-char) (vi-mode -1)))
+(define-key vi-mode-map (kbd "c t") (lambda() (interactive) (call-interactively 'zap-to-char) (vi-mode -1)));
+(define-key vi-mode-map (kbd "c l") (lambda() (interactive) (kill-line) (vi-mode -1)))
 (define-key vi-mode-map (kbd "d t") 'zap-to-char)
 (define-key vi-mode-map (kbd "d w") 'kill-word)
 (define-key vi-mode-map (kbd "d b") 'backward-kill-word)
+(define-key vi-mode-map (kbd "d l") 'kill-line)
 (define-key vi-mode-map (kbd ".") 'repeat)
 (define-key vi-mode-map (kbd "\\ v p") 'variable-pitch-mode)
 (define-key vi-mode-map (kbd "\\ e a") 'edit-abbrevs)
 (define-key vi-mode-map (kbd "j e") (lambda() (interactive) (next-line) (beginning-of-line-text) (delete-indentation)))
+(define-key vi-mode-map (kbd "v") 'set-mark-command)
+(define-key vi-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
+(define-key vi-mode-map (kbd "<tab>") 'indent-rigidly-right-to-tab-stop)
+(define-key vi-mode-map (kbd "<escape>") 'keyboard-quit)
+(define-key vi-mode-map (kbd "/") 'isearch-forward)
+(define-key vi-mode-map (kbd "?") 'isearch-backward)
+(define-key vi-mode-map (kbd "p") 'yank)
+(define-key vi-mode-map (kbd "SPC") 'execute-extended-command)
+(define-key vi-mode-map (kbd "C-SPC") 'quick-find-file)
+(define-key vi-mode-map (kbd ":") 'eval-expression)
+(define-key vi-mode-map (kbd ";") (lambda() (interactive) (end-of-line) (insert-char #x3B)))
+(define-key vi-mode-map (kbd "y") 'kill-ring-save)
 
 (define-minor-mode vi-mode
     "Ghetto vi mode"
@@ -118,8 +135,11 @@
 
 (define-key prog-mode-map (kbd "<tab>") 'expand-or-tab)
 (define-key prog-mode-map (kbd "<backspace>") 'backspace-or-unindent)
+(define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative)
+(define-key prog-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 (define-key text-mode-map (kbd "<tab>") 'expand-or-tab)
 (define-key text-mode-map (kbd "<backspace>") 'backspace-or-unindent)
+(define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 
 (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit)
 
@@ -134,6 +154,7 @@
     (vi-mode -1)
     (define-key eshell-mode-map (kbd "M-`") 'kill-this-buffer)))
 (add-hook 'dired-mode-hook (lambda() (dired-hide-details-mode)))
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (with-eval-after-load 'markdown-mode
     (setq markdown-mode-map (make-sparse-keymap)))
@@ -146,13 +167,24 @@
     (define-key dired-mode-map (kbd "C-o") nil))
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(package-selected-packages (quote (markdown-mode vue-mode php-mode))))
 (custom-set-faces
- '(default ((t (:inherit nil :extend nil :stipple nil :background "#fff3e0" :foreground "#303030" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "1ASC" :family "Liberation Mono"))))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#fff3e0" :foreground "#303030" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "1ASC" :family "Liberation Mono"))))
+ '(font-lock-builtin-face ((t (:underline (:color foreground-color :style wave)))))
+ '(font-lock-constant-face ((t nil)))
  '(font-lock-function-name-face ((t (:foreground "#048"))))
- '(font-lock-keyword-face ((t (:foreground "#a05"))))
+ '(font-lock-keyword-face ((t (:weight semi-bold))))
  '(font-lock-string-face ((t (:foreground "#084"))))
- '(font-lock-type-face ((t (:foreground "#088"))))
+ '(font-lock-type-face ((t nil)))
+ '(font-lock-variable-name-face ((t nil)))
  '(fringe ((t nil)))
  '(isearch ((t (:background "#048" :foreground "#fff"))))
  '(lazy-highlight ((t (:inherit highlight))))
@@ -160,5 +192,7 @@
  '(mmm-default-submode-face ((t nil)))
  '(mode-line ((t (:background "#aa8"))))
  '(mode-line-inactive ((t nil)))
+ '(php-$this ((t (:slant oblique))))
+ '(php-function-call ((t (:inherit font-lock-function-name-face))))
  '(show-paren-match ((t (:inherit highlight))))
  '(variable-pitch ((t (:height 240 :family "Sans Serif")))))
