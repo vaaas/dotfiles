@@ -42,47 +42,50 @@ class Text:
 def start(e):
 	for x in e.childNodes:
 		if x.tagName != 'office:body': continue
-		else: return body(x)
+		for y in x.childNodes:
+			if y.tagName != 'office:text': continue
+			body = E('body')
+			for z in elem(y):
+				body.child(z)
+			return body
 
-def body(e):
-	for x in e.childNodes:
-		if x.tagName != 'office:text': continue
-		else: return text(x)
-
-def text(e):
-	body = E('body')
-	for x in e.childNodes:
-		elem = None
-		if isHeading(x):
-			elem = E('h'+outlineLevel(x))
-		elif isPara(x):
-			elem = E('p')
-		else: continue
-		inline(x, elem)
-		body.child(elem)
-	return body
-
-def inline(e, p):
+def elem(e):
 	for x in e.childNodes:
 		if isTextNode(x):
-			p.child(Text(x.nodeValue))
-		elif isSpan(x):
-			if isStrikethrough(x):
-				p.child(E('s').child(Text(innerText(x))))
-			elif isEmphasis(x):
-				p.child(E('em').child(Text(innerText(x))))
-		elif isLink(x):
-			p.child(E('a').set('href', href(x)).child(Text(innerText(x))))
-		elif isFrame(x):
-			frame(x, p)
+			yield Text(x.nodeValue)
+		else:
+			child = None
+			try:
+				if isHeading(x):
+					child = E('h'+outlineLevel(x))
+				elif isPara(x):
+					child = E('p')
+				elif isLink(x):
+					child = E('a').set('href', href(x))
+				elif isSpan(x):
+					if isStrikethrough(x):
+						child = E('s')
+					elif isEmphasis(x):
+						child = E('em')
+					else:
+						for y in elem(x): yield y
+						raise UserWarning(x.tagName + ' ' + styleName(x))
+				elif isFrame(x):
+					yield frame(x)
+					continue
+				else:
+					raise UserWarning(x.tagName)
+			except UserWarning as e:
+				print(e)
+				continue
+			for y in elem(x): child.child(y)
+			yield child
 
-def frame(e, p):
+def frame(e):
 	for x in e.childNodes:
 		if isImage(x):
-			p.child(E('img').set('src', href(x)))
-
-def innerText(x):
-	return ' '.join([ x.nodeValue for x in x.childNodes if isTextNode(x) ])
+			return E('img').set('src', href(x))
+		else: print(x.tagName)
 
 def isTextNode(x):
 	return x.nodeName == '#text'
