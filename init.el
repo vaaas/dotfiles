@@ -76,7 +76,7 @@
 (define-key vi-mode-map (kbd "d d") 'kill-whole-line)
 (define-key vi-mode-map (kbd "l") (lambda() (interactive) (line-below) (vi-mode -1)))
 (define-key vi-mode-map (kbd "<escape>") 'do-nothing)
-(define-key vi-mode-map (kbd "w") 'forward-whitespace)
+(define-key vi-mode-map (kbd "w") 'forward-to-word)
 (define-key vi-mode-map (kbd "b") 'backward-word)
 (define-key vi-mode-map (kbd "c w") (lambda() (interactive) (kill-word 1) (vi-mode -1)))
 (define-key vi-mode-map (kbd "c b") (lambda() (interactive) (backward-kill-word 1) (vi-mode -1)))
@@ -103,6 +103,8 @@
 (define-key vi-mode-map (kbd ":") 'eval-expression)
 (define-key vi-mode-map (kbd ";") (lambda() (interactive) (end-of-line) (insert-char #x3B)))
 (define-key vi-mode-map (kbd "y") 'kill-ring-save)
+(define-key vi-mode-map (kbd "g g") 'beginning-of-buffer)
+(define-key vi-mode-map (kbd "G") 'end-of-buffer)
 
 (define-minor-mode vi-mode
     "Ghetto vi mode"
@@ -178,7 +180,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#fff3e0" :foreground "#303030" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "1ASC" :family "Liberation Mono"))))
- '(font-lock-builtin-face ((t (:underline (:color foreground-color :style wave)))))
+ '(font-lock-builtin-face ((t (:underline (:color foreground-color)))))
  '(font-lock-constant-face ((t nil)))
  '(font-lock-function-name-face ((t (:foreground "#048"))))
  '(font-lock-keyword-face ((t (:weight semi-bold))))
