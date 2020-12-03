@@ -1,12 +1,4 @@
 ;; -*- lexical-binding: t; -*-
-(setq
-    gc-cons-threshold most-positive-fixnum
-    gc-cons-percentage 0.6)
-
-(add-hook 'emacs-startup-hook (lambda () (setq
-    gc-cons-threshold 16777216
-    gc-cons-percentage 0.1)))
-
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
@@ -20,46 +12,54 @@
 (abbrev-mode 1)
 
 (setq-default indent-tabs-mode nil
-    ;mode-line-format nil
-    line-spacing 0.3)
+	line-spacing 0.3
+	tab-stop-list '(4 8 12 16 20 24 28 32 36 40)
+	tab-width 4)
 (setq inhibit-splash-screen t
-    inhibit-startup-message t
-    tab-width 4
-    tab-stop-list '(4 8 12 16 20 24 28 32 36 40)
-    frame-resize-pixelwise t
-    vc-follow-symlinks t
-    make-backup-files nil)
+	inhibit-startup-message t
+	frame-resize-pixelwise t
+	vc-follow-symlinks t
+	make-backup-files nil)
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 
 (put 'dired-find-alternate-file 'disabled nil)
 
-(defun expand-or-tab()
-    (interactive)
-    (if (member (char-before) '(10 32))
-        (tab-to-tab-stop)
-        (call-interactively 'dabbrev-expand)))
+(defun expand-or-tab() (interactive)
+	(if (member (char-before) '(10 32))
+		(if indent-tabs-mode (insert-char 9) (insert-char 32 tab-width))
+		(call-interactively 'dabbrev-expand)))
 
-(defun line-below()
-    (interactive)
-    (end-of-line) (open-line 1) (next-line))
+(defun line-below() (interactive)
+	(end-of-line) (open-line 1) (next-line))
 
-(defun newline-and-indent-relative() (interactive) (newline) (indent-relative))
+(defun newline-and-indent-relative() (interactive) (newline) (indent-relative t t))
 
 (defun do-nothing() (interactive))
 
-(defun quick-find-file()
-    (interactive)
-    (find-file
-    (ido-completing-read "select file> "
-    (split-string
-    (shell-command-to-string "xzcat ~/filedb.xz") "\n"))))
+(defun quick-find-file() (interactive)
+	(find-file
+	(ido-completing-read "select file> "
+	(split-string
+	(shell-command-to-string "xzcat ~/filedb.xz") "\n"))))
 
 (defun dired-here() (interactive) (dired default-directory))
 
 (defun backspace-or-unindent() (interactive)
-    (if (string= "    " (buffer-substring (point) (- (point) 4)))
-        (backward-delete-char 4)
-        (backward-delete-char 1)))
+	(if indent-tabs-mode
+		(backward-delete-char 1)
+		(if (string= "    " (buffer-substring (point) (- (point) 4)))
+			(backward-delete-char 4)
+			(backward-delete-char 1)))
+
+(defun double-newline() (interactive)
+	(if (= 10 (char-before))
+		(newline)
+		(progn (newline) (newline))))
+
+(defun toggle-indent-tabs() (interactive)
+	(if indent-tabs-mode
+		(setq indent-tabs-mode nil)
+		(setq indent-tabs-mode t)))
 
 (setq vi-mode-map (make-sparse-keymap))
 (define-key vi-mode-map (kbd "q") 'kmacro-start-macro)
@@ -90,6 +90,7 @@
 (define-key vi-mode-map (kbd ".") 'repeat)
 (define-key vi-mode-map (kbd "\\ v p") 'variable-pitch-mode)
 (define-key vi-mode-map (kbd "\\ e a") 'edit-abbrevs)
+(define-key vi-mode-map (kbd "\\ i t") 'toggle-indent-tabs)
 (define-key vi-mode-map (kbd "j e") (lambda() (interactive) (next-line) (beginning-of-line-text) (delete-indentation)))
 (define-key vi-mode-map (kbd "v") 'set-mark-command)
 (define-key vi-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
@@ -107,9 +108,9 @@
 (define-key vi-mode-map (kbd "G") 'end-of-buffer)
 
 (define-minor-mode vi-mode
-    "Ghetto vi mode"
-    :lighter " vi"
-    :keymap 'vi-mode-map)
+	"Ghetto vi mode"
+	:lighter " vi"
+	:keymap 'vi-mode-map)
 
 (define-key global-map (kbd "C-s") 'save-buffer)
 (define-key global-map (kbd "C-u") 'vi-mode)
@@ -153,20 +154,21 @@
 (add-hook 'minibuffer-setup-hook (lambda() (vi-mode -1)))
 (add-hook 'text-mode-hook (lambda() (abbrev-mode 1)))
 (add-hook 'eshell-mode-hook (lambda()
-    (vi-mode -1)
-    (define-key eshell-mode-map (kbd "M-`") 'kill-this-buffer)))
+	(vi-mode -1)
+	(define-key eshell-mode-map (kbd "M-`") 'kill-this-buffer)))
 (add-hook 'dired-mode-hook (lambda() (dired-hide-details-mode)))
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (with-eval-after-load 'markdown-mode
-    (setq markdown-mode-map (make-sparse-keymap)))
+	(setq markdown-mode-map (make-sparse-keymap))
+	(define-key markdown-mode-map (kbd "<return>") 'double-newline))
 
 (with-eval-after-load 'php-mode
-    (setq php-mode-map (make-sparse-keymap)))
+	(setq php-mode-map (make-sparse-keymap)))
 
 (with-eval-after-load 'dired
-    (define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file)
-    (define-key dired-mode-map (kbd "C-o") nil))
+	(define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file)
+	(define-key dired-mode-map (kbd "C-o") nil))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
