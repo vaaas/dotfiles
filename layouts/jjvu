@@ -57,5 +57,5 @@ xkb_symbols "basic" {
 	key <KP3> {[ braceleft, less ]};
 	key <KP4> {[ braceright, greater ]};
 
-	key <CAPS> {[ Multi_key, Multi_key ]};
+	key <RALT> {[ Multi_key, Multi_key ]};
 };
