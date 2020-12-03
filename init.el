@@ -47,7 +47,7 @@
 	(if indent-tabs-mode
 		(backward-delete-char 1)
 		(if (string= (make-string tab-width ? ) (buffer-substring (point) (- (point) tab-width)))
-			(backward-delete-char 4)
+			(backward-delete-char tab-width)
 			(backward-delete-char 1))))
 
 (defun double-newline() (interactive)
