@@ -47,9 +47,9 @@
 (defun backspace-or-unindent() (interactive)
 	(if indent-tabs-mode
 		(backward-delete-char 1)
-		(if (string= "    " (buffer-substring (point) (- (point) 4)))
+		(if (string= (make-string tab-width ? ) (buffer-substring (point) (- (point) tab-width)))
 			(backward-delete-char 4)
-			(backward-delete-char 1)))
+			(backward-delete-char 1))))
 
 (defun double-newline() (interactive)
 	(if (= 10 (char-before))
@@ -58,8 +58,8 @@
 
 (defun toggle-indent-tabs() (interactive)
 	(if indent-tabs-mode
-		(setq indent-tabs-mode nil)
-		(setq indent-tabs-mode t)))
+		(progn (setq indent-tabs-mode nil) (message "indent will use SPACES"))
+		(progn (setq indent-tabs-mode t) (message "indent will use TABS"))))
 
 (setq vi-mode-map (make-sparse-keymap))
 (define-key vi-mode-map (kbd "q") 'kmacro-start-macro)
@@ -74,6 +74,7 @@
 (define-key vi-mode-map (kbd "O") 'backward-paragraph)
 (define-key vi-mode-map (kbd "A") 'end-of-line)
 (define-key vi-mode-map (kbd "d d") 'kill-whole-line)
+(define-key vi-mode-map (kbd "D") 'kill-region)
 (define-key vi-mode-map (kbd "l") (lambda() (interactive) (line-below) (vi-mode -1)))
 (define-key vi-mode-map (kbd "<escape>") 'do-nothing)
 (define-key vi-mode-map (kbd "w") 'forward-to-word)
