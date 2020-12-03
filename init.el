@@ -13,7 +13,6 @@
 
 (setq-default indent-tabs-mode nil
 	line-spacing 0.3
-	tab-stop-list '(4 8 12 16 20 24 28 32 36 40)
 	tab-width 4)
 (setq inhibit-splash-screen t
 	inhibit-startup-message t
