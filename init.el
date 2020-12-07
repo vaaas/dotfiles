@@ -24,7 +24,7 @@
 (put 'dired-find-alternate-file 'disabled nil)
 
 (defun expand-or-tab() (interactive)
-	(if (member (char-before) '(10 32))
+	(if (member (char-before) '(9 10 32))
 		(if indent-tabs-mode (insert-char 9) (insert-char 32 tab-width))
 		(call-interactively 'dabbrev-expand)))
 
@@ -127,6 +127,7 @@
 (define-key global-map (kbd "M-F") 'eval-expression)
 (define-key global-map (kbd "C-t") 'switch-to-buffer)
 (define-key global-map (kbd "C-x") 'kill-region)
+(define-key global-map (kbd "C-c") nil)
 (define-key global-map (kbd "C-c") 'kill-ring-save)
 (define-key global-map (kbd "C-v") 'yank)
 (define-key global-map (kbd "<escape>") 'vi-mode)
@@ -137,10 +138,12 @@
 (define-key global-map (kbd "<f2>") 'dired-here)
 
 (define-key prog-mode-map (kbd "<tab>") 'expand-or-tab)
+(define-key prog-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
 (define-key prog-mode-map (kbd "<backspace>") 'backspace-or-unindent)
 (define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative)
 (define-key prog-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 (define-key text-mode-map (kbd "<tab>") 'expand-or-tab)
+(define-key text-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
 (define-key text-mode-map (kbd "<backspace>") 'backspace-or-unindent)
 (define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 
