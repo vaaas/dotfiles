@@ -44,7 +44,7 @@
 (defun dired-here() (interactive) (dired default-directory))
 
 (defun backspace-or-unindent() (interactive)
-	(if indent-tabs-mode
+	(if (or indent-tabs-mode (< (point) tab-width))
 		(backward-delete-char 1)
 		(if (string= (make-string tab-width ? ) (buffer-substring (point) (- (point) tab-width)))
 			(backward-delete-char tab-width)
