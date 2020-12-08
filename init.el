@@ -91,6 +91,7 @@
 (define-key vi-mode-map (kbd "\\ v p") 'variable-pitch-mode)
 (define-key vi-mode-map (kbd "\\ e a") 'edit-abbrevs)
 (define-key vi-mode-map (kbd "\\ i t") 'toggle-indent-tabs)
+(define-key vi-mode-map (kbd "\\ m m") 'markdown-mode)
 (define-key vi-mode-map (kbd "j e") (lambda() (interactive) (next-line) (beginning-of-line-text) (delete-indentation)))
 (define-key vi-mode-map (kbd "v") 'set-mark-command)
 (define-key vi-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
