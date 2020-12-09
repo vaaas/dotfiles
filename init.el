@@ -24,7 +24,7 @@
 (put 'dired-find-alternate-file 'disabled nil)
 
 (defun expand-or-tab() (interactive)
-	(if (member (char-before) '(10 32))
+	(if (member (char-before) '(9 10 32))
 		(if indent-tabs-mode (insert-char 9) (insert-char 32 tab-width))
 		(call-interactively 'dabbrev-expand)))
 
