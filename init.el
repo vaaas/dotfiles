@@ -44,7 +44,7 @@
 (defun dired-here() (interactive) (dired default-directory))
 
 (defun backspace-or-unindent() (interactive)
-	(if indent-tabs-mode
+	(if (or indent-tabs-mode (< (point) tab-width))
 		(backward-delete-char 1)
 		(if (string= (make-string tab-width ? ) (buffer-substring (point) (- (point) tab-width)))
 			(backward-delete-char tab-width)
@@ -91,6 +91,7 @@
 (define-key vi-mode-map (kbd "\\ v p") 'variable-pitch-mode)
 (define-key vi-mode-map (kbd "\\ e a") 'edit-abbrevs)
 (define-key vi-mode-map (kbd "\\ i t") 'toggle-indent-tabs)
+(define-key vi-mode-map (kbd "\\ m m") 'markdown-mode)
 (define-key vi-mode-map (kbd "j e") (lambda() (interactive) (next-line) (beginning-of-line-text) (delete-indentation)))
 (define-key vi-mode-map (kbd "v") 'set-mark-command)
 (define-key vi-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
@@ -127,6 +128,7 @@
 (define-key global-map (kbd "M-F") 'eval-expression)
 (define-key global-map (kbd "C-t") 'switch-to-buffer)
 (define-key global-map (kbd "C-x") 'kill-region)
+(define-key global-map (kbd "C-c") nil)
 (define-key global-map (kbd "C-c") 'kill-ring-save)
 (define-key global-map (kbd "C-v") 'yank)
 (define-key global-map (kbd "<escape>") 'vi-mode)
@@ -137,10 +139,12 @@
 (define-key global-map (kbd "<f2>") 'dired-here)
 
 (define-key prog-mode-map (kbd "<tab>") 'expand-or-tab)
+(define-key prog-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
 (define-key prog-mode-map (kbd "<backspace>") 'backspace-or-unindent)
 (define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative)
 (define-key prog-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 (define-key text-mode-map (kbd "<tab>") 'expand-or-tab)
+(define-key text-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
 (define-key text-mode-map (kbd "<backspace>") 'backspace-or-unindent)
 (define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 
