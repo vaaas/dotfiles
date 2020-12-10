@@ -60,6 +60,15 @@
 		(progn (setq indent-tabs-mode nil) (message "indent will use SPACES"))
 		(progn (setq indent-tabs-mode t) (message "indent will use TABS"))))
 
+(defun space-comma-dot() (interactive)
+    (cond
+        ((= (point) 1) (insert " "))
+        ((string= ", " (buffer-substring (point) (- (point) 2)))
+            (progn (backward-delete-char 2) (insert ". ")))
+        ((= 32 (char-before (point)))
+            (progn (backward-delete-char 1) (insert ", ")))
+        ((t (insert " ")))))
+
 (setq vi-mode-map (make-sparse-keymap))
 (define-key vi-mode-map (kbd "q") 'kmacro-start-macro)
 (define-key vi-mode-map (kbd "Q") 'kmacro-end-or-call-macro)
