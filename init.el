@@ -156,7 +156,7 @@
 
 (add-hook 'prog-mode-hook (lambda() (vi-mode 1)))
 (add-hook 'minibuffer-setup-hook (lambda() (vi-mode -1)))
-(add-hook 'text-mode-hook (lambda() (abbrev-mode 1)))
+(add-hook 'text-mode-hook (lambda() (abbrev-mode 1) (variable-pitch-mode)))
 (add-hook 'eshell-mode-hook (lambda()
 	(vi-mode -1)
 	(define-key eshell-mode-map (kbd "M-`") 'kill-this-buffer)))

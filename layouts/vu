@@ -61,7 +61,6 @@ xkb_symbols "basic" {
 		symbols[Group1] = [ Mode_switch, Mode_switch ],
 		virtualMods= AltGr };
 	key <CAPS> {[ Control_L, Control_L ]};
-	key <LCTL> {[ Caps_Lock, Caps_Lock ]};
-	//key <RTRN> {[ ISO_Level5_Shift, ISO_Level5_Shift ]};
+	key <LCTL> {[ Multi_key ]};
 	key <SPCE> {[ space, space ], [ BackSpace, Return ]};
 };
