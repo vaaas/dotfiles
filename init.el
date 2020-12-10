@@ -61,6 +61,9 @@
 		(progn (setq indent-tabs-mode t) (message "indent will use TABS"))))
 
 (setq vi-mode-map (make-sparse-keymap))
+(setq global-map (make-sparse-keymap))
+(setq text-mode-map (make-sparse-keymap))
+(setq prog-mode-map (make-sparse-keymap))
 (define-key vi-mode-map (kbd "q") 'kmacro-start-macro)
 (define-key vi-mode-map (kbd "Q") 'kmacro-end-or-call-macro)
 (define-key vi-mode-map (kbd "u") 'vi-mode)
