@@ -44,11 +44,12 @@
 (defun dired-here() (interactive) (dired default-directory))
 
 (defun backspace-or-unindent() (interactive)
-	(if (or indent-tabs-mode (< (point) tab-width))
-		(backward-delete-char 1)
-		(if (string= (make-string tab-width ? ) (buffer-substring (point) (- (point) tab-width)))
-			(backward-delete-char tab-width)
-			(backward-delete-char 1))))
+	(cond
+		((< (point) (+ 1 tab-width)) (backward-delete-char 1))
+		(indent-tabs-mode (backward-delete-char 1))
+		((string= (make-string tab-width ? ) (buffer-substring (point) (- (point) tab-width)))
+			(backward-delete-char tab-width))
+		(t (backward-delete-char 1))))
 
 (defun double-newline() (interactive)
 	(if (= 10 (char-before))
@@ -61,13 +62,13 @@
 		(progn (setq indent-tabs-mode t) (message "indent will use TABS"))))
 
 (defun space-comma-dot() (interactive)
-    (cond
-        ((= (point) 1) (insert " "))
-        ((string= ", " (buffer-substring (point) (- (point) 2)))
-            (progn (backward-delete-char 2) (insert ". ")))
-        ((= 32 (char-before (point)))
-            (progn (backward-delete-char 1) (insert ", ")))
-        ((t (insert " ")))))
+	(cond
+		((< (point) 3) (insert " "))
+		((string= ", " (buffer-substring (point) (- (point) 2)))
+			(progn (backward-delete-char 2) (insert ". ")))
+		((= 32 (char-before (point)))
+			(progn (backward-delete-char 1) (insert ", ")))
+		(t (insert " "))))
 
 (setq vi-mode-map (make-sparse-keymap))
 (define-key vi-mode-map (kbd "q") 'kmacro-start-macro)
@@ -156,6 +157,7 @@
 (define-key text-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
 (define-key text-mode-map (kbd "<backspace>") 'backspace-or-unindent)
 (define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
+(define-key text-mode-map (kbd "SPC") 'space-comma-dot)
 
 (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit)
 
