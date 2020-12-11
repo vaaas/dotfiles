@@ -63,17 +63,14 @@
 
 (defun space-comma-dot() (interactive)
 	(cond
-		((< (point) 3) (insert " "))
+		((< (point) 3) (self-insert-command 1))
 		((string= ", " (buffer-substring (point) (- (point) 2)))
 			(progn (backward-delete-char 2) (insert ". ")))
 		((= 32 (char-before (point)))
 			(progn (backward-delete-char 1) (insert ", ")))
-		(t (insert " "))))
+		(t (self-insert-command 1))))
 
 (setq vi-mode-map (make-sparse-keymap))
-(setq global-map (make-sparse-keymap))
-(setq text-mode-map (make-sparse-keymap))
-(setq prog-mode-map (make-sparse-keymap))
 (define-key vi-mode-map (kbd "q") 'kmacro-start-macro)
 (define-key vi-mode-map (kbd "Q") 'kmacro-end-or-call-macro)
 (define-key vi-mode-map (kbd "u") 'vi-mode)
