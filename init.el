@@ -4,7 +4,7 @@
 (package-initialize)
 
 (menu-bar-mode -1)
-(toggle-scroll-bar -1)
+(scroll-bar-mode -1)
 (tool-bar-mode -1)
 (electric-indent-mode -1)
 (ido-mode 1)
@@ -158,6 +158,7 @@
 (define-key text-mode-map (kbd "<backspace>") 'backspace-or-unindent)
 (define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 (define-key text-mode-map (kbd "SPC") 'space-comma-dot)
+(define-key text-mode-map (kbd "S-SPC") (lambda() (interactive) (capitalize-word -1)))
 
 (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit)
 
