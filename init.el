@@ -180,7 +180,11 @@
 	(define-key markdown-mode-map (kbd "<return>") 'double-newline))
 
 (with-eval-after-load 'php-mode
-	(setq php-mode-map (make-sparse-keymap)))
+	(setq php-mode-map (make-sparse-keymap))
+    (define-key php-mode-map (kbd "C-c") 'nil))
+
+(with-eval-after-load 'js-mode
+    (define-key js-mode-map (kbd "C-c") 'nil))
 
 (with-eval-after-load 'dired
 	(define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file)
