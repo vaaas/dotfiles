@@ -29,7 +29,7 @@
 		(call-interactively 'dabbrev-expand)))
 
 (defun line-below() (interactive)
-	(end-of-line) (open-line 1) (next-line))
+	(end-of-line) (open-line 1) (forward-line))
 
 (defun newline-and-indent-relative() (interactive) (newline) (indent-relative t t))
 
@@ -42,6 +42,14 @@
 	(shell-command-to-string "xzcat ~/filedb.xz") "\n"))))
 
 (defun dired-here() (interactive) (dired default-directory))
+
+(defun vi-on() (interactive)
+	(vi-mode -1)
+	(setq cursor-type 'box))
+
+(defun vi-off() (interactive)
+	(vi-mode 1)
+	(setq cursor-type 'bar))
 
 (defun backspace-or-unindent() (interactive)
 	(cond
@@ -71,39 +79,49 @@
 		(t (self-insert-command 1))))
 
 (defun smart-punct() (interactive)
-    (cond
-        ((< (point) 2) (self-insert-command 1))
-        ((= 32 (char-before)) (backward-delete-char 1) (self-insert-command 1) (insert ? ))
-        (t (progn (self-insert-command 1) (insert ? )))))
+	(cond
+		((< (point) 2) (self-insert-command 1))
+		((= 32 (char-before)) (backward-delete-char 1) (self-insert-command 1) (insert ? ))
+		(t (progn (self-insert-command 1) (insert ? )))))
 
 (defun replace-all (from to)
-    (goto-char (point-min))
-    (while (search-forward from nil t)
-        (replace-match to nil t)))
+	(goto-char (point-min))
+	(while (search-forward from nil t)
+		(replace-match to nil t)))
 
 (defun replace-all-regex (from to)
-    (goto-char (point-min))
-    (while (re-search-forward from nil t)
-        (replace-match to nil nil)))
+	(goto-char (point-min))
+	(while (re-search-forward from nil t)
+		(replace-match to nil nil)))
 
 (defun french() (interactive)
-    (replace-all-regex "\"\\([^\"]+?\\)\"" "«\\1»")
-    (replace-all "?!" "⁈")
-    (replace-all-regex " *\\(;\\|!\\|?\\|⁈\\)" " \\1")
-    (replace-all-regex " *\\([:\\|»]\\)" " \\1")
-    (replace-all-regex "« *" "« "))
+	(replace-all-regex "\"\\([^\"]+?\\)\"" "«\\1»")
+	(replace-all "?!" "⁈")
+	(replace-all-regex " *\\(;\\|!\\|?\\|⁈\\)" " \\1")
+	(replace-all-regex " *\\([:\\|»]\\)" " \\1")
+	(replace-all-regex "« *" "« "))
 
 (defun cmark() (interactive)
-    (shell-command-on-region (point-min) (point-max)
-        "cmark"
-        (current-buffer) t))
+	(shell-command-on-region (point-min) (point-max)
+		"cmark"
+		(current-buffer) t))
+
+(defun spaces-to-tabs() (interactive)
+	(goto-char (point-min))
+	(replace-all (make-string tab-width ? ) "	"))
+
+(defun join-line() (interactive)
+	(end-of-line)
+	(forward-line)
+	(beginning-of-line-text)
+	(delete-indentation))
 
 (setq vi-mode-map (make-sparse-keymap))
 (define-key vi-mode-map (kbd "q") 'kmacro-start-macro)
 (define-key vi-mode-map (kbd "Q") 'kmacro-end-or-call-macro)
-(define-key vi-mode-map (kbd "u") 'vi-mode)
+(define-key vi-mode-map (kbd "u") 'vi-off)
 (define-key vi-mode-map (kbd "i") 'left-char)
-(define-key vi-mode-map (kbd "e") 'next-line)
+(define-key vi-mode-map (kbd "e") 'forward-line)
 (define-key vi-mode-map (kbd "o") 'previous-line)
 (define-key vi-mode-map (kbd "a") 'right-char)
 (define-key vi-mode-map (kbd "I") 'beginning-of-line-text)
@@ -112,15 +130,15 @@
 (define-key vi-mode-map (kbd "A") 'end-of-line)
 (define-key vi-mode-map (kbd "d d") 'kill-whole-line)
 (define-key vi-mode-map (kbd "D") 'kill-region)
-(define-key vi-mode-map (kbd "l") (lambda() (interactive) (line-below) (vi-mode -1)))
+(define-key vi-mode-map (kbd "l") (lambda() (interactive) (line-below) (vi-off)))
 (define-key vi-mode-map (kbd "<escape>") 'do-nothing)
 (define-key vi-mode-map (kbd "w") 'forward-to-word)
 (define-key vi-mode-map (kbd "b") 'backward-word)
-(define-key vi-mode-map (kbd "c w") (lambda() (interactive) (kill-word 1) (vi-mode -1)))
-(define-key vi-mode-map (kbd "c b") (lambda() (interactive) (backward-kill-word 1) (vi-mode -1)))
-(define-key vi-mode-map (kbd "c c") (lambda() (interactive) (beginning-of-line-text) (kill-line) (vi-mode -1)))
-(define-key vi-mode-map (kbd "c t") (lambda() (interactive) (call-interactively 'zap-to-char) (vi-mode -1)));
-(define-key vi-mode-map (kbd "c l") (lambda() (interactive) (kill-line) (vi-mode -1)))
+(define-key vi-mode-map (kbd "c w") (lambda() (interactive) (kill-word 1) (vi-off)))
+(define-key vi-mode-map (kbd "c b") (lambda() (interactive) (backward-kill-word 1) (vi-off)))
+(define-key vi-mode-map (kbd "c c") (lambda() (interactive) (beginning-of-line-text) (kill-line) (vi-off)))
+(define-key vi-mode-map (kbd "c t") (lambda() (interactive) (call-interactively 'zap-to-char) (vi-off)));
+(define-key vi-mode-map (kbd "c l") (lambda() (interactive) (kill-line) (vi-off)))
 (define-key vi-mode-map (kbd "d t") 'zap-to-char)
 (define-key vi-mode-map (kbd "d w") 'kill-word)
 (define-key vi-mode-map (kbd "d b") 'backward-kill-word)
@@ -132,8 +150,11 @@
 (define-key vi-mode-map (kbd "\\ m m") 'markdown-mode)
 (define-key vi-mode-map (kbd "\\ f r") 'french)
 (define-key vi-mode-map (kbd "\\ c m") 'cmark)
-(define-key vi-mode-map (kbd "j e") (lambda() (interactive) (next-line) (beginning-of-line-text) (delete-indentation)))
+(define-key vi-mode-map (kbd "\\ t s") 'spaces-to-tabs)
+(define-key vi-mode-map (kbd "\\ e r") 'eval-region)
+(define-key vi-mode-map (kbd "j e") 'join-line)
 (define-key vi-mode-map (kbd "v") 'set-mark-command)
+(define-key vi-mode-map (kbd "V") (lambda() (interactive) (beginning-of-line) (call-interactively 'set-mark-command) (forward-line)))
 (define-key vi-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
 (define-key vi-mode-map (kbd "<tab>") 'indent-rigidly-right-to-tab-stop)
 (define-key vi-mode-map (kbd "<escape>") 'keyboard-quit)
@@ -154,7 +175,7 @@
 	:keymap 'vi-mode-map)
 
 (define-key global-map (kbd "C-s") 'save-buffer)
-(define-key global-map (kbd "C-u") 'vi-mode)
+(define-key global-map (kbd "C-u") 'vi-on)
 (define-key global-map (kbd "C-o") 'find-file)
 (define-key global-map (kbd "C-S-O") 'quick-find-file)
 (define-key global-map (kbd "C-w") 'backward-kill-word)
@@ -172,7 +193,7 @@
 (define-key global-map (kbd "C-c") 'kill-ring-save)
 (define-key global-map (kbd "C-v") 'yank)
 (define-key global-map (kbd "C-a") 'mark-whole-buffer)
-(define-key global-map (kbd "<escape>") 'vi-mode)
+(define-key global-map (kbd "<escape>") 'vi-on)
 (define-key global-map (kbd "C-<tab>") 'ido-switch-buffer)
 (define-key global-map (kbd "C-f") 'isearch-forward)
 (define-key global-map (kbd "C-S-F") 'rgrep)
@@ -199,11 +220,11 @@
 (define-key isearch-mode-map (kbd "<escape>") 'isearch-abort)
 (define-key isearch-mode-map (kbd "<return>") 'isearch-exit)
 
-(add-hook 'prog-mode-hook (lambda() (vi-mode 1)))
-(add-hook 'minibuffer-setup-hook (lambda() (vi-mode -1)))
+(add-hook 'prog-mode-hook (lambda() (vi-on)))
+(add-hook 'minibuffer-setup-hook (lambda() (vi-off)))
 (add-hook 'text-mode-hook (lambda() (abbrev-mode 1) (variable-pitch-mode)))
 (add-hook 'eshell-mode-hook (lambda()
-	(vi-mode -1)
+	(vi-off)
 	(define-key eshell-mode-map (kbd "M-`") 'kill-this-buffer)))
 (add-hook 'dired-mode-hook (lambda() (dired-hide-details-mode)))
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -214,10 +235,10 @@
 
 (with-eval-after-load 'php-mode
 	(setq php-mode-map (make-sparse-keymap))
-    (define-key php-mode-map (kbd "C-c") 'nil))
+	(define-key php-mode-map (kbd "C-c") 'nil))
 
 (with-eval-after-load 'js-mode
-    (define-key js-mode-map (kbd "C-c") 'nil))
+	(define-key js-mode-map (kbd "C-c") 'nil))
 
 (with-eval-after-load 'dired
 	(define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file)
