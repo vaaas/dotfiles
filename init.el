@@ -173,7 +173,7 @@
 	:keymap 'vi-mode-map)
 
 (define-key global-map (kbd "C-s") 'save-buffer)
-(define-key global-map (kbd "C-u") 'vi-on)
+(define-key global-map (kbd "C-n") 'vi-on)
 (define-key global-map (kbd "C-o") 'find-file)
 (define-key global-map (kbd "C-S-O") 'quick-find-file)
 (define-key global-map (kbd "C-w") 'backward-kill-word)
