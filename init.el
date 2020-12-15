@@ -96,11 +96,11 @@
 		(replace-match to nil nil)))
 
 (defun french() (interactive)
-	(replace-all-regex "\"\\([^\"]+?\\)\"" "«\\1»")
+	(replace-all-regex "\"\\([^\"]+?\\)\"" "«\u00A0\\1\u00A0»")
 	(replace-all "?!" "⁈")
-	(replace-all-regex "\\s*\\(;\\|!\\|?\\|⁈\\)" " \\1")
-	(replace-all-regex "\\s*\\([:\\|»]\\)" " \\1")
-	(replace-all-regex "«\\s*" "« "))
+	(replace-all-regex "\\s*\\(;\\|!\\|?\\|⁈\\)" "\u202F\\1")
+	(replace-all-regex "\\s*\\([:\\|»]\\)" "\u00A0\\1")
+	(replace-all-regex "«\\s*" "«\u00A0"))
 
 (defun cmark() (interactive)
 	(shell-command-on-region (point-min) (point-max)
@@ -131,6 +131,7 @@
 (define-key vi-mode-map (kbd "A") 'end-of-line)
 (define-key vi-mode-map (kbd "d d") 'kill-whole-line)
 (define-key vi-mode-map (kbd "D") 'kill-region)
+(define-key vi-mode-map (kbd "C") (lambda() (interactive) (call-interactively 'kill-region) (vi-off)))
 (define-key vi-mode-map (kbd "l") (lambda() (interactive) (line-below) (vi-off)))
 (define-key vi-mode-map (kbd "<escape>") 'do-nothing)
 (define-key vi-mode-map (kbd "w") 'forward-to-word)
