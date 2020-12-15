@@ -5,15 +5,41 @@
 
 (define-abbrev-table 'Info-edit-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table '())
+(define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table '())
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c-mode-abbrev-table '())
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
 (define-abbrev-table 'completion-list-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-colon-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-desktop-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-javaprop-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-ppd-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-space-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-toml-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-unix-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-windows-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-xdefaults-mode-abbrev-table '())
 
 (define-abbrev-table 'css-mode-abbrev-table '())
 
@@ -55,7 +81,9 @@
 
 (define-abbrev-table 'idl-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table '())
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'js-jsx-mode-abbrev-table '())
 
@@ -109,7 +137,9 @@
 
 (define-abbrev-table 'messages-buffer-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table '())
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -121,7 +151,9 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table '())
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
@@ -160,23 +192,25 @@
     ("c" "can" nil 0)
     ("ca" "cause" nil 0)
     ("cb" "can be" nil 0)
-    ("cd" "could" nil 0)
+    ("cd" "could" nil 1)
     ("cdb" "could be" nil 0)
     ("char" "character" nil 0)
     ("chars" "characters" nil 0)
     ("co" "come" nil 0)
     ("d" "did" nil 0)
-    ("e" "even" nil 0)
+    ("e" "even" nil 1)
+    ("el" "else" nil 0)
     ("em" "them" nil 0)
     ("eval" "evaluate" nil 0)
     ("evaln" "evaluation" nil 0)
     ("ey" "they" nil 0)
     ("f" "for" nil 0)
+    ("fr" "from" nil 1)
     ("g" "get" nil 0)
     ("gt" "got" nil 0)
-    ("h" "had" nil 0)
+    ("h" "had" nil 2)
     ("hv" "have" nil 0)
-    ("i" "I" nil 0)
+    ("i" "I" nil 3)
     ("iam" "I am" nil 0)
     ("im" "I'm" nil 0)
     ("j" "just" nil 0)
@@ -202,7 +236,7 @@
     ("sa" "said" nil 0)
     ("sd" "should" nil 0)
     ("t" "the" nil 0)
-    ("ta" "that" nil 0)
+    ("ta" "that" nil 1)
     ("tb" "to be" nil 0)
     ("td" "to do" nil 0)
     ("te" "then" nil 0)
