@@ -70,6 +70,34 @@
 			(progn (backward-delete-char 1) (insert ", ")))
 		(t (self-insert-command 1))))
 
+(defun smart-punct() (interactive)
+    (cond
+        ((< (point) 2) (self-insert-command 1))
+        ((= 32 (char-before)) (backward-delete-char 1) (self-insert-command 1) (insert ? ))
+        (t (progn (self-insert-command 1) (insert ? )))))
+
+(defun replace-all (from to)
+    (goto-char (point-min))
+    (while (search-forward from nil t)
+        (replace-match to nil t)))
+
+(defun replace-all-regex (from to)
+    (goto-char (point-min))
+    (while (re-search-forward from nil t)
+        (replace-match to nil nil)))
+
+(defun french() (interactive)
+    (replace-all-regex "\"\\([^\"]+?\\)\"" "«\\1»")
+    (replace-all "?!" "⁈")
+    (replace-all-regex " *\\(;\\|!\\|?\\|⁈\\)" " \\1")
+    (replace-all-regex " *\\([:\\|»]\\)" " \\1")
+    (replace-all-regex "« *" "« "))
+
+(defun cmark() (interactive)
+    (shell-command-on-region (point-min) (point-max)
+        "cmark"
+        (current-buffer) t))
+
 (setq vi-mode-map (make-sparse-keymap))
 (define-key vi-mode-map (kbd "q") 'kmacro-start-macro)
 (define-key vi-mode-map (kbd "Q") 'kmacro-end-or-call-macro)
@@ -102,6 +130,8 @@
 (define-key vi-mode-map (kbd "\\ e a") 'edit-abbrevs)
 (define-key vi-mode-map (kbd "\\ i t") 'toggle-indent-tabs)
 (define-key vi-mode-map (kbd "\\ m m") 'markdown-mode)
+(define-key vi-mode-map (kbd "\\ f r") 'french)
+(define-key vi-mode-map (kbd "\\ c m") 'cmark)
 (define-key vi-mode-map (kbd "j e") (lambda() (interactive) (next-line) (beginning-of-line-text) (delete-indentation)))
 (define-key vi-mode-map (kbd "v") 'set-mark-command)
 (define-key vi-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
@@ -141,6 +171,7 @@
 (define-key global-map (kbd "C-c") nil)
 (define-key global-map (kbd "C-c") 'kill-ring-save)
 (define-key global-map (kbd "C-v") 'yank)
+(define-key global-map (kbd "C-a") 'mark-whole-buffer)
 (define-key global-map (kbd "<escape>") 'vi-mode)
 (define-key global-map (kbd "C-<tab>") 'ido-switch-buffer)
 (define-key global-map (kbd "C-f") 'isearch-forward)
@@ -159,6 +190,8 @@
 (define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 (define-key text-mode-map (kbd "SPC") 'space-comma-dot)
 (define-key text-mode-map (kbd "S-SPC") (lambda() (interactive) (capitalize-word -1)))
+(define-key text-mode-map (kbd ".") 'smart-punct)
+(define-key text-mode-map (kbd ",") 'smart-punct)
 
 (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit)
 

@@ -5,11 +5,17 @@
 
 (define-abbrev-table 'Info-edit-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table '())
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c++-mode-abbrev-table '())
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c-mode-abbrev-table '())
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
@@ -51,11 +57,51 @@
 
 (define-abbrev-table 'idl-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table '())
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'js-jsx-mode-abbrev-table '())
 
-(define-abbrev-table 'js-mode-abbrev-table '())
+(define-abbrev-table 'js-mode-abbrev-table
+  '(
+    ("A" "Array" nil 0)
+    ("E" "Error" nil 0)
+    ("F" "Function" nil 3)
+    ("O" "Object" nil 0)
+    ("P" "Promise" nil 4)
+    ("a" "=>" nil 0)
+    ("c" "const" nil 0)
+    ("ca" "catch" nil 0)
+    ("cs" "case" nil 0)
+    ("d" "document" nil 0)
+    ("de" "default" nil 0)
+    ("e" "else" nil 0)
+    ("ei" "else if" nil 0)
+    ("ex" "export" nil 0)
+    ("f" "function" nil 7)
+    ("fe" "forEach" nil 0)
+    ("fi" "filter" nil 0)
+    ("im" "import" nil 0)
+    ("is" "===" nil 0)
+    ("l" "let" nil 0)
+    ("log" "console.log" nil 0)
+    ("lt" "<" nil 0)
+    ("lte" "<=" nil 0)
+    ("m" "map" nil 0)
+    ("mt" ">" nil 0)
+    ("mte" ">=" nil 0)
+    ("n" "new" nil 2)
+    ("p" "pipe" nil 0)
+    ("qs" "querySelector" nil 0)
+    ("qss" "querySelectorAll" nil 0)
+    ("r" "return" nil 5)
+    ("re" "reduce" nil 1)
+    ("s" "switch" nil 0)
+    ("t" "then" nil 0)
+    ("th" "throw" nil 0)
+    ("w" "while" nil 1)
+   ))
 
 (define-abbrev-table 'lisp-mode-abbrev-table '())
 
@@ -67,7 +113,9 @@
 
 (define-abbrev-table 'messages-buffer-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table '())
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -79,7 +127,9 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table '())
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
@@ -111,7 +161,7 @@
     ("bc" "because" nil 8)
     ("bg" "being" nil 1)
     ("bk" "back" nil 0)
-    ("bs" "bullshit" nil 0)
+    ("bs" "bullshit" nil 2)
     ("bt" "between" nil 1)
     ("c" "can" nil 3)
     ("ca" "cause" nil 0)
@@ -123,7 +173,7 @@
     ("co" "come" nil 0)
     ("d" "did" nil 3)
     ("e" "even" nil 0)
-    ("em" "them" nil 7)
+    ("em" "them" nil 8)
     ("eval" "evaluate" nil 0)
     ("evaln" "evaluation" nil 0)
     ("ey" "they" nil 7)
@@ -135,27 +185,29 @@
     ("i" "I" nil 27)
     ("iam" "I am" nil 5)
     ("im" "I'm" nil 1)
+    ("j" "just" nil 1)
     ("ki" "kind" nil 0)
     ("kio" "kind of" nil 3)
     ("l" "will" nil 0)
     ("li" "like" nil 2)
     ("mi" "might" nil 1)
     ("mk" "make" nil 0)
+    ("mn" "many" nil 0)
     ("n" "and" nil 86)
     ("nth" "nothing" nil 1)
     ("nv" "never" nil 2)
-    ("o" "out" nil 0)
+    ("o" "out" nil 1)
     ("oo" "out of" nil 1)
     ("ot" "of the" nil 2)
     ("otoh" "on the other hand" nil 1)
     ("p" "put" nil 1)
     ("pr" "pretty" nil 2)
-    ("r" "are" nil 21)
+    ("r" "are" nil 23)
     ("rly" "really" nil 0)
-    ("s" "is" nil 34)
+    ("s" "is" nil 36)
     ("sa" "said" nil 3)
     ("sd" "should" nil 0)
-    ("t" "the" nil 185)
+    ("t" "the" nil 187)
     ("ta" "that" nil 27)
     ("tb" "to be" nil 8)
     ("td" "to do" nil 1)
@@ -169,7 +221,7 @@
     ("tn" "than" nil 9)
     ("tr" "there" nil 7)
     ("ts" "these" nil 1)
-    ("tt" "to the" nil 2)
+    ("tt" "to the" nil 3)
     ("u" "you" nil 17)
     ("un" "unique" nil 1)
     ("ur" "your" nil 3)
@@ -183,7 +235,7 @@
     ("wi" "with" nil 19)
     ("wl" "while" nil 2)
     ("wn" "when" nil 5)
-    ("wr" "where" nil 3)
+    ("wr" "where" nil 4)
     ("y" "to" nil 16)
     ("yr" "their" nil 5)
     ("z" "not" nil 4)
