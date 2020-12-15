@@ -13,7 +13,8 @@
 
 (setq-default indent-tabs-mode nil
 	line-spacing 0.3
-	tab-width 4)
+	tab-width 4
+	save-abbrevs nil)
 (setq inhibit-splash-screen t
 	inhibit-startup-message t
 	frame-resize-pixelwise t
@@ -44,11 +45,11 @@
 (defun dired-here() (interactive) (dired default-directory))
 
 (defun vi-on() (interactive)
-	(vi-mode -1)
+	(vi-mode 1)
 	(setq cursor-type 'box))
 
 (defun vi-off() (interactive)
-	(vi-mode 1)
+	(vi-mode -1)
 	(setq cursor-type 'bar))
 
 (defun backspace-or-unindent() (interactive)
@@ -97,9 +98,9 @@
 (defun french() (interactive)
 	(replace-all-regex "\"\\([^\"]+?\\)\"" "«\\1»")
 	(replace-all "?!" "⁈")
-	(replace-all-regex " *\\(;\\|!\\|?\\|⁈\\)" " \\1")
-	(replace-all-regex " *\\([:\\|»]\\)" " \\1")
-	(replace-all-regex "« *" "« "))
+	(replace-all-regex "\\s*\\(;\\|!\\|?\\|⁈\\)" " \\1")
+	(replace-all-regex "\\s*\\([:\\|»]\\)" " \\1")
+	(replace-all-regex "«\\s*" "« "))
 
 (defun cmark() (interactive)
 	(shell-command-on-region (point-min) (point-max)
@@ -121,7 +122,7 @@
 (define-key vi-mode-map (kbd "Q") 'kmacro-end-or-call-macro)
 (define-key vi-mode-map (kbd "u") 'vi-off)
 (define-key vi-mode-map (kbd "i") 'left-char)
-(define-key vi-mode-map (kbd "e") 'forward-line)
+(define-key vi-mode-map (kbd "e") 'next-line)
 (define-key vi-mode-map (kbd "o") 'previous-line)
 (define-key vi-mode-map (kbd "a") 'right-char)
 (define-key vi-mode-map (kbd "I") 'beginning-of-line-text)
@@ -205,6 +206,7 @@
 (define-key prog-mode-map (kbd "<backspace>") 'backspace-or-unindent)
 (define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative)
 (define-key prog-mode-map (kbd "C-SPC") 'unexpand-abbrev)
+
 (define-key text-mode-map (kbd "<tab>") 'expand-or-tab)
 (define-key text-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
 (define-key text-mode-map (kbd "<backspace>") 'backspace-or-unindent)
@@ -219,6 +221,8 @@
 (define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "<escape>") 'isearch-abort)
 (define-key isearch-mode-map (kbd "<return>") 'isearch-exit)
+
+(define-key edit-abbrevs-mode-map (kbd "C-s") 'abbrev-edit-save-buffer)
 
 (add-hook 'prog-mode-hook (lambda() (vi-on)))
 (add-hook 'minibuffer-setup-hook (lambda() (vi-off)))
