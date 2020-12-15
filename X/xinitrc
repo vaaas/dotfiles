@@ -9,7 +9,6 @@ export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=xim
 ibus-daemon -xdr
 xset r rate 180
-setxkbmap vlatin
 
 redshift_service &
 dunst -font "Sans 16" &
@@ -17,5 +16,5 @@ xwallpaper --tile wallpaper &
 unclutter --timeout 1 &
 bar &
 dbus-launch sxhkd -m -1 &
-picom &
+XMODIFIERS=xim emacs --daemon
 dbus-launch dwm-loop

@@ -1,3 +1,0 @@
-#!/bin/dash
-xrandr --output HDMI-1 --auto --output LVDS-1 --off
-pactl set-card-profile 0 output:hdmi-stereo

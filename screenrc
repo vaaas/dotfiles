@@ -1,3 +1,0 @@
-caption always "%{= 1f}@%H | %l | %w"
-hardstatus string "screen | @%H"
-escape ^\\\
