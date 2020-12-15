@@ -260,6 +260,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#fff3e0" :foreground "#303030" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "1ASC" :family "Liberation Mono"))))
+ '(eshell-ls-directory ((t (:foreground "#44d" :weight bold))))
+ '(eshell-ls-executable ((t (:foreground "#484" :weight bold))))
+ '(eshell-prompt ((t (:foreground "#d44" :weight bold))))
  '(font-lock-builtin-face ((t (:underline (:color foreground-color)))))
  '(font-lock-constant-face ((t nil)))
  '(font-lock-function-name-face ((t (:foreground "#048"))))
