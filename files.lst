@@ -1,6 +1,4 @@
-picom.conf	~/.config/picom.conf
 fonts.conf	~/.config/fontconfig/fonts.conf
-screenrc	~/.screenrc
 bash/bashrc	~/.bashrc
 bash/bash_profile	~/.bash_profile
 bash/inputrc	~/.inputrc
@@ -13,16 +11,13 @@ gtk/gtkrc-2.0	~/.gtkrc-2.0
 bin/emv	~/Binaries/emv
 bin/lgrep	~/Binaries/lgrep
 bin/lls	~/Binaries/lls
-bin/newpassword	~/Binaries/newpassword
 bin/passmenu	~/Binaries/passmenu
 bin/set_time	~/Binaries/set_time
 bin/winconv	~/Binaries/winconv
 bin/word-frequency	~/Binaries/word-frequency
 bin/thanks	~/Binaries/thanks
-bin/hdmi	~/Binaries/hdmi
 bin/bar	~/Binaries/bar
 bin/clip_run	~/Binaries/clip_run
-bin/pytkfilter	~/Binaries/pytkfilter
 bin/update-file-db	~/Binaries/update-file-db
 bin/vas_transcode	~/Binaries/vas_transcode
 bin/sha3_rename	~/Binaries/sha3_rename
@@ -33,9 +28,10 @@ bin/dwm-loop	~/Binaries/dwm-loop
 bin/g	~/Binaries/g
 bin/dmenu	~/Binaries/dmenu
 bin/kswitcher	~/Binaries/kswitcher
-bin/converter	~/Binaries/converter
 nautilus/scripts-accels	~/.config/nautilus/scripts-accels
 nautilus/term-here	~/.local/share/nautilus/scripts/term-here
 nautilus/dmenu-selection	~/.local/share/nautilus/scripts/dmenu-selection
 sxhkdrc	~/.config/sxhkd/sxhkdrc
-abbrev_defs	~/.emacs.d/abbrev_defs
+abbrev_defs	~/.config/emacs.d/abbrev_defs
+init.el	~/.config/emacs.d/init.el
+alias	~/.config/emacs.d/eshell/alias
