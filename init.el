@@ -80,12 +80,6 @@
 			(progn (backward-delete-char 1) (insert ", ")))
 		(t (self-insert-command 1))))
 
-(defun smart-punct() (interactive)
-	(cond
-		((< (point) 2) (self-insert-command 1))
-		((= 32 (char-before)) (backward-delete-char 1) (self-insert-command 1) (insert ? ))
-		(t (progn (self-insert-command 1) (insert ? )))))
-
 (defun replace-all (from to)
 	(goto-char (point-min))
 	(while (search-forward from nil t)
@@ -204,12 +198,12 @@
 (define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 (define-key text-mode-map (kbd "SPC") 'space-comma-dot)
 (define-key text-mode-map (kbd "S-SPC") (lambda() (interactive) (capitalize-word -1)))
-(define-key text-mode-map (kbd ".") 'smart-punct)
-(define-key text-mode-map (kbd ",") 'smart-punct)
 
 (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit)
 
 (define-key isearch-mode-map (kbd "<return>") 'isearch-repeat-forward)
+(define-key isearch-mode-map (kbd "<S-return>") 'isearch-repeat-backward)
+(define-key isearch-mode-map (kbd "<C-return>") 'isearch-exit)
 (define-key isearch-mode-map (kbd "<escape>") 'isearch-exit)
 (define-key isearch-mode-map (kbd "C-g") 'isearch-exit)
 
