@@ -99,7 +99,7 @@
 
 (defun cmark() (interactive)
 	(shell-command-on-region (point-min) (point-max)
-		"cmark"
+		"cmark --smart"
 		(current-buffer) t))
 
 (defun spaces-to-tabs() (interactive)
