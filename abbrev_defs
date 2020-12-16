@@ -7,17 +7,11 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'awk-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c++-mode-abbrev-table '())
 
-(define-abbrev-table 'c-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c-mode-abbrev-table '())
 
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
@@ -81,9 +75,7 @@
 
 (define-abbrev-table 'idl-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'java-mode-abbrev-table '())
 
 (define-abbrev-table 'js-jsx-mode-abbrev-table '())
 
@@ -94,6 +86,7 @@
     ("F" "Function" nil 0)
     ("O" "Object" nil 0)
     ("P" "Promise" nil 0)
+    ("S" "String" nil 0)
     ("a" "=>" nil 0)
     ("c" "const" nil 0)
     ("ca" "catch" nil 0)
@@ -137,9 +130,7 @@
 
 (define-abbrev-table 'messages-buffer-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'objc-mode-abbrev-table '())
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -151,9 +142,7 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'pike-mode-abbrev-table '())
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
@@ -183,6 +172,7 @@
   '(
     ("'" "it" nil 0)
     ("ab" "about" nil 0)
+    ("ath" "anything" nil 0)
     ("b" "but" nil 0)
     ("bc" "because" nil 0)
     ("bg" "being" nil 0)
@@ -192,36 +182,40 @@
     ("c" "can" nil 0)
     ("ca" "cause" nil 0)
     ("cb" "can be" nil 0)
-    ("cd" "could" nil 1)
+    ("cd" "could" nil 0)
     ("cdb" "could be" nil 0)
     ("char" "character" nil 0)
     ("chars" "characters" nil 0)
     ("co" "come" nil 0)
     ("d" "did" nil 0)
-    ("e" "even" nil 1)
+    ("e" "even" nil 0)
     ("el" "else" nil 0)
     ("em" "them" nil 0)
     ("eval" "evaluate" nil 0)
     ("evaln" "evaluation" nil 0)
     ("ey" "they" nil 0)
     ("f" "for" nil 0)
-    ("fr" "from" nil 1)
+    ("fr" "from" nil 0)
     ("g" "get" nil 0)
     ("gt" "got" nil 0)
-    ("h" "had" nil 2)
+    ("h" "had" nil 0)
     ("hv" "have" nil 0)
-    ("i" "I" nil 3)
+    ("i" "I" nil 0)
     ("iam" "I am" nil 0)
     ("im" "I'm" nil 0)
     ("j" "just" nil 0)
+    ("k" "know" nil 0)
+    ("ke" "knew" nil 0)
     ("ki" "kind" nil 0)
     ("kio" "kind of" nil 0)
+    ("kn" "known" nil 0)
     ("l" "will" nil 0)
     ("li" "like" nil 0)
     ("mi" "might" nil 0)
     ("mk" "make" nil 0)
     ("mn" "many" nil 0)
     ("n" "and" nil 0)
+    ("naive" "naïve" nil 0)
     ("nth" "nothing" nil 0)
     ("nv" "never" nil 0)
     ("o" "out" nil 0)
@@ -229,14 +223,16 @@
     ("ot" "of the" nil 0)
     ("otoh" "on the other hand" nil 0)
     ("p" "put" nil 0)
+    ("perhaps" "perhaps" nil 0)
     ("pr" "pretty" nil 0)
     ("r" "are" nil 0)
     ("rly" "really" nil 0)
     ("s" "is" nil 0)
     ("sa" "said" nil 0)
     ("sd" "should" nil 0)
+    ("sth" "something" nil 0)
     ("t" "the" nil 0)
-    ("ta" "that" nil 1)
+    ("ta" "that" nil 0)
     ("tb" "to be" nil 0)
     ("td" "to do" nil 0)
     ("te" "then" nil 0)
@@ -255,6 +251,7 @@
     ("ur" "your" nil 0)
     ("urs" "yours" nil 0)
     ("v" "of" nil 0)
+    ("vth" "everything" nil 0)
     ("w" "was" nil 0)
     ("wa" "what" nil 0)
     ("wd" "would" nil 0)
