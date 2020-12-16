@@ -129,8 +129,8 @@
 (define-key vi-mode-map (kbd "E") 'forward-paragraph)
 (define-key vi-mode-map (kbd "O") 'backward-paragraph)
 (define-key vi-mode-map (kbd "A") 'end-of-line)
-(define-key vi-mode-map (kbd "u") 'forward-to-word)
-(define-key vi-mode-map (kbd "w") 'backward-word)
+(define-key vi-mode-map (kbd "w") 'forward-to-word)
+(define-key vi-mode-map (kbd "u") 'backward-word)
 (define-key vi-mode-map (kbd "r") 'zap-to-char)
 (define-key vi-mode-map (kbd "t") 'delete-forward-char)
 (define-key vi-mode-map (kbd "c") 'kill-whole-line)
@@ -215,9 +215,9 @@
 
 (define-key edit-abbrevs-mode-map (kbd "C-s") 'abbrev-edit-save-buffer)
 
-(add-hook 'prog-mode-hook 'vi-on)
+(add-hook 'prog-mode-hook (lambda() (abbrev-mode 1) (vi-on)))
 (add-hook 'minibuffer-setup-hook 'vi-off)
-(add-hook 'text-mode-hook (lambda() (abbrev-mode 1) (variable-pitch-mode)))
+(add-hook 'text-mode-hook (lambda() (abbrev-mode 1) (variable-pitch-mode) (vi-on)))
 (add-hook 'eshell-mode-hook 'vi-off)
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
