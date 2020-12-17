@@ -7,11 +7,17 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table '())
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c++-mode-abbrev-table '())
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c-mode-abbrev-table '())
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
@@ -75,32 +81,34 @@
 
 (define-abbrev-table 'idl-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table '())
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'js-jsx-mode-abbrev-table '())
 
 (define-abbrev-table 'js-mode-abbrev-table
   '(
     ("A" "Array" nil 0)
-    ("E" "Error" nil 0)
+    ("E" "Error" nil 2)
     ("F" "Function" nil 0)
     ("O" "Object" nil 0)
-    ("P" "Promise" nil 0)
-    ("S" "String" nil 0)
-    ("a" "=>" nil 0)
+    ("P" "Promise" nil 1)
+    ("S" "String" nil 4)
+    ("a" "=>" nil 9)
     ("c" "const" nil 0)
     ("ca" "catch" nil 0)
     ("cs" "case" nil 0)
     ("d" "document" nil 0)
-    ("de" "default" nil 0)
-    ("e" "else" nil 0)
+    ("de" "default" nil 4)
+    ("e" "else" nil 4)
     ("ei" "else if" nil 0)
     ("ex" "export" nil 0)
     ("f" "function" nil 0)
     ("fe" "forEach" nil 0)
     ("fi" "filter" nil 0)
     ("im" "import" nil 0)
-    ("is" "===" nil 0)
+    ("is" "===" nil 1)
     ("l" "let" nil 0)
     ("log" "console.log" nil 0)
     ("lt" "<" nil 0)
@@ -108,14 +116,15 @@
     ("m" "map" nil 0)
     ("mt" ">" nil 0)
     ("mte" ">=" nil 0)
-    ("n" "new" nil 0)
-    ("p" "pipe" nil 0)
+    ("n" "new" nil 8)
+    ("p" "pipe" nil 3)
     ("qs" "querySelector" nil 0)
     ("qss" "querySelectorAll" nil 0)
-    ("r" "return" nil 0)
+    ("r" "return" nil 8)
     ("re" "reduce" nil 0)
     ("s" "switch" nil 0)
-    ("t" "then" nil 0)
+    ("t" "this" nil 7)
+    ("te" "then" nil 3)
     ("th" "throw" nil 0)
     ("w" "while" nil 0)
    ))
@@ -130,7 +139,9 @@
 
 (define-abbrev-table 'messages-buffer-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table '())
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -142,7 +153,9 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table '())
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
@@ -187,7 +200,7 @@
     ("char" "character" nil 0)
     ("chars" "characters" nil 0)
     ("co" "come" nil 0)
-    ("d" "did" nil 0)
+    ("d" "did" nil 1)
     ("e" "even" nil 0)
     ("el" "else" nil 0)
     ("em" "them" nil 0)
@@ -198,7 +211,7 @@
     ("fr" "from" nil 0)
     ("g" "get" nil 0)
     ("gt" "got" nil 0)
-    ("h" "had" nil 0)
+    ("h" "had" nil 1)
     ("hv" "have" nil 0)
     ("i" "I" nil 0)
     ("iam" "I am" nil 0)
@@ -214,7 +227,7 @@
     ("mi" "might" nil 0)
     ("mk" "make" nil 0)
     ("mn" "many" nil 0)
-    ("n" "and" nil 0)
+    ("n" "and" nil 1)
     ("naive" "naïve" nil 0)
     ("nth" "nothing" nil 0)
     ("nv" "never" nil 0)
@@ -223,24 +236,25 @@
     ("ot" "of the" nil 0)
     ("otoh" "on the other hand" nil 0)
     ("p" "put" nil 0)
-    ("perhaps" "perhaps" nil 0)
+    ("ph" "perhaps" nil 1)
     ("pr" "pretty" nil 0)
-    ("r" "are" nil 0)
+    ("r" "are" nil 1)
     ("rly" "really" nil 0)
     ("s" "is" nil 0)
     ("sa" "said" nil 0)
     ("sd" "should" nil 0)
     ("sth" "something" nil 0)
-    ("t" "the" nil 0)
-    ("ta" "that" nil 0)
+    ("t" "the" nil 9)
+    ("ta" "that" nil 1)
     ("tb" "to be" nil 0)
     ("td" "to do" nil 0)
     ("te" "then" nil 0)
     ("tg" "thing" nil 0)
     ("tgs" "things" nil 0)
-    ("th" "think" nil 0)
+    ("th" "think" nil 1)
+    ("tho" "though" nil 0)
     ("ths" "thinks" nil 0)
-    ("ti" "this" nil 0)
+    ("ti" "this" nil 1)
     ("tk" "take" nil 0)
     ("tn" "than" nil 0)
     ("tr" "there" nil 0)
@@ -252,18 +266,18 @@
     ("urs" "yours" nil 0)
     ("v" "of" nil 0)
     ("vth" "everything" nil 0)
-    ("w" "was" nil 0)
+    ("w" "was" nil 3)
     ("wa" "what" nil 0)
-    ("wd" "would" nil 0)
+    ("wd" "would" nil 1)
     ("wdb" "would be" nil 0)
     ("wh" "which" nil 0)
-    ("wi" "with" nil 0)
+    ("wi" "with" nil 1)
     ("wl" "while" nil 0)
     ("wn" "when" nil 0)
     ("wr" "where" nil 0)
     ("y" "to" nil 0)
     ("yr" "their" nil 0)
-    ("z" "not" nil 0)
+    ("z" "not" nil 1)
    ))
 
 (define-abbrev-table 'url-cookie-mode-abbrev-table '())
