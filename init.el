@@ -91,11 +91,11 @@
 		(replace-match to nil nil)))
 
 (defun french() (interactive)
-	(replace-all-regex "\"\\([^\"]+?\\)\"" "«\u00A0\\1\u00A0»")
+	(replace-all-regex "\"\\([^\"]+?\\)\"" "«\\1»")
 	(replace-all "?!" "⁈")
-	(replace-all-regex "\\s*\\(;\\|!\\|?\\|⁈\\)" "\u202F\\1")
-	(replace-all-regex "\\s*\\([:\\|»]\\)" "\u00A0\\1")
-	(replace-all-regex "«\\s*" "«\u00A0"))
+	(replace-all-regex "[ |\u00A0|\u202F]*\\(;\\|!\\|\\?\\|⁈\\)" "\u202F\\1")
+	(replace-all-regex "[ |\u00A0|\u202F]*\\([:\\|»]\\)" "\u00A0\\1")
+	(replace-all-regex "«[ |\u00A0|\u202F]*" "«\u00A0"))
 
 (defun cmark() (interactive)
 	(shell-command-on-region (point-min) (point-max)
