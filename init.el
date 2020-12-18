@@ -185,7 +185,7 @@
 (define-key global-map (kbd "C-<tab>") 'ido-switch-buffer)
 (define-key global-map (kbd "<C-return>") 'line-below)
 (define-key global-map (kbd "<f2>") 'dired-here)
-(define-key global-map (kbd "C-g") 'goto-line)
+(define-key global-map (kbd "M-g") 'goto-line)
 
 (define-key prog-mode-map (kbd "<tab>") 'expand-or-tab)
 (define-key prog-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
