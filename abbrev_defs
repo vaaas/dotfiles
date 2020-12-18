@@ -7,11 +7,17 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table '())
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c++-mode-abbrev-table '())
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c-mode-abbrev-table '())
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
@@ -75,7 +81,9 @@
 
 (define-abbrev-table 'idl-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table '())
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'js-jsx-mode-abbrev-table '())
 
@@ -115,7 +123,8 @@
     ("r" "return" nil 0)
     ("re" "reduce" nil 0)
     ("s" "switch" nil 0)
-    ("t" "then" nil 0)
+    ("t" "this" nil 0)
+    ("te" "then" nil 0)
     ("th" "throw" nil 0)
     ("w" "while" nil 0)
    ))
@@ -130,7 +139,9 @@
 
 (define-abbrev-table 'messages-buffer-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table '())
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -142,7 +153,9 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table '())
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
@@ -223,7 +236,7 @@
     ("ot" "of the" nil 0)
     ("otoh" "on the other hand" nil 0)
     ("p" "put" nil 0)
-    ("perhaps" "perhaps" nil 0)
+    ("ph" "perhaps" nil 0)
     ("pr" "pretty" nil 0)
     ("r" "are" nil 0)
     ("rly" "really" nil 0)
@@ -239,6 +252,7 @@
     ("tg" "thing" nil 0)
     ("tgs" "things" nil 0)
     ("th" "think" nil 0)
+    ("tho" "though" nil 0)
     ("ths" "thinks" nil 0)
     ("ti" "this" nil 0)
     ("tk" "take" nil 0)
