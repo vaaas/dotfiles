@@ -229,15 +229,15 @@
 
 (with-eval-after-load 'dired
 	(define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file)
-    (define-key dired-mode-map (kbd "a") 'dired-find-alternate-file)
-    (define-key dired-mode-map (kbd "e") 'dired-next-line)
-    (define-key dired-mode-map (kbd "o") 'dired-previous-line)
-    (define-key dired-mode-map (kbd "i") 'dired-up-directory)
-    (define-key dired-mode-map (kbd "x") 'execute-extended-command)
-    (define-key dired-mode-map (kbd "b") 'ido-switch-buffer)
-    (define-key dired-mode-map (kbd "f") 'find-file)
-    (define-key dired-mode-map (kbd "f") 'quick-find-file)
-    (define-key dired-mode-map (kbd "/") 'isearch-forward)
+	(define-key dired-mode-map (kbd "a") 'dired-find-alternate-file)
+	(define-key dired-mode-map (kbd "e") 'dired-next-line)
+	(define-key dired-mode-map (kbd "o") 'dired-previous-line)
+	(define-key dired-mode-map (kbd "i") 'dired-up-directory)
+	(define-key dired-mode-map (kbd "x") 'execute-extended-command)
+	(define-key dired-mode-map (kbd "b") 'ido-switch-buffer)
+	(define-key dired-mode-map (kbd "f") 'find-file)
+	(define-key dired-mode-map (kbd "f") 'quick-find-file)
+	(define-key dired-mode-map (kbd "/") 'isearch-forward)
 	(define-key dired-mode-map (kbd "C-o") nil))
 
 (custom-set-variables
