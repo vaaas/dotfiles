@@ -185,6 +185,7 @@
 (define-key global-map (kbd "C-<tab>") 'ido-switch-buffer)
 (define-key global-map (kbd "<C-return>") 'line-below)
 (define-key global-map (kbd "<f2>") 'dired-here)
+(define-key global-map (kbd "M-g") 'goto-line)
 
 (define-key prog-mode-map (kbd "<tab>") 'expand-or-tab)
 (define-key prog-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
@@ -229,15 +230,15 @@
 
 (with-eval-after-load 'dired
 	(define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file)
-    (define-key dired-mode-map (kbd "a") 'dired-find-alternate-file)
-    (define-key dired-mode-map (kbd "e") 'dired-next-line)
-    (define-key dired-mode-map (kbd "o") 'dired-previous-line)
-    (define-key dired-mode-map (kbd "i") 'dired-up-directory)
-    (define-key dired-mode-map (kbd "x") 'execute-extended-command)
-    (define-key dired-mode-map (kbd "b") 'ido-switch-buffer)
-    (define-key dired-mode-map (kbd "f") 'find-file)
-    (define-key dired-mode-map (kbd "f") 'quick-find-file)
-    (define-key dired-mode-map (kbd "/") 'isearch-forward)
+	(define-key dired-mode-map (kbd "a") 'dired-find-alternate-file)
+	(define-key dired-mode-map (kbd "e") 'dired-next-line)
+	(define-key dired-mode-map (kbd "o") 'dired-previous-line)
+	(define-key dired-mode-map (kbd "i") 'dired-up-directory)
+	(define-key dired-mode-map (kbd "x") 'execute-extended-command)
+	(define-key dired-mode-map (kbd "b") 'ido-switch-buffer)
+	(define-key dired-mode-map (kbd "f") 'find-file)
+	(define-key dired-mode-map (kbd "f") 'quick-find-file)
+	(define-key dired-mode-map (kbd "/") 'isearch-forward)
 	(define-key dired-mode-map (kbd "C-o") nil))
 
 (custom-set-variables
@@ -245,7 +246,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (markdown-mode vue-mode php-mode))))
+ '(package-selected-packages (quote (markdown-mode php-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

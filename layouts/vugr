@@ -17,31 +17,31 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore, emdash, endash ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <AD01> {[ Greek_theta, Greek_THETA, less ], [k, K] };
-	key <AD02> {[ Greek_kappa, Greek_KAPPA, greater ], [c, C] };
-	key <AD03> {[ dead_acute, dead_diaeresis, equal ], [d, D] };
-	key <AD04> {[ Greek_mu, Greek_MU, plus ], [m, m] };
+	key <AD01> {[ Greek_theta, Greek_THETA ], [k, K] };
+	key <AD02> {[ Greek_kappa, Greek_KAPPA ], [c, C] };
+	key <AD03> {[ dead_acute, dead_diaeresis ], [d, D] };
+	key <AD04> {[ Greek_mu, Greek_MU ], [m, m] };
 	key <AD05> {[ Greek_xi, Greek_XI ], [j, J] };
 	key <AD06> {[ Greek_psi, Greek_PSI ], [q, Q] };
-	key <AD07> {[ Greek_omega, Greek_OMEGA, parenleft ], [w, W] };
-	key <AD08> {[ Greek_eta, Greek_ETA, parenright ], [u, U] };
-	key <AD09> {[ Greek_delta, Greek_DELTA, bracketleft ], [v, V] };
-	key <AD10> {[ semicolon, colon, bracketright ] };
+	key <AD07> {[ Greek_omega, Greek_OMEGA ], [w, W] };
+	key <AD08> {[ Greek_eta, Greek_ETA ], [u, U] };
+	key <AD09> {[ Greek_delta, Greek_DELTAleft ], [v, V] };
+	key <AD10> {[ semicolon, colon ] };
 
 	// all the bracket pairs: paren, bracket, brace, comparisons
 	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
 	key <AD12> {[ parenright, bracketright, braceright, greater ]};
 
 	key <AC01> {[ Greek_rho, Greek_RHO ], [r, R] };
-	key <AC02> {[ Greek_sigma, Greek_SIGMA, dollar ], [s, S] };
-	key <AC03> {[ Greek_tau, Greek_TAU, underscore ], [t, T] };
-	key <AC04> {[ Greek_nu, Greek_NU, minus ], [n, N] };
+	key <AC02> {[ Greek_sigma, Greek_SIGMA ], [s, S] };
+	key <AC03> {[ Greek_tau, Greek_TAU ], [t, T] };
+	key <AC04> {[ Greek_nu, Greek_NU ], [n, N] };
 	key <AC05> {[ Greek_finalsmallsigma, Greek_SIGMA ], [h, H] };
 	key <AC06> {[ Greek_upsilon, Greek_UPSILON ], [y, Y] };
-	key <AC07> {[ Greek_iota, Greek_IOTA, Return, Return ], [i, I] };
-	key <AC08> {[ Greek_epsilon, Greek_EPSILON, Tab, Tab ], [e, E] };
-	key <AC09> {[ Greek_omicron, Greek_OMICRON, BackSpace, BackSpace ], [o, O] };
-	key <AC10> {[ Greek_alpha, Greek_ALPHA, Escape, Escape ], [a, A] };
+	key <AC07> {[ Greek_iota, Greek_IOTA ], [i, I] };
+	key <AC08> {[ Greek_epsilon, Greek_EPSILON ], [e, E] };
+	key <AC09> {[ Greek_omicron, Greek_OMICRON ], [o, O] };
+	key <AC10> {[ Greek_alpha, Greek_ALPHA ], [a, A] };
 	key <AC11> {[ apostrophe, quotedbl ]};
 
 	key <AB01> {[ Greek_zeta, Greek_ZETA ], [z, Z] };
@@ -50,15 +50,17 @@ xkb_symbols "basic" {
 	key <AB04> {[ Greek_lambda, Greek_LAMBDA ], [l, L] };
 	key <AB05> {[ Greek_chi, Greek_CHI ], [x, X] };
 	key <AB06> {[ Greek_beta, Greek_BETA ], [b, B] };
-	key <AB07> {[ Greek_pi, Greek_PI, braceleft ], [p, P] };
-	key <AB08> {[ comma, less, braceright ]};
-	key <AB09> {[ period, greater, guillemotleft, ellipsis ]};
-	key <AB10> {[ slash, question, guillemotright ]};
+	key <AB07> {[ Greek_pi, Greek_PI ], [p, P] };
+	key <AB08> {[ comma, less ]};
+	key <AB09> {[ period, greater ]};
+	key <AB10> {[ slash, question ]};
 
 	key <BKSL> {[ backslash, bar ]};
 
-	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
+	key <RALT> {
+		symbols[Group1] = [ Mode_switch, Mode_switch ],
+		virtualMods= AltGr };
 	key <CAPS> {[ Control_L, Control_L ]};
-	key <LCTL> {[ Caps_Lock, Caps_Lock ]};
-	key <SPCE> {[ space, space, BackSpace, BackSpace ]};
+	key <LCTL> {[ Multi_key ]};
+	key <SPCE> {[ space, space ], [ BackSpace, Return ]};
 };
