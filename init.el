@@ -19,7 +19,8 @@
 	inhibit-startup-message t
 	frame-resize-pixelwise t
 	vc-follow-symlinks t
-	make-backup-files nil)
+	make-backup-files nil
+	blog-directory "/home/vas/Projects/website")
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 
 (put 'dired-find-alternate-file 'disabled nil)
@@ -81,14 +82,14 @@
 		(t (self-insert-command 1))))
 
 (defun replace-all (from to)
-	(goto-char (point-min))
+	(beginning-of-buffer)
 	(while (search-forward from nil t)
-		(replace-match to nil t)))
+		(replace-match to t t)))
 
 (defun replace-all-regex (from to)
-	(goto-char (point-min))
+	(beginning-of-buffer)
 	(while (re-search-forward from nil t)
-		(replace-match to nil nil)))
+		(replace-match to t nil)))
 
 (defun french() (interactive)
 	(replace-all-regex "\"\\([^\"]+?\\)\"" "«\\1»")
@@ -103,7 +104,7 @@
 		(current-buffer) t))
 
 (defun spaces-to-tabs() (interactive)
-	(goto-char (point-min))
+	(beginning-of-buffer)
 	(replace-all (make-string tab-width ? ) "	"))
 
 (defun join-line() (interactive)
@@ -111,6 +112,51 @@
 	(forward-line)
 	(beginning-of-line-text)
 	(delete-indentation))
+
+(defun timestamp() (format-time-string "%s"))
+
+(defun blog-note() (interactive)
+	(delete-trailing-whitespace)
+	(beginning-of-buffer)
+	(insert "<img class='emoji' alt='emoji' src='/pics/note.svg'/> ")
+	(beginning-of-buffer)
+	(insert (timestamp))
+	(insert "\nnote\n")
+	(end-of-buffer)
+	(insert "\n\n")
+	(append-to-file (point-min) (point-max) (concat blog-directory "/posts")))
+
+(defun blog-article() (interactive)
+	(setq file-name (concat
+		(replace-regexp-in-string " " "_"
+			(read-string "file name (no extension): "))
+		".html"))
+	(delete-trailing-whitespace)
+	(beginning-of-buffer)
+	(search-forward "<h1>") (setq start (point))
+	(search-forward "</h1>") (setq end (- (point) 5))
+	(setq title (buffer-substring start end))
+	(search-forward "<p>") (setq start (point))
+	(search-forward "</p>") (setq end (- (point) 4))
+	(setq blurb (buffer-substring start end))
+	(setq stamp (timestamp))
+	(setq ymd (format-time-string "%Y-%m-%d"))
+	(setq body (buffer-substring (point-min) (point-max)))
+	(insert-file-contents (concat blog-directory "/templates/item.html") nil nil nil t)
+	(replace-all "{{TITLE}}" title)
+	(replace-all "{{TIMESTAMP}}" stamp)
+	(replace-all "{{YMD}}" ymd)
+	(replace-all "{{BODY}}" body)
+	(append-to-file (point-min) (point-max) (concat blog-directory "/render/articles/" file-name))
+	(kill-region (point-min) (point-max))
+	(insert (timestamp))
+	(insert "\narticle\n")
+	(insert (concat
+		"<h1><img alt='emoji' src='/pics/article.svg'/> <a href='"
+		(concat "/articles/" file-name)
+		"'>" title "</a></h1>\n"))
+	(insert blurb)
+	(append-to-file (point-min) (point-max) (concat blog-directory "/posts")))
 
 (setq vi-mode-map (make-sparse-keymap))
 (define-key vi-mode-map (kbd "k") 'kmacro-start-macro)
