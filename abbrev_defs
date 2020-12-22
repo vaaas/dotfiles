@@ -184,10 +184,12 @@
 (define-abbrev-table 'text-mode-abbrev-table
   '(
     ("'" "it" nil 0)
+    ("ar" "around" nil 0)
     ("ab" "about" nil 0)
     ("af" "after" nil 0)
     ("ath" "anything" nil 0)
     ("b" "but" nil 0)
+    ("bf" "before" nil 0)
     ("bc" "because" nil 0)
     ("bg" "being" nil 0)
     ("bk" "back" nil 0)

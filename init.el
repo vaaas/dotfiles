@@ -212,7 +212,8 @@
 
 (define-key vi-mode-map (kbd "`") 'eshell)
 (define-key vi-mode-map (kbd "\\ v p") 'variable-pitch-mode)
-(define-key vi-mode-map (kbd "\\ e a") 'edit-abbrevs)
+(define-key vi-mode-map (kbd "\\ e a") (lambda() (interactive) (find-file "~/.config/emacs/abbrev_defs")))
+(define-key vi-mode-map (kbd "\\ e i") (lambda() (interactive) (find-file "~/.config/emacs/init.el")))
 (define-key vi-mode-map (kbd "\\ i t") 'toggle-indent-tabs)
 (define-key vi-mode-map (kbd "\\ m m") 'markdown-mode)
 (define-key vi-mode-map (kbd "\\ f r") 'french)
@@ -233,7 +234,6 @@
 (define-key global-map (kbd "C-n") 'newline-and-indent-relative)
 (define-key global-map (kbd "C-s") 'backspace-or-unindent)
 (define-key global-map (kbd "C-t") 'backward-kill-word)
-(define-key global-map (kbd "C-0") 'delete-other-windows)
 (define-key global-map (kbd "<C-tab>") 'other-window)
 (define-key global-map (kbd "C-,") 'previous-buffer)
 (define-key global-map (kbd "C-.") 'next-buffer)
@@ -247,7 +247,7 @@
 
 (define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 (define-key text-mode-map (kbd "SPC") 'space-comma-dot)
-(define-key text-mode-map (kbd "C-c") (lambda() (interactive) (capitalize-word -1)))
+(define-key text-mode-map (kbd "S-SPC") (lambda() (interactive) (capitalize-word -1)))
 
 (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit)
 (define-key minibuffer-local-map (kbd "<tab>") 'minibuffer-complete)
