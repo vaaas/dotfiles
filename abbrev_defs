@@ -7,11 +7,17 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table '())
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c++-mode-abbrev-table '())
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c-mode-abbrev-table '())
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
@@ -75,7 +81,9 @@
 
 (define-abbrev-table 'idl-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table '())
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'js-jsx-mode-abbrev-table '())
 
@@ -88,7 +96,7 @@
     ("P" "Promise" nil 0)
     ("S" "String" nil 0)
     ("a" "=>" nil 0)
-    ("c" "const" nil 0)
+    ("c" "const" nil 6)
     ("ca" "catch" nil 0)
     ("cs" "case" nil 0)
     ("d" "document" nil 0)
@@ -115,7 +123,7 @@
     ("r" "return" nil 0)
     ("re" "reduce" nil 0)
     ("s" "switch" nil 0)
-    ("t" "this" nil 0)
+    ("t" "this" nil 6)
     ("te" "then" nil 0)
     ("th" "throw" nil 0)
     ("w" "while" nil 0)
@@ -131,7 +139,9 @@
 
 (define-abbrev-table 'messages-buffer-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table '())
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -143,7 +153,9 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table '())
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
@@ -194,12 +206,14 @@
     ("e" "even" nil 0)
     ("el" "else" nil 0)
     ("em" "them" nil 0)
+    ("en" "enough" nil 0)
     ("eval" "evaluate" nil 0)
     ("evaln" "evaluation" nil 0)
     ("ey" "they" nil 0)
     ("f" "for" nil 0)
     ("fr" "from" nil 0)
     ("g" "get" nil 0)
+    ("gg" "going to" nil 0)
     ("gt" "got" nil 0)
     ("h" "had" nil 0)
     ("hv" "have" nil 0)
@@ -269,6 +283,7 @@
     ("wl" "while" nil 0)
     ("wn" "when" nil 0)
     ("wr" "where" nil 0)
+    ("wz" "wasn't" nil 0)
     ("y" "to" nil 0)
     ("yr" "their" nil 0)
     ("z" "not" nil 0)
