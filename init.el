@@ -22,6 +22,7 @@
 	make-backup-files nil
 	blog-directory "/home/vas/Projects/website")
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
+(add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
 
 (put 'dired-find-alternate-file 'disabled nil)
 
@@ -32,6 +33,9 @@
 
 (defun line-below() (interactive)
 	(end-of-line) (open-line 1) (forward-line))
+
+(defun line-above() (interactive)
+	(save-excursion (beginning-of-line) (newline)))
 
 (defun newline-and-indent-relative() (interactive) (newline) (indent-relative t t))
 
@@ -192,6 +196,7 @@
 (define-key vi-mode-map (kbd "y") 'kill-ring-save)
 (define-key vi-mode-map (kbd "g") 'beginning-of-buffer)
 (define-key vi-mode-map (kbd "G") 'end-of-buffer)
+(define-key vi-mode-map (kbd "M-g") 'goto-line)
 (define-key vi-mode-map (kbd "z") 'undo)
 (define-key vi-mode-map (kbd ":") 'eval-expression)
 (define-key vi-mode-map (kbd "x") 'execute-extended-command)
@@ -200,61 +205,58 @@
 (define-key vi-mode-map (kbd "b") 'ido-switch-buffer)
 (define-key vi-mode-map (kbd "f") 'find-file)
 (define-key vi-mode-map (kbd "F") 'quick-find-file)
+(define-key vi-mode-map (kbd "q") 'kill-this-buffer)
+(define-key vi-mode-map (kbd "l") 'line-below)
+(define-key vi-mode-map (kbd "L") 'line-above)
 (define-key vi-mode-map (kbd "SPC") 'vi-off)
 
 (define-key vi-mode-map (kbd "`") 'eshell)
 (define-key vi-mode-map (kbd "\\ v p") 'variable-pitch-mode)
-(define-key vi-mode-map (kbd "\\ e a") 'edit-abbrevs)
+(define-key vi-mode-map (kbd "\\ e a") (lambda() (interactive) (find-file "~/.config/emacs/abbrev_defs")))
+(define-key vi-mode-map (kbd "\\ e i") (lambda() (interactive) (find-file "~/.config/emacs/init.el")))
 (define-key vi-mode-map (kbd "\\ i t") 'toggle-indent-tabs)
 (define-key vi-mode-map (kbd "\\ m m") 'markdown-mode)
 (define-key vi-mode-map (kbd "\\ f r") 'french)
 (define-key vi-mode-map (kbd "\\ c m") 'cmark)
 (define-key vi-mode-map (kbd "\\ s t") 'spaces-to-tabs)
 (define-key vi-mode-map (kbd "\\ e r") 'eval-region)
+(define-key vi-mode-map (kbd "\\ s b") 'save-buffer)
+(define-key vi-mode-map (kbd "\\ s h") 'split-window-horizontally)
+(define-key vi-mode-map (kbd "\\ s v") 'split-window-vertically)
+(define-key vi-mode-map (kbd "\\ s s") 'delete-other-windows)
 
 (define-minor-mode vi-mode
 	"Ghetto vi mode"
 	:lighter " vi"
 	:keymap 'vi-mode-map)
 
-(define-key global-map (kbd "C-s") 'save-buffer)
-(define-key global-map (kbd "C-n") 'vi-on)
-(define-key global-map (kbd "C-w") 'backward-kill-word)
-(define-key global-map (kbd "C-k") 'kill-this-buffer)
-(define-key global-map (kbd "C-z") 'undo)
-(define-key global-map (kbd "C-0") 'delete-other-windows)
-(define-key global-map (kbd "C-a") 'other-window)
+(define-key global-map (kbd "C-r") 'vi-on)
+(define-key global-map (kbd "C-n") 'newline-and-indent-relative)
+(define-key global-map (kbd "C-s") 'backspace-or-unindent)
+(define-key global-map (kbd "C-t") 'backward-kill-word)
+(define-key global-map (kbd "<C-tab>") 'other-window)
 (define-key global-map (kbd "C-,") 'previous-buffer)
 (define-key global-map (kbd "C-.") 'next-buffer)
-(define-key global-map (kbd "C-c") nil)
+(define-key global-map (kbd "<backspace>") 'backspace-or-unindent)
+(define-key global-map (kbd "<tab>") 'expand-or-tab)
 (define-key global-map (kbd "<escape>") 'vi-on)
-(define-key global-map (kbd "C-<tab>") 'ido-switch-buffer)
-(define-key global-map (kbd "<C-return>") 'line-below)
 (define-key global-map (kbd "<f2>") 'dired-here)
-(define-key global-map (kbd "M-g") 'goto-line)
 
-(define-key prog-mode-map (kbd "<tab>") 'expand-or-tab)
-(define-key prog-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
-(define-key prog-mode-map (kbd "<backspace>") 'backspace-or-unindent)
-(define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative)
+(define-key prog-mode-map (kbd "C-i") 'newline-and-indent-relative)
 (define-key prog-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 
-(define-key text-mode-map (kbd "<tab>") 'expand-or-tab)
-(define-key text-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
-(define-key text-mode-map (kbd "<backspace>") 'backspace-or-unindent)
 (define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 (define-key text-mode-map (kbd "SPC") 'space-comma-dot)
 (define-key text-mode-map (kbd "S-SPC") (lambda() (interactive) (capitalize-word -1)))
 
 (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit)
+(define-key minibuffer-local-map (kbd "<tab>") 'minibuffer-complete)
 
 (define-key isearch-mode-map (kbd "<return>") 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "<S-return>") 'isearch-repeat-backward)
 (define-key isearch-mode-map (kbd "<C-return>") 'isearch-exit)
 (define-key isearch-mode-map (kbd "<escape>") 'isearch-exit)
 (define-key isearch-mode-map (kbd "C-g") 'isearch-exit)
-
-(define-key edit-abbrevs-mode-map (kbd "C-s") 'abbrev-edit-save-buffer)
 
 (add-hook 'prog-mode-hook (lambda() (abbrev-mode 1) (vi-on)))
 (add-hook 'minibuffer-setup-hook 'vi-off)
@@ -264,15 +266,8 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (with-eval-after-load 'markdown-mode
-	(setq markdown-mode-map (make-sparse-keymap))
-	(define-key markdown-mode-map (kbd "<return>") 'double-newline))
-
-(with-eval-after-load 'php-mode
-	(setq php-mode-map (make-sparse-keymap))
-	(define-key php-mode-map (kbd "C-c") 'nil))
-
-(with-eval-after-load 'js-mode
-	(define-key js-mode-map (kbd "C-c") 'nil))
+	(define-key markdown-mode-map (kbd "<return>") 'double-newline)
+	(define-key markdown-mode-map (kbd "C-i") 'double-newline))
 
 (with-eval-after-load 'dired
 	(define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file)
@@ -280,12 +275,7 @@
 	(define-key dired-mode-map (kbd "e") 'dired-next-line)
 	(define-key dired-mode-map (kbd "o") 'dired-previous-line)
 	(define-key dired-mode-map (kbd "i") 'dired-up-directory)
-	(define-key dired-mode-map (kbd "x") 'execute-extended-command)
-	(define-key dired-mode-map (kbd "b") 'ido-switch-buffer)
-	(define-key dired-mode-map (kbd "f") 'find-file)
-	(define-key dired-mode-map (kbd "f") 'quick-find-file)
-	(define-key dired-mode-map (kbd "/") 'isearch-forward)
-	(define-key dired-mode-map (kbd "C-o") nil))
+	(define-key dired-mode-map (kbd "/") 'isearch-forward))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
