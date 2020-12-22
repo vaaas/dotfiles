@@ -266,7 +266,8 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (with-eval-after-load 'markdown-mode
-	(define-key markdown-mode-map (kbd "<return>") 'double-newline))
+	(define-key markdown-mode-map (kbd "<return>") 'double-newline)
+	(define-key markdown-mode-map (kbd "C-i") 'double-newline))
 
 (with-eval-after-load 'dired
 	(define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file)
