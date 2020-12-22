@@ -22,6 +22,7 @@
 	make-backup-files nil
 	blog-directory "/home/vas/Projects/website")
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
+(add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
 
 (put 'dired-find-alternate-file 'disabled nil)
 

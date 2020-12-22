@@ -7,17 +7,11 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'awk-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c++-mode-abbrev-table '())
 
-(define-abbrev-table 'c-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c-mode-abbrev-table '())
 
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
@@ -81,9 +75,7 @@
 
 (define-abbrev-table 'idl-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'java-mode-abbrev-table '())
 
 (define-abbrev-table 'js-jsx-mode-abbrev-table '())
 
@@ -139,9 +131,7 @@
 
 (define-abbrev-table 'messages-buffer-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'objc-mode-abbrev-table '())
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -153,9 +143,7 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'pike-mode-abbrev-table '())
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
@@ -185,11 +173,13 @@
   '(
     ("'" "it" nil 0)
     ("ab" "about" nil 0)
+    ("af" "after" nil 0)
     ("ath" "anything" nil 0)
     ("b" "but" nil 0)
     ("bc" "because" nil 0)
     ("bg" "being" nil 0)
     ("bk" "back" nil 0)
+    ("bn" "been" nil 0)
     ("bs" "bullshit" nil 0)
     ("bt" "between" nil 0)
     ("c" "can" nil 0)
@@ -232,17 +222,21 @@
     ("nth" "nothing" nil 0)
     ("nv" "never" nil 0)
     ("o" "out" nil 0)
+    ("ofc" "of course" nil 0)
     ("oo" "out of" nil 0)
     ("ot" "of the" nil 0)
     ("otoh" "on the other hand" nil 0)
     ("p" "put" nil 0)
+    ("pb" "probably" nil 0)
     ("ph" "perhaps" nil 0)
+    ("ppl" "people" nil 0)
     ("pr" "pretty" nil 0)
     ("r" "are" nil 0)
     ("rly" "really" nil 0)
     ("s" "is" nil 0)
     ("sa" "said" nil 0)
     ("sd" "should" nil 0)
+    ("sm" "some" nil 0)
     ("sth" "something" nil 0)
     ("t" "the" nil 0)
     ("ta" "that" nil 0)
@@ -293,4 +287,3 @@
 (define-abbrev-table 'vue-mode-abbrev-table '())
 
 (define-abbrev-table 'xref--xref-buffer-mode-abbrev-table '())
-
