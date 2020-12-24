@@ -14,6 +14,7 @@
 (setq-default indent-tabs-mode nil
 	line-spacing 0.3
 	tab-width 4
+	mode-line-format nil
 	save-abbrevs nil)
 (setq inhibit-splash-screen t
 	inhibit-startup-message t
