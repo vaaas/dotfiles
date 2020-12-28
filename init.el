@@ -243,6 +243,7 @@
 (define-key global-map (kbd "<escape>") 'vi-on)
 (define-key global-map (kbd "<f2>") 'dired-here)
 
+(define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative)
 (define-key prog-mode-map (kbd "C-i") 'newline-and-indent-relative)
 (define-key prog-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 
