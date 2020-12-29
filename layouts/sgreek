@@ -4,8 +4,6 @@ xkb_symbols "basic" {
 
 	key <BKSL> {[ backslash, bar ]};
 	key <TLDE> {[ grave, asciitilde ]};
-	key <AD11> {[ bracketleft, braceleft ]};
-	key <AD12> {[ bracketright, braceright ]};
 
 	key <AE01> {[ 1, exclam ]};
 	key <AE02> {[ 2, at ]};
@@ -22,13 +20,13 @@ xkb_symbols "basic" {
 
 	key <AC08> {[ Greek_theta, Greek_THETA ], [ k, K ]};
 	key <AB03> {[ Greek_kappa, Greek_KAPPA ], [ c, C ]};
-	key <AC03> {[ dead_acute, dead_diaeresis ], [ d, D ]};
+	key <AC03> {[ Greek_delta, Greek_DELTA ], [ d, D ]};
 	key <AB07> {[ Greek_mu, Greek_MU ], [ m, M ]};
 	key <AC07> {[ Greek_xi, Greek_XI ], [ j, J ]};
 	key <AD01> {[ Greek_psi, Greek_PSI ], [ q, Q ]};
 	key <AD02> {[ Greek_omega, Greek_OMEGA ], [ w, W ]};
 	key <AD07> {[ Greek_eta, Greek_ETA ], [ u, U ]};
-	key <AB04> {[ Greek_delta, Greek_DELTA ], [ v, V ]};
+	key <AB04> {[ dead_acute, dead_diaeresis ], [ v, V ]};
 	key <AC10> {[ semicolon, colon ]};
 
 	key <AD04> {[ Greek_rho, Greek_RHO ], [ r, R ]};
@@ -54,5 +52,15 @@ xkb_symbols "basic" {
 	key <AB09> {[ period, greater ]};
 	key <AB10> {[ slash, question ]};
 
-	key <RALT> {[ Multi_key, Multi_key ]};
+	key <AD11> {[ parenleft, bracketleft ]};
+	key <AD12> {[ parenright, bracketright ]};
+	key <KP1> {[ braceleft, less ]};
+	key <KP2> {[ braceright, greater ]};
+
+	key <RTSH> {[ dead_acute ]};
+	key <RALT> {[ dead_macron ]};
+	key <RCTL> {[ dead_diaeresis ]};
+	key <RWIN> {[ dead_grave }];
+
+	key <MENU> {[ Multi_key ]};
 };

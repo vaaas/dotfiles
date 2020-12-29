@@ -4,8 +4,6 @@ xkb_symbols "basic" {
 
 	key <BKSL> {[ backslash, bar ]};
 	key <TLDE> {[ grave, asciitilde ]};
-	key <AD11> {[ bracketleft, braceleft ]};
-	key <AD12> {[ bracketright, braceright ]};
 
 	key <AE01> {[ 1, exclam ]};
 	key <AE02> {[ 2, at ]};
@@ -54,10 +52,15 @@ xkb_symbols "basic" {
 	key <AB09> {[ period, greater ]};
 	key <AB10> {[ slash, question ]};
 
-	key <KPDV> {[ parenleft, bracketleft ]};
-	key <KPAD> {[ parenright, bracketright ]};
-	key <KPSU> {[ braceleft, less ]};
-	key <I129> {[ braceright, greater ]};
+	key <AD11> {[ parenleft, bracketleft ]};
+	key <AD12> {[ parenright, bracketright ]};
+	key <KP1> {[ braceleft, less ]};
+	key <KP2> {[ braceright, greater ]};
 
-	key <RALT> {[ Multi_key, Multi_key ]};
+	key <RTSH> {[ dead_acute ]};
+	key <RALT> {[ dead_macron ]};
+	key <RCTL> {[ dead_diaeresis ]};
+	key <RWIN> {[ dead_grave ]};
+
+	key <MENU> {[ Multi_key ]};
 };
