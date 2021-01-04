@@ -231,10 +231,11 @@
 	:lighter " vi"
 	:keymap 'vi-mode-map)
 
-(define-key global-map (kbd "C-r") 'vi-on)
+(define-key global-map (kbd "C-r") 'expand-or-tab)
 (define-key global-map (kbd "C-n") 'newline-and-indent-relative)
 (define-key global-map (kbd "C-s") 'backspace-or-unindent)
 (define-key global-map (kbd "C-t") 'backward-kill-word)
+(define-key global-map (kbd "C-g") 'vi-on)
 (define-key global-map (kbd "<C-tab>") 'other-window)
 (define-key global-map (kbd "C-,") 'previous-buffer)
 (define-key global-map (kbd "C-.") 'next-buffer)
