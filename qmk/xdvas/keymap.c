@@ -24,7 +24,7 @@ enum layer_names {
 #define SFT_TAB LSFT_T(KC_TAB)
 #define L1_APP LT(1, KC_APP)
 #define GUI_ESC LGUI_T(KC_ESC)
-#define CLT_MIN LCTL_T(KC_MINS)
+#define CTL_MIN LCTL_T(KC_MINS)
 #define ALT_EQL LALT_T(KC_EQL)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -40,6 +40,6 @@ _______, _______, _______, _______, _______, _______, _______, _______, _______,
 _______, _______, _______, _______, _____ _, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
 _______, KC_RGUI, KC_RCTL, KC_RALT, KC_RSFT, KC_P4  , KC_P5  , KC_LBRC, KC_RBRC, KC_P1  , KC_P2  , KC_P3  , _______, _______, _______, \
 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-KC_INS , KC_MUTE, KC_VOLD, KC_VOLU, _______, KC_DEL , KC_BSPC, _______, KC_PSCR, KC_CAPS, KC_NLCK, KC_SLC , _______, _______, _______  \
+KC_INS , KC_MUTE, KC_VOLD, KC_VOLU, _______, KC_DEL , KC_BSPC, _______, KC_PSCR, KC_CAPS, KC_NLCK, KC_SLCK, _______, _______, _______  \
 )
 };
