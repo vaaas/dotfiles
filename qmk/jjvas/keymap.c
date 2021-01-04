@@ -16,7 +16,7 @@
 #include QMK_KEYBOARD_H
 
 enum layers {
-  _QWERTY = 0,
+  _BASE,
   _RAISE,
 };
 
@@ -27,11 +27,11 @@ enum layers {
 #define ALT_EQL LALT_T(KC_EQL)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-[_QWERTY] = LAYOUT_ortho_4x12( \
+[_BASE] = LAYOUT_ortho_4x12( \
 GUI_ESC, KC_K   , KC_C   , KC_D   , KC_M   , KC_J   , KC_Q   , KC_W   , KC_U   , KC_V   , KC_SCLN, KC_GRV , \
 CTL_MIN, KC_R   , KC_S   , KC_T   , KC_N   , KC_H   , KC_Y   , KC_I   , KC_E   , KC_O   , KC_A   , KC_QUOT, \
 ALT_EQL, KC_Z   , KC_F   , KC_G   , KC_L   , KC_X   , KC_B   , KC_P   , KC_COMM, KC_DOT , KC_SLSH, KC_BSLS, \
-KC_HOME, KC_PGDN, KC_PGUP, KC_END , L1_APP , KC_SPC , KC_ENT , SFT_TAB, KC_LEFT, KC_DOWN, KC_UP  , KC_RIGHT \
+KC_HOME, KC_PGDN, KC_PGUP, KC_END , L1_APP , KC_SPC , KC_ENT , SFT_TAB, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT  \
 ),
 [_RAISE] = LAYOUT_ortho_4x12( \
 _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , \
