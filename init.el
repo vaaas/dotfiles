@@ -14,6 +14,7 @@
 (setq-default indent-tabs-mode nil
 	line-spacing 0.3
 	tab-width 4
+	mode-line-format nil
 	save-abbrevs nil)
 (setq inhibit-splash-screen t
 	inhibit-startup-message t
@@ -242,6 +243,7 @@
 (define-key global-map (kbd "<escape>") 'vi-on)
 (define-key global-map (kbd "<f2>") 'dired-here)
 
+(define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative)
 (define-key prog-mode-map (kbd "C-i") 'newline-and-indent-relative)
 (define-key prog-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 
