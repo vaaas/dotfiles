@@ -42,6 +42,8 @@
 
 (defun do-nothing() (interactive))
 
+(defun add-trailing-newline() (end-of-buffer) (when (not (= 10 (char-before))) (insert-char 10)))
+
 (defun quick-find-file() (interactive)
 	(find-file
 	(ido-completing-read "select file> "
@@ -68,9 +70,10 @@
 		(t (backward-delete-char 1))))
 
 (defun double-newline() (interactive)
-	(if (= 10 (char-before))
-		(newline)
-		(progn (newline) (newline))))
+	(cond
+		((= 0 (point)) (newline))
+		((= 10 (char-before)) (newline))
+		(t (newline) (newline))))
 
 (defun toggle-indent-tabs() (interactive)
 	(if indent-tabs-mode
@@ -120,47 +123,38 @@
 
 (defun timestamp() (format-time-string "%s"))
 
-(defun blog-note() (interactive)
+(defun blog() (interactive)
+	(setq cat (ido-completing-read "category?> "
+		'("tech" "animanga" "books" "memes" "films" "journal")))
 	(delete-trailing-whitespace)
 	(beginning-of-buffer)
-	(insert "<img class='emoji' alt='emoji' src='/pics/note.svg'/> ")
-	(beginning-of-buffer)
-	(insert (timestamp))
-	(insert "\nnote\n")
-	(end-of-buffer)
-	(insert "\n\n")
-	(append-to-file (point-min) (point-max) (concat blog-directory "/posts")))
-
-(defun blog-article() (interactive)
-	(setq file-name (concat
-		(replace-regexp-in-string " " "_"
-			(read-string "file name (no extension): "))
-		".html"))
-	(delete-trailing-whitespace)
-	(beginning-of-buffer)
-	(search-forward "<h1>") (setq start (point))
-	(search-forward "</h1>") (setq end (- (point) 5))
-	(setq title (buffer-substring start end))
-	(search-forward "<p>") (setq start (point))
-	(search-forward "</p>") (setq end (- (point) 4))
-	(setq blurb (buffer-substring start end))
-	(setq stamp (timestamp))
-	(setq ymd (format-time-string "%Y-%m-%d"))
-	(setq body (buffer-substring (point-min) (point-max)))
-	(insert-file-contents (concat blog-directory "/templates/item.html") nil nil nil t)
-	(replace-all "{{TITLE}}" title)
-	(replace-all "{{TIMESTAMP}}" stamp)
-	(replace-all "{{YMD}}" ymd)
-	(replace-all "{{BODY}}" body)
-	(append-to-file (point-min) (point-max) (concat blog-directory "/render/articles/" file-name))
-	(kill-region (point-min) (point-max))
-	(insert (timestamp))
-	(insert "\narticle\n")
-	(insert (concat
-		"<h1><img alt='emoji' src='/pics/article.svg'/> <a href='"
-		(concat "/articles/" file-name)
-		"'>" title "</a></h1>\n"))
-	(insert blurb)
+	(if (< (buffer-size) 2000)
+		(insert (format "\n%s\n%s\n" (timestamp) cat))
+	(progn
+		(setq file-name (concat
+			(replace-regexp-in-string " " "_"
+				(read-string "file name (no extension): "))
+			".html"))
+		(search-forward "<h1>") (setq start (point))
+		(search-forward "</h1>") (setq end (- (point) 5))
+		(setq title (buffer-substring start end))
+		(search-forward "<p>") (setq start (point))
+		(search-forward "</p>") (setq end (- (point) 4))
+		(setq blurb (buffer-substring start end))
+		(setq stamp (timestamp))
+		(setq ymd (format-time-string "%Y-%m-%d"))
+		(setq body (buffer-substring (point-min) (point-max)))
+		(insert-file-contents (concat blog-directory "/templates/item.html") nil nil nil t)
+		(replace-all "{{TITLE}}" title)
+		(replace-all "{{TIMESTAMP}}" stamp)
+		(replace-all "{{YMD}}" ymd)
+		(replace-all "{{BODY}}" body)
+		(append-to-file (point-min) (point-max) (concat blog-directory "/render/" cat "/" file-name))
+		(kill-region (point-min) (point-max))
+		(insert
+			(format "\n%s\n%s\n<a href='/%s/%s'>%s</a></h1>\n%s"
+			stamp cat cat file-name title blurb))
+	(add-trailing-newline)
 	(append-to-file (point-min) (point-max) (concat blog-directory "/posts")))
 
 (setq vi-mode-map (make-sparse-keymap))
