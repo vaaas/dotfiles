@@ -1,1 +1,3 @@
 #define NO_ACTION_ONESHOT
+#define TAPPING_TERM 96
+#define PERMISSIVE_HOLD
