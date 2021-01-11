@@ -155,7 +155,7 @@
 			(format "\n%s\n%s\n<a href='/%s/%s'>%s</a></h1>\n%s"
 			stamp cat cat file-name title blurb))
 	(add-trailing-newline)
-	(append-to-file (point-min) (point-max) (concat blog-directory "/posts")))
+	(append-to-file (point-min) (point-max) (concat blog-directory "/posts")))))
 
 (setq vi-mode-map (make-sparse-keymap))
 (define-key vi-mode-map (kbd "k") 'kmacro-start-macro)
