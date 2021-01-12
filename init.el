@@ -41,6 +41,7 @@
 (defun newline-and-indent-relative() (interactive) (newline) (indent-relative t t))
 
 (defun do-nothing() (interactive))
+(put 'do-nothing 'no-self-insert t)
 
 (defun add-trailing-newline() (end-of-buffer) (when (not (= 10 (char-before))) (insert-char 10)))
 
@@ -273,6 +274,9 @@
 	(define-key dired-mode-map (kbd "o") 'dired-previous-line)
 	(define-key dired-mode-map (kbd "i") 'dired-up-directory)
 	(define-key dired-mode-map (kbd "/") 'isearch-forward))
+
+(with-eval-after-load 'php-mode
+	(define-key php-mode-map (kbd "<tab>") nil))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
