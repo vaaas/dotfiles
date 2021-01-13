@@ -21,6 +21,6 @@ nautilus/scripts-accels	~/.config/nautilus/scripts-accels
 nautilus/term-here	~/.local/share/nautilus/scripts/term-here
 nautilus/dmenu-selection	~/.local/share/nautilus/scripts/dmenu-selection
 sxhkdrc	~/.config/sxhkd/sxhkdrc
-abbrev_defs	~/.config/emacs/abbrev_defs
-init.el	~/.config/emacs/init.el
-alias	~/.config/emacs/eshell/alias
+emacs/abbrev_defs	~/.config/emacs/abbrev_defs
+emacs/init.el	~/.config/emacs/init.el
+emacs/alias	~/.config/emacs/eshell/alias
