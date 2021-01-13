@@ -32,7 +32,7 @@ super + d
 	dmenu_run -i
 
 super + shift + d
-	clip_run
+	clip-run
 
 super + m
 	thefile="$(xzcat ~/filedb.xz | dmenu)" && gio open "$thefile"
