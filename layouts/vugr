@@ -19,23 +19,23 @@ xkb_symbols "basic" {
 
 	key <AD01> {[ Greek_theta, Greek_THETA ], [k, K] };
 	key <AD02> {[ Greek_kappa, Greek_KAPPA ], [c, C] };
-	key <AD03> {[ dead_acute, dead_diaeresis ], [d, D] };
+	key <AD03> {[ Greek_delta, Greek_DELTA ], [d, D] };
 	key <AD04> {[ Greek_mu, Greek_MU ], [m, m] };
 	key <AD05> {[ Greek_xi, Greek_XI ], [j, J] };
 	key <AD06> {[ Greek_psi, Greek_PSI ], [q, Q] };
 	key <AD07> {[ Greek_omega, Greek_OMEGA ], [w, W] };
 	key <AD08> {[ Greek_eta, Greek_ETA ], [u, U] };
-	key <AD09> {[ Greek_delta, Greek_DELTA ], [v, V] };
+	key <AD09> {[ dead_acute, dead_diaeresis ], [v, V] };
 	key <AD10> {[ semicolon, colon ] };
 
 	// all the bracket pairs: paren, bracket, brace, comparisons
 	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
 	key <AD12> {[ parenright, bracketright, braceright, greater ]};
 
-	key <AC01> {[ Greek_rho, Greek_RHO ], [r, R] };
-	key <AC02> {[ Greek_sigma, Greek_SIGMA ], [s, S] };
-	key <AC03> {[ Greek_tau, Greek_TAU ], [t, T] };
-	key <AC04> {[ Greek_nu, Greek_NU ], [n, N] };
+	key <AC01> {[ Greek_rho, Greek_RHO, Delete, Delete ], [r, R] };
+	key <AC02> {[ Greek_sigma, Greek_SIGMA , BackSpace, BackSpace ], [s, S] };
+	key <AC03> {[ Greek_tau, Greek_TAU, tab, tab ], [t, T] };
+	key <AC04> {[ Greek_nu, Greek_NU, dead_acute, dead_diaeresis ], [n, N] };
 	key <AC05> {[ Greek_finalsmallsigma, Greek_SIGMA ], [h, H] };
 	key <AC06> {[ Greek_upsilon, Greek_UPSILON ], [y, Y] };
 	key <AC07> {[ Greek_iota, Greek_IOTA ], [i, I] };
@@ -57,10 +57,11 @@ xkb_symbols "basic" {
 
 	key <BKSL> {[ backslash, bar ]};
 
-	key <RALT> {
-		symbols[Group1] = [ Mode_switch, Mode_switch ],
-		virtualMods= AltGr };
+	key <TAB> {[ Super_L, Super_L]};
 	key <CAPS> {[ Control_L, Control_L ]};
+	key <LFSH> {[ Alt_L, Alt_L ]};
+	key <LALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
+	key <RALT> {[ Shift_L, Shift_L ]};
 	key <LCTL> {[ Multi_key ]};
-	key <SPCE> {[ space, space ], [ BackSpace, Return ]};
+	key <SPCE> {[ space, space, Escape, Escape ]};
 };
