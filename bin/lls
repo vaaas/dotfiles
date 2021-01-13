@@ -1,2 +1,0 @@
-#!/bin/dash
-ls --color=always --group-directories-first -hl "$@" | less -RXF

@@ -13,7 +13,7 @@
 
 (setq-default indent-tabs-mode nil
 	line-spacing 0.3
-	tab-width 4
+	tab-width 3
 	mode-line-format nil
 	save-abbrevs nil)
 (setq inhibit-splash-screen t
@@ -265,7 +265,7 @@
 
 (with-eval-after-load 'markdown-mode
 	(define-key markdown-mode-map (kbd "<return>") 'double-newline)
-	(define-key markdown-mode-map (kbd "C-i") 'double-newline))
+	(define-key markdown-mode-map (kbd "C-n") 'double-newline))
 
 (with-eval-after-load 'dired
 	(define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file)

@@ -1,3 +1,0 @@
-#!/bin/dash
-sudo ntpdate pool.ntp.org
-sudo hwclock -w

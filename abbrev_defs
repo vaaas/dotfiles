@@ -195,8 +195,7 @@
 
 (define-abbrev-table 'term-mode-abbrev-table '())
 
-(define-abbrev-table 'text-mode-abbrev-table
-  '(
+(define-abbrev-table 'text-mode-abbrev-table '(
 	("'" "it")
 	("ar" "around")
 	("ab" "about")
@@ -303,7 +302,11 @@
 	("y" "to")
 	("yr" "their")
 	("z" "not")
-   ))
+	("fwd" "forward")
+	("lk" "look")
+	("lkd" "looked")
+	("lkn" "looking")
+))
 
 (define-abbrev-table 'url-cookie-mode-abbrev-table '())
 
