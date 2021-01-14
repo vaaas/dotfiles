@@ -1,8 +1,8 @@
 #!/bin/dash
 
 case $(ibus engine) in
-	xkb:vlatin::eng) ibus engine kkc ;;
-	kkc)             ibus engine xkb:gr::gre ;;
-	xkb:gr::gre)     ibus engine xkb:vlatin::eng ;;
-	*)               ibus engine xkb:vlatin::eng ;;
+	xkb:vu::eng) ibus engine xkb:vu::gre ;;
+	xkb:vu::gre) ibus engine xkb:vu::eng && ibus engine kkc ;;
+	kkc) ibus engine xkb:vu::eng ;;
+	*) ibus engine xkb:vu::eng ;;
 esac

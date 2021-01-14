@@ -1,4 +1,0 @@
-#!/bin/dash
-
-echo "AMAZIN'"
-mpv ~/Sundry/amazin.mp3 2>/dev/null >/dev/null

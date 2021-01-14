@@ -1,4 +1,4 @@
-PS1='\[\e[30m\]\u@\h $PWD $? >\[\e[0m\] '
+PS1='\u@\h:\[\e[1;34m\]$PWD \[\e[1;31m\]$?\[\e[0m\] > '
 IFS='
 '
 eval $(dircolors -b)
@@ -46,7 +46,6 @@ alias q='exit'
 alias clipin='xclip -selection clipboard'
 alias clipout='xclip -selection clipboard -o'
 alias clipsync='xclip -selection primary -o | xclip -selection clipboard'
-alias v='mplayer -ass -fs -cache 1000000 -lavdopts threads=4'
 alias lvds='xrandr --auto'
 alias ldir='find . -maxdepth 1 -type d'
 alias allfiles='find -type f'
@@ -64,15 +63,117 @@ alias emacs='emacsclient -nc'
 alias less='less -I'
 alias sxiv='sxiv -o'
 alias pg='ping google.gr'
-alias sdr='sudo systemctl restart'
 alias windows='sudo grub-reboot Windows && sudo reboot'
+alias thanks="echo You\'re welcome!"
+alias set-time="sudo ntpdate pool.ntp.org ; sudo hwclock -w"
 
 #functions
+lgrep() {
+   grep --color=always -C 10 -RFi -- "$@" | less -R
+}
 
-# the hibernate script
-function zzz {
-	sudo bash -c "echo 4293914624 > /sys/power/image_size" &&
-	sudo sync &&
-	sudo bash -c "echo 3 > /proc/sys/vm/drop_caches" &&
-	systemctl hibernate
+lls() {
+   ls --color=always --group-directories-first -hl "$@" | less -RXF
+}
+
+g() {
+   if test -z "$1"
+	then
+		git status
+		return
+	fi
+	arg="$1"
+	shift 1
+	case "$arg" in
+		d) git diff --patience "$@" ;;
+		wd) git diff --word-diff --patience "$@" ;;
+		ca) git commit -am "$@" ;;
+		co) git commit -m "$@" ;;
+		a) git add "$@" ;;
+		b) git branch "$@" && g ch "$@" ;;
+		oops) git reset HEAD^ ;;
+		last) g d HEAD^ HEAD ;;
+		wlast) g wd HEAD^ HEAD ;;
+		c) git checkout "$@" ;;
+		p) git push "$@" ;;
+	esac
+}
+
+m() {
+   arg="$1"
+	shift 1
+	case $arg in
+		s)
+			cd ~/code/iotwebserver
+			xterm -e 'npm run watch' &
+			xterm -e 'php artisan serve' &
+			cd ~/code/athena
+			xterm -e 'php -S localhost:8001 -t public' &
+			exit ;;
+	esac
+}
+
+a() {
+   arg="$1"
+	shift 1
+	case "$arg" in
+		s) pacman -Ss --color auto "$@" ;;
+		i) pacman -S --color auto "$@" ;;
+		r) pacman -Rns --color auto "$@" ;;
+		update) pacman -Sy --color auto ;;
+		upgrade) pacman -Su --color auto ;;
+		info) pacman -Sii --color auto "$@" ;;
+		depends) pacman -Sii --color auto "$@" | grep 'Depends On' ;;
+		rdepends) pacman -Sii --color auto "$@" | grep "Required By" ;;
+		clean) pacman -Scc --color auto ;;
+		file-search) pacman -Fs --color auto "$@" ;;
+		installed) pacman -Qe --color auto ;;
+		size) LC_ALL=C pacman -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | sort -h ;;
+	esac
+}
+
+sha3-rename() {
+   for x
+	do
+		file="$(basename "$x")"
+		if ! test -f "$file"
+		then
+			exit 1
+		fi
+		name="$(rhash --sha3-256 -- "$file" | cut -d' ' -f 1)"
+		ext="$(basename "$file")"
+		ext="${ext##*.}"
+		mv -vi -- "$file" "$name.$ext"
+	done
+}
+
+vas-transcode() {
+   ffmpeg -i "$1" -c:s copy -c:a libmp3lame -q:a 4\
+		-c:v libx264 -crf 25 -preset ultrafast -tune animation -pix_fmt yuv420p\
+		-map 0:v -map 0:t? -map 0:s? -map 0:a:0\
+		"$2"
+}
+
+word-frequency() {
+   tr '[:upper:]' '[:lower:]' |
+   tr -d '[:punct:]' |
+   tr -s '[:space:]' '\n' |
+   sort |
+   uniq -c |
+   sort -n
+}
+
+remove-if-same() {
+   if ! test -d "$1" -a -f "$2"
+   then
+           echo "bad arguments" > /dev/stderr
+           return
+   fi
+   src="$2"
+   dst="$1/$(basename "$src")"
+   if diff -q -- "$src" "$dst"
+   then
+           echo "$src and $dst are the same"
+           rm -v -- "$src"
+   fi
 }

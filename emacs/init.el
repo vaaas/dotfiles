@@ -21,11 +21,10 @@
 	frame-resize-pixelwise t
 	vc-follow-symlinks t
 	make-backup-files nil
-	blog-directory "/home/vas/Projects/website")
+	blog-directory "/home/vas/Projects/website"
+	disabled-command-function nil)
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
-
-(put 'dired-find-alternate-file 'disabled nil)
 
 (defun expand-or-tab() (interactive)
 	(if (member (char-before) '(9 10 32))
@@ -41,6 +40,9 @@
 (defun newline-and-indent-relative() (interactive) (newline) (indent-relative t t))
 
 (defun do-nothing() (interactive))
+(put 'do-nothing 'no-self-insert t)
+
+(defun add-trailing-newline() (end-of-buffer) (when (not (= 10 (char-before))) (insert-char 10)))
 
 (defun add-trailing-newline() (end-of-buffer) (when (not (= 10 (char-before))) (insert-char 10)))
 
@@ -77,8 +79,8 @@
 
 (defun toggle-indent-tabs() (interactive)
 	(if indent-tabs-mode
-		(progn (setq indent-tabs-mode nil) (message "indent will use SPACES"))
-		(progn (setq indent-tabs-mode t) (message "indent will use TABS"))))
+		(progn (setq indent-tabs-mode nil) (setq tab-width 4) (message "indent will use SPACES"))
+		(progn (setq indent-tabs-mode t) (setq tab-width 3) (message "indent will use TABS"))))
 
 (defun space-comma-dot() (interactive)
 	(cond
@@ -155,7 +157,7 @@
 			(format "\n%s\n%s\n<a href='/%s/%s'>%s</a></h1>\n%s"
 			stamp cat cat file-name title blurb))
 	(add-trailing-newline)
-	(append-to-file (point-min) (point-max) (concat blog-directory "/posts")))
+	(append-to-file (point-min) (point-max) (concat blog-directory "/posts")))))
 
 (setq vi-mode-map (make-sparse-keymap))
 (define-key vi-mode-map (kbd "k") 'kmacro-start-macro)
@@ -264,7 +266,7 @@
 
 (with-eval-after-load 'markdown-mode
 	(define-key markdown-mode-map (kbd "<return>") 'double-newline)
-	(define-key markdown-mode-map (kbd "C-i") 'double-newline))
+	(define-key markdown-mode-map (kbd "C-n") 'double-newline))
 
 (with-eval-after-load 'dired
 	(define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file)
@@ -273,6 +275,9 @@
 	(define-key dired-mode-map (kbd "o") 'dired-previous-line)
 	(define-key dired-mode-map (kbd "i") 'dired-up-directory)
 	(define-key dired-mode-map (kbd "/") 'isearch-forward))
+
+(with-eval-after-load 'php-mode
+	(define-key php-mode-map (kbd "<tab>") nil))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

@@ -7,20 +7,20 @@ xkb_symbols "basic" {
 	key <AE01> {[ 1, exclam ]};
 	key <AE02> {[ 2, at ]};
 	key <AE03> {[ 3, numbersign]};
-	key <AE04> {[ 4, dollar ], [ sterling ]};
+	key <AE04> {[ 4, dollar ]};
 	key <AE05> {[ 5, percent ]};
 	key <AE06> {[ 6, asciicircum ]};
 	key <AE07> {[ 7, ampersand ]};
 	key <AE08> {[ 8, asterisk ]};
 	key <AE09> {[ 9, parenleft ]};
 	key <AE10> {[ 0, parenright ]};
-	key <AE11> {[ minus, underscore ], [ emdash ]};
+	key <AE11> {[ minus, underscore ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <AD01> {[ k, K ], [ less ]};
-	key <AD02> {[ c, C ], [ greater ]};
-	key <AD03> {[ d, D ], [ equal ]};
-	key <AD04> {[ m, M ], [ plus ]};
+	key <AD01> {[ k, K ]};
+	key <AD02> {[ c, C ]};
+	key <AD03> {[ d, D, equal, plus ]};
+	key <AD04> {[ m, M, minus, underscore ]};
 	key <AD05> {[ j, J ]};
 	key <AD06> {[ q, Q ]};
 	key <AD07> {[ w, W ]};
@@ -29,19 +29,19 @@ xkb_symbols "basic" {
 	key <AD10> {[ semicolon, colon ]};
 
 	// all the bracket pairs: paren, bracket, brace, comparisons
-	key <AD11> {[ parenleft, bracketleft ], [ braceleft, less ]};
-	key <AD12> {[ parenright, bracketright ], [ braceright, greater ]};
+	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
+	key <AD12> {[ parenright, bracketright, braceright, greater ]};
 
-	key <AC01> {[ r, R ]};
-	key <AC02> {[ s, S ], [ dollar ]};
-	key <AC03> {[ t, T ], [ underscore ]};
-	key <AC04> {[ n, N ], [ minus ]};
+	key <AC01> {[ r, R, Delete, Delete ]};
+	key <AC02> {[ s, S, BackSpace, BackSpace ]};
+	key <AC03> {[ t, T, Tab, Tab ]};
+	key <AC04> {[ n, N, Return, Return ]};
 	key <AC05> {[ h, H ]};
 	key <AC06> {[ y, Y ]};
-	key <AC07> {[ i, I ]};
-	key <AC08> {[ e, E ]};
-	key <AC09> {[ o, O ]};
-	key <AC10> {[ a, A ]};
+	key <AC07> {[ i, I, parenleft, bracketleft ]};
+	key <AC08> {[ e, E, parenright, bracketright ]};
+	key <AC09> {[ o, O, braceleft, less ]};
+	key <AC10> {[ a, A, braceright, greater ]};
 	key <AC11> {[ apostrophe, quotedbl ]};
 
 	key <AB01> {[ z, Z ]};
@@ -50,17 +50,18 @@ xkb_symbols "basic" {
 	key <AB04> {[ l, L ]};
 	key <AB05> {[ x, X ]};
 	key <AB06> {[ b, B ]};
-	key <AB07> {[ p, P ]};
-	key <AB08> {[ comma, less ], [ guillemotleft, U2039 ]};
-	key <AB09> {[ period, greater ], [ guillemotright, U203A ]};
-	key <AB10> {[ slash, question ]};
+	key <AB07> {[ p, P, Left, Left ]};
+	key <AB08> {[ comma, less, Down, Down ]};
+	key <AB09> {[ period, greater, Up, Up ]};
+	key <AB10> {[ slash, question, Right, Right ]};
 
 	key <BKSL> {[ backslash, bar ]};
 
-	key <RALT> {
-		symbols[Group1] = [ Mode_switch, Mode_switch ],
-		virtualMods= AltGr };
+	key <TAB> {[ Super_L, Super_L]};
 	key <CAPS> {[ Control_L, Control_L ]};
+	key <LFSH> {[ Alt_L, Alt_L ]};
+	key <LALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
+	key <RALT> {[ Shift_L, Shift_L ]};
 	key <LCTL> {[ Multi_key ]};
-	key <SPCE> {[ space, space ], [ BackSpace, Return ]};
+	key <SPCE> {[ space, space, Escape, Escape ]};
 };

@@ -32,10 +32,10 @@ xkb_symbols "basic" {
 	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
 	key <AD12> {[ parenright, bracketright, braceright, greater ]};
 
-	key <AC01> {[ Greek_rho, Greek_RHO ], [r, R] };
-	key <AC02> {[ Greek_sigma, Greek_SIGMA ], [s, S] };
-	key <AC03> {[ Greek_tau, Greek_TAU ], [t, T] };
-	key <AC04> {[ Greek_nu, Greek_NU ], [n, N] };
+	key <AC01> {[ Greek_rho, Greek_RHO, Delete, Delete ], [r, R] };
+	key <AC02> {[ Greek_sigma, Greek_SIGMA , BackSpace, BackSpace ], [s, S] };
+	key <AC03> {[ Greek_tau, Greek_TAU, Tab, Tab ], [t, T] };
+	key <AC04> {[ Greek_nu, Greek_NU, Return, Return ], [n, N] };
 	key <AC05> {[ Greek_finalsmallsigma, Greek_SIGMA ], [h, H] };
 	key <AC06> {[ Greek_upsilon, Greek_UPSILON ], [y, Y] };
 	key <AC07> {[ Greek_iota, Greek_IOTA ], [i, I] };
@@ -50,17 +50,18 @@ xkb_symbols "basic" {
 	key <AB04> {[ Greek_lambda, Greek_LAMBDA ], [l, L] };
 	key <AB05> {[ Greek_chi, Greek_CHI ], [x, X] };
 	key <AB06> {[ Greek_beta, Greek_BETA ], [b, B] };
-	key <AB07> {[ Greek_pi, Greek_PI ], [p, P] };
-	key <AB08> {[ comma, less ]};
-	key <AB09> {[ period, greater ]};
-	key <AB10> {[ slash, question ]};
+	key <AB07> {[ Greek_pi, Greek_PI, Left, Left ], [p, P] };
+	key <AB08> {[ comma, less, Down, Down ]};
+	key <AB09> {[ period, greater, Up, Up ]};
+	key <AB10> {[ slash, question, Right, Right ]};
 
 	key <BKSL> {[ backslash, bar ]};
 
-	key <RALT> {
-		symbols[Group1] = [ Mode_switch, Mode_switch ],
-		virtualMods= AltGr };
+	key <TAB> {[ Super_L, Super_L]};
 	key <CAPS> {[ Control_L, Control_L ]};
+	key <LFSH> {[ Alt_L, Alt_L ]};
+	key <LALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
+	key <RALT> {[ Shift_L, Shift_L ]};
 	key <LCTL> {[ Multi_key ]};
-	key <SPCE> {[ space, space ], [ BackSpace, Return ]};
+	key <SPCE> {[ space, space, Escape, Escape ]};
 };
