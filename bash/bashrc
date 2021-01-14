@@ -1,4 +1,4 @@
-PS1='\[\e[30m\]\u@\h $PWD $? >\[\e[0m\] '
+PS1='\u@\h:\[\e[1;34m\]$PWD \[\e[1;31m\]$?\[\e[0m\] > '
 IFS='
 '
 eval $(dircolors -b)
