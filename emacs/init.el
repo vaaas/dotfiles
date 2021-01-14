@@ -21,11 +21,10 @@
 	frame-resize-pixelwise t
 	vc-follow-symlinks t
 	make-backup-files nil
-	blog-directory "/home/vas/Projects/website")
+	blog-directory "/home/vas/Projects/website"
+	disabled-command-function nil)
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
-
-(put 'dired-find-alternate-file 'disabled nil)
 
 (defun expand-or-tab() (interactive)
 	(if (member (char-before) '(9 10 32))
