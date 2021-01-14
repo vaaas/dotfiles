@@ -13,7 +13,7 @@
 
 (setq-default indent-tabs-mode nil
 	line-spacing 0.3
-	tab-width 3
+	tab-width 4
 	mode-line-format nil
 	save-abbrevs nil)
 (setq inhibit-splash-screen t
@@ -78,8 +78,8 @@
 
 (defun toggle-indent-tabs() (interactive)
 	(if indent-tabs-mode
-		(progn (setq indent-tabs-mode nil) (message "indent will use SPACES"))
-		(progn (setq indent-tabs-mode t) (message "indent will use TABS"))))
+		(progn (setq indent-tabs-mode nil) (setq tab-width 4) (message "indent will use SPACES"))
+		(progn (setq indent-tabs-mode t) (setq tab-width 3) (message "indent will use TABS"))))
 
 (defun space-comma-dot() (interactive)
 	(cond

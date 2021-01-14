@@ -109,8 +109,7 @@ m() {
 			xterm -e 'php artisan serve' &
 			cd ~/code/athena
 			xterm -e 'php -S localhost:8001 -t public' &
-			cd ~
-			;;
+			exit ;;
 	esac
 }
 

@@ -23,10 +23,10 @@ xkb_symbols "basic" {
 	key <AD04> {[ m, M, minus, underscore ]};
 	key <AD05> {[ j, J ]};
 	key <AD06> {[ q, Q ]};
-	key <AD07> {[ w, W ]};
-	key <AD08> {[ u, U ]};
-	key <AD09> {[ v, V ]};
-	key <AD10> {[ semicolon, colon ]};
+	key <AD07> {[ w, W, Left, Left ]};
+	key <AD08> {[ u, U, Down, Down ]};
+	key <AD09> {[ v, V, Up, Up ]};
+	key <AD10> {[ semicolon, colon, Right, Right ]};
 
 	// all the bracket pairs: paren, bracket, brace, comparisons
 	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
