@@ -23,10 +23,10 @@ xkb_symbols "basic" {
 	key <AD04> {[ m, M, minus, underscore ]};
 	key <AD05> {[ j, J ]};
 	key <AD06> {[ q, Q ]};
-	key <AD07> {[ w, W, Left, Left ]};
-	key <AD08> {[ u, U, Down, Down ]};
-	key <AD09> {[ v, V, Up, Up ]};
-	key <AD10> {[ semicolon, colon, Right, Right ]};
+	key <AD07> {[ w, W ]};
+	key <AD08> {[ u, U ]};
+	key <AD09> {[ v, V ]};
+	key <AD10> {[ semicolon, colon ]};
 
 	// all the bracket pairs: paren, bracket, brace, comparisons
 	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
@@ -50,10 +50,10 @@ xkb_symbols "basic" {
 	key <AB04> {[ l, L ]};
 	key <AB05> {[ x, X ]};
 	key <AB06> {[ b, B ]};
-	key <AB07> {[ p, P ]};
-	key <AB08> {[ comma, less, guillemotleft, U2039 ]};
-	key <AB09> {[ period, greater, guillemotright, U203A ]};
-	key <AB10> {[ slash, question ]};
+	key <AB07> {[ p, P, Left, Left ]};
+	key <AB08> {[ comma, less, Down, Down ]};
+	key <AB09> {[ period, greater, Up, Up ]};
+	key <AB10> {[ slash, question, Right, Right ]};
 
 	key <BKSL> {[ backslash, bar ]};
 
