@@ -2,7 +2,7 @@
 
 case $(ibus engine) in
 	xkb:vu::eng) ibus engine xkb:vu::gre ;;
-	xkb:vu::gre) ibus engine kkc ;;
+	xkb:vu::gre) ibus engine xkb:vu::eng && ibus engine kkc ;;
 	kkc) ibus engine xkb:vu::eng ;;
 	*) ibus engine xkb:vu::eng ;;
 esac
