@@ -20,5 +20,5 @@ unclutter &
 dbus-launch sxhkd -m -1 &
 xrandr -s 1920x1080
 VBoxClient --clipboard
-XMODIFIERS=xim emacs --daemon
+emacs --daemon
 dbus-launch dwm-loop

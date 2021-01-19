@@ -1,5 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 (require 'package)
+(require 'iso-transl)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
