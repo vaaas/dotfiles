@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/sh
 IFS='
 '
 $(dmenu_run) $NAUTILUS_SCRIPT_SELECTED_FILE_PATHS
