@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/sh
 
 alias start='redshift -O 2500K'
 alias stop='redshift -x'

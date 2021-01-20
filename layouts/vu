@@ -62,6 +62,7 @@ xkb_symbols "basic" {
 	key <LFSH> {[ Alt_L, Alt_L ]};
 	key <LALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
 	key <RALT> {[ Shift_L, Shift_L ]};
+	key <RWIN> {[ Multi_key, Multi_key ]};
 	key <LCTL> {[ Multi_key ]};
 	key <SPCE> {[ space, space, Escape, Escape ]};
 };

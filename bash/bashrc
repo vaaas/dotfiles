@@ -69,15 +69,15 @@ alias set-time="sudo ntpdate pool.ntp.org ; sudo hwclock -w"
 
 #functions
 lgrep() {
-   grep --color=always -C 10 -RFi -- "$@" | less -R
+	grep --color=always -C 10 -RFi -- "$@" | less -R
 }
 
 lls() {
-   ls --color=always --group-directories-first -hl "$@" | less -RXF
+	ls --color=always --group-directories-first -hl "$@" | less -RXF
 }
 
 g() {
-   if test -z "$1"
+	if test -z "$1"
 	then
 		git status
 		return
@@ -100,7 +100,7 @@ g() {
 }
 
 m() {
-   arg="$1"
+	arg="$1"
 	shift 1
 	case $arg in
 		s)
@@ -114,7 +114,7 @@ m() {
 }
 
 a() {
-   arg="$1"
+	arg="$1"
 	shift 1
 	case "$arg" in
 		s) pacman -Ss --color auto "$@" ;;
@@ -133,7 +133,7 @@ a() {
 }
 
 sha3-rename() {
-   for x
+	for x
 	do
 		file="$(basename "$x")"
 		if ! test -f "$file"
@@ -148,32 +148,43 @@ sha3-rename() {
 }
 
 vas-transcode() {
-   ffmpeg -i "$1" -c:s copy -c:a libmp3lame -q:a 4\
+	ffmpeg -i "$1" -c:s copy -c:a libmp3lame -q:a 4\
 		-c:v libx264 -crf 25 -preset ultrafast -tune animation -pix_fmt yuv420p\
 		-map 0:v -map 0:t? -map 0:s? -map 0:a:0\
 		"$2"
 }
 
 word-frequency() {
-   tr '[:upper:]' '[:lower:]' |
-   tr -d '[:punct:]' |
-   tr -s '[:space:]' '\n' |
-   sort |
-   uniq -c |
-   sort -n
+	tr '[:upper:]' '[:lower:]' |
+	tr -d '[:punct:]' |
+	tr -s '[:space:]' '\n' |
+	sort |
+	uniq -c |
+	sort -n
 }
 
 remove-if-same() {
-   if ! test -d "$1" -a -f "$2"
-   then
-           echo "bad arguments" > /dev/stderr
-           return
-   fi
-   src="$2"
-   dst="$1/$(basename "$src")"
-   if diff -q -- "$src" "$dst"
-   then
-           echo "$src and $dst are the same"
-           rm -v -- "$src"
-   fi
+	if ! test -d "$1" -a -f "$2"
+	then
+		echo "bad arguments" > /dev/stderr
+		return
+	fi
+	src="$2"
+	dst="$1/$(basename "$src")"
+	if diff -q -- "$src" "$dst"
+	then
+		echo "$src and $dst are the same"
+		rm -v -- "$src"
+	fi
+}
+
+cdi() {
+	while true
+	do
+		a="$(ls -d */ .*/ | fzf --prompt="$PWD > ")"
+		if test "$?" -eq 0
+		then cd "$a"
+		else break
+		fi
+	done
 }

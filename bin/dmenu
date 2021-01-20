@@ -1,2 +1,2 @@
-#!/bin/dash
+#!/bin/sh
 /usr/bin/dmenu -l 20 -fn "Nintendo DS BIOS Vasified:pixelsize=16" -nb "#fdf6e3" -nf "#586e75" -sb "#cb4b16" -sf "#fdf6e3" "$@"
