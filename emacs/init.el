@@ -126,7 +126,7 @@
 
 (defun blog() (interactive)
 	(setq cat (ido-completing-read "category?> "
-		'("tech" "animanga" "books" "memes" "films" "journal")))
+		'("tech" "anime" "books" "memes" "films" "journal")))
 	(delete-trailing-whitespace)
 	(beginning-of-buffer)
 	(if (< (buffer-size) 2000)
