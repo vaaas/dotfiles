@@ -4,18 +4,19 @@ xrdb -merge ~/.Xresources
 
 export GTK_USE_PORTAL=1
 # keyboard configuration
-export GTK_IM_MODULE=xim
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=xim
-ibus-daemon -xdr
+#export GTK_IM_MODULE=xim
+#export XMODIFIERS=@im=ibus
+#export QT_IM_MODULE=xim
+#ibus-daemon -xdr
 setxkbmap slatin
 xset r rate 180
 
-redshift_service &
+redshift-service &
 dunst -font "Sans 16" &
 xwallpaper --tile wallpaper &
 unclutter --timeout 1 &
 bar &
 dbus-launch sxhkd -m -1 &
 XMODIFIERS=xim emacs --daemon
+compton &
 dbus-launch dwm-loop
