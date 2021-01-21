@@ -45,6 +45,8 @@
 
 (defun add-trailing-newline() (end-of-buffer) (when (not (= 10 (char-before))) (insert-char 10)))
 
+(defun add-trailing-newline() (end-of-buffer) (when (not (= 10 (char-before))) (insert-char 10)))
+
 (defun quick-find-file() (interactive)
 	(find-file
 	(ido-completing-read "select file> "
