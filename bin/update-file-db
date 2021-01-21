@@ -7,6 +7,6 @@ file="$HOME/filedb.xz"
 rm -v $file
 while read dir
 do
-        find $dir -type f | sort | xz >> $file
+	find $dir -type f | sort | xz >> $file
 done < ~/.filedbdirs
 echo "updated $file"
