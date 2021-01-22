@@ -39,7 +39,8 @@
 			(string=
 				(make-string tab-width 32)
 				(buffer-substring (point) (+ (point) tab-width))))
-			(delete-forward-char tab-width))))
+			(delete-forward-char tab-width))
+		(t (do-nothing))))
 
 (defun expand-or-tab() (interactive)
 	(if (member (char-before) '(9 10 32))
@@ -140,12 +141,16 @@
 
 (defun indent-line-or-region() (interactive)
 	(if (use-region-p)
-		(call-interactively 'indent-rigidly-right-to-tab-stop)
+		(progn
+			(call-interactively 'indent-rigidly-right-to-tab-stop)
+			(setq deactivate-mark nil))
 		(save-excursion (beginning-of-line) (insert-indent))))
 
 (defun unindent-line-or-region() (interactive)
 	(if (use-region-p)
-		(call-interactively 'indent-rigidly-left-to-tab-stop)
+		(progn
+			(call-interactively 'indent-rigidly-left-to-tab-stop)
+			(setq deactivate-mark nil))
 		(save-excursion (beginning-of-line) (delete-indent))))
 
 (defun timestamp() (format-time-string "%s"))
