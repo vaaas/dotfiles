@@ -40,9 +40,8 @@ alias linkgrep='grep -oP "http(s?):\/\/[^\"\(\)\<\>]*"'
 alias mkdir='mkdir -pv'
 alias bb='systemctl poweroff'
 alias brb='systemctl reboot'
-alias fzy='fzy -l 20'
 alias f='find -maxdepth 1 | grep -Fi'
-alias fp='find -maxdepth 1 | fzy'
+alias fp='find -maxdepth 1 | fzf'
 alias ff='find | grep -Fi'
 alias q='exit'
 alias clipin='xclip -selection clipboard'
@@ -183,10 +182,13 @@ remove-if-same() {
 c() {
 	while true
 	do
-		a="$(ls -d */ .*/ | fzy -p "$PWD > ")"
-		if test "$?" -gt 0 -o "$a" = './'
+		a="$(\ls -pd --color=always --group-directories-first -- * . .. | fzf --ansi --prompt="$PWD > " | sed 's/\x1b\[[0-9;]*m//g')"
+		if test -z "$a" -o "$a" = './'
 		then break
-		else cd "$a"
+		else case "$a" in
+			*/) cd "$a" ;;
+			*) gio open "$a" ;;
+		esac
 		fi
 	done
 }
