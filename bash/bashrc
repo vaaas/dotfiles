@@ -40,7 +40,9 @@ alias linkgrep='grep -oP "http(s?):\/\/[^\"\(\)\<\>]*"'
 alias mkdir='mkdir -pv'
 alias bb='systemctl poweroff'
 alias brb='systemctl reboot'
+alias fzy='fzy -l 20'
 alias f='find -maxdepth 1 | grep -Fi'
+alias fp='find -maxdepth 1 | fzy'
 alias ff='find | grep -Fi'
 alias q='exit'
 alias clipin='xclip -selection clipboard'
@@ -178,13 +180,13 @@ remove-if-same() {
 	fi
 }
 
-cdi() {
+c() {
 	while true
 	do
-		a="$(ls -d */ .*/ | fzf --prompt="$PWD > ")"
-		if test "$?" -eq 0
-		then cd "$a"
-		else break
+		a="$(ls -d */ .*/ | fzy -p "$PWD > ")"
+		if test "$?" -gt 0 -o "$a" = './'
+		then break
+		else cd "$a"
 		fi
 	done
 }
