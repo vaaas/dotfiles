@@ -27,9 +27,24 @@
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
 
+(defun insert-indent()
+	(if indent-tabs-mode (insert-char 9) (insert-char 32 tab-width)))
+
+(defun delete-indent()
+	(cond
+		((and indent-tabs-mode (= 9 (char-after)))
+			(delete-forward-char 1))
+		((and
+			(not indent-tabs-mode)
+			(string=
+				(make-string tab-width 32)
+				(buffer-substring (point) (+ (point) tab-width))))
+			(delete-forward-char tab-width))
+		(t (do-nothing))))
+
 (defun expand-or-tab() (interactive)
 	(if (member (char-before) '(9 10 32))
-		(if indent-tabs-mode (insert-char 9) (insert-char 32 tab-width))
+		(insert-indent)
 		(call-interactively 'dabbrev-expand)))
 
 (defun line-below() (interactive)
@@ -68,7 +83,7 @@
 		((use-region-p) (call-interactively 'kill-region))
 		((< (point) (+ 1 tab-width)) (backward-delete-char 1))
 		(indent-tabs-mode (backward-delete-char 1))
-		((string= (make-string tab-width ? ) (buffer-substring (point) (- (point) tab-width)))
+		((string= (make-string tab-width 32) (buffer-substring (point) (- (point) tab-width)))
 			(backward-delete-char tab-width))
 		(t (backward-delete-char 1))))
 
@@ -116,13 +131,27 @@
 
 (defun spaces-to-tabs() (interactive)
 	(beginning-of-buffer)
-	(replace-all (make-string tab-width ? ) "	"))
+	(replace-all (make-string tab-width 32) "	"))
 
 (defun join-line() (interactive)
 	(end-of-line)
 	(forward-line)
 	(beginning-of-line-text)
 	(delete-indentation))
+
+(defun indent-line-or-region() (interactive)
+	(if (use-region-p)
+		(progn
+			(call-interactively 'indent-rigidly-right-to-tab-stop)
+			(setq deactivate-mark nil))
+		(save-excursion (beginning-of-line) (insert-indent))))
+
+(defun unindent-line-or-region() (interactive)
+	(if (use-region-p)
+		(progn
+			(call-interactively 'indent-rigidly-left-to-tab-stop)
+			(setq deactivate-mark nil))
+		(save-excursion (beginning-of-line) (delete-indent))))
 
 (defun timestamp() (format-time-string "%s"))
 
@@ -187,6 +216,8 @@
 (define-key vi-mode-map (kbd "<backtab>") 'indent-rigidly-left-to-tab-stop)
 (define-key vi-mode-map (kbd "<tab>") 'indent-rigidly-right-to-tab-stop)
 (define-key vi-mode-map (kbd "<escape>") 'keyboard-quit)
+(define-key vi-mode-map (kbd "h") 'indent-line-or-region)
+(define-key vi-mode-map (kbd "H") 'unindent-line-or-region)
 (define-key vi-mode-map (kbd "/") 'isearch-forward)
 (define-key vi-mode-map (kbd "?") 'rgrep)
 (define-key vi-mode-map (kbd "p") 'yank)

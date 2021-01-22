@@ -41,6 +41,7 @@ alias mkdir='mkdir -pv'
 alias bb='systemctl poweroff'
 alias brb='systemctl reboot'
 alias f='find -maxdepth 1 | grep -Fi'
+alias fp='find -maxdepth 1 | fzf'
 alias ff='find | grep -Fi'
 alias q='exit'
 alias clipin='xclip -selection clipboard'
@@ -178,13 +179,16 @@ remove-if-same() {
 	fi
 }
 
-cdi() {
+c() {
 	while true
 	do
-		a="$(ls -d */ .*/ | fzf --prompt="$PWD > ")"
-		if test "$?" -eq 0
-		then cd "$a"
-		else break
+		a="$(\ls -pd --color=always --group-directories-first -- * . .. | fzf --ansi --prompt="$PWD > " | sed 's/\x1b\[[0-9;]*m//g')"
+		if test -z "$a" -o "$a" = './'
+		then break
+		else case "$a" in
+			*/) cd "$a" ;;
+			*) gio open "$a" ;;
+		esac
 		fi
 	done
 }
