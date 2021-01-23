@@ -230,6 +230,8 @@
 (define-key vi-mode-map (kbd "N") 'delete-forward-char)
 (define-key vi-mode-map (kbd "h") 'scroll-up-command)
 (define-key vi-mode-map (kbd "H") 'scroll-down-command)
+(define-key vi-mode-map (kbd "y") 'isearch-repeat-forward)
+(define-key vi-mode-map (kbd "Y") 'isearch-repeat-backward)
 (define-key vi-mode-map (kbd "i") 'left-char)
 (define-key vi-mode-map (kbd "I") 'beginning-of-line-text)
 (define-key vi-mode-map (kbd "e") 'next-line)
@@ -267,7 +269,7 @@
 (define-key vi-mode-map (kbd "P") 'kill-ring-save)
 (define-key vi-mode-map (kbd ".") 'repeat)
 (define-key vi-mode-map (kbd "/") 'isearch-forward)
-(define-key vi-mode-map (kbd "?") 'rgrep)
+(define-key vi-mode-map (kbd "?") 'isearch-backward)
 
 (define-key vi-mode-map (kbd "SPC") 'vi-off)
 (define-key vi-mode-map (kbd "<escape>") 'keyboard-quit)
@@ -303,9 +305,7 @@
 (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit)
 (define-key minibuffer-local-map (kbd "<tab>") 'minibuffer-complete)
 
-(define-key isearch-mode-map (kbd "<return>") 'isearch-repeat-forward)
-(define-key isearch-mode-map (kbd "<S-return>") 'isearch-repeat-backward)
-(define-key isearch-mode-map (kbd "<C-return>") 'isearch-exit)
+(define-key isearch-mode-map (kbd "<return>") 'isearch-exit)
 (define-key isearch-mode-map (kbd "<escape>") 'isearch-exit)
 (define-key isearch-mode-map (kbd "C-g") 'isearch-exit)
 
@@ -326,7 +326,7 @@
 	(define-key dired-mode-map (kbd "e") 'dired-next-line)
 	(define-key dired-mode-map (kbd "o") 'dired-previous-line)
 	(define-key dired-mode-map (kbd "i") 'dired-up-directory)
-	(define-key dired-mode-map (kbd "/") 'isearch-forward))
+	(define-key dired-mode-map (kbd "/") 'isearch-exit-forward))
 
 (with-eval-after-load 'php-mode
 	(define-key php-mode-map (kbd "<tab>") nil))
@@ -336,29 +336,31 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (markdown-mode php-mode))))
+ '(package-selected-packages '(markdown-mode php-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#fff3e0" :foreground "#303030" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "1ASC" :family "Liberation Mono"))))
- '(eshell-ls-directory ((t (:foreground "#44d" :weight bold))))
- '(eshell-ls-executable ((t (:foreground "#484" :weight bold))))
- '(eshell-prompt ((t (:foreground "#d44" :weight bold))))
+ '(default ((t (:inherit nil :stipple nil :background "#FFF1E8" :foreground "#000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "1ASC" :family "Liberation Mono"))))
+ '(eshell-ls-directory ((t (:foreground "#29ADFF" :weight bold))))
+ '(eshell-ls-executable ((t (:foreground "#008751" :weight bold))))
+ '(eshell-prompt ((t (:foreground "#FF004D" :weight bold))))
  '(font-lock-builtin-face ((t (:underline (:color foreground-color)))))
+ '(font-lock-comment-face ((t (:foreground "#AB5236"))))
  '(font-lock-constant-face ((t nil)))
- '(font-lock-function-name-face ((t (:foreground "#048"))))
+ '(font-lock-function-name-face ((t (:foreground "#1D2B53" :weight bold))))
  '(font-lock-keyword-face ((t (:weight semi-bold))))
- '(font-lock-string-face ((t (:foreground "#084"))))
+ '(font-lock-string-face ((t (:foreground "#008751"))))
  '(font-lock-type-face ((t nil)))
  '(font-lock-variable-name-face ((t nil)))
  '(fringe ((t nil)))
- '(isearch ((t (:background "#048" :foreground "#fff"))))
+ '(isearch ((t (:background "#29ADFF" :foreground "#FFF1E8"))))
+ '(highlight ((t (:background "#1D2B53" :foreground "#FFF1E8"))))
  '(lazy-highlight ((t (:inherit highlight))))
- '(minibuffer-prompt ((t (:foreground "#800"))))
+ '(minibuffer-prompt ((t (:foreground "#7E2553"))))
  '(mmm-default-submode-face ((t nil)))
- '(mode-line ((t (:background "#aa8"))))
+ '(mode-line ((t (:background "#7E2553"))))
  '(mode-line-inactive ((t nil)))
  '(php-$this ((t (:slant oblique))))
  '(php-function-call ((t (:inherit font-lock-function-name-face))))
