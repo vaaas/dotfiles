@@ -315,6 +315,9 @@
 (add-hook 'eshell-mode-hook 'vi-off)
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'ido-minibuffer-setup-hook (lambda()
+    (define-key ido-completion-map (kbd "C-e") 'ido-next-match)
+    (define-key ido-completion-map (kbd "C-o") 'ido-prev-match)))
 
 (with-eval-after-load 'markdown-mode
 	(define-key markdown-mode-map (kbd "<return>") 'double-newline)
@@ -347,7 +350,7 @@
  '(eshell-ls-executable ((t (:foreground "#008844" :weight bold))))
  '(eshell-prompt ((t (:foreground "#ff0055" :weight bold))))
  '(font-lock-builtin-face ((t (:underline (:color foreground-color)))))
- '(font-lock-comment-face ((t (:foreground "#bb5533"))))
+ '(font-lock-comment-face ((t (:foreground "#aa4422"))))
  '(font-lock-constant-face ((t nil)))
  '(font-lock-function-name-face ((t (:foreground "#2255aa" :weight bold))))
  '(font-lock-keyword-face ((t (:weight semi-bold))))
