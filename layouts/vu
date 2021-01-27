@@ -60,9 +60,10 @@ xkb_symbols "basic" {
 	key <TAB> {[ Super_L, Super_L]};
 	key <CAPS> {[ Control_L, Control_L ]};
 	key <LFSH> {[ Alt_L, Alt_L ]};
-	key <LALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
+	key <LALT> {[ ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift ]};
 	key <RALT> {[ Shift_L, Shift_L ]};
 	key <RWIN> {[ Multi_key, Multi_key ]};
 	key <LCTL> {[ Multi_key ]};
 	key <SPCE> {[ space, space, Escape, Escape ]};
+	key <RTRN> {[ Escape, Escape, Escape, Escape ]};
 };

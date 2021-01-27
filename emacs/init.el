@@ -315,6 +315,9 @@
 (add-hook 'eshell-mode-hook 'vi-off)
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'ido-minibuffer-setup-hook (lambda()
+    (define-key ido-completion-map (kbd "C-e") 'ido-next-match)
+    (define-key ido-completion-map (kbd "C-o") 'ido-prev-match)))
 
 (with-eval-after-load 'markdown-mode
 	(define-key markdown-mode-map (kbd "<return>") 'double-newline)
@@ -336,32 +339,34 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(markdown-mode php-mode)))
+ '(package-selected-packages (quote (restclient markdown-mode php-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
+ '(default ((t (:inherit nil :stipple nil :background "#ffeedd" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "1ASC" :family "Liberation Mono"))))
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#fdf6e3" :foreground "#002b36" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "1ASC" :family "Liberation Mono"))))
- '(eshell-ls-directory ((t (:foreground "#268bd2" :weight bold))))
- '(eshell-ls-executable ((t (:foreground "#859900" :weight bold))))
- '(eshell-prompt ((t (:foreground "#dc322f" :weight bold))))
+ '(eshell-ls-directory ((t (:foreground "#2255aa" :weight bold))))
+ '(eshell-ls-executable ((t (:foreground "#008844" :weight bold))))
+ '(eshell-prompt ((t (:foreground "#ff0055" :weight bold))))
  '(font-lock-builtin-face ((t (:underline (:color foreground-color)))))
- '(font-lock-comment-face ((t (:foreground "#cb4b16"))))
+ '(font-lock-comment-face ((t (:foreground "#aa4422"))))
  '(font-lock-constant-face ((t nil)))
- '(font-lock-function-name-face ((t (:foreground "#268bd2" :weight bold))))
- '(font-lock-keyword-face ((t (:weight semi-bold))))
- '(font-lock-string-face ((t (:foreground "#2aa198"))))
+ '(font-lock-function-name-face ((t (:foreground "#2255aa" :weight bold))))
+\ '(font-lock-keyword-face ((t (:weight semi-bold))))
+ '(font-lock-string-face ((t (:foreground "#008844"))))
  '(font-lock-type-face ((t nil)))
  '(font-lock-variable-name-face ((t nil)))
  '(font-lock-type-face ((t (:foreground "#d33682"))))
  '(fringe ((t nil)))
- '(isearch ((t (:background "#268bd2" :foreground "#fdf6e3"))))
- '(highlight ((t (:background "#268bd2" :foreground "#fdf6e3"))))
+ '(cursor ((t (:background "#ff0055"))))
+ '(region ((t (:background "#ffffff"))))
+ '(highlight ((t (:background "#ccccff"))))
+ '(isearch ((t (:background "#2255aa" :foreground "#ffffee"))))
  '(lazy-highlight ((t (:inherit highlight))))
- '(minibuffer-prompt ((t (:foreground "#cb4b16"))))
+ '(minibuffer-prompt ((t (:foreground "#ff0055"))))
  '(mmm-default-submode-face ((t nil)))
- '(mode-line ((t (:background "#cb4b16"))))
+ '(mode-line ((t (:background "#ddddcc"))))
  '(mode-line-inactive ((t nil)))
  '(php-$this ((t (:slant oblique))))
  '(php-function-call ((t (:inherit font-lock-function-name-face))))

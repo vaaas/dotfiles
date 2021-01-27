@@ -185,10 +185,10 @@ c() {
 		a="$(\ls -pd --color=always --group-directories-first -- * . .. | fzf --ansi --prompt="$PWD > " | sed 's/\x1b\[[0-9;]*m//g')"
 		if test -z "$a" -o "$a" = './'
 		then break
-		else case "$a" in
-			*/) cd "$a" ;;
-			*) gio open "$a" ;;
-		esac
+		elif test -d "$a"
+		then cd "$a"
+		elif test -f "$a"
+		then gio open "$a"
 		fi
 	done
 }
