@@ -353,7 +353,7 @@
  '(font-lock-comment-face ((t (:foreground "#aa4422"))))
  '(font-lock-constant-face ((t nil)))
  '(font-lock-function-name-face ((t (:foreground "#2255aa" :weight bold))))
-\ '(font-lock-keyword-face ((t (:weight semi-bold))))
+ '(font-lock-keyword-face ((t (:weight semi-bold))))
  '(font-lock-string-face ((t (:foreground "#008844"))))
  '(font-lock-type-face ((t nil)))
  '(font-lock-variable-name-face ((t nil)))

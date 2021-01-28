@@ -33,7 +33,7 @@ alias nmcli='nmcli -f in-use,ssid,bssid,signal,bars'
 alias cmark='cmark --smart'
 
 #convenience & shortcuts
-alias s='sudo'
+alias s='doas'
 alias ..='cd ..'
 alias ,='cd $OLDPWD'
 alias linkgrep='grep -oP "http(s?):\/\/[^\"\(\)\<\>]*"'
@@ -50,23 +50,23 @@ alias clipsync='xclip -selection primary -o | xclip -selection clipboard'
 alias lvds='xrandr --auto'
 alias ldir='find . -maxdepth 1 -type d'
 alias allfiles='find -type f'
-alias powersave='sudo cpupower frequency-set -g powersave'
-alias performance='sudo cpupower frequency-set -g performance'
+alias powersave='s cpupower frequency-set -g powersave'
+alias performance='s cpupower frequency-set -g performance'
 alias serve='unhorribad_serve.js'
 alias ymddate='date +%Y-%m-%d'
-alias pkgin='sudo aptitude install'
-alias pkgrm='sudo aptitude remove'
+alias pkgin='s aptitude install'
+alias pkgrm='s aptitude remove'
 alias pkgf='aptitude search'
 alias bc='bc -l'
-alias update='sudo sh -c "a update && a upgrade"'
+alias update='s sh -c "a update && a upgrade"'
 alias zz='systemctl suspend'
 alias emacs='emacsclient -nc'
 alias less='less -I'
 alias sxiv='sxiv -o'
 alias pg='ping google.gr'
-alias windows='sudo grub-reboot Windows && sudo reboot'
+alias windows='s grub-reboot Windows && s reboot'
 alias thanks="echo You\'re welcome!"
-alias set-time="sudo ntpdate pool.ntp.org ; sudo hwclock -w"
+alias set-time="s ntpdate pool.ntp.org ; s hwclock -w"
 
 #functions
 lgrep() {
@@ -111,6 +111,7 @@ m() {
 			cd ~/code/athena
 			xterm -e 'php -S localhost:8001 -t public' &
 			exit ;;
+		emacs) killall emacs && \emacs --daemon ;;
 	esac
 }
 
