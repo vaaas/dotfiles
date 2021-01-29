@@ -357,6 +357,7 @@
  '(font-lock-string-face ((t (:foreground "#008844"))))
  '(font-lock-type-face ((t :foreground "#884488")))
  '(font-lock-variable-name-face ((t nil)))
+ '(font-lock-type-face ((t (:foreground "#d33682"))))
  '(fringe ((t nil)))
  '(cursor ((t (:background "#ff0055"))))
  '(region ((t (:background "#ffffff"))))
