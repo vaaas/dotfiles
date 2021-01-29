@@ -355,7 +355,7 @@
  '(font-lock-function-name-face ((t (:foreground "#2255aa" :weight bold))))
  '(font-lock-keyword-face ((t (:weight semi-bold))))
  '(font-lock-string-face ((t (:foreground "#008844"))))
- '(font-lock-type-face ((t nil)))
+ '(font-lock-type-face ((t :foreground "#884488")))
  '(font-lock-variable-name-face ((t nil)))
  '(fringe ((t nil)))
  '(cursor ((t (:background "#ff0055"))))

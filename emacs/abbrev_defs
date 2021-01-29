@@ -165,6 +165,7 @@
 	("is" "===")
 	("and" "&&")
 	("or" "||")
+	("r" "return")
 ))
 
 (define-abbrev-table 'pike-mode-abbrev-table
