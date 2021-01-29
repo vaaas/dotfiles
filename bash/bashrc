@@ -33,7 +33,7 @@ alias nmcli='nmcli -f in-use,ssid,bssid,signal,bars'
 alias cmark='cmark --smart'
 
 #convenience & shortcuts
-alias s='doas'
+alias s='sudo'
 alias ..='cd ..'
 alias ,='cd $OLDPWD'
 alias linkgrep='grep -oP "http(s?):\/\/[^\"\(\)\<\>]*"'
