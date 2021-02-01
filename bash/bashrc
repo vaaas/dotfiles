@@ -26,11 +26,11 @@ alias du='du -ch'
 alias chmod='chmod -c'
 alias chown='chown -c'
 alias chgrp='chgrp -c'
-alias saidar='saidar -c'
 alias top='htop'
 alias uptime='uptime -p'
 alias nmcli='nmcli -f in-use,ssid,bssid,signal,bars'
 alias cmark='cmark --smart'
+alias fzf='fzf --color=16,light'
 
 #convenience & shortcuts
 alias s='sudo'
@@ -46,19 +46,14 @@ alias ff='find | grep -Fi'
 alias q='exit'
 alias clipin='xclip -selection clipboard'
 alias clipout='xclip -selection clipboard -o'
-alias clipsync='xclip -selection primary -o | xclip -selection clipboard'
-alias lvds='xrandr --auto'
-alias ldir='find . -maxdepth 1 -type d'
-alias allfiles='find -type f'
+alias files='find -type f'
+alias dirs='find -type d'
 alias powersave='s cpupower frequency-set -g powersave'
 alias performance='s cpupower frequency-set -g performance'
-alias serve='unhorribad_serve.js'
-alias ymddate='date +%Y-%m-%d'
-alias pkgin='s aptitude install'
-alias pkgrm='s aptitude remove'
-alias pkgf='aptitude search'
+alias serve='python3 -m http.server'
+alias ymd='date +%Y-%m-%d'
 alias bc='bc -l'
-alias update='s sh -c "a update && a upgrade"'
+alias update='a update && a upgrade'
 alias zz='systemctl suspend'
 alias emacs='emacsclient -nc'
 alias less='less -I'
@@ -193,4 +188,22 @@ c() {
 		then gio open "$a"
 		fi
 	done
+}
+
+d() {
+	if test -z "$1"
+	then
+		systemctl
+		return
+	fi
+	arg="$1"
+	shift 1
+	case "$arg" in
+		r) s systemctl restart "$@" ;;
+		e) s systemctl enable "$@" ;;
+		s) systemctl status "$@" ;;
+		a) s systemctl start "$@" ;;
+		p) s systemctl stop "$@" ;;
+		j) journalctl "$@" ;;
+	esac
 }
