@@ -65,5 +65,4 @@ xkb_symbols "basic" {
 	key <RWIN> {[ Multi_key, Multi_key ]};
 	key <LCTL> {[ Multi_key ]};
 	key <SPCE> {[ space, space, Escape, Escape ]};
-	key <RTRN> {[ Escape, Escape, Escape, Escape ]};
 };
