@@ -3,16 +3,17 @@
 xrdb -merge ~/.Xresources
 
 export GTK_USE_PORTAL=1
+
 # keyboard configuration
 export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=xim
+export QT_IM_MODULE=ibus
 ibus-daemon -xdr
+export XMODIFIERS=@im=ibus
+setxkbmap vu
 xset r rate 180
-xkb:vu::eng
 
 redshift-service &
-dunst -font "Sans 16" &
+dunst -font 'Sans 16' &
 feh --bg-fill wallpaper &
 unclutter --timeout 1 &
 bar &

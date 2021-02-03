@@ -166,6 +166,10 @@
 	("and" "&&")
 	("or" "||")
 	("r" "return")
+	("n" "new")
+	("rg" "$r->get('')")
+	("rh" "$r->has('')")
+	("ns" "namespace")
 ))
 
 (define-abbrev-table 'pike-mode-abbrev-table
