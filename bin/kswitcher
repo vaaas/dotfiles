@@ -1,8 +1,11 @@
 #!/bin/sh
+test $# -lt 2 && exit
 
-case $(ibus engine) in
-	xkb:vu::eng) ibus engine xkb:vu::gre ;;
-	xkb:vu::gre) ibus engine xkb:vu::eng && ibus engine kkc ;;
-	kkc) ibus engine xkb:vu::eng ;;
-	*) ibus engine xkb:vu::eng ;;
-esac
+c="$(ibus engine)"
+i=0
+for x
+do i=$((i+1)) ; test "$x" = "$c" && break
+done
+
+test $i -lt $# && shift $i
+ibus engine $1
