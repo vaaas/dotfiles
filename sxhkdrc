@@ -80,4 +80,4 @@ XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 super + space
-	kswitcher
+	kswitcher xkb:vu::eng kkc xkb:vu::gre
