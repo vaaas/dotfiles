@@ -135,10 +135,11 @@
 	(replace-all-regex "[ |\u00A0|\u202F]*\\([:\\|»]\\)" "\u00A0\\1")
 	(replace-all-regex "«[ |\u00A0|\u202F]*" "«\u00A0"))
 
+(defun shell-command-this-buffer(x) (interactive)
+	(shell-command-on-region (point-min) (point-max) x (current-buffer) t))
+
 (defun cmark() (interactive)
-	(shell-command-on-region (point-min) (point-max)
-		"cmark --smart --unsafe"
-		(current-buffer) t))
+	(shell-command-this-buffer "cmark --smart --unsafe"))
 
 (defun spaces-to-tabs() (interactive)
 	(beginning-of-buffer)
@@ -169,33 +170,27 @@
 (defun blog() (interactive)
 	(setq cat (ido-completing-read "category?> "
 		'("tech" "anime" "books" "memes" "films" "journal" "games")))
+	(setq stamp (timestamp))
 	(delete-trailing-whitespace)
 	(beginning-of-buffer)
 	(if (< (buffer-size) 2000)
-		(insert (format "\n%s\n%s\n" (timestamp) cat))
+		(insert (format "\n%s\n%s\n" stamp cat))
 	(progn
-		(setq file-name (concat
-			(replace-regexp-in-string " " "_"
-				(read-string "file name (no extension): "))
-			".html"))
 		(search-forward "<h1>") (setq start (point))
 		(search-forward "</h1>") (setq end (- (point) 5))
 		(setq title (buffer-substring start end))
 		(search-forward "<p>") (setq start (point))
 		(search-forward "</p>") (setq end (- (point) 4))
 		(setq blurb (buffer-substring start end))
-		(setq stamp (timestamp))
-		(setq ymd (format-time-string "%Y-%m-%d"))
-		(setq body (buffer-substring (point-min) (point-max)))
-		(insert-file-contents (concat blog-directory "/templates/item.html") nil nil nil t)
-		(replace-all "{{TITLE}}" title)
-		(replace-all "{{TIMESTAMP}}" stamp)
-		(replace-all "{{YMD}}" ymd)
-		(replace-all "{{BODY}}" body)
+		(setq file-name (concat
+			(replace-regexp-in-string " " "_"
+				(read-string "file name (no extension): "))
+			".html"))
+		(shell-command-this-buffer (concat blog-directory "/ncrender -s"))
 		(append-to-file (point-min) (point-max) (concat blog-directory "/render/" cat "/" file-name))
 		(kill-region (point-min) (point-max))
 		(insert
-			(format "\n%s\n%s\n<a href='/%s/%s'>%s</a></h1>\n%s"
+			(format "\n%s\n%s\n<h1><a href='/%s/%s'>%s</a></h1>\n%s"
 			stamp cat cat file-name title blurb))
 	(add-trailing-newline)
 	(append-to-file (point-min) (point-max) (concat blog-directory "/posts")))))
@@ -316,8 +311,8 @@
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'ido-minibuffer-setup-hook (lambda()
-    (define-key ido-completion-map (kbd "C-e") 'ido-next-match)
-    (define-key ido-completion-map (kbd "C-o") 'ido-prev-match)))
+	(define-key ido-completion-map (kbd "C-e") 'ido-next-match)
+	(define-key ido-completion-map (kbd "C-o") 'ido-prev-match)))
 
 (with-eval-after-load 'markdown-mode
 	(define-key markdown-mode-map (kbd "<return>") 'double-newline)
