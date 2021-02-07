@@ -17,6 +17,6 @@ xwallpaper --tile wallpaper &
 unclutter --timeout 1 &
 bar &
 dbus-launch sxhkd -m -1 &
-XMODIFIERS=xim emacs --daemon
+emacs --daemon
 compton &
 dbus-launch dwm-loop
