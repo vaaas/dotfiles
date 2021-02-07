@@ -78,6 +78,3 @@ XF86AudioRaiseVolume
 
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
-
-super + space
-	kswitcher

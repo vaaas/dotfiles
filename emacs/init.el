@@ -248,6 +248,7 @@
 (define-key vi-mode-map (kbd "' s h") 'split-window-horizontally)
 (define-key vi-mode-map (kbd "' s v") 'split-window-vertically)
 (define-key vi-mode-map (kbd "' s s") 'delete-other-windows)
+(define-key vi-mode-map (kbd "' i b") 'ibuffer)
 
 (define-key vi-mode-map (kbd "z") 'undo)
 (define-key vi-mode-map (kbd "Z") 'keyboard-quit)
@@ -350,7 +351,7 @@
  '(font-lock-function-name-face ((t (:foreground "#2255aa" :weight bold))))
  '(font-lock-keyword-face ((t (:weight semi-bold))))
  '(font-lock-string-face ((t (:foreground "#008844"))))
- '(font-lock-type-face ((t nil)))
+ '(font-lock-type-face ((t :foreground "#884488")))
  '(font-lock-variable-name-face ((t nil)))
  '(font-lock-type-face ((t (:foreground "#d33682"))))
  '(fringe ((t nil)))

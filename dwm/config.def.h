@@ -6,9 +6,9 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Nintendo DS BIOS Vasified:pixelsize=16" };
-static const char col_accnt[]       = "#cb4b16";
-static const char col_text[]        = "#586e75";
-static const char col_main[]        = "#fdf6e3";
+static const char col_accnt[]       = "#bb4444";
+static const char col_text[]        = "#444444";
+static const char col_main[]        = "#ffeedd";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_text, col_main,  col_main },
@@ -71,7 +71,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_u,                      1)
 	TAGKEYS(                        XK_v,                      2)
 	TAGKEYS(                        XK_semicolon,              3)
-	TAGKEYS(                        XK_grave,                  4)
+	TAGKEYS(                        XK_parenleft,              4)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
