@@ -18,7 +18,7 @@ xkb_symbols "basic" {
 	key <AE12> {[ equal, plus ]};
 
 	key <AD01> {[ k, K, backslash, bar ]};
-	key <AD02> {[ c, C, grave, tilde ]};
+	key <AD02> {[ c, C, grave, asciitilde ]};
 	key <AD03> {[ d, D, equal, plus ]};
 	key <AD04> {[ m, M, minus, underscore ]};
 	key <AD05> {[ j, J ]};
@@ -65,4 +65,5 @@ xkb_symbols "basic" {
 	key <RWIN> {[ Multi_key, Multi_key ]};
 	key <LCTL> {[ Multi_key ]};
 	key <SPCE> {[ space, space, Escape, Escape ]};
+	key <TLDE> {[ Escape, Escape ]};
 };
