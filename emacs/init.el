@@ -26,6 +26,7 @@
 	disabled-command-function nil)
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.blade.php\\'" . js-mode))
 
 (defun backward-whitespace() (interactive) (forward-whitespace -1))
 
@@ -59,10 +60,14 @@
 		(call-interactively 'dabbrev-expand)))
 
 (defun line-below() (interactive)
-	(end-of-line) (open-line 1) (forward-line))
+	(end-of-line) (newline-and-indent-relative))
 
 (defun line-above() (interactive)
-	(save-excursion (beginning-of-line) (newline)))
+	(save-excursion
+		(beginning-of-line)
+		(newline)
+		(forward-line -1)
+		(indent-relative)))
 
 (defun newline-and-indent-relative() (interactive) (newline) (indent-relative t t))
 
@@ -346,13 +351,13 @@
  '(eshell-prompt ((t (:foreground "#ff0055" :weight bold))))
  '(font-lock-builtin-face ((t (:underline (:color foreground-color)))))
  '(font-lock-comment-face ((t (:foreground "#aa4422"))))
- '(font-lock-constant-face ((t nil)))
+ '(font-lock-type-face ((t (:foreground "#d33682"))))
+ '(font-lock-constant-face ((t (:inherit font-lock-type-face))))
  '(font-lock-function-name-face ((t (:foreground "#2255aa" :weight bold))))
  '(font-lock-keyword-face ((t (:weight semi-bold))))
  '(font-lock-string-face ((t (:foreground "#008844"))))
  '(font-lock-type-face ((t :foreground "#884488")))
  '(font-lock-variable-name-face ((t nil)))
- '(font-lock-type-face ((t (:foreground "#d33682"))))
  '(fringe ((t nil)))
  '(cursor ((t (:background "#ff0055"))))
  '(region ((t (:background "#ffffff"))))
