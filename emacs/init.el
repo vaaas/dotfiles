@@ -10,6 +10,7 @@
 (electric-indent-mode -1)
 (ido-mode 1)
 (global-visual-line-mode 1)
+(global-prettify-symbols-mode 1)
 (abbrev-mode 1)
 
 (setq-default indent-tabs-mode nil
@@ -318,6 +319,31 @@
 (add-hook 'ido-minibuffer-setup-hook (lambda()
 	(define-key ido-completion-map (kbd "C-e") 'ido-next-match)
 	(define-key ido-completion-map (kbd "C-o") 'ido-prev-match)))
+(add-hook 'js-mode-hook (lambda()
+	(setq prettify-symbols-alist '(
+		("=>" . ?⇒)
+		(">=" . ?≥)
+		("<=" . ?≤)
+		("==" . ?=)
+		("===" . ?≡)
+		("=" . ?←)
+		("..." . ?…)
+		("." . ?·)
+		("!" ?¬)
+	))))
+(add-hook 'php-mode-hook (lambda()
+	(setq prettify-symbols-alist '(
+		("=>" . ?⇒)
+		(">=" . ?≥)
+		("<=" . ?≤)
+		("==" . ?=)
+		("===" . ?≡)
+		("=" . ?←)
+		("..." . ?…)
+		("->" . ?·)
+		("::" . ?︙)
+		("!" ?¬)
+	))))
 
 (with-eval-after-load 'markdown-mode
 	(define-key markdown-mode-map (kbd "<return>") 'double-newline)
