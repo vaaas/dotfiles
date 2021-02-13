@@ -10,6 +10,7 @@
 (electric-indent-mode -1)
 (ido-mode 1)
 (global-visual-line-mode 1)
+(global-prettify-symbols-mode 1)
 (abbrev-mode 1)
 
 (setq-default indent-tabs-mode nil
@@ -26,6 +27,7 @@
 	disabled-command-function nil)
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.blade.php\\'" . js-mode))
 
 (defun backward-whitespace() (interactive) (forward-whitespace -1))
 
@@ -59,10 +61,14 @@
 		(call-interactively 'dabbrev-expand)))
 
 (defun line-below() (interactive)
-	(end-of-line) (open-line 1) (forward-line))
+	(end-of-line) (newline-and-indent-relative))
 
 (defun line-above() (interactive)
-	(save-excursion (beginning-of-line) (newline)))
+	(save-excursion
+		(beginning-of-line)
+		(newline)
+		(forward-line -1)
+		(indent-relative)))
 
 (defun newline-and-indent-relative() (interactive) (newline) (indent-relative t t))
 
@@ -297,7 +303,6 @@
 
 (define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 (define-key text-mode-map (kbd "SPC") 'space-comma-dot)
-(define-key text-mode-map (kbd "S-SPC") (lambda() (interactive) (capitalize-word -1)))
 
 (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit)
 (define-key minibuffer-local-map (kbd "<tab>") 'minibuffer-complete)
@@ -315,6 +320,31 @@
 (add-hook 'ido-minibuffer-setup-hook (lambda()
 	(define-key ido-completion-map (kbd "C-e") 'ido-next-match)
 	(define-key ido-completion-map (kbd "C-o") 'ido-prev-match)))
+(add-hook 'js-mode-hook (lambda()
+	(setq prettify-symbols-alist '(
+		("=>" . ?⇒)
+		(">=" . ?≥)
+		("<=" . ?≤)
+		("==" . ?=)
+		("===" . ?≡)
+		("=" . ?←)
+		("..." . ?…)
+		("." . ?·)
+		("!" ?¬)
+	))))
+(add-hook 'php-mode-hook (lambda()
+	(setq prettify-symbols-alist '(
+		("=>" . ?⇒)
+		(">=" . ?≥)
+		("<=" . ?≤)
+		("==" . ?=)
+		("===" . ?≡)
+		("=" . ?←)
+		("..." . ?…)
+		("->" . ?·)
+		("::" . ?︙)
+		("!" ?¬)
+	))))
 
 (with-eval-after-load 'markdown-mode
 	(define-key markdown-mode-map (kbd "<return>") 'double-newline)
@@ -338,34 +368,31 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages (quote (restclient markdown-mode php-mode))))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- '(default ((t (:inherit nil :stipple nil :background "#ffeedd" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "1ASC" :family "Liberation Mono"))))
- ;; If there is more than one, they won't work right.
- '(eshell-ls-directory ((t (:foreground "#2255aa" :weight bold))))
- '(eshell-ls-executable ((t (:foreground "#008844" :weight bold))))
- '(eshell-prompt ((t (:foreground "#ff0055" :weight bold))))
- '(font-lock-builtin-face ((t (:underline (:color foreground-color)))))
- '(font-lock-comment-face ((t (:foreground "#aa4422"))))
- '(font-lock-constant-face ((t nil)))
- '(font-lock-function-name-face ((t (:foreground "#2255aa" :weight bold))))
- '(font-lock-keyword-face ((t (:weight semi-bold))))
- '(font-lock-string-face ((t (:foreground "#008844"))))
- '(font-lock-type-face ((t :foreground "#884488")))
- '(font-lock-variable-name-face ((t nil)))
- '(font-lock-type-face ((t (:foreground "#d33682"))))
- '(fringe ((t nil)))
- '(cursor ((t (:background "#ff0055"))))
- '(region ((t (:background "#ffffff"))))
- '(highlight ((t (:background "#ccccff"))))
- '(isearch ((t (:background "#2255aa" :foreground "#ffffee"))))
- '(lazy-highlight ((t (:inherit highlight))))
- '(minibuffer-prompt ((t (:foreground "#ff0055"))))
- '(mmm-default-submode-face ((t nil)))
- '(mode-line ((t (:background "#ddddcc"))))
- '(mode-line-inactive ((t nil)))
- '(php-$this ((t (:slant oblique))))
- '(php-function-call ((t (:inherit font-lock-function-name-face))))
- '(show-paren-match ((t (:inherit highlight))))
- '(variable-pitch ((t (:height 240 :family "Sans Serif")))))
+	'(default ((t (:inherit nil :stipple nil :background "#ffeedd" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "1ASC" :family "Liberation Mono"))))
+	'(eshell-ls-directory ((t (:foreground "#2255aa" :weight bold))))
+	'(eshell-ls-executable ((t (:foreground "#008844" :weight bold))))
+	'(eshell-prompt ((t (:foreground "#ff0055" :weight bold))))
+	'(font-lock-builtin-face ((t (:underline (:color foreground-color)))))
+	'(font-lock-comment-face ((t (:foreground "#aa4422"))))
+	'(font-lock-type-face ((t (:foreground "#d33682"))))
+	'(font-lock-constant-face ((t (:inherit font-lock-type-face))))
+	'(font-lock-function-name-face ((t (:foreground "#2255aa" :weight bold))))
+	'(font-lock-keyword-face ((t (:weight semi-bold))))
+	'(font-lock-string-face ((t (:foreground "#008844"))))
+	'(font-lock-type-face ((t :foreground "#884488")))
+	'(font-lock-variable-name-face ((t nil)))
+	'(fringe ((t nil)))
+	'(cursor ((t (:background "#ff0055"))))
+	'(region ((t (:background "#ffffff"))))
+	'(highlight ((t (:background "#ccccff"))))
+	'(isearch ((t (:background "#2255aa" :foreground "#ffffee"))))
+	'(lazy-highlight ((t (:inherit highlight))))
+	'(minibuffer-prompt ((t (:foreground "#ff0055"))))
+	'(mmm-default-submode-face ((t nil)))
+	'(mode-line ((t (:background "#ddddcc"))))
+	'(mode-line-inactive ((t nil)))
+	'(php-$this ((t (:slant oblique))))
+	'(php-$this-sigil ((t (:inherit php-$this))))
+	'(php-function-call ((t (:inherit font-lock-function-name-face))))
+	'(show-paren-match ((t (:inherit highlight))))
+	'(variable-pitch ((t (:height 240 :family "Sans Serif")))))
