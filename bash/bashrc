@@ -33,7 +33,7 @@ alias cmark='cmark --smart'
 alias fzf='fzf --color=16,light'
 
 #convenience & shortcuts
-alias s='sudo'
+alias s='doas'
 alias ..='cd ..'
 alias ,='cd $OLDPWD'
 alias linkgrep='grep -oP "http(s?):\/\/[^\"\(\)\<\>]*"'
@@ -156,6 +156,16 @@ word-frequency() {
 	tr '[:upper:]' '[:lower:]' |
 	tr -d '[:punct:]' |
 	tr -s '[:space:]' '\n' |
+	sort |
+	uniq -c |
+	sort -n
+}
+
+letter-frequency() {
+	tr '[:upper:]' '[:lower:]' |
+	tr -d '[:punct:]' |
+	tr -s '[:space:]' '\n' |
+	fold -w1 |
 	sort |
 	uniq -c |
 	sort -n
