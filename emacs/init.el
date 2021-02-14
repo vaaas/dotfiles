@@ -256,6 +256,8 @@
 (define-key vi-mode-map (kbd "' s s") 'delete-other-windows)
 (define-key vi-mode-map (kbd "' i b") 'ibuffer)
 (define-key vi-mode-map (kbd "' c w") 'count-words)
+(define-key vi-mode-map (kbd "' A") 'mark-whole-buffer)
+(define-key vi-mode-map (kbd "' q w") (lambda() (interactive) (split-window-horizontally) (split-window-horizontally) (split-window-horizontally) (balance-windows) (follow-mode)))
 
 (define-key vi-mode-map (kbd "z") 'undo)
 (define-key vi-mode-map (kbd "Z") 'keyboard-quit)
