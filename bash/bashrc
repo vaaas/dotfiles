@@ -33,7 +33,7 @@ alias cmark='cmark --smart'
 alias fzf='fzf --color=16,light'
 
 #convenience & shortcuts
-alias s='sudo'
+alias s='doas'
 alias ..='cd ..'
 alias ,='cd $OLDPWD'
 alias linkgrep='grep -oP "http(s?):\/\/[^\"\(\)\<\>]*"'
@@ -161,6 +161,16 @@ word-frequency() {
 	sort -n
 }
 
+letter-frequency() {
+	tr '[:upper:]' '[:lower:]' |
+	tr -d '[:punct:]' |
+	tr -s '[:space:]' '\n' |
+	fold -w1 |
+	sort |
+	uniq -c |
+	sort -n
+}
+
 remove-if-same() {
 	if ! test -d "$1" -a -f "$2"
 	then
@@ -206,4 +216,13 @@ d() {
 		p) s systemctl stop "$@" ;;
 		j) journalctl "$@" ;;
 	esac
+}
+
+se() {
+	out=/tmp/$(date '+%s%N').lock &&
+	s install -m 666 -- $1 $out &&
+	$EDITOR $out &&
+	perm=$(s stat -c %a -- $1) &&
+	s install -m $perm -- $out $1
+	s rm -- $out
 }
