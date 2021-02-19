@@ -2,8 +2,7 @@ default partial alphanumeric_keys modifier_keys
 xkb_symbols "basic" {
 	name[Group1]= "English (Vas)";
 
-	key <TLDE> {[ grave, asciitilde ]};
-
+	key <TLDE> {[ Escape, Escape ]};
 	key <AE01> {[ 1, exclam ]};
 	key <AE02> {[ 2, at ]};
 	key <AE03> {[ 3, numbersign]};
@@ -27,10 +26,9 @@ xkb_symbols "basic" {
 	key <AD08> {[ u, U ]};
 	key <AD09> {[ v, V ]};
 	key <AD10> {[ semicolon, colon ]};
-
-	// all the bracket pairs: paren, bracket, brace, comparisons
-	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
-	key <AD12> {[ parenright, bracketright, braceright, greater ]};
+	key <AD11> {[ Tab, Tab ]};
+	key <AD12> {[ Tab, Tab ]};
+	key <BKSL> {[ BackSpace, BackSpace ]};
 
 	key <AC01> {[ r, R, Delete, Delete ]};
 	key <AC02> {[ s, S, BackSpace, BackSpace ]};
@@ -55,15 +53,13 @@ xkb_symbols "basic" {
 	key <AB09> {[ period, greater, Up, Up ]};
 	key <AB10> {[ slash, question, Right, Right ]};
 
-	key <BKSL> {[ backslash, bar ]};
-
 	key <TAB> {[ Super_L, Super_L]};
 	key <CAPS> {[ Control_L, Control_L ]};
 	key <LFSH> {[ Alt_L, Alt_L ]};
+
+	key <LCTL> {[ Multi_key ]};
 	key <LALT> {[ ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift ]};
 	key <RALT> {[ Shift_L, Shift_L ]};
 	key <RWIN> {[ Multi_key, Multi_key ]};
-	key <LCTL> {[ Multi_key ]};
 	key <SPCE> {[ space, space, Escape, Escape ]};
-	key <TLDE> {[ Escape, Escape ]};
 };

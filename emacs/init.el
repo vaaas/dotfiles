@@ -11,7 +11,6 @@
 (ido-mode 1)
 (global-visual-line-mode 1)
 (global-prettify-symbols-mode 1)
-(abbrev-mode 1)
 
 (setq-default indent-tabs-mode nil
 	line-spacing 0.3
@@ -313,7 +312,7 @@
 (define-key isearch-mode-map (kbd "<escape>") 'isearch-exit)
 (define-key isearch-mode-map (kbd "C-g") 'isearch-exit)
 
-(add-hook 'prog-mode-hook (lambda() (abbrev-mode 1) (vi-on)))
+(add-hook 'prog-mode-hook (lambda() (vi-on)))
 (add-hook 'minibuffer-setup-hook 'vi-off)
 (add-hook 'text-mode-hook (lambda() (abbrev-mode 1) (variable-pitch-mode) (vi-on)))
 (add-hook 'eshell-mode-hook 'vi-off)
@@ -329,7 +328,9 @@
 		("<=" . ?≤)
 		("==" . ?=)
 		("===" . ?≡)
-		("=" . ?←)
+		("!=" . ?≠)
+		("!==" . ?≢)
+		("=" . ?≔)
 		("..." . ?…)
 		("." . ?·)
 		("!" ?¬)
@@ -341,9 +342,11 @@
 		("<=" . ?≤)
 		("==" . ?=)
 		("===" . ?≡)
-		("=" . ?←)
+		("!=" . ?≠)
+		("!==" . ?≢)
+		("=" . ?≔)
 		("..." . ?…)
-		("->" . ?·)
+		("->" . ?→)
 		("::" . ?︙)
 		("!" ?¬)
 	))))
@@ -397,4 +400,4 @@
 	'(php-$this-sigil ((t (:inherit php-$this))))
 	'(php-function-call ((t (:inherit font-lock-function-name-face))))
 	'(show-paren-match ((t (:inherit highlight))))
-	'(variable-pitch ((t (:height 240 :family "Sans Serif")))))
+	'(variable-pitch ((t (:height 190 :family "Sans Serif")))))
