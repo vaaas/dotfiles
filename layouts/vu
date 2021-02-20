@@ -3,7 +3,6 @@ xkb_symbols "basic" {
 	name[Group1]= "English (Vas)";
 
 	key <TLDE> {[ grave, asciitilde ]};
-
 	key <AE01> {[ 1, exclam ]};
 	key <AE02> {[ 2, at ]};
 	key <AE03> {[ 3, numbersign]};
@@ -17,25 +16,26 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <AD01> {[ k, K, backslash, bar ]};
-	key <AD02> {[ c, C, grave, asciitilde ]};
-	key <AD03> {[ d, D, equal, plus ]};
-	key <AD04> {[ m, M, minus, underscore ]};
+	key <TAB> {[ Tab ]};
+	key <AD01> {[ k, K ]};
+	key <AD02> {[ c, C ]};
+	key <AD03> {[ d, D ]};
+	key <AD04> {[ m, M ]};
 	key <AD05> {[ j, J ]};
 	key <AD06> {[ q, Q ]};
 	key <AD07> {[ w, W ]};
 	key <AD08> {[ u, U ]};
 	key <AD09> {[ v, V ]};
 	key <AD10> {[ semicolon, colon ]};
+	key <AD11> {[ bracketleft, braceleft ]};
+	key <AD12> {[ bracketright, braceright ]};
+	key <BKSL> {[ backslash, bar ]};
 
-	// all the bracket pairs: paren, bracket, brace, comparisons
-	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
-	key <AD12> {[ parenright, bracketright, braceright, greater ]};
-
-	key <AC01> {[ r, R, Delete, Delete ]};
-	key <AC02> {[ s, S, BackSpace, BackSpace ]};
-	key <AC03> {[ t, T, Tab, Tab ]};
-	key <AC04> {[ n, N, Return, Return ]};
+	key <CAPS> {[ Control_L, Control_L ]};
+	key <AC01> {[ r, R, backslash, bar ]};
+	key <AC02> {[ s, S, grave, asciitilde ]};
+	key <AC03> {[ t, T, equal, plus ]};
+	key <AC04> {[ n, N, minus, underscore ]};
 	key <AC05> {[ h, H ]};
 	key <AC06> {[ y, Y ]};
 	key <AC07> {[ i, I, parenleft, bracketleft ]};
@@ -43,7 +43,9 @@ xkb_symbols "basic" {
 	key <AC09> {[ o, O, braceleft, less ]};
 	key <AC10> {[ a, A, braceright, greater ]};
 	key <AC11> {[ apostrophe, quotedbl ]};
+	key <RTRN> {[ BackSpace, BackSpace ]};
 
+	key <LFSH> {[ Alt_L, Alt_L ]};
 	key <AB01> {[ z, Z ]};
 	key <AB02> {[ f, F ]};
 	key <AB03> {[ g, G ]};
@@ -54,16 +56,11 @@ xkb_symbols "basic" {
 	key <AB08> {[ comma, less, Down, Down ]};
 	key <AB09> {[ period, greater, Up, Up ]};
 	key <AB10> {[ slash, question, Right, Right ]};
+	key <RTSH> {[ Escape, Escape ]};
 
-	key <BKSL> {[ backslash, bar ]};
-
-	key <TAB> {[ Super_L, Super_L]};
-	key <CAPS> {[ Control_L, Control_L ]};
-	key <LFSH> {[ Alt_L, Alt_L ]};
-	key <LALT> {[ ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift ]};
-	key <RALT> {[ Shift_L, Shift_L ]};
-	key <RWIN> {[ Multi_key, Multi_key ]};
 	key <LCTL> {[ Multi_key ]};
-	key <SPCE> {[ space, space, Escape, Escape ]};
-	key <TLDE> {[ Escape, Escape ]};
+	key <LALT> {[ ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift ]};
+	key <SPCE> {[ space, space, Return, Return ]};
+	key <RALT> {[ Shift_L, Shift_L ]};
+	key <RWIN> {[ Menu, Menu ]};
 };

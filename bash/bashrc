@@ -187,6 +187,7 @@ remove-if-same() {
 }
 
 c() {
+	test -n "$1" && cd "$1"
 	while true
 	do
 		a="$(\ls -pd --color=always --group-directories-first -- * . .. | fzf --ansi --prompt="$PWD > " | sed 's/\x1b\[[0-9;]*m//g')"

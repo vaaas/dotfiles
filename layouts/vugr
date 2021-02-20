@@ -38,10 +38,10 @@ xkb_symbols "basic" {
 	key <AC04> {[ Greek_nu, Greek_NU, Return, Return ], [n, N] };
 	key <AC05> {[ Greek_finalsmallsigma, Greek_SIGMA ], [h, H] };
 	key <AC06> {[ Greek_upsilon, Greek_UPSILON ], [y, Y] };
-	key <AC07> {[ Greek_iota, Greek_IOTA ], [i, I] };
-	key <AC08> {[ Greek_epsilon, Greek_EPSILON ], [e, E] };
-	key <AC09> {[ Greek_omicron, Greek_OMICRON ], [o, O] };
-	key <AC10> {[ Greek_alpha, Greek_ALPHA ], [a, A] };
+	key <AC07> {[ Greek_iota, Greek_IOTA, parenleft, bracketleft ], [i, I] };
+	key <AC08> {[ Greek_epsilon, Greek_EPSILON, parenright, bracketright ], [e, E] };
+	key <AC09> {[ Greek_omicron, Greek_OMICRON, braceleft, less ], [o, O] };
+	key <AC10> {[ Greek_alpha, Greek_ALPHA, braceright, greater ], [a, A] };
 	key <AC11> {[ apostrophe, quotedbl ]};
 
 	key <AB01> {[ Greek_zeta, Greek_ZETA ], [z, Z] };
