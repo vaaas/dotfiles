@@ -45,6 +45,7 @@ xkb_symbols "basic" {
 	key <AC11> {[ apostrophe, quotedbl ]};
 	key <RTRN> {[ BackSpace, BackSpace ]};
 
+	key <LFSH> {[ Alt_L, Alt_L ]};
 	key <AB01> {[ Greek_zeta, Greek_ZETA ], [z, Z] };
 	key <AB02> {[ Greek_phi, Greek_PHI ], [f, F] };
 	key <AB03> {[ Greek_gamma, Greek_GAMMA ], [g, G] };
