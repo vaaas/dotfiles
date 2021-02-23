@@ -16,7 +16,7 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <TAB> {[ Tab ]};
+	key <TAB> {[ Super_L, Super_L ]};
 	key <AD01> {[ k, K ]};
 	key <AD02> {[ c, C ]};
 	key <AD03> {[ d, D ]};
@@ -59,6 +59,7 @@ xkb_symbols "basic" {
 	key <RTSH> {[ Escape, Escape ]};
 
 	key <LCTL> {[ Multi_key ]};
+	key <LWIN> {[ Tab, Tab ]};
 	key <LALT> {[ ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift ]};
 	key <SPCE> {[ space, space, Return, Return ]};
 	key <RALT> {[ Shift_L, Shift_L ]};

@@ -17,6 +17,7 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore, emdash, endash ]};
 	key <AE12> {[ equal, plus ]};
 
+	key <TAB> {[ Super_L, Super_L ]};
 	key <AD01> {[ Greek_theta, Greek_THETA ], [k, K] };
 	key <AD02> {[ Greek_kappa, Greek_KAPPA ], [c, C] };
 	key <AD03> {[ dead_acute, dead_diaeresis ], [d, D] };
@@ -43,7 +44,7 @@ xkb_symbols "basic" {
 	key <AC09> {[ Greek_omicron, Greek_OMICRON, braceleft, less ], [o, O] };
 	key <AC10> {[ Greek_alpha, Greek_ALPHA, braceright, greater ], [a, A] };
 	key <AC11> {[ apostrophe, quotedbl ]};
-    key <RTRN> {[ BackSpace, BackSpace ]};
+	key <RTRN> {[ BackSpace, BackSpace ]};
 
 	key <AB01> {[ Greek_zeta, Greek_ZETA ], [z, Z] };
 	key <AB02> {[ Greek_phi, Greek_PHI ], [f, F] };
@@ -58,6 +59,7 @@ xkb_symbols "basic" {
 	key <RTSH> {[ Escape, Escape ]};
 
 	key <LCTL> {[ Multi_key ]};
+	key <LWIN> {[ Tab, Tab ]};
 	key <LALT> {[ ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift ]};
 	key <SPCE> {[ space, space, Return, Return ]};
 	key <RALT> {[ Shift_L, Shift_L ]};
