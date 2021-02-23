@@ -27,15 +27,15 @@ xkb_symbols "basic" {
 	key <AD08> {[ Greek_eta, Greek_ETA ], [u, U] };
 	key <AD09> {[ Greek_delta, Greek_DELTA ], [v, V] };
 	key <AD10> {[ semicolon, colon ] };
+	key <AD11> {[ bracketleft, braceleft ]};
+	key <AD12> {[ bracketright, braceright ]};
+	key <BKSL> {[ backslash, bar ]};
 
-	// all the bracket pairs: paren, bracket, brace, comparisons
-	key <AD11> {[ parenleft, bracketleft, braceleft, less ]};
-	key <AD12> {[ parenright, bracketright, braceright, greater ]};
-
-	key <AC01> {[ Greek_rho, Greek_RHO, Delete, Delete ], [r, R] };
-	key <AC02> {[ Greek_sigma, Greek_SIGMA , BackSpace, BackSpace ], [s, S] };
-	key <AC03> {[ Greek_tau, Greek_TAU, Tab, Tab ], [t, T] };
-	key <AC04> {[ Greek_nu, Greek_NU, Return, Return ], [n, N] };
+	key <CAPS> {[ Control_L, Control_L ]};
+	key <AC01> {[ Greek_rho, Greek_RHO, backslash, bar ], [r, R] };
+	key <AC02> {[ Greek_sigma, Greek_SIGMA , grave, asciitilde ], [s, S] };
+	key <AC03> {[ Greek_tau, Greek_TAU, equal, plus ], [t, T] };
+	key <AC04> {[ Greek_nu, Greek_NU, minus, underscore ], [n, N] };
 	key <AC05> {[ Greek_finalsmallsigma, Greek_SIGMA ], [h, H] };
 	key <AC06> {[ Greek_upsilon, Greek_UPSILON ], [y, Y] };
 	key <AC07> {[ Greek_iota, Greek_IOTA, parenleft, bracketleft ], [i, I] };
@@ -43,6 +43,7 @@ xkb_symbols "basic" {
 	key <AC09> {[ Greek_omicron, Greek_OMICRON, braceleft, less ], [o, O] };
 	key <AC10> {[ Greek_alpha, Greek_ALPHA, braceright, greater ], [a, A] };
 	key <AC11> {[ apostrophe, quotedbl ]};
+    key <RTRN> {[ BackSpace, BackSpace ]};
 
 	key <AB01> {[ Greek_zeta, Greek_ZETA ], [z, Z] };
 	key <AB02> {[ Greek_phi, Greek_PHI ], [f, F] };
@@ -54,14 +55,11 @@ xkb_symbols "basic" {
 	key <AB08> {[ comma, less, Down, Down ]};
 	key <AB09> {[ period, greater, Up, Up ]};
 	key <AB10> {[ slash, question, Right, Right ]};
+	key <RTSH> {[ Escape, Escape ]};
 
-	key <BKSL> {[ backslash, bar ]};
-
-	key <TAB> {[ Super_L, Super_L]};
-	key <CAPS> {[ Control_L, Control_L ]};
-	key <LFSH> {[ Alt_L, Alt_L ]};
-	key <LALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
-	key <RALT> {[ Shift_L, Shift_L ]};
 	key <LCTL> {[ Multi_key ]};
-	key <SPCE> {[ space, space, Escape, Escape ]};
+	key <LALT> {[ ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift ]};
+	key <SPCE> {[ space, space, Return, Return ]};
+	key <RALT> {[ Shift_L, Shift_L ]};
+	key <RWIN> {[ Menu, Menu ]};
 };
