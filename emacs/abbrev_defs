@@ -41,6 +41,7 @@
 	("and" "&&")
 	("or" "||")
 	("y" "yield")
+	("ynm" "yield new Material({ mtrl: , qty: , parent, comment: '' })")
 ))
 
 (define-abbrev-table 'php-mode-abbrev-table '(
@@ -121,6 +122,7 @@
 	("j" "just")
 	("k" "know")
 	("ke" "knew")
+	("kp" "keep")
 	("ki" "kind")
 	("kio" "kind of")
 	("kn" "known")
