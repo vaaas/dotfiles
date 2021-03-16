@@ -16,7 +16,8 @@
 	line-spacing 0.3
 	tab-width 4
 	mode-line-format nil
-	save-abbrevs nil)
+	save-abbrevs nil
+	eval-process "cat")
 (setq inhibit-splash-screen t
 	inhibit-startup-message t
 	frame-resize-pixelwise t
@@ -139,6 +140,9 @@
 	(replace-all-regex "[ |\u00A0|\u202F]*\\(;\\|!\\|\\?\\|⁈\\)" "\u202F\\1")
 	(replace-all-regex "[ |\u00A0|\u202F]*\\([:\\|»]\\)" "\u00A0\\1")
 	(replace-all-regex "«[ |\u00A0|\u202F]*" "«\u00A0"))
+
+(defun eval-region-smart() (interactive)
+	(shell-command-on-region (point-min) (point-max) eval-process))
 
 (defun shell-command-this-buffer(x) (interactive)
 	(shell-command-on-region (point-min) (point-max) x (current-buffer) t))
@@ -322,6 +326,7 @@
 	(define-key ido-completion-map (kbd "C-e") 'ido-next-match)
 	(define-key ido-completion-map (kbd "C-o") 'ido-prev-match)))
 (add-hook 'js-mode-hook (lambda()
+	(setq eval-process "node")
 	(setq prettify-symbols-alist '(
 		("=>" . ?⇒)
 		(">=" . ?≥)
