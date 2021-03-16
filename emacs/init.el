@@ -199,7 +199,7 @@
 		(append-to-file (point-min) (point-max) (concat blog-directory "/render/" cat "/" file-name))
 		(kill-region (point-min) (point-max))
 		(insert
-			(format "\n%s\n%s\n<h1><a href='/%s/%s'>%s</a></h1>\n%s"
+			(format "\n%s\n%s\n<h1><a href=\"/%s/%s\">%s</a></h1>\n%s"
 			stamp cat cat file-name title blurb))
 	(add-trailing-newline)
 	(append-to-file (point-min) (point-max) (concat blog-directory "/posts")))))
@@ -316,7 +316,7 @@
 (define-key isearch-mode-map (kbd "<escape>") 'isearch-exit)
 (define-key isearch-mode-map (kbd "C-g") 'isearch-exit)
 
-(add-hook 'prog-mode-hook (lambda() (vi-on)))
+(add-hook 'prog-mode-hook (lambda() (vi-on) (abbrev-mode 1)))
 (add-hook 'minibuffer-setup-hook 'vi-off)
 (add-hook 'text-mode-hook (lambda() (abbrev-mode 1) (variable-pitch-mode) (vi-on)))
 (add-hook 'eshell-mode-hook 'vi-off)
