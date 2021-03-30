@@ -316,9 +316,9 @@
 (define-key isearch-mode-map (kbd "<escape>") 'isearch-exit)
 (define-key isearch-mode-map (kbd "C-g") 'isearch-exit)
 
-(add-hook 'prog-mode-hook (lambda() (vi-on) (abbrev-mode 1)))
+(add-hook 'prog-mode-hook (lambda() (vi-on)))
 (add-hook 'minibuffer-setup-hook 'vi-off)
-(add-hook 'text-mode-hook (lambda() (abbrev-mode 1) (variable-pitch-mode) (vi-on)))
+(add-hook 'text-mode-hook (lambda() (variable-pitch-mode) (vi-on)))
 (add-hook 'eshell-mode-hook 'vi-off)
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
