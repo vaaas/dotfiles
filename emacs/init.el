@@ -361,8 +361,6 @@
 	(define-key markdown-mode-map (kbd "C-n") 'double-newline))
 
 (with-eval-after-load 'dired
-	(define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file)
-	(define-key dired-mode-map (kbd "a") 'dired-find-alternate-file)
 	(define-key dired-mode-map (kbd "e") 'dired-next-line)
 	(define-key dired-mode-map (kbd "o") 'dired-previous-line)
 	(define-key dired-mode-map (kbd "i") 'dired-up-directory)
