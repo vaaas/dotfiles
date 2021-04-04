@@ -196,13 +196,13 @@
 				(read-string "file name (no extension): "))
 			".html"))
 		(shell-command-this-buffer (concat blog-directory "/ncrender -s"))
-		(append-to-file (point-min) (point-max) (concat blog-directory "/render/" cat "/" file-name))
+		(append-to-file (point-min) (point-max) (concat blog-directory "/render/" file-name))
 		(kill-region (point-min) (point-max))
 		(insert
 			(format "\n%s\n%s\n<h1><a href=\"/%s/%s\">%s</a></h1>\n%s"
-			stamp cat cat file-name title blurb))
+			stamp cat cat file-name title blurb))))
 	(add-trailing-newline)
-	(append-to-file (point-min) (point-max) (concat blog-directory "/posts")))))
+	(append-to-file (point-min) (point-max) (concat blog-directory "/posts")))
 
 (setq vi-mode-map (make-sparse-keymap))
 (define-key vi-mode-map (kbd "k") 'kmacro-start-macro)
