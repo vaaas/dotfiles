@@ -21,6 +21,7 @@
 (setq inhibit-splash-screen t
 	inhibit-startup-message t
 	frame-resize-pixelwise t
+	pop-up-frames t
 	vc-follow-symlinks t
 	make-backup-files nil
 	blog-directory "/home/vas/Projects/website"
@@ -254,8 +255,6 @@
 (define-key vi-mode-map (kbd "' c m") 'cmark)
 (define-key vi-mode-map (kbd "' s t") 'spaces-to-tabs)
 (define-key vi-mode-map (kbd "' e r") 'eval-region)
-(define-key vi-mode-map (kbd "' s h") 'split-window-horizontally)
-(define-key vi-mode-map (kbd "' s v") 'split-window-vertically)
 (define-key vi-mode-map (kbd "' s s") 'delete-other-windows)
 (define-key vi-mode-map (kbd "' i b") 'ibuffer)
 (define-key vi-mode-map (kbd "' c w") 'count-words)
@@ -301,6 +300,7 @@
 (define-key global-map (kbd "<tab>") 'expand-or-tab)
 (define-key global-map (kbd "<escape>") 'vi-on)
 (define-key global-map (kbd "<f2>") 'dired-here)
+(define-key global-map (kbd "<f3>") 'make-frame-command)
 
 (define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative)
 (define-key prog-mode-map (kbd "C-i") 'newline-and-indent-relative)
