@@ -103,9 +103,11 @@ m() {
 		s)
 			cd ~/code/iotwebserver
 			gnome-terminal -- npm run watch &
-			gnome-terminal -- php artisan serve
+			gnome-terminal -- php artisan serve &
 			cd ~/code/athena
-			gnome-terminal -- php -S localhost:8001 -t public
+			gnome-terminal -- php -S localhost:8001 -t public &
+			cd ~/code/moduleserver
+			gnome-terminal -- node index.js &
 			exit ;;
 		emacs) killall emacs && \emacs --daemon ;;
 	esac
