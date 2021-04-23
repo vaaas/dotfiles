@@ -102,13 +102,13 @@ m() {
 	case $arg in
 		s)
 			cd ~/code/iotwebserver
-			gnome-terminal -- npm run watch &
-			gnome-terminal -- php artisan serve &
+			npm run watch &
+			php artisan serve &
 			cd ~/code/athena
-			gnome-terminal -- php -S localhost:8001 -t public &
+			php -S localhost:8001 -t public &
 			cd ~/code/moduleserver
-			gnome-terminal -- node index.js &
-			exit ;;
+			node index.js &
+			;;
 		emacs) killall emacs && \emacs --daemon ;;
 	esac
 }
