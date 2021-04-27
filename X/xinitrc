@@ -1,22 +1,25 @@
-#!/bin/dash
+#!/bin/sh
 
 xrdb -merge ~/.Xresources
 
 export GTK_USE_PORTAL=1
+
 # keyboard configuration
-ibus-daemon -xdr
 export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
-setxkbmap slatin
+ibus-daemon -xdr
+export XMODIFIERS=@im=ibus
+setxkbmap vu
 xset r rate 180
 
 redshift-service &
 dunst -font 'Sans 16' &
-xwallpaper --tile wallpaper &
+feh --bg-fill wallpaper &
 unclutter --timeout 1 &
 bar &
+unclutter &
 dbus-launch sxhkd -m -1 &
+xrandr -s 1920x1080
+VBoxClient --clipboard
 emacs --daemon
-compton &
 dbus-launch dwm-loop

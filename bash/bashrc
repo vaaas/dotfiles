@@ -220,3 +220,12 @@ d() {
 		j) journalctl "$@" ;;
 	esac
 }
+
+se() {
+	out=/tmp/$(date '+%s%N').lock &&
+	s install -m 666 -- $1 $out &&
+	$EDITOR $out &&
+	perm=$(s stat -c %a -- $1) &&
+	s install -m $perm -- $out $1
+	s rm -- $out
+}
