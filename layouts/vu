@@ -16,7 +16,7 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <AD01> {[ k, K ]};
+	key <AD01> {[ x, X ]};
 	key <AD02> {[ c, C ]};
 	key <AD03> {[ d, D ]};
 	key <AD04> {[ m, M ]};
@@ -45,7 +45,7 @@ xkb_symbols "basic" {
 	key <AB02> {[ f, F ]};
 	key <AB03> {[ g, G ]};
 	key <AB04> {[ l, L ]};
-	key <AB05> {[ x, X ]};
+	key <AB05> {[ k, K ]};
 	key <AB06> {[ b, B ]};
 	key <AB07> {[ p, P ]};
 	key <AB08> {[ comma, less ]};
