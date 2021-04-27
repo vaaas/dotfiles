@@ -28,9 +28,7 @@ xkb_symbols "basic" {
 	key <AD10> {[ semicolon, colon ]};
 	key <AD11> {[ bracketleft, braceleft ]};
 	key <AD12> {[ bracketright, braceright ]};
-	key <BKSL> {[ backslash, bar ]};
 
-	key <CAPS> {[ Control_L, Control_L ]};
 	key <AC01> {[ r, R, backslash, bar ]};
 	key <AC02> {[ s, S, grave, asciitilde ]};
 	key <AC03> {[ t, T, equal, plus ]};
@@ -42,9 +40,7 @@ xkb_symbols "basic" {
 	key <AC09> {[ o, O, braceleft, less ]};
 	key <AC10> {[ a, A, braceright, greater ]};
 	key <AC11> {[ apostrophe, quotedbl ]};
-	key <RTRN> {[ BackSpace, BackSpace ]};
 
-	key <LFSH> {[ Alt_L, Alt_L ]};
 	key <AB01> {[ z, Z ]};
 	key <AB02> {[ f, F ]};
 	key <AB03> {[ g, G ]};
@@ -55,11 +51,8 @@ xkb_symbols "basic" {
 	key <AB08> {[ comma, less ]};
 	key <AB09> {[ period, greater ]};
 	key <AB10> {[ slash, question ]};
-	key <RTSH> {[ Escape, Escape ]};
 
-	key <LCTL> {[ Multi_key ]};
-	key <LALT> {[ ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift ]};
-	key <SPCE> {[ space, space, Return, Return ]};
-	key <RALT> {[ Shift_L, Shift_L ]};
-	key <RWIN> {[ Menu, Menu ]};
+	key <SPCE> {[ space, space ]};
+
+	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
 };

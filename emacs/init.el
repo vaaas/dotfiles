@@ -21,6 +21,7 @@
 (setq inhibit-splash-screen t
 	inhibit-startup-message t
 	frame-resize-pixelwise t
+	pop-up-frames t
 	vc-follow-symlinks t
 	make-backup-files nil
 	blog-directory "/home/vas/Projects/website"
@@ -254,8 +255,6 @@
 (define-key vi-mode-map (kbd "' c m") 'cmark)
 (define-key vi-mode-map (kbd "' s t") 'spaces-to-tabs)
 (define-key vi-mode-map (kbd "' e r") 'eval-region)
-(define-key vi-mode-map (kbd "' s h") 'split-window-horizontally)
-(define-key vi-mode-map (kbd "' s v") 'split-window-vertically)
 (define-key vi-mode-map (kbd "' s s") 'delete-other-windows)
 (define-key vi-mode-map (kbd "' i b") 'ibuffer)
 (define-key vi-mode-map (kbd "' c w") 'count-words)
@@ -294,13 +293,13 @@
 (define-key global-map (kbd "C-s") 'backspace-or-unindent)
 (define-key global-map (kbd "C-t") 'backward-kill-word)
 (define-key global-map (kbd "C-g") 'vi-on)
-(define-key global-map (kbd "<C-tab>") 'other-window)
-(define-key global-map (kbd "C-,") 'previous-buffer)
-(define-key global-map (kbd "C-.") 'next-buffer)
+(define-key global-map (kbd "<C-tab>") 'next-buffer)
+(define-key global-map (kbd "<C-iso-lefttab>") 'previous-buffer)
 (define-key global-map (kbd "<backspace>") 'backspace-or-unindent)
 (define-key global-map (kbd "<tab>") 'expand-or-tab)
 (define-key global-map (kbd "<escape>") 'vi-on)
 (define-key global-map (kbd "<f2>") 'dired-here)
+(define-key global-map (kbd "<f3>") 'make-frame-command)
 
 (define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative)
 (define-key prog-mode-map (kbd "C-i") 'newline-and-indent-relative)
@@ -318,7 +317,7 @@
 
 (add-hook 'prog-mode-hook (lambda() (vi-on)))
 (add-hook 'minibuffer-setup-hook 'vi-off)
-(add-hook 'text-mode-hook (lambda() (abbrev-mode 1) (variable-pitch-mode) (vi-on)))
+(add-hook 'text-mode-hook (lambda() (variable-pitch-mode) (vi-on)))
 (add-hook 'eshell-mode-hook 'vi-off)
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -361,8 +360,6 @@
 	(define-key markdown-mode-map (kbd "C-n") 'double-newline))
 
 (with-eval-after-load 'dired
-	(define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file)
-	(define-key dired-mode-map (kbd "a") 'dired-find-alternate-file)
 	(define-key dired-mode-map (kbd "e") 'dired-next-line)
 	(define-key dired-mode-map (kbd "o") 'dired-previous-line)
 	(define-key dired-mode-map (kbd "i") 'dired-up-directory)
