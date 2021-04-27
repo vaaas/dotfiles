@@ -102,11 +102,13 @@ m() {
 	case $arg in
 		s)
 			cd ~/code/iotwebserver
-			xterm -e 'npm run watch' &
-			xterm -e 'php artisan serve' &
+			npm run watch &
+			php artisan serve &
 			cd ~/code/athena
-			xterm -e 'php -S localhost:8001 -t public' &
-			exit ;;
+			php -S localhost:8001 -t public &
+			cd ~/code/moduleserver
+			node index.js &
+			;;
 		emacs) killall emacs && \emacs --daemon ;;
 	esac
 }
