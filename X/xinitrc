@@ -1,22 +1,28 @@
-#!/bin/dash
-
-xrdb -merge ~/.Xresources
+#!/bin/sh
 
 export GTK_USE_PORTAL=1
-# keyboard configuration
-ibus-daemon -xdr
 export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
-setxkbmap slatin
+export XMODIFIERS=@im=ibus
+xrdb -merge ~/.Xresources
+ibus-daemon -xdr
 xset r rate 180
-
-redshift-service &
 dunst -font 'Sans 16' &
-xwallpaper --tile wallpaper &
-unclutter --timeout 1 &
 bar &
-dbus-launch sxhkd -m -1 &
 emacs --daemon
-compton &
+dbus-launch sxhkd -m -1 &
+
+if test `hostname` -eq cleome
+then
+	setxkbmap slatin
+	redshift-service &
+	xwallpaper --tile wallpaper &
+	unclutter --timeout 1 &
+else
+	setxkbmap vu
+	xrandr -s 1920x1080
+	VBoxClient --clipboard
+	feh --bg-fill wallpaper &
+fi
+
 dbus-launch dwm-loop
