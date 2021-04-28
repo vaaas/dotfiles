@@ -61,7 +61,7 @@ super + F6
 super + F7
 	feedreader
 
-super + k
+super + x
 	gnome-terminal
 
 super + shift + grave
