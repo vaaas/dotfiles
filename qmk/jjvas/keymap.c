@@ -28,9 +28,9 @@ enum layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_BASE] = LAYOUT_ortho_4x12( \
-GUI_ESC, KC_K   , KC_C   , KC_D   , KC_M   , KC_J   , KC_Q   , KC_W   , KC_U   , KC_V   , KC_SCLN, KC_GRV , \
+GUI_ESC, KC_X   , KC_C   , KC_D   , KC_M   , KC_J   , KC_Q   , KC_W   , KC_U   , KC_V   , KC_SCLN, KC_GRV , \
 CTL_MIN, KC_R   , KC_S   , KC_T   , KC_N   , KC_H   , KC_Y   , KC_I   , KC_E   , KC_O   , KC_A   , KC_QUOT, \
-ALT_EQL, KC_Z   , KC_F   , KC_G   , KC_L   , KC_X   , KC_B   , KC_P   , KC_COMM, KC_DOT , KC_SLSH, KC_BSLS, \
+ALT_EQL, KC_Z   , KC_F   , KC_G   , KC_L   , KC_K   , KC_B   , KC_P   , KC_COMM, KC_DOT , KC_SLSH, KC_BSLS, \
 KC_HOME, KC_PGDN, KC_PGUP, KC_END , L1_APP , KC_SPC , KC_ENT , SFT_TAB, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT  \
 ),
 [_RAISE] = LAYOUT_ortho_4x12( \

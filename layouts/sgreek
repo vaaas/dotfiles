@@ -18,11 +18,11 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <AC08> {[ Greek_theta, Greek_THETA ], [ k, K ]};
+	key <AC08> {[ Greek_xi, Greek_XI ], [ k, K ]};
 	key <AB03> {[ Greek_kappa, Greek_KAPPA ], [ c, C ]};
 	key <AC03> {[ dead_acute, dead_diaeresis ], [ d, D ]};
 	key <AB07> {[ Greek_mu, Greek_MU ], [ m, M ]};
-	key <AC07> {[ Greek_xi, Greek_XI ], [ j, J ]};
+	key <AC07> {[ Greek_theta, Greek_THETA ], [ j, J ]};
 	key <AD01> {[ Greek_psi, Greek_PSI ], [ q, Q ]};
 	key <AD02> {[ Greek_omega, Greek_OMEGA ], [ w, W ]};
 	key <AD07> {[ Greek_eta, Greek_ETA ], [ u, U ]};
