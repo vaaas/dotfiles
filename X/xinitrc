@@ -12,7 +12,7 @@ bar &
 emacs --daemon
 dbus-launch sxhkd -m -1 &
 
-if test `hostname` -eq cleome
+if test `hostname` = cleome
 then
 	setxkbmap slatin
 	redshift-service &
