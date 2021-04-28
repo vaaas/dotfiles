@@ -205,6 +205,9 @@
 	(add-trailing-newline)
 	(append-to-file (point-min) (point-max) (concat blog-directory "/posts")))
 
+(defun next-buffer-and-vi-on() (interactive) (next-buffer) (vi-on))
+(defun previous-buffer-and-vi-on() (interactive) (previous-buffer) (vi-on))
+
 (setq vi-mode-map (make-sparse-keymap))
 (define-key vi-mode-map (kbd "k") 'kmacro-start-macro)
 (define-key vi-mode-map (kbd "K") 'kmacro-end-or-call-macro)
@@ -280,8 +283,8 @@
 
 (define-key vi-mode-map (kbd "SPC") 'vi-off)
 (define-key vi-mode-map (kbd "<escape>") 'keyboard-quit)
-(define-key vi-mode-map (kbd "(") 'previous-buffer)
-(define-key vi-mode-map (kbd ")") 'next-buffer)
+(define-key vi-mode-map (kbd "(") 'next-buffer-and-vi-on)
+(define-key vi-mode-map (kbd ")") 'previous-buffer-and-vi-on)
 
 (define-minor-mode vi-mode
 	"Ghetto vi mode"
@@ -293,8 +296,8 @@
 (define-key global-map (kbd "C-s") 'backspace-or-unindent)
 (define-key global-map (kbd "C-t") 'backward-kill-word)
 (define-key global-map (kbd "C-g") 'vi-on)
-(define-key global-map (kbd "<C-tab>") 'next-buffer)
-(define-key global-map (kbd "<C-iso-lefttab>") 'previous-buffer)
+(define-key global-map (kbd "<C-tab>") 'next-buffer-and-vi-on)
+(define-key global-map (kbd "<C-iso-lefttab>") 'previous-buffer-and-vi-on)
 (define-key global-map (kbd "<backspace>") 'backspace-or-unindent)
 (define-key global-map (kbd "<tab>") 'expand-or-tab)
 (define-key global-map (kbd "<escape>") 'vi-on)
