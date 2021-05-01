@@ -200,8 +200,8 @@
 		(append-to-file (point-min) (point-max) (concat blog-directory "/render/" file-name))
 		(kill-region (point-min) (point-max))
 		(insert
-			(format "\n%s\n%s\n<h1><a href=\"/%s/%s\">%s</a></h1>\n%s"
-			stamp cat cat file-name title blurb))))
+			(format "\n%s\n%s\n<h1><a href=\"/%s\">%s</a></h1>\n%s"
+			stamp cat file-name title blurb))))
 	(add-trailing-newline)
 	(append-to-file (point-min) (point-max) (concat blog-directory "/posts")))
 
