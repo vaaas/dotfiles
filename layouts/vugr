@@ -17,11 +17,11 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore, emdash, endash ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <AD01> {[ Greek_xi, Greek_XI ], [k, K] };
+	key <AD01> {[ Greek_chi, Greek_chi ], [k, K] };
 	key <AD02> {[ Greek_kappa, Greek_KAPPA ], [c, C] };
 	key <AD03> {[ dead_acute, dead_diaeresis ], [d, D] };
 	key <AD04> {[ Greek_mu, Greek_MU ], [m, m] };
-	key <AD05> {[ Greek_theta, Greek_THETA ], [j, J] };
+	key <AD05> {[ Greek_xi, Greek_XI ], [j, J] };
 	key <AD06> {[ Greek_psi, Greek_PSI ], [q, Q] };
 	key <AD07> {[ Greek_omega, Greek_OMEGA ], [w, W] };
 	key <AD08> {[ Greek_eta, Greek_ETA ], [u, U] };
@@ -47,7 +47,7 @@ xkb_symbols "basic" {
 	key <AB02> {[ Greek_phi, Greek_PHI ], [f, F] };
 	key <AB03> {[ Greek_gamma, Greek_GAMMA ], [g, G] };
 	key <AB04> {[ Greek_lambda, Greek_LAMBDA ], [l, L] };
-	key <AB05> {[ Greek_chi, Greek_CHI ], [x, X] };
+	key <AB05> {[ Greek_theta, Greek_THETA ], [x, X] };
 	key <AB06> {[ Greek_beta, Greek_BETA ], [b, B] };
 	key <AB07> {[ Greek_pi, Greek_PI ], [p, P] };
 	key <AB08> {[ comma, less ]};
