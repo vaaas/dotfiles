@@ -116,15 +116,6 @@
 		(progn (setq indent-tabs-mode nil) (setq tab-width 4) (message "indent will use SPACES"))
 		(progn (setq indent-tabs-mode t) (setq tab-width 3) (message "indent will use TABS"))))
 
-(defun space-comma-dot() (interactive)
-	(cond
-		((< (point) 3) (self-insert-command 1))
-		((string= ", " (buffer-substring (point) (- (point) 2)))
-			(progn (backward-delete-char 2) (insert ". ")))
-		((= 32 (char-before (point)))
-			(progn (backward-delete-char 1) (insert ", ")))
-		(t (self-insert-command 1))))
-
 (defun replace-all (from to)
 	(beginning-of-buffer)
 	(while (search-forward from nil t)
@@ -138,9 +129,10 @@
 (defun french() (interactive)
 	(replace-all-regex "\"\\([^\"]+?\\)\"" "«\\1»")
 	(replace-all "?!" "⁈")
-	(replace-all-regex "[ |\u00A0|\u202F]*\\(;\\|!\\|\\?\\|⁈\\)" "\u202F\\1")
-	(replace-all-regex "[ |\u00A0|\u202F]*\\([:\\|»]\\)" "\u00A0\\1")
-	(replace-all-regex "«[ |\u00A0|\u202F]*" "«\u00A0"))
+	(replace-all-regex "[ |\u202F]*\\(;\\|!\\|\\?\\|⁈\\)" "\u202F\\1")
+	(replace-all-regex "[ |\u00A0]*\\([:\\|»]\\)" "\u00A0\\1")
+	(replace-all-regex "«[ |\u00A0]*" "«\u00A0")
+	(replace-all "  " " "))
 
 (defun eval-region-smart() (interactive)
 	(shell-command-on-region (point-min) (point-max) eval-process))
@@ -309,7 +301,6 @@
 (define-key prog-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 
 (define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
-(define-key text-mode-map (kbd "SPC") 'space-comma-dot)
 
 (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit)
 (define-key minibuffer-local-map (kbd "<tab>") 'minibuffer-complete)
