@@ -127,12 +127,11 @@
 		(replace-match to t nil)))
 
 (defun french() (interactive)
-	(replace-all-regex "\"\\([^\"]+?\\)\"" "«\\1»")
+	(replace-all-regex "\"\\([^\"]+?\\)\"" "« \\1 »")
 	(replace-all "?!" "⁈")
-	(replace-all-regex "[ |\u202F]*\\(;\\|!\\|\\?\\|⁈\\)" "\u202F\\1")
-	(replace-all-regex "[ |\u00A0]*\\([:\\|»]\\)" "\u00A0\\1")
-	(replace-all-regex "«[ |\u00A0]*" "«\u00A0")
-	(replace-all "  " " "))
+	(replace-all-regex "[ |\u202F]+\\(;\\|!\\|\\?\\|⁈\\)" "\u202F\\1")
+	(replace-all-regex "[ |\u00A0]+\\([:\\|»]\\)" "\u00A0\\1")
+	(replace-all-regex "«[ |\u00A0]+" "«\u00A0"))
 
 (defun eval-region-smart() (interactive)
 	(shell-command-on-region (point-min) (point-max) eval-process))

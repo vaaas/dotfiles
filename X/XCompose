@@ -26,7 +26,7 @@
 <Multi_key> <backslash> <backslash>: "＼"
 <Multi_key> <x> <x>: "×"
 <Multi_key> <period> <space>: "·"
-<Multi_key> <space> <space>: " "
+<Multi_key> <space> <space>: " "
 <Multi_key> <m> <space>: " "
 <Multi_key> <n> <space>: " "
 <Multi_key> <less> <3>: "❤"
