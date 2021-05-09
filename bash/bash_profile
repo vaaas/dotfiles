@@ -11,5 +11,6 @@ if ps -A | grep Xorg
 then
 	source ~/.bashrc
 else
-	startx
+	echo la
+	#startx
 fi

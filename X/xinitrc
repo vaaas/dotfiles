@@ -25,4 +25,5 @@ else
 	feh --bg-fill wallpaper &
 fi
 
-dbus-launch dwm-loop
+#dbus-launch dwm-loop
+dbus-launch python3 ~/Projects/code/vaswm/vaswm.py
