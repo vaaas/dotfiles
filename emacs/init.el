@@ -385,7 +385,7 @@
 	'(cursor ((t (:background "#ff0055"))))
 	'(region ((t (:background "#ffffff"))))
 	'(highlight ((t (:background "#ccccff"))))
-	'(isearch ((t (:background "#2255aa" :foreground "#ffffee"))))
+	'(isearch ((t (:background "#2255aa" :foreground "#ffeedd"))))
 	'(lazy-highlight ((t (:inherit highlight))))
 	'(minibuffer-prompt ((t (:foreground "#ff0055"))))
 	'(mmm-default-submode-face ((t nil)))

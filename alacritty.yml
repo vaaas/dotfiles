@@ -1,0 +1,71 @@
+window:
+  title: Alacritty
+  dynamic_title: true
+  class:
+    instance: Alacritty
+    general: Alacritty
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+font:
+  normal:
+    family: Unifont-JP
+    style: Regular
+  size: 16.0
+
+draw_bold_text_with_bright_colors: false
+
+colors:
+  primary:
+    background: '#ffeedd'
+    foreground: '#000000'
+
+  cursor:
+    text: '#ffffff'
+    cursor: '#ff0055'
+
+  selection:
+    text: '#ffeedd'
+    background: '#2255aa'
+
+  normal:
+    black:   '#000000'
+    red:     '#884444'
+    green:   '#448844'
+    yellow:  '#aa8822'
+    blue:    '#4455aa'
+    magenta: '#884488'
+    cyan:    '#448888'
+    white:   '#aaaaaa'
+
+bell:
+  duration: 0
+
+background_opacity: 1.0
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: false
+
+cursor:
+  style:
+    shape: Block
+    blinking: Off
+  unfocused_hollow: true
+  thickness: 0.15
+
+alt_send_esc: true
+
+mouse:
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+  hide_when_typing: false
+
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
+
+key_bindings:
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }

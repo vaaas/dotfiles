@@ -56,13 +56,13 @@ super + F5
 	gnome-system-monitor
 
 super + F6
-	gnome-terminal -- pulsemixer
+	alacritty -e pulsemixer
 
 super + F7
 	feedreader
 
 super + x
-	gnome-terminal
+	alacritty
 
 super + shift + grave
 	emacsclient -nc -e "(eshell)"
