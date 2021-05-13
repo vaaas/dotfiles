@@ -115,6 +115,7 @@ m() {
 			node index.js &
 			;;
 		emacs) killall emacs && \emacs --daemon ;;
+		vars) grep -o -P 'V.[a-zA-Z0-9_]+' -- "$@"  | sort | uniq ;;
 	esac
 }
 
