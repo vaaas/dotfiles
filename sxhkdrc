@@ -108,3 +108,9 @@ super + semicolon
 
 super + grave
 	echo -n '5' | socat - UNIX-CONNECT:/tmp/vaswm.socket
+
+super + ctrl + e
+	echo -n 'l' | socat - UNIX-CONNECT:/tmp/vaswm.socket
+
+super + ctrl + o
+	echo -n 'L' | socat - UNIX-CONNECT:/tmp/vaswm.socket
