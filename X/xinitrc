@@ -8,7 +8,6 @@ xrdb -merge ~/.Xresources
 ibus-daemon -xdr
 xset r rate 180
 dunst -font 'Sans 16' &
-bar &
 dbus-launch sxhkd -m -1 &
 
 if test `hostname` = cleome

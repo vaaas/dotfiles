@@ -79,38 +79,14 @@ XF86AudioRaiseVolume
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-super + e
-	echo -n 'n' | socat - UNIX-CONNECT:/tmp/vaswm.socket
-
-super + o
-	echo -n 'p' | socat - UNIX-CONNECT:/tmp/vaswm.socket
-
-super + i
-	echo -n 'P' | socat - UNIX-CONNECT:/tmp/vaswm.socket
-
-super + a
-	echo -n 'N' | socat - UNIX-CONNECT:/tmp/vaswm.socket
-
 super + q
-	echo -n 'q' | socat - UNIX-CONNECT:/tmp/vaswm.socket
+	bspc node -c
 
-super + w
-	echo -n '1' | socat - UNIX-CONNECT:/tmp/vaswm.socket
+super + {i,a}
+	bspc desktop -f {prev,next}
 
-super + u
-	echo -n '2' | socat - UNIX-CONNECT:/tmp/vaswm.socket
+super + {e,o}
+	bspc node -f {next,prev}.local.window
 
-super + v
-	echo -n '3' | socat - UNIX-CONNECT:/tmp/vaswm.socket
-
-super + semicolon
-	echo -n '4' | socat - UNIX-CONNECT:/tmp/vaswm.socket
-
-super + grave
-	echo -n '5' | socat - UNIX-CONNECT:/tmp/vaswm.socket
-
-super + ctrl + e
-	echo -n 'l' | socat - UNIX-CONNECT:/tmp/vaswm.socket
-
-super + ctrl + o
-	echo -n 'L' | socat - UNIX-CONNECT:/tmp/vaswm.socket
+super + Return
+	bspc node -s biggest.local.window
