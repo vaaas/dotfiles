@@ -24,3 +24,5 @@ else
 fi
 
 dbus-launch bspwm
+#dbus-launch python3 ~/Projects/code/vaswm/vaswm.py
+
