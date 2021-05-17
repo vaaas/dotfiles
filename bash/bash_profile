@@ -7,9 +7,9 @@ export GDK_CORE_DEVICE_EVENTS=1
 
 umask 0026
 
-if ps -A | grep Xorg
+if test $TERM = screen
 then
 	source ~/.bashrc
 else
-	startx
+	tmux
 fi
