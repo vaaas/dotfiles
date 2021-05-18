@@ -1,0 +1,45 @@
+{
+    "editor.minimap.enabled": false,
+    "workbench.statusBar.visible": false,
+    "breadcrumbs.enabled": false,
+    "workbench.activityBar.visible": false,
+    "workbench.editor.showTabs": false,
+    "editor.fontSize": 18,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "diffEditor.wordWrap": "on",
+    "editor.wordWrap": "on",
+    "editor.lineNumbers": "off",
+    "editor.tabCompletion": "on",
+    "editor.wordBasedSuggestionsMode": "allDocuments",
+    "editor.hover.enabled": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.quickSuggestions": {
+        "other": false,
+        "comments": false,
+        "strings": false
+    },
+    "editor.fontLigatures": true,
+    "diffEditor.renderIndicators": false,
+    "diffEditor.renderSideBySide": false,
+    "editor.folding": false,
+    "editor.foldingHighlight": false,
+    "editor.colorDecorators": false,
+    "editor.codeLens": false,
+    "editor.autoIndent": "keep",
+    "editor.autoClosingQuotes": "never",
+    "editor.autoClosingOvertype": "always",
+    "editor.foldingStrategy": "indentation",
+    "editor.glyphMargin": false,
+
+    "workbench.colorCustomizations": {
+        "editor.background": "#FED",
+        "editor.foreground": "#000",
+        "editorCursor.foreground": "#F0D",
+        "editorIndentGuide.background": "#AAA",
+        "editorIndentGuide.activeBackground": "#000"
+    },
+
+    "files.associations": { "*.*": "plaintext" }
+}
