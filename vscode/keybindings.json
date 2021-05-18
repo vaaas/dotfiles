@@ -1,4 +1,3 @@
-// Place your key bindings in this file to override the defaultsauto[]
 [
     {
         "key": "ctrl+i",
@@ -126,5 +125,45 @@
         "key": "end",
         "command": "-cursorEnd",
         "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+s",
+        "command": "editor.action.setSelectionAnchor",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+k ctrl+b",
+        "command": "-editor.action.setSelectionAnchor",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+s",
+        "command": "editor.action.selectFromAnchorToCursor",
+        "when": "editorTextFocus && selectionAnchorSet"
+    },
+    {
+        "key": "ctrl+k ctrl+k",
+        "command": "-editor.action.selectFromAnchorToCursor",
+        "when": "editorTextFocus && selectionAnchorSet"
+    },
+    {
+        "key": "ctrl+x ctrl+s",
+        "command": "workbench.action.files.save"
+    },
+    {
+        "key": "ctrl+s",
+        "command": "-workbench.action.files.save"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "editor.action.clipboardCutAction"
+    },
+    {
+        "key": "ctrl+shift+t",
+        "command": "editor.action.clipboardPasteAction"
+    },
+    {
+        "key": "ctrl+shift+s",
+        "command": "-workbench.action.files.saveAs"
     },
 ]
