@@ -5,6 +5,7 @@
     "workbench.activityBar.visible": false,
     "workbench.editor.showTabs": false,
     "editor.fontSize": 18,
+    "editor.lineHeight": 30,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
@@ -32,14 +33,26 @@
     "editor.autoClosingOvertype": "always",
     "editor.foldingStrategy": "indentation",
     "editor.glyphMargin": false,
+    "editor.fontFamily": "Fira Code, monospace"
 
     "workbench.colorCustomizations": {
         "editor.background": "#FED",
         "editor.foreground": "#000",
         "editorCursor.foreground": "#F0D",
         "editorIndentGuide.background": "#AAA",
-        "editorIndentGuide.activeBackground": "#000"
+        "editorIndentGuide.activeBackground": "#000",
+        "editor.lineHighlightBorder": "#DCB",
+        "editor.lineHighlightBackground": "#DCB",
+        "editorBracketMatch.background": "#8CF",
+        "editorBracketMatch.border": "#8CF",
+        "editor.selectionBackground": "#8CF",
+        "editor.selectionHighlightBackground": "#BBC",
+        "editor.findMatchBackground": "#8CF",
+        "editor.findMatchHighlightBackground": "#BBC",
+        "editor.rangeHighlightBackground": "#DCB"
     },
 
-    "files.associations": { "*.*": "plaintext" }
+    "files.associations": {
+        "*.*": "plaintext"
+    },
 }

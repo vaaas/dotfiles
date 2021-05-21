@@ -11,5 +11,5 @@ if test $TERM = screen
 then
 	source ~/.bashrc
 else
-	tmux
+	exec tmux
 fi
