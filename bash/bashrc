@@ -108,7 +108,7 @@ m() {
 		s)
 			cd ~/code/iotwebserver
 			npm run watch &
-			php artisan serve &
+			php artisan serve --host=0.0.0.0 &
 			cd ~/code/athena
 			php -S localhost:8001 -t public &
 			cd ~/code/moduleserver
