@@ -1,16 +1,20 @@
 export HISTCONTROL=ignoreboth:erasedups
-export BROWSER=firefox
-export EDITOR=emacsclient
 export PAGER=less
 export PATH=~/Binaries:$PATH
-export GDK_CORE_DEVICE_EVENTS=1
-
 umask 0026
 
-if ps -A | grep Xorg
+if test `hostname` = cleome
 then
-	source ~/.bashrc
+	export BROWSER=firefox
+	export EDITOR=gedit
+	export GDK_CORE_DEVICE_EVENTS=1
+	if ps -A | grep Xorg
+	then source ~/.bashrc
+	else startx
+	fi
 else
-	echo la
-	#startx
+	if test $TERM = screen
+	then source ~/.bashrc
+	else exec tmux
+	fi
 fi
