@@ -71,7 +71,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_u,                      1)
 	TAGKEYS(                        XK_v,                      2)
 	TAGKEYS(                        XK_semicolon,              3)
-	TAGKEYS(                        XK_parenleft,              4)
+	TAGKEYS(                        XK_grave,                  4)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 

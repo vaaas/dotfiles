@@ -4,7 +4,7 @@ set -e
 
 IFS='
 '
-pass=$(cd ~/Passwords && find . -type f -printf '%P\n' | dmenu -p "select password")
-echo $pass
-pass="$(gpg --pinentry-mode ask -d --ignore-mdc-error -- ~/Passwords/$pass)"
+file=$(cd ~/Passwords && find . -type f -printf '%P\n' | dmenu -p "select password")
+pass=$(zenity --password)
+pass="$(echo -n $pass | gpg --batch --yes -d --ignore-mdc-error --passphrase-fd 0 -- ~/Passwords/$file)"
 xdotool type "$pass"

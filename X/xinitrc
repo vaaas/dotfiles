@@ -8,11 +8,9 @@ xrdb -merge ~/.Xresources
 ibus-daemon -xdr
 xset r rate 180
 dunst -font 'Sans 16' &
-bar &
-emacs --daemon
 dbus-launch sxhkd -m -1 &
 
-if test `hostname` -eq cleome
+if test `hostname` = cleome
 then
 	setxkbmap slatin
 	redshift-service &
@@ -25,4 +23,6 @@ else
 	feh --bg-fill wallpaper &
 fi
 
-dbus-launch dwm-loop
+dbus-launch bspwm
+#dbus-launch python3 ~/Projects/code/vaswm/vaswm.py
+

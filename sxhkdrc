@@ -56,13 +56,13 @@ super + F5
 	gnome-system-monitor
 
 super + F6
-	gnome-terminal -- pulsemixer
+	alacritty -e pulsemixer
 
 super + F7
 	feedreader
 
 super + x
-	gnome-terminal
+	alacritty
 
 super + shift + grave
 	emacsclient -nc -e "(eshell)"
@@ -78,3 +78,15 @@ XF86AudioRaiseVolume
 
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+super + q
+	bspc node -c
+
+super + {i,a}
+	bspc desktop -f {prev,next}
+
+super + {e,o}
+	bspc node -f {next,prev}.local.window
+
+super + Return
+	bspc node -s biggest.local.window
