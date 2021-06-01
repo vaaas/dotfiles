@@ -21,7 +21,6 @@
 (setq inhibit-splash-screen t
 	inhibit-startup-message t
 	frame-resize-pixelwise t
-	pop-up-frames t
 	vc-follow-symlinks t
 	make-backup-files nil
 	blog-directory "/home/vas/Projects/website"
@@ -84,7 +83,9 @@
 	(find-file
 	(ido-completing-read "select file> "
 	(split-string
-	(shell-command-to-string "xzcat ~/filedb.xz") "\n"))))
+	(shell-command-to-string
+	(concat "xzcat " (expand-file-name "~/filedb.xz")))
+	"\n"))))
 
 (defun dired-here() (interactive) (dired default-directory))
 
@@ -241,8 +242,8 @@
 (define-key vi-mode-map (kbd "A") 'end-of-line)
 
 (define-key vi-mode-map (kbd "' v p") 'variable-pitch-mode)
-(define-key vi-mode-map (kbd "' e a") (lambda() (interactive) (find-file "~/.config/emacs/abbrev_defs")))
-(define-key vi-mode-map (kbd "' e i") (lambda() (interactive) (find-file "~/.config/emacs/init.el")))
+(define-key vi-mode-map (kbd "' e a") (lambda() (interactive) (find-file (concat user-emacs-directory "/abbrev_defs"))))
+(define-key vi-mode-map (kbd "' e i") (lambda() (interactive) (find-file user-init-file)))
 (define-key vi-mode-map (kbd "' i t") 'toggle-indent-tabs)
 (define-key vi-mode-map (kbd "' m m") 'markdown-mode)
 (define-key vi-mode-map (kbd "' f r") 'french)
@@ -368,7 +369,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages (quote (restclient markdown-mode php-mode))))
 (custom-set-faces
-	'(default ((t (:inherit nil :stipple nil :background "#ffeedd" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "1ASC" :family "Liberation Mono"))))
+	'(default ((t (:inherit nil :stipple nil :background "#ffeedd" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "1ASC" :family "Consolas"))))
 	'(eshell-ls-directory ((t (:foreground "#2255aa" :weight bold))))
 	'(eshell-ls-executable ((t (:foreground "#008844" :weight bold))))
 	'(eshell-prompt ((t (:foreground "#ff0055" :weight bold))))
@@ -395,4 +396,4 @@
 	'(php-$this-sigil ((t (:inherit php-$this))))
 	'(php-function-call ((t (:inherit font-lock-function-name-face))))
 	'(show-paren-match ((t (:inherit highlight))))
-	'(variable-pitch ((t (:height 190 :family "Sans Serif")))))
+	'(variable-pitch ((t (:height 190 :family "Segoe UI")))))
