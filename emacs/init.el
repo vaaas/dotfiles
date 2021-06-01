@@ -24,7 +24,8 @@
 	vc-follow-symlinks t
 	make-backup-files nil
 	blog-directory "/home/vas/Projects/website"
-	disabled-command-function nil)
+	disabled-command-function nil
+	file-db (expand-file-name "~/filedb.xz"))
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.blade.php\\'" . js-mode))
@@ -79,12 +80,15 @@
 
 (defun add-trailing-newline() (end-of-buffer) (when (not (= 10 (char-before))) (insert-char 10)))
 
+(defun update-file-db() (interactive)
+	(shell-command "update-file-db.py"))
+
 (defun quick-find-file() (interactive)
 	(find-file
 	(ido-completing-read "select file> "
 	(split-string
 	(shell-command-to-string
-	(concat "xzcat " (expand-file-name "~/filedb.xz")))
+	(concat "xzcat " file-db))
 	"\n"))))
 
 (defun dired-here() (interactive) (dired default-directory))
