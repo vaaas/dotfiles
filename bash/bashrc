@@ -220,6 +220,7 @@ d() {
 	case "$arg" in
 		r) s systemctl restart "$@" ;;
 		e) s systemctl enable "$@" ;;
+		d) s systemctl disable "$@" ;;
 		s) systemctl status "$@" ;;
 		a) s systemctl start "$@" ;;
 		p) s systemctl stop "$@" ;;
