@@ -20,17 +20,20 @@ enum layers {
   _RAISE,
 };
 
+#define LT_APP LT(1, KC_APP)
+#define ALT_ESC LALT_T(KC_ESC)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_BASE] = LAYOUT_ortho_4x12( \
-KC_LGUI, KC_X   , KC_C   , KC_D   , KC_M   , KC_J   , KC_Q   , KC_W   , KC_U   , KC_V   , KC_SCLN, KC_MINS, \
+KC_MINS, KC_X   , KC_C   , KC_D   , KC_M   , KC_J   , KC_Q   , KC_W   , KC_U   , KC_V   , KC_SCLN, KC_GRV , \
 KC_LCTL, KC_R   , KC_S   , KC_T   , KC_N   , KC_H   , KC_Y   , KC_I   , KC_E   , KC_O   , KC_A   , KC_QUOT, \
-KC_LALT, KC_Z   , KC_F   , KC_G   , KC_L   , KC_K   , KC_B   , KC_P   , KC_COMM, KC_DOT , KC_SLSH, KC_EQL , \
-KC_HOME, KC_PGDN, KC_PGUP, KC_END , MO(1)  , KC_SPC , KC_APP , KC_LSFT, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT  \
+KC_EQL , KC_Z   , KC_F   , KC_G   , KC_L   , KC_K   , KC_B   , KC_P   , KC_COMM, KC_DOT , KC_SLSH, KC_BSLS, \
+KC_SLCK, KC_NLCK, KC_CAPS, KC_LGUI, LT_APP , KC_SPC , ALT_ESC, KC_LSFT, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT  \
 ),
 [_RAISE] = LAYOUT_ortho_4x12( \
-_______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , \
-_______, KC_DEL , KC_BSPC, KC_TAB , KC_ENT , KC_NUHS, KC_NUBS, KC_LBRC, KC_RBRC, KC_GRV , KC_BSLS, KC_INT1, \
-_______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_F12 , \
-KC_PAUS, KC_VOLD, KC_VOLU, KC_MUTE, _______, KC_INS , KC_ESC , _______, KC_PSCR, KC_CAPS, KC_NLCK, KC_SLCK  \
+KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , \
+_______, KC_DEL , KC_BSPC, KC_TAB , KC_ENT , _______, _______, KC_LBRC, KC_RBRC, KC_NUHS, KC_NUBS, _______, \
+_______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , _______, \
+KC_MUTE, KC_VOLD, KC_VOLU, _______, _______, KC_INS , _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END   \
 ),
 };
