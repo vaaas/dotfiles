@@ -10,8 +10,8 @@ xkb_symbols "basic" {
 	key <AE06> {[ 6, asciicircum ]};
 	key <AE07> {[ 7, ampersand ]};
 	key <AE08> {[ 8, asterisk ]};
-	key <AE09> {[ 9, backslash ]};
-	key <AE10> {[ 0, bar ]};
+	key <AE09> {[ 9, parenleft ]};
+	key <AE10> {[ 0, parenright ]};
 	key <AE11> {[ minus, underscore ]};
 	key <AE12> {[ equal, plus ]};
 
@@ -45,14 +45,16 @@ xkb_symbols "basic" {
 	key <AB05> {[ b, B ]};
 	key <AB06> {[ n, N ]};
 	key <AB07> {[ m, M ]};
-	key <AB08> {[ comma, grave ]};
-	key <AB09> {[ period, asciitilde ]};
+	key <AB08> {[ comma, less ]};
+	key <AB09> {[ period, greater ]};
 	key <AB10> {[ slash, question ]};
 
 	key <AD11> {[ parenleft, bracketleft ]};
 	key <AD12> {[ parenright, bracketright ]};
-	key <KP1> {[ braceleft, less ]};
-	key <KP2> {[ braceright, greater ]};
+	key <KP1> {[ braceleft, guillemotleft ]};
+	key <KP2> {[ braceright, guillemotright ]};
+
+	key <TLDE> {[ grave, asciitilde ]};
 
 	key <MENU> {[ Multi_key ]};
 };
