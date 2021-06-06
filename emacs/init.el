@@ -298,7 +298,8 @@
 (define-key global-map (kbd "<tab>") 'expand-or-tab)
 (define-key global-map (kbd "<escape>") 'vi-on)
 (define-key global-map (kbd "<f2>") 'dired-here)
-(define-key global-map (kbd "<f3>") 'make-frame-command)
+(define-key global-map (kbd "<f3>") 'abbrev-mode)
+(define-key global-map (kbd "<f4>") 'variable-pitch-mode)
 
 (define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative)
 (define-key prog-mode-map (kbd "C-i") 'newline-and-indent-relative)
