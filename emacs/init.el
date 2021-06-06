@@ -374,7 +374,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages (quote (restclient markdown-mode php-mode))))
 (custom-set-faces
-	'(default ((t (:inherit nil :stipple nil :background "#ffeedd" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "1ASC" :family "Consolas"))))
+	'(default ((t (:inherit nil :stipple nil :background "#ffeedd" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "1ASC" :family "Monospace"))))
 	'(eshell-ls-directory ((t (:foreground "#2255aa" :weight bold))))
 	'(eshell-ls-executable ((t (:foreground "#008844" :weight bold))))
 	'(eshell-prompt ((t (:foreground "#ff0055" :weight bold))))
