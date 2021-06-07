@@ -10,7 +10,7 @@
 (electric-indent-mode -1)
 (ido-mode 1)
 (global-visual-line-mode 1)
-(global-prettify-symbols-mode 1)
+(global-prettify-symbols-mode -1)
 
 (setq-default indent-tabs-mode nil
 	line-spacing 0.3
@@ -314,6 +314,7 @@
 (define-key isearch-mode-map (kbd "<escape>") 'isearch-exit)
 (define-key isearch-mode-map (kbd "C-g") 'isearch-exit)
 
+(add-hook 'find-file-hook (lambda() (set-buffer-file-coding-system 'unix)))
 (add-hook 'prog-mode-hook (lambda() (vi-on)))
 (add-hook 'minibuffer-setup-hook 'vi-off)
 (add-hook 'text-mode-hook (lambda() (variable-pitch-mode) (vi-on)))
@@ -368,13 +369,11 @@
 	(define-key php-mode-map (kbd "<tab>") nil))
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (restclient markdown-mode php-mode))))
+	'(face-font-family-alternatives '(("Monospace" "Consolas")))
+	'(package-selected-packages '(markdown-mode php-mode)))
 (custom-set-faces
-	'(default ((t (:inherit nil :stipple nil :background "#ffeedd" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "1ASC" :family "Monospace"))))
+	'(default ((t (:inherit nil :stipple nil :background "#ffeedd" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "1ASC" :family "Monospace"))))
+	'(cursor ((t (:background "#ff0055"))))
 	'(eshell-ls-directory ((t (:foreground "#2255aa" :weight bold))))
 	'(eshell-ls-executable ((t (:foreground "#008844" :weight bold))))
 	'(eshell-prompt ((t (:foreground "#ff0055" :weight bold))))
