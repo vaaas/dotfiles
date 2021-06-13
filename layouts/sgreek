@@ -52,15 +52,8 @@ xkb_symbols "basic" {
 	key <AB09> {[ period, greater ]};
 	key <AB10> {[ slash, question ]};
 
-	key <AD11> {[ parenleft, bracketleft ]};
-	key <AD12> {[ parenright, bracketright ]};
-	key <KP1> {[ braceleft, less ]};
-	key <KP2> {[ braceright, greater ]};
-
-	key <RTSH> {[ dead_acute ]};
-	key <RALT> {[ dead_macron ]};
-	key <RCTL> {[ dead_diaeresis ]};
-	key <RWIN> {[ dead_grave ]};
+	key <AD11> {[ bracketleft, braceleft ]};
+	key <AD12> {[ bracketright, braceright ]};
 
 	key <MENU> {[ Multi_key ]};
 };

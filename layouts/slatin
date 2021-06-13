@@ -49,12 +49,13 @@ xkb_symbols "basic" {
 	key <AB09> {[ period, greater ]};
 	key <AB10> {[ slash, question ]};
 
-	key <AD11> {[ parenleft, bracketleft ]};
-	key <AD12> {[ parenright, bracketright ]};
-	key <KP1> {[ braceleft, guillemotleft ]};
-	key <KP2> {[ braceright, guillemotright ]};
+	key <AD11> {[ bracketleft, braceleft ]};
+	key <AD12> {[ bracketright, braceright ]};
 
 	key <TLDE> {[ grave, asciitilde ]};
 
 	key <MENU> {[ Multi_key ]};
+
+	key <LFSH> {[ Shift_L, Caps_Lock ]};
+	key <RTSH> {[ Shift_R, Caps_Lock ]};
 };
