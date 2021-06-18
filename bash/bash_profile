@@ -15,6 +15,6 @@ then
 else
 	if test $TERM = screen
 	then source ~/.bashrc
-	else exec tmux
+	else exec tmux attach
 	fi
 fi
