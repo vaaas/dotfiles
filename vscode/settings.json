@@ -33,7 +33,7 @@
     "editor.autoClosingOvertype": "always",
     "editor.foldingStrategy": "indentation",
     "editor.glyphMargin": false,
-    "editor.fontFamily": "Fira Code, monospace"
+    "editor.fontFamily": "Fira Code, monospace",
 
     "workbench.colorCustomizations": {
         "editor.background": "#FED",
