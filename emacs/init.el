@@ -11,12 +11,14 @@
 (ido-mode 1)
 (global-visual-line-mode 1)
 (global-prettify-symbols-mode -1)
+(prefer-coding-system 'utf-8)
 
 (setq-default indent-tabs-mode nil
 	line-spacing 0.3
 	tab-width 4
 	mode-line-format nil
 	save-abbrevs nil
+	auto-save-default nil
 	eval-process "cat")
 (setq inhibit-splash-screen t
 	inhibit-startup-message t
@@ -314,7 +316,6 @@
 (define-key isearch-mode-map (kbd "<escape>") 'isearch-exit)
 (define-key isearch-mode-map (kbd "C-g") 'isearch-exit)
 
-(add-hook 'find-file-hook (lambda() (set-buffer-file-coding-system 'unix)))
 (add-hook 'prog-mode-hook (lambda() (vi-on)))
 (add-hook 'minibuffer-setup-hook 'vi-off)
 (add-hook 'text-mode-hook (lambda() (variable-pitch-mode) (vi-on)))
