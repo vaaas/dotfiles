@@ -11,8 +11,8 @@ scrolling:
 
 font:
   normal:
-    family: Unifont-JP
-    style: Regular
+    family: DinaRemasterII
+    style: Medium
   size: 16.0
 
 draw_bold_text_with_bright_colors: false

@@ -16,6 +16,7 @@ then
 	redshift-service &
 	xwallpaper --tile wallpaper &
 	unclutter --timeout 1 &
+	emacs --daemon
 else
 	setxkbmap vu
 	xrandr -s 1920x1080
