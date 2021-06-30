@@ -48,7 +48,8 @@
 
 (defun add-trailing-newline() (end-of-buffer) (when (not (= 10 (char-before))) (insert-char 10)))
 
-(iter-defun filedb-walk(root exclude)
+(defun filedb-walk(root exclude &optional results)
+	(unless results (setq results '()))
 	(dolist (name (directory-files root))
 		(if (and
 			(not (member name '("." "..")))
@@ -56,12 +57,13 @@
 			(progn
 				(setq pathname (concat root "/" name))
 				(if (file-directory-p pathname)
-					(iter-yield-from (filedb-walk pathname exclude))
-					(iter-yield pathname))))))
+					(filedb-walk pathname exclude results)
+					(push pathname results)))))
+	results)
 
 (defun update-file-db() (interactive)
 	(with-temp-file file-db
-		(iter-do (x (filedb-walk "a:/code" '("node_modules" ".git" "public" "vendor")))
+		(dolist (x (filedb-walk "a:/code" '("node_modules" ".git" "public" "vendor")))
 			(insert x "\n"))))
 
 (defun quick-find-file() (interactive)
