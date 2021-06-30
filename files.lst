@@ -23,4 +23,9 @@ nautilus/dmenu-selection	~/.local/share/nautilus/scripts/dmenu-selection
 sxhkdrc	~/.config/sxhkd/sxhkdrc
 emacs/abbrev_defs	~/.config/emacs/abbrev_defs
 emacs/init.el	~/.config/emacs/init.el
+emacs/defaults.el	~/.config/emacs/defaults.el
+emacs/functions.el	~/.config/emacs/functions.el
+emacs/hooks.el	~/.config/emacs/hooks.el
+emacs/keys.el	~/.config/emacs/keys.el
+emacs/vi-mode.el	~/.config/emacs/vi-mode.el
 emacs/alias	~/.config/emacs/eshell/alias
