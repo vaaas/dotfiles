@@ -1,3 +1,7 @@
+(setq lexical-binding t)
+
+(defun outside(xs) (lambda(x) (not (member x xs))))
+
 (defun backward-whitespace() (interactive) (forward-whitespace -1))
 
 (defun zap-up-to-char-backward() (interactive)
@@ -48,23 +52,18 @@
 
 (defun add-trailing-newline() (end-of-buffer) (when (not (= 10 (char-before))) (insert-char 10)))
 
-(defun filedb-walk(root exclude &optional results)
-	(unless results (setq results '()))
+(defun filedb-walk(root filter f)
 	(dolist (name (directory-files root))
-		(if (and
-			(not (member name '("." "..")))
-			(not (member name exclude)))
-			(progn
-				(setq pathname (concat root "/" name))
-				(if (file-directory-p pathname)
-					(filedb-walk pathname exclude results)
-					(push pathname results)))))
-	results)
+		(when (funcall filter name)
+			(setq pathname (concat root "/" name))
+			(if (file-directory-p pathname)
+				(filedb-walk pathname filter f)
+				(funcall f pathname)))))
 
 (defun update-file-db() (interactive)
+	(setq disallowed '("." ".." "node_modules" ".git" "public" "vendor"))
 	(with-temp-file file-db
-		(dolist (x (filedb-walk "a:/code" '("node_modules" ".git" "public" "vendor")))
-			(insert x "\n"))))
+		(filedb-walk "a:/code" (outside disallowed) (lambda(x) (insert x "\n")))))
 
 (defun quick-find-file() (interactive)
 	(find-file
