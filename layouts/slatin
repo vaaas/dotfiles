@@ -54,7 +54,7 @@ xkb_symbols "basic" {
 
 	key <TLDE> {[ grave, asciitilde ]};
 
-	key <MENU> {[ Multi_key ]};
+	key <RALT> {[ Multi_key ]};
 
 	key <LFSH> {[ Shift_L, Caps_Lock ]};
 	key <RTSH> {[ Shift_R, Caps_Lock ]};

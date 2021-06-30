@@ -316,7 +316,7 @@
 (define-key isearch-mode-map (kbd "<escape>") 'isearch-exit)
 (define-key isearch-mode-map (kbd "C-g") 'isearch-exit)
 
-(add-hook 'prog-mode-hook (lambda() (vi-on)))
+(add-hook 'prog-mode-hook (lambda() (abbrev-mode 1) (vi-on)))
 (add-hook 'minibuffer-setup-hook 'vi-off)
 (add-hook 'text-mode-hook (lambda() (variable-pitch-mode) (vi-on)))
 (add-hook 'eshell-mode-hook 'vi-off)
@@ -373,7 +373,7 @@
 	'(face-font-family-alternatives '(("Monospace" "Consolas")))
 	'(package-selected-packages '(markdown-mode php-mode)))
 (custom-set-faces
-	'(default ((t (:inherit nil :stipple nil :background "#ffeedd" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "1ASC" :family "Monospace"))))
+	'(default ((t (:inherit nil :stipple nil :background "#ffeedd" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "1ASC" :family "DinaRemasterII"))))
 	'(cursor ((t (:background "#ff0055"))))
 	'(eshell-ls-directory ((t (:foreground "#2255aa" :weight bold))))
 	'(eshell-ls-executable ((t (:foreground "#008844" :weight bold))))
@@ -401,4 +401,4 @@
 	'(php-$this-sigil ((t (:inherit php-$this))))
 	'(php-function-call ((t (:inherit font-lock-function-name-face))))
 	'(show-paren-match ((t (:inherit highlight))))
-	'(variable-pitch ((t (:height 190 :family "Segoe UI")))))
+	'(variable-pitch ((t (:height 190 :family "Sans Serif")))))

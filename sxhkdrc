@@ -11,7 +11,7 @@ super + c ; s
 	scrot -s
 
 super + c ; l
-	xset dpms force suspend && slock
+	slock
 
 super + c ; r
 	redshift -x
@@ -90,3 +90,15 @@ super + {e,o}
 
 super + Return
 	bspc node -s biggest.local.window
+
+super + ctrl + {w,u,v,semicolon,minus}
+	bspc node -d {1,2,3,4,5}
+
+super + {w,u,v,semicolon,minus}
+	bspc desktop -f {1,2,3,4,5}
+
+super + f
+	bspc node focused -t \~floating
+
+super + ctrl + {e,o}
+	bspc desktop -l {next,prev}
