@@ -112,7 +112,7 @@ m() {
 			cd ~/code/athena
 			php -S localhost:8001 -t public &
 			cd ~/code/moduleserver
-			node index.js &
+			./devrun.sh &
 			;;
 		emacs) killall emacs && \emacs --daemon ;;
 		vars) grep -o -P 'V.[a-zA-Z0-9_]+' -- "$@"  | sort | uniq ;;
