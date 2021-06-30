@@ -3,9 +3,23 @@
 	("fn" "function")
 	("r" "return")
 	("y" "yield")
+	("is" "===")
+	("isnt" "!==")
+	("eq" "==")
+	("neq" "!=")
 ))
 
-(define-abbrev-table 'php-mode-abbrev-table '())
+(define-abbrev-table 'php-mode-abbrev-table '(
+	("ar" "=>")
+	("fn" "function")
+	("r" "return")
+	("y" "yield")
+	("t" "$this")
+	("is" "===")
+	("isnt" "!==")
+	("eq" "==")
+	("neq" "!=")
+))
 
 (define-abbrev-table 'text-mode-abbrev-table '(
 	("'" "it")
