@@ -10,10 +10,10 @@
 (electric-indent-mode -1)
 (ido-mode 1)
 (global-visual-line-mode 1)
-(global-prettify-symbols-mode -1)
-(prefer-coding-system 'utf-8)
+(prefer-coding-system 'utf-8-unix)
 
-(setq-default indent-tabs-mode nil
+(setq-default
+	indent-tabs-mode nil
 	line-spacing 0.3
 	tab-width 4
 	mode-line-format nil
@@ -21,8 +21,25 @@
 	auto-save-default nil
 	version-control "never"
 	create-lockfiles nil
-	eval-process "cat")
-(setq inhibit-splash-screen t
+	eval-process "cat"
+	prettify-symbols-alist '(
+		("=>" . ?⇒)
+		(">=" . ?≥)
+		("<=" . ?≤)
+		("==" . ?=)
+		("===" . ?≡)
+		("!=" . ?≠)
+		("!==" . ?≢)
+		("=" . ?≔)
+		("..." . ?…)
+		("." . ?·)
+		("->" . ?→)
+		("::" . ?︙)
+		("!" ?¬)
+		("&&" ?∧)
+		("||" ?∨)))
+(setq
+	inhibit-splash-screen t
 	inhibit-startup-message t
 	frame-resize-pixelwise t
 	vc-follow-symlinks t
@@ -329,34 +346,11 @@
 	(define-key ido-completion-map (kbd "C-o") 'ido-prev-match)))
 (add-hook 'js-mode-hook (lambda()
 	(setq eval-process "node")
-	(setq prettify-symbols-alist '(
-		("=>" . ?⇒)
-		(">=" . ?≥)
-		("<=" . ?≤)
-		("==" . ?=)
-		("===" . ?≡)
-		("!=" . ?≠)
-		("!==" . ?≢)
-		("=" . ?≔)
-		("..." . ?…)
-		("." . ?·)
-		("!" ?¬)
-	))))
+	(kill-local-variable 'prettify-symbols-alist)
+	(prettify-symbols-mode 1)))
 (add-hook 'php-mode-hook (lambda()
-	(setq prettify-symbols-alist '(
-		("=>" . ?⇒)
-		(">=" . ?≥)
-		("<=" . ?≤)
-		("==" . ?=)
-		("===" . ?≡)
-		("!=" . ?≠)
-		("!==" . ?≢)
-		("=" . ?≔)
-		("..." . ?…)
-		("->" . ?→)
-		("::" . ?︙)
-		("!" ?¬)
-	))))
+	(kill-local-variable 'prettify-symbols-alist)
+	(prettify-symbols-mode 1)))
 
 (with-eval-after-load 'markdown-mode
 	(define-key markdown-mode-map (kbd "<return>") 'double-newline)
