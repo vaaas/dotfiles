@@ -40,7 +40,7 @@
 	make-backup-files nil
 	blog-directory "/home/vas/Projects/website"
 	disabled-command-function nil
-	file-db (expand-file-name "~/filedb.xz"))
+	file-db (expand-file-name "~/filedb.txt"))
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.blade.php\\'" . js-mode))

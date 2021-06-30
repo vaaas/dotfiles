@@ -48,16 +48,33 @@
 
 (defun add-trailing-newline() (end-of-buffer) (when (not (= 10 (char-before))) (insert-char 10)))
 
+(iter-defun filedb-walk(root exclude)
+	(dolist (name (directory-files root))
+		(if (and
+			(not (member name '("." "..")))
+			(not (member name exclude)))
+			(progn
+				(setq pathname (concat root "/" name))
+				(if (file-directory-p pathname)
+					(iter-yield-from (filedb-walk pathname exclude))
+					(iter-yield pathname))))))
+
 (defun update-file-db() (interactive)
-	(shell-command "update-file-db.py"))
+	(with-temp-file file-db
+		(iter-do (x (filedb-walk "a:/code" '("node_modules" ".git" "public" "vendor")))
+			(insert x "\n"))))
 
 (defun quick-find-file() (interactive)
 	(find-file
 	(ido-completing-read "select file> "
 	(split-string
-	(shell-command-to-string
-	(concat "xzcat " file-db))
+	(slurp file-db)
 	"\n"))))
+
+(defun slurp(f)
+	(with-temp-buffer
+		(insert-file-contents f)
+		(buffer-substring-no-properties (point-min) (point-max))))
 
 (defun dired-here() (interactive) (dired default-directory))
 
