@@ -19,6 +19,8 @@
 	mode-line-format nil
 	save-abbrevs nil
 	auto-save-default nil
+	version-control "never"
+	create-lockfiles nil
 	eval-process "cat")
 (setq inhibit-splash-screen t
 	inhibit-startup-message t
