@@ -1,7 +1,10 @@
 #!/bin/bash
 IFS='
 '
-alias lns='ln -s -v --'
+
+lns() {
+	ln -f -s -v -- "$@"
+}
 
 # ~ files
 for x in home/*
@@ -15,7 +18,7 @@ do lns $(realpath $x) ~/Binaries/$(basename $x)
 done
 
 # ~/.config
-for x in $(find config -type -d | tail -n +2)
+for x in $(find config -type d | tail -n +2)
 do mkdir -p ~/.$x
 done
 
@@ -24,10 +27,10 @@ do lns $(realpath $x) ~/.$x
 done
 
 # ~/.local/share
-for x in $(find share -type -d | tail -n +2)
+for x in $(find share -type d | tail -n +2)
 do mkdir -p ~/.local/$x
 done
 
-for x in $(find config -type f)
+for x in $(find share -type f)
 do lns $(realpath $x) ~/.local/$x
 done
