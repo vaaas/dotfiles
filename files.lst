@@ -29,3 +29,4 @@ emacs/hooks.el	~/.config/emacs/hooks.el
 emacs/keys.el	~/.config/emacs/keys.el
 emacs/vi-mode.el	~/.config/emacs/vi-mode.el
 emacs/alias	~/.config/emacs/eshell/alias
+tmux.conf	~/.tmux.conf
