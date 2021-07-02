@@ -7,10 +7,10 @@
 (defun zap-up-to-char-backward() (interactive)
 	(zap-up-to-char -1 (read-char "zap to char backward")))
 
-(defun goto-char() (interactive)
+(defun quick-goto-char() (interactive)
 	(search-forward (make-string 1 (read-char "go to char"))))
 
-(defun goto-char-backward() (interactive)
+(defun quick-goto-char-backward() (interactive);
 	(search-backward (make-string 1 (read-char "go to char backward"))))
 
 (defun insert-indent()

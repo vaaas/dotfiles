@@ -44,7 +44,3 @@
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.blade.php\\'" . js-mode))
-
-(if (string= "windows-nt" system-type)
-    (setq default-font-family "Cambria")
-    (setq default-font-family "DinaRemasterII"))
