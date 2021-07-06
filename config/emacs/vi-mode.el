@@ -8,7 +8,7 @@
 (define-key vi-mode-map (kbd "m") 'indent-line-or-region)
 (define-key vi-mode-map (kbd "M") 'unindent-line-or-region)
 (define-key vi-mode-map (kbd "j") 'join-line)
-(define-key vi-mode-map (kbd "q") 'kill-this-buffer)
+(define-key vi-mode-map (kbd "q") (b-then-a 'vi-on 'kill-this-buffer))
 (define-key vi-mode-map (kbd "w") 'forward-word)
 (define-key vi-mode-map (kbd "W") 'forward-whitespace)
 (define-key vi-mode-map (kbd "u") 'backward-word)
@@ -70,11 +70,11 @@
 (define-key vi-mode-map (kbd ".") 'repeat)
 (define-key vi-mode-map (kbd "/") 'isearch-forward)
 (define-key vi-mode-map (kbd "?") 'isearch-backward)
-
 (define-key vi-mode-map (kbd "SPC") 'vi-off)
 (define-key vi-mode-map (kbd "<escape>") 'keyboard-quit)
-(define-key vi-mode-map (kbd "(") 'next-buffer-and-vi-on)
-(define-key vi-mode-map (kbd ")") 'previous-buffer-and-vi-on)
+(define-key vi-mode-map (kbd "(") (b-then-a 'vi-on 'next-buffer))
+(define-key vi-mode-map (kbd ")") (b-then-a 'vi-on 'previous-buffer))
+(define-key vi-mode-map (kbd "<tab>") (b-then-a 'vi-on 'switch-to-buffer nil))
 
 (define-minor-mode vi-mode
 	"Ghetto vi mode"

@@ -1,7 +1,4 @@
-(setq lexical-binding t)
-
-(defun outside(xs) (lambda(x) (not (member x xs))))
-
+;; -*- lexical-binding: t -*-
 (defun backward-whitespace() (interactive) (forward-whitespace -1))
 
 (defun zap-up-to-char-backward() (interactive)
@@ -52,18 +49,18 @@
 
 (defun add-trailing-newline() (end-of-buffer) (when (not (= 10 (char-before))) (insert-char 10)))
 
-(defun filedb-walk(root filter f)
+(defun filedb-walk(root disallowed f)
 	(dolist (name (directory-files root))
-		(when (funcall filter name)
+		(when (not (member name disallowed))
 			(setq pathname (concat root "/" name))
 			(if (file-directory-p pathname)
-				(filedb-walk pathname filter f)
+				(filedb-walk pathname disallowed f)
 				(funcall f pathname)))))
 
 (defun update-file-db() (interactive)
 	(setq disallowed '("." ".." "node_modules" ".git" "public" "vendor"))
 	(with-temp-file file-db
-		(filedb-walk "a:/code" (outside disallowed) (lambda(x) (insert x "\n")))))
+		(filedb-walk "a:/code" disallowed (lambda(x) (insert x "\n")))))
 
 (defun quick-find-file() (interactive)
 	(find-file
@@ -187,5 +184,4 @@
 	(add-trailing-newline)
 	(append-to-file (point-min) (point-max) (concat blog-directory "/posts")))
 
-(defun next-buffer-and-vi-on() (interactive) (next-buffer) (vi-on))
-(defun previous-buffer-and-vi-on() (interactive) (previous-buffer) (vi-on))
+(defun b-then-a(a b &rest args) (lambda() (interactive) (apply b args) (funcall a)))
