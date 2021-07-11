@@ -23,7 +23,4 @@ else
 	VBoxClient --clipboard
 	feh --bg-fill wallpaper &
 fi
-
 dbus-launch bspwm
-#dbus-launch python3 ~/Projects/code/vaswm/vaswm.py
-
