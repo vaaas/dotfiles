@@ -7,6 +7,7 @@
 	("isnt" "!==")
 	("eq" "==")
 	("neq" "!=")
+	("t" "this")
 ))
 
 (define-abbrev-table 'php-mode-abbrev-table '(
@@ -19,6 +20,8 @@
 	("isnt" "!==")
 	("eq" "==")
 	("neq" "!=")
+	("pu" "public")
+	("st" "static")
 ))
 
 (define-abbrev-table 'text-mode-abbrev-table '(
