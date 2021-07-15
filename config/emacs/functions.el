@@ -58,9 +58,10 @@
 				(funcall f pathname)))))
 
 (defun update-file-db() (interactive)
-	(setq disallowed '("." ".." "node_modules" ".git" "public" "vendor"))
-	(with-temp-file file-db
-		(filedb-walk "a:/code" disallowed (lambda(x) (insert x "\n")))))
+	(with-temp-file file-db (filedb-walk
+		(if (string= system-type "windows-nt") "a:/code" "~/Projects")
+		'("." ".." "node_modules" ".git" "public" "vendor")
+		(lambda(x) (insert x "\n")))))
 
 (defun quick-find-file() (interactive)
 	(find-file
@@ -185,3 +186,39 @@
 	(append-to-file (point-min) (point-max) (concat blog-directory "/posts")))
 
 (defun b-then-a(a b &rest args) (lambda() (interactive) (apply b args) (funcall a)))
+
+;; (defun shtml/main() (interactive)
+;; 	(setq elements '())
+;; 	(while (not (eobp))
+;; 		(if (= ?< (char-after)) (progn
+;; 			(forward-char 1)
+;; 			(push (shtml/read-element) elements))
+;; 		(forward-char 1)))
+;; 	(nreverse elements))
+
+;; (defun shtml/read-element()
+;; 	(setq element '())
+;; 	(setq x (char-after))
+;; 	(setq flag t)
+;; 	(while flag
+;; 		(message (char-to-string x))
+;; 		(cond ((eobp) (setq flag nil))
+;; 			((= x ?>) (setq flag nil) (forward-char 1))
+;; 			(t (push (shtml/read-tag-name) element)
+;; 				(push (shtml/read-classes) element)
+;; 				(push (shtml/read-body) element)
+;; 				(forward-char 1)
+;; 				(setq x (char-after)))))
+;; 	(nreverse element))
+
+;; (defun shtml/read-tag-name()
+;; 	(setq xs '())
+;; 	(setq x (char-after))
+;; 	(while (and (not (eobp)) (not (= x ? )))
+;; 		(push (char-to-string x) xs)
+;; 		(forward-char 1)
+;; 		(setq x (char-after)))
+;; 	(string-join (nreverse xs)))
+
+;; (defun shtml/read-classes() "lol")
+;; (defun shtml/read-body() "swag")
