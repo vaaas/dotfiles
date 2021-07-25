@@ -3,6 +3,8 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 (require 'iso-transl)
+(require 'json)
+(require 'seq)
 
 (dolist (x '("defaults" "functions" "vi-mode" "keys" "hooks" ))
 	(load-file (format "%s/%s.el" user-emacs-directory x)))

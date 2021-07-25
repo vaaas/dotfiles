@@ -31,7 +31,9 @@
 		("::" . ?︙)
 		("!" ?¬)
 		("&&" ?∧)
-		("||" ?∨)))
+		("||" ?∨)
+		(">>" ?≫)
+		("|>" ?▷)))
 (setq
 	inhibit-splash-screen t
 	inhibit-startup-message t
