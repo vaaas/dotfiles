@@ -28,6 +28,7 @@ g() {
 		c) git checkout "$@" ;;
 		p) git push "$@" ;;
 		P) git pull "$@" ;;
+		m) git merge "$@" ;;
 		clean)
 			git fetch --depth=1
 			git reflog expire --expire-unreachable=now --all
