@@ -1,0 +1,78 @@
+:root
+	{ --navbarWidth: 25vw;
+	--animationSpeed: 0.15s; }
+
+#tracking-protection-icon-container,
+#identity-box,
+.tab-close-button,
+#back-button[disabled="true"],
+#forward-button[disabled="true"],
+#reload-button,
+.titlebar-min,
+.titlebar-max,
+.titlebar-restore,
+.titlebar-close,
+.titlebar-spacer,
+#tabs-newtab-button { display: none !important; }
+
+#TabsToolbar { margin-left: var(--navbarWidth) !important; }
+
+#nav-bar
+	{ margin-right: calc(100vw - var(--navbarWidth)) !important;
+	background: transparent !important;
+	box-shadow: none !important; }
+
+#urlbar-container { min-width: 0px !important; }
+
+:root[uidensity="compact"] #nav-bar
+	{ margin-top: -37px !important;
+	height: 37px !important; }
+
+#nav-bar
+	{ margin-top: -44px !important;
+	height: 44px !important; }
+
+:root[uidensity="touch"] #nav-bar
+	{ margin-top: -49px !important;
+	height: 49px !important; }
+
+#urlbar-background { border: none !important; }
+
+.urlbar-icon, #userContext-indicator, #userContext-label
+	{ fill: transparent !important;
+	background-color: transparent !important;
+	color: transparent !important; }
+
+#urlbar:hover .urlbar-icon,
+#urlbar:active .urlbar-icon,
+#urlbar[focused] .urlbar-icon { fill: var(--toolbar-color) !important; }
+
+toolbarbutton,
+.toolbarbutton-icon,
+.subviewbutton,
+.urlbar-input-box,
+#identity-box,
+#tracking-protection-icon-container,
+[anonid=urlbar-go-button],
+.urlbar-icon-wrapper,
+#tracking-protection-icon,
+#identity-box image,
+stack,
+vbox,
+tab:not(:active) .tab-background,
+tab:not([beforeselected-visible])::after,
+tab[visuallyselected] .tab-background::before,
+tab[visuallyselected] .tab-background::before,
+#urlbar-background,
+.urlbar-icon,
+#userContext-indicator,
+#userContext-label,
+.tab-close-button { animation: var(--animationSpeed) !important; }
+
+.tabbrowser-tab[selected]
+	{ width: 5em !important;
+	min-width: 5em |important; }
+
+.tabbrowser-tab:not([selected])
+	{ width: 18px !important;
+	min-width: 18px !important; }
