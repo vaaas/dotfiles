@@ -34,3 +34,8 @@ done
 for x in $(find share -type f)
 do lns $(realpath $x) ~/.local/$x
 done
+
+# firefox
+ffprofile=$(realpath ~/.mozilla/firefox/*.default*)
+mkdir -p $ffprofile/chrome
+lns $(realpath firefox/userChrome.css) $ffprofile/chrome
