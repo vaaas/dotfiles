@@ -9,3 +9,4 @@ SLEEP_LED_ENABLE = no
 LTO_ENABLE = yes
 OPT = 3
 DEBOUNCE_TYPE = sym_eager_pk
+NKRO_ENABLE = yes

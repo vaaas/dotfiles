@@ -1,12 +1,12 @@
 :root
-	{ --navbarWidth: 25vw;
+{	--navbarWidth: 25vw;
 	--animationSpeed: 0.15s; }
 
 #tracking-protection-icon-container,
 #identity-box,
 .tab-close-button,
-#back-button[disabled="true"],
-#forward-button[disabled="true"],
+#back-button[disabled='true'],
+#forward-button[disabled='true'],
 #reload-button,
 .titlebar-min,
 .titlebar-max,
@@ -18,28 +18,28 @@
 #TabsToolbar { margin-left: var(--navbarWidth) !important; }
 
 #nav-bar
-	{ margin-right: calc(100vw - var(--navbarWidth)) !important;
+{	margin-right: calc(100vw - var(--navbarWidth)) !important;
 	background: transparent !important;
 	box-shadow: none !important; }
 
 #urlbar-container { min-width: 0px !important; }
 
-:root[uidensity="compact"] #nav-bar
-	{ margin-top: -37px !important;
+:root[uidensity='compact'] #nav-bar
+{	margin-top: -37px !important;
 	height: 37px !important; }
 
 #nav-bar
-	{ margin-top: -44px !important;
+{	margin-top: -44px !important;
 	height: 44px !important; }
 
 :root[uidensity="touch"] #nav-bar
-	{ margin-top: -49px !important;
+{	margin-top: -49px !important;
 	height: 49px !important; }
 
 #urlbar-background { border: none !important; }
 
 .urlbar-icon, #userContext-indicator, #userContext-label
-	{ fill: transparent !important;
+{	fill: transparent !important;
 	background-color: transparent !important;
 	color: transparent !important; }
 
@@ -70,9 +70,9 @@ tab[visuallyselected] .tab-background::before,
 .tab-close-button { animation: var(--animationSpeed) !important; }
 
 .tabbrowser-tab[selected]
-	{ width: 5em !important;
+{	width: 5em !important;
 	min-width: 5em |important; }
 
 .tabbrowser-tab:not([selected])
-	{ width: 18px !important;
+{	width: 18px !important;
 	min-width: 18px !important; }
