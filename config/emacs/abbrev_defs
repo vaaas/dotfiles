@@ -22,6 +22,8 @@
 	("neq" "!=")
 	("pu" "public")
 	("st" "static")
+	("fnx" "fn($x) =>")
+	("fnq" "fn($q) =>")
 ))
 
 (define-abbrev-table 'text-mode-abbrev-table '(

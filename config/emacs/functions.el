@@ -168,25 +168,16 @@
 	(delete-trailing-whitespace)
 	(beginning-of-buffer)
 	(if (< (buffer-size) 2000)
-		(insert (format "\n%s\n%s\n" stamp cat))
+		(insert (format "<post timestamp='%s' tag='%s'>" stamp cat))
 	(progn
-		(search-forward "<h1>") (setq start (point))
-		(search-forward "</h1>") (setq end (- (point) 5))
-		(setq title (buffer-substring start end))
-		(search-forward "<p>") (setq start (point))
-		(search-forward "</p>") (setq end (- (point) 4))
-		(setq blurb (buffer-substring start end))
 		(setq file-name (concat
 			(replace-regexp-in-string " " "_"
 				(read-string "file name (no extension): "))
 			".html"))
-		(shell-command-this-buffer (concat blog-directory "/ncrender -s"))
-		(append-to-file (point-min) (point-max) (concat blog-directory "/render/" file-name))
-		(kill-region (point-min) (point-max))
-		(insert
-			(format "\n%s\n%s\n<h1><a href=\"/%s\">%s</a></h1>\n%s"
-			stamp cat file-name title blurb))))
+		(insert (format "<post filename='%s' timestamp='%s' tag='%s'>" file-name stamp cat))))
 	(add-trailing-newline)
-	(append-to-file (point-min) (point-max) (concat blog-directory "/posts")))
+	(insert "</post>")
+	(cd blog-directory)
+	(shell-command-this-buffer "python3 ncrender"))
 
 (defun b-then-a(a b &rest args) (lambda() (interactive) (apply b args) (funcall a)))
