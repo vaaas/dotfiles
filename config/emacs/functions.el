@@ -178,6 +178,7 @@
 	(add-trailing-newline)
 	(insert "</post>")
 	(cd blog-directory)
-	(shell-command-this-buffer "python3 ncrender"))
+	(shell-command-this-buffer "python3 ncrender")
+	(cd "~"))
 
 (defun b-then-a(a b &rest args) (lambda() (interactive) (apply b args) (funcall a)))
