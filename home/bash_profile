@@ -4,14 +4,7 @@ export PATH=~/Binaries:$PATH
 umask 0026
 
 if test `hostname` = cleome
-then
-	export BROWSER=firefox
-	export EDITOR=gedit
-	export GDK_CORE_DEVICE_EVENTS=1
-	if ps -A | grep Xorg
-	then source ~/.bashrc
-	else startx
-	fi
+then emacs --fg-daemon
 else
 	if test $TERM = screen
 	then source ~/.bashrc

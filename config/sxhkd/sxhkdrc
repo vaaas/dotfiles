@@ -85,6 +85,9 @@ super + q
 super + {i,a}
 	bspc desktop -f {prev,next}
 
+super + ctrl {i,a}
+	bspc node -z left {-32,32} 0
+
 super + {e,o}
 	bspc node -f {next,prev}.local.window
 

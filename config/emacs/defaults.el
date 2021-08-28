@@ -35,12 +35,13 @@
 		(">>" ?≫)
 		("|>" ?▷)))
 (setq
+	tty (getenv "XDG_VTNR")
 	inhibit-splash-screen t
 	inhibit-startup-message t
 	frame-resize-pixelwise t
 	vc-follow-symlinks t
 	make-backup-files nil
-	blog-directory "/home/vas/Projects/website"
+	blog-directory (expand-file-name "~/Projects/website")
 	disabled-command-function nil
 	file-db (expand-file-name "~/filedb.txt"))
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))

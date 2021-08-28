@@ -6,8 +6,10 @@
 (require 'json)
 (require 'seq)
 
-(dolist (x '("defaults" "functions" "vi-mode" "keys" "hooks" ))
+(dolist (x '("defaults" "functions" "vi-mode" "keys" "hooks"))
 	(load-file (format "%s/%s.el" user-emacs-directory x)))
+
+(when (string= "cleome" (system-name)) (xinit))
 
 (custom-set-variables
 	'(package-selected-packages '(markdown-mode php-mode)))
