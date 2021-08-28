@@ -56,16 +56,13 @@ super + F5
 	gnome-system-monitor
 
 super + F6
-	alacritty -e pulsemixer
+	emacsclient -ce '(ansi-term "/usr/bin/pulsemixer")'
 
 super + F7
 	feedreader
 
 super + x
-	alacritty
-
-super + shift + grave
-	emacsclient -nc -e "(eshell)"
+	emacsclient -ce '(ansi-term "/bin/bash")'
 
 super + p
 	passmenu
