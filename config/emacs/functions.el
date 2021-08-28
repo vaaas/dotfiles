@@ -184,11 +184,6 @@
 (defun b-then-a(a b &rest args) (lambda() (interactive) (apply b args) (funcall a)))
 
 (defun xinit()
-	(start-process "Xorg" "Xorg" "/usr/bin/Xorg" (concat ":" tty) "-auth" "/tmp/Xauthority" "-noreset" "-keeptty" (concat "vt" tty))
-	(sit-for 0.2)
-	(xinitrc))
-
-(defun xinitrc()
 	(setenv "BROWSER" "firefox")
 	(setenv "EDITOR" "emacs")
 	(setenv "GDK_CORE_DEVICE_EVENTS" "1")
@@ -202,7 +197,7 @@
 	(start-process "ibus" "ibus" "ibus-daemon" "-xr")
 	(start-process "dunst" "dunst" "dunst" "-font" "Sans 16")
 	(start-process "sxhkd" "sxhkd" "dbus-launch" "sxhkd" "-m" "-1")
-	(start-process "redshift-service")
+	(start-process "redshift-service" "redshift-service" "redshift-service")
 	(start-process "xwallpaper" "xwallpaper" "xwallpaper" "--tile" "wallpaper")
 	(start-process "unclutter" "unclutter" "unclutter" "--timeout" "1")
 	(start-process "bspwm" "bspwm" "dbus-launch" "bspwm"))

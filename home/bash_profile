@@ -4,7 +4,7 @@ export PATH=~/Binaries:$PATH
 umask 0026
 
 if test `hostname` = cleome
-then emacs --fg-daemon
+then startx
 else
 	if test $TERM = screen
 	then source ~/.bashrc
