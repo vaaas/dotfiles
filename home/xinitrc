@@ -1,2 +1,26 @@
 #!/bin/sh
-\emacs --fg-daemon
+
+export GTK_USE_PORTAL=1
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+xrdb -merge ~/.Xresources
+ibus-daemon -xdr
+xset r rate 180
+dunst -font 'Sans 16' &
+dbus-launch sxhkd -m -1 &
+
+if test `hostname` = cleome
+then
+	setxkbmap slatin
+	redshift-service &
+	xwallpaper --tile wallpaper &
+	unclutter --timeout 1 &
+	emacs --daemon
+else
+	setxkbmap vu
+	xrandr -s 1920x1080
+	VBoxClient --clipboard
+	feh --bg-fill wallpaper &
+fi
+dbus-launch bspwm

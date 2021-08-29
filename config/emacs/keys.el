@@ -38,5 +38,7 @@
 	(define-key php-mode-map (kbd "<tab>") nil))
 
 (with-eval-after-load 'term
-	(dolist (x '("<f1>" "<f2>" "<f3>" "<tab>"))
-		(define-key term-raw-map (kbd x) 'term-send-raw)))
+	(define-key term-raw-map (kbd "TAB")
+		(lambda() (interactive) (term-send-raw-string (kbd "TAB"))))
+	(define-key term-raw-map (kbd "C-c")
+		(lambda() (interactive) (term-send-raw-string (kbd "C-c")))))
