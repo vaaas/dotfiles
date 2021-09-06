@@ -13,6 +13,7 @@ then
 	else startx
 	fi
 else
+	ps -A | grep rclone || rclone serve webdav --addr '0.0.0.0:8080' ~ &
 	if test $TERM = screen
 	then source ~/.bashrc
 	else tmux attach || tmux
