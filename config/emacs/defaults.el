@@ -43,7 +43,9 @@
 	make-backup-files nil
 	blog-directory (expand-file-name "~/Projects/website")
 	disabled-command-function nil
-	file-db (expand-file-name "~/filedb.txt"))
+	file-db (expand-file-name "~/filedb.txt")
+	file-db-root-dir (if (string= system-type "windows-nt") "a:/code" "~/Projects")
+	file-db-exclude-dirs '("." ".." "node_modules" ".git" "public" "vendor" "build"))
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.blade.php\\'" . js-mode))

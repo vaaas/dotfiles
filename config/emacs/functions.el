@@ -63,8 +63,8 @@
 
 (defun update-file-db() (interactive)
 	(with-temp-file file-db (filedb-walk
-		(if (string= system-type "windows-nt") "a:/code" "~/Projects")
-		'("." ".." "node_modules" ".git" "public" "vendor" "build")
+		file-db-root-dir
+		file-db-exclude-dirs
 		(lambda(x) (insert x "\n")))))
 
 (defun quick-find-file() (interactive)
