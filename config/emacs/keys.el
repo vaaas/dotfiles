@@ -2,6 +2,14 @@
 (define-key global-map (kbd "C-n") 'newline-and-indent-relative)
 (define-key global-map (kbd "C-s") 'backspace-or-unindent)
 (define-key global-map (kbd "C-t") 'backward-kill-word)
+(define-key global-map (kbd "C-i") 'left-char)
+(define-key global-map (kbd "C-S-I") 'beginning-of-line-text)
+(define-key global-map (kbd "C-e") 'next-line)
+(define-key global-map (kbd "C-S-E") 'forward-paragraph)
+(define-key global-map (kbd "C-o") 'previous-line)
+(define-key global-map (kbd "C-S-O") 'backward-paragraph)
+(define-key global-map (kbd "C-a") 'right-char)
+(define-key global-map (kbd "C-S-A") 'end-of-line)
 (define-key global-map (kbd "C-g") 'vi-on)
 (define-key global-map (kbd "<backspace>") 'backspace-or-unindent)
 (define-key global-map (kbd "<tab>") 'expand-or-tab)
@@ -12,7 +20,6 @@
 (define-key global-map (kbd "<f5>") (lambda() (interactive) (switch-to-buffer "*scratch*")))
 
 (define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative)
-(define-key prog-mode-map (kbd "C-i") 'newline-and-indent-relative)
 (define-key prog-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 
 (define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)

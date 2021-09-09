@@ -1,3 +1,11 @@
+(defun vi-on() (interactive)
+	(vi-mode 1)
+	(setq cursor-type 'box))
+
+(defun vi-off() (interactive)
+	(vi-mode -1)
+	(setq cursor-type 'bar))
+
 (setq vi-mode-map (make-sparse-keymap))
 (define-key vi-mode-map (kbd "x") 'execute-extended-command)
 (define-key vi-mode-map (kbd "X") 'eval-expression)

@@ -81,14 +81,6 @@
 
 (defun dired-here() (interactive) (dired default-directory))
 
-(defun vi-on() (interactive)
-	(vi-mode 1)
-	(setq cursor-type 'box))
-
-(defun vi-off() (interactive)
-	(vi-mode -1)
-	(setq cursor-type 'bar))
-
 (defun backspace-or-unindent() (interactive)
 	(cond
 		((use-region-p) (call-interactively 'kill-region))
