@@ -83,10 +83,15 @@
 	(define-key dired-mode-map (kbd "/") 'isearch-exit-forward))
 
 (with-eval-after-load 'php-mode
-	(define-key php-mode-map (kbd "<tab>") nil))
+	(define-key php-mode-map (kbd "C-c") nil)
+	(define-key php-mode-map (kbd "<tab>") nil)
+    (define-key php-mode-map (kbd "d") nil))
 
 (with-eval-after-load 'term
 	(define-key term-raw-map (kbd "TAB")
 		(lambda() (interactive) (term-send-raw-string (kbd "TAB"))))
 	(define-key term-raw-map (kbd "C-c")
 		(lambda() (interactive) (term-send-raw-string (kbd "C-c")))))
+
+(with-eval-after-load 'js
+	(define-key js-mode-map (kbd "C-c") nil))
