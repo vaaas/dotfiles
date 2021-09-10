@@ -9,6 +9,7 @@
 (define-key global-map (kbd "C-j") 'join-line)
 (define-key global-map (kbd "C-S-J") 'comment-or-uncomment-region)
 (define-key global-map (kbd "C-q") 'kill-this-buffer)
+(define-key global-map (kbd "C-S-Q") 'save-buffers-kill-terminal)
 (define-key global-map (kbd "C-w") 'forward-word)
 (define-key global-map (kbd "C-S-W") 'forward-whitespace)
 (define-key global-map (kbd "C-u") 'backward-word)

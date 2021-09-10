@@ -18,6 +18,7 @@
 (define-key vi-mode-map (kbd "j") 'join-line)
 (define-key vi-mode-map (kbd "J") 'comment-or-uncomment-region)
 (define-key vi-mode-map (kbd "q") (b-then-a 'vi-on 'kill-this-buffer))
+(define-key vi-mode-map (kbd "Q") 'save-buffers-kill-terminal)
 (define-key vi-mode-map (kbd "w") 'forward-word)
 (define-key vi-mode-map (kbd "W") 'forward-whitespace)
 (define-key vi-mode-map (kbd "u") 'backward-word)
