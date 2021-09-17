@@ -13,6 +13,7 @@
 	("and" "&&")
 	("or" "||")
 	("fo" "for (const x of xs)")
+	("ed" "export default")
 ))
 
 (define-abbrev-table 'php-mode-abbrev-table '(
