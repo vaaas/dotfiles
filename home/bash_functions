@@ -47,8 +47,6 @@ m() {
 			php artisan serve --host=0.0.0.0 &
 			cd ~/code/athena
 			./devrun.sh &
-			cd ~/code/moduleserver
-			./devrun.sh &
 			;;
 		emacs) killall emacs && \emacs --daemon ;;
 		vars) grep -o -P 'V.[a-zA-Z0-9_]+' -- "$@"  | sort | uniq ;;
