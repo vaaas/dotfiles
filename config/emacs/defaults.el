@@ -11,8 +11,6 @@
 	line-spacing 0.3
 	tab-width 4
 	mode-line-format nil
-	save-abbrevs nil
-	auto-save-default nil
 	version-control "never"
 	create-lockfiles nil
 	eval-process "cat"
@@ -33,8 +31,9 @@
 		("&&" ?∧)
 		("||" ?∨)
 		(">>" ?≫)
-		("|>" ?▷)))
-(setq
+		("|>" ?▷))
+	save-abbrevs nil
+	auto-save-default nil
 	tty (getenv "XDG_VTNR")
 	inhibit-splash-screen t
 	inhibit-startup-message t
@@ -45,7 +44,8 @@
 	disabled-command-function nil
 	file-db (expand-file-name "~/filedb.txt")
 	file-db-root-dir (if (string= system-type "windows-nt") "a:/code" "~/Projects")
-	file-db-exclude-dirs '("." ".." "node_modules" ".git" "public" "vendor" "build"))
+	file-db-exclude-dirs '("." ".." "node_modules" ".git" "public" "vendor" "build")
+	blog-categories '("tech" "anime" "books" "memes" "films" "journal" "games"))
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.blade.php\\'" . js-mode))
