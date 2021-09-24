@@ -51,9 +51,12 @@
 (define-key global-map (kbd "C-S-B") 'save-buffer)
 (define-key global-map (kbd "C-p") 'yank)
 (define-key global-map (kbd "C-S-P") 'kill-ring-save)
+(define-key global-map (kbd "C-,") 'previous-buffer)
+(define-key global-map (kbd "C-.") 'next-buffer)
 
 (define-key global-map (kbd "<backspace>") 'backspace-or-unindent)
 (define-key global-map (kbd "<tab>") 'expand-or-tab)
+(define-key global-map (kbd "<C-tab>") (lambda() (interactive) (switch-to-buffer nil)))
 (define-key global-map (kbd "<escape>") 'vi-on)
 (define-key global-map (kbd "<f2>") 'dired-here)
 (define-key global-map (kbd "<f3>") 'abbrev-mode)
