@@ -63,6 +63,7 @@
 (define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative)
 (define-key prog-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 
+(define-key prog-mode-map (kbd "<return>") 'newline-and-indent-relative)
 (define-key text-mode-map (kbd "C-SPC") 'unexpand-abbrev)
 
 (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit)
