@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t -*-
 (defun whitespacep(x) (member x '(9 10 32)))
+(defun pipe(x &rest fs) (seq-reduce (lambda (x f) (funcall f x)) fs x))
+(defun arrow(&rest fs) (lambda(x) (pipe x fs)))
 
 (defun map-plist(f xs)
 	(let ((head xs) (results ()))
@@ -160,77 +162,57 @@
 
 (defun blog() (interactive)
 	(let (
+		(post (read-sexp))
 		(cat "")
 		(stamp (timestamp))
 		(file-name "")
 	)
 	(setq cat (ido-completing-read "category?> " blog-categories))
-	(delete-trailing-whitespace)
-	(beginning-of-buffer)
 	(if (< (buffer-size) 2000)
-		(insert (format "<post timestamp='%s' tag='%s'>" stamp cat))
+		(setq post (append (list "post" "@timestamp" stamp "@tag" cat) post))
 	(progn
 		(setq file-name (concat
 			(replace-regexp-in-string " " "_"
 				(read-string "file name (no extension): "))
 			".html"))
-		(insert (format "<post filename='%s' timestamp='%s' tag='%s'>" file-name stamp cat))))
-	(add-trailing-newline)
-	(insert "</post>")
-	(cd blog-directory)
-	(shell-command-this-buffer "python3 ncrender")
-	(cd "~")))
+		(setq post (append (list "post" "@filename" file-name "@timestamp" stamp "@tag" cat) post))))
+	(insert (pipe post 'vasdown-to-seml 'seml-to-html))))
+	;; (cd blog-directory)
+	;; (shell-command-this-buffer "python3 ncrender")
+	;; (cd "~")))
 
 (defun b-then-a(a b &rest args) (lambda() (interactive) (apply b args) (funcall a)))
 
-(defun serialise-as-html (elem)
-	(let ((tokens ()) (name (nth 0 elem)) (attrs (nth 1 elem)) (children (nth 2 elem)))
-	(push "<" tokens)
-	(push (car elem) tokens)
-	(when attrs
-		(push " " tokens)
-		(push (string-join (map-plist (lambda (k v) (concat k "=" "\"" v "\"")) attrs) " ") tokens))
-	(if children
-		(progn
-			(push ">" tokens)
-			(dolist (child children)
-				(cond
-					((stringp child) (push child tokens))
-					((listp child) (push (serialise-as-html child) tokens))))
-			(push (concat "</" name ">") tokens))
-		(progn (push "/>" tokens)))
-	(string-join (nreverse tokens) "")))
-
-(defun vasdown() (interactive)
+(defun read-sexp() (interactive)
 	(let ((tokens ()) (c nil))
 	(goto-char (point-min))
 	(while (not (eobp))
 		(setq c (char-after))
 		(forward-char 1)
-		(when (= 60 c) (push (vasdown-list) tokens)))
-	(mapcar 'vasdown-seml (nreverse tokens))))
+		(when (= 40 c) (push (read-list) tokens)))
+	(nreverse tokens)))
 
-(defun vasdown-list()
+(defun read-list()
 	(let ((c nil) (flag t) (atoms ()))
 	(while flag
 		(when (eobp) (throw 'eof "unexpected end of input"))
 		(setq c (char-after))
 		(cond
-			((= c 62) (setq flag nil))
+			((= 41 c) (forward-char) (setq flag nil))
 			((whitespacep c) (forward-char))
-			((= c 60) (forward-char) (push (vasdown-list) atoms))
-			(t (push (vasdown-atom) atoms))))
+			((= 40 c) (forward-char) (push (read-list) atoms))
+			(t (push (read-atom) atoms))))
 	(nreverse atoms)))
 
-(defun vasdown-atom()
+(defun read-atom()
 	(let ((c nil) (flag t) (cs ()))
 	(while flag
 		(when (eobp) (throw 'eof "unexpected end of input"))
 		(setq c (char-after))
 		(cond
 			((whitespacep c) (setq flag nil))
-			((= c 62) (setq flag nil))
-			((= c 92)
+			((= 41 c) (setq flag nil))
+			((= 92 c) ; backslash quoting
 				(forward-char)
 				(push (char-to-string (char-after)) cs)
 				(forward-char))
@@ -239,12 +221,17 @@
 				(push (char-to-string c) cs))))
 	(string-join (nreverse cs) "")))
 
-(defun vasdown-seml(node)
+(defun vasdown() (interactive)
+	(let ((xml (string-join (mapcar (arrow 'vasdown-to-seml 'seml-to-html) (read-sexp)) "\n")))
+	(erase-buffer)
+	(insert xml)))
+
+(defun vasdown-to-seml(node)
 	(let ((name (car node)) (head (cdr node)) (attrs ()) (children ()))
 	(while head
 		(cond
 			((listp (car head))
-				(push (vasdown-seml (car head)) children)
+				(push (vasdown-to-seml (car head)) children)
 				(setq head (cdr head)))
 			((string-prefix-p "@" (car head))
 				(push (substring (car head) 1) attrs)
@@ -254,3 +241,26 @@
 				(push (car head) children)
 				(setq head (cdr head)))))
 	(list name (nreverse attrs) (nreverse children))))
+
+(defun seml-to-html (elem)
+	(let ((tokens ()) (name (nth 0 elem)) (attrs (nth 1 elem)) (children (nth 2 elem)))
+	(push "<" tokens)
+	(push (car elem) tokens)
+	(when attrs
+		(push " " tokens)
+		(push (string-join (map-plist (lambda (k v) (concat k "=" "\"" v "\"")) attrs) " ") tokens))
+	(if children
+		(progn
+			(push ">" tokens)
+			(push
+				(string-join
+					(mapcar (lambda (x) (cond
+						((stringp x) x)
+						((listp x) (seml-to-html x))
+						(t "")))
+						children)
+					" ")
+				tokens)
+			(push (concat "</" name ">") tokens))
+		(progn (push "/>" tokens)))
+	(string-join (nreverse tokens) "")))
