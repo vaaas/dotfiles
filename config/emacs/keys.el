@@ -90,6 +90,8 @@
 (with-eval-after-load 'term
 	(define-key term-raw-map (kbd "TAB")
 		(lambda() (interactive) (term-send-raw-string (kbd "TAB"))))
+	(define-key term-raw-map (kbd "<tab>")
+		(lambda() (interactive) (term-send-raw-string (kbd "TAB"))))
 	(define-key term-raw-map (kbd "C-c")
 		(lambda() (interactive) (term-send-raw-string (kbd "C-c")))))
 
