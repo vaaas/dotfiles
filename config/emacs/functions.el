@@ -176,10 +176,11 @@
 				(read-string "file name (no extension): "))
 			".html"))
 		(setq post (append (list "post" "@filename" file-name "@timestamp" stamp "@tag" cat) post))))
-	(insert (pipe post 'vasdown-to-seml 'seml-to-html))))
-	;; (cd blog-directory)
-	;; (shell-command-this-buffer "python3 ncrender")
-	;; (cd "~")))
+	(erase-buffer)
+	(pipe post 'vasdown-to-seml 'seml-to-html 'insert)
+	(cd blog-directory)
+	(shell-command-this-buffer "python3 ncrender")
+	(cd "~")))
 
 (defun b-then-a(a b &rest args) (lambda() (interactive) (apply b args) (funcall a)))
 
