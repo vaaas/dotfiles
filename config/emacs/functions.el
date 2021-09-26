@@ -8,8 +8,7 @@
 (defun find(f xs)
 	(let ((x xs) (found nil))
 	(while (and x (not found))
-		(when (funcall f (car x))
-			(setq found (car x)))
+		(when (funcall f (car x)) (setq found (car x)))
 		(setq x (cdr x)))
 	found))
 
@@ -26,3 +25,8 @@
 		(when (string= (car x) k) (setq found (cadr x)))
 		(setq x (cddr x)))
 	found))
+
+(defun slurp(f)
+	(with-temp-buffer
+		(insert-file-contents f)
+		(buffer-substring-no-properties (point-min) (point-max))))

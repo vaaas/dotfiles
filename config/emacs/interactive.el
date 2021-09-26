@@ -45,10 +45,6 @@
 (defun do-nothing() (interactive))
 (put 'do-nothing 'no-self-insert t)
 
-(defun add-trailing-newline() (end-of-buffer) (when (not (= 10 (char-before))) (insert-char 10)))
-
-(defun add-trailing-newline() (end-of-buffer) (when (not (= 10 (char-before))) (insert-char 10)))
-
 (defun filedb-walk(root disallowed f)
 	(dolist (name (directory-files root))
 		(when (not (member name disallowed))
@@ -69,11 +65,6 @@
 	(split-string
 	(slurp file-db)
 	"\n"))))
-
-(defun slurp(f)
-	(with-temp-buffer
-		(insert-file-contents f)
-		(buffer-substring-no-properties (point-min) (point-max))))
 
 (defun dired-here() (interactive) (dired default-directory))
 
@@ -148,12 +139,11 @@
 		(save-excursion (beginning-of-line) (delete-indent))))
 
 (defun blog() (interactive)
-	(let (
-		(post (read-sexp))
+	(let
+		((post (read-sexp))
 		(cat "")
 		(stamp (timestamp))
-		(file-name "")
-	)
+		(file-name ""))
 	(setq cat (ido-completing-read "category?> " blog-categories))
 	(if (< (buffer-size) 2000)
 		(setq post (append (list "post" "@timestamp" stamp "@tag" cat) post))

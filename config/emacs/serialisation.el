@@ -53,7 +53,7 @@
 			((listp (car head))
 				(push (vasdown-to-seml (car head)) children)
 				(setq head (cdr head)))
-			((string-prefix-p "@" (car head))
+			((string-prefix-p ":" (car head))
 				(push (substring (car head) 1) attrs)
 				(push (cadr head) attrs)
 				(setq head (cddr head)))
