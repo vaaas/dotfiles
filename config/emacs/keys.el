@@ -76,6 +76,21 @@
 (define-key isearch-mode-map (kbd "<escape>") 'isearch-exit)
 (define-key isearch-mode-map (kbd "C-g") 'isearch-exit)
 
+(define-key global-map (kbd "C-' v p") 'variable-pitch-mode)
+(define-key global-map (kbd "C-' e a") (lambda() (interactive) (find-file (concat user-emacs-directory "/abbrev_defs"))))
+(define-key global-map (kbd "C-' e i") (lambda() (interactive) (find-file user-init-file)))
+(define-key global-map (kbd "C-' i t") 'toggle-indent-tabs)
+(define-key global-map (kbd "C-' m m") 'markdown-mode)
+(define-key global-map (kbd "C-' f r") 'french)
+(define-key global-map (kbd "C-' c m") 'cmark)
+(define-key global-map (kbd "C-' s t") 'spaces-to-tabs)
+(define-key global-map (kbd "C-' e r") 'eval-region)
+(define-key global-map (kbd "C-' s s") 'delete-other-windows)
+(define-key global-map (kbd "C-' i b") 'ibuffer)
+(define-key global-map (kbd "C-' c w") 'count-words)
+(define-key global-map (kbd "C-' A") 'mark-whole-buffer)
+(define-key global-map (kbd "C-' q w") (lambda() (interactive) (split-window-horizontally) (split-window-horizontally) (split-window-horizontally) (balance-windows) (follow-mode)))
+
 (with-eval-after-load 'markdown-mode
 	(define-key markdown-mode-map (kbd "<return>") 'double-newline)
 	(define-key markdown-mode-map (kbd "C-n") 'double-newline))
