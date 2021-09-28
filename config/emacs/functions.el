@@ -3,7 +3,6 @@
 (defun pipe(x &rest fs) (seq-reduce (lambda (x f) (funcall f x)) fs x))
 (defun arrow(&rest fs) (lambda(x) (pipe x fs)))
 (defun timestamp() (format-time-string "%s"))
-(defun b-then-a(a b &rest args) (lambda() (apply b args) (funcall a)))
 
 (defun find(f xs)
 	(let ((x xs) (found nil))
