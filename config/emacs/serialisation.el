@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t -*-
 (defun read-sexp-from-file(f)
 	(with-temp-buffer
 		(insert-file-contents f)

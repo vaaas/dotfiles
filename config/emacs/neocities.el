@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t -*-
 (defun nc-render() (interactive)
 	(let
 		((conf ())

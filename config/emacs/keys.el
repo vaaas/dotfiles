@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t -*-
 (define-key global-map (kbd "C-x") 'execute-extended-command)
 (define-key global-map (kbd "C-S-X") 'eval-expression)
 (define-key global-map (kbd "C-c") 'kill-whole-line)

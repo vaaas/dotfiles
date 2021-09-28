@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t -*-
 (defun vi-on() (interactive)
 	(vi-mode 1)
 	(setq cursor-type 'box))
@@ -17,7 +18,7 @@
 (define-key vi-mode-map (kbd "M") 'unindent-line-or-region)
 (define-key vi-mode-map (kbd "j") 'join-line)
 (define-key vi-mode-map (kbd "J") 'comment-or-uncomment-region)
-(define-key vi-mode-map (kbd "q") (b-then-a 'vi-on 'kill-this-buffer))
+(define-key vi-mode-map (kbd "q") (lambda() (interactive) (kill-this-buffer) (vi-on)))
 (define-key vi-mode-map (kbd "Q") 'save-buffers-kill-terminal)
 (define-key vi-mode-map (kbd "w") 'forward-word)
 (define-key vi-mode-map (kbd "W") 'forward-whitespace)
@@ -67,9 +68,9 @@
 (define-key vi-mode-map (kbd "?") 'isearch-backward)
 (define-key vi-mode-map (kbd "SPC") 'vi-off)
 (define-key vi-mode-map (kbd "<escape>") 'keyboard-quit)
-(define-key vi-mode-map (kbd "(") (b-then-a 'vi-on 'next-buffer))
-(define-key vi-mode-map (kbd ")") (b-then-a 'vi-on 'previous-buffer))
-(define-key vi-mode-map (kbd "<tab>") (b-then-a 'vi-on 'switch-to-buffer nil))
+(define-key vi-mode-map (kbd "(") (lambda() (interactive) (next-buffer) (vi-on)))
+(define-key vi-mode-map (kbd ")") (lambda() (interactive) (previous-buffer) (vi-on)))
+(define-key vi-mode-map (kbd "<tab>") (lambda() (interactive) (switch-to-buffer nil) (vi-on)))
 
 (define-minor-mode vi-mode
 	"Ghetto vi mode"
