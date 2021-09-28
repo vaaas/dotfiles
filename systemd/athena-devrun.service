@@ -1,6 +1,5 @@
 [Unit]
-Description=rclone - rsync for cloud storage
-Documentation=https://rclone.org/docs/
+Description=athena devrun
 After=network-online.target
 Wants=network-online.target
 
@@ -8,7 +7,8 @@ Wants=network-online.target
 Restart=on-abnormal
 User=dev
 Group=dev
-ExecStart=/usr/bin/rclone serve webdav --addr '0.0.0.0:8080' /home/dev
+WorkingDirectory=/home/dev/code/athena
+ExecStart=/home/dev/code/athena/devrun.sh
 KillMode=mixed
 KillSignal=SIGTERM
 TimeoutStopSec=5s
