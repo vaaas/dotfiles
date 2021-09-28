@@ -8,7 +8,7 @@ Restart=on-abnormal
 User=dev
 Group=dev
 WorkingDirectory=/home/dev/code/iotwebserver
-ExecStart=/usr/bin/php artisan serve=0.0.0.0
+ExecStart=/usr/bin/php artisan serve --host=0.0.0.0
 KillMode=mixed
 KillSignal=SIGTERM
 TimeoutStopSec=5s
