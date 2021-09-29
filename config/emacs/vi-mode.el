@@ -72,6 +72,21 @@
 (define-key vi-mode-map (kbd ")") (lambda() (interactive) (previous-buffer) (vi-on)))
 (define-key vi-mode-map (kbd "<tab>") (lambda() (interactive) (switch-to-buffer nil) (vi-on)))
 
+(define-key vi-mode-map (kbd "' v p") 'variable-pitch-mode)
+(define-key vi-mode-map (kbd "' e a") (lambda() (interactive) (find-file (concat user-emacs-directory "/abbrev_defs"))))
+(define-key vi-mode-map (kbd "' e i") (lambda() (interactive) (find-file user-init-file)))
+(define-key vi-mode-map (kbd "' i t") 'toggle-indent-tabs)
+(define-key vi-mode-map (kbd "' m m") 'markdown-mode)
+(define-key vi-mode-map (kbd "' f r") 'french)
+(define-key vi-mode-map (kbd "' c m") 'cmark)
+(define-key vi-mode-map (kbd "' s t") 'spaces-to-tabs)
+(define-key vi-mode-map (kbd "' e r") 'eval-region)
+(define-key vi-mode-map (kbd "' s s") 'delete-other-windows)
+(define-key vi-mode-map (kbd "' i b") 'ibuffer)
+(define-key vi-mode-map (kbd "' c w") 'count-words)
+(define-key vi-mode-map (kbd "' A") 'mark-whole-buffer)
+(define-key vi-mode-map (kbd "' q w") (lambda() (interactive) (split-window-horizontally) (split-window-horizontally) (balance-windows) (follow-mode)))
+
 (define-minor-mode vi-mode
 	"Ghetto vi mode"
 	:lighter " vi"
