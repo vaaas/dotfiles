@@ -13,6 +13,8 @@ then
 	else startx
 	fi
 else
-	source ~/.bashrc
-	\emacs
+	if test $TERM = 'screen'
+	then source ~/.bashrc
+	else tmux-attach -d || tmux
+	fi
 fi

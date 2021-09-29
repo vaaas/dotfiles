@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t -*-
 (define-key global-map (kbd "<backspace>") 'backspace-or-unindent)
 (define-key global-map (kbd "<tab>") 'expand-or-tab)
-(define-key global-map (kbd "TAB") 'expand-or-tab)
 (define-key global-map (kbd "<escape>") 'vi-on)
 (define-key global-map (kbd "C-g") 'vi-on)
 (define-key global-map (kbd "<f2>") 'dired-here)
