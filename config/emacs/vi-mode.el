@@ -71,6 +71,7 @@
 (define-key vi-mode-map (kbd "(") (lambda() (interactive) (next-buffer) (vi-on)))
 (define-key vi-mode-map (kbd ")") (lambda() (interactive) (previous-buffer) (vi-on)))
 (define-key vi-mode-map (kbd "<tab>") (lambda() (interactive) (switch-to-buffer nil) (vi-on)))
+(define-key vi-mode-map (kbd "TAB") (lambda() (interactive) (switch-to-buffer nil) (vi-on)))
 
 (define-key vi-mode-map (kbd "' v p") 'variable-pitch-mode)
 (define-key vi-mode-map (kbd "' e a") (lambda() (interactive) (find-file (concat user-emacs-directory "/abbrev_defs"))))
