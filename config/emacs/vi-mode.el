@@ -68,7 +68,6 @@
 (define-key vi-mode-map (kbd "?") 'isearch-backward)
 (define-key vi-mode-map (kbd "SPC") 'vi-off)
 (define-key vi-mode-map (kbd "<escape>") 'keyboard-quit)
-(define-key vi-mode-map (kbd "ESC") 'keyboard-quit)
 (define-key vi-mode-map (kbd "(") (lambda() (interactive) (next-buffer) (vi-on)))
 (define-key vi-mode-map (kbd ")") (lambda() (interactive) (previous-buffer) (vi-on)))
 (define-key vi-mode-map (kbd "<tab>") (lambda() (interactive) (switch-to-buffer nil) (vi-on)))
