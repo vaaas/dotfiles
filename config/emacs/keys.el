@@ -22,6 +22,8 @@
 (define-key isearch-mode-map (kbd "<escape>") 'isearch-exit)
 (define-key isearch-mode-map (kbd "C-g") 'isearch-exit)
 
+(define-key key-translation-map (kbd "ESC") (kbd "C-g"))
+
 (with-eval-after-load 'dired
 	(define-key dired-mode-map (kbd "e") 'dired-next-line)
 	(define-key dired-mode-map (kbd "o") 'dired-previous-line)
@@ -31,7 +33,7 @@
 (with-eval-after-load 'php-mode
 	(define-key php-mode-map (kbd "C-c") nil)
 	(define-key php-mode-map (kbd "<tab>") nil)
-    (define-key php-mode-map (kbd "d") nil))
+	(define-key php-mode-map (kbd "d") nil))
 
 (with-eval-after-load 'term
 	(define-key term-raw-map (kbd "TAB")
