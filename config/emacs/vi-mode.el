@@ -77,7 +77,6 @@
 (define-key vi-mode-map (kbd "' e a") (lambda() (interactive) (find-file (concat user-emacs-directory "/abbrev_defs"))))
 (define-key vi-mode-map (kbd "' e i") (lambda() (interactive) (find-file user-init-file)))
 (define-key vi-mode-map (kbd "' i t") 'toggle-indent-tabs)
-(define-key vi-mode-map (kbd "' m m") 'markdown-mode)
 (define-key vi-mode-map (kbd "' f r") 'french)
 (define-key vi-mode-map (kbd "' c m") 'cmark)
 (define-key vi-mode-map (kbd "' s t") 'spaces-to-tabs)

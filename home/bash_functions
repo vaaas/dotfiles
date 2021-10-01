@@ -158,6 +158,6 @@ d() {
 		s) systemctl status "$@" ;;
 		a) s systemctl start "$@" ;;
 		p) s systemctl stop "$@" ;;
-		j) journalctl "$@" ;;
+		jt) journalctl -n 50 --no-pager -u "$1" ;;
 	esac
 }
