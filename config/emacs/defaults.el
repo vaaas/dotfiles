@@ -45,10 +45,7 @@
 	blog-directory (expand-file-name "~/Projects/website")
 	disabled-command-function nil
 	file-db (expand-file-name "~/filedb.txt")
-	file-db-root-dir (cond
-		((string= (system-name) "devvm") "~/code")
-		((string= (system-name) "cleome") "~/Projects")
-		(t "A:/code"))
+	file-db-root-dir "~/Projects"
 	file-db-exclude-dirs '("." ".." "node_modules" ".git" "public" "vendor" "build")
 	blog-categories '("tech" "anime" "books" "memes" "films" "journal" "games")
 	custom-file (concat user-emacs-directory "defaults.el"))
