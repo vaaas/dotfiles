@@ -43,30 +43,40 @@
 	(string-join (nreverse cs) "")))
 
 (defun vasdown() (interactive)
-	(let ((xml (string-join (mapcar 'vasdown-to-html (read-sexp)) "\n")))
+	(let ((xml (string-join (mapcar
+			(lambda (x) (seml-to-html (vasdown-to-seml x)))
+			(read-sexp))
+		"\n")))
 	(erase-buffer)
 	(insert xml)))
 
-(defun vasdown-to-html (elem)
+(defun vasdown-to-seml (elem)
 	(let ((name (car elem)) (head (cdr elem)) (attrs ()) (children ()))
 	(while head
+		(let ((x (car head)))
 		(cond
-			((listp (car head)) (push (vasdown-to-html (car head)) children))
-			((stringp (car head))
-				(if (string-prefix-p ":" (car head))
-				(progn
-					(push (substring (car head) 1) attrs)
-					(setq head (cdr head))
-					(push (car head) attrs))
-				(push (car head) children))))
-		(setq head (cdr head)))
-	(string-join
-		(list
-			"<" name
-			(if attrs
-				(string-join (cons "" (map-plist (lambda (k v) (concat k "=" "\"" v "\"")) (nreverse attrs))) " ")
-				"")
-			(if children
-				(string-join (list ">" (string-join (nreverse children) " ") "</" name ">") "")
-				"/>"))
-		"")))
+		((listp x) (push (vasdown-to-seml x) children))
+		((stringp x)
+			(if (string-prefix-p ":" x)
+			(progn
+				(push (substring x 1) attrs)
+				(setq head (cdr head))
+				(push (car head) attrs))
+			(push (car head) children))))
+		(setq head (cdr head))))
+	(list name (nreverse attrs) (nreverse children))))
+
+(defun seml-to-html (elem)
+	(let ((name (nth 0 elem)) (attrs (nth 1 elem)) (children (nth 2 elem)))
+	(string-join (list
+		"<" name
+		(if attrs
+			(string-join (cons "" (map-plist (lambda (k v) (concat k "=" "\"" v "\"")) attrs)) " ")
+			"")
+		(if children
+			(string-join (list ">"
+				(string-join (mapcar (lambda (x) (if (listp x) (seml-to-html x) x)) children) " ")
+				"</" name ">")
+			"")
+		"/>"))
+	"")))
