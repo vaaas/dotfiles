@@ -154,7 +154,7 @@
 			".html"))
 		(setq post (append (list "post" "@filename" file-name "@timestamp" stamp "@tag" cat) post))))
 	(erase-buffer)
-	(pipe post 'vasdown-to-seml 'seml-to-html 'insert)
+    (insert (vasdown-to-html (post)))
 	(cd blog-directory)
 	(shell-command-this-buffer "python3 ncrender")
 	(cd "~")))

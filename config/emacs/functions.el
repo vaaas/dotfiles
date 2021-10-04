@@ -1,7 +1,5 @@
 ;; -*- lexical-binding: t -*-
 (defun whitespacep(x) (member x '(9 10 32)))
-(defun pipe(x &rest fs) (seq-reduce (lambda (x f) (funcall f x)) fs x))
-(defun arrow(&rest fs) (lambda(x) (pipe x fs)))
 (defun timestamp() (format-time-string "%s"))
 
 (defun find(f xs)

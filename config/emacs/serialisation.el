@@ -43,45 +43,30 @@
 	(string-join (nreverse cs) "")))
 
 (defun vasdown() (interactive)
-	(let ((xml (string-join (mapcar (arrow 'vasdown-to-seml 'seml-to-html) (read-sexp)) "\n")))
+	(let ((xml (string-join (mapcar 'vasdown-to-html (read-sexp)) "\n")))
 	(erase-buffer)
 	(insert xml)))
 
-(defun vasdown-to-seml(node)
-	(let ((name (car node)) (head (cdr node)) (attrs ()) (children ()))
+(defun vasdown-to-html (elem)
+	(let ((name (car elem)) (head (cdr elem)) (attrs ()) (children ()))
 	(while head
 		(cond
-			((listp (car head))
-				(push (vasdown-to-seml (car head)) children)
-				(setq head (cdr head)))
-			((string-prefix-p ":" (car head))
-				(push (substring (car head) 1) attrs)
-				(push (cadr head) attrs)
-				(setq head (cddr head)))
-			(t
-				(push (car head) children)
-				(setq head (cdr head)))))
-	(list name (nreverse attrs) (nreverse children))))
-
-(defun seml-to-html (elem)
-	(let ((tokens ()) (name (nth 0 elem)) (attrs (nth 1 elem)) (children (nth 2 elem)))
-	(push "<" tokens)
-	(push (car elem) tokens)
-	(when attrs
-		(push " " tokens)
-		(push (string-join (map-plist (lambda (k v) (concat k "=" "\"" v "\"")) attrs) " ") tokens))
-	(if children
-		(progn
-			(push ">" tokens)
-			(push
-				(string-join
-					(mapcar (lambda (x) (cond
-						((stringp x) x)
-						((listp x) (seml-to-html x))
-						(t "")))
-						children)
-					" ")
-				tokens)
-			(push (concat "</" name ">") tokens))
-		(progn (push "/>" tokens)))
-	(string-join (nreverse tokens) "")))
+			((listp (car head)) (push (vasdown-to-html (car head)) children))
+			((stringp (car head))
+				(if (string-prefix-p ":" (car head))
+				(progn
+					(push (substring (car head) 1) attrs)
+					(setq head (cdr head))
+					(push (car head) attrs))
+				(push (car head) children))))
+		(setq head (cdr head)))
+	(string-join
+		(list
+			"<" name
+			(if attrs
+				(string-join (cons "" (map-plist (lambda (k v) (concat k "=" "\"" v "\"")) (nreverse attrs))) " ")
+				"")
+			(if children
+				(string-join (list ">" (string-join (nreverse children) " ") "</" name ">") "")
+				"/>"))
+		"")))
