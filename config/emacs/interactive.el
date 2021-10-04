@@ -146,13 +146,13 @@
 		(file-name ""))
 	(setq cat (ido-completing-read "category?> " blog-categories))
 	(if (< (buffer-size) 2000)
-		(setq post (append (list "post" "@timestamp" stamp "@tag" cat) post))
+		(setq post (append (list "post" ":timestamp" stamp ":tag" cat) post))
 	(progn
 		(setq file-name (concat
 			(replace-regexp-in-string " " "_"
 				(read-string "file name (no extension): "))
 			".html"))
-		(setq post (append (list "post" "@filename" file-name "@timestamp" stamp "@tag" cat) post))))
+		(setq post (append (list "post" ":filename" file-name ":timestamp" stamp ":tag" cat) post))))
 	(erase-buffer)
 	(insert (vasdown-to-html post))
 	(cd blog-directory)
