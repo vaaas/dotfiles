@@ -80,3 +80,22 @@
 			"")
 		"/>"))
 	"")))
+
+(defun pp-sexp (elem &optional lvl)
+	(unless lvl (setq lvl 0))
+	(insert (make-string lvl 9))
+	(insert "(")
+	(dolist (x elem)
+		(cond
+		((listp x)
+			(insert "\n")
+			(pp-sexp x (+ 1 lvl)))
+		((stringp x)
+			(cond
+			((not (member (char-before) (list 10 32 40 41)))
+				(insert " "))
+			((= (char-before) 41)
+				(insert "\n")
+				(insert (make-string (+ 1 lvl) 9))))
+			(insert x))))
+	(insert ")"))
