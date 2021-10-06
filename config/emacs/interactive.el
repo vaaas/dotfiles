@@ -103,7 +103,8 @@
 	(replace-all "?!" "⁈")
 	(replace-all-regex "[ |\u202F]+\\(;\\|!\\|\\?\\|⁈\\)" "\u202F\\1")
 	(replace-all-regex "[ |\u00A0]+\\([:\\|»]\\)" "\u00A0\\1")
-	(replace-all-regex "«[ |\u00A0]+" "«\u00A0"))
+	(replace-all-regex "«[ |\u00A0]+" "«\u00A0")
+	(replace-all "  " " "))
 
 (defun eval-region-smart() (interactive)
 	(shell-command-on-region (point-min) (point-max) eval-process))
@@ -154,7 +155,7 @@
 			".html"))
 		(setq post (append (list "post" ":filename" file-name ":timestamp" stamp ":tag" cat) post))))
 	(erase-buffer)
-	(insert (vasdown-to-html post))
+	(insert (seml-to-html (vasdown-to-seml post)))
 	(cd blog-directory)
 	(shell-command-this-buffer "python3 ncrender")
 	(cd "~")))
