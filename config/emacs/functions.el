@@ -27,3 +27,9 @@
 	(with-temp-buffer
 		(insert-file-contents f)
 		(buffer-substring-no-properties (point-min) (point-max))))
+
+(defun intersperse (s xs)
+	(let ((r ()))
+	(push (car xs) r)
+	(dolist (x (cdr xs)) (push s r) (push x r))
+	(nreverse r)))

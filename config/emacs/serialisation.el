@@ -40,7 +40,7 @@
 			(t
 				(forward-char)
 				(push (char-to-string c) cs))))
-	(string-join (nreverse cs) "")))
+	(string-join (nreverse cs))))
 
 (defun vasdown() (interactive)
 	(let ((xml (string-join (mapcar
@@ -64,22 +64,37 @@
 				(push (car head) attrs))
 			(push (car head) children))))
 		(setq head (cdr head))))
-	(list name (nreverse attrs) (nreverse children))))
+	(list name (nreverse attrs) (vasdown-normalise (nreverse children)))))
+
+(defun vasdown-normalise (xs)
+	(let ((tokens nil) (str nil))
+	(dolist (x xs)
+		(cond
+		((stringp x)
+			(when (or str (and tokens (listp (car tokens)) (not (member (substring x 0 1) (list "." "?" "!" "\"")))))
+				(push " " str))
+			(push x str))
+		((listp x)
+			(when str (push " " str))
+			(push (string-join (nreverse str)) tokens)
+			(setq str nil)
+			(push x tokens))))
+	(when str (push (string-join (nreverse str)) tokens))
+	(nreverse tokens)))
 
 (defun seml-to-html (elem)
 	(let ((name (nth 0 elem)) (attrs (nth 1 elem)) (children (nth 2 elem)))
-	(string-join (list
-		"<" name
-		(if attrs
-			(string-join (cons "" (map-plist (lambda (k v) (concat k "=" "\"" v "\"")) attrs)) " ")
-			"")
+	(string-join (append
+		(list "<" name)
+		(when attrs (append
+			(list " ")
+			(intersperse " " (map-plist (lambda (k v) (concat k "=" "\"" v "\"")) attrs))))
 		(if children
-			(string-join (list ">"
-				(string-join (mapcar (lambda (x) (if (listp x) (seml-to-html x) x)) children) " ")
-				"</" name ">")
-			"")
-		"/>"))
-	"")))
+			(append
+				(list ">")
+				(mapcar (lambda (x) (if (listp x) (seml-to-html x) x)) children)
+				(list "</" name ">"))
+			(list "/>"))))))
 
 (defun pp-sexp (elem &optional lvl)
 	(unless lvl (setq lvl 0))
