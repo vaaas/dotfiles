@@ -1,43 +1,38 @@
 ;; -*- lexical-binding: t -*-
 (defun nc-render() (interactive)
 	(let
-		((conf ())
-		(site (car (read-sexp-from-file (concat blog-directory "/site.lisp"))))
-		(posts ())
-		(pages ()))
-
+		((site (read-elisp-file (concat blog-directory "/site.lisp")))
+		(conf nil)
+		(posts nil))
 	; load data frome site file
-	(dolist (x (cdr site))
-		(cond
-		((member (car x) '("icon" "sitename" "lang" "url" "author"))
-			(push (cadr x) conf)
-			(push (car x) conf))
-		((string= (car x) "links")
-			(push (cdr x) conf)
-			(push (car x) conf))
-		((string= (car x) "posts")
-			(setq posts (mapcar 'vasdown-to-seml (cdr x))))
-		((string= (car x) "pages")
-			(setq pages (mapcar 'vasdown-to-seml (cdr x))))))
+	(setq conf (alist
+		'icon (alist-get 'icon site)
+		'sitename (alist-get 'sitename site)
+		'lang (alist-get 'lang site)
+		'url (alist-get 'url site)
+		'author (alist-get 'author site)
+		'links (alist-get 'links site)))
+	(setq posts (alist-get 'posts site))
 	; render index.html
 	(with-temp-file (concat blog-directory "/render/index.html")
 		(insert
 		(concat "<!DOCTYPE html>"
-		(seml-to-html
-		(nc-inline
+		(serialise-xml
 		(nc-frontpage conf
-		(mapcar 'nc-render-item
-		(seq-filter (lambda(x) (not (str-plist-get "skip" (nth 1 x))))
-		posts))))))))
+		(mapcar #'nc-render-item
+		(seq-filter (lambda (x) (not (alist-get "skip" (nth 1 x))))
+		posts)))))))
+	; render rss.xml
+	(with-temp-file (concat blog-directory "/render/rss.xml")
+		(insert
+		(concat "<?xml version='1.0' encoding='UTF-8'?>"
+		(nc-rss conf
+		(mapcar #'nc-rss-item
+		(seq-filter (lambda (x) (not (alist-get "skip" (nth 1 x))))
+		posts))))))
+
 ))
 
-	; render rss.xml
-	;; (with-temp-file (concat blog-directory "/render/rss.xml")
-	;; 	(concat "<?xml version='1.0' encoding='UTF-8'?>" (seml-to-html
-	;; 	(nc-rss conf
-	;; 	(map (lambda(x) (nc-rss-item conf x))
-	;; 	(seq-filter (lambda(x) (str-plist-get "skip" (nth 1 x)))
-	;; 	posts))))))
 
 	; render individual articles
 	;; (dolist (x (seq-filter (lambda(x) (str-plist-get "filename" (nth 1 x))) posts))
@@ -50,96 +45,68 @@
 	;; 		(concat "<!DOCTYPE html>" (seml-to-html (nc-inline (nc-page x))))))))
 
 (defun nc-rencer-item (x)
-	(list "article"
-		(list ("id" (nc-guid (string-to-number (str-plist-get "timestamp" (nth 1 x)))))
-			("t" (str-plist-get "tag" (nth 1 x))))
-		(nc-description x)))
+	(append
+		(list 'article (alist
+			't (alist-get 'tag (nth 1 x))
+			'id (nc-guid (alist-get 'timestamp (nth 1 x)))))
+		(nc-description x))
 
 (defun nc-description (x)
-	(let ((xs ()) (h1 ()) (p ()))
-	(push (list "time" nil (nc-ymd (string-to-number (str-plist-get "timestamp" (nth 1 x))))) xs)
-	(if (str-plist-get "filename" (nth 1 x))
-	(progn
-		(setq h1 (query-selector (seml-elem= "h1") x))
-		(when (not h1) (throw 'bad-post "No h1 found"))
-		(setq p (query-selector (seml-elem= "p") p))
-		(when (not p) (throw 'bad-post "No p found"))
-		(push (list "h1" nil (list
-			(list "a"
-				(list "href" (concat "/" (str-plist-get "filename" (nth 1 x))))
-				(nth 2 h1))))
-			xs)
-		(push (nth 2 p) xs))
-	(dolist (y (nth 2 x)) (push y xs)))
-	(nreverse xs)))
-
-(defun seml-elem= (s) (lambda (x) (string= s (car x))))
-
-(defun query-selector (f node)
-	(let ((head node) (found nil) (children (nth 2 node)))
-	(while (and head (not found))
-		(when (funcall f (car head)) (setq found (car head)))
-		(while (and children (not found))
-			(setq found (query-selector f (car children)))
-			(setq children (cdr children)))
-		(setq head (car node)))
-	found))
-
-(defun query-selector-all (f node)
-	(let ((head node) (found ()) (children (nth 2 node)))
-	(while head
-		(when (funcall f (car head)) (push (car head) found))
-		(while children
-			(setcdr (last found) (query-selector f (car children)))
-			(setq children (cdr children)))
-		(setq head (car node)))
-	found))
-
-(defun nc-inline (x) x)
+	(let ((filename (alist-get 'filename (nth 1 x))))
+	(append
+		(list (list 'time nil (nc-ymd (alist-get 'timestamp (nth 1 x)))))
+		(if filename
+		(let
+			((h1 (query-selector (xml-elem= 'h1) x))
+			(p (query-selector (xml-elem= 'p) x)))
+			(when (not h1) (throw 'bad-post "No h1 found"))
+			(when (not p) (throw 'bad-post "No p found"))
+			(list
+				(append
+					(list 'h1 nil (list 'a (alist 'href (concat "/" filename))))
+					(cddr h1))
+				(cddr p)))
+		(cddr x)))))
 
 (defun nc-frontpage (conf xs)
 	(let
 	((distinct-tags
 		(sort
 		(delete-dups
-		(mapcar
-			(lambda (x) (str-plist-get "t" (nth 1 x)))
-			xs))
-		'string<)))
+		(mapcar (lambda (x) (symbol-name (alist-get 't (nth 1 x)))) xs)
+		#'string<))))
 	(nc-html
-		(str-plist-get "lang" conf)
-		(nc-head conf (str-plist-get "sitename" conf))
-		(list "body" nil (list
-			(list "header" nil (list
-				(list "div" (list "class" "imgtxt") (list
-					(list "img" (list "src" "/pics/banner.jpg") nil)
-					(list "h1" nil (list (str-plist-get "sitename" conf)))))))
-			(list "nav" nil (append
-				(str-plist-get "links" conf)
-				(list (list "a" (list "class" "active" "href" "all") (list "all")))
-				(mapcar (lambda (x) (list "a" (list "href" x) (list x))) distinct-tags)))
-			(list "main" nil (nreverse xs))
-			(list "script" (list "src" "/script.js") (list " ")))))))
+		(alist-get 'lang conf)
+		(nc-head conf (alist-get 'sitename conf))
+		(list 'body nil
+			(list 'header nil
+				(list 'div (alist 'class "imgtxt")
+					(list 'img (alist 'src "/pics/banner.jpg"))
+					(list 'h1 nil (alist-get 'sitename conf))))
+			(list 'nav nil (append
+				(alist-get 'links conf)
+				(list (list a' (alist 'class "active" 'href "all") "all"))
+				(mapcar (lambda (x) (list 'a (alist 'href x) x)) distinct-tags)))
+			(append (list 'main nil) (nreverse xs))
+			(list 'script (list 'src "/script.js") " ")))))
 
 (defun nc-head (conf title)
-	(list "head" nil (list
-		(list "meta" (list "charset" "utf8") nil)
-		(list "meta" (list "name" "viewport" "content" "width=device-width, initial-scale=1.0") nil)
-		(list "meta" (list "name" "url" "content" (str-plist-get "url" conf)) nil)
-		(list "meta" (list "name" "author" "content" (str-plist-get "author" conf)) nil)
-		(list "meta" (list "name" "description" "content" (str-plist-get "sitename" conf)) nil)
-		(list "link" (list "rel" "stylesheet" "href" "/style.css") nil)
-		(list "link" (list "rel" "icon" "href" "/favicon.ico") nil)
-		(list "link" (list "rel" "alternate" "href" "/rss.xml" "type" "application/rss+xml") nil)
-		(list "title" nil (list title)))))
+	(list 'head nil
+		(list 'meta (alist 'charset "utf8"))
+		(list 'meta (alist 'name "viewport" 'content "width=device-width, initial-scale=1.0"))
+		(list 'meta (alist 'name "url" 'content (alist-get 'url conf)))
+		(list 'meta (alist 'name "author" 'content (alist-get 'author conf)))
+		(list 'meta (alist 'name "description" 'content (alist-get 'sitename conf)))
+		(list 'link (alist 'rel "stylesheet" 'href "/style.css"))
+		(list 'link (alist 'rel "icon" 'href "/favicon.ico"))
+		(list 'link (alist 'rel "alternate" 'href "/rss.xml" 'type "application/rss+xml"))
+		(list 'title nil title)))
 
-(defun nc-html(lang head body)
-	(list "html" (list "lang" lang) (list head body)))
+(defun nc-html(lang head body) (list 'html (alist 'lang lang) head body)
 
 (defun nc-render-item (x)
-	(list "article" (list
-		"id" (nc-guid (string-to-number (str-plist-get "timestamp" (nth 1 x))))
-		"t" (str-plist-get "tag" (nth 1 x)))
+	(append
+		(list 'article (alist 'id (nc-guid (alist-get 'timestamp (nth 1 x))) 't (alist-get 't (nth 1 x))))
 		(nc-description x)))
 
 (defun nc-guid (x) "43892174312")
