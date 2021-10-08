@@ -38,13 +38,6 @@
 		(setq head (cddr head)))
 	(nreverse results)))
 
-(defun str-plist-get(k xs)
-	(let ((x xs) (found nil))
-	(while (and x (not found))
-		(when (string= (car x) k) (setq found (cadr x)))
-		(setq x (cddr x)))
-	found))
-
 (defun slurp(f)
 	(with-temp-buffer
 		(insert-file-contents f)

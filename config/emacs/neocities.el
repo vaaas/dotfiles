@@ -3,7 +3,9 @@
 	(let
 		((site (read-elisp-file (concat blog-directory "/site.lisp")))
 		(conf nil)
-		(posts nil))
+		(posts nil)
+		(doctype "<!DOCTYPE html>"))
+
 	; load data frome site file
 	(setq conf (alist
 		'icon (alist-get 'icon site)
@@ -13,38 +15,34 @@
 		'author (alist-get 'author site)
 		'links (alist-get 'links site)))
 	(setq posts (alist-get 'posts site))
+
 	; render index.html
 	(with-temp-file (concat blog-directory "/render/index.html")
 		(insert
-		(concat "<!DOCTYPE html>"
+		(concat doctype
 		(serialise-xml
 		(nc-frontpage conf
 		(mapcar #'nc-render-item
 		(seq-filter (lambda (x) (not (alist-get "skip" (nth 1 x))))
 		posts)))))))
+
 	; render rss.xml
-	(with-temp-file (concat blog-directory "/render/rss.xml")
-		(insert
-		(concat "<?xml version='1.0' encoding='UTF-8'?>"
-		(nc-rss conf
-		(mapcar #'nc-rss-item
-		(seq-filter (lambda (x) (not (alist-get "skip" (nth 1 x))))
-		posts))))))
-
-))
-
+	;; (with-temp-file (concat blog-directory "/render/rss.xml")
+	;; 	(insert
+	;; 	(concat "<?xml version='1.0' encoding='UTF-8'?>"
+	;; 	(serialise-xml
+	;; 	(nc-rss conf
+	;; 	(mapcar #'nc-rss-item
+	;; 	(seq-filter (lambda (x) (not (alist-get "skip" (nth 1 x))))
+	;; 	posts)))))))
 
 	; render individual articles
-	;; (dolist (x (seq-filter (lambda(x) (str-plist-get "filename" (nth 1 x))) posts))
-	;; 	(with-temp-file (concat blog-directory "/render/" (str-plist-get "filename" x))
-	;; 		(concat "<!DOCTYPE html>" (seml-to-html (nc-inline (nc-post x))))))
+	;; (dolist (x (seq-filter (lambda(x) (alist-get 'filename (nth 1 x))) posts))
+	;; 	(with-temp-file (concat blog-directory "/render"/ (alist-get 'filename (nth 1 x)))
+	;; 		(insert (concat doctype (serialise-xml (nc-post x))))))
+))
 
-	;; ; render individual pages
-	;; (dolist (x (seq-filter (lambda(x) (str-plist-get "filename" (nth 1 x))) posts))
-	;; 	(with-temp-file (concat blog-directory "/render/" (str-plist-get "filename" x))
-	;; 		(concat "<!DOCTYPE html>" (seml-to-html (nc-inline (nc-page x))))))))
-
-(defun nc-rencer-item (x)
+(defun nc-render-item (x)
 	(append
 		(list 'article (alist
 			't (alist-get 'tag (nth 1 x))
@@ -103,11 +101,5 @@
 		(list 'title nil title)))
 
 (defun nc-html(lang head body) (list 'html (alist 'lang lang) head body)
-
-(defun nc-render-item (x)
-	(append
-		(list 'article (alist 'id (nc-guid (alist-get 'timestamp (nth 1 x))) 't (alist-get 't (nth 1 x))))
-		(nc-description x)))
-
 (defun nc-guid (x) "43892174312")
 (defun nc-ymd (x) "6666-69-42")
