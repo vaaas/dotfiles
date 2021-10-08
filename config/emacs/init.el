@@ -6,5 +6,5 @@
 (require 'json)
 (require 'seq)
 
-(dolist (x '("defaults" "functions" "interactive" "vi-mode" "keys" "hooks" "serialisation" "neocities"))
+(dolist (x '("defaults" "functions" "interactive" "vi-mode" "keys" "hooks" "neocities"))
 	(load-file (format "%s/%s.el" user-emacs-directory x)))

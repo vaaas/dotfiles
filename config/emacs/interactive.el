@@ -141,21 +141,24 @@
 
 (defun blog() (interactive)
 	(let
-		((post (read-sexp))
-		(cat "")
+		((buffer (current-buffer))
+		(cat (ido-completing-read "category?> " blog-categories))
 		(stamp (timestamp))
-		(file-name ""))
-	(setq cat (ido-completing-read "category?> " blog-categories))
-	(if (< (buffer-size) 2000)
-		(setq post (append (list "post" ":timestamp" stamp ":tag" cat) post))
-	(progn
-		(setq file-name (concat
-			(replace-regexp-in-string " " "_"
-				(read-string "file name (no extension): "))
-			".html"))
-		(setq post (append (list "post" ":filename" file-name ":timestamp" stamp ":tag" cat) post))))
-	(erase-buffer)
-	(insert (seml-to-html (vasdown-to-seml post)))
-	(cd blog-directory)
-	(shell-command-this-buffer "python3 ncrender")
-	(cd "~")))
+		(file-name (when (>= (buffer-size) 2000)
+			(concat
+				(replace-regexp-in-string " " "_"
+					(read-string "file name (no extension): "))
+				".html"))))
+	(with-temp-buffer
+		(insert (serialise-xml (append
+			(list 'post (if file-name
+				(alist 'timestamp stamp 'tag cat 'filename file-name)
+				(alist 'timestamp stamp 'tag cat)))
+			(with-temp-buffer
+				(insert-buffer buffer)
+				(cmark)
+				(beginning-of-buffer) (insert "<body>")
+				(end-of-buffer) (insert "</body>")
+				(cddr (libxml-parse-xml-region (point-min) (point-max)))))))
+		(with-temp-dir blog-directory
+			(shell-command-this-buffer "python3 ncrender")))))
