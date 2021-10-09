@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t -*-
+;;; -*- lexical-binding: t -*-
 (add-hook 'prog-mode-hook (lambda() (abbrev-mode 1) (vi-on)))
 (add-hook 'minibuffer-setup-hook 'vi-off)
 (add-hook 'text-mode-hook (lambda() (variable-pitch-mode) (vi-on)))

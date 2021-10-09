@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t -*-
+;;; -*- lexical-binding: t -*-
 (defun backward-whitespace() (interactive) (forward-whitespace -1))
 
 (defun zap-up-to-char-backward() (interactive)

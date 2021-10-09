@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t -*-
+;;; -*- lexical-binding: t -*-
 (defun vi-on() (interactive)
 	(vi-mode 1)
 	(setq cursor-type 'box))
@@ -81,6 +81,7 @@
 (define-key vi-mode-map (kbd "' c m") 'cmark)
 (define-key vi-mode-map (kbd "' s t") 'spaces-to-tabs)
 (define-key vi-mode-map (kbd "' e r") 'eval-region)
+(define-key vi-mode-map (kbd "' e b") 'eval-buffer)
 (define-key vi-mode-map (kbd "' s s") 'delete-other-windows)
 (define-key vi-mode-map (kbd "' i b") 'ibuffer)
 (define-key vi-mode-map (kbd "' c w") 'count-words)
