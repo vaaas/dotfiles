@@ -1,19 +1,19 @@
 ;;; -*- lexical-binding: t -*-
 (defun nc-render() (interactive)
-	(let
+	(let*
 		((site (read-elisp-file (concat blog-directory "/site.lisp")))
-		(posts nil)
+		(posts (alist-get 'posts site))
 		(doctype "<!DOCTYPE html>"))
-	(setq posts (alist-get 'posts site))
+
 	; render index.html
-	;; (with-temp-file (concat blog-directory "/render/index.html")
-	;; 	(insert
-	;; 	(concat doctype
-	;; 	(serialise-xml
-	;; 	(nc-frontpage site
-	;; 	(mapcar #'nc-render-item
-	;; 	(seq-filter (lambda (x) (not (alist-get 'skip (nth 1 x))))
-	;; 	posts)))))))
+	(with-temp-file (concat blog-directory "/render/index.html")
+		(insert
+		(concat doctype
+		(serialise-xml
+		(nc-frontpage site
+		(mapcar #'nc-render-item
+		(seq-filter (lambda (x) (not (alist-get 'skip (nth 1 x))))
+		posts)))))))
 
 	; render rss.xml
 	(with-temp-file (concat blog-directory "/render/rss.xml")
@@ -26,9 +26,9 @@
 		posts)))))))
 
 	; render individual articles
-	;; (dolist (x (seq-filter (lambda(x) (alist-get 'filename (nth 1 x))) posts))
-	;; 	(with-temp-file (concat blog-directory "/render"/ (alist-get 'filename (nth 1 x)))
-	;; 		(insert (concat doctype (serialise-xml (nc-post x))))))
+	(dolist (x (seq-filter (lambda(x) (alist-get 'filename (nth 1 x))) posts))
+		(with-temp-file (concat blog-directory "/render/" (alist-get 'filename (nth 1 x)))
+			(insert (concat doctype (serialise-xml (nc-post site x))))))
 ))
 
 (defun nc-render-item (x)
@@ -39,21 +39,22 @@
 		(nc-description x)))
 
 (defun nc-description (x)
-	(let ((filename (alist-get 'filename (nth 1 x))))
-	(append
-		(list (list 'time nil (nc-ymd (alist-get 'timestamp (nth 1 x)))))
-		(if filename
-		(let
-			((h1 (query-selector (xml-elem= 'h1) x))
-			(p (query-selector (xml-elem= 'p) x)))
-			(when (not h1) (throw 'bad-post "No h1 found"))
-			(when (not p) (throw 'bad-post "No p found"))
-			(list
-				(append
-					(list 'h1 nil (list 'a (alist 'href (concat "/" filename))))
-					(cddr h1))
-				(cddr p)))
-		(cddr x)))))
+	(let
+		((filename (alist-get 'filename (nth 1 x)))
+		(xs (list (list 'time nil (nc-ymd (alist-get 'timestamp (nth 1 x)))))))
+	(if (not filename) (push-all (cddr x) xs)
+	(let
+		((h1 (query-selector (xml-elem= 'h1) x))
+		(p (query-selector (xml-elem= 'p) x)))
+		(when (not h1) (throw 'bad-post "No h1 found"))
+		(when (not p) (throw 'bad-post "No p found"))
+		(push
+			(list 'h1 nil (append
+				(list 'a (alist 'href (concat "/" filename)))
+				(cddr h1)))
+			xs)
+		(push-all (cddr p) xs))
+	(nreverse xs))))
 
 (defun nc-frontpage (conf xs)
 	(let
@@ -91,17 +92,17 @@
 		(list 'link (alist 'rel "alternate" 'href "/rss.xml" 'type "application/rss+xml"))
 		(list 'title nil title)))
 
-(defun nc-html(lang head body) (list 'html (alist 'lang lang) head body))
-(defun nc-guid (x) "43892174312") ;todo
-(defun nc-ymd (x) "6666-69-42") ;todo
-(defun nc-rfctime (x) "Today is nice") ;todo
+(defun nc-html (lang head body) (list 'html (alist 'lang lang) head body))
+(defun nc-guid (x) (int-to-base (/ (- x 1483228800) 60) 64))
+(defun nc-ymd (x) (format-time-string "%Y-%m-%d" (seconds-to-time x)))
+(defun nc-rfctime (x) (format-time-string "%a, %d %b %Y %H:%M:%S %z" (seconds-to-time x)))
 
 (defun nc-rss-item (site x)
-	(let ((guid nil) (url nil))
-	(setq guid (nc-guid (alist-get 'timestamp x)))
-	(setq url (concat (alist-get 'url site) "/#" guid))
+	(let*
+		((guid (nc-guid (alist-get 'timestamp (nth 1 x))))
+		(url (concat (alist-get 'url site) "/#" guid)))
 	(list 'item nil
-		(list 'title nil (xml-inner-text x))
+		(list 'title nil
 			(iff (query-selector (xml-elem= 'h1) x)
 				#'xml-inner-text
 				(K (format "New post by %s (%s)" (alist-get 'author site) guid))))
@@ -110,7 +111,7 @@
 		(list 'link nil url)
 		(append
 			(list 'description nil)
-			(mapcar (lambda (x) (xml-escape-string (serialise-xml x))) (nc-description x)))))
+			(mapcar (lambda (x) (xml-escape-string (serialise-xml x))) (nc-description x))))))
 
 (defun nc-rss (site xs)
 	(list 'rss (alist 'version "2.0" 'xmlns:atom "http://www.w3.org/2005/Atom")
@@ -127,3 +128,17 @@
 				(list 'language nil (alist-get 'lang site))
 				(list 'ttl nil "1440"))
 			(nreverse xs))))
+
+(defun nc-post (site x)
+	(let ((h1 (query-selector (xml-elem= 'h1) x))
+		(timestamp (alist-get 'timestamp x)))
+	(when (not h1) (throw 'bad-post "No h1 found"))
+	(nc-html
+		(alist-get 'lang x)
+		(nc-head site (xml-inner-text h1))
+		(list 'body (alist 'class "post")
+			(list 'header nil
+				(list 'a (alist 'href "/") (alist-get 'sitename site))
+				" — "
+				(list 'time nil (nc-ymd timestamp)))
+			(append (list 'main nil) (cddr x))))))

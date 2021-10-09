@@ -36,7 +36,22 @@
 	(cd ,temp-dir)
 	(unwind-protect (progn ,@body) (cd old))))
 
+(defmacro push-all (xs list)
+	`(dolist (x ,xs) (setq ,list (cons x ,list))))
+
 (defun read-elisp-file (file)
 	(with-current-buffer (find-file-noselect file)
 	(goto-char (point-min))
 	(read (current-buffer))))
+
+(defun int-to-base (n base)
+	(if (= n 0) "0"
+	(let ((xs nil)
+		(neg (< n 0))
+		(x (abs n))
+		(digits "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_"))
+	(while (> x 0)
+		(push (elt digits (% x base)) xs)
+		(setq x (/ x base)))
+	(let ((res (string-join (mapcar #'char-to-string xs))))
+	(if neg (concat "-" res) res)))))
