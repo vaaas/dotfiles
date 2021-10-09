@@ -39,6 +39,15 @@
 (defmacro push-all (xs list)
 	`(dolist (x ,xs) (setq ,list (cons x ,list))))
 
+(defmacro with-contents-function (buffer setup &rest rest)
+	`(progn
+		(switch-to-buffer ,buffer)
+		,setup
+		(setq-local
+			after-save-hook nil
+			before-save-hook nil
+			write-contents-functions (list (lambda() ,@rest)))))
+
 (defun read-elisp-file (file)
 	(with-current-buffer (find-file-noselect file)
 	(goto-char (point-min))
