@@ -1,7 +1,5 @@
-(when (display-graphic-p)
-	(scroll-bar-mode -1)
-	(tool-bar-mode -1))
-
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
 (menu-bar-mode -1)
 (electric-indent-mode -1)
 (ido-mode 1)
@@ -56,7 +54,7 @@
 (custom-set-variables
 	'(package-selected-packages '(php-mode)))
 (custom-set-faces
-	(list 'default (list (list t (list :inherit nil :stipple nil :background (if (display-graphic-p) "#ffeedd" nil) :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant 'normal :weight 'normal :height 140 :width 'normal :family "JuliaMono"))))
+	'(default (list (list t (list :inherit nil :stipple nil :background "#ffeedd" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant 'normal :weight 'normal :height 140 :width 'normal :family "JuliaMono"))))
 	'(cursor ((t (:background "#ff0055"))))
 	'(eshell-ls-directory ((t (:foreground "#2255aa" :weight bold))))
 	'(eshell-ls-executable ((t (:foreground "#008844" :weight bold))))
