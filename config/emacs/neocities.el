@@ -1,20 +1,11 @@
 ;;; -*- lexical-binding: t -*-
 (defun nc-render() (interactive)
-	(let
-		((site (read-xml-file (concat blog-directory "/site.xml")))
-		(conf nil) (posts nil) (pages nil)
+	(let*
+		((site (read-elisp-file (concat blog-directory "/site.el")))
+		(conf (alist-get 'conf site))
+		(posts (alist-get 'posts site))
+		(pages (alist-get 'pages site))
 		(doctype "<!DOCTYPE html>"))
-
-	; load from file
-	(dolist (x (seq-filter 'listp (cddr site)))
-		(let ((tag (car x)))
-		(cond
-			((member tag (list 'icon 'sitename 'lang 'author 'url))
-				(push (cons tag (xml-inner-text x)) conf))
-			((member tag (list 'links 'blurb))
-				(push (cons tag (cddr x)) conf))
-			((eq tag 'posts) (setq posts (cddr x)))
-			((eq tag 'pages) (setq pages (cddr x))))))
 
 	; render index.html
 	(with-temp-file (concat blog-directory "/render/index.html")
@@ -108,9 +99,9 @@
 		(list 'title nil title)))
 
 (defun nc-html (lang head body) (list 'html (alist 'lang lang) head body))
-(defun nc-guid (x) (int-to-base (/ (- (string-to-number x) 1483228800) 60) 64))
-(defun nc-ymd (x) (format-time-string "%Y-%m-%d" (seconds-to-time (string-to-number x))))
-(defun nc-rfctime (x) (format-time-string "%a, %d %b %Y %H:%M:%S %z" (seconds-to-time (string-to-number x))))
+(defun nc-guid (x) (int-to-base (/ (- x 1483228800) 60) 64))
+(defun nc-ymd (x) (format-time-string "%Y-%m-%d" (seconds-to-time x)))
+(defun nc-rfctime (x) (format-time-string "%a, %d %b %Y %H:%M:%S %z" (seconds-to-time x)))
 
 (defun nc-rss-item (conf x)
 	(let*
@@ -151,7 +142,7 @@
 		(timestamp (alist-get 'timestamp (nth 1 x))))
 	(when (not h1) (throw 'bad-post "No h1 found"))
 	(nc-html
-		(alist-get 'lang x)
+		(alist-get 'lang conf)
 		(nc-head conf (xml-inner-text h1))
 		(list 'body (alist 'class "post")
 			(list 'header nil

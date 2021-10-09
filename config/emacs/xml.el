@@ -3,8 +3,10 @@
 
 (defun serialise-xml(node)
 	(cond
+	((eq nil node) "")
 	((stringp node) (xml-escape-string node))
-	((listp node) (serialise-xml-node node))))
+	((listp node) (serialise-xml-node node))
+	(t "")))
 
 (defun serialise-xml-node(node)
 	(let
@@ -20,7 +22,7 @@
 			(if children
 				(append
 					(list ">")
-					(mapcar 'serialise-xml children)
+					(mapcar #'serialise-xml children)
 					(list "</" name ">"))
 				(list "/>")))))))
 
@@ -32,7 +34,7 @@
 (defun tokenise-xml-attrs (xs)
 	(apply #'append
 	(intersperse (list " ")
-	(mapcar (lambda (x) (list (symbol-name (car x)) "=" "\"" (cdr x) "\""))
+	(mapcar (lambda (x) (list (symbol-name (car x)) "=" "\"" (xml-escape-string (cdr x)) "\""))
 	xs))))
 
 (defun query-selector (f node)

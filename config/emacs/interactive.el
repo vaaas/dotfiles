@@ -140,17 +140,17 @@
 		(save-excursion (beginning-of-line) (delete-indent))))
 
 (defun blog() (interactive)
-	(let
+	(let*
 		((buffer (current-buffer))
+		(site-file (concat blog-directory "/site.el"))
 		(cat (ido-completing-read "category?> " blog-categories))
 		(stamp (timestamp))
 		(file-name (when (>= (buffer-size) 2000)
 			(concat
 				(replace-regexp-in-string " " "_"
 					(read-string "file name (no extension): "))
-				".html"))))
-	(with-temp-buffer
-		(insert (serialise-xml (append
+				".html")))
+		(post (append
 			(list 'post (if file-name
 				(alist 'timestamp stamp 'tag cat 'filename file-name)
 				(alist 'timestamp stamp 'tag cat)))
@@ -159,6 +159,9 @@
 				(cmark)
 				(beginning-of-buffer) (insert "<body>")
 				(end-of-buffer) (insert "</body>")
-				(cddr (libxml-parse-xml-region (point-min) (point-max)))))))
-		(with-temp-dir blog-directory
-			(shell-command-this-buffer "python3 ncrender")))))
+				(cddr (libxml-parse-xml-region (point-min) (point-max))))))
+		(site (read-elisp-file site-file))
+		(posts (alist-get 'posts site)))
+	(with-temp-file (concat blog-directory "/site.el")
+		(setcdr (last posts) (cons post nil))
+		(prin1 site (current-buffer)))))
