@@ -42,11 +42,13 @@
 (defmacro with-contents-function (buffer setup &rest rest)
 	`(progn
 		(switch-to-buffer ,buffer)
+		(erase-buffer)
 		,setup
 		(setq-local
 			after-save-hook nil
 			before-save-hook nil
-			write-contents-functions (list (lambda() ,@rest)))))
+			write-contents-functions (list (lambda() ,@rest)))
+		(concat "Editing virtual " ,buffer ". File will not be saved.")))
 
 (defun read-elisp-file (file)
 	(with-current-buffer (find-file-noselect file)
@@ -68,3 +70,5 @@
 		(setq x (/ x base)))
 	(let ((res (string-join (mapcar #'char-to-string xs))))
 	(if neg (concat "-" res) res)))))
+
+(defun head (n x) (butlast x (- (length x) n)))

@@ -34,7 +34,15 @@
 (defun tokenise-xml-attrs (xs)
 	(apply #'append
 	(intersperse (list " ")
-	(mapcar (lambda (x) (list (symbol-name (car x)) "=" "\"" (xml-escape-string (cdr x)) "\""))
+	(mapcar (lambda (x) (let ((k (car x)) (v (cdr x)))
+		(print v)
+		(list
+			(symbol-name k) "=" "\""
+			(cond ((numberp v) (number-to-string v))
+				((stringp v) (xml-escape-string v))
+				((symbolp v) (symbol-name v))
+				(t ""))
+			"\"")))
 	xs))))
 
 (defun query-selector (f node)

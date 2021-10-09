@@ -165,3 +165,26 @@
 	(with-temp-file (concat blog-directory "/site.el")
 		(setcdr (last posts) (cons post nil))
 		(prin1 site (current-buffer)))))
+
+(defun edit-blog-post() (interactive)
+	; TODO: finish this
+	(let*
+		((site (read-elisp-file (concat blog-directory "/site.el")))
+		(posts (alist-get 'posts site))
+		(choices (mapcar (lambda (x)
+				(let ((h1 (query-selector (xml-elem= 'h1) x)))
+				(concat
+					(number-to-string (alist-get 'timestamp (nth 1 x)))
+					" "
+					(if h1 (xml-inner-text h1)
+					(let ((txt (xml-inner-text x)))
+						(substring txt 0 (min 128 (length txt))))))))
+			posts))
+		(choice (ido-completing-read "select post: " choices))
+		(selected-timestamp (string-to-number (car (split-string choice " "))))
+		(selected-post (find (lambda (x) (= selected-timestamp (alist-get 'timestamp (nth 1 x)))) posts)))
+	(with-contents-function "*edit-blog-post*"
+		(progn
+			(insert (serialise-xml selected-post))
+			(xml-mode))
+		(print "yo"))))
