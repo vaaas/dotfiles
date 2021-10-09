@@ -39,10 +39,11 @@
 	(cond
 	((funcall f node) node)
 	((listp node)
-		(let ((x (cddr node)))
-		(while (and x (not (query-selector f (car x))))
+		(let ((x (cddr node)) (found nil))
+		(while (and x (not found))
+			(setq found (query-selector f (car x)))
 			(setq x (cdr x)))
-		(car x)))
+		found))
 	(t nil)))
 
 (defun query-selector-all (f node)

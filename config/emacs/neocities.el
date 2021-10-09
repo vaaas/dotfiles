@@ -1,16 +1,27 @@
 ;;; -*- lexical-binding: t -*-
 (defun nc-render() (interactive)
-	(let*
-		((site (read-elisp-file (concat blog-directory "/site.lisp")))
-		(posts (alist-get 'posts site))
+	(let
+		((site (read-xml-file (concat blog-directory "/site.xml")))
+		(conf nil) (posts nil) (pages nil)
 		(doctype "<!DOCTYPE html>"))
+
+	; load from file
+	(dolist (x (seq-filter 'listp (cddr site)))
+		(let ((tag (car x)))
+		(cond
+			((member tag (list 'icon 'sitename 'lang 'author 'url))
+				(push (cons tag (xml-inner-text x)) conf))
+			((member tag (list 'links 'blurb))
+				(push (cons tag (cddr x)) conf))
+			((eq tag 'posts) (setq posts (cddr x)))
+			((eq tag 'pages) (setq pages (cddr x))))))
 
 	; render index.html
 	(with-temp-file (concat blog-directory "/render/index.html")
 		(insert
 		(concat doctype
 		(serialise-xml
-		(nc-frontpage site
+		(nc-frontpage conf
 		(mapcar #'nc-render-item
 		(seq-filter (lambda (x) (not (alist-get 'skip (nth 1 x))))
 		posts)))))))
@@ -20,16 +31,20 @@
 		(insert
 		(concat "<?xml version='1.0' encoding='UTF-8'?>"
 		(serialise-xml
-		(nc-rss site
-		(mapcar (lambda (x) (nc-rss-item site x))
+		(nc-rss conf
+		(mapcar (lambda (x) (nc-rss-item conf x))
 		(seq-filter (lambda (x) (not (alist-get 'skip (nth 1 x))))
 		posts)))))))
 
 	; render individual articles
 	(dolist (x (seq-filter (lambda(x) (alist-get 'filename (nth 1 x))) posts))
 		(with-temp-file (concat blog-directory "/render/" (alist-get 'filename (nth 1 x)))
-			(insert (concat doctype (serialise-xml (nc-post site x))))))
-))
+			(insert (concat doctype (serialise-xml (nc-post conf x))))))
+
+	; render individual pages
+	(dolist (x (seq-filter (lambda(x) (alist-get 'filename (nth 1 x))) pages))
+		(with-temp-file (concat blog-directory "/render/" (alist-get 'filename (nth 1 x)))
+			(insert (concat doctype (serialise-xml (nc-page conf x))))))))
 
 (defun nc-render-item (x)
 	(append
@@ -53,8 +68,8 @@
 				(list 'a (alist 'href (concat "/" filename)))
 				(cddr h1)))
 			xs)
-		(push-all (cddr p) xs))
-	(nreverse xs))))
+		(push-all (cddr p) xs)))
+	(nreverse xs)))
 
 (defun nc-frontpage (conf xs)
 	(let
@@ -71,7 +86,7 @@
 				(list 'div (alist 'class "imgtxt")
 					(list 'img (alist 'src "/pics/banner.jpg"))
 					(list 'h1 nil (alist-get 'sitename conf)))
-				(alist-get 'blurb conf))
+				(append (list 'p nil) (alist-get 'blurb conf)))
 			(append
 				(list 'nav nil)
 				(alist-get 'links conf)
@@ -93,52 +108,74 @@
 		(list 'title nil title)))
 
 (defun nc-html (lang head body) (list 'html (alist 'lang lang) head body))
-(defun nc-guid (x) (int-to-base (/ (- x 1483228800) 60) 64))
-(defun nc-ymd (x) (format-time-string "%Y-%m-%d" (seconds-to-time x)))
-(defun nc-rfctime (x) (format-time-string "%a, %d %b %Y %H:%M:%S %z" (seconds-to-time x)))
+(defun nc-guid (x) (int-to-base (/ (- (string-to-number x) 1483228800) 60) 64))
+(defun nc-ymd (x) (format-time-string "%Y-%m-%d" (seconds-to-time (string-to-number x))))
+(defun nc-rfctime (x) (format-time-string "%a, %d %b %Y %H:%M:%S %z" (seconds-to-time (string-to-number x))))
 
-(defun nc-rss-item (site x)
+(defun nc-rss-item (conf x)
 	(let*
-		((guid (nc-guid (alist-get 'timestamp (nth 1 x))))
-		(url (concat (alist-get 'url site) "/#" guid)))
+		((timestamp (alist-get 'timestamp (nth 1 x)))
+		(guid (nc-guid timestamp))
+		(date (nc-rfctime timestamp))
+		(url (concat (alist-get 'url conf) "/#" guid)))
 	(list 'item nil
 		(list 'title nil
 			(iff (query-selector (xml-elem= 'h1) x)
 				#'xml-inner-text
-				(K (format "New post by %s (%s)" (alist-get 'author site) guid))))
+				(K (format "New post by %s (%s)" (alist-get 'author conf) guid))))
 		(list 'guid nil url)
-		(list 'pubDate nil (nc-rfctime (alist-get 'timestamp x)))
+		(list 'pubDate nil date)
 		(list 'link nil url)
 		(append
 			(list 'description nil)
 			(mapcar (lambda (x) (xml-escape-string (serialise-xml x))) (nc-description x))))))
 
-(defun nc-rss (site xs)
+(defun nc-rss (conf xs)
 	(list 'rss (alist 'version "2.0" 'xmlns:atom "http://www.w3.org/2005/Atom")
 		(append
 			(list 'channel nil
-				(list 'title nil (alist-get 'sitename site))
-				(list 'link nil (alist-get 'url site))
+				(list 'title nil (alist-get 'sitename conf))
+				(list 'link nil (alist-get 'url conf))
 				(list 'atom:link
-					(alist 'href (concat (alist-get 'url site) "/rss.xml")
+					(alist 'href (concat (alist-get 'url conf) "/rss.xml")
 						'rel "self"
 						'type "application/rss+xml"))
-				(list 'description nil (alist-get 'sitename site))
+				(list 'description nil (alist-get 'sitename conf))
 				(list 'pubDate nil (xml-inner-text (query-selector (xml-elem= 'pubDate) (car xs))))
-				(list 'language nil (alist-get 'lang site))
+				(list 'language nil (alist-get 'lang conf))
 				(list 'ttl nil "1440"))
 			(nreverse xs))))
 
-(defun nc-post (site x)
+(defun nc-post (conf x)
 	(let ((h1 (query-selector (xml-elem= 'h1) x))
-		(timestamp (alist-get 'timestamp x)))
+		(timestamp (alist-get 'timestamp (nth 1 x))))
 	(when (not h1) (throw 'bad-post "No h1 found"))
 	(nc-html
 		(alist-get 'lang x)
-		(nc-head site (xml-inner-text h1))
+		(nc-head conf (xml-inner-text h1))
 		(list 'body (alist 'class "post")
 			(list 'header nil
-				(list 'a (alist 'href "/") (alist-get 'sitename site))
+				(list 'a (alist 'href "/") (alist-get 'sitename conf))
 				" — "
 				(list 'time nil (nc-ymd timestamp)))
 			(append (list 'main nil) (cddr x))))))
+
+(defun nc-page (conf x)
+	(let
+		((head (query-selector (xml-elem= 'head) x))
+		(body (query-selector (xml-elem= 'body) x)))
+	(nc-html
+		(alist-get 'lang conf)
+		(append
+			(list 'head nil
+				(list 'meta (alist 'charset "utf8"))
+				(list 'meta (alist 'name "viewport" 'content "width=device-width, initial-scale=1.0"))
+				(list 'meta (alist 'name "url" 'content (alist-get 'url conf)))
+				(list 'meta (alist 'name "author" 'content (alist-get 'author conf)))
+				(list 'meta (alist 'name "description" 'content (alist-get 'sitename conf)))
+				(list 'link (alist 'rel "icon" 'href "/favicon.ico"))
+				(list 'link (alist 'rel "alternate" 'href "/rss.xml" 'type "application/rss+xml")))
+			(cddr head))
+		(append
+			(list 'body (alist 'class "page"))
+			(cddr body)))))

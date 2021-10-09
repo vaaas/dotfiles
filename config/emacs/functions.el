@@ -44,6 +44,10 @@
 	(goto-char (point-min))
 	(read (current-buffer))))
 
+(defun read-xml-file (file)
+	(with-current-buffer (find-file-noselect file)
+	(libxml-parse-xml-region (point-min) (point-max))))
+
 (defun int-to-base (n base)
 	(if (= n 0) "0"
 	(let ((xs nil)
