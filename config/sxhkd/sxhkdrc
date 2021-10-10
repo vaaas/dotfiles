@@ -56,7 +56,7 @@ super + F5
 	gnome-system-monitor
 
 super + F6
-	emacsclient -ce '(ansi-term "/usr/bin/pulsemixer")'
+	pavucontrol
 
 super + F7
 	feedreader
