@@ -47,11 +47,11 @@
 	file-db-root-dir "~/Projects"
 	file-db-exclude-dirs '("." ".." "node_modules" ".git" "public" "vendor" "build")
 	blog-categories '("tech" "anime" "books" "memes" "films" "journal" "games")
-	custom-file (concat user-emacs-directory "defaults.el"))
+	custom-file (concat user-emacs-directory "defaults.el")
+	search-whitespace-regexp ".*?")
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.blade.php\\'" . js-mode))
-
 (custom-set-variables
 	;; custom-set-variables was added by Custom.
 	;; If you edit it by hand, you could mess it up, so be careful.
