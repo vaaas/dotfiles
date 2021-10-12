@@ -48,22 +48,23 @@
 	file-db-exclude-dirs '("." ".." "node_modules" ".git" "public" "vendor" "build")
 	blog-categories '("tech" "anime" "books" "memes" "films" "journal" "games")
 	custom-file (concat user-emacs-directory "defaults.el")
-	search-whitespace-regexp ".*?")
+	search-whitespace-regexp ".*?"
+	ido-enable-flex-matching t)
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
-(add-to-list 'auto-mode-alist '("\\.blade.php\\'" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.blade.php\\'" . php-mode))
 (custom-set-variables
 	;; custom-set-variables was added by Custom.
 	;; If you edit it by hand, you could mess it up, so be careful.
 	;; Your init file should contain only one such instance.
 	;; If there is more than one, they won't work right.
-	'(package-selected-packages '(php-mode)))
+	'(package-selected-packages '(php-mode markdown-mode)))
 (custom-set-faces
 	;; custom-set-faces was added by Custom.
 	;; If you edit it by hand, you could mess it up, so be careful.
 	;; Your init file should contain only one such instance.
 	;; If there is more than one, they won't work right.
-	'(default ((t (:inherit nil :extend nil :stipple nil :background "#ffeedd" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "1ASC" :family "Liberation Mono"))))
+	'(default ((t (:inherit nil :extend nil :stipple nil :background "#ffeedd" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :family "JuliaMono"))))
 	'(cursor ((t (:background "#ff0055"))))
 	'(eshell-ls-directory ((t (:foreground "#2255aa" :weight bold))))
 	'(eshell-ls-executable ((t (:foreground "#008844" :weight bold))))
