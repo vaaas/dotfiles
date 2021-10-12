@@ -220,3 +220,19 @@
 			(insert (serialise-xml selected-post))
 			(xml-mode))
 		(print "yo"))))
+
+;; (defun nc-push()
+;; 	(let*
+;; 		((conf
+;; 			(alist-get 'conf
+;; 			(read-elisp-file (concat blog-directory "/site.el")))))
+;; 		(user (alist-get 'username conf))
+;; 		(password (read-passwd (concat "Password for " url ": ")))
+;; 		(url (format "https://%s:%s@neocities.org" user password))
+;; 		(remote-files
+;; 			(let ((response
+;; 				(json-parse-string
+;; 				(shell-command-to-string
+;; 				(string-join "/usr/bin/curl" "--" url)))))
+;; 			(when (alist-get 'result
+;; )
