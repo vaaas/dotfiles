@@ -86,7 +86,7 @@
 	(replace-all "  " " "))
 
 (defvar eval-process "cat"
-	"Process name that smart eval should use. By default, just print the buffer contents with cat. Each mode should set its own process."
+	"Process name that smart eval should use. By default, just print the buffer contents with cat. Each mode should set its own process.")
 
 (defun eval-region-smart() (interactive)
 	(shell-command-on-region (point-min) (point-max) eval-process))
