@@ -84,9 +84,15 @@
 	; these are the installed packages from MELPA
 	package-selected-packages '(php-mode markdown-mode))
 
+; remove the fringe border
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
-(add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
-(add-to-list 'auto-mode-alist '("\\.blade.php\\'" . php-mode))
+
+; emacs tries to detect the major mode based on the file name
+(dolist (x (list
+	'("\\.vue\\'" . js-mode)
+	'("\\.blade.php\\'" . php-mode)
+	'("abbrev_defs" . emacs-lisp-mode)))
+	(add-to-list 'auto-mode-alist x))
 
 (custom-set-faces
 	;; custom-set-faces was added by Custom.

@@ -24,13 +24,12 @@ You should probably include \".\" and \"..\" in DISALLOWED."
 	(with-temp-file file-db (filedb-walk
 		file-db-root-dir
 		file-db-exclude-dirs
-		(lambda(x) (insert x "\n")))))
+		(lambda(x) (insert (substring x (+ 1 (length file-db-root-dir)) (length x)) "\n")))))
 
 (defun quick-find-file () (interactive)
 	(find-file
 	(concat file-db-root-dir "/"
 	(ido-completing-read "select file> "
-	(mapcar (lambda (x) (substring x (+ 1 (length file-db-root-dir)) (length x)))
 	(split-string
 	(slurp file-db)
-	"\n"))))))
+	"\n")))))
