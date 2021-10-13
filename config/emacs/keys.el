@@ -36,8 +36,8 @@
 	(define-key php-mode-map (kbd "d") nil))
 
 (with-eval-after-load 'term
-    (define-key term-raw-map (kbd "<C-left>") nil)
-    (define-key term-raw-map (kbd "<C-right>") nil)
+	(define-key term-raw-map (kbd "<C-left>") nil)
+	(define-key term-raw-map (kbd "<C-right>") nil)
 	(define-key term-raw-map (kbd "TAB")
 		(lambda() (interactive) (term-send-raw-string (kbd "TAB"))))
 	(define-key term-raw-map (kbd "<tab>")

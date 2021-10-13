@@ -6,7 +6,9 @@
 (defvar blog-categories '("tech" "anime" "books" "memes" "films" "journal" "games")
 	"List of strings that the neocities post creation and update functions will present to the user to categorise their post.")
 
-(defun nc-render() (interactive)
+(defun nc-render()
+    "Render the site defined in variable `blog-directory' for neocities. Expects file site.el to be present in the blog directory, and also the directory render."
+    (interactive)
 	(let*
 		((site (read-elisp-file (concat blog-directory "/site.el")))
 		(conf (alist-get 'conf site))
@@ -45,6 +47,7 @@
 			(insert (concat doctype (serialise-xml (nc-page conf x))))))))
 
 (defun nc-render-item (x)
+    "Render an article element."
 	(append
 		(list 'article (alist
 			't (alist-get 'tag (nth 1 x))
@@ -52,6 +55,7 @@
 		(nc-description x)))
 
 (defun nc-description (x)
+    "Generate the description of an article or RSS item."
 	(let
 		((filename (alist-get 'filename (nth 1 x)))
 		(xs (list (list 'time nil (nc-ymd (alist-get 'timestamp (nth 1 x)))))))
@@ -70,6 +74,7 @@
 	(nreverse xs)))
 
 (defun nc-frontpage (conf xs)
+    "Generate the frontpage (index.html) of the neocities blog."
 	(let
 	((distinct-tags
 		(sort
@@ -94,6 +99,7 @@
 			(list 'script (alist 'src "/script.js") " ")))))
 
 (defun nc-head (conf title)
+    "Generates the HEAD element of an html file."
 	(list 'head nil
 		(list 'meta (alist 'charset "utf8"))
 		(list 'meta (alist 'name "viewport" 'content "width=device-width, initial-scale=1.0"))
@@ -105,12 +111,24 @@
 		(list 'link (alist 'rel "alternate" 'href "/rss.xml" 'type "application/rss+xml"))
 		(list 'title nil title)))
 
-(defun nc-html (lang head body) (list 'html (alist 'lang lang) head body))
-(defun nc-guid (x) (int-to-base (/ (- x 1483228800) 60) 64))
-(defun nc-ymd (x) (format-time-string "%Y-%m-%d" (seconds-to-time x)))
-(defun nc-rfctime (x) (format-time-string "%a, %d %b %Y %H:%M:%S %z" (seconds-to-time x)))
+(defun nc-html (lang head body)
+    "Generates an HTML element."
+    (list 'html (alist 'lang lang) head body))
+
+(defun nc-guid (x)
+    "Generates a unique id for a neocities article or rss item."
+    (int-to-base (/ (- x 1483228800) 60) 64))
+
+(defun nc-ymd (x)
+    "formats a timestamp in Y m d format"
+    (format-time-string "%Y-%m-%d" (seconds-to-time x)))
+
+(defun nc-rfctime (x)
+    "formats a timestamp in RFC format for RSS."
+    (format-time-string "%a, %d %b %Y %H:%M:%S %z" (seconds-to-time x)))
 
 (defun nc-rss-item (conf x)
+    "Creates an rss item."
 	(let*
 		((timestamp (alist-get 'timestamp (nth 1 x)))
 		(guid (nc-guid timestamp))
@@ -129,6 +147,7 @@
 			(mapcar (lambda (x) (xml-escape-string (serialise-xml x))) (nc-description x))))))
 
 (defun nc-rss (conf xs)
+    "Creates rss.xml."
 	(list 'rss (alist 'version "2.0" 'xmlns:atom "http://www.w3.org/2005/Atom")
 		(append
 			(list 'channel nil
@@ -145,6 +164,7 @@
 			(nreverse xs))))
 
 (defun nc-post (conf x)
+    "Generate an individual neocities article pages."
 	(let ((h1 (query-selector (xml-elem= 'h1) x))
 		(timestamp (alist-get 'timestamp (nth 1 x))))
 	(when (not h1) (throw 'bad-post "No h1 found"))

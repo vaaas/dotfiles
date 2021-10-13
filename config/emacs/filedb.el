@@ -10,7 +10,7 @@
 	"list of directory names that filedb-update will ignore and not traverse while building the quick find filedb")
 
 (defun filedb-walk (root disallowed f)
-"Walk the directory ROOT. Do not visit directories in the DISALLOWED list. Then, each directory or file is passed to the callback function F.
+    "Walk the directory ROOT. Do not visit directories in the DISALLOWED list. Then, each directory or file is passed to the callback function F.
 You should probably include \".\" and \"..\" in DISALLOWED."
 	(dolist (name (directory-files root))
 		(when (not (member name disallowed))

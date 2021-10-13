@@ -1,12 +1,32 @@
 ; -*- lexical-binding: t -*-
-(defun whitespacep(x) (member x '(9 10 32)))
-(defun timestamp() (format-time-string "%s"))
-(defun plist-to-alist (xs) (map-plist #'cons xs))
-(defun alist (&rest xs) (plist-to-alist xs))
-(defun iff (x good bad) (if x (funcall good x) (funcall bad x)))
-(defun K (x) (lambda(&rest xs) x))
+; various utility functions
+
+(defun whitespacep(x)
+	"test if a character is whitespace. Whitespace is defined as tab, space, and newline."
+	(member x '(9 10 32)))
+
+(defun timestamp()
+	"return the current unix timestamp"
+	(format-time-string "%s"))
+
+(defun plist-to-alist (xs)
+	"turn a plist into an alist"
+	(map-plist #'cons xs))
+
+(defun alist (&rest xs)
+	"create an alist. the length of XS must be even. the odd members of XS become the cars, and the even members become the cdrs."
+	(plist-to-alist xs))
+
+(defun iff (x good bad)
+	"execute GOOD with argument X if X is non-nil. Otherwise, execute BAD with argument X"
+	(if x (funcall good x) (funcall bad x)))
+
+(defun K (x)
+	"return a function that, when executed, always returns X"
+	(lambda(&rest xs) x))
 
 (defun find(f xs)
+	"search through XS for the element that, when passed to the callback function F, returns non-nil"
 	(let ((x xs) (found nil))
 	(while (and x (not found))
 		(when (funcall f (car x)) (setq found (car x)))
@@ -14,6 +34,7 @@
 	found))
 
 (defun map-plist(f xs)
+	"map for plists. Pass two arguments to F, where the first is the key, and the second is the value."
 	(let ((head xs) (results ()))
 	(while head
 		(push (funcall f (car head) (cadr head)) results)
@@ -21,25 +42,31 @@
 	(nreverse results)))
 
 (defun slurp(f)
+	"read the contents of filepath F into a string."
 	(with-temp-buffer
 		(insert-file-contents f)
 		(buffer-substring-no-properties (point-min) (point-max))))
 
 (defun intersperse (s xs)
-	(let ((r ()))
+	"put S between the elements XS. (1 2 3) -> (1 s 2 s 3)"
 	(push (car xs) r)
 	(dolist (x (cdr xs)) (push s r) (push x r))
 	(nreverse r)))
 
 (defmacro with-temp-dir (temp-dir &rest body)
+	"Change directory to TEMP-DIR. Execute BODY. Then return to the previous directory."
 	`(let ((old default-directory))
 	(cd ,temp-dir)
 	(unwind-protect (progn ,@body) (cd old))))
 
 (defmacro push-all (xs list)
+	"`push' all elements of LIST to XS"
 	`(dolist (x ,xs) (setq ,list (cons x ,list))))
 
 (defmacro with-contents-function (buffer setup &rest rest)
+	"Switch to buffer BUFFER, optionally running SETUP. Set after-save and before-save hooks to nill, then set write-contents-functions to a single function, as defined in REST.
+
+This is useful for creating temporary non-file buffers and waiting for the user to save the buffer to continue execution."
 	`(progn
 		(switch-to-buffer ,buffer)
 		(erase-buffer)
@@ -51,15 +78,18 @@
 		(concat "Editing virtual " ,buffer ". File will not be saved.")))
 
 (defun read-elisp-file (file)
+	"`read' the elisp file FILE"
 	(with-current-buffer (find-file-noselect file)
 	(goto-char (point-min))
 	(read (current-buffer))))
 
 (defun read-xml-file (file)
+	"parse the the XML file FILE. see `libxml-parse-xml-region'"
 	(with-current-buffer (find-file-noselect file)
 	(libxml-parse-xml-region (point-min) (point-max))))
 
 (defun int-to-base (n base)
+	"return the string representation of integer N in base BASE. accepts positive and negative integers, and bases up to 64."
 	(if (= n 0) "0"
 	(let ((xs nil)
 		(neg (< n 0))
@@ -71,7 +101,9 @@
 	(let ((res (string-join (mapcar #'char-to-string xs))))
 	(if neg (concat "-" res) res)))))
 
-(defun head (n x) (butlast x (- (length x) n)))
+(defun head (n x)
+	"return the first N elements of sequence X"
+	(butlast x (- (length x) n)))
 
 (defun define-new-keymap (bindings)
 	"Return a new keymap with BINDINGS. First creates a sparse keymap, then fills it.
