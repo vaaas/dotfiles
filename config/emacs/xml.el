@@ -1,4 +1,4 @@
-;;; -*- lexical-binding: t -*-
+; -*- lexical-binding: t -*-
 (defun xml-elem= (s) (lambda (x) (when (listp x) (eq s (car x)))))
 
 (defun serialise-xml(node)

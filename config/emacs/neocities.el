@@ -1,4 +1,11 @@
-;;; -*- lexical-binding: t -*-
+; -*- lexical-binding: t -*-
+
+(defvar blog-directory (expand-file-name "~/Projects/website")
+	"The directory where the neocities tools will look for the website. site.el and render/ are expected to be ther.")
+
+(defvar blog-categories '("tech" "anime" "books" "memes" "films" "journal" "games")
+	"List of strings that the neocities post creation and update functions will present to the user to categorise their post.")
+
 (defun nc-render() (interactive)
 	(let*
 		((site (read-elisp-file (concat blog-directory "/site.el")))

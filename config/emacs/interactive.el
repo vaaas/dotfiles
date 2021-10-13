@@ -1,4 +1,4 @@
-;;; -*- lexical-binding: t -*-
+; -*- lexical-binding: t -*-
 (defun backward-whitespace() (interactive) (forward-whitespace -1))
 
 (defun zap-up-to-char-backward() (interactive)
@@ -45,27 +45,6 @@
 (defun do-nothing() (interactive))
 (put 'do-nothing 'no-self-insert t)
 
-(defun filedb-walk(root disallowed f)
-	(dolist (name (directory-files root))
-		(when (not (member name disallowed))
-			(let ((pathname (concat root "/" name)))
-			(if (file-directory-p pathname)
-				(filedb-walk pathname disallowed f)
-				(funcall f pathname))))))
-
-(defun update-file-db() (interactive)
-	(with-temp-file file-db (filedb-walk
-		file-db-root-dir
-		file-db-exclude-dirs
-		(lambda(x) (insert x "\n")))))
-
-(defun quick-find-file() (interactive)
-	(find-file
-	(ido-completing-read "select file> "
-	(split-string
-	(slurp file-db)
-	"\n"))))
-
 (defun dired-here() (interactive) (dired default-directory))
 
 (defun backspace-or-unindent() (interactive)
@@ -105,6 +84,9 @@
 	(replace-all-regex "[ |\u00A0]+\\([:\\|»]\\)" "\u00A0\\1")
 	(replace-all-regex "«[ |\u00A0]+" "«\u00A0")
 	(replace-all "  " " "))
+
+(defvar eval-process "cat"
+	"Process name that smart eval should use. By default, just print the buffer contents with cat. Each mode should set its own process."
 
 (defun eval-region-smart() (interactive)
 	(shell-command-on-region (point-min) (point-max) eval-process))

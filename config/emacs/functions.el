@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t -*-
+; -*- lexical-binding: t -*-
 (defun whitespacep(x) (member x '(9 10 32)))
 (defun timestamp() (format-time-string "%s"))
 (defun plist-to-alist (xs) (map-plist #'cons xs))

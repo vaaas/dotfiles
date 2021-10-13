@@ -1,4 +1,4 @@
-;;; -*- lexical-binding: t -*-
+; -*- lexical-binding: t -*-
 (defun vi-on() (interactive)
 	(vi-mode 1)
 	(setq cursor-type 'box))
