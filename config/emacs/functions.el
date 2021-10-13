@@ -1,6 +1,10 @@
 ; -*- lexical-binding: t -*-
 ; various utility functions
 
+(defun outside (xs)
+	"Curried function. Returns lambda which checks whether X is a member of XS"
+	(lambda (x) (not (member x xs))))
+
 (defun whitespacep(x)
 	"test if a character is whitespace. Whitespace is defined as tab, space, and newline."
 	(member x '(9 10 32)))
@@ -113,3 +117,11 @@ BINDINGS should be an alist where car is a `kbd' string and cdr is a function."
 	(dolist (x bindings)
 		(define-key map (kbd (car x)) (cdr x)))
 	map))
+
+(defun sha1-ext (x)
+	"sha1 a file X using external sha1 command"
+	(car (split-string (shell-command-to-string (string-join (list "sha1sum" "--" x) " ")) " ")))
+
+(defun difference (as bs)
+	"Return the set difference of AS - BS. (items of AS that are not on BS)"
+	(seq-filter (outside bs) as))

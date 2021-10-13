@@ -253,18 +253,64 @@
 			(xml-mode))
 		(print "yo"))))
 
-;; (defun nc-push()
-;; 	(let*
-;; 		((conf
-;; 			(alist-get 'conf
-;; 			(read-elisp-file (concat blog-directory "/site.el")))))
-;; 		(user (alist-get 'username conf))
-;; 		(password (read-passwd (concat "Password for " url ": ")))
-;; 		(url (format "https://%s:%s@neocities.org" user password))
-;; 		(remote-files
-;; 			(let ((response
-;; 				(json-parse-string
-;; 				(shell-command-to-string
-;; 				(string-join "/usr/bin/curl" "--" url)))))
-;; 			(when (alist-get 'result
-;; )
+(defun nc-api-list (user password)
+	"Calls the neocities list api (file listing)"
+	(let ((result
+		(json-parse-string
+		(shell-command-to-string
+		(string-join
+		(list "/usr/bin/curl" "-s" "--" (format "https://%s:%s@neocities.org/api/list" user password)) " "))
+		:object-type 'alist)))
+	(if (not (string= "success" (alist-get 'result result)))
+		(throw 'unsuccessful "fetching files was unsuccessful")
+		(alist-get 'files result))))
+
+(defun nc-api-delete (user password files)
+	"Calls the neocities delete api"
+	(message "Deleting remote neocities files...")
+	(shell-command-to-string
+	(format "/usr/bin/curl %s https://%s:%s@neocities.org/api/delete"
+		(string-join (mapcar (lambda (x) (format "-d filenames[]=%s" x)) files) " ")
+		user password)))
+
+(defun nc-api-upload (user password files)
+	"Calls the neocities upload api"
+	(message "Uploading local files to neocities. This may take a while...")
+	(with-temp-dir (concat blog-directory "/render")
+		(shell-command-to-string
+			(format "/usr/bin/curl %s https://%s:%s@neocities.org/api/upload"
+				(string-join (mapcar (lambda (x) (format "-F %s=@%s" x x)) files) " ")
+				user password))))
+
+(defun nc-push()
+	"Push local files to neocities."
+	(interactive)
+	(let*
+		((conf
+			(alist-get 'conf
+			(read-elisp-file (concat blog-directory "/site.el"))))
+		(user (alist-get 'username conf))
+		(password (read-passwd (concat "Password for " user ": ")))
+		(remote-files
+			(mapcar (lambda (x) (cons (alist-get 'path x) (alist-get 'sha1_hash x)))
+			(seq-filter (lambda (x) (eq :false (alist-get 'is_directory x)))
+			(nc-api-list user password))))
+		(local-files
+			(mapcar (lambda (x) (cons (substring x (length (concat blog-directory "/render/")) (length x)) (sha1-ext x)))
+			(directory-files-recursively (concat blog-directory "/render") ".*")))
+		(delete-these-files (difference (mapcar 'car remote-files) (mapcar 'car local-files)))
+		(upload-these-files (mapcar 'car (difference local-files remote-files))))
+
+	(if delete-these-files
+		(let ((reply (yes-or-no-p (concat "Deleting " (string-join delete-these-files " ") ": "))))
+		(when reply
+			(nc-api-delete user password delete-these-files)
+			(message "Done")))
+		(message "Nothing to delete"))
+
+	(if upload-these-files
+		(let ((reply (yes-or-no-p (concat "Uploading " (string-join upload-these-files " ") ": "))))
+		(when reply
+			(nc-api-upload user password upload-these-files)
+			(message "Done")))
+		(message "Nothing to upload"))))
