@@ -49,6 +49,7 @@
 
 (defun intersperse (s xs)
 	"put S between the elements XS. (1 2 3) -> (1 s 2 s 3)"
+	(let ((r nil))
 	(push (car xs) r)
 	(dolist (x (cdr xs)) (push s r) (push x r))
 	(nreverse r)))
