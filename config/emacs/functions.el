@@ -72,3 +72,11 @@
 	(if neg (concat "-" res) res)))))
 
 (defun head (n x) (butlast x (- (length x) n)))
+
+(defun define-new-keymap (bindings)
+	"Return a new keymap with BINDINGS. First creates a sparse keymap, then fills it.
+BINDINGS should be an alist where car is a `kbd' string and cdr is a function."
+	(let ((map (make-sparse-keymap)))
+	(dolist (x bindings)
+		(define-key map (kbd (car x)) (cdr x)))
+	map))

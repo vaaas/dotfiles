@@ -1,8 +1,8 @@
 ; -*- lexical-binding: t -*-
-(add-hook 'prog-mode-hook (lambda() (abbrev-mode 1) (vi-on)))
-(add-hook 'minibuffer-setup-hook 'vi-off)
-(add-hook 'text-mode-hook (lambda() (variable-pitch-mode) (vi-on)))
-(add-hook 'eshell-mode-hook 'vi-off)
+(add-hook 'prog-mode-hook (lambda() (abbrev-mode 1) (vas-normal-mode-on)))
+(add-hook 'minibuffer-setup-hook 'vas-normal-mode-off)
+(add-hook 'text-mode-hook (lambda() (variable-pitch-mode) (vas-normal-mode-on)))
+(add-hook 'eshell-mode-hook 'vas-normal-mode-off)
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'ido-minibuffer-setup-hook (lambda()

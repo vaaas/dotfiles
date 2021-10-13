@@ -1,17 +1,16 @@
 ; -*- lexical-binding: t -*-
 
-(defvar file-db (expand-file-name "~/filedb.txt")
+(defvar filedb (expand-file-name "~/filedb.txt")
 	"file name for the quick find file db. This is where the results will be stored, separated by newlines")
 
-(defvar file-db-root-dir "~/Projects"
-	"directory path of where update-file-db will begin its search. Place links or symlinks under it.")
+(defvar filedb-root-dir "~/Projects"
+	"directory path of where filedb-update will begin its search. Place links or symlinks under it.")
 
-(defvar file-db-exclude-dirs '("." ".." "node_modules" ".git" "public" "vendor" "build")
-	"list of directory names that update-file-db will ignore and not traverse while building the quick find file-db")
+(defvar filedb-exclude-dirs '("." ".." "node_modules" ".git" "public" "vendor" "build")
+	"list of directory names that filedb-update will ignore and not traverse while building the quick find filedb")
 
 (defun filedb-walk (root disallowed f)
-	"Walk the directory ROOT. Do not visit directories in the DISALLOWED list. Then, each directory or file is passed to the callback function F.
-
+"Walk the directory ROOT. Do not visit directories in the DISALLOWED list. Then, each directory or file is passed to the callback function F.
 You should probably include \".\" and \"..\" in DISALLOWED."
 	(dolist (name (directory-files root))
 		(when (not (member name disallowed))
@@ -20,16 +19,22 @@ You should probably include \".\" and \"..\" in DISALLOWED."
 				(filedb-walk pathname disallowed f)
 				(funcall f pathname))))))
 
-(defun update-file-db () (interactive)
-	(with-temp-file file-db (filedb-walk
-		file-db-root-dir
-		file-db-exclude-dirs
-		(lambda(x) (insert (substring x (+ 1 (length file-db-root-dir)) (length x)) "\n")))))
+(defun filedb-update ()
+	"Update the filedb file. The name of the filedb file is determined in the `filedb' variable.
+Begin walking from `filedb-root-dir' and exclude directories in `filedb-exclude-dirs'."
+	(interactive)
+	(with-temp-file filedb (filedb-walk
+		filedb-root-dir
+		filedb-exclude-dirs
+		(lambda(x) (insert (substring x (+ 1 (length filedb-root-dir)) (length x)) "\n")))))
 
-(defun quick-find-file () (interactive)
+(defun filedb-find-file ()
+	"find-file by searching the filedb file. filedb is a newline-separated list of files.
+Update the filedb through `filedb-update' periodically."
+	(interactive)
 	(find-file
-	(concat file-db-root-dir "/"
+	(concat filedb-root-dir "/"
 	(ido-completing-read "select file> "
 	(split-string
-	(slurp file-db)
+	(slurp filedb)
 	"\n")))))

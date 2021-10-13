@@ -1,8 +1,8 @@
 ; -*- lexical-binding: t -*-
 (define-key global-map (kbd "<backspace>") 'backspace-or-unindent)
 (define-key global-map (kbd "<tab>") 'expand-or-tab)
-(define-key global-map (kbd "<escape>") 'vi-on)
-(define-key global-map (kbd "C-g") 'vi-on)
+(define-key global-map (kbd "<escape>") 'vas-normal-mode-on)
+(define-key global-map (kbd "C-g") 'vas-normal-mode-on)
 (define-key global-map (kbd "<f2>") 'dired-here)
 (define-key global-map (kbd "<f3>") 'abbrev-mode)
 (define-key global-map (kbd "<f4>") 'variable-pitch-mode)

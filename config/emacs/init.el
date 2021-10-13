@@ -7,5 +7,7 @@
 (require 'seq)
 (require 'xml)
 
-(dolist (x '("defaults" "functions" "xml" "interactive" "vi-mode" "keys" "hooks" "neocities" "filedb"))
-	(load-file (format "%s/%s.el" user-emacs-directory x)))
+; I have split the init.el file into several more dedicated files. Dynamically load these files
+(seq-each (lambda (x) (load-file (concat user-emacs-directory "/" x)))
+(seq-filter (lambda (x) (and (string-suffix-p ".el" x) (not (string= "init.el" x))))
+(directory-files user-emacs-directory)))
