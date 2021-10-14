@@ -70,6 +70,8 @@
 	"p" 'yank
 	"P" 'kill-ring-save
 	"." 'repeat
+	"<" 'outline-hide-entry
+	">" 'outline-show-entry
 	"/" 'isearch-forward
 	"?" 'isearch-backward
 	"SPC" 'vas-normal-mode-off
@@ -92,7 +94,9 @@
 	"' i b" 'ibuffer
 	"' c w" 'count-words
 	"' A" 'mark-whole-buffer
-	"' q w" (lambda() (interactive) (split-window-horizontally) (split-window-horizontally) (balance-windows) (follow-mode))))
+	"' q w" (lambda() (interactive) (split-window-horizontally) (split-window-horizontally) (balance-windows) (follow-mode))
+	"' o f" 'outline-hide-body
+	"' o u" 'outline-show-all))
 
 	"keymap for vas-normal-mode")
 

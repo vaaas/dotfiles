@@ -1,7 +1,9 @@
 ; -*- lexical-binding: t -*-
 ; various hooks
 
-(add-hook 'prog-mode-hook (lambda() (abbrev-mode 1) (vas-normal-mode-on)))
+(add-hook 'prog-mode-hook (lambda()
+	(abbrev-mode 1)
+	(vas-normal-mode-on)))
 
 (add-hook 'minibuffer-setup-hook 'vas-normal-mode-off)
 
