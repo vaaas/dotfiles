@@ -47,3 +47,6 @@
 
 (with-eval-after-load 'js
 	(define-key js-mode-map (kbd "C-c") nil))
+
+(with-eval-after-load 'markdown-mode
+	(define-key markdown-mode-map (kbd "<return>") 'newline-and-indent-relative))
