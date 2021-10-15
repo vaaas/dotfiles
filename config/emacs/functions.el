@@ -68,20 +68,6 @@
 	"`push' all elements of LIST to XS"
 	`(dolist (x ,xs) (setq ,list (cons x ,list))))
 
-(defmacro with-contents-function (buffer setup &rest rest)
-	"Switch to buffer BUFFER, optionally running SETUP. Set after-save and before-save hooks to nill, then set write-contents-functions to a single function, as defined in REST.
-
-This is useful for creating temporary non-file buffers and waiting for the user to save the buffer to continue execution."
-	`(progn
-		(switch-to-buffer ,buffer)
-		(erase-buffer)
-		,setup
-		(setq-local
-			after-save-hook nil
-			before-save-hook nil
-			write-contents-functions (list (lambda() ,@rest (kill-buffer ,buffer))))
-		(concat "Editing virtual " ,buffer ". File will not be saved.")))
-
 (defun read-elisp-file (file)
 	"`read' the elisp file FILE"
 	(with-current-buffer (find-file-noselect file)
@@ -126,13 +112,36 @@ BINDINGS should be an alist where car is a `kbd' string and cdr is a function."
 	"Return the set difference of AS - BS. (items of AS that are not on BS)"
 	(seq-filter (outside bs) as))
 
-(defmacro vas-edit-indirect (start end setup)
-	"Create a new buffer with the contents of the current buffer from START to END. Call SETUP. On exit, replace the region from START to END with the contents of the new buffer."
-	`(let* ((buffer (current-buffer)))
-	(with-contents-function (format "*vas-edit-indirect-%s*" buffer)
+(defmacro with-contents-function (buffer setup &rest rest)
+	"Switch to buffer BUFFER, optionally running SETUP. Set after-save and before-save hooks to nill, then set write-contents-functions to a single function, as defined in REST.
+
+This is useful for creating temporary non-file buffers and waiting for the user to save the buffer to continue execution."
+	`(progn
+		(switch-to-buffer ,buffer)
+		(erase-buffer)
 		,setup
-		(kill-region (point-min) (point-max))
-		(switch-to-buffer buffer)
-		(delete-region ,start ,end)
-		(goto-char ,start)
-		(yank))))
+		(setq-local
+			after-save-hook nil
+			before-save-hook nil
+			write-contents-functions (list (lambda() ,@rest (kill-buffer ,buffer))))
+		(concat "Editing virtual " ,buffer ". File will not be saved.")))
+
+(defvar narrow-indirect-mode-map (define-new-keymap (alist "C-c C-c" (lambda() (interactive) (kill-this-buffer)))))
+(define-minor-mode narrow-indirect-mode "A narrowed, indirect buffer." :keymap 'narrow-indirect-mode-map)
+(defmacro narrow-indirect (buffer start end &rest setup)
+	`(progn
+		(make-indirect-buffer (current-buffer) ,buffer)
+		(switch-to-buffer ,buffer)
+		(narrow-to-region ,start ,end)
+		,@setup
+		(narrow-indirect-mode 1)))
+
+(defmacro edit-buffer-region (buffer start end &rest setup)
+	`(let ((prev (current-buffer)))
+		(kill-ring-save ,start ,end)
+		(with-contents-function ,buffer (progn (yank) (beginning-of-buffer) ,@setup)
+			(kill-ring-save (point-min) (point-max))
+			(switch-to-buffer prev)
+			(delete-region ,start ,end)
+			(goto-char ,start)
+			(yank))))

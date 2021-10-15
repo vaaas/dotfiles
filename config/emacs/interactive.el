@@ -189,7 +189,6 @@
 			(or
 				(alist-get
 					(intern (car (split-string (string-trim (buffer-substring (+ 3 start) eofl)) "\s+")))
-					vas/markdown-code-modes)
+					vas-markdown-code-modes)
 				'prog-mode)))
-	(vas-edit-indirect (+ eofl 1) (- end 3)
-		(progn (call-interactively mode) (insert contents) (beginning-of-buffer))))))
+	(edit-buffer-region "*markdown-code-narrow-indirect*" (+ eofl 1) (- end 3) (call-interactively mode)))))
