@@ -79,7 +79,7 @@ This is useful for creating temporary non-file buffers and waiting for the user 
 		(setq-local
 			after-save-hook nil
 			before-save-hook nil
-			write-contents-functions (list (lambda() ,@rest)))
+			write-contents-functions (list (lambda() ,@rest (kill-buffer ,buffer))))
 		(concat "Editing virtual " ,buffer ". File will not be saved.")))
 
 (defun read-elisp-file (file)
@@ -125,3 +125,14 @@ BINDINGS should be an alist where car is a `kbd' string and cdr is a function."
 (defun difference (as bs)
 	"Return the set difference of AS - BS. (items of AS that are not on BS)"
 	(seq-filter (outside bs) as))
+
+(defmacro vas-edit-indirect (start end setup)
+	"Create a new buffer with the contents of the current buffer from START to END. Call SETUP. On exit, replace the region from START to END with the contents of the new buffer."
+	`(let* ((buffer (current-buffer)))
+	(with-contents-function (format "*vas-edit-indirect-%s*" buffer)
+		,setup
+		(kill-region (point-min) (point-max))
+		(switch-to-buffer buffer)
+		(delete-region ,start ,end)
+		(goto-char ,start)
+		(yank))))

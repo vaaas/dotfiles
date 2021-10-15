@@ -82,7 +82,7 @@
 	ido-enable-flex-matching t
 
 	; these are the installed packages from MELPA
-	package-selected-packages '(edit-indirect php-mode markdown-mode))
+	package-selected-packages '(php-mode markdown-mode))
 
 ; remove the fringe border
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
@@ -124,4 +124,11 @@
  '(php-$this-sigil ((t (:inherit php-$this))))
  '(php-function-call ((t (:inherit font-lock-function-name-face))))
  '(region ((t (:background "#ffffff"))))
- '(show-paren-match ((t (:inherit highlight)))))
+ '(show-paren-match ((t (:inherit highlight))))
+ '(variable-pitch ((t (:height 200 :family "Sans Serif")))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

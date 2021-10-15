@@ -165,3 +165,31 @@
 			(call-interactively 'indent-rigidly-left-to-tab-stop)
 			(setq deactivate-mark nil))
 		(save-excursion (beginning-of-line) (delete-indent))))
+
+(defvar vas-markdown-code-modes
+	(alist 'javascript 'js-mode
+		'js 'js-mode
+		'vue 'html-mode
+		'php 'php-mode
+		'elisp 'emacs-lisp-mode
+		'html 'html-mode
+		'xml 'xml-mode)
+	"A mapping of code block names to emacs modes.")
+
+(defun vas-markdown-edit-code ()
+	"Edit the code block the cursor is at in a different buffer."
+	(interactive)
+	(save-excursion
+	(let*
+		((start (progn (search-backward "```") (point)))
+		(eofl (progn (end-of-line) (point)))
+		(end (progn (search-forward "```") (point)))
+		(contents (buffer-substring (+ 1 eofl) (- end 3)))
+		(mode
+			(or
+				(alist-get
+					(intern (car (split-string (string-trim (buffer-substring (+ 3 start) eofl)) "\s+")))
+					vas/markdown-code-modes)
+				'prog-mode)))
+	(vas-edit-indirect (+ eofl 1) (- end 3)
+		(progn (call-interactively mode) (insert contents) (beginning-of-buffer))))))
