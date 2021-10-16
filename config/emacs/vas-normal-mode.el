@@ -1,16 +1,20 @@
 ; -*- lexical-binding: t -*-
 ; this file defines vas-normal-mode, which is a modal text editing mode
 
+(defvar-local vas-normal-bonus-mode nil)
+
 (defun vas-normal-mode-on()
 	"turn on vas-normal-mode and change the cursor shape."
 	(interactive)
 	(vas-normal-mode 1)
+	(when vas-normal-bonus-mode (funcall vas-normal-bonus-mode 1))
 	(setq cursor-type 'box))
 
 (defun vas-normal-mode-off()
 	"turn off vas-normal-mode and change the cursor shape."
 	(interactive)
 	(vas-normal-mode -1)
+	(when vas-normal-bonus-mode (funcall vas-normal-bonus-mode -1))
 	(setq cursor-type 'bar))
 
 (defvar vas-normal-mode-map (define-new-keymap (alist

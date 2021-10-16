@@ -28,3 +28,6 @@
 (add-hook 'php-mode-hook (lambda()
 	(kill-local-variable 'prettify-symbols-alist)
 	(prettify-symbols-mode 1)))
+
+(add-hook 'change-major-mode-hook (lambda ()
+	(kill-local-variable 'vas-normal-bonus-mode)))
