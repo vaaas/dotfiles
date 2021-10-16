@@ -126,22 +126,18 @@ This is useful for creating temporary non-file buffers and waiting for the user 
 			write-contents-functions (list (lambda() ,@rest (kill-buffer ,buffer))))
 		(concat "Editing virtual " ,buffer ". File will not be saved.")))
 
-(defvar narrow-indirect-mode-map (define-new-keymap (alist "C-c C-c" (lambda() (interactive) (kill-this-buffer)))))
-(define-minor-mode narrow-indirect-mode "A narrowed, indirect buffer." :keymap 'narrow-indirect-mode-map)
-(defmacro narrow-indirect (buffer start end &rest setup)
-	`(progn
-		(make-indirect-buffer (current-buffer) ,buffer)
-		(switch-to-buffer ,buffer)
-		(narrow-to-region ,start ,end)
-		,@setup
-		(narrow-indirect-mode 1)))
-
 (defmacro edit-buffer-region (buffer start end &rest setup)
 	`(let ((prev (current-buffer)))
-		(kill-ring-save ,start ,end)
-		(with-contents-function ,buffer (progn (yank) (beginning-of-buffer) ,@setup)
-			(kill-ring-save (point-min) (point-max))
-			(switch-to-buffer prev)
-			(delete-region ,start ,end)
-			(goto-char ,start)
-			(yank))))
+	(with-contents-function ,buffer (progn (insert-buffer-substring-no-properties prev ,start ,end) ,@setup)
+		(switch-to-buffer prev)
+		(delete-region ,start ,end)
+		(goto-char ,start)
+		(insert-buffer-substring-no-properties ,buffer))))
+
+(defmacro -> (&rest body)
+	(let* ((result (pop body)))
+		(dolist (form body result)
+			(setq result (mapcar (lambda (x) (if (eq '$ x) result x)) form)))))
+
+(defmacro => (&rest body)
+	`(lambda (x) (pipe x ,@body)))

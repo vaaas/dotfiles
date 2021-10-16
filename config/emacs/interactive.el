@@ -179,16 +179,16 @@
 (defun vas-markdown-edit-code ()
 	"Edit the code block the cursor is at in a different buffer."
 	(interactive)
-	(save-excursion
 	(let*
 		((start (progn (search-backward "```") (point)))
 		(eofl (progn (end-of-line) (point)))
 		(end (progn (search-forward "```") (point)))
-		(contents (buffer-substring (+ 1 eofl) (- end 3)))
-		(mode
-			(or
-				(alist-get
-					(intern (car (split-string (string-trim (buffer-substring (+ 3 start) eofl)) "\s+")))
-					vas-markdown-code-modes)
-				'prog-mode)))
-	(edit-buffer-region "*markdown-code-narrow-indirect*" (+ eofl 1) (- end 3) (call-interactively mode)))))
+		(mode (->
+			(buffer-substring (+ 3 start) eofl)
+			(string-trim $)
+			(split-string $ "\s+")
+			(car $)
+			(intern $)
+			(alist-get $ vas-markdown-code-modes)
+			(or $ 'prog-mode))))
+	(edit-buffer-region "*markdown-code-narrow-indirect*" (+ eofl 1) (- end 3) (call-interactively mode))))
