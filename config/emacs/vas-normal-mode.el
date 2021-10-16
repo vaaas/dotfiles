@@ -100,7 +100,11 @@
 	"' A" 'mark-whole-buffer
 	"' q w" (lambda() (interactive) (split-window-horizontally) (split-window-horizontally) (balance-windows) (follow-mode))
 	"' o f" 'outline-hide-body
-	"' o u" 'outline-show-all))
+	"' o u" 'outline-show-all
+
+	"' m m" 'markdown-mode
+	"' m j" 'js-mode
+	"' m p" 'php-mode))
 
 	"keymap for vas-normal-mode")
 
