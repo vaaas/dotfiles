@@ -1,4 +1,11 @@
 ; -*- lexical-binding: t -*-
+; helper functions for dealing with XML data in emacs. These assume the data structure as returned from libxml-parse-xml-region.
+
+(defun read-xml-file (file)
+	"parse the the XML file FILE. see `libxml-parse-xml-region'"
+	(with-current-buffer (find-file-noselect file)
+	(libxml-parse-xml-region (point-min) (point-max))))
+
 (defun xml-elem= (s) (lambda (x) (when (listp x) (eq s (car x)))))
 
 (defun serialise-xml(node)

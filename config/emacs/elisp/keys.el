@@ -1,4 +1,6 @@
 ; -*- lexical-binding: t -*-
+; key bindings for insert modes
+
 (define-key global-map (kbd "<backspace>") 'backspace-or-unindent)
 (define-key global-map (kbd "<tab>") 'expand-or-tab)
 (define-key global-map (kbd "<escape>") 'vas-normal-mode-on)

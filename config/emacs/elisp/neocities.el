@@ -1,4 +1,5 @@
 ; -*- lexical-binding: t -*-
+; blog generation and uploading for neocities
 
 (defvar nc-blog-directory (expand-file-name "~/Projects/website")
 	"The directory where the neocities tools will look for the website. site.el and render/ are expected to be ther.")

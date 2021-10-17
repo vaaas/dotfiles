@@ -1,4 +1,6 @@
 ; -*- lexical-binding: t -*-
+; customisations form markdown-mode. I use markdown-mode for literate programming, so there are more customisations than for other modes.
+
 (defvar vas-markdown-code-modes
 	(alist 'javascript #'js-mode
 		'js #'js-mode

@@ -83,11 +83,6 @@ Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)
 	(goto-char (point-min))
 	(read (current-buffer))))
 
-(defun read-xml-file (file)
-	"parse the the XML file FILE. see `libxml-parse-xml-region'"
-	(with-current-buffer (find-file-noselect file)
-	(libxml-parse-xml-region (point-min) (point-max))))
-
 (defun int-to-base (n base)
 	"return the string representation of integer N in base BASE. accepts positive and negative integers, and bases up to 64."
 	(if (= n 0) "0"

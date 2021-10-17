@@ -1,4 +1,6 @@
 ; -*- lexical-binding: t -*-
+; function definitions for interactive commands. Usually these have something to do with file editing or navigation.
+
 (defun backward-whitespace()
 	"Move point to end of the previous sequence of whitespace whitespace chars. The same as `forward-whitespace' with negative argument."
 	(interactive)

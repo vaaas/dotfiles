@@ -1,4 +1,5 @@
 ; -*- lexical-binding: t -*-
+; functions for the quick file find db. It's a newline-separated list of directories for quickly finding files.
 
 (defvar filedb (expand-file-name "~/filedb.txt")
 	"file name for the quick find file db. This is where the results will be stored, separated by newlines")
