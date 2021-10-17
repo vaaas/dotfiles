@@ -8,5 +8,7 @@
 (require 'xml)
 
 ; I have split the init.el file into several more dedicated files. Dynamically load these files
-(dolist (x (directory-files (concat user-emacs-directory "/elisp" )))
-	(load-file (concat user-emacs-directory "/elisp/" x)))
+(seq-each #'load-file
+(mapcar (lambda (x) (concat user-emacs-directory "/elisp/" x))
+(seq-filter (lambda (x) (not (member x (list "." ".."))))
+(directory-files (concat user-emacs-directory "/elisp")))))

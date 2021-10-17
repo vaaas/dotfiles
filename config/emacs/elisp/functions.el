@@ -1,6 +1,18 @@
 ; -*- lexical-binding: t -*-
 ; various utility functions
 
+(defmacro -> (&rest body)
+	"Pipeline macro. Pass the first element of body to the second, replacing the placeholder `$'.
+Thus, (+ 1 (+ 2 x)) becomes (-> x (+ 2 $) (+ 1 $))"
+	(let ((result (pop body)))
+	(dolist (form body result)
+		(setq result (mapcar (lambda (x) (if (eq '$ x) result x)) form)))))
+
+(defmacro => (&rest body)
+	"Like ->, excepts returns a lambda, that when evaluated, will run its argument through the pipeline.
+Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)) xs)"
+	`(lambda (x) (pipe x ,@body)))
+
 (defun outside (xs)
 	"Curried function. Returns lambda which checks whether X is a member of XS"
 	(lambda (x) (not (member x xs))))
@@ -53,10 +65,7 @@
 
 (defun intersperse (s xs)
 	"put S between the elements XS. (1 2 3) -> (1 s 2 s 3)"
-	(let ((r nil))
-	(push (car xs) r)
-	(dolist (x (cdr xs)) (push s r) (push x r))
-	(nreverse r)))
+	(cons (car xs) (apply #'append (mapcar (lambda (x) (cons s x)) (cdr xs)))))
 
 (defmacro with-temp-dir (temp-dir &rest body)
 	"Change directory to TEMP-DIR. Execute BODY. Then return to the previous directory."
@@ -66,7 +75,7 @@
 
 (defmacro push-all (xs list)
 	"`push' all elements of LIST to XS"
-	`(dolist (x ,xs) (setq ,list (cons x ,list))))
+	`(dolist (x ,xs ,list) (setq ,list (cons x ,list))))
 
 (defun read-elisp-file (file)
 	"`read' the elisp file FILE"
@@ -100,13 +109,16 @@
 	"Return a new keymap with BINDINGS. First creates a sparse keymap, then fills it.
 BINDINGS should be an alist where car is a `kbd' string and cdr is a function."
 	(let ((map (make-sparse-keymap)))
-	(dolist (x bindings)
-		(define-key map (kbd (car x)) (cdr x)))
-	map))
+	(dolist (x bindings map) (define-key map (kbd (car x)) (cdr x)))))
 
 (defun sha1-ext (x)
 	"sha1 a file X using external sha1 command"
-	(car (split-string (shell-command-to-string (string-join (list "sha1sum" "--" x) " ")) " ")))
+	(->
+	(list "sha1sum" "--" x)
+	(string-join $ " ")
+	(shell-command-to-string $)
+	(split-string $ " ")
+	(car $)))
 
 (defun difference (as bs)
 	"Return the set difference of AS - BS. (items of AS that are not on BS)"
@@ -127,6 +139,7 @@ This is useful for creating temporary non-file buffers and waiting for the user 
 		(concat "Editing virtual " ,buffer ". File will not be saved.")))
 
 (defmacro edit-buffer-region (buffer start end &rest setup)
+	"Create a buffer BUFFER, cloning the region from START to END, optionally running SETUP. Upon save, replaces the original buffer's region with the contents of BUFFER."
 	`(let ((prev (current-buffer)))
 	(with-contents-function ,buffer (progn (insert-buffer-substring-no-properties prev ,start ,end) ,@setup)
 		(switch-to-buffer prev)
@@ -134,10 +147,6 @@ This is useful for creating temporary non-file buffers and waiting for the user 
 		(goto-char ,start)
 		(insert-buffer-substring-no-properties ,buffer))))
 
-(defmacro -> (&rest body)
-	(let* ((result (pop body)))
-		(dolist (form body result)
-			(setq result (mapcar (lambda (x) (if (eq '$ x) result x)) form)))))
-
-(defmacro => (&rest body)
-	`(lambda (x) (pipe x ,@body)))
+(defmacro ignore-errors (&rest body)
+	"Execute BODY, returning nil on errors."
+	`(condition-case nil (progn ,@body) (error nil)))

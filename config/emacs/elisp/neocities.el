@@ -23,50 +23,51 @@
 (defun nc-api-list (user password)
 	"Calls the neocities list api (file listing)"
 	(let ((result
-		(json-parse-string
-		(shell-command-to-string
-		(string-join
-		(list "/usr/bin/curl" "-s" "--" (format "https://%s:%s@neocities.org/api/list" user password)) " "))
-		:object-type 'alist)))
+		(-> (format "https://%s:%s@neocities.org/api/list" user password)
+		(list "/usr/bin/curl" "-s" "--" $)
+		(string-join $ " ")
+		(shell-command-to-string $)
+		(json-parse-string $ :object-type 'alist)))))
 	(if (not (string= "success" (alist-get 'result result)))
 		(throw 'unsuccessful "fetching files was unsuccessful")
-		(alist-get 'files result))))
+		(alist-get 'files result)))
 
 (defun nc-api-delete (user password files)
 	"Calls the neocities delete api"
 	(message "Deleting remote neocities files...")
-	(shell-command-to-string
-	(format "/usr/bin/curl %s https://%s:%s@neocities.org/api/delete"
-		(string-join (mapcar (lambda (x) (format "-d filenames[]=%s" x)) files) " ")
-		user password)))
+	(-> files
+	(mapcar (lambda (x) (format "-d filenames[]=%s" x)) $)
+	(string-join $ " ")
+	(format "/usr/bin/curl %s https://%s:%s@neocities.org/api/delete" $)
+	(shell-command-to-string $)))
 
 (defun nc-api-upload (user password files)
 	"Calls the neocities upload api"
 	(message "Uploading local files to neocities. This may take a while...")
 	(with-temp-dir (concat nc-blog-directory "/render")
-		(shell-command-to-string
-			(format "/usr/bin/curl %s https://%s:%s@neocities.org/api/upload"
-				(string-join (mapcar (lambda (x) (format "-F %s=@%s" x x)) files) " ")
-				user password))))
+		(-> files
+		(mapcar (lambda (x) (format "-F %s=@%s" x x)) $)
+		(string-join $ " ")
+		(format "/usr/bin/curl %s https://%s:%s@neocities.org/api/upload" $ user password)
+		(shell-command-to-string $))))
 
 (defun nc-push()
 	"Push local files to neocities."
 	(interactive)
 	(let*
-		((conf
-			(alist-get 'conf
-			(read-elisp-file (concat nc-blog-directory "/site.el"))))
+		((conf (-> (concat nc-blog-directory "/site.el") (read-elisp-file $) (alist-get 'conf)))
 		(user (alist-get 'username conf))
 		(password (read-passwd (concat "Password for " user ": ")))
 		(remote-files
-			(mapcar (lambda (x) (cons (alist-get 'path x) (alist-get 'sha1_hash x)))
-			(seq-filter (lambda (x) (eq :false (alist-get 'is_directory x)))
-			(nc-api-list user password))))
+			(-> (nc-api-list user password)
+			(seq-filter (lambda (x) (eq :false (alist-get 'is_directory x))) $)
+			(mapcar (lambda (x) (cons (alist-get 'path x) (alist-get 'sha1_hash x))) $)))
 		(local-files
-			(mapcar (lambda (x) (cons (substring x (length (concat nc-blog-directory "/render/")) (length x)) (sha1-ext x)))
-			(directory-files-recursively (concat nc-blog-directory "/render") ".*")))
-		(delete-these-files (difference (mapcar 'car remote-files) (mapcar 'car local-files)))
-		(upload-these-files (mapcar 'car (difference local-files remote-files))))
+			(-> (concat nc-blog-directory "/render")
+			(directory-files-recursively $ ".*")
+			(mapcar (lambda (x) (cons (substring x (length (concat nc-blog-directory "/render/")) (length x)) (sha1-ext x))) $)))
+		(delete-these-files (difference (mapcar #'car remote-files) (mapcar #'car local-files)))
+		(upload-these-files (mapcar #'car (difference local-files remote-files))))
 
 	(if delete-these-files
 		(let ((reply (yes-or-no-p (concat "Deleting " (string-join delete-these-files " ") ": "))))
@@ -112,33 +113,33 @@
 
 	; render index.html
 	(with-temp-file (concat nc-blog-directory "/render/index.html")
-		(insert
-		(concat doctype
-		(serialise-xml
-		(nc-render-frontpage conf
-		(mapcar #'nc-render-item
-		(seq-filter (lambda (x) (not (alist-get 'skip (nth 1 x))))
-		posts)))))))
+		(-> posts
+		(seq-filter (lambda (x) (not (alist-get 'skip (nth 1 x)))) $)
+		(mapcar #'nc-render-item $)
+		(nc-render-frontpage conf $)
+		(serialise-xml $)
+		(concat doctype $)
+		(insert $)))
 
 	; render rss.xml
 	(with-temp-file (concat nc-blog-directory "/render/rss.xml")
-		(insert
-		(concat "<?xml version='1.0' encoding='UTF-8'?>"
-		(serialise-xml
-		(nc-render-rss conf
-		(mapcar (lambda (x) (nc-render-rss-item conf x))
-		(seq-filter (lambda (x) (not (alist-get 'skip (nth 1 x))))
-		posts)))))))
+		(-> posts
+		(seq-filter (lambda (x) (not (alist-get 'skip (nth 1 x)))) $)
+		(mapcar (lambda (x) (nc-render-rss-item conf x)) $)
+		(nc-render-rss conf $)
+		(serialise-xml $)
+		(concat "<?xml version='1.0' encoding='UTF-8'?>" $)
+		(insert $)))
 
-	; render individual articles
-	(dolist (x (seq-filter (lambda(x) (alist-get 'filename (nth 1 x))) posts))
-		(with-temp-file (concat nc-blog-directory "/render/" (alist-get 'filename (nth 1 x)))
-			(insert (concat doctype (serialise-xml (nc-render-post conf x))))))
-
-	; render individual pages
-	(dolist (x (seq-filter (lambda(x) (alist-get 'filename (nth 1 x))) pages))
-		(with-temp-file (concat nc-blog-directory "/render/" (alist-get 'filename (nth 1 x)))
-			(insert (concat doctype (serialise-xml (nc-render-page conf x))))))))
+	; render individual articles and pages
+	(-> (alist posts (lambda (x) (nc-render-post conf x)) pages #'nc-render-page)
+	(seq-each (lambda (pairs) (-> (car pairs)
+		(seq-filter (lambda(x) (alist-get 'filename (nth 1 x))) $)
+		(seq-each (lambda (x)
+			(with-temp-file (-> (nth 1 x) (alist-get 'filename $) (concat nc-blog-directory "/render/" $))
+				(-> x (funcall (cdr pairs) $) (serialise-xml $) (concat doctype $) (insert $))))
+		$)))
+	$))))
 
 (defun nc-render-item (x)
 	"Render an article element."
