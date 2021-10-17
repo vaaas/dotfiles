@@ -35,7 +35,6 @@
 	(apply #'append
 	(intersperse (list " ")
 	(mapcar (lambda (x) (let ((k (car x)) (v (cdr x)))
-		(print v)
 		(list
 			(symbol-name k) "=" "\""
 			(cond ((numberp v) (number-to-string v))
