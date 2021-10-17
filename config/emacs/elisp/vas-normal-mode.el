@@ -28,7 +28,7 @@
 	"M" 'unindent-line-or-region
 	"j" 'join-line
 	"J" 'comment-or-uncomment-region
-	"q" (lambda() (interactive) (kill-this-buffer) (vas-normal-mode-on))
+	"q" 'kill-this-buffer
 	"Q" 'save-buffers-kill-terminal
 	"w" 'forward-word
 	"W" 'forward-whitespace
@@ -80,10 +80,9 @@
 	"?" 'isearch-backward
 	"SPC" 'vas-normal-mode-off
 	"<escape>" 'keyboard-quit
-	"(" (lambda() (interactive) (next-buffer) (vas-normal-mode-on))
-	")" (lambda() (interactive) (previous-buffer) (vas-normal-mode-on))
-	"<tab>" (lambda() (interactive) (switch-to-buffer nil) (vas-normal-mode-on))
-	"TAB" (lambda() (interactive) (switch-to-buffer nil) (vas-normal-mode-on))
+	"(" 'next-buffer
+	")" 'previous-buffer
+	"<tab>" (lambda nil (interactive) (switch-to-buffer nil))
 
 	"' v p" 'variable-pitch-mode
 	"' e a" (lambda() (interactive) (find-file (concat user-emacs-directory "/abbrev_defs")))

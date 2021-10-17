@@ -275,11 +275,11 @@
 		(site-file (concat nc-blog-directory "/site.el"))
 		(cat (ido-completing-read "category?> " nc-blog-categories))
 		(stamp (timestamp))
-		(file-name (when (>= (buffer-size) 2000)
-			(concat
-				(replace-regexp-in-string " " "_"
-					(read-string "file name (no extension): "))
-				".html")))
+		(file-name
+			(when (>= (buffer-size) 2000)
+				(-> (read-string "file name (no extension): ")
+				(replace-regexp-in-string " " "_" $)
+				(concat $ ".html"))))
 		(post (append
 			(list 'post (if file-name
 				(alist 'timestamp stamp 'tag cat 'filename file-name)
@@ -294,7 +294,7 @@
 		(posts (alist-get 'posts site)))
 	(with-temp-file (concat nc-blog-directory "/site.el")
 		(setcdr (last posts) (cons post nil))
-		(prin1 site (current-buffer)))))
+		(pp site (current-buffer)))))
 
 (defun nc-edit-post nil
 	"Edit a neocities blog post."

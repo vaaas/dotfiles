@@ -39,17 +39,18 @@
 	(cddr node))))
 
 (defun tokenise-xml-attrs (xs)
-	(apply #'append
-	(intersperse (list " ")
-	(mapcar (lambda (x) (let ((k (car x)) (v (cdr x)))
-		(list
-			(symbol-name k) "=" "\""
-			(cond ((numberp v) (number-to-string v))
+	(-> xs
+	(mapcar
+		(lambda (x) (let ((k (car x)) (v (cdr x)))
+			(-> (cond
+				((numberp v) (number-to-string v))
 				((stringp v) (xml-escape-string v))
 				((symbolp v) (symbol-name v))
 				(t ""))
-			"\"")))
-	xs))))
+			(list (symbol-name k) "=" "\"" $ "\""))))
+		$)
+	(intersperse (list " ") $)
+	(apply #'append $)))
 
 (defun query-selector (f node)
 	(cond
@@ -64,7 +65,6 @@
 
 (defun query-selector-all (f node)
 	(let ((xs (when (funcall f node) (list node))))
-	(dolist (x (when (listp node) (cddr node)))
-		(dolist (y (query-selector-all f x))
-			(push y xs)))
-	(nreverse xs)))
+	(nreverse
+	(dolist (x (when (listp node) (cddr node)) xs)
+		(push-all (query-selector-all f x) xs)))))

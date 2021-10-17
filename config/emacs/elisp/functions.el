@@ -65,7 +65,8 @@ Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)
 
 (defun intersperse (s xs)
 	"put S between the elements XS. (1 2 3) -> (1 s 2 s 3)"
-	(cons (car xs) (apply #'append (mapcar (lambda (x) (cons s x)) (cdr xs)))))
+	(let ((r (cons (car xs) nil)))
+	(nreverse (dolist (x (cdr xs) r) (push s r) (push x r)))))
 
 (defmacro with-temp-dir (temp-dir &rest body)
 	"Change directory to TEMP-DIR. Execute BODY. Then return to the previous directory."
@@ -73,9 +74,9 @@ Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)
 	(cd ,temp-dir)
 	(unwind-protect (progn ,@body) (cd old))))
 
-(defmacro push-all (xs list)
-	"`push' all elements of LIST to XS"
-	`(dolist (x ,xs ,list) (setq ,list (cons x ,list))))
+(defmacro push-all (from to)
+	"`push' all elements of FROM onto TO"
+	`(dolist (x ,from ,to) (setq ,to (cons x ,to))))
 
 (defun read-elisp-file (file)
 	"`read' the elisp file FILE"
