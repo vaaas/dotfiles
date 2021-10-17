@@ -28,10 +28,10 @@
 		(list "/usr/bin/curl" "-s" "--" $)
 		(string-join $ " ")
 		(shell-command-to-string $)
-		(json-parse-string $ :object-type 'alist)))))
+		(json-parse-string $ :object-type 'alist))))
 	(if (not (string= "success" (alist-get 'result result)))
 		(throw 'unsuccessful "fetching files was unsuccessful")
-		(alist-get 'files result)))
+		(alist-get 'files result))))
 
 (defun nc-api-delete (user password files)
 	"Calls the neocities delete api"
@@ -56,7 +56,7 @@
 	"Push local files to neocities."
 	(interactive)
 	(let*
-		((conf (-> (concat nc-blog-directory "/site.el") (read-elisp-file $) (alist-get 'conf)))
+		((conf (-> (concat nc-blog-directory "/site.el") (read-elisp-file $) (alist-get 'conf $)))
 		(user (alist-get 'username conf))
 		(password (read-passwd (concat "Password for " user ": ")))
 		(remote-files
@@ -69,7 +69,6 @@
 			(mapcar (lambda (x) (cons (substring x (length (concat nc-blog-directory "/render/")) (length x)) (sha1-ext x))) $)))
 		(delete-these-files (difference (mapcar #'car remote-files) (mapcar #'car local-files)))
 		(upload-these-files (mapcar #'car (difference local-files remote-files))))
-
 	(if delete-these-files
 		(let ((reply (yes-or-no-p (concat "Deleting " (string-join delete-these-files " ") ": "))))
 		(when reply
