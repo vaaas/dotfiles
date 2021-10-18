@@ -37,7 +37,7 @@
 	"Calls the neocities delete api"
 	(message "Deleting remote neocities files...")
 	(-> files
-	(mapcar (lambda (x) (format "-d filenames[]=%s" x)) $)
+	(mapcar (=> (format "-d filenames[]=%s" $)) $)
 	(string-join $ " ")
 	(format "/usr/bin/curl %s https://%s:%s@neocities.org/api/delete" $)
 	(shell-command-to-string $)))
@@ -47,7 +47,7 @@
 	(message "Uploading local files to neocities. This may take a while...")
 	(with-temp-dir (concat nc-blog-directory "/render")
 		(-> files
-		(mapcar (lambda (x) (format "-F %s=@%s" x x)) $)
+		(mapcar (=> (format "-F %s=@%s" $ $)) $)
 		(string-join $ " ")
 		(format "/usr/bin/curl %s https://%s:%s@neocities.org/api/upload" $ user password)
 		(shell-command-to-string $))))
@@ -114,7 +114,7 @@
 	; render index.html
 	(with-temp-file (concat nc-blog-directory "/render/index.html")
 		(-> posts
-		(seq-filter (lambda (x) (not (alist-get 'skip (nth 1 x)))) $)
+		(seq-filter (=> (nth 1 $) (alist-get 'skip $) (not $)) $)
 		(mapcar #'nc-render-item $)
 		(nc-render-frontpage conf $)
 		(serialise-xml $)
@@ -124,8 +124,8 @@
 	; render rss.xml
 	(with-temp-file (concat nc-blog-directory "/render/rss.xml")
 		(-> posts
-		(seq-filter (lambda (x) (not (alist-get 'skip (nth 1 x)))) $)
-		(mapcar (lambda (x) (nc-render-rss-item conf x)) $)
+		(seq-filter (=> (nth 1 $) (alist-get 'skip $) (not $)) $)
+		(mapcar (=> (nc-render-rss-item conf $)) $)
 		(nc-render-rss conf $)
 		(serialise-xml $)
 		(concat "<?xml version='1.0' encoding='UTF-8'?>" $)
@@ -172,10 +172,10 @@
 	"Generate the frontpage (index.html) of the neocities blog."
 	(let
 	((distinct-tags
-		(sort
-		(delete-dups
-		(mapcar (lambda (x) (alist-get 't (nth 1 x))) xs))
-		#'string<)))
+		(-> xs
+		(mapcar (=> (nth 1 $) (alist-get 't $)) $)
+		(delete-dups $)
+		(sort $ #'string<))))
 	(nc-render-html
 		(alist-get 'lang conf)
 		(nc-render-head conf (alist-get 'sitename conf))
@@ -196,21 +196,28 @@
 (defun nc-render-rss-item (conf x)
 	"Creates an rss item."
 	(let*
-		((timestamp (alist-get 'timestamp (nth 1 x)))
+		((attrs (nth 1 x))
+		(conf-url (alist-get 'url conf))
+		(timestamp (alist-get 'timestamp attrs))
+		(filename (alist-get 'filename attrs))
 		(guid (nc-guid timestamp))
-		(date (nc-rfctime timestamp))
-		(url (concat (alist-get 'url conf) "/#" guid)))
+		(url (if filename
+			(concat conf-url "/" filename)
+			(concat conf-url "/#" guid))))
 	(list 'item nil
 		(list 'title nil
-			(iff (query-selector (xml-elem= 'h1) x)
-				#'xml-inner-text
-				(K (format "New post by %s (%s)" (alist-get 'author conf) guid))))
+			(if filename
+				(-> x (query-selector (xml-elem= 'h1) $) (xml-inner-text $))
+				(format "New post by %s (%s)" (alist-get 'author conf) guid)))
 		(list 'guid nil url)
-		(list 'pubDate nil date)
+		(list 'pubDate nil (nc-rfctime timestamp))
 		(list 'link nil url)
-		(append
-			(list 'description nil)
-			(mapcar (lambda (x) (xml-escape-string (serialise-xml x))) (nc-render-description x))))))
+		(list 'description nil (append
+			(list '!cdata nil)
+			(-> x
+			(nc-render-description $)
+			(cdr $)
+			(mapcar (=> (nc-render-absolute-links conf-url $)) $)))))))
 
 (defun nc-render-rss (conf xs)
 	"Creates rss.xml."
@@ -319,3 +326,16 @@
 			(insert (serialise-xml selected-post))
 			(xml-mode))
 		(print "yo"))))
+
+(defun nc-render-absolute-links (prefix x)
+	(if (listp x)
+		(append
+			(list (nth 0 x)
+				(map-alist
+					(lambda (k v)
+						(if (and (member k '(href src)) (string-prefix-p "/" v))
+						(cons k (concat prefix v))
+						(cons k v)))
+					(nth 1 x)))
+			(mapcar (=> (nc-render-absolute-links prefix $)) (cddr x)))
+		x))

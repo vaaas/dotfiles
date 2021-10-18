@@ -11,7 +11,7 @@ Thus, (+ 1 (+ 2 x)) becomes (-> x (+ 2 $) (+ 1 $))"
 (defmacro => (&rest body)
 	"Like ->, excepts returns a lambda, that when evaluated, will run its argument through the pipeline.
 Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)) xs)"
-	`(lambda (x) (pipe x ,@body)))
+	`(lambda (x) (-> x ,@body)))
 
 (defun outside (xs)
 	"Curried function. Returns lambda which checks whether X is a member of XS"
@@ -23,7 +23,7 @@ Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)
 
 (defun timestamp()
 	"return the current unix timestamp"
-	(format-time-string "%s"))
+	(string-to-number (format-time-string "%s")))
 
 (defun plist-to-alist (xs)
 	"turn a plist into an alist"
@@ -32,14 +32,6 @@ Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)
 (defun alist (&rest xs)
 	"create an alist. the length of XS must be even. the odd members of XS become the cars, and the even members become the cdrs."
 	(plist-to-alist xs))
-
-(defun iff (x good bad)
-	"execute GOOD with argument X if X is non-nil. Otherwise, execute BAD with argument X"
-	(if x (funcall good x) (funcall bad x)))
-
-(defun K (x)
-	"return a function that, when executed, always returns X"
-	(lambda(&rest xs) x))
 
 (defun find(f xs)
 	"search through XS for the element that, when passed to the callback function F, returns non-nil"
@@ -51,11 +43,18 @@ Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)
 
 (defun map-plist(f xs)
 	"map for plists. Pass two arguments to F, where the first is the key, and the second is the value."
-	(let ((head xs) (results ()))
+	(let ((head xs) (results nil))
 	(while head
 		(push (funcall f (car head) (cadr head)) results)
 		(setq head (cddr head)))
 	(nreverse results)))
+
+(defun map-alist (f xs)
+	"map for alists. Pass two arguments to F, where the first is the key, and the second is the value."
+	(let ((results nil))
+	(nreverse
+	(dolist (x xs results)
+		(push (funcall f (car x) (cdr x)) results)))))
 
 (defun slurp(f)
 	"read the contents of filepath F into a string."

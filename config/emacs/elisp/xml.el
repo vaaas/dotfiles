@@ -17,21 +17,22 @@
 
 (defun serialise-xml-node(node)
 	(let
-		((name (symbol-name (car node)))
+		((name (car node))
 		(attrs (cadr node))
 		(children (cddr node)))
 	(string-join
-		(if (string= "comment" name)
-			(list "<!--" (car children) "-->")
-		(append
-			(list "<" name)
-			(when attrs (append (list " ") (tokenise-xml-attrs attrs)))
-			(if children
-				(append
-					(list ">")
-					(mapcar #'serialise-xml children)
-					(list "</" name ">"))
-				(list "/>")))))))
+	(cond
+	((eq 'comment name) (list "<!--" (car children) "-->"))
+	((eq '!cdata name) (mapcar (=> (serialise-xml $) (xml-escape-string $)) children))
+	(t (append
+		(list "<" (symbol-name name))
+		(when attrs (append (list " ") (tokenise-xml-attrs attrs)))
+		(if children
+			(append
+				(list ">")
+				(mapcar #'serialise-xml children)
+				(list "</" (symbol-name name) ">"))
+			(list "/>"))))))))
 
 (defun xml-inner-text (node)
 	(string-join
@@ -40,14 +41,14 @@
 
 (defun tokenise-xml-attrs (xs)
 	(-> xs
-	(mapcar
-		(lambda (x) (let ((k (car x)) (v (cdr x)))
+	(map-alist
+		(lambda (k v)
 			(-> (cond
 				((numberp v) (number-to-string v))
 				((stringp v) (xml-escape-string v))
 				((symbolp v) (symbol-name v))
 				(t ""))
-			(list (symbol-name k) "=" "\"" $ "\""))))
+			(list (symbol-name k) "=" "\"" $ "\"")))
 		$)
 	(intersperse (list " ") $)
 	(apply #'append $)))
