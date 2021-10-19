@@ -136,7 +136,11 @@ This is useful for creating temporary non-file buffers and waiting for the user 
 (defmacro edit-buffer-region (buffer start end &rest setup)
 	"Create a buffer BUFFER, cloning the region from START to END, optionally running SETUP. Upon save, replaces the original buffer's region with the contents of BUFFER."
 	`(let ((prev (current-buffer)))
-	(with-contents-function ,buffer (progn (insert-buffer-substring-no-properties prev ,start ,end) ,@setup)
+	(with-contents-function ,buffer
+		(progn
+			(insert-buffer-substring-no-properties prev ,start ,end)
+			(beginning-of-buffer)
+			,@setup)
 		(switch-to-buffer prev)
 		(delete-region ,start ,end)
 		(goto-char ,start)
