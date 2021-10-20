@@ -7,7 +7,7 @@
 
 (add-hook 'minibuffer-setup-hook 'vas-normal-mode-off)
 
-(add-hook 'text-mode-hook (lambda() (variable-pitch-mode) (vas-normal-mode-on)))
+(add-hook 'text-mode-hook 'vas-normal-mode-off)
 
 (add-hook 'eshell-mode-hook 'vas-normal-mode-off)
 

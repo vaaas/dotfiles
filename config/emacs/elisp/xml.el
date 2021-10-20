@@ -6,7 +6,7 @@
 	(with-current-buffer (find-file-noselect file)
 	(libxml-parse-xml-region (point-min) (point-max))))
 
-(defun xml-elem= (s) (lambda (x) (when (listp x) (eq s (car x)))))
+(defun xml-elem= (s) (L x (when (listp x) (eq s (car x)))))
 
 (defun serialise-xml(node)
 	(cond
@@ -36,7 +36,7 @@
 
 (defun xml-inner-text (node)
 	(string-join
-	(mapcar (lambda (x) (if (stringp x) x (xml-inner-text x)))
+	(mapcar (L x (if (stringp x) x (xml-inner-text x)))
 	(cddr node))))
 
 (defun tokenise-xml-attrs (xs)
@@ -69,3 +69,6 @@
 	(nreverse
 	(dolist (x (when (listp node) (cddr node)) xs)
 		(push-all (query-selector-all f x) xs)))))
+
+(defmacro having (x def &rest body)
+	`(let ((,x ,def)) ,@body ,x))

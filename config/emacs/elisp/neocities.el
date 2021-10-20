@@ -61,12 +61,12 @@
 		(password (read-passwd (concat "Password for " user ": ")))
 		(remote-files
 			(-> (nc-api-list user password)
-			(seq-filter (lambda (x) (eq :false (alist-get 'is_directory x))) $)
-			(mapcar (lambda (x) (cons (alist-get 'path x) (alist-get 'sha1_hash x))) $)))
+			(seq-filter (L x (eq :false (alist-get 'is_directory x))) $)
+			(mapcar (L x (cons (alist-get 'path x) (alist-get 'sha1_hash x))) $)))
 		(local-files
 			(-> (concat nc-blog-directory "/render")
 			(directory-files-recursively $ ".*")
-			(mapcar (lambda (x) (cons (substring x (length (concat nc-blog-directory "/render/")) (length x)) (sha1-ext x))) $)))
+			(mapcar (L x (cons (substring x (length (concat nc-blog-directory "/render/")) (length x)) (sha1-ext x))) $)))
 		(delete-these-files (difference (mapcar #'car remote-files) (mapcar #'car local-files)))
 		(upload-these-files (mapcar #'car (difference local-files remote-files))))
 	(if delete-these-files
@@ -132,10 +132,10 @@
 		(insert $)))
 
 	; render individual articles and pages
-	(-> (alist posts (lambda (x) (nc-render-post conf x)) pages #'nc-render-page)
-	(seq-each (lambda (pairs) (-> (car pairs)
-		(seq-filter (lambda(x) (alist-get 'filename (nth 1 x))) $)
-		(seq-each (lambda (x)
+	(-> (alist posts (L x (nc-render-post conf x)) pages #'nc-render-page)
+	(seq-each (L pairs (-> (car pairs)
+		(seq-filter (=> (nth 1 $) (alist-get 'filename $)) $)
+		(seq-each (L x
 			(with-temp-file (-> (nth 1 x) (alist-get 'filename $) (concat nc-blog-directory "/render/" $))
 				(-> x (funcall (cdr pairs) $) (serialise-xml $) (concat doctype $) (insert $))))
 		$)))
@@ -143,11 +143,10 @@
 
 (defun nc-render-item (x)
 	"Render an article element."
-	(append
-		(list 'article (alist
-			't (alist-get 'tag (nth 1 x))
-			'id (nc-guid (alist-get 'timestamp (nth 1 x)))))
-		(nc-render-description x)))
+	(spread-last (list
+		'article (alist
+			't (alist-get 'tag (nth 1 x)) 'id (nc-guid (alist-get 'timestamp (nth 1 x))))
+		(nc-render-description x))))
 
 (defun nc-render-description (x)
 	"Generate the description of an article or RSS item."
@@ -161,9 +160,7 @@
 		(when (not h1) (throw 'bad-post "No h1 found"))
 		(when (not p) (throw 'bad-post "No p found"))
 		(push
-			(list 'h1 nil (append
-				(list 'a (alist 'href (concat "/" filename)))
-				(cddr h1)))
+			(list 'h1 nil (spread-last (list 'a (alist 'href (concat "/" filename)) (cddr h1))))
 			xs)
 		(push-all (cddr p) xs)))
 	(nreverse xs)))
@@ -189,7 +186,7 @@
 				(list 'nav nil)
 				(alist-get 'links conf)
 				(list (list 'a (alist 'class "active" 'href "all") "all"))
-				(mapcar (lambda (x) (list 'a (alist 'href x) x)) distinct-tags))
+				(mapcar (L x (list 'a (alist 'href x) x)) distinct-tags))
 			(append (list 'main nil) (nreverse xs))
 			(list 'script (alist 'src "/script.js") " ")))))
 
@@ -305,37 +302,56 @@
 (defun nc-edit-post nil
 	"Edit a neocities blog post."
 	(interactive)
-	; TODO: finish this
 	(let*
-		((site (read-elisp-file (concat nc-blog-directory "/site.el")))
+		((sitefile (concat nc-blog-directory "/site.el"))
+		(site (read-elisp-file sitefile))
 		(posts (alist-get 'posts site))
-		(choices (mapcar (lambda (x)
+		(selected-timestamp
+			(-> posts
+			(C mapcar $ (L x
 				(let ((h1 (query-selector (xml-elem= 'h1) x)))
 				(concat
 					(number-to-string (alist-get 'timestamp (nth 1 x)))
 					" "
-					(if h1 (xml-inner-text h1)
-					(let ((txt (xml-inner-text x)))
-						(substring txt 0 (min 128 (length txt))))))))
-			posts))
-		(choice (ido-completing-read "select post: " choices))
-		(selected-timestamp (string-to-number (car (split-string choice " "))))
-		(selected-post (find (lambda (x) (= selected-timestamp (alist-get 'timestamp (nth 1 x)))) posts)))
+					(if h1
+						(xml-inner-text h1)
+						(string-head 128 (xml-inner-text x)))))))
+			(ido-completing-read "select post: " $)
+			(split-string $ " ")
+			(car $)
+			(string-to-number $)))
+		(selected-post (find (=> (nth 1 $) (alist-get 'timestamp $) (= selected-timestamp $)) posts)))
 	(with-contents-function "*edit-blog-post*"
-		(progn
-			(insert (serialise-xml selected-post))
-			(xml-mode))
-		(print "yo"))))
+	(progn
+		(insert (serialise-xml selected-post))
+		(xml-mode))
+	(let ((edited-post
+		(having x (libxml-parse-xml-region (point-min) (point-max))
+		(-> x
+		(nth 1 $)
+		(C map-alist-ip $
+			(lambda (k v)
+				(cons k (cond
+					((eq k 'skip) (intern v))
+					((eq k 'timestamp) (string-to-number v))
+					(t v)))))))))
+	(setf
+		(nth 1 selected-post) (nth 1 edited-post)
+		(cddr selected-post) (cddr edited-post))
+	(print site)
+))))
+	;; (with-temp-file (concat nc-blog-directory "/site.el")
+	;; 	(pp site (current-buffer)))))))
 
 (defun nc-render-absolute-links (prefix x)
+	"turn all links in the href and src properties of all elements in the dom tree X into absolute links by prefixing them with PREFIX."
 	(if (listp x)
-		(append
-			(list (nth 0 x)
-				(map-alist
-					(lambda (k v)
-						(if (and (member k '(href src)) (string-prefix-p "/" v))
-						(cons k (concat prefix v))
-						(cons k v)))
-					(nth 1 x)))
-			(mapcar (=> (nc-render-absolute-links prefix $)) (cddr x)))
-		x))
+	(spread-last (list
+		(nth 0 x)
+		(C map-alist (nth 1 x)
+			(lambda (k v) (cons k
+				(if (and (member k '(href src)) (string-prefix-p "/" v))
+				(concat prefix v)
+				v))))
+		(C mapcar (cddr x) (=> (nc-render-absolute-links prefix $)))))
+	x))

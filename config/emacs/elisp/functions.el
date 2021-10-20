@@ -1,21 +1,29 @@
 ; -*- lexical-binding: t -*-
 ; various utility functions
 
+(defmacro L (x &rest body)
+	"lambda shorthand for only one argument."
+	`(lambda (,x) ,@body))
+
+(defmacro C (f &rest body)
+	"call F with arguments BODY in reverse."
+	(append (list f) (nreverse body)))
+
 (defmacro -> (&rest body)
 	"Pipeline macro. Pass the first element of body to the second, replacing the placeholder `$'.
 Thus, (+ 1 (+ 2 x)) becomes (-> x (+ 2 $) (+ 1 $))"
 	(let ((result (pop body)))
 	(dolist (form body result)
-		(setq result (mapcar (lambda (x) (if (eq '$ x) result x)) form)))))
+		(setq result (mapcar (L x (if (eq '$ x) result x)) form)))))
 
 (defmacro => (&rest body)
 	"Like ->, excepts returns a lambda, that when evaluated, will run its argument through the pipeline.
 Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)) xs)"
-	`(lambda (x) (-> x ,@body)))
+	`(L x (-> x ,@body)))
 
 (defun outside (xs)
 	"Curried function. Returns lambda which checks whether X is a member of XS"
-	(lambda (x) (not (member x xs))))
+	(L x (not (member x xs))))
 
 (defun whitespacep(x)
 	"test if a character is whitespace. Whitespace is defined as tab, space, and newline."
@@ -55,6 +63,22 @@ Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)
 	(nreverse
 	(dolist (x xs results)
 		(push (funcall f (car x) (cdr x)) results)))))
+
+(defun map-ip (f xs)
+	"mapcar in place. modifies XS by mapping every car through F."
+	(let ((head xs))
+	(while head
+		(setcar head (funcall f (car head)))
+		(setq head (cdr head)))
+	xs))
+
+(defun map-alist-ip (f xs)
+	"map-ip for alists. Pass two arguments to F, where the first is the key, and the second is the value."
+	(let ((head xs))
+	(while head
+		(setcar head (funcall f (car (car head)) (cdr (car head))))
+		(setq head (cdr head)))
+	xs))
 
 (defun slurp(f)
 	"read the contents of filepath F into a string."
@@ -108,8 +132,7 @@ BINDINGS should be an alist where car is a `kbd' string and cdr is a function."
 
 (defun sha1-ext (x)
 	"sha1 a file X using external sha1 command"
-	(->
-	(list "sha1sum" "--" x)
+	(->(list "sha1sum" "--" x)
 	(string-join $ " ")
 	(shell-command-to-string $)
 	(split-string $ " ")
@@ -144,8 +167,17 @@ This is useful for creating temporary non-file buffers and waiting for the user 
 		(switch-to-buffer prev)
 		(delete-region ,start ,end)
 		(goto-char ,start)
-		(insert-buffer-substring-no-properties ,buffer))))
+		(insert-buffer-substring-no-properties ,buffer)
+        (goto-char ,start))))
 
 (defmacro ignore-errors (&rest body)
 	"Execute BODY, returning nil on errors."
 	`(condition-case nil (progn ,@body) (error nil)))
+
+(defun string-head (n x)
+	"Get the first N characters of string X. If X is shorter than N, get the entire X."
+	(substring x 0 (min n (length x))))
+
+(defun spread-last (x)
+	"spread the last element of X onto X. Useful for XML"
+	(append (butlast x) (last x)))
