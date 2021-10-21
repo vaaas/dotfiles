@@ -94,7 +94,7 @@
 	'("abbrev_defs" . emacs-lisp-mode)))
 	(add-to-list 'auto-mode-alist x))
 
-(defvar prefers-colour-scheme 'dark
+(defvar prefers-colour-scheme 'light
 	"Whether LIGHT or DARK theme should be used")
 
 (cond
@@ -131,7 +131,7 @@
 
 	((eq prefers-colour-scheme 'dark)
 		(custom-set-faces
-		'(default ((t (:inherit nil :extend nil :stipple nil :background "#110000" :foreground "#ffeedd" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :family "JuliaMono"))))
+		'(default ((t (:inherit nil :extend nil :stipple nil :background "#222222" :foreground "#ffeedd" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :family "JuliaMono"))))
 		'(cursor ((t (:background "#ff0055"))))
 		'(eshell-ls-directory ((t (:foreground "#4488ff" :weight bold))))
 		'(eshell-ls-executable ((t (:foreground "#00ff88" :weight bold))))
@@ -156,6 +156,6 @@
 		'(php-$this ((t (:slant oblique))))
 		'(php-$this-sigil ((t (:inherit php-$this))))
 		'(php-function-call ((t (:inherit font-lock-function-name-face))))
-		'(region ((t (:background "#330000"))))
+		'(region ((t (:background "#000000"))))
 		'(show-paren-match ((t (:inherit highlight))))
 		'(variable-pitch ((t (:height 200 :family "Sans Serif")))))))

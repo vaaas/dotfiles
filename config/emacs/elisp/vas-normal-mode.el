@@ -84,6 +84,17 @@
 	")" 'previous-buffer
 	"<tab>" (lambda nil (interactive) (switch-to-buffer nil))
 
+	"1" 'do-nothing
+	"2" 'do-nothing
+	"3" 'do-nothing
+	"4" 'do-nothing
+	"5" 'do-nothing
+	"6" 'do-nothing
+	"7" 'do-nothing
+	"8" 'do-nothing
+	"9" 'do-nothing
+	"0" 'do-nothing
+
 	"' v p" 'variable-pitch-mode
 	"' e a" (lambda() (interactive) (find-file (concat user-emacs-directory "/abbrev_defs")))
 	"' e i" (lambda() (interactive) (find-file user-init-file))
