@@ -27,7 +27,7 @@ Begin walking from `filedb-root-dir' and exclude directories in `filedb-exclude-
 	(interactive)
 	(with-temp-file filedb
 	(filedb-walk filedb-root-dir filedb-exclude-dirs
-		(lambda(x) (insert (substring x (+ 1 (length filedb-root-dir)) (length x)) "\n")))))
+		(L x (insert (substring x (+ 1 (length filedb-root-dir)) (length x)) "\n")))))
 
 (defun filedb-find-file ()
 	"find-file by searching the filedb file. filedb is a newline-separated list of files.

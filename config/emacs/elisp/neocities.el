@@ -181,13 +181,13 @@
 				(list 'div (alist 'class "imgtxt")
 					(list 'img (alist 'src "/pics/banner.jpg"))
 					(list 'h1 nil (alist-get 'sitename conf)))
-				(append (list 'p nil) (alist-get 'blurb conf)))
+				(spread-last (list 'p nil (alist-get 'blurb conf))))
 			(append
 				(list 'nav nil)
 				(alist-get 'links conf)
 				(list (list 'a (alist 'class "active" 'href "all") "all"))
 				(mapcar (L x (list 'a (alist 'href x) x)) distinct-tags))
-			(append (list 'main nil) (nreverse xs))
+			(spread-last (list 'main nil (nreverse xs)))
 			(list 'script (alist 'src "/script.js") " ")))))
 
 (defun nc-render-rss-item (conf x)
@@ -209,12 +209,11 @@
 		(list 'guid nil url)
 		(list 'pubDate nil (nc-rfctime timestamp))
 		(list 'link nil url)
-		(list 'description nil (append
-			(list '!cdata nil)
-			(-> x
-			(nc-render-description $)
+		(list 'description nil
+			(spread-last (list '!cdata nil
+			(->(nc-render-description x)
 			(cdr $)
-			(mapcar (=> (nc-render-absolute-links conf-url $)) $)))))))
+			(mapcar (=> (nc-render-absolute-links conf-url $)) $))))))))
 
 (defun nc-render-rss (conf xs)
 	"Creates rss.xml."
@@ -246,7 +245,7 @@
 				(list 'a (alist 'href "/") (alist-get 'sitename conf))
 				" — "
 				(list 'time nil (nc-ymd timestamp)))
-			(append (list 'main nil) (cddr x))))))
+			(spread-last (list 'main nil (cddr x)))))))
 
 (defun nc-render-page (conf x)
 	"Generate an individual neocities page"
@@ -265,9 +264,7 @@
 				(list 'link (alist 'rel "icon" 'href "/favicon.ico"))
 				(list 'link (alist 'rel "alternate" 'href "/rss.xml" 'type "application/rss+xml")))
 			(cddr head))
-		(append
-			(list 'body (alist 'class "page"))
-			(cddr body)))))
+		(spread-last (list 'body (alist 'class "page") (cddr body))))))
 
 ; neocities CRUD functions
 (defun nc-make-post nil
@@ -283,16 +280,17 @@
 				(-> (read-string "file name (no extension): ")
 				(replace-regexp-in-string " " "_" $)
 				(concat $ ".html"))))
-		(post (append
-			(list 'post (if file-name
+		(post (spread-last
+			(list 'post
+			(if file-name
 				(alist 'timestamp stamp 'tag cat 'filename file-name)
-				(alist 'timestamp stamp 'tag cat)))
+				(alist 'timestamp stamp 'tag cat))
 			(with-temp-buffer
 				(insert-buffer buffer)
 				(cmark)
 				(beginning-of-buffer) (insert "<body>")
 				(end-of-buffer) (insert "</body>")
-				(cddr (libxml-parse-xml-region (point-min) (point-max))))))
+				(cddr (libxml-parse-xml-region (point-min) (point-max)))))))
 		(site (read-elisp-file site-file))
 		(posts (alist-get 'posts site)))
 	(with-temp-file (concat nc-blog-directory "/site.el")

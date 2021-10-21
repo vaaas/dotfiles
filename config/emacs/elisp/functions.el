@@ -21,6 +21,10 @@ Thus, (+ 1 (+ 2 x)) becomes (-> x (+ 2 $) (+ 1 $))"
 Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)) xs)"
 	`(L x (-> x ,@body)))
 
+(defmacro lastcar (x)
+	"Returns the last car."
+	`(car (last ,x)))
+
 (defun outside (xs)
 	"Curried function. Returns lambda which checks whether X is a member of XS"
 	(L x (not (member x xs))))
@@ -180,4 +184,4 @@ This is useful for creating temporary non-file buffers and waiting for the user 
 
 (defun spread-last (x)
 	"spread the last element of X onto X. Useful for XML"
-	(append (butlast x) (last x)))
+	(append (butlast x) (lastcar x)))
