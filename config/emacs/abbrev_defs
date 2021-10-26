@@ -1,4 +1,4 @@
-(define-abbrev-table 'markdown-mode-abbrev-table '(
+(define-abbrev-table 'js-mode-abbrev-table '(
 	("a" "=>")
 	("f" "function")
 	("r" "return")
@@ -32,7 +32,7 @@
 	("fnq" "fn($q) =>")
 ))
 
-(define-abbrev-table 'text-mode-abbrev-table '(
+(define-abbrev-table 'markdown-mode-abbrev-table '(
 	("'" "it")
 	("V" "off")
 	("ab" "about")
@@ -207,4 +207,5 @@
 	("aw" "always")
 	("wth" "whether")
 	("ano" "another")
+	("fn" "function")
 ))
