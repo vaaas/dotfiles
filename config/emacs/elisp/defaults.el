@@ -22,7 +22,7 @@
 	indent-tabs-mode (when (string= (system-name) "cleome") t)
 
 	; this is the line-height
-	line-spacing 0.3
+	line-spacing 0.1
 
 	; 3 spaces for tabs. 4 spaces for spaces.
 	tab-width (if (string= (system-name) "cleome") 3 4)
@@ -100,7 +100,7 @@
 (cond
 	((eq prefers-colour-scheme 'light)
 		(custom-set-faces
-		'(default ((t (:inherit nil :extend nil :stipple nil :background "#ffeedd" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :family "JuliaMono"))))
+		'(default ((t (:inherit nil :extend nil :stipple nil :background "#ffeedd" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :family "JuliaMono"))))
 		'(cursor ((t (:background "#ff0055"))))
 		'(eshell-ls-directory ((t (:foreground "#2255aa" :weight bold))))
 		'(eshell-ls-executable ((t (:foreground "#008844" :weight bold))))
@@ -131,7 +131,7 @@
 
 	((eq prefers-colour-scheme 'dark)
 		(custom-set-faces
-		'(default ((t (:inherit nil :extend nil :stipple nil :background "#222222" :foreground "#ffeedd" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :family "JuliaMono"))))
+		'(default ((t (:inherit nil :extend nil :stipple nil :background "#222222" :foreground "#ffeedd" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :family "JuliaMono"))))
 		'(cursor ((t (:background "#ff0055"))))
 		'(eshell-ls-directory ((t (:foreground "#4488ff" :weight bold))))
 		'(eshell-ls-executable ((t (:foreground "#00ff88" :weight bold))))
