@@ -75,7 +75,6 @@
 			(nc-api-delete user password delete-these-files)
 			(message "Done")))
 		(message "Nothing to delete"))
-
 	(if upload-these-files
 		(let ((reply (yes-or-no-p (concat "Uploading " (string-join upload-these-files " ") ": "))))
 		(when reply
@@ -338,8 +337,6 @@
 		(cddr selected-post) (cddr edited-post))
 	(print site)
 ))))
-	;; (with-temp-file (concat nc-blog-directory "/site.el")
-	;; 	(pp site (current-buffer)))))))
 
 (defun nc-render-absolute-links (prefix x)
 	"turn all links in the href and src properties of all elements in the dom tree X into absolute links by prefixing them with PREFIX."
