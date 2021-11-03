@@ -15,7 +15,8 @@
 	"Edit the code block the cursor is at in a different buffer."
 	(interactive)
 	(let*
-		((start (progn (search-backward "```") (point)))
+		((initial (point))
+		(start (progn (search-backward "```") (point)))
 		(eofl (progn (end-of-line) (point)))
 		(end (progn (search-forward "```") (point)))
 		(mode (->
@@ -26,7 +27,9 @@
 			(intern $)
 			(alist-get $ vas-markdown-code-modes)
 			(or $ 'prog-mode))))
-	(edit-buffer-region "*markdown-code-narrow-indirect*" (+ eofl 1) (- end 3) (call-interactively mode))))
+	(edit-buffer-region "*markdown-code-narrow-indirect*" (+ eofl 1) (- end 3)
+		(call-interactively mode)
+		(goto-char (- initial eofl)))))
 
 (define-minor-mode markdown-normal-mode
 	"markdown-mode extensions for vas-normal-mode"
