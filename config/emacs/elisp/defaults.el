@@ -82,7 +82,7 @@
 	ido-enable-flex-matching t
 
 	; these are the installed packages from MELPA
-	package-selected-packages '(php-mode markdown-mode))
+	package-selected-packages '(php-mode markdown-mode purescript-mode))
 
 ; remove the fringe border
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
