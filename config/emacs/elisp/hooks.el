@@ -31,3 +31,6 @@
 
 (add-hook 'change-major-mode-hook (lambda ()
 	(kill-local-variable 'vas-normal-bonus-mode)))
+
+(with-eval-after-load 'purescript-mode
+	(add-hook 'purescript-mode-hook 'prettify-symbols-mode))
