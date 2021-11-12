@@ -100,7 +100,7 @@
 (cond
 	((eq prefers-colour-scheme 'light)
 		(custom-set-faces
-		'(default ((t (:inherit nil :extend nil :stipple nil :background "#ffeedd" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :family "JuliaMono"))))
+		'(default ((t (:inherit nil :extend nil :stipple nil :background "#ffeedd" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :family "DinaRemasterII"))))
 		'(cursor ((t (:background "#ff0055"))))
 		'(eshell-ls-directory ((t (:foreground "#2255aa" :weight bold))))
 		'(eshell-ls-executable ((t (:foreground "#008844" :weight bold))))
@@ -127,11 +127,12 @@
 		'(php-function-call ((t (:inherit font-lock-function-name-face))))
 		'(region ((t (:background "#ffffff"))))
 		'(show-paren-match ((t (:inherit highlight))))
+		'(markdown-code-face ((t (:inherit default))))
 		'(variable-pitch ((t (:height 200 :family "Sans Serif"))))))
 
 	((eq prefers-colour-scheme 'dark)
 		(custom-set-faces
-		'(default ((t (:inherit nil :extend nil :stipple nil :background "#222222" :foreground "#ffeedd" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :family "JuliaMono"))))
+		'(default ((t (:inherit nil :extend nil :stipple nil :background "#222222" :foreground "#ffeedd" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :family "DinaRemaster"))))
 		'(cursor ((t (:background "#ff0055"))))
 		'(eshell-ls-directory ((t (:foreground "#4488ff" :weight bold))))
 		'(eshell-ls-executable ((t (:foreground "#00ff88" :weight bold))))
@@ -158,4 +159,5 @@
 		'(php-function-call ((t (:inherit font-lock-function-name-face))))
 		'(region ((t (:background "#000000"))))
 		'(show-paren-match ((t (:inherit highlight))))
+		'(markdown-code-face ((t (:inherit default))))
 		'(variable-pitch ((t (:height 200 :family "Sans Serif")))))))
