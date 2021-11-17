@@ -13,13 +13,8 @@ then
 	else startx
 	fi
 else
-	cd ~
-	if ! ps -A | grep mysqld
-	then sudo service mysql start
-	fi
-	export DISPLAY=localhost:0
 	if test $TERM = screen
 	then source ~/.bashrc
-	else tmux-attach -d || tmux
+	else tmux attach -d || tmux
 	fi
 fi
