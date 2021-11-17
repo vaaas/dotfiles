@@ -4,14 +4,14 @@
 (defvar filedb (expand-file-name "~/filedb.txt")
 	"file name for the quick find file db. This is where the results will be stored, separated by newlines")
 
-(defvar filedb-root-dir "~/Projects"
+(defvar filedb-root-dir (if at-home-p "~/Projects" "a:/Projects")
 	"directory path of where filedb-update will begin its search. Place links or symlinks under it.")
 
 (defvar filedb-exclude-dirs '("." ".." "node_modules" ".git" "public" "vendor" "build" "qmk_firmware")
 	"list of directory names that filedb-update will ignore and not traverse while building the quick find filedb")
 
 (defun filedb-walk (root disallowed f)
-    "Walk the directory ROOT. Do not visit directories in the DISALLOWED list. Then, each directory or file is passed to the callback function F.
+	"Walk the directory ROOT. Do not visit directories in the DISALLOWED list. Then, each directory or file is passed to the callback function F.
 You should probably include \".\" and \"..\" in DISALLOWED."
 	(ignore-errors
 	(dolist (name (directory-files root))
@@ -19,6 +19,15 @@ You should probably include \".\" and \"..\" in DISALLOWED."
 			(let ((pathname (concat root "/" name)))
 			(if (file-directory-p pathname)
 				(filedb-walk pathname disallowed f)
+				;; (if (file-directory-p (concat pathname "/.git"))
+				;; 	(with-temp-dir pathname
+				;; 		(-> "git ls-tree -r --name-only HEAD"
+				;; 		(shell-command-to-string $)
+				;; 		(string-trim $)
+				;; 		(split-string $ "\n")
+				;; 		(mapcar (L x (concat pathname "/" x)) $)
+				;; 		(seq-each (L x (funcall f x)) $)))
+				;; 	(filedb-walk pathname disallowed f))
 				(funcall f pathname)))))))
 
 (defun filedb-update ()

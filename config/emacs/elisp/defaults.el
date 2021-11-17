@@ -17,15 +17,19 @@
 ; a nice default system encoding. :)
 (prefer-coding-system 'utf-8-unix)
 
+(defvar at-home-p
+	(string= (system-name) "cleome")
+	"nil if at work, t otherwise")
+
 (setq-default
 	; we use spaces at work by default. but at home I prefer tabs
-	indent-tabs-mode (when (string= (system-name) "cleome") t)
+	indent-tabs-mode at-home-p
 
 	; this is the line-height
 	line-spacing 0.1
 
 	; 3 spaces for tabs. 4 spaces for spaces.
-	tab-width (if (string= (system-name) "cleome") 3 4)
+	tab-width (if at-home-p 3 4)
 
 	; I don't use the mode-line, so don't display it
 	mode-line-format nil
