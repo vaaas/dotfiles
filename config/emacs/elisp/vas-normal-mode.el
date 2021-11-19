@@ -74,7 +74,7 @@
 	"p" 'yank
 	"P" 'kill-ring-save
 	"." 'repeat
-	"<" 'outline-hide-entry
+	"<" 'outline-hide-leaves
 	">" 'outline-show-entry
 	"/" 'isearch-forward
 	"?" 'isearch-backward
