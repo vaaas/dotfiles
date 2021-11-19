@@ -339,8 +339,7 @@
 	(setf
 		(nth 1 selected-post) (nth 1 edited-post)
 		(cddr selected-post) (cddr edited-post))
-	(print site)
-))))
+	(print site)))))
 
 (defun nc-render-absolute-links (prefix x)
 	"turn all links in the href and src properties of all elements in the dom tree X into absolute links by prefixing them with PREFIX."
