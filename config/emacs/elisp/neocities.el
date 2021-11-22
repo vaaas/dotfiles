@@ -296,28 +296,32 @@
 		(setcdr (last posts) (cons post nil))
 		(pp site (current-buffer)))))
 
+(defun nc-post-preview (x)
+	"Generates a string preview for a post for autocompletion."
+	(let ((h1 (query-selector (xml-elem= 'h1) x)))
+	(concat
+		(number-to-string (alist-get 'timestamp (nth 1 x)))
+		" "
+		(if h1
+			(xml-inner-text h1)
+			(string-head 128 (xml-inner-text x))))))
+
 (defun nc-edit-post nil
 	"Edit a neocities blog post."
 	(interactive)
 	(let*
-		((sitefile (concat nc-blog-directory "/site.el"))
-		(site (read-elisp-file sitefile))
-		(posts (alist-get 'posts site))
-		(selected-timestamp
+		(site (read-elisp-file (concat nc-blog-directory "/site.el"))
+		(posts (-> site
+			(alist-get 'posts $)
+			(C mapcar $ (L x (cons (alist-get 'timestamp (nth 1 x)) x))))
+		(selected-post
 			(-> posts
-			(C mapcar $ (L x
-				(let ((h1 (query-selector (xml-elem= 'h1) x)))
-				(concat
-					(number-to-string (alist-get 'timestamp (nth 1 x)))
-					" "
-					(if h1
-						(xml-inner-text h1)
-						(string-head 128 (xml-inner-text x)))))))
+			(mapcar (=> (cadr $) (nc-post-preview $)) $)
 			(ido-completing-read "select post: " $)
 			(split-string $ " ")
 			(car $)
-			(string-to-number $)))
-		(selected-post (find (=> (nth 1 $) (alist-get 'timestamp $) (= selected-timestamp $)) posts)))
+			(string-to-number $)
+			(alist-get $ posts)))))
 	(with-contents-function "*edit-blog-post*"
 	(progn
 		(insert (serialise-xml selected-post))
@@ -335,8 +339,7 @@
 	(setf
 		(nth 1 selected-post) (nth 1 edited-post)
 		(cddr selected-post) (cddr edited-post))
-	(print site)
-))))
+	(print site)))))
 
 (defun nc-render-absolute-links (prefix x)
 	"turn all links in the href and src properties of all elements in the dom tree X into absolute links by prefixing them with PREFIX."

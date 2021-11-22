@@ -6,9 +6,9 @@ Wants=network-online.target
 
 [Service]
 Restart=on-abnormal
-User=dev
-Group=dev
-ExecStart=/usr/bin/rclone serve webdav --addr '0.0.0.0:8080' /home/dev
+User=vas
+Group=vas
+ExecStart=/usr/bin/rclone serve webdav --addr '0.0.0.0:8080' /home/vas
 KillMode=mixed
 KillSignal=SIGTERM
 TimeoutStopSec=5s
