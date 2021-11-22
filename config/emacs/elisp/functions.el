@@ -172,7 +172,7 @@ This is useful for creating temporary non-file buffers and waiting for the user 
 		(delete-region ,start ,end)
 		(goto-char ,start)
 		(insert-buffer-substring-no-properties ,buffer)
-        (goto-char ,start))))
+		(goto-char ,start))))
 
 (defmacro ignore-errors (&rest body)
 	"Execute BODY, returning nil on errors."
@@ -185,3 +185,7 @@ This is useful for creating temporary non-file buffers and waiting for the user 
 (defun spread-last (x)
 	"spread the last element of X onto X. Useful for XML"
 	(append (butlast x) (lastcar x)))
+
+(defmacro whenl (x v &rest body)
+	"convenient composition of let and when"
+	`(let ((,x ,v)) (when ,x ,@body)))

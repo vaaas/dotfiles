@@ -70,16 +70,14 @@
 		(delete-these-files (difference (mapcar #'car remote-files) (mapcar #'car local-files)))
 		(upload-these-files (mapcar #'car (difference local-files remote-files))))
 	(if delete-these-files
-		(let ((reply (yes-or-no-p (concat "Deleting " (string-join delete-these-files " ") ": "))))
-		(when reply
+		(whenl reply (yes-or-no-p (concat "Deleting " (string-join delete-these-files " ") ": "))
 			(nc-api-delete user password delete-these-files)
-			(message "Done")))
+			(message "Done"))
 		(message "Nothing to delete"))
 	(if upload-these-files
-		(let ((reply (yes-or-no-p (concat "Uploading " (string-join upload-these-files " ") ": "))))
-		(when reply
+		(whenl reply (yes-or-no-p (concat "Uploading " (string-join upload-these-files " ") ": "))
 			(nc-api-upload user password upload-these-files)
-			(message "Done")))
+			(message "Done"))
 		(message "Nothing to upload"))))
 
 ; neocities render functions
@@ -131,20 +129,23 @@
 		(insert $)))
 
 	; render individual articles and pages
-	(-> (alist posts (L x (nc-render-post conf x)) pages #'nc-render-page)
-	(seq-each (L pairs (-> (car pairs)
-		(seq-filter (=> (nth 1 $) (alist-get 'filename $)) $)
-		(seq-each (L x
-			(with-temp-file (-> (nth 1 x) (alist-get 'filename $) (concat nc-blog-directory "/render/" $))
-				(-> x (funcall (cdr pairs) $) (serialise-xml $) (concat doctype $) (insert $))))
-		$)))
-	$))))
+	(dolist (pair (alist posts #'nc-render-post pages #'nc-render-page))
+		(dolist (x (car pair))
+			(whenl filename (alist-get 'filename x)
+			(with-temp-file (concat nc-blog-directory "/render/" filename)
+				(-> x
+					(funcall (cdr pair) conf $)
+					(serialise-xml $)
+					(concat doctype $)
+					(insert $))))))))
 
 (defun nc-render-item (x)
 	"Render an article element."
 	(spread-last (list
-		'article (alist
-			't (alist-get 'tag (nth 1 x)) 'id (nc-guid (alist-get 'timestamp (nth 1 x))))
+		'article
+		(alist
+			't (-> x (nth 1 $) (alist-get 'tag $))
+			'id (-> x (nth 1 $) (alist-get 'timestamp $) (nc-guid $)))
 		(nc-render-description x))))
 
 (defun nc-render-description (x)
