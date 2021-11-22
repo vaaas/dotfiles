@@ -127,4 +127,4 @@
 	'(region ((t (:background "#fff"))))
 	'(show-paren-match ((t (:inherit highlight))))
 	'(markdown-code-face ((t (:inherit default :foreground "#d38"))))
-	'(variable-pitch ((t (:height 200 :family "Sans Serif")))))
+	'(variable-pitch ((t (:height 160 :family "Georgia")))))
