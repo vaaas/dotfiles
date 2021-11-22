@@ -316,7 +316,7 @@
 			(C mapcar $ (L x (cons (alist-get 'timestamp (nth 1 x)) x))))
 		(selected-post
 			(-> posts
-			(mapcar (=> (cadr $) (nc-post-preview $)) $)
+			(C mapcar $ (=> (cadr $) (nc-post-preview $)))
 			(ido-completing-read "select post: " $)
 			(split-string $ " ")
 			(car $)
