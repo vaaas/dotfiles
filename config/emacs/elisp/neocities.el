@@ -10,7 +10,7 @@
 ; general utility functions
 (defun nc-guid (x)
 	"Generates a unique id for a neocities article or rss item."
-	(int-to-base (/ (- x 1483228800) 60) 64))
+	(-> x (- $ 1483228800) (/ $ 60) (int-to-base $ 64))
 
 (defun nc-ymd (x)
 	"formats a timestamp in Y m d format"
@@ -56,8 +56,11 @@
 	"Push local files to neocities."
 	(interactive)
 	(let*
-		((conf (-> (concat nc-blog-directory "/site.el") (read-elisp-file $) (alist-get 'conf $)))
-		(user (alist-get 'username conf))
+		((user (->
+			(concat nc-blog-directory "/site.el")
+			(read-elisp-file $)
+			(alist-get 'conf $)
+			(alist-get 'username $)))
 		(password (read-passwd (concat "Password for " user ": ")))
 		(remote-files
 			(-> (nc-api-list user password)
