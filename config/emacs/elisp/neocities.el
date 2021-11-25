@@ -314,7 +314,7 @@
 	"Edit a neocities blog post."
 	(interactive)
 	(let*
-		(site (read-elisp-file (concat nc-blog-directory "/site.el"))
+		((site (read-elisp-file (concat nc-blog-directory "/site.el")))
 		(posts (-> site
 			(alist-get 'posts $)
 			(C mapcar $ (L x (cons (alist-get 'timestamp (nth 1 x)) x))))
