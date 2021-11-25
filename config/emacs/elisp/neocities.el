@@ -10,7 +10,7 @@
 ; general utility functions
 (defun nc-guid (x)
 	"Generates a unique id for a neocities article or rss item."
-	(-> x (- $ 1483228800) (/ $ 60) (int-to-base $ 64))
+	(-> x (- $ 1483228800) (/ $ 60) (int-to-base $ 64)))
 
 (defun nc-ymd (x)
 	"formats a timestamp in Y m d format"
@@ -81,7 +81,7 @@
 		(whenl reply (yes-or-no-p (concat "Uploading " (string-join upload-these-files " ") ": "))
 			(nc-api-upload user password upload-these-files)
 			(message "Done"))
-		(message "Nothing to upload")))))
+		(message "Nothing to upload"))))
 
 ; neocities render functions
 (defun nc-render-html (lang head body)
