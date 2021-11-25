@@ -81,7 +81,7 @@
 		(whenl reply (yes-or-no-p (concat "Uploading " (string-join upload-these-files " ") ": "))
 			(nc-api-upload user password upload-these-files)
 			(message "Done"))
-		(message "Nothing to upload"))))
+		(message "Nothing to upload")))))
 
 ; neocities render functions
 (defun nc-render-html (lang head body)
