@@ -10,33 +10,44 @@
 (defvar filedb-exclude-dirs '("." ".." "node_modules" ".git" "public" "vendor" "build" "qmk_firmware")
 	"list of directory names that filedb-update will ignore and not traverse while building the quick find filedb")
 
+(defun git-directory-p (x)
+	"t if directory X contains a git repositor"
+	(file-directory-p (concat x "/.git")))
+
+(defun git-ls-tree (x)
+	"returns a list of files tracked by a git repository in directory X"
+	(with-temp-dir x
+		(-> "git ls-tree -r --name-only HEAD"
+		(shell-command-to-string $)
+		(string-trim $)
+		(split-string $ "\n")
+		(mapcar (L x (concat pathname "/" x)) $))))
+
 (defun filedb-walk (root disallowed f)
-	"Walk the directory ROOT. Do not visit directories in the DISALLOWED list. Then, each directory or file is passed to the callback function F.
-You should probably include \".\" and \"..\" in DISALLOWED."
 	(ignore-errors
-	(dolist (name (directory-files root))
-		(when (not (member name disallowed))
-			(let ((pathname (concat root "/" name)))
-			(if (file-directory-p pathname)
-				(filedb-walk pathname disallowed f)
-				;; (if (file-directory-p (concat pathname "/.git"))
-				;; 	(with-temp-dir pathname
-				;; 		(-> "git ls-tree -r --name-only HEAD"
-				;; 		(shell-command-to-string $)
-				;; 		(string-trim $)
-				;; 		(split-string $ "\n")
-				;; 		(mapcar (L x (concat pathname "/" x)) $)
-				;; 		(seq-each (L x (funcall f x)) $)))
-				;; 	(filedb-walk pathname disallowed f))
-				(funcall f pathname)))))))
+	(-> root
+	(directory-files $)
+	(seq-filter (outside disallowed) $)
+	(mapcar (L x (concat root "/" x)) $)
+	(C seq-each $ (L x (cond
+		((file-directory-p x)
+			(if (and at-home-p (has-git-p x))
+				(dolist (name (git-ls-tree x))
+					(funcall f name))
+				(filedb-walk x disallowed f)))
+		(t (funcall f x))))))
+	nil))
 
 (defun filedb-update ()
 	"Update the filedb file. The name of the filedb file is determined in the `filedb' variable.
 Begin walking from `filedb-root-dir' and exclude directories in `filedb-exclude-dirs'."
 	(interactive)
+	(message "Updating filedb. This may take a while...")
+	(let ((skip (+ 1 (length filedb-root-dir))))
 	(with-temp-file filedb
-	(filedb-walk filedb-root-dir filedb-exclude-dirs
-		(L x (insert (substring x (+ 1 (length filedb-root-dir)) (length x)) "\n")))))
+		(filedb-walk filedb-root-dir filedb-exclude-dirs
+			(L x (insert (substring x skip (length x)) "\n")))))
+	(message "Done."))
 
 (defun filedb-find-file ()
 	"find-file by searching the filedb file. filedb is a newline-separated list of files.
