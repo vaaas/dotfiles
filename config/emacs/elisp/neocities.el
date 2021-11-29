@@ -1,7 +1,10 @@
 ; -*- lexical-binding: t -*-
 ; blog generation and uploading for neocities
 
-(defvar nc-blog-directory (expand-file-name "~/Projects/website")
+(defvar nc-blog-directory
+	(if at-home-p
+		(expand-file-name "~/Projects/website")
+		"A:/Projects/website")
 	"The directory where the neocities tools will look for the website. site.el and render/ are expected to be ther.")
 
 (defvar nc-blog-categories '("tech" "anime" "books" "memes" "films" "journal" "games")
@@ -357,3 +360,23 @@
 				v))))
 		(C mapcar (cddr x) (=> (nc-render-absolute-links prefix $)))))
 	x))
+
+(defun nc-make-skeleton nil
+	"Initialise blog directory and file with some basic data."
+	(interactive)
+	(make-directory nc-blog-directory)
+	(make-directory (concat nc-blog-directory "/render"))
+	(with-temp-file (concat nc-blog-directory "/site.el")
+		(prin1
+		(alist
+			'conf (alist
+				'url "https://sitename.neocities.org"
+				'author "Author Name"
+				'sitename "My site name"
+				'lang "en-gb"
+				'blurb (list 'p nil "An introductory paragraph.")
+				'links (list
+					(list 'a (alist 'href "/test.html") "Test link")))
+			'pages nil
+			'posts nil)
+		(current-buffer))))
