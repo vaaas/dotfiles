@@ -77,28 +77,38 @@ XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 super + q
-	bspc node -c
+	berryc window_close
 
 super + {i,a}
-	bspc desktop -f {prev,next}
+	berryc {snap_left,snap_right}
 
-super + ctrl {i,a}
-	bspc node -z left {-32,32} 0
+super + ctrl i
+	berryc window_move -128 0
 
-super + {e,o}
-	bspc node -f {next,prev}.local.window
+super + ctrl a
+	berryc window_move 128 0
+
+super + ctrl e
+	berryc window_move 0 128
+
+super + ctrl o
+	berryc window_move 0 -128
+
+super + e
+	berryc cycle_focus
+	berryc window_raise
+
+super + o
+	berryc window_monocle
+
+super + apostrophe
+	berryc window_resize_absolute 640 640
 
 super + Return
-	bspc node -s biggest.local.window
+	berryc window_center
 
-super + ctrl + {w,u,v,semicolon,minus}
-	bspc node -d {1,2,3,4,5}
+super + ctrl + {w,u,v,semicolon}
+	berryc send_to_workspace {0,1,2,3}
 
-super + {w,u,v,semicolon,minus}
-	bspc desktop -f {1,2,3,4,5}
-
-super + f
-	bspc node focused -t \~floating
-
-super + ctrl + {e,o}
-	bspc desktop -l {next,prev}
+super + {w,u,v,semicolon}
+	berryc switch_workspace {0,1,2,3}

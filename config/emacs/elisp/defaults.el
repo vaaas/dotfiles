@@ -99,7 +99,7 @@
 	(add-to-list 'auto-mode-alist x))
 
 (custom-set-faces
-	'(default ((t (:inherit nil :extend nil :stipple nil :background "#fed" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :family "JuliaMono"))))
+	'(default ((t (:inherit nil :extend nil :stipple nil :background "#fed" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :family "JuliaMono"))))
 	'(cursor ((t (:background "#f05"))))
 	'(eshell-ls-directory ((t (:foreground "#25a" :weight bold))))
 	'(eshell-ls-executable ((t (:foreground "#084" :weight bold))))

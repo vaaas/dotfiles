@@ -7,12 +7,12 @@ export XMODIFIERS=@im=ibus
 xrdb -merge ~/.Xresources
 ibus-daemon -xdr
 dunst -font 'Sans 16' &
-setxkbmap slatin
+#setxkbmap slatin
+dbus-launch sxhkd -m -1 &
 emacs --daemon
 
 if test `hostname` = cleome
 then
-	dbus-launch sxhkd -m -1 &
 	redshift-service &
 	xwallpaper --tile wallpaper &
 	unclutter --timeout 1 &
