@@ -6,21 +6,21 @@ export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 xrdb -merge ~/.Xresources
 ibus-daemon -xdr
-xset r rate 180
 dunst -font 'Sans 16' &
-dbus-launch sxhkd -m -1 &
+setxkbmap slatin
+emacs --daemon
 
 if test `hostname` = cleome
 then
-	setxkbmap slatin
+	dbus-launch sxhkd -m -1 &
 	redshift-service &
 	xwallpaper --tile wallpaper &
 	unclutter --timeout 1 &
-	emacs --daemon
+	dbus-launch bspwm
 else
-	setxkbmap vu
-	xrandr -s 1920x1080
-	VBoxClient --clipboard
-	feh --bg-fill wallpaper &
+	xrandr --output HDMI-1 --primary --mode 1920x1080 --pos 1080x533 --rotate normal --output HDMI-2 --off --output DP-1 --mode 1920x1080 --pos 0x0 --rotate left --output HDMI-3 --off
+	xinput set-button-map 13 3 2 1
+	xinput set-prop 13 314 1
+	xinput set-prop 13 327 1
+	dbus-launch twm
 fi
-dbus-launch bspwm
