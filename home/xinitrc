@@ -22,5 +22,7 @@ else
 	xinput set-button-map 13 3 2 1
 	xinput set-prop 13 314 1
 	xinput set-prop 13 327 1
-	dbus-launch twm
+	xterm &
+	#dbus-launch icewm
+	dbus-launch berry
 fi

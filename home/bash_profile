@@ -3,18 +3,11 @@ export PAGER=less
 export PATH=~/Binaries:$PATH
 umask 0026
 
-if test `hostname` = cleome
-then
-	export BROWSER=firefox
-	export EDITOR=gedit
-	export GDK_CORE_DEVICE_EVENTS=1
-	if ps -A | grep Xorg
-	then source ~/.bashrc
-	else startx
-	fi
-else
-	if test $TERM = screen
-	then source ~/.bashrc
-	else tmux attach -d || tmux
-	fi
+export BROWSER=firefox
+export EDITOR=nano
+export GDK_CORE_DEVICE_EVENTS=1
+
+if ps -A | grep Xorg
+then source ~/.bashrc
+else startx
 fi
