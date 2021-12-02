@@ -1,10 +1,7 @@
 ; -*- lexical-binding: t -*-
 ; blog generation and uploading for neocities
 
-(defvar nc-blog-directory
-	(if at-home-p
-		(expand-file-name "~/Projects/website")
-		"A:/Projects/website")
+(defvar nc-blog-directory "~/Projects/website"
 	"The directory where the neocities tools will look for the website. site.el and render/ are expected to be ther.")
 
 (defvar nc-blog-categories '("tech" "anime" "books" "memes" "films" "journal" "games")

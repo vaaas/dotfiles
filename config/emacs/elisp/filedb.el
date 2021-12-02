@@ -4,7 +4,7 @@
 (defvar filedb (expand-file-name "~/filedb.txt")
 	"file name for the quick find file db. This is where the results will be stored, separated by newlines")
 
-(defvar filedb-root-dir (if at-home-p "~/Projects" "a:/Projects")
+(defvar filedb-root-dir "~/Projects"
 	"directory path of where filedb-update will begin its search. Place links or symlinks under it.")
 
 (defvar filedb-exclude-dirs '("." ".." "node_modules" ".git" "public" "vendor" "build" "qmk_firmware")
@@ -21,7 +21,7 @@
 		(shell-command-to-string $)
 		(string-trim $)
 		(split-string $ "\n")
-		(mapcar (L x (concat pathname "/" x)) $))))
+		(mapcar (L y (concat x "/" y)) $))))
 
 (defun filedb-walk (root disallowed f)
 	(ignore-errors
@@ -31,7 +31,7 @@
 	(mapcar (L x (concat root "/" x)) $)
 	(C seq-each $ (L x (cond
 		((file-directory-p x)
-			(if (and at-home-p (has-git-p x))
+			(if (git-directory-p x)
 				(dolist (name (git-ls-tree x))
 					(funcall f name))
 				(filedb-walk x disallowed f)))
