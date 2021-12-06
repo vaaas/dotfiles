@@ -1,5 +1,5 @@
 [Unit]
-Description=iot npm watch
+Description=iotwebserver devrun
 After=network-online.target
 Wants=network-online.target
 
@@ -7,8 +7,8 @@ Wants=network-online.target
 Restart=on-abnormal
 User=dev
 Group=dev
-WorkingDirectory=/home/dev/code/iotwebserver
-ExecStart=/usr/bin/npm run watch
+WorkingDirectory=/home/vas/Projects/iotwebserver
+ExecStart=/home/vas/Projects/iotwebserver/devrun.sh
 KillMode=mixed
 KillSignal=SIGTERM
 TimeoutStopSec=5s
