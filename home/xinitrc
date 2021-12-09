@@ -4,16 +4,10 @@ export GTK_USE_PORTAL=1
 export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
-xrdb -merge ~/.Xresources
-ibus-daemon -xdr
-dunst -font 'Sans 16' &
-#setxkbmap slatin
-dbus-launch sxhkd -m -1 &
-emacs --daemon
-picom &
 
 if test `hostname` = cleome
 then
+	setxkbmap slatin
 	redshift-service &
 	xwallpaper --tile wallpaper &
 	unclutter --timeout 1 &
@@ -24,4 +18,10 @@ else
 	xinput set-prop 13 327 1
 fi
 
-dbus-launch berry
+xrdb -merge ~/.Xresources
+ibus-daemon -xdr
+dunst -font 'Sans 16' &
+dbus-launch sxhkd -m -1 &
+emacs --daemon
+picom &
+dbus-launch dwm
