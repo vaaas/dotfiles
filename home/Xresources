@@ -4,8 +4,8 @@ xterm*faceSize: 16
 
 ! special
 *.foreground:   #4f424c
-*.background:   #e7e9db
-*.cursorColor:  #4f424c
+*.background:   #ffeedd
+*.cursorColor:  #ff0055
 
 ! black
 *.color0:       #2f1e2e
@@ -39,6 +39,6 @@ xterm*faceSize: 16
 *.color7:       #a39e9b
 *.color15:      #e7e9db
 
-XTerm.vt100.translations: #override \n\
-	Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+XTerm.vt100.translations: #override \n \
+	Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n \
 	Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
