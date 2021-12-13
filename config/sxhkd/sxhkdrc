@@ -62,7 +62,7 @@ super + F7
 	feedreader
 
 super + x
-	emacsclient -ce '(ansi-term "/bin/bash")'
+	xterm
 
 super + p
 	passmenu
