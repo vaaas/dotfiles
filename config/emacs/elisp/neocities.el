@@ -331,10 +331,10 @@
 		(insert (serialise-xml selected-post))
 		(xml-mode))
 	(let ((edited-post
-		(having x (libxml-parse-xml-region (point-min) (point-max))
+        (let ((x (libxml-parse-xml-region (point-min) (point-max))))
 		(-> x
 		(nth 1 $)
-		(C map-alist-ip $
+		(C map-alist $
 			(lambda (k v)
 				(cons k (cond
 					((eq k 'skip) (intern v))

@@ -13,52 +13,28 @@
 	"return the current unix timestamp"
 	(string-to-number (format-time-string "%s")))
 
-(defun plist-to-alist (xs)
+(defun plist-to-alist (x)
 	"turn a plist into an alist"
-	(map-plist #'cons xs))
+	(if x
+		(cons
+			(cons (car x) (cadr x))
+			(plist-to-alist (cddr x)))
+		nil))
 
 (defun alist (&rest xs)
 	"create an alist. the length of XS must be even. the odd members of XS become the cars, and the even members become the cdrs."
 	(plist-to-alist xs))
 
-(defun find(f xs)
+(defun find(f x)
 	"search through XS for the element that, when passed to the callback function F, returns non-nil"
-	(let ((x xs) (found nil))
-	(while (and x (not found))
-		(when (funcall f (car x)) (setq found (car x)))
-		(setq x (cdr x)))
-	found))
-
-(defun map-plist(f xs)
-	"map for plists. Pass two arguments to F, where the first is the key, and the second is the value."
-	(let ((head xs) (results nil))
-	(while head
-		(push (funcall f (car head) (cadr head)) results)
-		(setq head (cddr head)))
-	(nreverse results)))
+	(if x
+		(head-tail x
+			(if (funcall f head) 't (find f tail)))
+		nil))
 
 (defun map-alist (f xs)
 	"map for alists. Pass two arguments to F, where the first is the key, and the second is the value."
-	(let ((results nil))
-	(nreverse
-	(dolist (x xs results)
-		(push (funcall f (car x) (cdr x)) results)))))
-
-(defun map-ip (f xs)
-	"mapcar in place. modifies XS by mapping every car through F."
-	(let ((head xs))
-	(while head
-		(setcar head (funcall f (car head)))
-		(setq head (cdr head)))
-	xs))
-
-(defun map-alist-ip (f xs)
-	"map-ip for alists. Pass two arguments to F, where the first is the key, and the second is the value."
-	(let ((head xs))
-	(while head
-		(setcar head (funcall f (car (car head)) (cdr (car head))))
-		(setq head (cdr head)))
-	xs))
+	(mapcar (L x (funcall f (car x) (cdr x))) xs))
 
 (defun slurp(f)
 	"read the contents of filepath F into a string."
@@ -66,10 +42,12 @@
 		(insert-file-contents f)
 		(buffer-substring-no-properties (point-min) (point-max))))
 
-(defun intersperse (s xs)
+(defun intersperse (s x)
 	"put S between the elements XS. (1 2 3) -> (1 s 2 s 3)"
-	(let ((r (cons (car xs) nil)))
-	(nreverse (dolist (x (cdr xs) r) (push s r) (push x r)))))
+	(if x
+		(head-tail x
+			(cons head (if tail (cons s (intersperse s tail)) nil)))
+		nil))
 
 (defun read-elisp-file (file)
 	"`read' the elisp file FILE"

@@ -21,6 +21,10 @@ Thus, (+ 1 (+ 2 x)) becomes (-> x (+ 2 $) (+ 1 $))"
 Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)) xs)"
 	`(L x (-> x ,@body)))
 
+(defmacro head-tail (x &rest body)
+	`(let ((head (car ,x)) (tail (cdr ,x)))
+		,@body))
+
 (defmacro lastcar (x)
 	"Returns the last car."
 	`(car (last ,x)))

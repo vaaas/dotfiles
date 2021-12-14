@@ -69,6 +69,3 @@
 	(nreverse
 	(dolist (x (when (listp node) (cddr node)) xs)
 		(push-all (query-selector-all f x) xs)))))
-
-(defmacro having (x def &rest body)
-	`(let ((,x ,def)) ,@body ,x))
