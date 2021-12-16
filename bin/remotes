@@ -1,0 +1,13 @@
+#!/bin/sh
+
+IFS='
+'
+
+remotes="iotwebserver	root@dopplerapp.gr
+mattermost	root@chat.dopplerapp.gr
+atlas	root@atlas.doppler.loc
+athena	root@atlas.doppler.loc:2000
+build server	root@atlas.doppler.loc:2001"
+
+selected=$(echo "$remotes" | dmenu | cut -f 2 -d'	')
+xterm -e "ssh ssh://$selected"
