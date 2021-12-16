@@ -10,4 +10,4 @@ athena	root@atlas.doppler.loc:2000
 build server	root@atlas.doppler.loc:2001"
 
 selected=$(echo "$remotes" | dmenu | cut -f 2 -d'	')
-xterm -e "ssh ssh://$selected"
+test -n "$selected" && xterm -e "ssh ssh://$selected"
