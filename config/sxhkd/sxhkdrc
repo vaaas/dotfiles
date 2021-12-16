@@ -67,6 +67,9 @@ super + x
 super + p
 	passmenu
 
+super + r
+	remotes
+
 XF86AudioLowerVolume
 	pactl set-sink-volume @DEFAULT_SINK@ -10%
 
