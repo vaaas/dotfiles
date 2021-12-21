@@ -9,7 +9,6 @@ if test `hostname` = cleome
 then
 	setxkbmap slatin
 	redshift-service &
-	xwallpaper --tile wallpaper &
 	unclutter --timeout 1 &
 else
 	xrandr --output HDMI-1 --primary --mode 1920x1080 --pos 1080x533 --rotate normal --output HDMI-2 --off --output DP-1 --mode 1920x1080 --pos 0x0 --rotate left --output HDMI-3 --off
@@ -18,6 +17,7 @@ else
 	xinput set-prop 14 327 1
 fi
 
+xwallpaper --maximize wallpaper &
 xrdb -merge ~/.Xresources
 ibus-daemon -xdr
 dunst -font 'Sans 16' &
