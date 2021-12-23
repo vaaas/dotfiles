@@ -24,4 +24,4 @@ dunst -font 'Sans 16' &
 dbus-launch sxhkd -m -1 &
 emacs --daemon
 picom &
-dbus-launch dwm
+exec dwmloop

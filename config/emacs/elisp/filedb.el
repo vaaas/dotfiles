@@ -7,7 +7,17 @@
 (defvar filedb-root-dir "~/Projects"
 	"directory path of where filedb-update will begin its search. Place links or symlinks under it.")
 
-(defvar filedb-exclude-dirs '("." ".." "node_modules" ".git" "public" "vendor" "build" "qmk_firmware")
+(defvar filedb-exclude-dirs
+	(list
+		"."
+		".."
+		"node_modules"
+		".git"
+		"public"
+		"vendor"
+		"build"
+		"qmk_firmware"
+		"qmk")
 	"list of directory names that filedb-update will ignore and not traverse while building the quick find filedb")
 
 (defun git-directory-p (x)

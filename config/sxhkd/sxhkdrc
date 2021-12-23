@@ -70,6 +70,9 @@ super + p
 super + r
 	remotes
 
+super + shift + q
+	killall dwm
+
 XF86AudioLowerVolume
 	pactl set-sink-volume @DEFAULT_SINK@ -10%
 
