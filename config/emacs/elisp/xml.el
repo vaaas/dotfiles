@@ -6,16 +6,16 @@
 	(with-current-buffer (find-file-noselect file)
 	(libxml-parse-xml-region (point-min) (point-max))))
 
-(defun xml-elem= (s) (L x (when (listp x) (eq s (car x)))))
+(defun xml-elem= (s) (L x (and (listp x) (eq s (car x)))))
 
-(defun serialise-xml(node)
+(defun xml-to-string (node)
 	(cond
 	((eq nil node) "")
 	((stringp node) (xml-escape-string node))
-	((listp node) (serialise-xml-node node))
+	((listp node) (xml-node-to-string node))
 	(t "")))
 
-(defun serialise-xml-node(node)
+(defun xml-node-to-string (node)
 	(let
 		((name (car node))
 		(attrs (cadr node))
@@ -23,23 +23,23 @@
 	(string-join
 	(cond
 	((eq 'comment name) (list "<!--" (car children) "-->"))
-	((eq '!cdata name) (mapcar (=> (serialise-xml $) (xml-escape-string $)) children))
+	((eq '!cdata name) (mapcar (=> (xml-to-string $) (xml-escape-string $)) children))
 	(t (append
 		(list "<" (symbol-name name))
-		(when attrs (append (list " ") (tokenise-xml-attrs attrs)))
+		(when attrs (append (list " ") (xml-tokenise-attrs attrs)))
 		(if children
 			(append
 				(list ">")
-				(mapcar #'serialise-xml children)
+				(mapcar #'xml-to-string children)
 				(list "</" (symbol-name name) ">"))
 			(list "/>"))))))))
 
 (defun xml-inner-text (node)
-	(string-join
-	(mapcar (L x (if (stringp x) x (xml-inner-text x)))
-	(cddr node))))
+	(-> (cddr node)
+		(mapcar (L x (if (stringp x) x (xml-inner-text x))) $)
+		(string-join $)))
 
-(defun tokenise-xml-attrs (xs)
+(defun xml-tokenise-attrs (xs)
 	(-> xs
 	(map-alist
 		(lambda (k v)

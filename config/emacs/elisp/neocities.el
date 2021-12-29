@@ -117,7 +117,7 @@
 		(seq-filter (=> (nth 1 $) (alist-get 'skip $) (not $)) $)
 		(mapcar #'nc-render-item $)
 		(nc-render-frontpage conf $)
-		(serialise-xml $)
+		(xml-to-string $)
 		(concat doctype $)
 		(insert $)))
 
@@ -127,20 +127,23 @@
 		(seq-filter (=> (nth 1 $) (alist-get 'skip $) (not $)) $)
 		(mapcar (=> (nc-render-rss-item conf $)) $)
 		(nc-render-rss conf $)
-		(serialise-xml $)
+		(xml-to-string $)
 		(concat "<?xml version='1.0' encoding='UTF-8'?>" $)
 		(insert $)))
 
-	; render individual articles and pages
-	(dolist (pair (alist posts #'nc-render-post pages #'nc-render-page))
-		(dolist (x (car pair))
-			(whenl filename (alist-get 'filename x)
-			(with-temp-file (concat nc-blog-directory "/render/" filename)
-				(-> x
-					(funcall (cdr pair) conf $)
-					(serialise-xml $)
-					(concat doctype $)
-					(insert $))))))))
+	; render individual posts and pages
+	(apply-many
+		(lambda (xs f) (dolist (x xs)
+			(whenl filename (alist-get 'filename (cadr x))
+				(with-temp-file (concat nc-blog-directory "/render/" filename)
+					(-> x
+						(funcall f conf $)
+						(xml-to-string $)
+						(concat doctype $)
+						(insert $)))
+				(message (concat "Wrote " filename)))))
+		(list posts #'nc-render-post)
+		(list pages #'nc-render-page))))
 
 (defun nc-render-item (x)
 	"Render an article element."
@@ -236,7 +239,7 @@
 			(nreverse xs))))
 
 (defun nc-render-post (conf x)
-	"Generate an individual neocities article."
+	"Generate an individual neocities post (article)."
 	(let ((h1 (query-selector (xml-elem= 'h1) x))
 		(timestamp (alist-get 'timestamp (nth 1 x))))
 	(when (not h1) (throw 'bad-post "No h1 found"))
@@ -248,7 +251,19 @@
 				(list 'a (alist 'href "/") (alist-get 'sitename conf))
 				" — "
 				(list 'time nil (nc-ymd timestamp)))
-			(spread-last (list 'main nil (cddr x)))))))
+			(spread-last (list 'main nil (cddr x)))
+			(list 'footer nil
+				"Reply to this article via "
+				(nc-render-email (alist-get 'email conf) (xml-inner-text h1))
+				".")))))
+
+(defun nc-render-email (address subject)
+	"Generate a mailto link"
+	(list 'a
+		(alist 'href (concat
+			"mailto:" address
+			"?subject=" (url-hexify-string (concat "Re: " subject))))
+		"email"))
 
 (defun nc-render-page (conf x)
 	"Generate an individual neocities page"
@@ -328,7 +343,7 @@
 			(alist-get $ posts)))))
 	(with-contents-function "*edit-blog-post*"
 	(progn
-		(insert (serialise-xml selected-post))
+		(insert (xml-to-string selected-post))
 		(xml-mode))
 	(let ((edited-post
         (let ((x (libxml-parse-xml-region (point-min) (point-max))))

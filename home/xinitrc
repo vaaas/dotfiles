@@ -16,6 +16,7 @@ else
 	xinput set-button-map 14 3 2 1
 	xinput set-prop 14 314 1
 	xinput set-prop 14 327 1
+	picom &
 fi
 
 xwallpaper --maximize wallpaper &
@@ -24,7 +25,6 @@ ibus-daemon -xdr
 dunst -font 'Sans 16' &
 dbus-launch sxhkd -m -1 &
 emacs --daemon
-picom &
 while true
 do
 	dbus-launch dwm

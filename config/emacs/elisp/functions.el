@@ -97,3 +97,7 @@ BINDINGS should be an alist where car is a `kbd' string and cdr is a function."
 (defun spread-last (x)
 	"spread the last element of X onto X. Useful for XML"
 	(append (butlast x) (lastcar x)))
+
+(defun apply-many (f &rest xs)
+	"apply F many times for each list of arguments XS"
+	(dolist (x xs) (apply f x)))
