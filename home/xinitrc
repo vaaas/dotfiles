@@ -1,11 +1,22 @@
 #!/bin/sh
 
+for x in /etc/X11/xinit/xinitrc.d/*sh
+do . "$x"
+done
+
 export GTK_USE_PORTAL=1
 export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 
-if test `hostname` = cleome
+xrdb -merge ~/.Xresources
+xwallpaper --maximize wallpaper &
+ibus-daemon -xdr
+dunst -font 'Sans 16' &
+dbus-launch sxhkd -m -1 &
+emacs --daemon
+
+if test "$HOSTNAME" = cleome
 then
 	setxkbmap slatin
 	redshift-service &
@@ -19,13 +30,6 @@ else
 	picom &
 fi
 
-xwallpaper --maximize wallpaper &
-xrdb -merge ~/.Xresources
-ibus-daemon -xdr
-dunst -font 'Sans 16' &
-dbus-launch sxhkd -m -1 &
-emacs --daemon
 while true
-do
-	dbus-launch dwm
+do dbus-launch dwm
 done
