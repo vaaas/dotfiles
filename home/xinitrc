@@ -30,6 +30,5 @@ else
 	picom &
 fi
 
-while true
-do dbus-launch dwm
-done
+exec dbus-launch dwm
+#exec dbus-launch xterm
