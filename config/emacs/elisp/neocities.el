@@ -52,7 +52,7 @@
 		(format "/usr/bin/curl %s https://%s:%s@neocities.org/api/upload" $ user password)
 		(shell-command-to-string $))))
 
-(defun nc-push()
+(defun nc-push nil
 	"Push local files to neocities."
 	(interactive)
 	(let*
@@ -73,12 +73,12 @@
 		(delete-these-files (difference (mapcar #'car remote-files) (mapcar #'car local-files)))
 		(upload-these-files (mapcar #'car (difference local-files remote-files))))
 	(if delete-these-files
-		(whenl reply (yes-or-no-p (concat "Deleting " (string-join delete-these-files " ") ": "))
+		(when-let ((reply (yes-or-no-p (concat "Deleting " (string-join delete-these-files " ") ": "))))
 			(nc-api-delete user password delete-these-files)
 			(message "Done"))
 		(message "Nothing to delete"))
 	(if upload-these-files
-		(whenl reply (yes-or-no-p (concat "Uploading " (string-join upload-these-files " ") ": "))
+		(when-let ((reply (yes-or-no-p (concat "Uploading " (string-join upload-these-files " ") ": "))))
 			(nc-api-upload user password upload-these-files)
 			(message "Done"))
 		(message "Nothing to upload"))))
@@ -101,7 +101,7 @@
 		(list 'link (alist 'rel "alternate" 'href "/rss.xml" 'type "application/rss+xml"))
 		(list 'title nil title)))
 
-(defun nc-render()
+(defun nc-render nil
 	"Render the site defined in variable `nc-blog-directory' for neocities. Expects file site.el to be present in the blog directory, and also the directory render."
 	(interactive)
 	(let*
@@ -134,7 +134,7 @@
 	; render individual posts and pages
 	(apply-many
 		(lambda (xs f) (dolist (x xs)
-			(whenl filename (alist-get 'filename (cadr x))
+			(when-let ((filename (alist-get 'filename (cadr x))))
 				(with-temp-file (concat nc-blog-directory "/render/" filename)
 					(-> x
 						(funcall f conf $)

@@ -5,11 +5,11 @@
 	"Curried function. Returns lambda which checks whether X is a member of XS"
 	(L x (not (member x xs))))
 
-(defun whitespacep(x)
+(defun whitespacep (x)
 	"test if a character is whitespace. Whitespace is defined as tab, space, and newline."
 	(member x '(9 10 32)))
 
-(defun timestamp()
+(defun timestamp nil
 	"return the current unix timestamp"
 	(string-to-number (format-time-string "%s")))
 
@@ -25,10 +25,10 @@
 	"create an alist. the length of XS must be even. the odd members of XS become the cars, and the even members become the cdrs."
 	(plist-to-alist xs))
 
-(defun find(f x)
+(defun find (f x)
 	"search through XS for the element that, when passed to the callback function F, returns non-nil"
 	(if x
-		(head-tail x
+		(let ((head (car x)) (tail (cdr x)))
 			(if (funcall f head) 't (find f tail)))
 		nil))
 
@@ -36,7 +36,7 @@
 	"map for alists. Pass two arguments to F, where the first is the key, and the second is the value."
 	(mapcar (L x (funcall f (car x) (cdr x))) xs))
 
-(defun slurp(f)
+(defun slurp (f)
 	"read the contents of filepath F into a string."
 	(with-temp-buffer
 		(insert-file-contents f)
@@ -45,7 +45,7 @@
 (defun intersperse (s x)
 	"put S between the elements XS. (1 2 3) -> (1 s 2 s 3)"
 	(if x
-		(head-tail x
+		(let ((head (car x)) (tail (cdr x)))
 			(cons head (if tail (cons s (intersperse s tail)) nil)))
 		nil))
 
@@ -96,7 +96,7 @@ BINDINGS should be an alist where car is a `kbd' string and cdr is a function."
 
 (defun spread-last (x)
 	"spread the last element of X onto X. Useful for XML"
-	(append (butlast x) (lastcar x)))
+	(append (butlast x) (car (last x))))
 
 (defun apply-many (f &rest xs)
 	"apply F many times for each list of arguments XS"

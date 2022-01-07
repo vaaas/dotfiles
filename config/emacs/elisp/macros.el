@@ -7,7 +7,7 @@
 
 (defmacro C (f &rest body)
 	"call F with arguments BODY in reverse."
-	(append (list f) (nreverse body)))
+	(cons f (nreverse body)))
 
 (defmacro -> (&rest body)
 	"Pipeline macro. Pass the first element of body to the second, replacing the placeholder `$'.
@@ -20,18 +20,6 @@ Thus, (+ 1 (+ 2 x)) becomes (-> x (+ 2 $) (+ 1 $))"
 	"Like ->, excepts returns a lambda, that when evaluated, will run its argument through the pipeline.
 Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)) xs)"
 	`(L x (-> x ,@body)))
-
-(defmacro head-tail (x &rest body)
-	`(let ((head (car ,x)) (tail (cdr ,x)))
-		,@body))
-
-(defmacro lastcar (x)
-	"Returns the last car."
-	`(car (last ,x)))
-
-(defmacro whenl (x v &rest body)
-	"convenient composition of let and when"
-	`(let ((,x ,v)) (when ,x ,@body)))
 
 (defmacro ignore-errors (&rest body)
 	"Execute BODY, returning nil on errors."
