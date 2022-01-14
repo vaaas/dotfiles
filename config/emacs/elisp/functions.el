@@ -21,6 +21,12 @@
 			(plist-to-alist (cddr x)))
 		nil))
 
+(defun alist-to-plist (x)
+	(if x
+		(let ((head (car x)) (tail (cdr x)))
+			(cons (car head) (cons (cdr head) (alist-to-plist tail))))
+		nil))
+
 (defun alist (&rest xs)
 	"create an alist. the length of XS must be even. the odd members of XS become the cars, and the even members become the cdrs."
 	(plist-to-alist xs))
@@ -29,7 +35,7 @@
 	"search through XS for the element that, when passed to the callback function F, returns non-nil"
 	(if x
 		(let ((head (car x)) (tail (cdr x)))
-			(if (funcall f head) 't (find f tail)))
+			(if (funcall f head) head (find f tail)))
 		nil))
 
 (defun map-alist (f xs)
