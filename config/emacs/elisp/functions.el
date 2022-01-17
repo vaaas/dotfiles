@@ -50,10 +50,9 @@
 
 (defun intersperse (s x)
 	"put S between the elements XS. (1 2 3) -> (1 s 2 s 3)"
-	(if x
+    (when x
 		(let ((head (car x)) (tail (cdr x)))
-			(cons head (if tail (cons s (intersperse s tail)) nil)))
-		nil))
+			(cons head (when tail (cons s (intersperse s tail)))))))
 
 (defun read-elisp-file (file)
 	"`read' the elisp file FILE"
