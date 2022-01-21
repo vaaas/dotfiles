@@ -167,3 +167,59 @@
 			(call-interactively 'indent-rigidly-left-to-tab-stop)
 			(setq deactivate-mark nil))
 		(save-excursion (beginning-of-line) (delete-indent))))
+
+(defun expand-region-end (x)
+	"Expand the end of the region by X characters. This is performed by moving the mark or the point, whichever is greater."
+	(if (< (point) (mark))
+		(set-mark (+ x (mark)))
+		(goto-char (+ x (point)))))
+
+(defun wrap-region (beg end &optional open close)
+	"Wrap the region from BEG to END in the characters OPEN and CLOSE.
+If called interactively, read OPEN interactively.
+If CLOSE is not specified, tries to guess it from `insert-pair-alist', otherwise it becomes OPEN."
+	(interactive "r")
+	(when (called-interactively-p 'any)
+		(setq open (read-char "wrap region in")))
+	(setq close (or close (car (alist-get open insert-pair-alist)) open))
+	(save-excursion
+		(goto-char end)
+		(insert close)
+		(goto-char beg)
+		(insert open)))
+
+(defun wrap-region-lines (beg end &optional open close)
+	"Wrap every line in the region from BEG to END in the characters OPEN and CLOSE.
+If called interactively, read OPEN interactively.
+If CLOSE is not specified, tries to guess it from `insert-pair-alist', otherwise it becomes OPEN."
+	(interactive "r")
+	(when (called-interactively-p 'any)
+		(setq open (read-char "wrap every line of region in")))
+	(setq close (or close (car (alist-get open insert-pair-alist)) open))
+	(save-excursion
+		(goto-char end)
+		(while (>= (point) beg)
+			(end-of-line)
+			(insert close)
+			(beginning-of-line-text)
+			(insert open)
+			(forward-line -1)))
+	(when (called-interactively-p 'any)
+		(setq deactivate-mark nil)
+		(expand-region-end 1)))
+
+(defun append-region-lines (beg end &optional char)
+	"Append the character CHAR to every line in the region from BEG to END.
+If called interactively, read CHAR interactively."
+	(interactive "r")
+	(when (called-interactively-p 'any)
+		(setq char (read-char "append every line of region with")))
+	(save-excursion
+		(goto-char end)
+		(while (>= (point) beg)
+			(end-of-line)
+			(insert char)
+			(forward-line -1)))
+	(when (called-interactively-p 'any)
+		(setq deactivate-mark nil)
+		(expand-region-end 1)))
