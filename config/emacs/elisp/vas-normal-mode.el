@@ -73,8 +73,9 @@
 	"B" 'save-buffer
 	"p" 'yank
 	"P" 'kill-ring-save
-	"." 'repeat
+	"," 'wrap-region
 	"<" 'outline-hide-leaves
+	"." 'repeat
 	">" 'outline-show-entry
 	"/" 'isearch-forward
 	"?" 'isearch-backward
@@ -114,7 +115,9 @@
 
 	"' m m" 'markdown-mode
 	"' m j" 'js-mode
-	"' m p" 'php-mode))
+	"' m p" 'php-mode
+	"' r w" 'wrap-region-lines
+	"' r a" 'append-region-lines))
 
 	"keymap for vas-normal-mode")
 
