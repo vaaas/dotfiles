@@ -10,7 +10,6 @@ export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 
 xrdb -merge ~/.Xresources
-xwallpaper --maximize wallpaper &
 ibus-daemon -xdr
 dunst -font 'Sans 16' &
 dbus-launch sxhkd -m -1 &
@@ -29,6 +28,8 @@ else
 	xinput set-prop 14 328 1
 	picom &
 fi
+
+xwallpaper --maximize wallpaper &
 
 exec dbus-launch dwm
 #exec dbus-launch xterm
