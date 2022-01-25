@@ -1,0 +1,10 @@
+[Network]
+Private=no
+VirtualEthernet=no
+
+[Exec]
+Boot=no
+PrivateUsers=no
+
+[Files]
+Bind=/home/vas/Projects/athena
