@@ -1,0 +1,3 @@
+(use-modules (ice-9 readline))
+(activate-readline)
+(set! %load-path (cons "~/.local/share/guile" %load-path))
