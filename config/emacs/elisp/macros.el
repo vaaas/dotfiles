@@ -5,9 +5,10 @@
 	"lambda shorthand for only one argument."
 	`(lambda (,x) ,@body))
 
-(defmacro C (f &rest body)
-	"call F with arguments BODY in reverse."
-	(cons f (nreverse body)))
+(defmacro C (f &rest xs)
+	"call function F with the last 2 arguments XS in reverse."
+	(let ((head (butlast xs 2)) (tail (last xs 2)))
+	(append (list f) head (nreverse tail))))
 
 (defmacro -> (&rest body)
 	"Pipeline macro. Pass the first element of body to the second, replacing the placeholder `$'.
