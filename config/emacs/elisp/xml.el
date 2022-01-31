@@ -30,7 +30,7 @@
 	(t (concat
 		"<"
 		(symbol-name name)
-		(when attrs (string-join (mapcar #'xml-serialise-attrs attrs) " "))
+		(if attrs (concat " " (xml-serialise-attrs attrs)) "")
 		(if children
 			(concat
 				">"
