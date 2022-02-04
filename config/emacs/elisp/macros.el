@@ -22,6 +22,19 @@ Thus, (+ 1 (+ 2 x)) becomes (-> x (+ 2 $) (+ 1 $))"
 Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)) xs)"
 	`(L x (-> x ,@body)))
 
+(defmacro defun* (name args comment &rest body)
+	"Alternate defun implementation for curried functions."
+	(defun arg-help (x) (if (listp x) x (list x)))
+	(defun nest (args)
+		(if (cdr args)
+			`(lambda ,(arg-help (car args)) ,(nest (cdr args)))
+			`(lambda ,(arg-help (car args)) ,@body)))
+	`(defun ,name ,(arg-help (car args)) ,comment ,(nest (cdr args))))
+
+(defmacro thrush (x &rest fs)
+	(dolist (f fs x)
+		(setq x (if (symbolp f) (list f x) (append f (list x))))))
+
 (defmacro ignore-errors (&rest body)
 	"Execute BODY, returning nil on errors."
 	`(condition-case nil (progn ,@body) (error nil)))

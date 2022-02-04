@@ -38,16 +38,16 @@
 				"</" (symbol-name name) ">")
 			"/>"))))))
 
-(defun xml-inner-text (node)
-	(-> (cddr node)
-		(mapcar (L x (if (stringp x) x (xml-inner-text x))) $)
-		(string-join $)))
+(defun xml-inner-text (x)
+	(thrush x cddr
+		(mapcar (L x (if (stringp x) x (xml-inner-text x))))
+		string-join))
 
 (defun xml-serialise-attrs (xs)
-	(C string-join " "
-		(C map-alist xs
-			(lambda (k v)
-				(concat (symbol-name k) "=" "\"" (xml-to-string v) "\"")))))
+	(thrush xs
+		(map-alist (lambda (k v)
+			(concat (symbol-name k) "=" "\"" (xml-to-string v) "\"")))
+		(C string-join " ")))
 
 (defun query-selector (f node)
 	(cond

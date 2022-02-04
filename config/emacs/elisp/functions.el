@@ -1,9 +1,9 @@
 ; -*- lexical-binding: t -*-
 ; various utility functions
 
-(defun outside (xs)
+(defun* outside (xs x)
 	"Curried function. Returns lambda which checks whether X is a member of XS"
-	(L x (not (member x xs))))
+	(not (member x xs)))
 
 (defun whitespacep (x)
 	"test if a character is whitespace. Whitespace is defined as tab, space, and newline."
