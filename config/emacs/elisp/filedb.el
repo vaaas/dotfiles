@@ -32,7 +32,7 @@
 			shell-command-to-string
 			string-trim
 			(C split-string "\n")
-			(mapcar (L y (concat x "/" y))))))
+			(mapcar (LL concat x "/")))))
 
 (defun filedb-walk (root disallowed f)
 	"walk directory tree ROOT, excluding subdirectories in DISALLOWED. Call function F on each of them."

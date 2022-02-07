@@ -7,7 +7,8 @@
 
 (defmacro LL (&rest xs)
 	"lambda shorthand for partial functions."
-	`(lambda (x) (,@xs x)))
+	(let ((x (gensym)))
+	`(lambda (,x) (,@xs ,x))))
 
 (defmacro C (f &rest xs)
 	"call function F with the last 2 arguments XS in reverse."
