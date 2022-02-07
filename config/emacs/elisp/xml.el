@@ -39,12 +39,12 @@
 			"/>"))))))
 
 (defun xml-inner-text (x)
-	(thrush x cddr
+	(-> x cddr
 		(mapcar (L x (if (stringp x) x (xml-inner-text x))))
 		string-join))
 
 (defun xml-serialise-attrs (xs)
-	(thrush xs
+	(-> xs
 		(map-alist (lambda (k v)
 			(concat (symbol-name k) "=" "\"" (xml-to-string v) "\"")))
 		(C string-join " ")))

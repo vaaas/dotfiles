@@ -15,18 +15,6 @@
 	(let ((head (butlast xs 2)) (tail (last xs 2)))
 	(append (list f) head (nreverse tail))))
 
-(defmacro -> (&rest body)
-	"Pipeline macro. Pass the first element of body to the second, replacing the placeholder `$'.
-Thus, (+ 1 (+ 2 x)) becomes (-> x (+ 2 $) (+ 1 $))"
-	(let ((result (pop body)))
-	(dolist (form body result)
-		(setq result (mapcar (L x (if (eq '$ x) result x)) form)))))
-
-(defmacro => (&rest body)
-	"Like ->, excepts returns a lambda, that when evaluated, will run its argument through the pipeline.
-Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)) xs)"
-	`(L x (-> x ,@body)))
-
 (defmacro defun* (name args comment &rest body)
 	"Alternate defun implementation for curried functions."
 	(defun arg-help (x) (if (listp x) x (list x)))
@@ -36,13 +24,13 @@ Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)
 			`(lambda ,(arg-help (car args)) ,@body)))
 	`(defun ,name ,(arg-help (car args)) ,comment ,(nest (cdr args))))
 
-(defmacro thrush (x &rest fs)
+(defmacro -> (x &rest fs)
 	(dolist (f fs x)
 		(setq x (if (symbolp f) (list f x) (append f (list x))))))
 
-(defmacro thrush* (&rest fs)
+(defmacro => (&rest fs)
 	(let* ((x (gensym)) (r x))
-	`(L ,x ,(macroexpand `(thrush ,x ,@fs)))))
+	`(L ,x ,(macroexpand `(-> ,x ,@fs)))))
 
 (defmacro ignore-errors (&rest body)
 	"Execute BODY, returning nil on errors."

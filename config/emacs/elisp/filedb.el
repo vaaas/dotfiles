@@ -27,8 +27,7 @@
 (defun git-ls-tree (x)
 	"returns a list of files tracked by a git repository in directory X"
 	(with-temp-dir x
-		(thrush
-			"git ls-tree -r --name-only HEAD"
+		(-> "git ls-tree -r --name-only HEAD"
 			shell-command-to-string
 			string-trim
 			(C split-string "\n")
@@ -37,8 +36,7 @@
 (defun filedb-walk (root disallowed f)
 	"walk directory tree ROOT, excluding subdirectories in DISALLOWED. Call function F on each of them."
 	(ignore-errors
-	(thrush
-		root
+	(-> root
 		directory-files
 		(seq-filter (outside disallowed))
 		(mapcar (LL concat root "/"))
@@ -56,15 +54,14 @@ Begin walking from `filedb-root-dir' and exclude directories in `filedb-exclude-
 	(let ((skip (+ 1 (length filedb-root-dir))))
 	(with-temp-file filedb
 		(filedb-walk filedb-root-dir filedb-exclude-dirs
-			(thrush* (string-tail skip) (C insert "\n"))))
+			(=> (string-tail skip) (C insert "\n"))))
 	(message "Done.")))
 
 (defun filedb-find-file ()
 	"find-file by searching the filedb file. filedb is a newline-separated list of files.
 Update the filedb through `filedb-update' periodically."
 	(interactive)
-	(thrush
-		filedb
+	(-> filedb
 		slurp
 		(C split-string "\n")
 		(ido-completing-read "select file: ")

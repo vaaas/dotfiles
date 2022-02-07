@@ -19,8 +19,7 @@
 		(start (progn (search-backward "```") (point)))
 		(eofl (progn (end-of-line) (point)))
 		(end (progn (search-forward "```") (point)))
-		(mode (thrush
-			(buffer-substring (+ 3 start) eofl)
+		(mode (-> (buffer-substring (+ 3 start) eofl)
 			string-trim
 			(C split-string "\s+")
 			car
