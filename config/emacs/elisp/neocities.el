@@ -24,11 +24,11 @@
 (defun nc-api-list (user password)
 	"Calls the neocities list api (file listing)"
 	(let ((result
-		(-> (format "https://%s:%s@neocities.org/api/list" user password)
-		(list "/usr/bin/curl" "-s" "--" $)
-		(string-join $ " ")
-		(shell-command-to-string $)
-		(json-parse-string $ :object-type 'alist))))
+		(thrush (format "https://%s:%s@neocities.org/api/list" user password)
+		(list "/usr/bin/curl" "-s" "--")
+		(C string-join " ")
+		shell-command-to-string
+		(L x (json-parse-string x :object-type 'alist))))
 	(if (not (string= "success" (alist-get 'result result)))
 		(throw 'unsuccessful "fetching files was unsuccessful")
 		(alist-get 'files result))))
@@ -36,40 +36,41 @@
 (defun nc-api-delete (user password files)
 	"Calls the neocities delete api"
 	(message "Deleting remote neocities files...")
-	(-> files
-	(mapcar (LL format "-d filenames[]=%s") $)
-	(string-join $ " ")
-	(format "/usr/bin/curl %s https://%s:%s@neocities.org/api/delete" $)
-	(shell-command-to-string $)))
+	(thrush files
+	(mapcar (LL format "-d filenames[]=%s"))
+	(C string-join " ")
+	(format "/usr/bin/curl %s https://%s:%s@neocities.org/api/delete")
+	shell-command-to-string))
 
 (defun nc-api-upload (user password files)
 	"Calls the neocities upload api"
 	(message "Uploading local files to neocities. This may take a while...")
 	(with-temp-dir (concat nc-blog-directory "/render")
-		(-> files
-		(mapcar (L x (format "-F %s=@%s" x x)) $)
-		(string-join $ " ")
-		(format "/usr/bin/curl %s https://%s:%s@neocities.org/api/upload" $ user password)
-		(shell-command-to-string $))))
+		(thrush files
+		(mapcar (L x (format "-F %s=@%s" x x)))
+		(C string-join " ")
+		(L x (format "/usr/bin/curl %s https://%s:%s@neocities.org/api/upload" x user password))
+		shell-command-to-string)))
 
 (defun nc-push nil
 	"Push local files to neocities."
 	(interactive)
 	(let*
-		((user (->
-			(concat nc-blog-directory "/site.el")
-			(read-elisp-file $)
-			(alist-get 'conf $)
-			(alist-get 'username $)))
+		((user (thrush "/site.el"
+			(concat nc-blog-directory)
+			read-elisp-file
+			(alist-get 'conf)
+			(alist-get 'username)))
 		(password (read-passwd (concat "Password for " user ": ")))
 		(remote-files
-			(-> (nc-api-list user password)
-			(seq-filter (L x (eq :false (alist-get 'is_directory x))) $)
-			(mapcar (L x (cons (alist-get 'path x) (alist-get 'sha1_hash x))) $)))
+			(thrush (nc-api-list user password)
+			(seq-filter (L x (eq :false (alist-get 'is_directory x))))
+			(mapcar (L x (cons (alist-get 'path x) (alist-get 'sha1_hash x))))))
 		(local-files
-			(-> (concat nc-blog-directory "/render")
-			(directory-files-recursively $ ".*")
-			(mapcar (L x (cons (substring x (length (concat nc-blog-directory "/render/")) (length x)) (sha1-ext x))) $)))
+			(thrush "/render"
+			(concat nc-blog-directory)
+			(C directory-files-recursively ".*")
+			(mapcar (L x (cons (substring x (length (concat nc-blog-directory "/render/")) (length x)) (sha1-ext x))))))
 		(delete-these-files (difference (mapcar #'car remote-files) (mapcar #'car local-files)))
 		(upload-these-files (mapcar #'car (difference local-files remote-files))))
 	(if delete-these-files
@@ -113,34 +114,34 @@
 
 	; render index.html
 	(with-temp-file (concat nc-blog-directory "/render/index.html")
-		(-> posts
-		(seq-filter (thrush* (nth 1) (alist-get 'skip) not) $)
-		(mapcar #'nc-render-item $)
-		(nc-render-frontpage conf $)
-		(xml-to-string $)
-		(concat doctype $)
-		(insert $)))
+		(thrush posts
+		(seq-filter (thrush* (nth 1) (alist-get 'skip) not))
+		(mapcar #'nc-render-item)
+		(nc-render-frontpage conf)
+		xml-to-string
+		(concat doctype)
+		insert))
 
 	; render rss.xml
 	(with-temp-file (concat nc-blog-directory "/render/rss.xml")
-		(-> posts
-		(seq-filter (thrush* (nth 1) (alist-get 'skip) not) $)
-		(mapcar (LL nc-render-rss-item conf) $)
-		(nc-render-rss conf $)
-		(xml-to-string $)
-		(concat "<?xml version='1.0' encoding='UTF-8'?>" $)
-		(insert $)))
+		(thrush posts
+		(seq-filter (thrush* (nth 1) (alist-get 'skip) not))
+		(mapcar (LL nc-render-rss-item conf))
+		(nc-render-rss conf)
+		xml-to-string
+		(concat "<?xml version='1.0' encoding='UTF-8'?>")
+		insert))
 
 	; render individual posts and pages
 	(apply-many
 		(lambda (xs f) (dolist (x xs)
 			(when-let ((filename (alist-get 'filename (cadr x))))
 				(with-temp-file (concat nc-blog-directory "/render/" filename)
-					(-> x
-						(funcall f conf $)
-						(xml-to-string $)
-						(concat doctype $)
-						(insert $)))
+					(thrush x
+						(funcall f conf)
+						xml-to-string
+						(concat doctype)
+						insert))
 				(message (concat "Wrote " filename)))))
 		(list posts #'nc-render-post)
 		(list pages #'nc-render-page))))
@@ -150,8 +151,8 @@
 	(spread-last (list
 		'article
 		(alist
-			't (-> x (nth 1 $) (alist-get 'tag $))
-			'id (-> x (nth 1 $) (alist-get 'timestamp $) (nc-guid $)))
+			't (thrush x (nth 1) (alist-get 'tag))
+			'id (thrush x (nth 1) (alist-get 'timestamp) nc-guid))
 		(nc-render-description x))))
 
 (defun nc-render-description (x)
@@ -174,11 +175,11 @@
 (defun nc-render-frontpage (conf xs)
 	"Generate the frontpage (index.html) of the neocities blog."
 	(let
-	((distinct-tags
-		(-> xs
-		(mapcar (thrush* (nth 1) (alist-get 't)) $)
-		(delete-dups $)
-		(sort $ #'string<))))
+		((distinct-tags
+			(thrush xs
+			(mapcar (thrush* (nth 1) (alist-get 't)))
+			delete-dups
+			(C sort #'string<)))
 	(nc-render-html
 		(alist-get 'lang conf)
 		(nc-render-head conf (alist-get 'sitename conf))
@@ -210,16 +211,15 @@
 	(list 'item nil
 		(list 'title nil
 			(if filename
-				(-> x (query-selector (xml-elem= 'h1) $) (xml-inner-text $))
+				(thrush x (query-selector (xml-elem= 'h1)) xml-inner-text)
 				(format "New post by %s (%s)" (alist-get 'author conf) guid)))
 		(list 'guid nil url)
 		(list 'pubDate nil (nc-rfctime timestamp))
 		(list 'link nil url)
 		(list 'description nil
 			(spread-last (list '!cdata nil
-			(->(nc-render-description x)
-			(cdr $)
-			(mapcar (LL nc-render-absolute-links conf-url) $))))))))
+			(thrush x nc-render-description cdr
+			(mapcar (LL nc-render-absolute-links conf-url)))))))))
 
 (defun nc-render-rss (conf xs)
 	"Creates rss.xml."
@@ -295,9 +295,9 @@
 		(stamp (timestamp))
 		(file-name
 			(when (>= (buffer-size) 2000)
-				(-> (read-string "file name (no extension): ")
-				(replace-regexp-in-string " " "_" $)
-				(concat $ ".html"))))
+				(thrush (read-string "file name (no extension): ")
+				(replace-regexp-in-string " " "_")
+				(C concat ".html"))))
 		(post (spread-last
 			(list 'post
 			(if file-name
@@ -330,26 +330,26 @@
 	(interactive)
 	(let*
 		((site (read-elisp-file (concat nc-blog-directory "/site.el")))
-		(posts (-> site
-			(alist-get 'posts $)
-			(C mapcar $ (L x (cons (alist-get 'timestamp (nth 1 x)) x))))
+		(posts (thrush site
+			(alist-get 'posts)
+			(mapcar (L x (cons (alist-get 'timestamp (nth 1 x)) x)))))
 		(selected-post
-			(-> posts
-			(C mapcar $ (thrush* cadr nc-post-preview))
-			(ido-completing-read "select post: " $)
-			(split-string $ " ")
-			(car $)
-			(string-to-number $)
-			(alist-get $ posts)))))
+			(thrush posts
+			(mapcar (thrush* cadr nc-post-preview))
+			(ido-completing-read "select post: ")
+			(C split-string " ")
+			car
+			string-to-number
+			(C alist-get posts))))
 	(with-contents-function "*edit-blog-post*"
 	(progn
 		(insert (xml-to-string selected-post))
 		(xml-mode))
 	(let ((edited-post
         (let ((x (libxml-parse-xml-region (point-min) (point-max))))
-		(-> x
-		(nth 1 $)
-		(C map-alist $
+		(thrush x
+		(nth 1)
+		(map-alist
 			(lambda (k v)
 				(cons k (cond
 					((eq k 'skip) (intern v))
