@@ -99,6 +99,14 @@ BINDINGS should be an alist where car is a `kbd' string and cdr is a function."
 	"Get the first N characters of string X. If X is shorter than N, get the entire X."
 	(substring x 0 (min n (length x))))
 
+(defun string-tail (n x)
+	"Get the last N characters of string X."
+	(substring x n))
+
+(defun slice (a b x)
+	"Like `substring', but the string is X and passed as a last argument."
+	(substring x a b))
+
 (defun spread-last (x)
 	"spread the last element of X onto X. Useful for XML"
 	(append (butlast x) (car (last x))))

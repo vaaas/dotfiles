@@ -5,6 +5,10 @@
 	"lambda shorthand for only one argument."
 	`(lambda (,x) ,@body))
 
+(defmacro LL (&rest xs)
+	"lambda shorthand for partial functions."
+	`(lambda (x) (,@xs x)))
+
 (defmacro C (f &rest xs)
 	"call function F with the last 2 arguments XS in reverse."
 	(let ((head (butlast xs 2)) (tail (last xs 2)))
@@ -34,6 +38,12 @@ Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)
 (defmacro thrush (x &rest fs)
 	(dolist (f fs x)
 		(setq x (if (symbolp f) (list f x) (append f (list x))))))
+
+(defmacro thrush* (&rest fs)
+	(let* ((x (gensym)) (r x))
+	(dolist (f fs)
+		(setq r (if (symbolp f) (list f r) (append f (list r)))))
+	`(lambda (,x) ,r)))
 
 (defmacro ignore-errors (&rest body)
 	"Execute BODY, returning nil on errors."
