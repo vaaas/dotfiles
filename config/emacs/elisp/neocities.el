@@ -10,7 +10,7 @@
 ; general utility functions
 (defun nc-guid (x)
 	"Generates a unique id for a neocities article or rss item."
-	(-> x (- $ 1483228800) (/ $ 60) (int-to-base $ 64)))
+	(thrush x (C - 1483228800) (C / 60) (C int-to-base 64)))
 
 (defun nc-ymd (x)
 	"formats a timestamp in Y m d format"
@@ -37,7 +37,7 @@
 	"Calls the neocities delete api"
 	(message "Deleting remote neocities files...")
 	(-> files
-	(mapcar (=> (format "-d filenames[]=%s" $)) $)
+	(mapcar (LL format "-d filenames[]=%s") $)
 	(string-join $ " ")
 	(format "/usr/bin/curl %s https://%s:%s@neocities.org/api/delete" $)
 	(shell-command-to-string $)))
@@ -47,7 +47,7 @@
 	(message "Uploading local files to neocities. This may take a while...")
 	(with-temp-dir (concat nc-blog-directory "/render")
 		(-> files
-		(mapcar (=> (format "-F %s=@%s" $ $)) $)
+		(mapcar (L x (format "-F %s=@%s" x x)) $)
 		(string-join $ " ")
 		(format "/usr/bin/curl %s https://%s:%s@neocities.org/api/upload" $ user password)
 		(shell-command-to-string $))))
@@ -114,7 +114,7 @@
 	; render index.html
 	(with-temp-file (concat nc-blog-directory "/render/index.html")
 		(-> posts
-		(seq-filter (=> (nth 1 $) (alist-get 'skip $) (not $)) $)
+		(seq-filter (thrush* (nth 1) (alist-get 'skip) not) $)
 		(mapcar #'nc-render-item $)
 		(nc-render-frontpage conf $)
 		(xml-to-string $)
@@ -124,8 +124,8 @@
 	; render rss.xml
 	(with-temp-file (concat nc-blog-directory "/render/rss.xml")
 		(-> posts
-		(seq-filter (=> (nth 1 $) (alist-get 'skip $) (not $)) $)
-		(mapcar (=> (nc-render-rss-item conf $)) $)
+		(seq-filter (thrush* (nth 1) (alist-get 'skip) not) $)
+		(mapcar (LL nc-render-rss-item conf) $)
 		(nc-render-rss conf $)
 		(xml-to-string $)
 		(concat "<?xml version='1.0' encoding='UTF-8'?>" $)
@@ -176,7 +176,7 @@
 	(let
 	((distinct-tags
 		(-> xs
-		(mapcar (=> (nth 1 $) (alist-get 't $)) $)
+		(mapcar (thrush* (nth 1) (alist-get 't)) $)
 		(delete-dups $)
 		(sort $ #'string<))))
 	(nc-render-html
@@ -219,7 +219,7 @@
 			(spread-last (list '!cdata nil
 			(->(nc-render-description x)
 			(cdr $)
-			(mapcar (=> (nc-render-absolute-links conf-url $)) $))))))))
+			(mapcar (LL nc-render-absolute-links conf-url) $))))))))
 
 (defun nc-render-rss (conf xs)
 	"Creates rss.xml."
@@ -335,7 +335,7 @@
 			(C mapcar $ (L x (cons (alist-get 'timestamp (nth 1 x)) x))))
 		(selected-post
 			(-> posts
-			(C mapcar $ (=> (cadr $) (nc-post-preview $)))
+			(C mapcar $ (thrush* cadr nc-post-preview))
 			(ido-completing-read "select post: " $)
 			(split-string $ " ")
 			(car $)
@@ -370,7 +370,7 @@
 				(if (and (member k '(href src)) (string-prefix-p "/" v))
 				(concat prefix v)
 				v))))
-		(C mapcar (cddr x) (=> (nc-render-absolute-links prefix $)))))
+		(C mapcar (cddr x) (LL nc-render-absolute-links prefix))))
 	x))
 
 (defun nc-make-skeleton nil
