@@ -50,7 +50,7 @@
 
 (defun intersperse (s x)
 	"put S between the elements XS. (1 2 3) -> (1 s 2 s 3)"
-    (when x
+	(when x
 		(let ((head (car x)) (tail (cdr x)))
 			(cons head (when tail (cons s (intersperse s tail)))))))
 
@@ -85,11 +85,11 @@ BINDINGS should be an alist where car is a `kbd' string and cdr is a function."
 
 (defun sha1-ext (x)
 	"sha1 a file X using external sha1 command"
-	(-> (list "sha1sum" "--" x)
-	(string-join $ " ")
-	(shell-command-to-string $)
-	(split-string $ " ")
-	(car $)))
+	(thrush (list "sha1sum" "--" x)
+	(C string-join " ")
+	shell-command-to-string
+	(C split-string " ")
+	car))
 
 (defun difference (as bs)
 	"Return the set difference of AS - BS. (items of AS that are not on BS)"

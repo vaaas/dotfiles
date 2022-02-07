@@ -19,14 +19,14 @@
 		(start (progn (search-backward "```") (point)))
 		(eofl (progn (end-of-line) (point)))
 		(end (progn (search-forward "```") (point)))
-		(mode (->
+		(mode (thrush
 			(buffer-substring (+ 3 start) eofl)
-			(string-trim $)
-			(split-string $ "\s+")
-			(car $)
-			(intern $)
-			(alist-get $ vas-markdown-code-modes)
-			(or $ 'prog-mode))))
+			string-trim
+			(C split-string "\s+")
+			car
+			intern
+			(C alist-get vas-markdown-code-modes)
+			(C or 'prog-mode))))
 	(edit-buffer-region "*markdown-code-narrow-indirect*" (+ eofl 1) (- end 3)
 		(call-interactively mode)
 		(goto-char (- initial eofl)))))

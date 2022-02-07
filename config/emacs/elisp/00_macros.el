@@ -42,9 +42,7 @@ Thus, (mapcar (lambda (x) (+ 1 (+ 2 x))) xs) becomes (mapcar (=> (+ 2 $) (+ 1 $)
 
 (defmacro thrush* (&rest fs)
 	(let* ((x (gensym)) (r x))
-	(dolist (f fs)
-		(setq r (if (symbolp f) (list f r) (append f (list r)))))
-	`(lambda (,x) ,r)))
+	`(L ,x ,(macroexpand `(thrush ,x ,@fs)))))
 
 (defmacro ignore-errors (&rest body)
 	"Execute BODY, returning nil on errors."
