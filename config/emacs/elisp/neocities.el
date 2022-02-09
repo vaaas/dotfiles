@@ -31,7 +31,7 @@
 		(L x (json-parse-string x :object-type 'alist))))
 	(if (not (string= "success" (alist-get 'result result)))
 		(throw 'unsuccessful "fetching files was unsuccessful")
-		(alist-get 'files result))))
+		(alist-get 'files result)))))
 
 (defun nc-api-delete (user password files)
 	"Calls the neocities delete api"
@@ -195,7 +195,7 @@
 				(list (list 'a (alist 'class "active" 'href "all") "all"))
 				(mapcar (L x (list 'a (alist 'href x) x)) distinct-tags))
 			(spread-last (list 'main nil (nreverse xs)))
-			(list 'script (alist 'src "/script.js") " ")))))
+			(list 'script (alist 'src "/script.js") " "))))))
 
 (defun nc-render-rss-item (conf x)
 	"Creates an rss item."
