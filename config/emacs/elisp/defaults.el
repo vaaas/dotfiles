@@ -99,15 +99,38 @@
 	(add-to-list 'auto-mode-alist x))
 
 (custom-set-faces
-	'(default ((t (:inherit nil :extend nil :stipple nil :background "#fed" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight thin :height 160 :width normal :family "JuliaMono"))))
+	`(default ((t
+		(:inherit nil
+		:extend nil
+		:stipple nil
+		:background "#fed"
+		:foreground "black"
+		:inverse-video nil
+		:box nil
+		:strike-through nil
+		:overline nil
+		:underline nil
+		:slant normal
+		:weight thin
+		:height ,(if at-home-p 160 130)
+		:width normal
+		:family "JuliaMono"))))
 	'(cursor ((t (:background "#f05"))))
-	'(eshell-ls-directory ((t (:foreground "#25a" :weight bold))))
-	'(eshell-ls-executable ((t (:foreground "#084" :weight bold))))
-	'(eshell-prompt ((t (:foreground "#f05" :weight bold))))
+	'(eshell-ls-directory ((t
+		(:foreground "#25a"
+		:weight bold))))
+	'(eshell-ls-executable ((t
+		(:foreground "#084"
+		:weight bold))))
+	'(eshell-prompt ((t
+		(:foreground "#f05"
+		:weight bold))))
 	'(font-lock-builtin-face ((t (:underline (:color foreground-color)))))
 	'(font-lock-comment-face ((t (:foreground "#a42"))))
 	'(font-lock-constant-face ((t (:inherit font-lock-type-face))))
-	'(font-lock-function-name-face ((t (:foreground "#25a" :weight bold))))
+	'(font-lock-function-name-face ((t
+		(:foreground "#25a"
+		:weight bold))))
 	'(font-lock-keyword-face ((t (:weight semi-bold))))
 	'(font-lock-string-face ((t (:foreground "#084"))))
 	'(font-lock-type-face ((t (:foreground "#d38"))))
@@ -126,5 +149,9 @@
 	'(php-function-call ((t (:inherit font-lock-function-name-face))))
 	'(region ((t (:background "#fff"))))
 	'(show-paren-match ((t (:inherit highlight))))
-	'(markdown-code-face ((t (:inherit default :foreground "#d38"))))
-	'(variable-pitch ((t (:height 160 :family "Sans Serif")))))
+	'(markdown-code-face ((t
+		(:inherit default
+		:foreground "#d38"))))
+	`(variable-pitch ((t
+		(:height ,(if at-home-p 160 130)
+		:family "Sans Serif")))))
