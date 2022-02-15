@@ -42,3 +42,11 @@ xterm*faceSize: 16
 XTerm.vt100.translations: #override \n \
 	Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n \
 	Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+
+! dwm
+dwm.borderpx: 4
+dwm.workspaces: 4
+dwm.bh: 0
+dwm.col_sel: 00AAFF
+dwm.col_norm: 000000
+dwm.mfact: 0.6
