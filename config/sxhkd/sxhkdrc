@@ -106,6 +106,18 @@ super + shift + v
 super + shift + semicolon
 	echo -n 'D' >> /tmp/dwm.fifo
 
+super + i
+	echo -n 'V' >> /tmp/dwm.fifo
+
+super + a
+	echo -n 'v' >> /tmp/dwm.fifo
+
+super + shift + i
+	echo -n 'S' >> /tmp/dwm.fifo
+
+super + shift + A
+	echo -n 's' >> /tmp/dwm.fifo
+
 super + e
 	echo -n 'w' >> /tmp/dwm.fifo
 
