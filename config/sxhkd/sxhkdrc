@@ -81,3 +81,54 @@ XF86AudioRaiseVolume
 
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+super + w
+	echo -n 'a' >> /tmp/dwm.fifo
+
+super + u
+	echo -n 'b' >> /tmp/dwm.fifo
+
+super + v
+	echo -n 'c' >> /tmp/dwm.fifo
+
+super + semicolon
+	echo -n 'd' >> /tmp/dwm.fifo
+
+super + shift + w
+	echo -n 'A' >> /tmp/dwm.fifo
+
+super + shift + u
+	echo -n 'B' >> /tmp/dwm.fifo
+
+super + shift + v
+	echo -n 'C' >> /tmp/dwm.fifo
+
+super + shift + semicolon
+	echo -n 'D' >> /tmp/dwm.fifo
+
+super + e
+	echo -n 'w' >> /tmp/dwm.fifo
+
+super + o
+	echo -n 'W' >> /tmp/dwm.fifo
+
+super + shift + e
+	echo -n 'l' >> /tmp/dwm.fifo
+
+super + shift + o
+	echo -n 'L' >> /tmp/dwm.fifo
+
+super + y
+	echo -n 'r' >> /tmp/dwm.fifo
+
+super + shift + y
+	echo -n 'R' >> /tmp/dwm.fifo
+
+super + apostrophe
+	echo -n 'z' >> /tmp/dwm.fifo
+
+super + f
+	echo -n 'f' >> /tmp/dwm.fifo
+
+super + q
+	echo -n 'q' >> /tmp/dwm.fifo
