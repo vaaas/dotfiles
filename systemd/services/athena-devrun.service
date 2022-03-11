@@ -6,7 +6,7 @@ Wants=network-online.target
 [Service]
 Restart=on-abnormal
 WorkingDirectory=/home/vas/Projects/athena
-ExecStart=systemd-nspawn -M focal -u vas --chdir /home/vas/Projects/athena /home/vas/Projects/athena/devrun.sh
+ExecStart=/home/vas/Projects/athena/devrun.sh
 KillMode=mixed
 KillSignal=SIGTERM
 TimeoutStopSec=5s
