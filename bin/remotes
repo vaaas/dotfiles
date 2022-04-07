@@ -5,10 +5,8 @@ IFS='
 
 remotes="iotwebserver	root@dopplerapp.gr
 mattermost	root@chat.dopplerapp.gr
-atlas	root@atlas.doppler.loc
-athena	root@atlas.doppler.loc:2000
-build server	root@atlas.doppler.loc:2001
-wikipass	root@atlas.doppler.loc:2002"
+build server	root@10.0.0.81
+vmfactory	root@10.0.0.88"
 
 selected=$(echo "$remotes" | dmenu | cut -f 2 -d'	')
 test -n "$selected" && xterm -e "ssh ssh://$selected"

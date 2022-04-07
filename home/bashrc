@@ -224,6 +224,6 @@ d() {
 		a) s systemctl start "$@" ;;
 		s) s systemctl stop "$@" ;;
 		jt) journalctl -n 100 -u "$1" ;;
-		*) systemctl status "$@" ;;
+		*) systemctl status "$arg" "$@" ;;
 	esac
 }
