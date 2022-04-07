@@ -20,7 +20,6 @@ then
 	setxkbmap slatin
 	redshift-service &
 	unclutter --timeout 1 &
-	xrandr --output HDMI-1 --rotate left
 else
 	xinput set-button-map 14 3 2 1
 	xinput set-prop 14 315 1
