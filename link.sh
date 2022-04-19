@@ -47,3 +47,5 @@ done
 for x in $(find systemd/nspawn -type f)
 do sudo cp -v $(realpath $x) /etc/systemd/nspawn/$(basename $x)
 done
+
+sudo ln -s keyd.conf /etc/keyd/default.conf

@@ -1,20 +1,19 @@
 default partial alphanumeric_keys modifier_keys
 xkb_symbols "basic" {
-	name[Group1]= "English (Vas)";
+	name[Group1]= "Greek (Vas)";
 
 	key <TLDE> {[ grave, asciitilde ]};
-
 	key <AE01> {[ 1, exclam ]};
 	key <AE02> {[ 2, at ]};
 	key <AE03> {[ 3, numbersign]};
-	key <AE04> {[ 4, dollar, sterling ]};
+	key <AE04> {[ 4, dollar ]};
 	key <AE05> {[ 5, percent ]};
 	key <AE06> {[ 6, asciicircum ]};
 	key <AE07> {[ 7, ampersand ]};
 	key <AE08> {[ 8, asterisk ]};
 	key <AE09> {[ 9, parenleft ]};
 	key <AE10> {[ 0, parenright ]};
-	key <AE11> {[ minus, underscore, emdash, endash ]};
+	key <AE11> {[ minus, underscore ]};
 	key <AE12> {[ equal, plus ]};
 
 	key <AD01> {[ Greek_chi, Greek_chi ], [k, K] };
@@ -31,16 +30,16 @@ xkb_symbols "basic" {
 	key <AD12> {[ bracketright, braceright ]};
 	key <BKSL> {[ backslash, bar ]};
 
-	key <AC01> {[ Greek_rho, Greek_RHO, backslash, bar ], [r, R] };
-	key <AC02> {[ Greek_sigma, Greek_SIGMA , grave, asciitilde ], [s, S] };
-	key <AC03> {[ Greek_tau, Greek_TAU, equal, plus ], [t, T] };
-	key <AC04> {[ Greek_nu, Greek_NU, minus, underscore ], [n, N] };
+	key <AC01> {[ Greek_rho, Greek_RHO ], [r, R] };
+	key <AC02> {[ Greek_sigma, Greek_SIGMA ], [s, S] };
+	key <AC03> {[ Greek_tau, Greek_TAU ], [t, T] };
+	key <AC04> {[ Greek_nu, Greek_NU ], [n, N] };
 	key <AC05> {[ Greek_finalsmallsigma, Greek_SIGMA ], [h, H] };
 	key <AC06> {[ Greek_upsilon, Greek_UPSILON ], [y, Y] };
-	key <AC07> {[ Greek_iota, Greek_IOTA, parenleft, bracketleft ], [i, I] };
-	key <AC08> {[ Greek_epsilon, Greek_EPSILON, parenright, bracketright ], [e, E] };
-	key <AC09> {[ Greek_omicron, Greek_OMICRON, braceleft, less ], [o, O] };
-	key <AC10> {[ Greek_alpha, Greek_ALPHA, braceright, greater ], [a, A] };
+	key <AC07> {[ Greek_iota, Greek_IOTA ], [i, I] };
+	key <AC08> {[ Greek_epsilon, Greek_EPSILON ], [e, E] };
+	key <AC09> {[ Greek_omicron, Greek_OMICRON ], [o, O] };
+	key <AC10> {[ Greek_alpha, Greek_ALPHA ], [a, A] };
 	key <AC11> {[ apostrophe, quotedbl ]};
 
 	key <AB01> {[ Greek_zeta, Greek_ZETA ], [z, Z] };
@@ -55,5 +54,6 @@ xkb_symbols "basic" {
 	key <AB10> {[ slash, question ]};
 
 	key <SPCE> {[ space, space ]};
-	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift ]};
+
+	key <RALT> {[ Multi_key, Multi_key ]};
 };

@@ -29,16 +29,16 @@ xkb_symbols "basic" {
 	key <AD11> {[ bracketleft, braceleft ]};
 	key <AD12> {[ bracketright, braceright ]};
 
-	key <AC01> {[ r, R, backslash, bar ]};
-	key <AC02> {[ s, S, grave, asciitilde ]};
-	key <AC03> {[ t, T, equal, plus ]};
-	key <AC04> {[ n, N, minus, underscore ]};
+	key <AC01> {[ r, R ]};
+	key <AC02> {[ s, S ]};
+	key <AC03> {[ t, T ]};
+	key <AC04> {[ n, N ]};
 	key <AC05> {[ h, H ]};
 	key <AC06> {[ y, Y ]};
-	key <AC07> {[ i, I, parenleft, bracketleft ]};
-	key <AC08> {[ e, E, parenright, bracketright ]};
-	key <AC09> {[ o, O, braceleft, less ]};
-	key <AC10> {[ a, A, braceright, greater ]};
+	key <AC07> {[ i, I ]};
+	key <AC08> {[ e, E ]};
+	key <AC09> {[ o, O ]};
+	key <AC10> {[ a, A ]};
 	key <AC11> {[ apostrophe, quotedbl ]};
 
 	key <AB01> {[ z, Z ]};
@@ -54,5 +54,5 @@ xkb_symbols "basic" {
 
 	key <SPCE> {[ space, space ]};
 
-	key <RALT> {[ ISO_Level3_Shift, ISO_Level3_Shift ]};
+	key <RALT> {[ Multi_key, Multi_key ]};
 };
