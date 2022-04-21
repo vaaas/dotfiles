@@ -186,7 +186,7 @@
 		(list 'body nil
 			(list 'header nil
 				(list 'div (alist 'class "imgtxt")
-					(list 'img (alist 'src "/pics/banner.jpg"))
+					(list 'img (alist 'src "/pics/banner.jpg" 'alt "banner image"))
 					(list 'h1 nil (alist-get 'sitename conf)))
 				(spread-last (list 'p nil (alist-get 'blurb conf))))
 			(append
