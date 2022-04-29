@@ -1,26 +1,34 @@
 ; -*- lexical-binding: t -*-
 ; blog generation and uploading for neocities
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; variable declarations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defvar nc-blog-directory "~/Projects/website"
 	"The directory where the neocities tools will look for the website. site.el and render/ are expected to be ther.")
 
 (defvar nc-blog-categories '("tech" "anime" "books" "memes" "films" "journal" "games")
 	"List of strings that the neocities post creation and update functions will present to the user to categorise their post.")
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; general utility functions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun nc-guid (x)
-	"Generates a unique id for a neocities article or rss item."
+	"Generates a unique id for a neocities article or rss item. It is based on its timestamp X."
 	(-> x (C - 1483228800) (C / 60) (C int-to-base 64)))
 
 (defun nc-ymd (x)
-	"formats a timestamp in Y m d format"
+	"formats a timestamp X in Y m d format"
 	(format-time-string "%Y-%m-%d" (seconds-to-time x)))
 
 (defun nc-rfctime (x)
-	"formats a timestamp in RFC format for RSS."
+	"formats a timestamp X in RFC format for RSS."
 	(format-time-string "%a, %d %b %Y %H:%M:%S %z" (seconds-to-time x)))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; neocities API functions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun nc-api-list (user password)
 	"Calls the neocities list api (file listing)"
 	(let ((result
@@ -34,7 +42,7 @@
 		(alist-get 'files result)))))
 
 (defun nc-api-delete (user password files)
-	"Calls the neocities delete api"
+	"Calls the neocities delete api, deleting every file in FILES."
 	(message "Deleting remote neocities files...")
 	(-> files
 	(mapcar (LL format "-d filenames[]=%s"))
@@ -43,7 +51,7 @@
 	shell-command-to-string))
 
 (defun nc-api-upload (user password files)
-	"Calls the neocities upload api"
+	"Calls the neocities upload api, uploading every file in FILES."
 	(message "Uploading local files to neocities. This may take a while...")
 	(with-temp-dir (concat nc-blog-directory "/render")
 		(-> files
@@ -53,7 +61,7 @@
 		shell-command-to-string)))
 
 (defun nc-push nil
-	"Push local files to neocities."
+	"Push local files to neocities, deleting and uploading files as needed."
 	(interactive)
 	(let*
 		((user (-> "/site.el"
@@ -64,13 +72,15 @@
 		(password (read-passwd (concat "Password for " user ": ")))
 		(remote-files
 			(-> (nc-api-list user password)
-			(seq-filter (L x (eq :false (alist-get 'is_directory x))))
+			(seq-filter (=> (alist-get 'is_directory) (eq :false)))
 			(mapcar (L x (cons (alist-get 'path x) (alist-get 'sha1_hash x))))))
 		(local-files
 			(-> "/render"
 			(concat nc-blog-directory)
 			(C directory-files-recursively ".*")
-			(mapcar (L x (cons (substring x (length (concat nc-blog-directory "/render/")) (length x)) (sha1-ext x))))))
+			(mapcar (L x (cons
+				(substring x (length (concat nc-blog-directory "/render/")))
+				(sha1-ext x))))))
 		(delete-these-files (difference (mapcar #'car remote-files) (mapcar #'car local-files)))
 		(upload-these-files (mapcar #'car (difference local-files remote-files))))
 	(if delete-these-files
@@ -84,24 +94,9 @@
 			(message "Done"))
 		(message "Nothing to upload"))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; neocities render functions
-(defun nc-render-html (lang head body)
-	"Generates an HTML element."
-	(list 'html (alist 'lang lang) head body))
-
-(defun nc-render-head (conf title)
-	"Generates the HEAD element of an html file."
-	(list 'head nil
-		(list 'meta (alist 'charset "utf8"))
-		(list 'meta (alist 'name "viewport" 'content "width=device-width, initial-scale=1.0"))
-		(list 'meta (alist 'name "url" 'content (alist-get 'url conf)))
-		(list 'meta (alist 'name "author" 'content (alist-get 'author conf)))
-		(list 'meta (alist 'name "description" 'content (alist-get 'sitename conf)))
-		(list 'link (alist 'rel "stylesheet" 'href "/style.css"))
-		(list 'link (alist 'rel "icon" 'href "/favicon.ico"))
-		(list 'link (alist 'rel "alternate" 'href "/rss.xml" 'type "application/rss+xml"))
-		(list 'title nil title)))
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun nc-render nil
 	"Render the site defined in variable `nc-blog-directory' for neocities. Expects file site.el to be present in the blog directory, and also the directory render."
 	(interactive)
@@ -146,34 +141,8 @@
 		(list posts #'nc-render-post)
 		(list pages #'nc-render-page))))
 
-(defun nc-render-item (x)
-	"Render an article element."
-	(spread-last (list
-		'article
-		(alist
-			't (-> x (nth 1) (alist-get 'tag))
-			'id (-> x (nth 1) (alist-get 'timestamp) nc-guid))
-		(nc-render-description x))))
-
-(defun nc-render-description (x)
-	"Generate the description of an article or RSS item."
-	(let
-		((filename (alist-get 'filename (nth 1 x)))
-		(xs (list (list 'time nil (nc-ymd (alist-get 'timestamp (nth 1 x)))))))
-	(if (not filename) (push-all (cddr x) xs)
-	(let
-		((h1 (query-selector (xml-elem= 'h1) x))
-		(p (query-selector (xml-elem= 'p) x)))
-		(when (not h1) (throw 'bad-post "No h1 found"))
-		(when (not p) (throw 'bad-post "No p found"))
-		(push
-			(list 'h1 nil (spread-last (list 'a (alist 'href (concat "/" filename)) (cddr h1))))
-			xs)
-		(push-all (cddr p) xs)))
-	(nreverse xs)))
-
 (defun nc-render-frontpage (conf xs)
-	"Generate the frontpage (index.html) of the neocities blog."
+	"Generate the frontpage (index.html) of the neocities blog with given CONF and rendered articles XS."
 	(let
 		((distinct-tags
 			(-> xs
@@ -197,8 +166,73 @@
 			(spread-last (list 'main nil (nreverse xs)))
 			(list 'script (alist 'src "/script.js") " "))))))
 
+(defun nc-render-rss (conf xs)
+	"Creates rss.xml with rendered fragments XS."
+	(list 'rss (alist 'version "2.0" 'xmlns:atom "http://www.w3.org/2005/Atom")
+		(append
+			(list 'channel nil
+				(list 'title nil (alist-get 'sitename conf))
+				(list 'link nil (alist-get 'url conf))
+				(list 'atom:link
+					(alist 'href (concat (alist-get 'url conf) "/rss.xml")
+						'rel "self"
+						'type "application/rss+xml"))
+				(list 'description nil (alist-get 'sitename conf))
+				(list 'pubDate nil (xml-inner-text (query-selector (xml-elem= 'pubDate) (car xs))))
+				(list 'language nil (alist-get 'lang conf))
+				(list 'ttl nil "1440"))
+			(nreverse xs))))
+
+(defun nc-render-post (conf x)
+	"Generate an individual neocities post (article) X, with its full contents."
+	(let ((h1 (query-selector (xml-elem= 'h1) x))
+		(timestamp (alist-get 'timestamp (nth 1 x))))
+	(when (not h1) (throw 'bad-post "No h1 found"))
+	(nc-render-html
+		(alist-get 'lang conf)
+		(nc-render-head conf (xml-inner-text h1))
+		(list 'body (alist 'class "post")
+			(list 'header nil
+				(list 'a (alist 'href "/") (alist-get 'sitename conf))
+				" — "
+				(list 'time nil (nc-ymd timestamp)))
+			(spread-last (list 'main nil (cddr x)))
+			(list 'footer nil
+				"Reply to this article via "
+				(nc-render-email (alist-get 'email conf) (xml-inner-text h1))
+				".")))))
+
+(defun nc-render-page (conf x)
+	"Generate an individual neocities page, a full-size "
+	(let
+		((head (query-selector (xml-elem= 'head) x))
+		(body (query-selector (xml-elem= 'body) x)))
+	(nc-render-html
+		(alist-get 'lang conf)
+		(append
+			(list 'head nil
+				(list 'meta (alist 'charset "utf8"))
+				(list 'meta (alist 'name "viewport" 'content "width=device-width, initial-scale=1.0"))
+				(list 'meta (alist 'name "url" 'content (alist-get 'url conf)))
+				(list 'meta (alist 'name "author" 'content (alist-get 'author conf)))
+				(list 'meta (alist 'name "description" 'content (alist-get 'sitename conf)))
+				(list 'link (alist 'rel "icon" 'href "/favicon.ico"))
+				(list 'link (alist 'rel "alternate" 'href "/rss.xml" 'type "application/rss+xml")))
+			(cddr head))
+		(spread-last (list 'body (alist 'class "page") (cddr body))))))
+
+; render fragment functions
+(defun nc-render-item (x)
+	"Render an article element X, summarising it for the frontpage."
+	(spread-last (list
+		'article
+		(alist
+			't (-> x (nth 1) (alist-get 'tag))
+			'id (-> x (nth 1) (alist-get 'timestamp) nc-guid))
+		(nc-render-description x))))
+
 (defun nc-render-rss-item (conf x)
-	"Creates an rss item."
+	"Creates RSS fragment for post X."
 	(let*
 		((attrs (nth 1 x))
 		(conf-url (alist-get 'url conf))
@@ -221,41 +255,53 @@
 			(-> x nc-render-description cdr
 			(mapcar (LL nc-render-absolute-links conf-url)))))))))
 
-(defun nc-render-rss (conf xs)
-	"Creates rss.xml."
-	(list 'rss (alist 'version "2.0" 'xmlns:atom "http://www.w3.org/2005/Atom")
-		(append
-			(list 'channel nil
-				(list 'title nil (alist-get 'sitename conf))
-				(list 'link nil (alist-get 'url conf))
-				(list 'atom:link
-					(alist 'href (concat (alist-get 'url conf) "/rss.xml")
-						'rel "self"
-						'type "application/rss+xml"))
-				(list 'description nil (alist-get 'sitename conf))
-				(list 'pubDate nil (xml-inner-text (query-selector (xml-elem= 'pubDate) (car xs))))
-				(list 'language nil (alist-get 'lang conf))
-				(list 'ttl nil "1440"))
-			(nreverse xs))))
+(defun nc-render-description (x)
+	"Generate the description of an article or RSS item X."
+	(let
+		((filename (alist-get 'filename (nth 1 x)))
+		(xs (list (list 'time nil (nc-ymd (alist-get 'timestamp (nth 1 x)))))))
+	(if (not filename) (push-all (cddr x) xs)
+	(let
+		((h1 (query-selector (xml-elem= 'h1) x))
+		(p (query-selector (xml-elem= 'p) x)))
+		(when (not h1) (throw 'bad-post "No h1 found"))
+		(when (not p) (throw 'bad-post "No p found"))
+		(push
+			(list 'h1 nil (spread-last (list 'a (alist 'href (concat "/" filename)) (cddr h1))))
+			xs)
+		(push-all (cddr p) xs)))
+	(nreverse xs)))
 
-(defun nc-render-post (conf x)
-	"Generate an individual neocities post (article)."
-	(let ((h1 (query-selector (xml-elem= 'h1) x))
-		(timestamp (alist-get 'timestamp (nth 1 x))))
-	(when (not h1) (throw 'bad-post "No h1 found"))
-	(nc-render-html
-		(alist-get 'lang conf)
-		(nc-render-head conf (xml-inner-text h1))
-		(list 'body (alist 'class "post")
-			(list 'header nil
-				(list 'a (alist 'href "/") (alist-get 'sitename conf))
-				" — "
-				(list 'time nil (nc-ymd timestamp)))
-			(spread-last (list 'main nil (cddr x)))
-			(list 'footer nil
-				"Reply to this article via "
-				(nc-render-email (alist-get 'email conf) (xml-inner-text h1))
-				".")))))
+; render utility functions
+(defun nc-render-html (lang head body)
+	"Generates an HTML element with LANG, HEAD, and BODY."
+	(list 'html (alist 'lang lang) head body))
+
+(defun nc-render-head (conf title)
+	"Generates the HEAD element of an html file for a given CONF and page TITLE."
+	(list 'head nil
+		(list 'meta (alist 'charset "utf8"))
+		(list 'meta (alist 'name "viewport" 'content "width=device-width, initial-scale=1.0"))
+		(list 'meta (alist 'name "url" 'content (alist-get 'url conf)))
+		(list 'meta (alist 'name "author" 'content (alist-get 'author conf)))
+		(list 'meta (alist 'name "description" 'content (alist-get 'sitename conf)))
+		(list 'link (alist 'rel "stylesheet" 'href "/style.css"))
+		(list 'link (alist 'rel "icon" 'href "/favicon.ico"))
+		(list 'link (alist 'rel "alternate" 'href "/rss.xml" 'type "application/rss+xml"))
+		(list 'title nil title)))
+
+(defun nc-render-absolute-links (prefix x)
+	"turn all links in the href and src properties of all elements in the dom tree X into absolute links by prefixing them with PREFIX."
+	(if (listp x)
+	(spread-last (list
+		(nth 0 x)
+		(C map-alist (nth 1 x)
+			(lambda (k v) (cons k
+				(if (and (member k '(href src)) (string-prefix-p "/" v))
+				(concat prefix v)
+				v))))
+		(C mapcar (cddr x) (LL nc-render-absolute-links prefix))))
+	x))
 
 (defun nc-render-email (address subject)
 	"Generate a mailto link"
@@ -265,26 +311,9 @@
 			"?subject=" (url-hexify-string (concat "Re: " subject))))
 		"email"))
 
-(defun nc-render-page (conf x)
-	"Generate an individual neocities page"
-	(let
-		((head (query-selector (xml-elem= 'head) x))
-		(body (query-selector (xml-elem= 'body) x)))
-	(nc-render-html
-		(alist-get 'lang conf)
-		(append
-			(list 'head nil
-				(list 'meta (alist 'charset "utf8"))
-				(list 'meta (alist 'name "viewport" 'content "width=device-width, initial-scale=1.0"))
-				(list 'meta (alist 'name "url" 'content (alist-get 'url conf)))
-				(list 'meta (alist 'name "author" 'content (alist-get 'author conf)))
-				(list 'meta (alist 'name "description" 'content (alist-get 'sitename conf)))
-				(list 'link (alist 'rel "icon" 'href "/favicon.ico"))
-				(list 'link (alist 'rel "alternate" 'href "/rss.xml" 'type "application/rss+xml")))
-			(cddr head))
-		(spread-last (list 'body (alist 'class "page") (cddr body))))))
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; neocities CRUD functions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun nc-make-post nil
 	"Create a neocities blog article."
 	(interactive)
@@ -346,7 +375,7 @@
 		(insert (xml-to-string selected-post))
 		(xml-mode))
 	(let ((edited-post
-        (let ((x (libxml-parse-xml-region (point-min) (point-max))))
+		(let ((x (libxml-parse-xml-region (point-min) (point-max))))
 		(-> x
 		(nth 1)
 		(map-alist
@@ -359,19 +388,6 @@
 		(nth 1 selected-post) (nth 1 edited-post)
 		(cddr selected-post) (cddr edited-post))
 	(print site)))))
-
-(defun nc-render-absolute-links (prefix x)
-	"turn all links in the href and src properties of all elements in the dom tree X into absolute links by prefixing them with PREFIX."
-	(if (listp x)
-	(spread-last (list
-		(nth 0 x)
-		(C map-alist (nth 1 x)
-			(lambda (k v) (cons k
-				(if (and (member k '(href src)) (string-prefix-p "/" v))
-				(concat prefix v)
-				v))))
-		(C mapcar (cddr x) (LL nc-render-absolute-links prefix))))
-	x))
 
 (defun nc-make-skeleton nil
 	"Initialise blog directory and file with some basic data."
