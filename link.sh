@@ -40,6 +40,7 @@ ffprofile=$(realpath ~/.mozilla/firefox/*.default*)
 mkdir -p $ffprofile/chrome
 lns $(realpath firefox/userChrome.css) $ffprofile/chrome
 
+# systemd
 for x in $(find systemd/services -type f)
 do sudo cp -v $(realpath $x) /etc/systemd/system/$(basename $x)
 done
@@ -48,4 +49,5 @@ for x in $(find systemd/nspawn -type f)
 do sudo cp -v $(realpath $x) /etc/systemd/nspawn/$(basename $x)
 done
 
-sudo ln -s keyd.conf /etc/keyd/default.conf
+#ibus
+sudo ln -s -f -v -- simple.xmk /usr/share/ibus/component/simple.xml
