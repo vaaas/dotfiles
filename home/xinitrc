@@ -25,9 +25,9 @@ then
 	redshift-service &
 	unclutter --timeout 1 &
 else
-	xinput set-button-map 13 3 2 1
-	xinput set-prop 13 315 1
-	xinput set-prop 13 328 1
+	xinput set-button-map 14 3 2 1
+	xinput set-prop 14 315 1
+	xinput set-prop 14 328 1
 	picom &
 fi
 
