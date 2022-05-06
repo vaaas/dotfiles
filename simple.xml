@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component>
+	<name>org.freedesktop.IBus.Simple</name>
+	<description>A table based simple engine</description>
+	<exec>/usr/libexec/ibus-engine-simple</exec>
+	<version>1.5.26.20220314</version>
+	<author>Peng Huang &lt;shawn.p.huang@gmail.com&gt;</author>
+	<license>GPL</license>
+	<homepage>https://github.com/ibus/ibus/wiki</homepage>
+	<textdomain>ibus</textdomain>
+	<engines>
+		<engine>
+			<name>xkb:us::eng</name>
+			<language>en</language>
+			<license>GPL</license>
+			<author>Peng Huang &lt;shawn.p.huang@gmail.com&gt;</author>
+			<layout>us</layout>
+			<longname>English (US)</longname>
+			<description>English (US)</description>
+			<icon>ibus-keyboard</icon>
+			<rank>50</rank>
+		</engine>
+		<engine>
+			<name>xkb:slatin::eng</name>
+			<language>en</language>
+			<license>GPL</license>
+			<author>Vasileios Pasialiokis</author>
+			<layout>slatin</layout>
+			<longname>English (Slatin)</longname>
+			<description>English (Slatin)</description>
+			<icon>ibus-keyboard</icon>
+			<rank>51</rank>
+		</engine>
+		<engine>
+			<name>xkb:vas::eng</name>
+			<language>en</language>
+			<license>GPL</license>
+			<author>Vasileios Pasialiokis</author>
+			<layout>vas</layout>
+			<longname>English (Vas)</longname>
+			<description>English (Vas)</description>
+			<icon>ibus-keyboard</icon>
+			<rank>52</rank>
+		</engine>
+		<engine>
+			<name>xkb:vas:mods:eng</name>
+			<language>en</language>
+			<license>GPL</license>
+			<author>Vasileios Pasialiokis</author>
+			<layout>vas</layout>
+			<layout_variant>modifiers</layout_variant>
+			<longname>English (Vas, modifiers swapping)</longname>
+			<description>English (Vas, modifiers swapping)</description>
+			<icon>ibus-keyboard</icon>
+			<rank>53</rank>
+		</engine>
+	</engines>
+</component>

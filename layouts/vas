@@ -54,5 +54,12 @@ xkb_symbols "basic" {
 
 	key <SPCE> {[ space, space ]};
 
-	key <RALT> {[ Multi_key, Multi_key ]};
+};
+
+partial modifier_keys
+xkb_symbols "modifiers" {
+	include "vas(basic)"
+	key <CAPS> { [ Control_L, Control_L ] };
+	key <LCTL> { [ Caps_Lock ] };
+	key <RALT> {[ Shift_L, Shift_L ]};
 };
