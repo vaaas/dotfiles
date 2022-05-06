@@ -223,3 +223,11 @@ If called interactively, read CHAR interactively."
 	(when (called-interactively-p 'any)
 		(setq deactivate-mark nil)
 		(expand-region-end 1)))
+
+(defun eshell-in-vc-root-dir nil
+	(interactive)
+	"start eshell in the version control repo root dir"
+	(let*
+		((default-directory (vc-root-dir))
+		(name (file-name-base (substring default-directory 0 -1))))
+		(eshell name)))

@@ -36,7 +36,7 @@
 	"U" 'backward-whitespace
 	"v" 'goto-line
 	";" (lambda() (interactive) (end-of-line) (insert-char #x3B))
-	"`" 'eshell
+	"`" 'eshell-in-vc-root-dir
 
 	"r" 'zap-up-to-char
 	"R" 'zap-up-to-char-backward
