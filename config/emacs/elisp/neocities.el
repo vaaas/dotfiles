@@ -14,6 +14,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; general utility functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defun nc-guid (x)
 	"Generates a unique id for a neocities article or rss item. It is based on its timestamp X."
 	(-> x (C - 1483228800) (C / 60) (C int-to-base 64)))
@@ -29,6 +30,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; neocities API functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defun nc-api-list (user password)
 	"Calls the neocities list api (file listing)"
 	(let ((result
@@ -97,6 +99,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; neocities render functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defun nc-render nil
 	"Render the site defined in variable `nc-blog-directory' for neocities. Expects file site.el to be present in the blog directory, and also the directory render."
 	(interactive)
@@ -314,6 +317,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; neocities CRUD functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defun nc-make-post nil
 	"Create a neocities blog article."
 	(interactive)
