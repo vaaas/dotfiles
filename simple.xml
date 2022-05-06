@@ -54,5 +54,16 @@
 			<icon>ibus-keyboard</icon>
 			<rank>53</rank>
 		</engine>
+		<engine>
+			<name>xkb:sgreek::ell</name>
+			<language>el</language>
+			<license>GPL</license>
+			<author>Vasileios Pasialiokis</author>
+			<layout>sgreek</layout>
+			<longname>Greek (Sgreek)</longname>
+			<description>Greek (Sgreek)</description>
+			<icon>ibus-keyboard</icon>
+			<rank>54</rank>
+		</engine>
 	</engines>
 </component>
