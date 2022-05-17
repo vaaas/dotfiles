@@ -9,7 +9,6 @@ then
 fi
 
 setxkbmap -layout slatin,sgreek -option -option grp:win_space_toggle
-
 xrdb -merge ~/.Xresources
 dunst -font 'Sans 16' &
 dbus-launch sxhkd -m -1 &
