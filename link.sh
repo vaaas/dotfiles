@@ -48,6 +48,3 @@ done
 for x in $(find systemd/nspawn -type f)
 do sudo cp -v $(realpath $x) /etc/systemd/nspawn/$(basename $x)
 done
-
-#ibus
-sudo ln -s -f -v -- simple.xmk /usr/share/ibus/component/simple.xml

@@ -8,13 +8,9 @@ then
 	unset f
 fi
 
-export GTK_USE_PORTAL=1
-export GTK_IM_MODULE=ibus
-export QT_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
+setxkbmap -layout slatin,sgreek -option -option grp:win_space_toggle
 
 xrdb -merge ~/.Xresources
-ibus-daemon -xdr
 dunst -font 'Sans 16' &
 dbus-launch sxhkd -m -1 &
 emacs --daemon
