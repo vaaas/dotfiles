@@ -65,5 +65,16 @@
 			<icon>ibus-keyboard</icon>
 			<rank>54</rank>
 		</engine>
+		<engine>
+			<name>xkb:vas::ell</name>
+			<language>el</language>
+			<license>GPL</license>
+			<author>Vasileios Pasialiokis</author>
+			<layout>vasgr</layout>
+			<longname>Greek (Vasgr)</longname>
+			<description>Greek (Vasgr)</description>
+			<icon>ibus-keyboard</icon>
+			<rank>55</rank>
+		</engine>
 	</engines>
 </component>
