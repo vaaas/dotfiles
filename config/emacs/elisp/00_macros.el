@@ -29,7 +29,7 @@
 		(setq x (if (symbolp f) (list f x) (append f (list x))))))
 
 (defmacro => (&rest fs)
-	(let* ((x (gensym)) (r x))
+	(let* ((x (gensym)))
 	`(L ,x ,(macroexpand `(-> ,x ,@fs)))))
 
 (defmacro ignore-errors (&rest body)
