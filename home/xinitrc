@@ -8,26 +8,28 @@ then
 	unset f
 fi
 
-setxkbmap -layout slatin,sgreek -option -option grp:win_space_toggle
 xrdb -merge ~/.Xresources
-dunst -font 'Sans 16' &
-dbus-launch sxhkd -m -1 &
-emacs --daemon
 
 if test "$HOSTNAME" = cleome
 then
 	setxkbmap slatin
 	redshift-service &
 	unclutter --timeout 1 &
+elif test "$HOSTNAME" = ilus
+then setxkbmap -layout vas,vasgr -variant modifiers,modifiers -option grp:win_space_toggle
 elif test "$HOSTNAME" = IT09
 then
+	setxkbmap slatin
 	xinput set-button-map 14 3 2 1
 	xinput set-prop 14 315 1
 	xinput set-prop 14 328 1
 	picom &
 fi
 
+dunst -font 'Sans 16' &
+dbus-launch sxhkd -m -1 &
+emacs --daemon
 xwallpaper --maximize wallpaper &
-
+\rm /tmp/dwm.fifo
 exec dbus-launch dwm
 #exec dbus-launch xterm
