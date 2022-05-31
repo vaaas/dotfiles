@@ -19,7 +19,7 @@ elif test "$HOSTNAME" = ilus
 then setxkbmap -layout vas,vasgr -variant modifiers,modifiers -option grp:win_space_toggle
 elif test "$HOSTNAME" = IT09
 then
-	setxkbmap slatin
+	setxkbmap -layout slatin,sgreek -option grp:win_space_toggle
 	xinput set-button-map 14 3 2 1
 	xinput set-prop 14 315 1
 	xinput set-prop 14 328 1
