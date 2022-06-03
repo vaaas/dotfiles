@@ -45,7 +45,6 @@ XTerm.vt100.translations: #override \n \
 
 ! dwm
 dwm.borderpx: 4
-dwm.workspaces: 4
 dwm.bh: 0
 dwm.col_sel: 00AAFF
 dwm.col_norm: 000000
