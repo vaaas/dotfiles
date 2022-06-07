@@ -14,7 +14,7 @@ dbus-launch sxhkd -m -1 &
 emacs --daemon
 xwallpaper --maximize wallpaper &
 
-case "$HOSTNAME"
+case "$HOSTNAME" in
 	cleome)
 		setxkbmap slatin
 		redshift-service &
