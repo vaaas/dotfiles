@@ -9,27 +9,31 @@ then
 fi
 
 xrdb -merge ~/.Xresources
-
-if test "$HOSTNAME" = cleome
-then
-	setxkbmap slatin
-	redshift-service &
-	unclutter --timeout 1 &
-elif test "$HOSTNAME" = ilus
-then setxkbmap -layout vas,vasgr -variant modifiers,modifiers -option grp:win_space_toggle
-elif test "$HOSTNAME" = IT09
-then
-	setxkbmap -layout slatin,sgreek -option grp:win_space_toggle
-	xinput set-button-map 14 3 2 1
-	xinput set-prop 14 315 1
-	xinput set-prop 14 328 1
-	picom &
-fi
-
 dunst -font 'Sans 16' &
 dbus-launch sxhkd -m -1 &
 emacs --daemon
 xwallpaper --maximize wallpaper &
-\rm /tmp/dwm.fifo
+
+case "$HOSTNAME"
+	cleome)
+		setxkbmap slatin
+		redshift-service &
+		unclutter --timeout 1 &
+		;;
+
+	ilus)
+		setxkbmap -layout vas,vasgr -variant modifiers,modifiers -option grp:win_space_toggle
+		;;
+
+	IT09)
+		setxkbmap -layout slatin,sgreek -option grp:win_space_toggle
+		xinput set-button-map 14 3 2 1
+		xinput set-prop 14 315 1
+		xinput set-prop 14 307 1
+		picom &
+		;;
+esac
+
+rm /tmp/dwm.fifo
 exec dbus-launch dwm
 #exec dbus-launch xterm
