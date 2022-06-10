@@ -86,7 +86,10 @@
 	ido-enable-flex-matching t
 
 	; these are the installed packages from MELPA
-	package-selected-packages '(php-mode markdown-mode purescript-mode))
+	package-selected-packages '(php-mode markdown-mode lsp-mode typescript-mode)
+
+	; configuring lsp
+	lsp-headerline-breadcrumb-enable nil)
 
 ; remove the fringe border
 (setf (cdr (assq 'continuation fringe-indicator-alist)) '(nil nil))
