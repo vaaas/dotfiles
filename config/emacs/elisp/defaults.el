@@ -86,7 +86,7 @@
 	ido-enable-flex-matching t
 
 	; these are the installed packages from MELPA
-	package-selected-packages '(php-mode markdown-mode lsp-mode typescript-mode)
+	package-selected-packages '(php-mode markdown-mode lsp-mode typescript-mode tree-sitter tree-sitter-langs)
 
 	; configuring lsp
 	lsp-headerline-breadcrumb-enable nil)

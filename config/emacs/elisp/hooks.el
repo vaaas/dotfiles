@@ -2,6 +2,8 @@
 ; various hooks
 
 (add-hook 'prog-mode-hook (lambda()
+	(tree-sitter-mode)
+	(tree-sitter-hl-mode)
 	(abbrev-mode 1)
 	(vas-normal-mode-on)))
 
