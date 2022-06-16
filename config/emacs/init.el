@@ -7,9 +7,9 @@
 (require 'json)
 (require 'seq)
 (require 'xml)
-(require 'lsp-mode)
-(require 'tree-sitter)
-(require 'tree-sitter-langs)
+;(require 'lsp-mode)
+;(require 'tree-sitter)
+;(require 'tree-sitter-langs)
 
 ; I have split the init.el file into several more dedicated files. Dynamically load these files
 (seq-each #'load-file

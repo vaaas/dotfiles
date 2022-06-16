@@ -2,8 +2,8 @@
 ; various hooks
 
 (add-hook 'prog-mode-hook (lambda()
-	(tree-sitter-mode)
-	(tree-sitter-hl-mode)
+	;; (tree-sitter-mode)
+	;; (tree-sitter-hl-mode)
 	(abbrev-mode 1)
 	(vas-normal-mode-on)))
 
@@ -23,12 +23,12 @@
 
 ; js and php mode define their own prettify-symbols that override the defaults, so clear them first
 (add-hook 'js-mode-hook (lambda()
-	(lsp-deferred)
+	;; (lsp-deferred)
 	(setq eval-process "node")
 	(kill-local-variable 'prettify-symbols-alist)
 	(prettify-symbols-mode 1)))
 
-(add-hook 'typescript-mode-hook (lambda() (lsp-deferred)))
+;; (add-hook 'typescript-mode-hook (lambda() (lsp-deferred)))
 
 (add-hook 'php-mode-hook (lambda()
 	(kill-local-variable 'prettify-symbols-alist)
