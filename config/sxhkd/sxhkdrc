@@ -28,6 +28,9 @@ super + c ; d
 super + c ; v
 	xclip -selection clipboard -o | pr -Td | xclip -selection clipboard
 
+super + c ; b
+	notify-send "$(acpi)"
+
 super + d
 	dmenu_run -i
 
