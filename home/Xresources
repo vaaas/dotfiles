@@ -1,6 +1,6 @@
-Xft.dpi: 72
+Xft.dpi: 96
 xterm*faceName: IBM Plex Mono
-xterm*faceSize: 13
+xterm*faceSize: 12
 
 ! special
 *.foreground:   #4f424c
