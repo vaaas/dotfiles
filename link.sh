@@ -3,7 +3,7 @@ IFS='
 '
 
 lns() {
-	ln -s -v -- "$@"
+	ln -s -v -f -- "$@"
 }
 
 # ~ files
