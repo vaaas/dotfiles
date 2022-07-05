@@ -32,11 +32,6 @@
 	(let* ((x (gensym)))
 	`(L ,x ,(macroexpand `(-> ,x ,@fs)))))
 
-(defmacro @ (&rest xs)
-	`(append ,@(mapcar
-		(L x (if (and (listp x) (eq '@ (car x))) (cadr x) `(list ,x)))
-		xs)))
-
 (defmacro ignore-errors (&rest body)
 	"Execute BODY, returning nil on errors."
 	`(condition-case nil (progn ,@body) (error nil)))

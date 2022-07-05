@@ -38,10 +38,10 @@
 		(list "/usr/bin/curl" "-s" "--")
 		(C string-join " ")
 		shell-command-to-string
-		(L x (json-parse-string x :object-type 'alist))))
+		(funcall (L x (json-parse-string x :object-type 'alist))))))
 	(if (not (string= "success" (alist-get 'result result)))
 		(throw 'unsuccessful "fetching files was unsuccessful")
-		(alist-get 'files result)))))
+		(alist-get 'files result))))
 
 (defun nc-api-delete (user password files)
 	"Calls the neocities delete api, deleting every file in FILES."
@@ -59,7 +59,7 @@
 		(-> files
 		(mapcar (L x (format "-F %s=@%s" x x)))
 		(C string-join " ")
-		(L x (format "/usr/bin/curl %s https://%s:%s@neocities.org/api/upload" x user password))
+		(funcall (L x (format "/usr/bin/curl %s https://%s:%s@neocities.org/api/upload" x user password)))
 		shell-command-to-string)))
 
 (defun nc-push nil
