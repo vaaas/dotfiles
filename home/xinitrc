@@ -11,7 +11,7 @@ fi
 xrdb -merge ~/.Xresources
 dunst -font 'Sans 16' &
 dbus-launch sxhkd -m -1 &
-#emacs --daemon
+emacs --daemon
 xwallpaper --maximize wallpaper &
 
 case `hostname` in
@@ -23,13 +23,6 @@ case `hostname` in
 
 	ilus|lilina)
 		setxkbmap -layout vas,vasgr -variant modifiers,modifiers -option grp:win_space_toggle
-		;;
-
-	IT09)
-		setxkbmap -layout slatin,sgreek -option grp:win_space_toggle
-		xinput set-button-map 14 3 2 1
-		xinput set-prop 14 315 1
-		xinput set-prop 14 307 1
 		picom &
 		;;
 esac
