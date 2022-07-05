@@ -21,7 +21,11 @@ case `hostname` in
 		unclutter --timeout 1 &
 		;;
 
-	ilus|lilina)
+	ilus)
+		setxkbmap -layout vas,vasgr -variant modifiers,modifiers -option grp:win_space_toggle
+		;;
+
+	lilina)
 		setxkbmap -layout vas,vasgr -variant modifiers,modifiers -option grp:win_space_toggle
 		picom &
 		;;
