@@ -34,12 +34,12 @@ xkb_symbols "basic" {
 	key <AC03> {[ t, T ]};
 	key <AC04> {[ n, N ]};
 	key <AC05> {[ h, H ]};
-	key <AC06> {[ y, Y ]};
-	key <AC07> {[ i, I ]};
-	key <AC08> {[ e, E ]};
-	key <AC09> {[ o, O ]};
-	key <AC10> {[ a, A ]};
-	key <AC11> {[ apostrophe, quotedbl ]};
+	key <AC06> {[ y, Y, minus, underscore ]};
+	key <AC07> {[ i, I, parenleft, bracketleft ]};
+	key <AC08> {[ e, E, parenright, bracketright ]};
+	key <AC09> {[ o, O, braceleft, greater ]};
+	key <AC10> {[ a, A, braceright, less ]};
+	key <AC11> {[ apostrophe, quotedbl, grave, asciitilde ]};
 
 	key <AB01> {[ z, Z ]};
 	key <AB02> {[ f, F ]};
@@ -50,16 +50,19 @@ xkb_symbols "basic" {
 	key <AB07> {[ p, P ]};
 	key <AB08> {[ comma, less ]};
 	key <AB09> {[ period, greater ]};
-	key <AB10> {[ slash, question ]};
+	key <AB10> {[ slash, question, backslash, bar ]};
 
 	key <SPCE> {[ space, space ]};
 
+	key <BKSL> {[ backslash, bar]};
 };
 
 partial modifier_keys
 xkb_symbols "modifiers" {
 	include "vas(basic)"
-	key <CAPS> { [ Control_L, Control_L ] };
-	key <LCTL> { [ Caps_Lock ] };
-	key <RALT> {[ Shift_L, Shift_L ]};
+	key <CAPS> {[ Control_L, Control_L, Control_L, Control_L ]};
+	key <LCTL> {[ Caps_Lock ]};
+	key <RALT> {[ Shift_L, Shift_L, Shift_L, Shift_L ]};
+	key <LSFT> {[ Alt_L, Alt_L, Alt_L, Alt_L ]};
+	key <LALT> {[ ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift ]};
 };
