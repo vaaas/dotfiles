@@ -71,7 +71,7 @@ tab[visuallyselected] .tab-background::before,
 
 .tabbrowser-tab[selected]
 {	width: 5em !important;
-	min-width: 5em |important; }
+	min-width: 5em !important; }
 
 .tabbrowser-tab:not([selected])
 {	width: 18px !important;
