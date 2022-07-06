@@ -44,7 +44,3 @@ lns $(realpath firefox/userChrome.css) $ffprofile/chrome
 for x in $(find systemd/services -type f)
 do sudo cp -v $(realpath $x) /etc/systemd/system/$(basename $x)
 done
-
-for x in $(find systemd/nspawn -type f)
-do sudo cp -v $(realpath $x) /etc/systemd/nspawn/$(basename $x)
-done

@@ -1,0 +1,43 @@
+{
+	"workbench.colorTheme": "GitHub Light Monochrome Focused",
+	"editor.fontSize": 20,
+	"editor.fontFamily": "JuliaMono",
+	"editor.wordWrap": "on",
+	"editor.minimap.enabled": false,
+	"editor.lineNumbers": "off",
+	"git.decorations.enabled": false,
+	"editor.glyphMargin": false,
+	"editor.folding": false,
+	"workbench.editor.showTabs": false,
+	"workbench.statusBar.visible": false,
+	"editor.cursorBlinking": "smooth",
+	"editor.cursorSmoothCaretAnimation": true,
+	"editor.cursorStyle": "block",
+	"window.menuBarVisibility": "toggle",
+	"editor.bracketPairColorization.enabled": false,
+	"editor.lineHeight": 1.5,
+	"files.trimTrailingWhitespace": true,
+	"files.insertFinalNewline": true,
+	"files.trimFinalNewlines": true,
+	"files.simpleDialog.enable": true,
+	"breadcrumbs.enabled": false,
+
+	"workbench.colorCustomizations": {
+		"editor.background": "#fed",
+		"editor.lineHighlightBackground": "#fff",
+		"editor.foreground": "#321",
+		"sideBar.background": "#edc",
+		"activityBar.background": "#dcb",
+		"activityBar.foreground": "#321",
+		"activityBar.inactiveForeground": "#876",
+		"sideBarSectionHeader.background": "#dcb",
+		"editorIndentGuide.background": "#dcb",
+		"editorIndentGuide.activeBackground": "#f05",
+		"editorCursor.foreground": "#f05"
+	},
+	"editor.tokenColorCustomizations": {
+		"textMateRules": [
+			{ "scope": "constant.numeric", "settings": { "foreground": "#08a", } }
+		]
+	},
+}
