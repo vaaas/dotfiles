@@ -21,6 +21,8 @@
 	"files.trimFinalNewlines": true,
 	"files.simpleDialog.enable": true,
 	"breadcrumbs.enabled": false,
+	"workbench.activityBar.visible": false,
+	"workbench.sideBar.location": "right",
 
 	"workbench.colorCustomizations": {
 		"editor.background": "#fed",
@@ -33,11 +35,14 @@
 		"sideBarSectionHeader.background": "#dcb",
 		"editorIndentGuide.background": "#dcb",
 		"editorIndentGuide.activeBackground": "#f05",
-		"editorCursor.foreground": "#f05"
+		"editorCursor.foreground": "#f05",
+		"editor.selectionBackground": "#dcb",
 	},
 	"editor.tokenColorCustomizations": {
 		"textMateRules": [
 			{ "scope": "constant.numeric", "settings": { "foreground": "#08a", } }
 		]
 	},
+	"editor.tabSize": 3,
+	"editor.fontLigatures": true,
 }

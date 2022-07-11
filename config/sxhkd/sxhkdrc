@@ -85,6 +85,12 @@ XF86AudioRaiseVolume
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
+XF86MonBrightnessUp
+	xbacklight -inc 5
+
+XF86MonBrightnessDown
+	xbacklight -dec 5
+
 super + w
 	echo -n 'a' >> /tmp/dwm.fifo
 
