@@ -17,7 +17,7 @@ alias rmdir='rmdir -v --'
 alias ln='ln -i --'
 alias lns='\ln -is --'
 alias e='aunpack -e --'
-alias ncdu='ncdu -rx'
+alias ncdu='s ncdu -rx --exclude-kernfs'
 
 #nice colours & formatting
 alias diff='git diff'
