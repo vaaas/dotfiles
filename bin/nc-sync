@@ -16,12 +16,12 @@ def main(args: List[str]) -> int:
 		else:
 			raise Exception('no valid render directory')
 
-		user: str = input('User: ')
-		password: str = getpass('Password: ')
-		remote: List[FileSum] = remote_files(user, password)
-		local: List[FileSum] = list(map(lambda x: (os.path.relpath(x, '.'), sha1(x)), walk_files('.')))
-		remove: Set[str] = diff(map(first, remote), map(first, local))
-		add: Set[str] = set(map(first, diff(local, remote)))
+		user = input('User: ')
+		password = getpass('Password: ')
+		remote = remote_files(user, password)
+		local = list(map(lambda x: (os.path.relpath(x, '.'), sha1(x)), walk_files('.')))
+		remove = diff(map(lambda x: x[0], remote), map(lambda x: x[0], local))
+		add = set(map(lambda x: x[0], diff(local, remote)))
 
 		if remove:
 			print('Deleting', ', '.join(remove))
@@ -46,7 +46,7 @@ def main(args: List[str]) -> int:
 		return 1
 
 def remote_files(user: str, password: str) -> List[FileSum]:
-	args: List[str] = ['/usr/bin/curl', 'https://%s:%s@neocities.org/api/list' % (user, password)]
+	args = ['/usr/bin/curl', 'https://%s:%s@neocities.org/api/list' % (user, password)]
 	x: dict = json.loads(output(args))
 	if x['result'] != 'success':
 		raise Exception('Getting remote files failed')
@@ -83,9 +83,6 @@ def output(x: List[str]) -> str:
 
 def sha1(x: str) -> str:
 	return hashlib.sha1(open(x, 'rb').read()).hexdigest()
-
-def first(x: Union[List[T],Tuple[T, Any]]) -> T:
-	return x[0]
 
 def diff(a: Iterable[T], b: Iterable[T]) -> Set[T]:
 	return set(a).difference(set(b))
