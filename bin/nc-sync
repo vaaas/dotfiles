@@ -1,0 +1,98 @@
+#!/usr/bin/env python3
+
+import sys, os, json, subprocess, hashlib
+from getpass import getpass
+from typing import Set, List, Any, Iterable, Tuple, Union, TypeVar
+
+T = TypeVar('T')
+FileSum = Tuple[str, str]
+
+def main(args: List[str]) -> int:
+	try:
+		if len(args) >= 2:
+			os.chdir(args[1])
+		elif os.path.isdir('render'):
+			os.chdir('render')
+		else:
+			raise Exception('no valid render directory')
+
+		user: str = input('User: ')
+		password: str = getpass('Password: ')
+		remote: List[FileSum] = remote_files(user, password)
+		local: List[FileSum] = list(map(lambda x: (os.path.relpath(x, '.'), sha1(x)), walk_files('.')))
+		remove: Set[str] = diff(map(first, remote), map(first, local))
+		add: Set[str] = set(map(first, diff(local, remote)))
+
+		if remove:
+			print('Deleting', ', '.join(remove))
+			if yes_p(input('Proceed? [y/n] > ')):
+				remove_remote(remove, user, password)
+				print('Done')
+		else:
+			print('Nothing to delete')
+
+		if add:
+			print('Uploading', ', '.join(add))
+			if yes_p(input('Proceed? [y/n] > ')):
+				upload(add, user, password)
+				print('Done')
+		else:
+			print('Nothing to upload')
+
+		return 0
+
+	except Exception as e:
+		print(str(e))
+		return 1
+
+def remote_files(user: str, password: str) -> List[FileSum]:
+	args: List[str] = ['/usr/bin/curl', 'https://%s:%s@neocities.org/api/list' % (user, password)]
+	x: dict = json.loads(output(args))
+	if x['result'] != 'success':
+		raise Exception('Getting remote files failed')
+	return list(
+		map(lambda x: (x['path'], x['sha1_hash']),
+		filter(lambda x: not x['is_directory'], x['files'])))
+
+def remove_remote(xs: Iterable[str], user: str, password: str) -> None:
+	lst = ['/usr/bin/curl']
+	for x in xs:
+		lst.append('-d')
+		lst.append('filenames[]='+x)
+	lst.append('https://%s:%s@neocities.org/api/delete' % (user, password))
+	run(lst)
+
+def upload(xs: Iterable[str], user: str, password: str) -> None:
+	lst = ['/usr/bin/curl']
+	for x in xs:
+		lst.append('-F')
+		lst.append('%s=@%s' % (x, x))
+	lst.append('https://%s:%s@neocities.org/api/upload' % (user, password))
+	run(lst)
+
+def walk_files(x: str) -> Iterable[str]:
+	for root, dirs, files in os.walk(x):
+		for f in files:
+			yield os.path.join(root, f)
+
+def run(x: List[str]) -> None:
+	subprocess.call(x, stdout=sys.stdout, stderr=sys.stderr)
+
+def output(x: List[str]) -> str:
+	return subprocess.check_output(x, universal_newlines=True)
+
+def sha1(x: str) -> str:
+	return hashlib.sha1(open(x, 'rb').read()).hexdigest()
+
+def first(x: Union[List[T],Tuple[T, Any]]) -> T:
+	return x[0]
+
+def diff(a: Iterable[T], b: Iterable[T]) -> Set[T]:
+	return set(a).difference(set(b))
+
+yeses = ('y', 'ye', 'yes', 'yeah', 'yup', 'ok', 'okay')
+def yes_p(x: str) -> bool:
+	return x.strip().lower() in yeses
+
+if __name__ == '__main__':
+	sys.exit(main(sys.argv))
