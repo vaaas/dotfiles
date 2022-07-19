@@ -1,7 +1,6 @@
 {
 	"workbench.colorTheme": "GitHub Light Monochrome Focused",
-	"editor.fontSize": 20,
-	"editor.fontFamily": "JuliaMono",
+	"editor.fontFamily": "Fira Code",
 	"editor.wordWrap": "on",
 	"editor.minimap.enabled": false,
 	"editor.lineNumbers": "off",
@@ -45,4 +44,5 @@
 	},
 	"editor.tabSize": 3,
 	"editor.fontLigatures": true,
+	"editor.fontSize": 18,
 }
