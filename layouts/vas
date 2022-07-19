@@ -59,9 +59,12 @@ xkb_symbols "basic" {
 partial modifier_keys
 xkb_symbols "modifiers" {
 	include "vas(basic)"
-	key <CAPS> {[ Control_L, Control_L, Control_L, Control_L ]};
-	key <LFSH> {[ Alt_L, Alt_L, Alt_L, Alt_L ]};
-	key <LCTL> {[ Caps_Lock ]};
-	key <LALT> {[ ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift ]};
-	key <RALT> {[ Shift_L, Shift_L, Shift_L, Shift_L ]};
+	replace key <CAPS> {[ Control_L ]};
+	replace key <LFSH> {[ Alt_L ]};
+	replace key <LCTL> {[ Caps_Lock ]};
+	replace key <LALT> {[ ISO_Level3_Shift ]};
+	replace key <RALT> {[ Shift_L ]};
+
+	modifier_map Control { <CAPS> };
+	modifier_map Lock { <LCTL> };
 };
