@@ -1,5 +1,5 @@
 :root
-{	--navbarWidth: max(25vw, 40em);
+{	--navbarWidth: max(25vw, 20em);
 	--animationSpeed: 0.15s; }
 
 #tracking-protection-icon-container,
