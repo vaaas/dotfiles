@@ -7,7 +7,7 @@ export BROWSER=firefox
 export EDITOR=nano
 export GDK_CORE_DEVICE_EVENTS=1
 
-if test `tty` = /dev/tty1 && ps -A | grep Xorg
+if test `tty` = /dev/tty1
 then source ~/.bashrc
 else startx
 fi
