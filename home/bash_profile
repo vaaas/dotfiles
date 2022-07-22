@@ -1,14 +1,8 @@
 export HISTCONTROL=ignoreboth:erasedups
 export PAGER=less
 export PATH=~/Binaries:$PATH
+export MOZ_ENABLE_WAYLAND=1
+export BROWSER=firefox
+export EDITOR=gedit
+export GDK_CORE_DEVICE_EVENTS=1
 umask 0026
-
-if test `tty` = /dev/tty1 -a $XDG_SESSION_TYPE = tty
-then
-	export MOZ_ENABLE_WAYLAND=1
-	export BROWSER=firefox
-	export EDITOR=gedit
-	export GDK_CORE_DEVICE_EVENTS=1
-	XDG_SESSION_TYPE=wayland dbus-run-session gnome-session
-else source .bashrc
-fi
