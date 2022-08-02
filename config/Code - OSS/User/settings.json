@@ -48,6 +48,11 @@
 
 	"modalEditor.keybindings": {
 		"normal": {
+			"c": "editor.action.deleteLines",
+			"d": "deleteWordLeft",
+			"D": "deleteWordRight",
+			"m": "editor.action.indentLines",
+			"M": "editor.action.outdentLines",
 			"w": "cursorWordEndRight",
 			"u": "cursorWordLeft",
 			"i": "cursorLeft",
@@ -65,6 +70,8 @@
 			],
 			"n": "deleteLeft",
 			"N": "deleteRight",
+			"g": "cursorTop",
+			"G": "cursorBottom",
 			"p": "editor.action.clipboardPasteAction",
 			"z": "undo",
 			"Z": "redo",
@@ -72,6 +79,8 @@
 			"\n": "editor.action.insertLineAfter"
 		},
 		"select": {
+			"m": "editor.action.indentLines",
+			"M": "editor.action.outdentLines",
 			"w": "cursorWordEndRightSelect",
 			"u": "cursorWordLeftSelect",
 			"i": "cursorLeftSelect",
