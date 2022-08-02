@@ -1,0 +1,16 @@
+// Place your key bindings in this file to override the defaults
+[
+	{
+		"key": "ctrl+g",
+		"command": "-workbench.action.gotoLine"
+	},
+	{
+		"key": "escape",
+		"command": "-modalEditor.setNormalMode",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+g",
+		"command": "modalEditor.setNormalMode"
+	}
+]

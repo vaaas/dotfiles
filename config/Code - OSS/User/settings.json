@@ -45,4 +45,58 @@
 	"editor.tabSize": 3,
 	"editor.fontLigatures": true,
 	"editor.fontSize": 18,
+
+	"modalEditor.keybindings": {
+		"normal": {
+			"w": "cursorWordEndRight",
+			"u": "cursorWordLeft",
+			"i": "cursorLeft",
+			"e": "cursorDown",
+			"o": "cursorUp",
+			"a": "cursorRight",
+			"I": "cursorHome",
+			"E": "cursorPageDown",
+			"O": "cursorPageUp",
+			"A": "cursorEnd",
+			"s": "modalEditor.setSelectMode",
+			"S": [
+				"cursorLineStart",
+				"modalEditor.setSelectMode",
+			],
+			"n": "deleteLeft",
+			"N": "deleteRight",
+			"p": "editor.action.clipboardPasteAction",
+			"z": "undo",
+			"Z": "redo",
+			" ": "modalEditor.setInsertMode",
+			"\n": "editor.action.insertLineAfter"
+		},
+		"select": {
+			"w": "cursorWordEndRightSelect",
+			"u": "cursorWordLeftSelect",
+			"i": "cursorLeftSelect",
+			"e": "cursorDownSelect",
+			"o": "cursorUpSelect",
+			"a": "cursorRightSelect",
+			"I": "cursorHomeSelect",
+			"E": "cursorPageDownSelect",
+			"O": "cursorPageUpSelect",
+			"A": "cursorEndSelect",
+			"s": "modalEditor.setNormalMode",
+			"y": "editor.action.smartSelect.expand",
+			"Y": "editor.action.smartSelect.shrink",
+			"h": [
+				"modalEditor.setNormalMode",
+				"editor.action.insertCursorAtEndOfEachLineSelected",
+			],
+			"n": [
+				"editor.action.clipboardCutAction",
+				"modalEditor.setNormalMode"
+			],
+			"N": [
+				"editor.action.clipboardCopyAction",
+				"modalEditor.setNormalMode"
+			],
+		}
+	},
 }
