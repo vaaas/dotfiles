@@ -12,5 +12,13 @@
 	{
 		"key": "ctrl+g",
 		"command": "modalEditor.setNormalMode"
+	},
+	{
+		"key": "alt+g",
+		"command": "workbench.action.gotoLine"
+	},
+	{
+		"key": "f1",
+		"command": "workbench.action.tasks.runTask"
 	}
 ]

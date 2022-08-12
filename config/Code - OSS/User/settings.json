@@ -44,7 +44,7 @@
 	},
 	"editor.tabSize": 3,
 	"editor.fontLigatures": true,
-	"editor.fontSize": 18,
+	"editor.fontSize": 16,
 
 	"modalEditor.keybindings": {
 		"normal": {
@@ -53,6 +53,7 @@
 			"D": "deleteWordRight",
 			"m": "editor.action.indentLines",
 			"M": "editor.action.outdentLines",
+			"j": "editor.action.joinLines",
 			"w": "cursorWordEndRight",
 			"u": "cursorWordLeft",
 			"i": "cursorLeft",
@@ -79,6 +80,7 @@
 			"\n": "editor.action.insertLineAfter"
 		},
 		"select": {
+			"j": "editor.action.joinLines",
 			"m": "editor.action.indentLines",
 			"M": "editor.action.outdentLines",
 			"w": "cursorWordEndRightSelect",
@@ -106,6 +108,7 @@
 				"editor.action.clipboardCopyAction",
 				"modalEditor.setNormalMode"
 			],
+			" ": "modalEditor.setInsertMode",
 		}
 	},
 }
