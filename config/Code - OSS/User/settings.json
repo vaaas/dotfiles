@@ -20,7 +20,6 @@
 	"files.trimFinalNewlines": true,
 	"files.simpleDialog.enable": true,
 	"breadcrumbs.enabled": false,
-	"workbench.activityBar.visible": false,
 	"workbench.sideBar.location": "right",
 
 	"workbench.colorCustomizations": {
@@ -39,7 +38,8 @@
 	},
 	"editor.tokenColorCustomizations": {
 		"textMateRules": [
-			{ "scope": "constant.numeric", "settings": { "foreground": "#08a", } }
+			{ "scope": "constant.numeric", "settings": { "foreground": "#08a", "fontStyle": "" } },
+			{ "scope": "constant", "settings": { "fontStyle": "underline" } },
 		]
 	},
 	"editor.tabSize": 3,
@@ -48,14 +48,39 @@
 
 	"modalEditor.keybindings": {
 		"normal": {
-			"c": "editor.action.deleteLines",
+			"x": "workbench.action.showCommands",
+			"X": "workbench.action.quickOpen",
+			"c": "editor.action.clipboardCutAction",
+			"C": [
+				"cursorEndSelect",
+				"editor.action.clipboardCutAction",
+			],
 			"d": "deleteWordLeft",
 			"D": "deleteWordRight",
 			"m": "editor.action.indentLines",
 			"M": "editor.action.outdentLines",
 			"j": "editor.action.joinLines",
+			"J": "editor.action.commentLine",
 			"w": "cursorWordEndRight",
 			"u": "cursorWordLeft",
+
+			"r": "workbench.action.navigateBack",
+			"R": "workbench.action.navigateForward",
+			"s": "modalEditor.setSelectMode",
+			"S": [
+				"cursorLineStart",
+				"modalEditor.setSelectMode",
+			],
+			"n": "deleteLeft",
+			"N": "deleteRight",
+			"t": "workbench.action.nextEditorInGroup",
+			"T": "workbench.action.previousEditorInGroup",
+			"h": "editor.action.addSelectionToNextFindMatch",
+			"H": "removeSecondaryCursors",
+			"y": [
+				"modalEditor.setSelectMode",
+				"editor.action.smartSelect.expand",
+			],
 			"i": "cursorLeft",
 			"e": "cursorDown",
 			"o": "cursorUp",
@@ -64,27 +89,53 @@
 			"E": "cursorPageDown",
 			"O": "cursorPageUp",
 			"A": "cursorEnd",
-			"s": "modalEditor.setSelectMode",
-			"S": [
-				"cursorLineStart",
-				"modalEditor.setSelectMode",
-			],
-			"n": "deleteLeft",
-			"N": "deleteRight",
-			"g": "cursorTop",
-			"G": "cursorBottom",
-			"p": "editor.action.clipboardPasteAction",
+
 			"z": "undo",
 			"Z": "redo",
+			"g": "cursorTop",
+			"G": "cursorBottom",
+			"l": [
+				"editor.action.insertLineAfter",
+				"modalEditor.setInsertMode",
+			],
+			"L": [
+				"editor.action.insertLineBefore",
+				"modalEditor.setInsertMode",
+			],
+			"p": "editor.action.clipboardPasteAction",
+			"/": "actions.find",
+
 			" ": "modalEditor.setInsertMode",
 			"\n": "editor.action.insertLineAfter"
 		},
+
 		"select": {
 			"j": "editor.action.joinLines",
+			"J": "editor.action.commentLine",
 			"m": "editor.action.indentLines",
 			"M": "editor.action.outdentLines",
 			"w": "cursorWordEndRightSelect",
 			"u": "cursorWordLeftSelect",
+
+			"s": "modalEditor.setNormalMode",
+			"h": [
+				"editor.action.addSelectionToNextFindMatch",
+				"modalEditor.setNormalMode",
+			],
+			"H": [
+				"modalEditor.setNormalMode",
+				"editor.action.insertCursorAtEndOfEachLineSelected",
+			],
+			"n": [
+				"editor.action.clipboardCutAction",
+				"modalEditor.setNormalMode",
+			],
+			"N": [
+				"editor.action.clipboardCopyAction",
+				"modalEditor.setNormalMode",
+			],
+			"y": "editor.action.smartSelect.expand",
+			"Y": "editor.action.smartSelect.shrink",
 			"i": "cursorLeftSelect",
 			"e": "cursorDownSelect",
 			"o": "cursorUpSelect",
@@ -93,22 +144,12 @@
 			"E": "cursorPageDownSelect",
 			"O": "cursorPageUpSelect",
 			"A": "cursorEndSelect",
-			"s": "modalEditor.setNormalMode",
-			"y": "editor.action.smartSelect.expand",
-			"Y": "editor.action.smartSelect.shrink",
-			"h": [
-				"modalEditor.setNormalMode",
-				"editor.action.insertCursorAtEndOfEachLineSelected",
-			],
-			"n": [
-				"editor.action.clipboardCutAction",
-				"modalEditor.setNormalMode"
-			],
-			"N": [
-				"editor.action.clipboardCopyAction",
-				"modalEditor.setNormalMode"
-			],
+
+			"/": "actions.find",
+
 			" ": "modalEditor.setInsertMode",
 		}
 	},
+	"workbench.activityBar.visible": false,
+	"editor.columnSelection": true,
 }

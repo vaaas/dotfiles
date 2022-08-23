@@ -2,16 +2,32 @@
 [
 	{
 		"key": "ctrl+g",
-		"command": "-workbench.action.gotoLine"
-	},
-	{
-		"key": "escape",
-		"command": "-modalEditor.setNormalMode",
+		"command": "-workbench.action.gotoLine",
 		"when": "editorTextFocus"
 	},
 	{
 		"key": "ctrl+g",
 		"command": "modalEditor.setNormalMode"
+	},
+	{
+		"key": "ctrl+g",
+		"command": "workbench.action.closeQuickOpen",
+		"when": "inQuickOpen"
+	},
+	{
+		"key": "ctrl+g",
+		"command": "cancelSelection",
+		"when": "editorHasSelection && textInputFocus"
+	},
+	{
+		"key": "ctrl+g",
+		"command": "closeFindWidget",
+		"when": "editorFocus && findWidgetVisible && !isComposing"
+	},
+	{
+		"key": "escape",
+		"command": "-modalEditor.setNormalMode",
+		"when": "editorTextFocus"
 	},
 	{
 		"key": "alt+g",
@@ -20,5 +36,9 @@
 	{
 		"key": "f1",
 		"command": "workbench.action.tasks.runTask"
+	},
+	{
+		"key": "ctrl+t",
+		"command": "workbench.action.focusNextGroup"
 	}
 ]
