@@ -95,6 +95,7 @@ g() {
 		wlast) g wd HEAD^ HEAD ;;
 		c) git checkout "$@" ;;
 		p) git push "$@" ;;
+		pp) git push --set-upstream origin `git rev-parse --abbrev-ref HEAD` ;;
 		P) git pull "$@" ;;
 		m) git merge "$@" ;;
 		clean)

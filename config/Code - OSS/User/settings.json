@@ -151,5 +151,5 @@
 		}
 	},
 	"workbench.activityBar.visible": false,
-	"editor.columnSelection": true,
+	"editor.experimental.stickyScroll.enabled": true,
 }
