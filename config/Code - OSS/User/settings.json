@@ -1,26 +1,32 @@
 {
-	"workbench.colorTheme": "GitHub Light Monochrome Focused",
-	"editor.fontFamily": "Fira Code",
-	"editor.wordWrap": "on",
-	"editor.minimap.enabled": false,
-	"editor.lineNumbers": "off",
-	"git.decorations.enabled": false,
-	"editor.glyphMargin": false,
-	"editor.folding": false,
-	"workbench.editor.showTabs": false,
-	"workbench.statusBar.visible": false,
+	"breadcrumbs.enabled": false,
+	"editor.bracketPairColorization.enabled": false,
 	"editor.cursorBlinking": "smooth",
 	"editor.cursorSmoothCaretAnimation": true,
 	"editor.cursorStyle": "block",
-	"window.menuBarVisibility": "toggle",
-	"editor.bracketPairColorization.enabled": false,
+	"editor.experimental.stickyScroll.enabled": true,
+	"editor.folding": false,
+	"editor.fontFamily": "Fira Code",
+	"editor.fontLigatures": true,
+	"editor.fontSize": 16,
+	"editor.glyphMargin": false,
 	"editor.lineHeight": 1.5,
-	"files.trimTrailingWhitespace": true,
+	"editor.lineNumbers": "off",
+	"editor.minimap.enabled": false,
+	"editor.tabSize": 3,
+	"editor.wordWrap": "on",
+	"editor.wrappingIndent": "none",
 	"files.insertFinalNewline": true,
-	"files.trimFinalNewlines": true,
 	"files.simpleDialog.enable": true,
-	"breadcrumbs.enabled": false,
+	"files.trimFinalNewlines": true,
+	"files.trimTrailingWhitespace": true,
+	"git.decorations.enabled": false,
+	"window.menuBarVisibility": "toggle",
+	"workbench.activityBar.visible": false,
+	"workbench.colorTheme": "GitHub Light Monochrome Focused",
+	"workbench.editor.showTabs": false,
 	"workbench.sideBar.location": "right",
+	"workbench.statusBar.visible": false,
 
 	"workbench.colorCustomizations": {
 		"editor.background": "#fed",
@@ -36,15 +42,13 @@
 		"editorCursor.foreground": "#f05",
 		"editor.selectionBackground": "#dcb",
 	},
+
 	"editor.tokenColorCustomizations": {
 		"textMateRules": [
 			{ "scope": "constant.numeric", "settings": { "foreground": "#08a", "fontStyle": "" } },
 			{ "scope": "constant", "settings": { "fontStyle": "underline" } },
 		]
 	},
-	"editor.tabSize": 3,
-	"editor.fontLigatures": true,
-	"editor.fontSize": 16,
 
 	"modalEditor.keybindings": {
 		"normal": {
@@ -150,6 +154,4 @@
 			" ": "modalEditor.setInsertMode",
 		}
 	},
-	"workbench.activityBar.visible": false,
-	"editor.experimental.stickyScroll.enabled": true,
 }
