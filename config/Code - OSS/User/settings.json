@@ -1,10 +1,8 @@
 {
-	"breadcrumbs.enabled": false,
 	"editor.bracketPairColorization.enabled": false,
 	"editor.cursorBlinking": "smooth",
 	"editor.cursorSmoothCaretAnimation": true,
 	"editor.cursorStyle": "block",
-	"editor.experimental.stickyScroll.enabled": true,
 	"editor.folding": false,
 	"editor.fontFamily": "Fira Code",
 	"editor.fontLigatures": true,
@@ -154,4 +152,18 @@
 			" ": "modalEditor.setInsertMode",
 		}
 	},
+	"editor.stickyScroll.enabled": true,
+	"html.autoClosingTags": false,
+	"html.autoCreateQuotes": false,
+	"[html]": {
+		"editor.defaultFormatter": "vscode.html-language-features"
+	},
+	"html.completion.attributeDefaultValue": "singlequotes",
+	"html.format.unformatted": "p",
+	"html.format.wrapLineLength": 0,
+	"html.format.preserveNewLines": false,
+	"javascript.preferences.quoteStyle": "single",
+	"typescript.preferences.quoteStyle": "single",
+   "editor.detectIndentation": false,
+   "editor.insertSpaces": false,
 }

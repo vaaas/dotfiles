@@ -1,0 +1,2735 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xkbConfigRegistry SYSTEM "xkb.dtd">
+<xkbConfigRegistry version="1.1">
+  <modelList>
+    <model>
+      <configItem>
+        <name>pc86</name>
+        <description>Generic 86-key PC</description>
+        <vendor>Generic</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>pc101</name>
+        <description>Generic 101-key PC</description>
+        <vendor>Generic</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>pc102</name>
+        <description>Generic 102-key PC</description>
+        <vendor>Generic</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>pc104</name>
+        <description>Generic 104-key PC</description>
+        <vendor>Generic</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>pc104alt</name>
+        <description>Generic 104-key PC with L-shaped Enter key</description>
+        <vendor>Generic</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>pc105</name>
+        <description>Generic 105-key PC</description>
+        <vendor>Generic</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>dell101</name>
+        <description>Dell 101-key PC</description>
+        <vendor>Dell</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>latitude</name>
+        <description>Dell Latitude laptop</description>
+        <vendor>Dell</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>dellm65</name>
+        <description>Dell Precision M65 laptop</description>
+        <vendor>Dell</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>everex</name>
+        <description>Everex STEPnote</description>
+        <vendor>Everex</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>flexpro</name>
+        <description>Keytronic FlexPro</description>
+        <vendor>Keytronic</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>microsoft</name>
+        <description>Microsoft Natural</description>
+        <vendor>Microsoft</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>omnikey101</name>
+        <description>Northgate OmniKey 101</description>
+        <vendor>Northgate</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>winbook</name>
+        <description>Winbook Model XP5</description>
+        <vendor>Generic</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>pc98</name>
+        <description>PC-98</description>
+        <vendor>Generic</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>a4techKB21</name>
+        <description>A4Tech KB-21</description>
+        <vendor>A4Tech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>a4techKBS8</name>
+        <description>A4Tech KBS-8</description>
+        <vendor>A4Tech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>a4_rfkb23</name>
+        <description>A4Tech Wireless Desktop RFKB-23</description>
+        <vendor>A4Tech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>airkey</name>
+        <description>Acer AirKey V</description>
+        <vendor>Acer</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>azonaRF2300</name>
+        <description>Azona RF2300 Wireless Internet</description>
+        <vendor>Azona</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>scorpius</name>
+        <description>Advance Scorpius KI</description>
+        <vendor>Scorpius</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>brother</name>
+        <description>Brother Internet</description>
+        <vendor>Brother</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>btc5113rf</name>
+        <description>BTC 5113RF Multimedia</description>
+        <vendor>BTC</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>btc5126t</name>
+        <description>BTC 5126T</description>
+        <vendor>BTC</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>btc6301urf</name>
+        <description>BTC 6301URF</description>
+        <vendor>BTC</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>btc9000</name>
+        <description>BTC 9000</description>
+        <vendor>BTC</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>btc9000a</name>
+        <description>BTC 9000A</description>
+        <vendor>BTC</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>btc9001ah</name>
+        <description>BTC 9001AH</description>
+        <vendor>BTC</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>btc5090</name>
+        <description>BTC 5090</description>
+        <vendor>BTC</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>btc9019u</name>
+        <description>BTC 9019U</description>
+        <vendor>BTC</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>btc9116u</name>
+        <description>BTC 9116U Mini Wireless Internet and Gaming</description>
+        <vendor>BTC</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>cherryblue</name>
+        <description>Cherry Blue Line CyBo@rd</description>
+        <vendor>Cherry</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>cherryblueb</name>
+        <description>Cherry CyMotion Master XPress</description>
+        <vendor>Cherry</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>cherrybluea</name>
+        <description>Cherry Blue Line CyBo@rd (alt.)</description>
+        <vendor>Cherry</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>cherrycyboard</name>
+        <description>Cherry CyBo@rd USB-Hub</description>
+        <vendor>Cherry</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>cherrycmexpert</name>
+        <description>Cherry CyMotion Expert</description>
+        <vendor>Cherry</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>cherrybunlim</name>
+        <description>Cherry B.UNLIMITED</description>
+        <vendor>Cherry</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>chicony</name>
+        <description>Chicony Internet</description>
+        <vendor>Chicony</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>chicony0108</name>
+        <description>Chicony KU-0108</description>
+        <vendor>Chicony</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>chicony0420</name>
+        <description>Chicony KU-0420</description>
+        <vendor>Chicony</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>chicony9885</name>
+        <description>Chicony KB-9885</description>
+        <vendor>Chicony</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>compaqeak8</name>
+        <description>Compaq Easy Access</description>
+        <vendor>Compaq</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>compaqik7</name>
+        <description>Compaq Internet (7 keys)</description>
+        <vendor>Compaq</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>compaqik13</name>
+        <description>Compaq Internet (13 keys)</description>
+        <vendor>Compaq</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>compaqik18</name>
+        <description>Compaq Internet (18 keys)</description>
+        <vendor>Compaq</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>cymotionlinux</name>
+        <description>Cherry CyMotion Master Linux</description>
+        <vendor>Cherry</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>armada</name>
+        <description>Compaq Armada laptop</description>
+        <vendor>Compaq</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>presario</name>
+        <description>Compaq Presario laptop</description>
+        <vendor>Compaq</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>ipaq</name>
+        <description>Compaq iPaq</description>
+        <vendor>Compaq</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>dell</name>
+        <description>Dell</description>
+        <vendor>Dell</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>dellsk8125</name>
+        <description>Dell SK-8125</description>
+        <vendor>Dell</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>dellsk8135</name>
+        <description>Dell SK-8135</description>
+        <vendor>Dell</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>dellusbmm</name>
+        <description>Dell USB Multimedia</description>
+        <vendor>Dell</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>inspiron</name>
+        <description>Dell Inspiron 6000/8000 laptop</description>
+        <vendor>Dell</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>precision_m</name>
+        <description>Dell Precision M laptop</description>
+        <vendor>Dell</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>dexxa</name>
+        <description>Dexxa Wireless Desktop</description>
+        <vendor>Dexxa</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>diamond</name>
+        <description>Diamond 9801/9802</description>
+        <vendor>Diamond</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>dtk2000</name>
+        <description>DTK2000</description>
+        <vendor>DTK</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>ennyah_dkb1008</name>
+        <description>Ennyah DKB-1008</description>
+        <vendor>Ennyah</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>fscaa1667g</name>
+        <description>Fujitsu-Siemens Amilo laptop</description>
+        <vendor>Fujitsu-Siemens</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>genius</name>
+        <description>Genius Comfy KB-16M/Multimedia KWD-910</description>
+        <vendor>Genius</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>geniuscomfy</name>
+        <description>Genius Comfy KB-12e</description>
+        <vendor>Genius</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>geniuscomfy2</name>
+        <description>Genius Comfy KB-21e-Scroll</description>
+        <vendor>Genius</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>geniuskb19e</name>
+        <description>Genius KB-19e NB</description>
+        <vendor>Genius</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>geniuskkb2050hs</name>
+        <description>Genius KKB-2050HS</description>
+        <vendor>Genius</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>gyration</name>
+        <description>Gyration</description>
+        <vendor>Gyration</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>kinesis</name>
+        <description>Kinesis</description>
+        <vendor>Kinesis</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logitech_base</name>
+        <description>Logitech</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logitech_g15</name>
+        <description>Logitech G15 extra keys via G15daemon</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>hpi6</name>
+        <description>Hewlett-Packard Internet</description>
+        <vendor>Hewlett-Packard</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>hp250x</name>
+        <description>Hewlett-Packard NEC SK-2500 Multimedia</description>
+        <vendor>Hewlett-Packard</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>hpxe3gc</name>
+        <description>Hewlett-Packard Omnibook XE3 GC</description>
+        <vendor>Hewlett-Packard</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>hpxe3gf</name>
+        <description>Hewlett-Packard Omnibook XE3 GF</description>
+        <vendor>Hewlett-Packard</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>hpxt1000</name>
+        <description>Hewlett-Packard Omnibook XT1000</description>
+        <vendor>Hewlett-Packard</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>hpdv5</name>
+        <description>Hewlett-Packard Pavilion dv5</description>
+        <vendor>Hewlett-Packard</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>hpzt11xx</name>
+        <description>Hewlett-Packard Pavilion ZT1100</description>
+        <vendor>Hewlett-Packard</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>hp500fa</name>
+        <description>Hewlett-Packard Omnibook 500 FA</description>
+        <vendor>Hewlett-Packard</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>hp5xx</name>
+        <description>Hewlett-Packard Omnibook 500</description>
+        <vendor>Hewlett-Packard</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>hpnx9020</name>
+        <description>Hewlett-Packard nx9020</description>
+        <vendor>Hewlett-Packard</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>hp6000</name>
+        <description>Hewlett-Packard Omnibook 6000/6100</description>
+        <vendor>Hewlett-Packard</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>honeywell_euroboard</name>
+        <description>Honeywell Euroboard</description>
+        <vendor>Hewlett-Packard</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>hpmini110</name>
+        <description>Hewlett-Packard Mini 110 laptop</description>
+        <vendor>Hewlett-Packard</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>rapidaccess</name>
+        <description>IBM Rapid Access</description>
+        <vendor>Lenovo (previously IBM)</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>rapidaccess2</name>
+        <description>IBM Rapid Access II</description>
+        <vendor>Lenovo (previously IBM)</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>thinkpad</name>
+        <description>IBM ThinkPad 560Z/600/600E/A22E</description>
+        <vendor>Lenovo (previously IBM)</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>thinkpad60</name>
+        <description>IBM ThinkPad R60/T60/R61/T61</description>
+        <vendor>Lenovo (previously IBM)</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>thinkpadz60</name>
+        <description>IBM ThinkPad Z60m/Z60t/Z61m/Z61t</description>
+        <vendor>Lenovo (previously IBM)</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>ibm_spacesaver</name>
+        <description>IBM Space Saver</description>
+        <vendor>Lenovo (previously IBM)</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logiaccess</name>
+        <description>Logitech Access</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logiclx300</name>
+        <description>Logitech Cordless Desktop LX-300</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logii350</name>
+        <description>Logitech Internet 350</description>
+        <vendor>Logitech</vendor>
+        <hwList> <hwId>046d:c313</hwId></hwList>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logimel</name>
+        <description>Logitech Internet 350</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logicd</name>
+        <description>Logitech Cordless Desktop</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logicd_it</name>
+        <description>Logitech Cordless Desktop iTouch</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logicd_nav</name>
+        <description>Logitech Cordless Desktop Navigator</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logicd_opt</name>
+        <description>Logitech Cordless Desktop Optical</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logicda</name>
+        <description>Logitech Cordless Desktop (alt.)</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logicdpa2</name>
+        <description>Logitech Cordless Desktop Pro (2nd alt.)</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logicfn</name>
+        <description>Logitech Cordless Freedom/Desktop Navigator</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logicdn</name>
+        <description>Logitech Cordless Desktop Navigator</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logiitc</name>
+        <description>Logitech iTouch Cordless Y-RB6</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logiik</name>
+        <description>Logitech Internet</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>itouch</name>
+        <description>Logitech iTouch</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logicink</name>
+        <description>Logitech Internet Navigator</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logiex110</name>
+        <description>Logitech Cordless Desktop EX110</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logiinkse</name>
+        <description>Logitech iTouch Internet Navigator SE</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logiinkseusb</name>
+        <description>Logitech iTouch Internet Navigator SE USB</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logiultrax</name>
+        <description>Logitech Ultra-X</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logiultraxc</name>
+        <description>Logitech Ultra-X Cordless Media Desktop</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logidinovo</name>
+        <description>Logitech diNovo</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>logidinovoedge</name>
+        <description>Logitech diNovo Edge</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>mx1998</name>
+        <description>Memorex MX1998</description>
+        <vendor>Memorex</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>mx2500</name>
+        <description>Memorex MX2500 EZ-Access</description>
+        <vendor>Memorex</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>mx2750</name>
+        <description>Memorex MX2750</description>
+        <vendor>Memorex</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>microsoft4000</name>
+        <description>Microsoft Natural Ergonomic 4000</description>
+        <vendor>Microsoft</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>microsoft7000</name>
+        <description>Microsoft Natural Wireless Ergonomic 7000</description>
+        <vendor>Microsoft</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>microsoftinet</name>
+        <description>Microsoft Internet</description>
+        <vendor>Microsoft</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>microsoftpro</name>
+        <description>Microsoft Natural Pro/Internet Pro</description>
+        <vendor>Microsoft</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>microsoftprousb</name>
+        <description>Microsoft Natural Pro USB/Internet Pro</description>
+        <vendor>Microsoft</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>microsoftprooem</name>
+        <description>Microsoft Natural Pro OEM</description>
+        <vendor>Microsoft</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>vsonku306</name>
+        <description>ViewSonic KU-306 Internet</description>
+        <vendor>ViewSonic</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>microsoftprose</name>
+        <description>Microsoft Internet Pro (Swedish)</description>
+        <vendor>Microsoft</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>microsoftoffice</name>
+        <description>Microsoft Office Keyboard</description>
+        <vendor>Microsoft</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>microsoftmult</name>
+        <description>Microsoft Wireless Multimedia 1.0A</description>
+        <vendor>Microsoft</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>microsoftsurface</name>
+        <description>Microsoft Surface</description>
+        <vendor>Microsoft</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>microsoftelite</name>
+        <description>Microsoft Natural Elite</description>
+        <vendor>Microsoft</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>microsoftccurve2k</name>
+        <description>Microsoft Comfort Curve 2000</description>
+        <vendor>Microsoft</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>oretec</name>
+        <description>Ortek Multimedia/Internet MCK-800</description>
+        <vendor>Ortek</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>propeller</name>
+        <description>Propeller Voyager KTEZ-1000</description>
+        <vendor>KeyTronic</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>qtronix</name>
+        <description>QTronix Scorpius 98N+</description>
+        <vendor>QTronix</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>samsung4500</name>
+        <description>Samsung SDM 4500P</description>
+        <vendor>Samsung</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>samsung4510</name>
+        <description>Samsung SDM 4510P</description>
+        <vendor>Samsung</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>sanwaskbkg3</name>
+        <description>Sanwa Supply SKB-KG3</description>
+        <vendor>Sanwa Supply Inc.</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>sk1300</name>
+        <description>NEC SK-1300</description>
+        <vendor>NEC</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>sk2500</name>
+        <description>NEC SK-2500</description>
+        <vendor>NEC</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>sk6200</name>
+        <description>NEC SK-6200</description>
+        <vendor>NEC</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>sk7100</name>
+        <description>NEC SK-7100</description>
+        <vendor>NEC</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>sp_inet</name>
+        <description>Super Power Multimedia</description>
+        <vendor>Generic</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>sven</name>
+        <description>SVEN Ergonomic 2500</description>
+        <vendor>SVEN</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>sven303</name>
+        <description>SVEN Slim 303</description>
+        <vendor>SVEN</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>symplon</name>
+        <description>Symplon PaceBook tablet</description>
+        <vendor>Symplon</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>toshiba_s3000</name>
+        <description>Toshiba Satellite S3000</description>
+        <vendor>Toshiba</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>trust</name>
+        <description>Trust Wireless Classic</description>
+        <vendor>Trust</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>trustda</name>
+        <description>Trust Direct Access</description>
+        <vendor>Trust</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>trust_slimline</name>
+        <description>Trust Slimline</description>
+        <vendor>Trust</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>tm2020</name>
+        <description>TypeMatrix EZ-Reach 2020</description>
+        <vendor>TypeMatrix</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>tm2030PS2</name>
+        <description>TypeMatrix EZ-Reach 2030 PS2</description>
+        <vendor>TypeMatrix</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>tm2030USB</name>
+        <description>TypeMatrix EZ-Reach 2030 USB</description>
+        <vendor>TypeMatrix</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>tm2030USB-102</name>
+        <description>TypeMatrix EZ-Reach 2030 USB (102/105:EU mode)</description>
+        <vendor>TypeMatrix</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>tm2030USB-106</name>
+        <description>TypeMatrix EZ-Reach 2030 USB (106:JP mode)</description>
+        <vendor>TypeMatrix</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>yahoo</name>
+        <description>Yahoo! Internet</description>
+        <vendor>Yahoo!</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>macbook78</name>
+        <description>MacBook/MacBook Pro</description>
+        <vendor>Apple</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>macbook79</name>
+        <description>MacBook/MacBook Pro (intl.)</description>
+        <vendor>Apple</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>macintosh</name>
+        <description>Macintosh</description>
+        <vendor>Apple</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>macintosh_old</name>
+        <description>Macintosh Old</description>
+        <vendor>Apple</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>macintosh_hhk</name>
+        <description>Happy Hacking for Mac</description>
+        <vendor>Fujitsu</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>acer_c300</name>
+        <description>Acer C300</description>
+        <vendor>Acer</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>acer_ferrari4k</name>
+        <description>Acer Ferrari 4000</description>
+        <vendor>Acer</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>acer_laptop</name>
+        <description>Acer laptop</description>
+        <vendor>Acer</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>asus_laptop</name>
+        <description>Asus laptop</description>
+        <vendor>Asus</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>apple</name>
+        <description>Apple</description>
+        <vendor>Apple</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>apple_laptop</name>
+        <description>Apple laptop</description>
+        <vendor>Apple</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>applealu_ansi</name>
+        <description>Apple Aluminium (ANSI)</description>
+        <vendor>Apple</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>applealu_iso</name>
+        <description>Apple Aluminium (ISO)</description>
+        <vendor>Apple</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>applealu_jis</name>
+        <description>Apple Aluminium (JIS)</description>
+        <vendor>Apple</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>silvercrest</name>
+        <description>Silvercrest Multimedia Wireless</description>
+        <vendor>Silvercrest</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>emachines</name>
+        <description>eMachines m6800 laptop</description>
+        <vendor>eMachines</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>benqx</name>
+        <description>BenQ X-Touch</description>
+        <vendor>BenQ</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>benqx730</name>
+        <description>BenQ X-Touch 730</description>
+        <vendor>BenQ</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>benqx800</name>
+        <description>BenQ X-Touch 800</description>
+        <vendor>BenQ</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>hhk</name>
+        <description>Happy Hacking</description>
+        <vendor>Fujitsu</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>classmate</name>
+        <description>Classmate PC</description>
+        <vendor>Intel</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>olpc</name>
+        <description>OLPC</description>
+        <vendor>OLPC</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>sun_type7_usb</name>
+        <description>Sun Type 7 USB</description>
+        <vendor>Sun Microsystems</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>sun_type7_euro_usb</name>
+        <description>Sun Type 7 USB (European)</description>
+        <vendor>Sun Microsystems</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>sun_type7_unix_usb</name>
+        <description>Sun Type 7 USB (Unix)</description>
+        <vendor>Sun Microsystems</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>sun_type7_jp_usb</name>
+        <description>Sun Type 7 USB (Japanese)/Japanese 106-key</description>
+        <vendor>Sun Microsystems</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>sun_type6_usb</name>
+        <description>Sun Type 6/7 USB</description>
+        <vendor>Sun Microsystems</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>sun_type6_euro_usb</name>
+        <description>Sun Type 6/7 USB (European)</description>
+        <vendor>Sun Microsystems</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>sun_type6_unix_usb</name>
+        <description>Sun Type 6 USB (Unix)</description>
+        <vendor>Sun Microsystems</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>sun_type6_jp_usb</name>
+        <description>Sun Type 6 USB (Japanese)</description>
+        <vendor>Sun Microsystems</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>sun_type6_jp</name>
+        <description>Sun Type 6 (Japanese)</description>
+        <vendor>Sun Microsystems</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>targa_v811</name>
+        <description>Targa Visionary 811</description>
+        <vendor>Targa</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>unitekkb1925</name>
+        <description>Unitek KB-1925</description>
+        <vendor>Unitek Group</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>compalfl90</name>
+        <description>FL90</description>
+        <vendor>Compal Electronics</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+        <name>creativedw7000</name>
+        <description>Creative Desktop Wireless 7000</description>
+        <vendor>Creative</vendor>
+      </configItem>
+    </model>
+    <model>
+      <configItem>
+       <name>teck227</name>
+       <description>Truly Ergonomic 227</description>
+       <vendor>Truly Ergonomic</vendor>
+     </configItem>
+    </model>
+    <model>
+      <configItem>
+       <name>teck229</name>
+       <description>Truly Ergonomic 229</description>
+       <vendor>Truly Ergonomic</vendor>
+     </configItem>
+    </model>
+    <model>
+      <configItem>
+       <name>apex300</name>
+       <description>SteelSeries Apex 300 (Apex RAW)</description>
+       <vendor>SteelSeries</vendor>
+     </configItem>
+    </model>
+    <model>
+      <configItem>
+       <name>chromebook</name>
+       <description>Chromebook</description>
+       <vendor>Google</vendor>
+     </configItem>
+    </model>
+    <model>
+      <configItem>
+       <name>ppkb</name>
+       <description>PinePhone Keyboard</description>
+       <vendor>Pine64</vendor>
+     </configItem>
+    </model>
+  </modelList>
+
+  <layoutList>
+    <layout>
+      <configItem>
+        <name>vas</name>
+        <shortDescription>vas</shortDescription>
+        <description>English (Vas)</description>
+        <countryList>
+          <iso3166Id>US</iso3166Id>
+        </countryList>
+        <languageList>
+          <iso639Id>eng</iso639Id>
+        </languageList>
+      </configItem>
+      <variantList>
+        <variant>
+          <configItem>
+            <name>modifiers</name>
+            <description>English (Vas, alternative modifiers)</description>
+          </configItem>
+        </variant>
+      </variantList>
+    </layout>
+
+    <layout>
+      <configItem>
+        <name>vasgr</name>
+        <shortDescription>vasgr</shortDescription>
+        <description>Greek (Vas)</description>
+        <countryList>
+          <iso3166Id>GR</iso3166Id>
+        </countryList>
+        <languageList>
+          <iso639Id>ell</iso639Id>
+        </languageList>
+      </configItem>
+      <variantList>
+        <variant>
+          <configItem>
+            <name>modifiers</name>
+            <description>Greek (Vas, alternative modifiers)</description>
+          </configItem>
+        </variant>
+      </variantList>
+    </layout>
+  </layoutList>
+
+  <optionList>
+    <group allowMultipleSelection="true">
+      <!-- The key combination used to switch between groups -->
+      <configItem>
+        <name>grp</name>
+        <description>Switching to another layout</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>grp:switch</name>
+          <description>Right Alt (while pressed)</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:lswitch</name>
+          <description>Left Alt (while pressed)</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:lwin_switch</name>
+          <description>Left Win (while pressed)</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:rwin_switch</name>
+          <description>Right Win (while pressed)</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:win_switch</name>
+          <description>Any Win (while pressed)</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:menu_switch</name>
+          <description>Menu (while pressed), Shift+Menu for Menu</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:caps_switch</name>
+          <description>Caps Lock (while pressed), Alt+Caps Lock for the original Caps Lock action</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:rctrl_switch</name>
+          <description>Right Ctrl (while pressed)</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:toggle</name>
+          <description>Right Alt</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:lalt_toggle</name>
+          <description>Left Alt</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:caps_toggle</name>
+          <description>Caps Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:shift_caps_toggle</name>
+          <description>Shift+Caps Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:caps_select</name>
+          <description>Caps Lock to first layout; Shift+Caps Lock to second layout</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:win_menu_select</name>
+          <description>Left Win to first layout; Right Win/Menu to second layout</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:ctrl_select</name>
+          <description>Left Ctrl to first layout; Right Ctrl to second layout</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:alt_caps_toggle</name>
+          <description>Alt+Caps Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:shifts_toggle</name>
+          <description>Both Shifts together</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:alts_toggle</name>
+          <description>Both Alts together</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:alt_altgr_toggle</name>
+          <description>Both Alts together; AltGr alone chooses third level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:ctrls_toggle</name>
+          <description>Both Ctrls together</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:ctrl_shift_toggle</name>
+          <description>Ctrl+Shift</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:lctrl_lshift_toggle</name>
+          <description>Left Ctrl+Left Shift</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:rctrl_rshift_toggle</name>
+          <description>Right Ctrl+Right Shift</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:ctrl_alt_toggle</name>
+          <description>Alt+Ctrl</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:alt_shift_toggle</name>
+          <description>Alt+Shift</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:lalt_lshift_toggle</name>
+          <description>Left Alt+Left Shift</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:ralt_rshift_toggle</name>
+          <description>Right Alt+Right Shift</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:menu_toggle</name>
+          <description>Menu</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:lwin_toggle</name>
+          <description>Left Win</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:alt_space_toggle</name>
+          <description>Alt+Space</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:win_space_toggle</name>
+          <description>Win+Space</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:ctrl_space_toggle</name>
+          <description>Ctrl+Space</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:rwin_toggle</name>
+          <description>Right Win</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:lshift_toggle</name>
+          <description>Left Shift</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:rshift_toggle</name>
+          <description>Right Shift</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:lctrl_toggle</name>
+          <description>Left Ctrl</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:rctrl_toggle</name>
+          <description>Right Ctrl</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:sclk_toggle</name>
+          <description>Scroll Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:lctrl_lwin_rctrl_menu</name>
+          <description>Ctrl+Left Win to first layout; Ctrl+Menu to second layout</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:lctrl_lwin_toggle</name>
+          <description>Left Ctrl+Left Win</description>
+        </configItem>
+      </option>
+    </group>
+    <group allowMultipleSelection="true">
+      <!-- The key combination used to choose the 2nd level of symbols -->
+      <configItem>
+        <name>lv2</name>
+        <description>Key to choose the 2nd level</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>lv2:lsgt_switch</name>
+          <description>The "&lt; &gt;" key</description>
+        </configItem>
+      </option>
+    </group>
+    <group allowMultipleSelection="true">
+      <!-- The key combination used to choose the 3rd (and 4th, together with Shift)
+           level of symbols -->
+      <configItem>
+        <name>lv3</name>
+        <description>Key to choose the 3rd level</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>lv3:switch</name>
+          <description>Right Ctrl</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv3:menu_switch</name>
+          <description>Menu</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv3:win_switch</name>
+          <description>Any Win</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv3:lwin_switch</name>
+          <description>Left Win</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv3:rwin_switch</name>
+          <description>Right Win</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv3:alt_switch</name>
+          <description>Any Alt</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv3:lalt_switch</name>
+          <description>Left Alt</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv3:ralt_switch</name>
+          <description>Right Alt</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv3:ralt_switch_multikey</name>
+          <description>Right Alt; Shift+Right Alt as Compose</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv3:ralt_alt</name>
+          <description>Right Alt never chooses 3rd level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv3:enter_switch</name>
+          <description>Enter on keypad</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv3:caps_switch</name>
+          <description>Caps Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv3:bksl_switch</name>
+          <description>Backslash</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv3:lsgt_switch</name>
+          <description>The "&lt; &gt;" key</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv3:caps_switch_latch</name>
+          <description>Caps Lock; acts as onetime lock when pressed together with another 3rd-level chooser</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv3:bksl_switch_latch</name>
+          <description>Backslash; acts as onetime lock when pressed together with another 3rd level chooser</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv3:lsgt_switch_latch</name>
+          <description>The "&lt; &gt;" key; acts as onetime lock when pressed together with another 3rd level chooser</description>
+        </configItem>
+      </option>
+    </group>
+    <group allowMultipleSelection="true">
+      <!-- Tweaking the position of the "Ctrl" key -->
+      <configItem>
+        <name>ctrl</name>
+        <description>Ctrl position</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>ctrl:nocaps</name>
+          <description>Caps Lock as Ctrl</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>ctrl:lctrl_meta</name>
+          <description>Left Ctrl as Meta</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>ctrl:swapcaps</name>
+          <description>Swap Ctrl and Caps Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>ctrl:hyper_capscontrol</name>
+          <description>Caps Lock as Ctrl, Ctrl as Hyper</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>ctrl:ac_ctrl</name>
+          <description>To the left of "A"</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>ctrl:aa_ctrl</name>
+          <description>At the bottom left</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>ctrl:rctrl_ralt</name>
+          <description>Right Ctrl as Right Alt</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>ctrl:menu_rctrl</name>
+          <description>Menu as Right Ctrl</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>ctrl:swap_lalt_lctl</name>
+          <description>Swap Left Alt with Left Ctrl</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>ctrl:swap_lwin_lctl</name>
+          <description>Swap Left Win with Left Ctrl</description>
+        </configItem>
+      </option><option>
+        <configItem>
+          <name>ctrl:swap_rwin_rctl</name>
+          <description>Swap Right Win with Right Ctrl</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>ctrl:swap_lalt_lctl_lwin</name>
+          <description>Left Alt as Ctrl, Left Ctrl as Win, Left Win as Left Alt</description>
+        </configItem>
+      </option>
+    </group>
+    <group allowMultipleSelection="true">
+      <!-- Using startard LEDs to indicate the alternative (not first) group(s) -->
+      <configItem>
+        <name>grp_led</name>
+        <description>Use keyboard LED to show alternative layout</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>grp_led:num</name>
+          <description>Num Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp_led:caps</name>
+          <description>Caps Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp_led:scroll</name>
+          <description>Scroll Lock</description>
+        </configItem>
+      </option>
+    </group>
+    <group allowMultipleSelection="true">
+      <!-- Using LEDs to indicate modifiers -->
+      <configItem>
+        <name>mod_led</name>
+        <description>Use keyboard LED to indicate modifiers</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>mod_led:compose</name>
+          <description>Compose</description>
+        </configItem>
+      </option>
+    </group>
+    <group allowMultipleSelection="false">
+      <!-- Select a keypad type -->
+      <configItem>
+        <name>keypad</name>
+        <description>Layout of numeric keypad</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>keypad:legacy</name>
+          <description>Legacy</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>keypad:oss</name>
+          <description>Unicode arrows and math operators</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>keypad:future</name>
+          <description>Unicode arrows and math operators on default level</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>keypad:legacy_wang</name>
+          <description>Legacy Wang 724</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>keypad:oss_wang</name>
+          <description>Wang 724 keypad with Unicode arrows and math operators</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>keypad:future_wang</name>
+          <description>Wang 724 keypad with Unicode arrows and math operators on default level</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>keypad:hex</name>
+          <description>Hexadecimal</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>keypad:atm</name>
+          <description>Phone and ATM style</description>
+       </configItem>
+      </option>
+    </group>
+    <!-- This option should override the KPDL key defined in keypad; I hope it's declared in the right place -->
+    <group allowMultipleSelection="false">
+      <!-- Select a keypad KPDL variant -->
+      <configItem>
+        <name>kpdl</name>
+        <description>Numeric keypad Delete behavior</description>
+      </configItem>
+      <option>
+        <configItem>
+          <!-- Actually, with KP_DECIMAL, as the old keypad(dot) -->
+          <name>kpdl:dot</name>
+          <description>Legacy key with dot</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>kpdl:comma</name>
+          <!-- Actually, with KP_SEPARATOR, as the old keypad(comma) -->
+          <description>Legacy key with comma</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>kpdl:dotoss</name>
+          <description>Four-level key with dot</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>kpdl:dotoss_latin9</name>
+          <description>Four-level key with dot, Latin-9 only</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>kpdl:commaoss</name>
+          <description>Four-level key with comma</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>kpdl:momayyezoss</name>
+          <description>Four-level key with momayyez</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>kpdl:kposs</name>
+          <!-- This assumes the KP_ abstract symbols are actually useful for some apps
+               The description needs to be rewritten -->
+          <description>Four-level key with abstract separators</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>kpdl:semi</name>
+          <description>Semicolon on third level</description>
+       </configItem>
+      </option>
+    </group>
+    <group allowMultipleSelection="false">
+      <!-- Caps Lock tweaks.
+           "Internal" capitalization means capitalization using some internal tables.
+           Otherwise "as Shift" - means using next group. -->
+      <configItem>
+        <name>caps</name>
+        <description>Caps Lock behavior</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>caps:internal</name>
+          <description>Caps Lock uses internal capitalization; Shift "pauses" Caps Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>caps:internal_nocancel</name>
+          <description>Caps Lock uses internal capitalization; Shift does not affect Caps Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>caps:shift</name>
+          <description>Caps Lock acts as Shift with locking; Shift "pauses" Caps Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>caps:shift_nocancel</name>
+          <description>Caps Lock acts as Shift with locking; Shift does not affect Caps Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>caps:capslock</name>
+          <description>Caps Lock toggles normal capitalization of alphabetic characters</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>caps:shiftlock</name>
+          <description>Caps Lock toggles Shift Lock (affects all keys)</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>caps:swapescape</name>
+          <description>Swap Esc and Caps Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>caps:escape</name>
+          <description>Make Caps Lock an additional Esc</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>caps:escape_shifted_capslock</name>
+          <description>Make Caps Lock an additional Esc, but Shift + Caps Lock is the regular Caps Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>caps:backspace</name>
+          <description>Make Caps Lock an additional Backspace</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>caps:super</name>
+          <description>Make Caps Lock an additional Super</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>caps:hyper</name>
+          <description>Make Caps Lock an additional Hyper</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>caps:menu</name>
+          <description>Make Caps Lock an additional Menu key</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>caps:numlock</name>
+          <description>Make Caps Lock an additional Num Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>caps:ctrl_modifier</name>
+          <description>Make Caps Lock an additional Ctrl</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>caps:none</name>
+          <description>Caps Lock is disabled</description>
+        </configItem>
+      </option>
+    </group>
+    <group allowMultipleSelection="false">
+      <!-- Using special PC keys (Win, Menu) to work as standard X keys (Super, Hyper, etc.) -->
+      <configItem>
+        <name>altwin</name>
+        <description>Alt and Win behavior</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>altwin:menu</name>
+          <description>Add the standard behavior to Menu key</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>altwin:menu_win</name>
+          <description>Menu is mapped to Win</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>altwin:meta_alt</name>
+          <description>Alt and Meta are on Alt</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>altwin:alt_win</name>
+          <description>Alt is mapped to Win and the usual Alt</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>altwin:ctrl_win</name>
+          <description>Ctrl is mapped to Win and the usual Ctrl</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>altwin:ctrl_rwin</name>
+          <description>Ctrl is mapped to Right Win and the usual Ctrl</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>altwin:ctrl_alt_win</name>
+          <description>Ctrl is mapped to Alt, Alt to Win</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>altwin:meta_win</name>
+          <description>Meta is mapped to Win</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>altwin:left_meta_win</name>
+          <description>Meta is mapped to Left Win</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>altwin:hyper_win</name>
+          <description>Hyper is mapped to Win</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>altwin:alt_super_win</name>
+          <description>Alt is mapped to Right Win, Super to Menu</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>altwin:swap_lalt_lwin</name>
+          <description>Left Alt is swapped with Left Win</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>altwin:swap_alt_win</name>
+          <description>Alt is swapped with Win</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>altwin:prtsc_rwin</name>
+          <description>Win is mapped to PrtSc and the usual Win</description>
+        </configItem>
+      </option>
+    </group>
+    <group allowMultipleSelection="true">
+      <!-- Tweaking the position of the "Compose" key: mapping to existing PC keys -->
+      <configItem>
+        <name>Compose key</name>
+        <description>Position of Compose key</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>compose:ralt</name>
+          <description>Right Alt</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:lwin</name>
+          <description>Left Win</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:lwin-altgr</name>
+          <description>3rd level of Left Win</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:rwin</name>
+          <description>Right Win</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:rwin-altgr</name>
+          <description>3rd level of Right Win</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:menu</name>
+          <description>Menu</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:menu-altgr</name>
+          <description>3rd level of Menu</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:lctrl</name>
+          <description>Left Ctrl</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:lctrl-altgr</name>
+          <description>3rd level of Left Ctrl</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:rctrl</name>
+          <description>Right Ctrl</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:rctrl-altgr</name>
+          <description>3rd level of Right Ctrl</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:caps</name>
+          <description>Caps Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:caps-altgr</name>
+          <description>3rd level of Caps Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:102</name>
+          <description>The "&lt; &gt;" key</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:102-altgr</name>
+          <description>3rd level of the "&lt; &gt;" key</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:paus</name>
+          <description>Pause</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:ins</name>
+          <description>Insert</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:prsc</name>
+          <description>PrtSc</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>compose:sclk</name>
+          <description>Scroll Lock</description>
+        </configItem>
+      </option>
+    </group>
+    <group allowMultipleSelection="true">
+      <configItem>
+        <name>compat</name>
+        <description>Compatibility options</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>numpad:pc</name>
+          <description>Default numeric keypad keys</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>numpad:mac</name>
+          <description>Numeric keypad always enters digits (as in macOS)</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>numpad:microsoft</name>
+          <description>Num Lock on: digits; Shift for arrows. Num Lock off: arrows (as in Windows)</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>numpad:shift3</name>
+          <description>Shift does not cancel Num Lock, chooses 3rd level instead</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>srvrkeys:none</name>
+          <description>Special keys (Ctrl+Alt+&lt;key&gt;) handled in a server</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>apple:alupckeys</name>
+          <description>Apple Aluminium emulates Pause, PrtSc, Scroll Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>shift:breaks_caps</name>
+          <description>Shift cancels Caps Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>misc:typo</name>
+          <description>Enable extra typographic characters</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>misc:apl</name>
+          <description>Enable APL overlay characters</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>shift:both_capslock</name>
+          <description>Both Shifts together enable Caps Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>shift:both_capslock_cancel</name>
+          <description>Both Shifts together enable Caps Lock; one Shift key disables it</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>shift:both_shiftlock</name>
+          <description>Both Shifts together enable Shift Lock</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>keypad:pointerkeys</name>
+          <description>Shift + Num Lock enables PointerKeys</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grab:break_actions</name>
+          <description>Allow breaking grabs with keyboard actions (warning: security risk)</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grab:debug</name>
+          <description>Allow grab and window tree logging</description>
+        </configItem>
+      </option>
+    </group>
+    <group allowMultipleSelection="true">
+      <!-- Special shortcuts for the Euro character -->
+      <configItem>
+        <name>currencysign</name>
+        <description>Currency signs</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>eurosign:e</name>
+          <description>Euro on E</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>eurosign:2</name>
+          <description>Euro on 2</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>eurosign:4</name>
+          <description>Euro on 4</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>eurosign:5</name>
+          <description>Euro on 5</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>rupeesign:4</name>
+          <description>Rupee on 4</description>
+        </configItem>
+      </option>
+    </group>
+    <group allowMultipleSelection="true">
+      <configItem>
+        <name>lv5</name>
+        <description>Key to choose 5th level</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>lv5:caps_switch</name>
+          <description>Caps Lock chooses 5th level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv5:lsgt_switch</name>
+          <description>The "&lt; &gt;" key chooses 5th level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv5:ralt_switch</name>
+          <description>Right Alt chooses 5th level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv5:menu_switch</name>
+          <description>Menu chooses 5th level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv5:rctrl_switch</name>
+          <description>Right Ctrl chooses 5th level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv5:lsgt_switch_lock</name>
+          <description>The "&lt; &gt;" key chooses 5th level and acts as a one-time lock if pressed with another 5th level chooser</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv5:ralt_switch_lock</name>
+          <description>Right Alt chooses 5th level and acts as a one-time lock if pressed with another 5th level chooser</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv5:lwin_switch_lock</name>
+          <description>Left Win chooses 5th level and acts as a one-time lock if pressed with another 5th level chooser</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv5:rwin_switch_lock</name>
+          <description>Right Win chooses 5th level and acts as a one-time lock if pressed with another 5th level chooser</description>
+        </configItem>
+      </option>
+<!--
+      <option>
+        <configItem>
+          <name>lv5:lsgt_switch_lock_cancel</name>
+          <description>The "&lt; &gt;" key chooses 5th level and acts as a one-time lock if pressed with another 5th level chooser</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv5:ralt_switch_lock_cancel</name>
+          <description>Right Alt chooses 5th level and acts as a one-time lock if pressed with another 5th level chooser</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv5:lwin_switch_lock_cancel</name>
+          <description>Left Win chooses 5th level and acts as a one-time lock if pressed with another 5th level chooser</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv5:rwin_switch_lock_cancel</name>
+          <description>Right Win chooses 5th level and acts as a one-time lock if pressed with another 5th level chooser</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv5:lsgt_switch_lock_cancel</name>
+          <description>The "&lt; &gt;" key chooses 5th level; acts as onetime lock lock when pressed together with another 5th level chooser</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>lv5:ralt_switch_lock_cancel</name>
+          <description>Right Alt chooses 5th level and acts as a one-time lock if pressed with another 5th level chooser</description>
+        </configItem>
+      </option>
+-->
+    </group>
+    <group allowMultipleSelection="false">
+      <!-- Let space output NBSP, NNBSP, ZWNJ, and ZWJ for the desired level -->
+      <configItem>
+        <name>nbsp</name>
+        <description>Non-breaking space input</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>nbsp:none</name>
+          <description>Usual space at any level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>nbsp:level2</name>
+          <description>Non-breaking space at the 2nd level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>nbsp:level3</name>
+          <description>Non-breaking space at the 3rd level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>nbsp:level3n</name>
+          <description>Non-breaking space at the 3rd level, thin non-breaking space at the 4th level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>nbsp:level4</name>
+          <description>Non-breaking space at the 4th level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>nbsp:level4n</name>
+          <description>Non-breaking space at the 4th level, thin non-breaking space at the 6th level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>nbsp:level4nl</name>
+          <description>Non-breaking space at the 4th level, thin non-breaking space at the 6th level (via Ctrl+Shift)</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>nbsp:zwnj2</name>
+          <description>Zero-width non-joiner at the 2nd level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>nbsp:zwnj2zwj3</name>
+          <description>Zero-width non-joiner at the 2nd level, zero-width joiner at the 3rd level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>nbsp:zwnj2zwj3nb4</name>
+          <description>Zero-width non-joiner at the 2nd level, zero-width joiner at the 3rd level, non-breaking space at the 4th level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>nbsp:zwnj2nb3</name>
+          <description>Zero-width non-joiner at the 2nd level, non-breaking space at the 3rd level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>nbsp:zwnj2nb3zwj4</name>
+          <description>Zero-width non-joiner at the 2nd level, non-breaking space at the 3rd level, zero-width joiner at the 4th level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>nbsp:zwnj2nb3nnb4</name>
+          <description>Zero-width non-joiner at the 2nd level, non-breaking space at the 3rd level, thin non-breaking space at the 4th level</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>nbsp:zwnj3zwj4</name>
+          <description>Zero-width non-joiner at the 3rd level, zero-width joiner at the 4th level</description>
+        </configItem>
+      </option>
+    </group>
+    <group allowMultipleSelection="true">
+      <configItem>
+        <name>japan</name>
+        <description>Japanese keyboard options</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>japan:kana_lock</name>
+          <description>Kana Lock key is locking</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>japan:nicola_f_bs</name>
+          <description>NICOLA-F style Backspace</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>japan:hztg_escape</name>
+          <description>Make Zenkaku Hankaku an additional Esc</description>
+       </configItem>
+      </option>
+    </group>
+    <group allowMultipleSelection="true">
+      <configItem>
+        <name>korean</name>
+        <description>Korean Hangul/Hanja keys</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>korean:ralt_hangul</name>
+          <description>Make right Alt a Hangul key</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>korean:rctrl_hangul</name>
+          <description>Make right Ctrl a Hangul key</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>korean:ralt_hanja</name>
+          <description>Make right Alt a Hanja key</description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>korean:rctrl_hanja</name>
+          <description>Make right Ctrl a Hanja key</description>
+        </configItem>
+      </option>
+    </group>
+    <group allowMultipleSelection="false">
+      <configItem>
+        <name>esperanto</name>
+        <description>Esperanto letters with superscripts</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>esperanto:qwerty</name>
+          <description>At the corresponding key in a QWERTY layout</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>esperanto:dvorak</name>
+          <description>At the corresponding key in a Dvorak layout</description>
+       </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>esperanto:colemak</name>
+          <description>At the corresponding key in a Colemak layout</description>
+       </configItem>
+      </option>
+    </group>
+    <group allowMultipleSelection="true">
+      <configItem>
+        <name>solaris</name>
+        <description>Old Solaris keycodes compatibility</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>solaris:sun_compat</name>
+          <description>Sun key compatibility</description>
+        </configItem>
+      </option>
+    </group>
+    <group allowMultipleSelection="true">
+      <configItem>
+        <name>terminate</name>
+        <description>Key sequence to kill the X server</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>terminate:ctrl_alt_bksp</name>
+          <description>Ctrl+Alt+Backspace</description>
+        </configItem>
+      </option>
+    </group>
+  </optionList>
+</xkbConfigRegistry>
