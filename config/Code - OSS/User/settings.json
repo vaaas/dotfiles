@@ -11,6 +11,7 @@
 	"editor.lineHeight": 1.5,
 	"editor.lineNumbers": "off",
 	"editor.minimap.enabled": false,
+	"editor.stickyScroll.enabled": true,
 	"editor.tabSize": 3,
 	"editor.wordWrap": "on",
 	"editor.wrappingIndent": "none",
@@ -19,33 +20,72 @@
 	"files.trimFinalNewlines": true,
 	"files.trimTrailingWhitespace": true,
 	"git.decorations.enabled": false,
+	"html.autoClosingTags": false,
+	"html.autoCreateQuotes": false,
+	"html.completion.attributeDefaultValue": "singlequotes",
+	"html.format.preserveNewLines": false,
+	"html.format.unformatted": "p",
+	"html.format.wrapLineLength": 0,
+	"javascript.preferences.quoteStyle": "single",
+	"typescript.preferences.quoteStyle": "single",
 	"window.menuBarVisibility": "toggle",
-	"workbench.activityBar.visible": false,
-	"workbench.colorTheme": "GitHub Light Monochrome Focused",
+    "workbench.activityBar.visible": false,
 	"workbench.editor.showTabs": false,
 	"workbench.sideBar.location": "right",
 	"workbench.statusBar.visible": false,
+    "workbench.colorTheme": "GitHub Light Monochrome Focused",
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": false,
 
 	"workbench.colorCustomizations": {
-		"editor.background": "#fed",
-		"editor.lineHighlightBackground": "#fff",
-		"editor.foreground": "#321",
-		"sideBar.background": "#edc",
-		"activityBar.background": "#dcb",
-		"activityBar.foreground": "#321",
-		"activityBar.inactiveForeground": "#876",
-		"sideBarSectionHeader.background": "#dcb",
-		"editorIndentGuide.background": "#dcb",
-		"editorIndentGuide.activeBackground": "#f05",
-		"editorCursor.foreground": "#f05",
-		"editor.selectionBackground": "#dcb",
+        "[Default Dark+]": {
+            "editor.background": "#211",
+            "editor.foreground": "#fed",
+            "editorCursor.background": "#fed",
+            "editorCursor.foreground": "#f05",
+            "sideBar.background": "#322",
+        },
+        "[GitHub Light Monochrome Focused]": {
+            "activityBar.background": "#dcb",
+            "activityBar.foreground": "#321",
+            "activityBar.inactiveForeground": "#876",
+            "editor.background": "#fed",
+            "editor.foreground": "#321",
+            "editor.lineHighlightBackground": "#fff",
+            "editor.selectionBackground": "#dcb",
+            "editorCursor.foreground": "#f05",
+            "editorIndentGuide.activeBackground": "#f05",
+            "editorIndentGuide.background": "#dcb",
+            "sideBar.background": "#edc",
+            "sideBarSectionHeader.background": "#dcb",
+        },
 	},
 
 	"editor.tokenColorCustomizations": {
-		"textMateRules": [
-			{ "scope": "constant.numeric", "settings": { "foreground": "#08a", "fontStyle": "" } },
-			{ "scope": "constant", "settings": { "fontStyle": "underline" } },
-		]
+        "[Default Dark+]": {
+            "functions": "#fed",
+            "keywords": "#fed",
+            "textMateRules": [
+                { "scope": "variable", "settings": { "foreground": "#fed" }},
+                { "scope": "entity.name.function", "settings": { "foreground": "#fed" }},
+                { "scope": "meta.function", "settings": { "foreground": "#fed" }},
+                { "scope": "support.function", "settings": { "foreground": "#fed" }},
+                { "scope": "entity.name.function", "settings": { "foreground": "#fed" }},
+                { "scope": "keyword.control", "settings": { "foreground": "#fed", "fontStyle": "bold" }},
+                { "scope": "keyword.operator", "settings": { "foreground": "#fed", "fontStyle": "bold" }},
+                { "scope": "keyword.operator.arithmetic", "settings": { "foreground": "#fed", "fontStyle": "bold" }},
+                { "scope": "keyword.operator.assignment", "settings": { "foreground": "#fed", "fontStyle": "bold" }},
+                { "scope": "keyword.operator.logical", "settings": { "foreground": "#fed", "fontStyle": "bold" }},
+                { "scope": "keyword.operator.new", "settings": { "foreground": "#fed", "fontStyle": "bold" }},
+                { "scope": "keyword.other", "settings": { "foreground": "#fed", "fontStyle": "bold" }},
+            ]
+        },
+        "[GitHub Light Monochrome Focused]": {
+            "textMateRules": [
+                { "scope": "constant.numeric", "settings": { "foreground": "#08a", "fontStyle": "" } },
+                { "scope": "constant", "settings": { "fontStyle": "underline" } },
+            ]
+        },
 	},
 
 	"modalEditor.keybindings": {
@@ -151,19 +191,5 @@
 
 			" ": "modalEditor.setInsertMode",
 		}
-	},
-	"editor.stickyScroll.enabled": true,
-	"html.autoClosingTags": false,
-	"html.autoCreateQuotes": false,
-	"[html]": {
-		"editor.defaultFormatter": "vscode.html-language-features"
-	},
-	"html.completion.attributeDefaultValue": "singlequotes",
-	"html.format.unformatted": "p",
-	"html.format.wrapLineLength": 0,
-	"html.format.preserveNewLines": false,
-	"javascript.preferences.quoteStyle": "single",
-	"typescript.preferences.quoteStyle": "single",
-   "editor.detectIndentation": false,
-   "editor.insertSpaces": false,
+    },
 }
