@@ -16,7 +16,7 @@ xkb_symbols "basic" {
 	key <AE11> {[ minus, underscore ]};
 	key <AE12> {[ equal, plus ]};
 
-	key <AD01> {[ Greek_chi, Greek_chi ]};
+	key <AD01> {[ Greek_chi, Greek_CHI ]};
 	key <AD02> {[ Greek_kappa, Greek_KAPPA ]};
 	key <AD03> {[ dead_acute, dead_diaeresis ]};
 	key <AD04> {[ Greek_mu, Greek_MU ]};
