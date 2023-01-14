@@ -3,6 +3,6 @@ export PAGER=less
 export PATH=~/Binaries:$PATH
 export MOZ_ENABLE_WAYLAND=1
 export BROWSER=firefox
-export EDITOR=gedit
+export EDITOR=gnome-text-editor
 export GDK_CORE_DEVICE_EVENTS=1
 umask 0026
