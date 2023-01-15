@@ -1,3 +1,8 @@
 #!/bin/sh
 
-ffmpeg -i "$1" -c:v libx264 -crf 22 -tune animation -preset medium -c:a aac "$2"
+ffmpeg -i "$1" \
+	-c:v libx264 -crf 22 -tune animation \
+		-preset fast \
+		-level:v 4.2 -profile:v high \
+	-c:a aac \
+	/tmp/"$2".mp4
