@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ffmpeg -i "$1" \
-	-c:v libx264 -crf 22 -tune animation \
+	-c:v libx264 -crf 26 -tune animation \
 		-preset fast \
 		-level:v 4.2 -profile:v high \
 	-c:a aac \
