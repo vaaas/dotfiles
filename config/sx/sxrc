@@ -1,0 +1,22 @@
+#!/bin/sh
+
+setxkbmap vas -variant modifiers
+sxhkd &
+
+options='osu-stable
+exit'
+
+runner=dmenu
+
+function run_an_app() {
+        app=$(echo "$options" | $runner)
+
+        if test "$app" = exit
+        then exit
+        elif test -z "$app"
+        then exit
+        else $app
+        fi
+}
+
+while true ; do run_an_app ; done

@@ -1,7 +1,7 @@
 {
 	"editor.bracketPairColorization.enabled": false,
 	"editor.cursorBlinking": "smooth",
-	"editor.cursorSmoothCaretAnimation": true,
+	"editor.cursorSmoothCaretAnimation": "on",
 	"editor.cursorStyle": "block",
 	"editor.folding": false,
 	"editor.fontFamily": "Fira Code",

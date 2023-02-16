@@ -6,3 +6,8 @@ export BROWSER=firefox
 export EDITOR=gnome-text-editor
 export GDK_CORE_DEVICE_EVENTS=1
 umask 0026
+
+if test `tty` = /dev/tty3
+then sx
+else source .bashrc
+fi
