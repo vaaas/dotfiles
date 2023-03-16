@@ -6,10 +6,8 @@ sxhkd &
 options='osu-stable
 exit'
 
-runner=dmenu
-
 function run_an_app() {
-        app=$(echo "$options" | $runner)
+        app=$(echo "$options" | dmenu -l -1 -fn 'Sans-32')
 
         if test "$app" = exit
         then exit

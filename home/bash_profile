@@ -8,6 +8,6 @@ export GDK_CORE_DEVICE_EVENTS=1
 umask 0026
 
 if test `tty` = /dev/tty3
-then sx
+then sx && exit
 else source .bashrc
 fi
