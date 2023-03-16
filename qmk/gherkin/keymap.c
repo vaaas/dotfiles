@@ -2,14 +2,14 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[0] = LAYOUT_ortho_3x10( // base layer
-		KC_K,    KC_C,    KC_D,    KC_H,    KC_RALT, KC_LGUI, KC_W,    KC_U,    KC_O,    KC_V,
+		KC_G,    KC_D,    KC_C,    KC_H,    KC_RALT, KC_LGUI, KC_W,    KC_U,    KC_O,    KC_X,
 		KC_R,    KC_S,    KC_T,    KC_N,    KC_LCTL, KC_LALT, KC_I,    KC_E,    KC_A,    KC_L,
 		KC_MUTE, KC_VOLD, KC_VOLU, MO(2),   KC_SPC,  KC_LSFT, MO(1),   KC_BTN1, KC_BTN2, KC_BTN3
 	),
 
 	[1] = LAYOUT_ortho_3x10( // alpha 2 layer
-		KC_Q,    KC_X,    KC_B,    KC_Z,    _______, _______, KC_QUOT, KC_MINS, KC_BSLS, KC_GRV,
-		KC_P,    KC_F,    KC_G,    KC_M,    _______, _______, KC_Y,    KC_J,    KC_COMM, KC_DOT,
+		KC_Q,    KC_Z,    KC_K,    KC_V,    _______, _______, KC_QUOT, KC_MINS, KC_BSLS, KC_GRV,
+		KC_P,    KC_F,    KC_B,    KC_M,    _______, _______, KC_Y,    KC_J,    KC_COMM, KC_DOT,
 		_______, _______, _______, MO(4),   _______, _______, _______, _______, _______, _______
 	),
 
