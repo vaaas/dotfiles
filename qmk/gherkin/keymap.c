@@ -8,7 +8,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	),
 
 	[1] = LAYOUT_ortho_3x10( // alpha 2 layer
-		KC_Q,    KC_X,    KC_Z,    KC_B,    _______, _______, KC_QUOT, KC_MINS, KC_BSLS, KC_GRV,
+		KC_Q,    KC_X,    KC_B,    KC_Z,    _______, _______, KC_QUOT, KC_MINS, KC_BSLS, KC_GRV,
 		KC_P,    KC_F,    KC_G,    KC_M,    _______, _______, KC_Y,    KC_J,    KC_COMM, KC_DOT,
 		_______, _______, _______, MO(4),   _______, _______, _______, _______, _______, _______
 	),
