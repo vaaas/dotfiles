@@ -1,6 +1,6 @@
 #!/bin/sh
 
-setxkbmap vas -variant modifiers
+#setxkbmap vas -variant modifiers
 sxhkd &
 
 options='osu-stable
