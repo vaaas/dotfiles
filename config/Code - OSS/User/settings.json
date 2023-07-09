@@ -27,8 +27,7 @@
 	"html.format.unformatted": "p",
 	"html.format.wrapLineLength": 0,
 	"javascript.preferences.quoteStyle": "single",
-	"typescript.preferences.quoteStyle": "single",
-	"window.menuBarVisibility": "toggle",
+    "typescript.preferences.quoteStyle": "single",
     "workbench.activityBar.visible": false,
 	"workbench.editor.showTabs": false,
 	"workbench.sideBar.location": "right",
@@ -192,4 +191,7 @@
 			" ": "modalEditor.setInsertMode",
 		}
     },
+    "diffEditor.renderSideBySide": false,
+    "window.menuBarVisibility": "toggle",
+    "update.mode": "none",
 }
