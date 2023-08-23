@@ -193,5 +193,5 @@
     },
     "diffEditor.renderSideBySide": false,
     "window.menuBarVisibility": "toggle",
-    "update.mode": "none",
+	"update.mode": "none"
 }
