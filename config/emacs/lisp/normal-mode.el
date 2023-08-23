@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ; interactive functions
 (defun quick-goto-char ()
   (interactive)
@@ -30,12 +32,26 @@
    ((use-region-p) (call-interactively 'kill-region))
    (t (call-interactively 'backward-delete-char-untabify))))
 
+(defun next-buffer-and-normal-mode-on ()
+  (interactive)
+  (next-buffer)
+  (normal-mode-on))
+
+(defun previous-buffer-and-normal-mode-on ()
+  (interactive)
+  (previous-buffer)
+  (normal-mode-on))
+
 ; normal mode
 (define-minor-mode normal-editing-mode
   "minor mode for mimicking vi-like modal input"
   :lighter " N"
   :keymap
-  '(("r" . zap-up-to-char)
+  '(([tab] . next-buffer-and-normal-mode-on)
+    ([backtab] . previous-buffer-and-normal-mode-on)
+    ("q" . kill-this-buffer)
+    ("j" . join-line)
+    ("r" . zap-up-to-char)
     ("R" . zap-up-to-char-backward)
     ("s" . visual-select)
     ("S" . visual-line-select)
@@ -53,6 +69,8 @@
     ("A" . end-of-line)
     ("z" . undo-only)
     ("Z" . undo-redo)
+    ("f" . project-find-file)
+    ("F" . switch-to-buffer)
     ("p" . yank)
     ("/" . isearch-forward)
     (" " . normal-mode-off)))

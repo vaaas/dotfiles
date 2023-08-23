@@ -16,11 +16,16 @@
 
 ; macros
 (defmacro L (arg &rest body) `(lambda (,arg) ,@body))
+
 (defmacro whenlet (var def &rest body) `(let ((,var ,def)) (when ,var ,@body)))
+
 (defmacro -> (initial &rest forms)
   (seq-reduce
    (lambda (acc x) (append (if (listp x) x (list x)) (list acc)))
    forms initial))
+
+(defmacro define-keys (mode &rest forms)
+    `(progn ,@(mapcar (lambda (x) `(define-key ,mode ,@x)) forms)))
 
 ; configure packages
 (push (concat user-emacs-directory "/lisp") load-path)
@@ -43,6 +48,8 @@
 ; files
 (setq auto-save-default nil)
 (setq make-backup-files nil)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(setq vc-follow-symlinks t)
 
 ; tree-sitter
 (setq
@@ -80,13 +87,38 @@
 (require 'company)
 (add-hook 'prog-mode-hook 'company-mode)
 (define-key prog-mode-map (kbd "C-s") 'company-complete)
-(define-key company-active-map [tab] 'company-complete-selection)
-(define-key company-active-map (kbd "C-s") 'company-complete-selection)
-(define-key company-active-map (kbd "C-i") 'company-select-next)
-(define-key company-active-map (kbd "C-e") 'company-select-previous)
+(define-keys company-active-map
+    ([tab] 'company-complete-selection)
+    ((kbd "C-s") 'company-complete-selection)
+    ((kbd "C-i") 'company-select-previous)
+    ((kbd "C-e") 'company-select-next)
+    ((kbd "C-o") 'company-select-previous)
+    ((kbd "C-a") 'company-select-next))
+
+; minibuffer completion / icomplete
+(icomplete-mode 1)
+(icomplete-vertical-mode 1)
+(setq-default icomplete-prospects-height 10)
+(define-keys icomplete-vertical-mode-minibuffer-map
+    ([tab] 'icomplete-force-complete)
+    ([return] 'icomplete-force-complete-and-exit)
+    ((kbd "C-s") 'icomplete-force-complete-and-exit)
+    ((kbd "C-i") 'icomplete-backward-completions)
+    ((kbd "C-e") 'icomplete-forward-completions)
+    ((kbd "C-o") 'icomplete-backward-completions)
+    ((kbd "C-a") 'icomplete-forward-completions))
 
 ; isearch
-(define-key isearch-mode-map [tab] 'isearch-repeat-forward)
-(define-key isearch-mode-map [backtab] 'isearch-repeat-backward)
-(define-key isearch-mode-map (kbd "C-i") 'isearch-repeat-forward)
-(define-key isearch-mode-map (kbd "C-e") 'isearch-repeat-backward)
+(define-keys isearch-mode-map
+    ([tab] 'isearch-repeat-forward)
+    ([backtab] 'isearch-repeat-backward)
+    ((kbd "C-i") 'isearch-repeat-backward)
+    ((kbd "C-e") 'isearch-repeat-forward)
+    ((kbd "C-o") 'isearch-repeat-backward)
+    ((kbd "C-a") 'isearch-repeat-forward))
+
+; indentation
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq-default typescript-ts-mode-indent-offset tab-width)
+(setq indent-line-function 'insert-tab)
