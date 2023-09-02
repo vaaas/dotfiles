@@ -30,10 +30,10 @@ xkb_symbols "basic" {
 	key <AD12> {[ bracketright, braceright ]};
 	key <BKSL> {[ backslash, bar ]};
 
-	key <AC01> {[ r, R ]};
-	key <AC02> {[ s, S ]};
-	key <AC03> {[ t, T ]};
-	key <AC04> {[ n, N ]};
+	key <AC01> {[ r, R  Delete, Delete ]};
+	key <AC02> {[ s, S, BackSpace, BackSpace ]};
+	key <AC03> {[ t, T, Tab, Tab ]};
+	key <AC04> {[ n, N, Return, Return ]};
 	key <AC05> {[ h, H ]};
 	key <AC06> {[ y, Y, minus, underscore ]};
 	key <AC07> {[ i, I, parenleft, bracketleft ]};
@@ -66,6 +66,29 @@ xkb_symbols "modifiers" {
 	};
 	replace key <LCTL> {[ Caps_Lock ]};
 	key <LALT> {
+		type[Group1] = "ONE_LEVEL",
+		symbols[Group1] = [ ISO_Level3_Shift ]
+	};
+
+	key <RALT> {
+		type[Group1] = "ONE_LEVEL",
+		symbols[Group1] = [ Shift_L ]
+	};
+
+	modifier_map Control { <CAPS> };
+	modifier_map Lock { <LCTL> };
+};
+
+partial modifier_keys
+xkb_symbols "modifiers (win)" {
+	include "vas(basic)"
+	replace key <CAPS> {[ Control_L ]};
+	key <LFSH> {
+		type[Group1] = "ONE_LEVEL",
+		symbols[Group1] = [ Alt_L ]
+	};
+	replace key <LCTL> {[ Caps_Lock ]};
+	key <LWIN> {
 		type[Group1] = "ONE_LEVEL",
 		symbols[Group1] = [ ISO_Level3_Shift ]
 	};
