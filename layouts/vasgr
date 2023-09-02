@@ -59,7 +59,7 @@ xkb_symbols "basic" {
 partial modifier_keys
 xkb_symbols "modifiers" {
 	include "vasgr(basic)"
-	key <CAPS> { [ Control_L, Control_L ] };
-	key <LCTL> { [ Caps_Lock ] };
+	key <CAPS> {[ Control_L, Control_L ]};
+	key <LCTL> {[ Caps_Lock ]};
 	key <RALT> {[ Shift_L, Shift_L ]};
 };
