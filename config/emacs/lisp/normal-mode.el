@@ -49,6 +49,7 @@
   :keymap
   '(([tab] . next-buffer-and-normal-mode-on)
     ([backtab] . previous-buffer-and-normal-mode-on)
+    ("c" . kill-whole-line)
     ("q" . kill-this-buffer)
     ("j" . join-line)
     ("r" . zap-up-to-char)
@@ -71,6 +72,8 @@
     ("Z" . undo-redo)
     ("f" . project-find-file)
     ("F" . switch-to-buffer)
+    ("g" . beginning-of-buffer)
+    ("G" . end-of-buffer)
     ("p" . yank)
     ("/" . isearch-forward)
     (" " . normal-mode-off)))

@@ -43,7 +43,6 @@
 
 ; typescript
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
-(add-hook 'typescript-ts-mode-hook (lambda () (call-interactively 'eglot)))
 
 ; files
 (setq auto-save-default nil)
@@ -80,6 +79,7 @@
 (setq-default line-spacing 4)
 (global-visual-line-mode 1)
 (setq-default mode-line-format nil)
+(setq ring-bell-function 'silent)
 
 ; completion
 (setq completion-styles '(normal flex))
