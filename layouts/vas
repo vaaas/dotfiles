@@ -30,17 +30,17 @@ xkb_symbols "basic" {
 	key <AD12> {[ bracketright, braceright ]};
 	key <BKSL> {[ backslash, bar ]};
 
-	key <AC01> {[ r, R, Delete, Delete ]};
-	key <AC02> {[ s, S, BackSpace, BackSpace ]};
-	key <AC03> {[ t, T, Tab, Tab ]};
-	key <AC04> {[ n, N, Return, Return ]};
+	key <AC01> {[ r, R ]};
+	key <AC02> {[ s, S ]};
+	key <AC03> {[ t, T ]};
+	key <AC04> {[ n, N ]};
 	key <AC05> {[ h, H ]};
-	key <AC06> {[ y, Y, minus, underscore ]};
-	key <AC07> {[ i, I, parenleft, bracketleft ]};
-	key <AC08> {[ e, E, parenright, bracketright ]};
-	key <AC09> {[ o, O, braceleft, less ]};
-	key <AC10> {[ a, A, braceright, greater ]};
-	key <AC11> {[ apostrophe, quotedbl, grave, asciitilde ]};
+	key <AC06> {[ y, Y ]};
+	key <AC07> {[ i, I ]};
+	key <AC08> {[ e, E ]};
+	key <AC09> {[ o, O ]};
+	key <AC10> {[ a, A ]};
+	key <AC11> {[ apostrophe, quotedbl ]};
 
 	key <AB01> {[ z, Z ]};
 	key <AB02> {[ f, F ]};
@@ -49,11 +49,12 @@ xkb_symbols "basic" {
 	key <AB05> {[ k, K ]};
 	key <AB06> {[ b, B ]};
 	key <AB07> {[ p, P ]};
-	key <AB08> {[ comma, less, guillemotleft, emdash ]};
-	key <AB09> {[ period, greater, guillemotright, ellipsis ]};
-	key <AB10> {[ slash, question, backslash, bar ]};
+	key <AB08> {[ comma, less ]};
+	key <AB09> {[ period, greater ]};
+	key <AB10> {[ slash, question]};
 
 	key <SPCE> {[ space, space ]};
+	key <MENU> {[ Multi_key, Multi_key ]};
 };
 
 partial modifier_keys
