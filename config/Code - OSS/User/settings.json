@@ -28,8 +28,7 @@
 	"html.format.wrapLineLength": 0,
 	"javascript.preferences.quoteStyle": "single",
     "typescript.preferences.quoteStyle": "single",
-    "workbench.activityBar.visible": false,
-	"workbench.editor.showTabs": false,
+	"workbench.editor.showTabs": "single",
 	"workbench.sideBar.location": "right",
 	"workbench.statusBar.visible": false,
     "workbench.colorTheme": "GitHub Light Monochrome Focused",
@@ -193,5 +192,6 @@
     },
     "diffEditor.renderSideBySide": false,
     "window.menuBarVisibility": "toggle",
-    "update.mode": "none"
+    "update.mode": "none",
+    "workbench.activityBar.location": "hidden"
 }
