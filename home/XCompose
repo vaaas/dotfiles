@@ -1,91 +1,72 @@
-<Multi_key> <i> <n>: "∈"
+# slashes
+<Multi_key> <backslash> <backslash>: "＼"
+<Multi_key> <slash> <slash>: "／"
+
+# dashes
+<Multi_key> <m> <minus>: "—" # em dash
+<Multi_key> <n> <minus>: "–" # en dash
+<Multi_key> <q> <minus>: "―" # horizontal rule (quotation dash)
+<Multi_key> <minus> <space>: "‑" # no-break hyphen
+
+# spaces
+<Multi_key> <n> <space>: " " # en space
+<Multi_key> <m> <space>: " " # em space
+<Multi_key> <f> <space>: " " # narrow no break space
+<Multi_key> <space> <space>: " " # no break space
+
+# dots
+<Multi_key> <e> <l>: "…" # ellipsis
+<Multi_key> <period> <space>: "·" # interpunct / middle dot / multiplication
+
+# emoji
+<Multi_key> <3> <3> : "¯\\_(ツ)_/¯"
+<Multi_key> <less> <3>: "❤"
+
+# quotes
+<Multi_key> <apostrophe> <apostrophe>: "”"
+<Multi_key> <apostrophe> <space>: "’"
+<Multi_key> <grave> <grave>: "“"
+<Multi_key> <grave> <space>: "‘"
+<Multi_key> <g> <n>: "»"
+<Multi_key> <g> <t>: "«"
+<Multi_key> <g> <r>: "‹"
+<Multi_key> <g> <s>: "›"
+
+# currency
+<Multi_key> <dollar> <c>: "¢"
 <Multi_key> <dollar> <e>: "€"
 <Multi_key> <dollar> <E>: "€"
 <Multi_key> <dollar> <p>: "£"
 <Multi_key> <dollar> <P>: "£"
 <Multi_key> <dollar> <y>: "¥"
 <Multi_key> <dollar> <Y>: "¥"
-<Multi_key> <dollar> <c>: "¢"
-<Multi_key> <grave> <grave>: "“"
-<Multi_key> <grave> <space>: "‘"
-<Multi_key> <apostrophe> <apostrophe>: "”"
-<Multi_key> <apostrophe> <space>: "’"
-<Multi_key> <s> <s>: "ß"
-<Multi_key> <S> <S>: "ẞ"
-<Multi_key> <less> <minus>: "←"
-<Multi_key> <minus> <greater>: "→"
-<Multi_key> <plus> <minus>: "±"
+
+# mathematics
+<Multi_key> <equal> <slash>: "≠"
 <Multi_key> <greater> <equal>: "≥"
 <Multi_key> <less> <equal>: "≤"
-<Multi_key> <equal> <slash>: "≠"
+<Multi_key> <i> <n>: "∈"
 <Multi_key> <o> <o>: "∞"
+<Multi_key> <plus> <minus>: "±"
+<Multi_key> <x> <x>: "×"
+
+# units
+<Multi_key> <d> <c>: "℃"
+<Multi_key> <d> <d>: "°"
+<Multi_key> <d> <f>: "℉"
+<Multi_key> <p> <1>: "′"
+<Multi_key> <p> <2>: "″"
+
+# symbols
+<Multi_key> <less> <minus>: "←"
+<Multi_key> <minus> <greater>: "→"
 <Multi_key> <o> <c>: "©"
 <Multi_key> <o> <r>: "®"
 <Multi_key> <t> <m>: "™"
-<Multi_key> <slash> <slash>: "／"
-<Multi_key> <backslash> <backslash>: "＼"
-<Multi_key> <x> <x>: "×"
-<Multi_key> <period> <space>: "·"
-<Multi_key> <space> <space>: " "
-<Multi_key> <m> <space>: " "
-<Multi_key> <n> <space>: " "
-<Multi_key> <less> <3>: "❤"
+<Multi_key> <n> <n>: "№"
+
+# character variants
 <Multi_key> <c> <s>: "ç"
 <Multi_key> <C> <S>: "Ç"
-<Multi_key> <p> <1>: "′"
-<Multi_key> <p> <2>: "″"
-<Multi_key> <n> <n>: "№"
-<Multi_key> <d> <d>: "°"
-<Multi_key> <d> <c>: "℃"
-<Multi_key> <d> <f>: "℉"
-<Multi_key> <h> <r>: "―"
-<Multi_key> <e> <m>: "—"
-<Multi_key> <e> <n>: "–"
-<Multi_key> <e> <l>: "…"
-<Multi_key> <n> <a>: "á"
-<Multi_key> <n> <A>: "Á"
-<Multi_key> <n> <e>: "é"
-<Multi_key> <n> <E>: "É"
-<Multi_key> <n> <i>: "í"
-<Multi_key> <n> <I>: "Í"
-<Multi_key> <n> <o>: "ó"
-<Multi_key> <n> <O>: "Ó"
-<Multi_key> <n> <u>: "ú"
-<Multi_key> <n> <U>: "Ú"
-<Multi_key> <t> <a>: "ā"
-<Multi_key> <t> <A>: "Ā"
-<Multi_key> <t> <e>: "ē"
-<Multi_key> <t> <E>: "Ē"
-<Multi_key> <t> <i>: "ī"
-<Multi_key> <t> <I>: "Ī"
-<Multi_key> <t> <o>: "ō"
-<Multi_key> <t> <O>: "Ō"
-<Multi_key> <t> <u>: "ū"
-<Multi_key> <t> <U>: "Ū"
-<Multi_key> <t> <d>: "ḏ"
-<Multi_key> <t> <D>: "Ḏ"
-<Multi_key> <r> <a>: "à"
-<Multi_key> <r> <A>: "À"
-<Multi_key> <r> <e>: "è"
-<Multi_key> <r> <E>: "È"
-<Multi_key> <r> <i>: "ì"
-<Multi_key> <r> <I>: "Ì"
-<Multi_key> <r> <o>: "ò"
-<Multi_key> <r> <O>: "Ò"
-<Multi_key> <r> <u>: "ù"
-<Multi_key> <r> <U>: "Ù"
-<Multi_key> <s> <i>: "ï"
-<Multi_key> <s> <I>: "Ï"
-<Multi_key> <s> <o>: "ö"
-<Multi_key> <s> <O>: "Ö"
-<Multi_key> <s> <A>: "Ä"
-<Multi_key> <s> <a>: "ä"
-<Multi_key> <s> <U>: "Ü"
-<Multi_key> <s> <u>: "ü"
-<Multi_key> <s> <e>: "ë"
-<Multi_key> <s> <E>: "Ë"
-<Multi_key> <g> <t>: "«"
-<Multi_key> <g> <n>: "»"
-<Multi_key> <g> <r>: "‹"
-<Multi_key> <g> <s>: "›"
-<Multi_key> <3> <3> : "¯\\_(ツ)_/¯"
+<Multi_key> <s> <s>: "ß"
+<Multi_key> <S> <S>: "ẞ"
