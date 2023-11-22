@@ -106,21 +106,6 @@ g() {
 	esac
 }
 
-m() {
-	arg="$1"
-	shift 1
-	case $arg in
-		s)
-			cd ~/code/iotwebserver
-			./devrun.sh &
-			cd ~/code/athena
-			./devrun.sh &
-			;;
-		emacs) killall emacs && \emacs --daemon ;;
-		vars) grep -o -P 'V.[a-zA-Z0-9_]+' -- "$@"  | sort | uniq ;;
-	esac
-}
-
 a() {
 	arg="$1"
 	shift 1
