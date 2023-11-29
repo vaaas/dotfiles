@@ -1,13 +1,16 @@
 {
+	"diffEditor.renderSideBySide": false,
 	"editor.bracketPairColorization.enabled": false,
 	"editor.cursorBlinking": "smooth",
 	"editor.cursorSmoothCaretAnimation": "on",
 	"editor.cursorStyle": "block",
+	"editor.detectIndentation": false,
 	"editor.folding": false,
 	"editor.fontFamily": "Fira Code",
 	"editor.fontLigatures": true,
 	"editor.fontSize": 16,
 	"editor.glyphMargin": false,
+	"editor.insertSpaces": false,
 	"editor.lineHeight": 1.5,
 	"editor.lineNumbers": "off",
 	"editor.minimap.enabled": false,
@@ -27,13 +30,13 @@
 	"html.format.unformatted": "p",
 	"html.format.wrapLineLength": 0,
 	"javascript.preferences.quoteStyle": "single",
-    "typescript.preferences.quoteStyle": "single",
+	"typescript.preferences.quoteStyle": "single",
+	"update.mode": "none",
+	"window.menuBarVisibility": "toggle",
+	"workbench.activityBar.location": "hidden",
+	"workbench.colorTheme": "GitHub Light Monochrome Focused",
 	"workbench.editor.showTabs": "single",
 	"workbench.sideBar.location": "right",
-	"workbench.statusBar.visible": false,
-    "workbench.colorTheme": "GitHub Light Monochrome Focused",
-    "editor.detectIndentation": false,
-    "editor.insertSpaces": false,
 
 	"workbench.colorCustomizations": {
         "[Default Dark+]": {
@@ -52,8 +55,8 @@
             "editor.lineHighlightBackground": "#fff",
             "editor.selectionBackground": "#dcb",
             "editorCursor.foreground": "#f05",
-            "editorIndentGuide.activeBackground": "#f05",
-            "editorIndentGuide.background": "#dcb",
+            "editorIndentGuide.activeBackground1": "#f05",
+            "editorIndentGuide.background1": "#dcb",
             "sideBar.background": "#edc",
             "sideBarSectionHeader.background": "#dcb",
         },
@@ -86,112 +89,7 @@
         },
 	},
 
-	"modalEditor.keybindings": {
-		"normal": {
-			"x": "workbench.action.showCommands",
-			"X": "workbench.action.quickOpen",
-			"c": "editor.action.clipboardCutAction",
-			"C": [
-				"cursorEndSelect",
-				"editor.action.clipboardCutAction",
-			],
-			"d": "deleteWordLeft",
-			"D": "deleteWordRight",
-			"m": "editor.action.indentLines",
-			"M": "editor.action.outdentLines",
-			"j": "editor.action.joinLines",
-			"J": "editor.action.commentLine",
-			"w": "cursorWordEndRight",
-			"u": "cursorWordLeft",
-
-			"r": "workbench.action.navigateBack",
-			"R": "workbench.action.navigateForward",
-			"s": "modalEditor.setSelectMode",
-			"S": [
-				"cursorLineStart",
-				"modalEditor.setSelectMode",
-			],
-			"n": "deleteLeft",
-			"N": "deleteRight",
-			"t": "workbench.action.nextEditorInGroup",
-			"T": "workbench.action.previousEditorInGroup",
-			"h": "editor.action.addSelectionToNextFindMatch",
-			"H": "removeSecondaryCursors",
-			"y": [
-				"modalEditor.setSelectMode",
-				"editor.action.smartSelect.expand",
-			],
-			"i": "cursorLeft",
-			"e": "cursorDown",
-			"o": "cursorUp",
-			"a": "cursorRight",
-			"I": "cursorHome",
-			"E": "cursorPageDown",
-			"O": "cursorPageUp",
-			"A": "cursorEnd",
-
-			"z": "undo",
-			"Z": "redo",
-			"g": "cursorTop",
-			"G": "cursorBottom",
-			"l": [
-				"editor.action.insertLineAfter",
-				"modalEditor.setInsertMode",
-			],
-			"L": [
-				"editor.action.insertLineBefore",
-				"modalEditor.setInsertMode",
-			],
-			"p": "editor.action.clipboardPasteAction",
-			"/": "actions.find",
-
-			" ": "modalEditor.setInsertMode",
-			"\n": "editor.action.insertLineAfter"
-		},
-
-		"select": {
-			"j": "editor.action.joinLines",
-			"J": "editor.action.commentLine",
-			"m": "editor.action.indentLines",
-			"M": "editor.action.outdentLines",
-			"w": "cursorWordEndRightSelect",
-			"u": "cursorWordLeftSelect",
-
-			"s": "modalEditor.setNormalMode",
-			"h": [
-				"editor.action.addSelectionToNextFindMatch",
-				"modalEditor.setNormalMode",
-			],
-			"H": [
-				"modalEditor.setNormalMode",
-				"editor.action.insertCursorAtEndOfEachLineSelected",
-			],
-			"n": [
-				"editor.action.clipboardCutAction",
-				"modalEditor.setNormalMode",
-			],
-			"N": [
-				"editor.action.clipboardCopyAction",
-				"modalEditor.setNormalMode",
-			],
-			"y": "editor.action.smartSelect.expand",
-			"Y": "editor.action.smartSelect.shrink",
-			"i": "cursorLeftSelect",
-			"e": "cursorDownSelect",
-			"o": "cursorUpSelect",
-			"a": "cursorRightSelect",
-			"I": "cursorHomeSelect",
-			"E": "cursorPageDownSelect",
-			"O": "cursorPageUpSelect",
-			"A": "cursorEndSelect",
-
-			"/": "actions.find",
-
-			" ": "modalEditor.setInsertMode",
-		}
-    },
-    "diffEditor.renderSideBySide": false,
-    "window.menuBarVisibility": "toggle",
-    "update.mode": "none",
-    "workbench.activityBar.location": "hidden"
+	"remote.SSH.remotePlatform": {
+		"devvm.localdomain": "linux"
+	},
 }
