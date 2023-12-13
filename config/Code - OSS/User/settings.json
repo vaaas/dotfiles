@@ -92,4 +92,5 @@
 	"remote.SSH.remotePlatform": {
 		"devvm.localdomain": "linux"
 	},
+	"workbench.statusBar.visible": false,
 }
