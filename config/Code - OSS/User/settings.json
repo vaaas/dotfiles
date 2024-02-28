@@ -93,4 +93,6 @@
 		"devvm.localdomain": "linux"
 	},
 	"workbench.statusBar.visible": false,
+	"zig.path": "",
+	"zig.initialSetupDone": true,
 }
