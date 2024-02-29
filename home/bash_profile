@@ -6,14 +6,3 @@ export BROWSER=firefox
 export EDITOR=gnome-text-editor
 export GDK_CORE_DEVICE_EVENTS=1
 umask 0026
-
-x=$(echo 'gnome
-xorg
-bash' | fzf)
-
-case $x in
-	gnome) XDG_SESSION_TYPE=wayland /usr/lib/gnome-session-binary --builtin && exit ;;
-	xorg)  sx && exit ;;
-	bash)  source .bashrc ;;
-	*)     source .bashrc ;;
-esac

@@ -1,20 +1,17 @@
 #!/bin/sh
 
-#setxkbmap vas -variant modifiers
 sxhkd &
 
 options='osu-stable
+steam
 exit'
 
 function run_an_app() {
         app=$(echo "$options" | dmenu -l -1 -fn 'Sans-32')
-
-        if test "$app" = exit
-        then exit
-        elif test -z "$app"
-        then exit
-        else $app
-        fi
+	if test -z "$app"
+	then exit
+	else $app
+	fi
 }
 
 while true ; do run_an_app ; done
