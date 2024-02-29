@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # application spawners
-riverctl map normal Super 1 spawn kgx
+riverctl map normal Super 1 spawn kitty
 riverctl map normal Super D spawn bemenu-run
 
 riverctl map normal Super Q close
@@ -15,6 +15,17 @@ riverctl map normal Super+Shift L swap previous
 riverctl map normal Super Space toggle-float
 riverctl map normal Super F toggle-fullscreen
 riverctl map normal Super Return zoom
+
+# layout management
+riverctl map normal Super J send-layout-cmd rivertile 'main-ratio -0.05'
+riverctl map normal Super Semicolon send-layout-cmd rivertile 'main-ratio +0.05'
+riverctl map normal Super+Shift J send-layout-cmd rivertile 'main-count -1'
+riverctl map normal Super+Shift Semicolon send-layout-cmd rivertile 'main-count +1'
+
+riverctl map normal Super+Control J send-layout-cmd rivertile 'main-location left'
+riverctl map normal Super+Control K send-layout-cmd rivertile 'main-location bottom'
+riverctl map normal Super+Control L send-layout-cmd rivertile 'main-location top'
+riverctl map normal Super+Control Semicolon send-layout-cmd rivertile 'main-location right'
 
 # workspace management
 riverctl map normal Super U set-focused-tags $((1 << 0))
@@ -34,7 +45,7 @@ do
 done
 
 riverctl map-pointer normal Super BTN_LEFT move-view
-riverctl map-pointer normal Super BTM_RIGHT resize-view
+riverctl map-pointer normal Super BTN_RIGHT resize-view
 
 riverctl default-layout rivertile
 rivertile
