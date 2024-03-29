@@ -4,6 +4,7 @@ sxhkd &
 
 options='osu-stable
 steam
+xterm
 exit'
 
 function run_an_app() {
