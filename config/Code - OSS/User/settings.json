@@ -66,4 +66,5 @@
       ]
     },
   },
+  "editor.find.seedSearchStringFromSelection": "never",
 }
