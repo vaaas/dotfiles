@@ -8,7 +8,7 @@
   "editor.cursorStyle": "block",
   "editor.detectIndentation": true,
   "editor.folding": false,
-  "editor.fontFamily": "Iosevka",
+  "editor.fontFamily": "Monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
   "editor.glyphMargin": false,
