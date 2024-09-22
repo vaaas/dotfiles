@@ -1,44 +1,11 @@
 // Place your key bindings in this file to override the defaults
 [
-	{
-		"key": "ctrl+g",
-		"command": "-workbench.action.gotoLine",
-		"when": "editorTextFocus"
-	},
-	{
-		"key": "ctrl+g",
-		"command": "modalEditor.setNormalMode"
-	},
-	{
-		"key": "ctrl+g",
-		"command": "workbench.action.closeQuickOpen",
-		"when": "inQuickOpen"
-	},
-	{
-		"key": "ctrl+g",
-		"command": "cancelSelection",
-		"when": "editorHasSelection && textInputFocus"
-	},
-	{
-		"key": "ctrl+g",
-		"command": "closeFindWidget",
-		"when": "editorFocus && findWidgetVisible && !isComposing"
-	},
-	{
-		"key": "escape",
-		"command": "-modalEditor.setNormalMode",
-		"when": "editorTextFocus"
-	},
-	{
-		"key": "alt+g",
-		"command": "workbench.action.gotoLine"
-	},
-	{
-		"key": "f1",
-		"command": "workbench.action.tasks.runTask"
-	},
-	{
-		"key": "ctrl+t",
-		"command": "workbench.action.focusNextGroup"
-	}
+	{ "key": "alt+b", "command": "cursorWordLeft", "when": "textInputFocus" },
+	{ "key": "alt+f", "command": "cursorWordEndRight", "when": "textInputFocus" },
+	{ "key": "alt+n", "command": "cursorDown", "when": "textInputFocus" },
+	{ "key": "alt+p", "command": "cursorUp", "when": "textInputFocus" },
+	{ "key": "ctrl+e", "command": "deleteWordEndRight", "when": "textInputFocus" },
+	{ "key": "ctrl+t", "command": "workbench.action.focusNextGroup" },
+	{ "key": "ctrl+w", "command": "deleteWordLeft", "when": "textInputFocus" },
+	{ "key": "f1", "command": "workbench.action.tasks.runTask" },
 ]
