@@ -65,6 +65,7 @@ alias pg='ping google.gr'
 alias windows='s grub-reboot Windows && s reboot'
 alias thanks="echo You\'re welcome!"
 alias set-time="s ntpdate pool.ntp.org ; s hwclock -w"
+alias tsx='nodejs --experimental-strip-types'
 
 # functions
 lgrep() {
