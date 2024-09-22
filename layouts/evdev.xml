@@ -1345,6 +1345,20 @@
   <layoutList>
     <layout>
       <configItem>
+        <name>us</name>
+        <shortDescription>us</shortDescription>
+        <description>English (US)</description>
+        <countryList>
+          <iso3166Id>US</iso3166Id>
+        </countryList>
+        <languageList>
+          <iso639Id>eng</iso639Id>
+        </languageList>
+      </configItem>
+    </layout>
+
+    <layout>
+      <configItem>
         <name>vas</name>
         <shortDescription>vas</shortDescription>
         <description>English (Vas)</description>
