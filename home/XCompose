@@ -70,3 +70,9 @@
 <Multi_key> <C> <S>: "Ç"
 <Multi_key> <s> <s>: "ß"
 <Multi_key> <S> <S>: "ẞ"
+
+# diacritics
+<Multi_key> <e> <colon>: "ë"
+<Multi_key> <E> <colon>: "Ë"
+<Multi_key> <i> <colon>: "ï"
+<Multi_key> <I> <colon>: "Ï"
