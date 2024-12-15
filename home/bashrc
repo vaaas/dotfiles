@@ -2,7 +2,6 @@ stty -ixon
 PS1='\u@\h:\[\e[1;34m\]$PWD \[\e[1;31m\]$?\[\e[0m\] > '
 IFS='
 '
-PATH=.:$PATH
 eval $(dircolors -b)
 
 set -o noclobber
